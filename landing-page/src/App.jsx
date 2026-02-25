@@ -3,6 +3,8 @@ import './App.css';
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
+  const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   // Re-run MathJax typesetting when a modal is opened, just in case MathJax missed it initially
   useEffect(() => {
@@ -11,8 +13,23 @@ function App() {
     }
   }, [activeModal]);
 
-  const openModal = (id) => setActiveModal(id);
+  const openModal = (id) => {
+    setActiveModal(id);
+    if (id === 'pdf-auth') {
+      setPassword('');
+      setPasswordError('');
+    }
+  };
   const closeModal = () => setActiveModal(null);
+
+  const handlePdfSubmit = () => {
+    if (password === '2206051582') {
+      window.open('/induk.pdf', '_blank');
+      closeModal();
+    } else {
+      setPasswordError('Kata sandi salah. Silakan coba lagi.');
+    }
+  };
 
   return (
     <>
@@ -30,14 +47,17 @@ function App() {
 
         <div className="grid-menu">
           {/* PDF Card */}
-          <a href="/induk.pdf" target="_blank" rel="noreferrer" className="card glass-effect">
+          <div
+            className="card glass-effect"
+            onClick={() => openModal('pdf-auth')}
+          >
             <div className="card-icon">📄</div>
             <h2>Dokumen Skripsi (PDF)</h2>
             <p>
               Baca dokumen selengkapnya, memuat bab 1 hingga kesimpulan dan
-              lampiran.
+              lampiran. (Dilindungi Kata Sandi)
             </p>
-          </a>
+          </div>
 
           {/* Web App Card */}
           <a
@@ -96,6 +116,63 @@ function App() {
       </div>
 
       {/* MODALS */}
+      <div
+        className={`modal ${activeModal === 'pdf-auth' ? 'active' : ''}`}
+        onClick={(e) => {
+          if (e.target.classList.contains('modal')) closeModal();
+        }}
+      >
+        <div className="modal-content glass-effect" style={{ maxWidth: '400px', textAlign: 'center' }}>
+          <button className="close-btn" onClick={closeModal}>
+            &times;
+          </button>
+          <h2>Akses Terbatas</h2>
+          <div className="modal-body">
+            <p style={{ marginBottom: '1.5rem' }}>
+              Masukkan kata sandi untuk membuka dokumen PDF Skripsi.
+            </p>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') handlePdfSubmit() }}
+              placeholder="Kata Sandi..."
+              style={{
+                width: '100%',
+                padding: '0.75rem 1rem',
+                borderRadius: '8px',
+                border: '1px solid rgba(255,255,255,0.2)',
+                background: 'rgba(0,0,0,0.2)',
+                color: '#fff',
+                fontSize: '1rem',
+                marginBottom: '1rem'
+              }}
+            />
+            {passwordError && (
+              <p style={{ color: '#f87171', fontSize: '0.9rem', marginBottom: '1rem' }}>
+                {passwordError}
+              </p>
+            )}
+            <button
+              onClick={handlePdfSubmit}
+              style={{
+                background: 'linear-gradient(to right, #3b82f6, #8b5cf6)',
+                color: 'white',
+                border: 'none',
+                padding: '0.75rem 2rem',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: '600',
+                cursor: 'pointer',
+                width: '100%'
+              }}
+            >
+              Buka Dokumen
+            </button>
+          </div>
+        </div>
+      </div>
+
       <div
         className={`modal ${activeModal === 'docs' ? 'active' : ''}`}
         onClick={(e) => {
