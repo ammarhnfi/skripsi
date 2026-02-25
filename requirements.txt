@@ -1,7 +1,0 @@
-dash
-pandas
-plotly
-scikit-learn
-openpyxl
-gunicorn
-# Kita hapus matplotlib karena tidak di-render langsung di Dash
