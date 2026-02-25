@@ -30,7 +30,7 @@ function App() {
 
         <div className="grid-menu">
           {/* PDF Card */}
-          <a href="../induk.pdf" target="_blank" rel="noreferrer" className="card glass-effect">
+          <a href="/induk.pdf" target="_blank" rel="noreferrer" className="card glass-effect">
             <div className="card-icon">📄</div>
             <h2>Dokumen Skripsi (PDF)</h2>
             <p>
