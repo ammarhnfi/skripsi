@@ -5,6 +5,23 @@ function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [isShaking, setIsShaking] = useState(false);
+  const [iframeLoading, setIframeLoading] = useState(true);
+
+  // Gallery Lightbox State
+  const [lightboxImage, setLightboxImage] = useState(null);
+
+  // Gallery Data
+  const galleryItems = [
+    {
+      src: "/images/pca_biplot_animation.gif",
+      caption: "Animasi Perubahan Struktur (Dynamic Biplot)"
+    },
+    {
+      src: "/images/titik_dan_vektor_v2.png",
+      caption: "Detail Titik dan Vektor Korelasi STATIS"
+    }
+  ];
 
   // Re-run MathJax typesetting when a modal is opened, just in case MathJax missed it initially
   useEffect(() => {
@@ -18,9 +35,16 @@ function App() {
     if (id === 'pdf-auth') {
       setPassword('');
       setPasswordError('');
+      setIsShaking(false);
+    }
+    if (id === 'web-app') {
+      setIframeLoading(true);
     }
   };
-  const closeModal = () => setActiveModal(null);
+  const closeModal = () => {
+    setActiveModal(null);
+    setLightboxImage(null);
+  };
 
   const handlePdfSubmit = () => {
     if (password === '2206051582') {
@@ -28,6 +52,8 @@ function App() {
       closeModal();
     } else {
       setPasswordError('Kata sandi salah. Silakan coba lagi.');
+      setIsShaking(true);
+      setTimeout(() => setIsShaking(false), 400); // Remove shake class after animation
     }
   };
 
@@ -120,8 +146,8 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect" style={{ maxWidth: '400px', textAlign: 'center' }}>
-          <button className="close-btn" onClick={closeModal}>
+        <div className={`modal-content glass-effect ${isShaking ? 'shake' : ''}`} style={{ maxWidth: '400px', textAlign: 'center' }}>
+          <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
           <h2>Akses Terbatas</h2>
@@ -139,11 +165,13 @@ function App() {
                 width: '100%',
                 padding: '0.75rem 1rem',
                 borderRadius: '8px',
-                border: '1px solid rgba(255,255,255,0.2)',
+                border: `1px solid ${passwordError ? 'rgba(248, 113, 113, 0.8)' : 'rgba(255,255,255,0.2)'}`,
                 background: 'rgba(0,0,0,0.2)',
                 color: '#fff',
                 fontSize: '1rem',
-                marginBottom: '1rem'
+                marginBottom: '1rem',
+                outline: 'none',
+                transition: 'border-color 0.3s'
               }}
             />
             {passwordError && (
@@ -162,8 +190,11 @@ function App() {
                 fontSize: '1rem',
                 fontWeight: '600',
                 cursor: 'pointer',
-                width: '100%'
+                width: '100%',
+                transition: 'opacity 0.2s'
               }}
+              onMouseOver={(e) => e.target.style.opacity = '0.9'}
+              onMouseOut={(e) => e.target.style.opacity = '1'}
             >
               Buka Dokumen
             </button>
@@ -177,16 +208,25 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect" style={{ width: '95vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
-          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10 }}>
+        <div className="modal-content glass-effect" style={{ width: '95vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10, top: '0.5rem', right: '0.5rem' }} title="Tutup Aplikasi">
             &times;
           </button>
-          <div style={{ flex: 1, borderRadius: '12px', overflow: 'hidden', marginTop: '1rem', background: '#fff' }}>
-            <iframe
-              src="https://ammarhnfi-skripsi.hf.space"
-              style={{ width: '100%', height: '100%', border: 'none' }}
-              title="Aplikasi Python Interaktif"
-            />
+          <div style={{ flex: 1, borderRadius: '12px', overflow: 'hidden', marginTop: '1rem', background: '#fff', position: 'relative' }}>
+            {iframeLoading && (
+              <div className="spinner-container">
+                <div className="spinner"></div>
+                <p style={{ color: '#64748b', fontWeight: '500' }}>Tunggu sebentar, sedang memuat Data Engine...</p>
+              </div>
+            )}
+            {activeModal === 'web-app' && (
+              <iframe
+                src="https://ammarhnfi-skripsi.hf.space"
+                style={{ width: '100%', height: '100%', border: 'none' }}
+                title="Aplikasi Python Interaktif"
+                onLoad={() => setIframeLoading(false)}
+              />
+            )}
           </div>
         </div>
       </div>
@@ -198,21 +238,11 @@ function App() {
         }}
       >
         <div className="modal-content glass-effect">
-          <button className="close-btn" onClick={closeModal}>
+          <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
           <h2>Dokumentasi & Hasil</h2>
           <div className="modal-body">
-            <h3>Visualisasi Perubahan Struktur (GIF)</h3>
-            <p>
-              <i>
-                (Tambahkan file konfigurasi_statis.gif ke dalam repositori utama
-                untuk menampilkan animasi)
-              </i>
-            </p>
-            <div className="gif-placeholder">
-              <p>[Placeholder GIF / Gambar Hasil Analisis]</p>
-            </div>
             <h3>Hasil Utama STATIS</h3>
             <p>
               Metode STATIS menghasilkan struktur kompromi yang merupakan rata-rata
@@ -222,8 +252,42 @@ function App() {
               digunakan sebagai kanvas biplot untuk melacak perubahan struktur dari
               tahun ke tahun.
             </p>
+
+            <h3>Galeri Visualisasi</h3>
+            <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>
+              Klik gambar untuk melihat dalam ukuran penuh.
+            </p>
+            <div className="photo-grid">
+              {galleryItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="thumbnail-container"
+                  onClick={() => setLightboxImage(item)}
+                >
+                  <img src={item.src} alt={item.caption} className="thumbnail-img" />
+                  <div className="thumbnail-caption">{item.caption}</div>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
+      </div>
+
+      {/* LIGHTBOX OVERLAY */}
+      <div
+        className={`lightbox ${lightboxImage ? 'active' : ''}`}
+        onClick={() => setLightboxImage(null)}
+      >
+        {lightboxImage && (
+          <>
+            <button className="close-btn" onClick={() => setLightboxImage(null)} style={{ top: '2rem', right: '2rem' }}>
+              &times;
+            </button>
+            <img src={lightboxImage.src} alt={lightboxImage.caption} />
+            <div className="lightbox-caption">{lightboxImage.caption}</div>
+          </>
+        )}
       </div>
 
       <div
@@ -233,7 +297,7 @@ function App() {
         }}
       >
         <div className="modal-content glass-effect">
-          <button className="close-btn" onClick={closeModal}>
+          <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
           <h2>Rumus Utama dan Referensi</h2>
@@ -315,7 +379,7 @@ function App() {
         }}
       >
         <div className="modal-content glass-effect">
-          <button className="close-btn" onClick={closeModal}>
+          <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
           <h2>Informasi Dataset</h2>
