@@ -60,11 +60,9 @@ function App() {
           </div>
 
           {/* Web App Card */}
-          <a
-            href="https://huggingface.co/spaces/ammarhnfi/skripsi"
-            target="_blank"
-            rel="noreferrer"
+          <div
             className="card glass-effect highlight"
+            onClick={() => openModal('web-app')}
           >
             <div className="card-icon">🌐</div>
             <h2>Website Aplikasi</h2>
@@ -72,7 +70,7 @@ function App() {
               Jelajahi visualisasi interaktif (Trajectory, K-Means Clustering,
               Peta Tematik) secara langsung.
             </p>
-          </a>
+          </div>
 
           {/* Documentation Card */}
           <div
@@ -169,6 +167,26 @@ function App() {
             >
               Buka Dokumen
             </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`modal ${activeModal === 'web-app' ? 'active' : ''}`}
+        onClick={(e) => {
+          if (e.target.classList.contains('modal')) closeModal();
+        }}
+      >
+        <div className="modal-content glass-effect" style={{ width: '95vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column' }}>
+          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10 }}>
+            &times;
+          </button>
+          <div style={{ flex: 1, borderRadius: '12px', overflow: 'hidden', marginTop: '1rem', background: '#fff' }}>
+            <iframe
+              src="https://ammarhnfi-skripsi.hf.space"
+              style={{ width: '100%', height: '100%', border: 'none' }}
+              title="Aplikasi Python Interaktif"
+            />
           </div>
         </div>
       </div>
