@@ -391,6 +391,30 @@ header {
     to { transform: rotate(360deg); }
 }
 
+/* PDF Reader */
+.pdf-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.pdf-btn:hover:not(:disabled) {
+    background: rgba(255,255,255,0.2);
+}
+.pdf-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.pdf-canvas-page canvas {
+    max-width: 100%;
+    height: auto !important;
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .title { font-size: 2.2rem; }

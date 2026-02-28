@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
 import './App.css';
+
+// Initialize PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 function App() {
   const [activeModal, setActiveModal] = useState(null);
@@ -7,6 +13,11 @@ function App() {
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
+
+  // PDF Reader State
+  const [numPages, setNumPages] = useState(null);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [pdfScale, setPdfScale] = useState(1.2);
 
   // Gallery Lightbox State
   const [lightboxImage, setLightboxImage] = useState(null);
@@ -37,6 +48,10 @@ function App() {
       setPasswordError('');
       setIsShaking(false);
     }
+    if (id === 'pdf-reader') {
+      setPageNumber(1);
+      setPdfScale(1.2);
+    }
     if (id === 'web-app') {
       setIframeLoading(true);
     }
@@ -48,13 +63,16 @@ function App() {
 
   const handlePdfSubmit = () => {
     if (password === '2206051582') {
-      window.open('/induk.pdf', '_blank');
-      closeModal();
+      openModal('pdf-reader');
     } else {
       setPasswordError('Kata sandi salah. Silakan coba lagi.');
       setIsShaking(true);
       setTimeout(() => setIsShaking(false), 400); // Remove shake class after animation
     }
+  };
+
+  const onDocumentLoadSuccess = ({ numPages }) => {
+    setNumPages(numPages);
   };
 
   return (
@@ -198,6 +216,67 @@ function App() {
             >
               Buka Dokumen
             </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        className={`modal ${activeModal === 'pdf-reader' ? 'active' : ''}`}
+        onClick={(e) => {
+          if (e.target.classList.contains('modal')) closeModal();
+        }}
+      >
+        <div className="modal-content glass-effect pdf-reader-modal" style={{ maxWidth: '900px', width: '95vw', height: '90vh', display: 'flex', flexDirection: 'column', padding: '1rem' }}>
+          <button className="close-btn" onClick={closeModal} title="Tutup" style={{ zIndex: 10, top: '1rem', right: '1rem' }}>
+            &times;
+          </button>
+          <div className="pdf-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', background: 'rgba(0,0,0,0.3)', padding: '0.8rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+            <div className="pdf-controls">
+              <button disabled={pageNumber <= 1} onClick={() => setPageNumber(p => Math.max(p - 1, 1))} className="pdf-btn">
+                Sebelumnnya
+              </button>
+              <span style={{ margin: '0 15px', fontWeight: 'bold' }}>
+                Halaman {pageNumber} dari {numPages || '--'}
+              </span>
+              <button disabled={pageNumber >= numPages} onClick={() => setPageNumber(p => Math.min(p + 1, numPages))} className="pdf-btn">
+                Selanjutnya
+              </button>
+            </div>
+            <div className="pdf-zoom">
+              <button onClick={() => setPdfScale(s => Math.max(s - 0.2, 0.5))} className="pdf-btn" title="Perkecil">➖</button>
+              <span style={{ margin: '0 10px' }}>{Math.round(pdfScale * 100)}%</span>
+              <button onClick={() => setPdfScale(s => Math.min(s + 0.2, 3))} className="pdf-btn" title="Perbesar">➕</button>
+            </div>
+          </div>
+
+          <div
+            className="pdf-viewer-container"
+            style={{ flex: 1, overflowY: 'auto', background: '#333', borderRadius: '8px', display: 'flex', justifyContent: 'center', padding: '1rem' }}
+            onContextMenu={(e) => e.preventDefault()}
+          >
+            {activeModal === 'pdf-reader' && (
+              <Document
+                file="/skrp_doc_vault_9x.dat"
+                onLoadSuccess={onDocumentLoadSuccess}
+                loading={
+                  <div className="spinner-container" style={{ background: 'transparent' }}>
+                    <div className="spinner"></div><p style={{ color: 'white' }}>Memuat Dokumen Rahasia...</p>
+                  </div>
+                }
+                error={<p style={{ color: '#f87171' }}>Gagal memuat dokumen utama. Format tidak dikenali.</p>}
+              >
+                <Page
+                  pageNumber={pageNumber}
+                  scale={pdfScale}
+                  renderTextLayer={false}
+                  renderAnnotationLayer={false}
+                  className="pdf-canvas-page"
+                />
+              </Document>
+            )}
+          </div>
+          <div style={{ textAlign: 'center', fontSize: '0.8rem', color: '#94a3b8', marginTop: '0.8rem' }}>
+            Dokumen ini dilindungi: Pengunduhan, Pencetakan, dan Klik Kanan dinonaktifkan.
           </div>
         </div>
       </div>
