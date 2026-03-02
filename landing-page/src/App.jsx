@@ -231,28 +231,38 @@ function App() {
             &times;
           </button>
           <div className="pdf-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem', background: 'rgba(0,0,0,0.3)', padding: '0.8rem', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <div className="pdf-controls">
-              <button disabled={pageNumber <= 1} onClick={() => setPageNumber(p => Math.max(p - 1, 1))} className="pdf-btn">
-                Sebelumnnya
+            <div className="pdf-controls" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <button disabled={pageNumber === '' || pageNumber <= 1} onClick={() => setPageNumber(p => Math.max(p - 1, 1))} className="pdf-btn">
+                Sebelumnya
               </button>
-              <span style={{ margin: '0 15px', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
-                Halaman <input 
-                  type="number" 
-                  value={pageNumber} 
+              <span style={{ margin: '0 5px', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                Halaman <input
+                  type="number"
+                  value={pageNumber}
                   onChange={(e) => {
-                    const val = parseInt(e.target.value);
-                    if (!isNaN(val)) setPageNumber(Math.min(Math.max(val, 1), numPages || 1));
+                    if (e.target.value === '') {
+                      setPageNumber('');
+                    } else {
+                      const val = parseInt(e.target.value);
+                      if (!isNaN(val)) setPageNumber(val);
+                    }
                   }}
-                  style={{ width: '50px', textAlign: 'center', margin: '0 5px', background: 'rgba(0,0,0,0.5)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', padding: '2px' }}
+                  onBlur={() => {
+                    let val = parseInt(pageNumber);
+                    if (isNaN(val) || val < 1) val = 1;
+                    if (val > numPages) val = numPages;
+                    setPageNumber(val);
+                  }}
+                  style={{ width: '60px', textAlign: 'center', margin: '0 8px', background: 'rgba(0,0,0,0.5)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', padding: '4px' }}
                   min={1}
                   max={numPages || 1}
                 /> dari {numPages || '--'}
               </span>
-              <button disabled={pageNumber >= numPages} onClick={() => setPageNumber(p => Math.min(p + 1, numPages))} className="pdf-btn">
+              <button disabled={pageNumber === '' || pageNumber >= numPages} onClick={() => setPageNumber(p => Math.min(p + 1, numPages))} className="pdf-btn">
                 Selanjutnya
               </button>
             </div>
-            <div className="pdf-zoom">
+            <div className="pdf-zoom" style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
               <button onClick={() => setPdfScale(s => Math.max(s - 0.2, 0.5))} className="pdf-btn" title="Perkecil">➖</button>
               <span style={{ margin: '0 10px' }}>{Math.round(pdfScale * 100)}%</span>
               <button onClick={() => setPdfScale(s => Math.min(s + 0.2, 3))} className="pdf-btn" title="Perbesar">➕</button>
@@ -276,7 +286,7 @@ function App() {
                 error={<p style={{ color: '#f87171' }}>Gagal memuat dokumen utama. Format tidak dikenali.</p>}
               >
                 <Page
-                  pageNumber={pageNumber}
+                  pageNumber={pageNumber === '' ? 1 : pageNumber}
                   scale={pdfScale}
                   renderTextLayer={false}
                   renderAnnotationLayer={false}
