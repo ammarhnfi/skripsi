@@ -1,0 +1,9 @@
+# Fdb version 4
+["pdflatex"] 0 "d:/Skripsi/my/proposal/name.tex" "name.pdf" "name" 0 -1
+  "d:/Skripsi/my/proposal/name.tex" 0 -1 0 ""
+  "name.aux" 0 -1 0 "pdflatex"
+  (generated)
+  "name.aux"
+  "name.log"
+  "name.pdf"
+  (rewritten before read)
