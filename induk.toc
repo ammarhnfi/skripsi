@@ -10,7 +10,7 @@
 \contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xii}{section*.9}%
 \contentsline {chapter}{\numberline {1}\normalsize PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}\normalsize Latar Belakang}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}\normalsize Rumusan Masalah}{5}{section.1.2}%
+\contentsline {section}{\numberline {1.2}\normalsize Rumusan Masalah}{4}{section.1.2}%
 \contentsline {section}{\numberline {1.3}\normalsize Ruang Lingkup Penelitian}{5}{section.1.3}%
 \contentsline {section}{\numberline {1.4}\normalsize Tujuan Penelitian}{6}{section.1.4}%
 \contentsline {section}{\numberline {1.5}\normalsize Metodologi Penelitian}{6}{section.1.5}%

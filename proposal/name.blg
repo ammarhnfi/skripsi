@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: name.aux
+Reallocating 'name_of_file' (item size: 1) to 19 items.
+A level-1 auxiliary file: hype_indonesia.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+The style file: apalike-ejor.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Database file #1: pustaka.bib
+Warning--entry type for "nuswantari2021" isn't style-file defined
+--line 104 of file pustaka.bib
+Warning--entry type for "ahmad2024" isn't style-file defined
+--line 115 of file pustaka.bib
+You've used 12 entries,
+            1975 wiz_defined-function locations,
+            567 strings with 6046 characters,
+and the built_in function-call counts, 4380 in all, are:
+= -- 447
+> -- 143
+< -- 10
++ -- 50
+- -- 46
+* -- 350
+:= -- 769
+add.period$ -- 35
+call.type$ -- 12
+change.case$ -- 81
+chr.to.int$ -- 12
+cite$ -- 12
+duplicate$ -- 177
+empty$ -- 306
+format.name$ -- 60
+if$ -- 871
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 30
+newline$ -- 74
+num.names$ -- 36
+pop$ -- 60
+preamble$ -- 1
+purify$ -- 83
+quote$ -- 0
+skip$ -- 137
+stack$ -- 0
+substring$ -- 273
+swap$ -- 25
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 68
+warning$ -- 0
+while$ -- 35
+width$ -- 0
+write$ -- 175
+(There were 2 warnings)
