@@ -226,7 +226,7 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect pdf-reader-modal" style={{ maxWidth: '900px', width: '95vw', height: '90vh', display: 'flex', flexDirection: 'column', padding: '1rem' }}>
+        <div className="modal-content glass-effect pdf-reader-modal" style={{ maxWidth: '900px', width: '90vw', height: '90vh', display: 'flex', flexDirection: 'column', padding: '1rem' }}>
           <button className="close-btn" onClick={closeModal} title="Tutup" style={{ zIndex: 10, top: '1rem', right: '1rem' }}>
             &times;
           </button>
@@ -235,8 +235,18 @@ function App() {
               <button disabled={pageNumber <= 1} onClick={() => setPageNumber(p => Math.max(p - 1, 1))} className="pdf-btn">
                 Sebelumnnya
               </button>
-              <span style={{ margin: '0 15px', fontWeight: 'bold' }}>
-                Halaman {pageNumber} dari {numPages || '--'}
+              <span style={{ margin: '0 15px', fontWeight: 'bold', display: 'flex', alignItems: 'center' }}>
+                Halaman <input 
+                  type="number" 
+                  value={pageNumber} 
+                  onChange={(e) => {
+                    const val = parseInt(e.target.value);
+                    if (!isNaN(val)) setPageNumber(Math.min(Math.max(val, 1), numPages || 1));
+                  }}
+                  style={{ width: '50px', textAlign: 'center', margin: '0 5px', background: 'rgba(0,0,0,0.5)', color: 'white', border: '1px solid rgba(255,255,255,0.2)', borderRadius: '4px', padding: '2px' }}
+                  min={1}
+                  max={numPages || 1}
+                /> dari {numPages || '--'}
               </span>
               <button disabled={pageNumber >= numPages} onClick={() => setPageNumber(p => Math.min(p + 1, numPages))} className="pdf-btn">
                 Selanjutnya
@@ -287,8 +297,8 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect" style={{ width: '95vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10, top: '0.5rem', right: '0.5rem' }} title="Tutup Aplikasi">
+        <div className="modal-content glass-effect" style={{ width: '90vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column', position: 'relative' }}>
+          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10, top: '0.5rem', right: '0.5rem' }}>
             &times;
           </button>
           <div style={{ flex: 1, borderRadius: '12px', overflow: 'hidden', marginTop: '1rem', background: '#fff', position: 'relative' }}>
