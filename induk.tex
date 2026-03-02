@@ -1,0 +1,257 @@
+\documentclass[12pt, a4paper, onecolumn, twoside]{report}
+% File laporan_setting.tex harus Anda sesuaikan dengan informasi Anda.
+%
+% Template skripsi / tesis ini berdasarkan aturan yang dikeluarkan UI di tahun 2010.
+% Yang mengembangkan template ini dari awal hingga saat ini:
+% 1. Fahrurrozi Rahman.
+% 2. Adreas Febrian, Lia Sadita, Andre Tampubolon, Erik Dominikus.
+% 3. Andrew, Daniel Salim (Mat UI 2010).
+% 4. Mia Vania (Mat UI 2011).
+% 5. Hengki Tasman
+% 6. Barry (Mat UI 2010), Maulana (Mat UI 2011)
+% 7. Antonio Kevin (Mat UI 2014)*
+
+%*UPDATE: KEPUTUSAN REKTOR NOMOR 2143/SK/R/UI/2017
+
+%NOTE! Remember to do use [\vspace*{-0.25cm}] for enumerate or other listing, so the spacing will be consistent. 
+%TO DO NEXT. Change footer font into Arial.
+
+\usepackage[paper=a4paper,headheight=30pt,left=3cm,top=3cm,right=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathrsfs}
+\usepackage{indentfirst} % Kalimat pertama masuk beberapa cm
+\usepackage{natbib} % Untuk merujuk pustaka
+\usepackage{tocbibind}
+%\usepackage{multirow} % Membuat banyak baris dalam 1 baris di tabel
+%\usepackage{colortbl} % Membuat tabel berwarna-warni.
+\usepackage{caption}
+\usepackage{times}
+\usepackage{multirow}
+\usepackage{subfig}
+\usepackage{makecell}
+\usepackage{longtable}
+\usepackage{fancyhdr} % Membuat header dan footer pada dokumen.
+%\usepackage{pdfpages} % Package untuk memasukan berkas pdf sebagai bagian dari dokumen.
+
+\PassOptionsToPackage{hyphens}{url}
+\usepackage{hyperref}
+\hypersetup{pdfstartview=FitH,pdfview=FitH}
+
+\usepackage{array}
+\usepackage{url}
+\urlstyle{same}
+
+\usepackage{setspace}
+\linespread{1.3} % Jarak baris 1,5
+
+\usepackage[ConnyRevised]{fncychap} % Membantu dalam mengatur jarak antara tepi kertas dengan posisi header.
+
+%-----------------------------------------------------------------------------%
+% Konfigurasi
+%-----------------------------------------------------------------------------%
+\sloppy
+
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+   \pdffalse
+\else
+   \pdfoutput=1
+   \pdftrue
+\fi
+
+% link page numbers in TOC
+\makeatletter
+\def\contentsline#1#2#3#4{%
+  \ifx\\#4\\%
+    \csname l@#1\endcsname{#2}{#3}%
+  \else
+    \csname l@#1\endcsname{%
+      \hyper@linkstart{link}{#4}{#2}\hyper@linkend
+    }{%
+      % same link destination for the page:
+      \hyper@linkstart{link}{#4}{#3}\hyper@linkend
+      % link destination is the page itself:
+      % \hyperpage{#3}%
+    }%
+  \fi
+}
+
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                  {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                  {2.3ex \@plus.2ex}%
+                                  {\normalsize \bfseries}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-3.5ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalsize\bfseries}}
+\makeatother
+
+\setcounter{secnumdepth}{3}
+
+\setcounter{tocdepth}{3}
+
+\newcommand{\f}[1]{\textit{#1}}
+\newcommand{\bi}[1]{\textbf{\textit{#1}}}
+\newcommand{\bo}[1]{\textbf{#1}}
+
+% Perintah untuk membuat perintah/variabel baru.
+\newcommand{\var}[2]{\newcommand{#1}{#2}}
+
+% Perintah untuk membuat perintah/variabel baru. Teks yang ditulis dalam
+% perintah ini akan diformat ulang menggunakan huruf kapital.
+\newcommand{\Var}[2]{\newcommand{#1}{\uppercase{#2}}}
+
+% Tambahkan kata-kata yang dimasukan kedalam Table of Contents.
+\newcommand{\addChapter}[1]{\phantomsection \addcontentsline{toc}{chapter}{#1}}
+
+\renewcommand{\bibname}{\normalsize DAFTAR REFERENSI}
+\renewcommand{\contentsname}{\normalsize DAFTAR ISI}
+\renewcommand{\listfigurename}{\normalsize DAFTAR GAMBAR}
+\renewcommand{\listtablename}{\normalsize DAFTAR TABEL}
+\renewcommand{\figurename}{\normalsize Gambar}
+\renewcommand{\tablename}{\normalsize Tabel}
+\renewcommand{\chaptername}{\normalsize BAB}
+\def\proofname{Bukti}
+
+\theoremstyle{definition} % Isi teorema tidak ditulis miring
+\newtheorem{theorem}{Teorema}[chapter]
+\newtheorem{lemma}[theorem]{Lema} 
+\newtheorem{proposition}[theorem]{Proposisi}
+\newtheorem{corollary}[theorem]{Akibat}
+\newtheorem{definition}{Definisi}[chapter]
+\newtheorem{example}{Contoh}[chapter]
+
+\newenvironment{remark}[1][Catatan]{\begin{trivlist}
+\item[\hskip \labelsep {\normalsize \bfseries #1}]}{\end{trivlist}}
+
+\usepackage{titlesec}
+\titlespacing*{\chapter}{0pt}{-32pt}{20pt}
+\titleformat{\chapter}[display]{\center \normalsize \bfseries}{\chaptertitlename \, \thechapter}{0pt}{\normalsize} % Memperbaiki judul tiap bab
+
+% Memuat konfigurasi khusus untuk laporan yang sedang dibuat
+\input{laporan_setting} % Anda HARUS edit file laporan_setting.tex
+
+% Memuat Daftar pemenggalan suku kata dan istilah dalam LaTeX
+\input{hype.indonesia} % Tambahkan daftar pemenggalan kata dalam file hype.indonesia.tex
+
+% Memuat Daftar istilah yang mungkin perlu ditandai
+\input{istilah}
+
+\begin{document}
+
+% Sampul Depan Skripsi / Tesis
+\include{sampul} % Dilarang mengubah isi file sampul.tex 
+
+\pagenumbering{roman} % Gunakan penomoran halaman romawi
+
+%pengaturan headerfooterhalaman
+\renewcommand{\headrulewidth}{0.0pt}
+	\fancyhf{}
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\fancyfoot[C]{\thepage}
+	\renewcommand{\footrulewidth}{0pt}
+\pagestyle{fancy}
+
+% Memuat halaman judul dalam
+\addChapter{HALAMAN JUDUL}
+\include{judul_dalam} % Dilarang mengubah isi file judul_dalam.tex
+
+\setcounter{page}{2} % nomor halaman selanjutnya adalah 2
+
+% Memuat halaman pengesahan
+%\addChapter{LEMBAR PERSETUJUAN}
+%\include{pengesahan} % Dilarang mengubah isi file pengesahan.tex 
+
+% load halaman orisinalitas
+\addChapter{HALAMAN PERNYATAAN ORISINALITAS}
+\include{orisinal} % Dilarang mengubah isi file orisinal.tex
+
+%pengaturan rata kiri
+%\raggedright
+\setlength\parindent{0.7cm}
+
+\addChapter{HALAMAN PENGESAHAN}
+\include{pengesahan_sidang} % File pengesahan_sidang.tex mungkin perlu diubah sesuai dengan banyaknya pembimbing dan penguji kolokium atau sidang Anda
+
+\addChapter{KATA PENGANTAR}
+\include{pengantar} % Anda HARUS isi file pengantar.tex -------------
+
+\addChapter{HALAMAN PERSETUJUAN PUBLIKASI ILMIAH}
+\include{persetujuan_publikasi} % Dilarang ubah file persetujuan_publikasi.tex 
+
+%pengaturan header footer halaman
+\renewcommand{\headrulewidth}{0.0pt}
+	\fancyhf{}
+	\fancyhead[L]{}
+	\fancyhead[C]{}
+	\fancyhead[R]{}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\fancyfoot[C]{\thepage}
+	\fancyfoot[R]{{\fontfamily{phv}\selectfont\footnotesize \bo{Universitas Indonesia}}}
+	\renewcommand{\footrulewidth}{0.0pt}
+\pagestyle{fancyplain}
+
+\addChapter{ABSTRAK}
+\include{abstrak} % Abstrak dalam bahasa Indonesia. Ubah file abstrak.tex.
+
+\addChapter{ABSTRACT}
+\include{abstract} % Abstrak dalam bahasa Inggris. Ubah file abstract.tex.
+
+% Daftar isi, gambar, dan tabel
+\tableofcontents
+\clearpage
+
+\listoftables % jika ada tabel
+\clearpage
+
+\listoffigures % jika ada gambar
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+
+% Gunakan penomoran Arab (1, 2, 3, ...) setelah bagian ini.
+\pagenumbering{arabic}
+%pengaturan headerfooter halaman
+\renewcommand{\headrulewidth}{0.0pt}
+   \fancyhf{}
+	\fancyhead[RO,LE]{\thepage}
+	\renewcommand{\headrulewidth}{0.0pt}
+	\fancyfoot[R]{\footnotesize \bo{Universitas Indonesia}}
+	\renewcommand{\footrulewidth}{0.0pt}
+\pagestyle{fancy}
+
+\fancypagestyle{plain}{ %
+  \fancyhf{} 
+  	\fancyhead[L]{}
+  	\fancyhead[C]{}
+  	\fancyhead[R]{}
+  	\renewcommand{\headrulewidth}{0pt} 
+  	\fancyfoot[C]{\thepage}
+  	\fancyfoot[R]{\footnotesize \bo{Universitas Indonesia}}
+  	\renewcommand{\footrulewidth}{0pt}
+}
+
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+\include{bab1}
+\clearpage{\thispagestyle{empty}\cleardoublepage}
+\include{bab2}
+\include{bab3}
+\include{bab4}
+\include{bab5}
+
+% Daftar Pustaka
+%Buat daftar pustaka
+\bibliographystyle{apalike-ejor}
+\bibliography{pustaka} % Tambahkan pustaka yang digunakan mahasiswa dalam file pustaka.bib. Perhatikan format penulisan pustakanya!
+
+% Lampiran (jika ada)
+
+\begin{appendix}
+	\include{markLampiran}
+	\include{lampiran}
+\end{appendix}
+\end{document} 

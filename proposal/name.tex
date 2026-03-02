@@ -1,0 +1,647 @@
+\documentclass[a4paper]{article}
+
+\usepackage{graphicx}
+\usepackage[top=3cm, left=4cm, right=3cm, bottom=3cm]{geometry}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{lineno}
+\usepackage{multirow}
+% --- Bibliografi ---
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{comment}
+
+\theoremstyle{definition} % Isi teorema tidak ditulis miring
+\newtheorem{theorem}{Teorema}[section]
+\newtheorem{lemma}[theorem]{Lema} 
+\newtheorem{proposition}[theorem]{Proposisi}
+\newtheorem{corollary}[theorem]{Akibat}
+\newtheorem{definition}{Definisi}[section]
+\newtheorem{example}{Contoh}[section]
+
+\newenvironment{remark}[1][Catatan]{\begin{trivlist}
+		\item[\hskip \labelsep {\normalsize \bfseries #1}]}{\end{trivlist}}
+
+\def\figurename{Gambar}
+\def\tablename{Tabel}
+\def\proofname{Bukti}
+
+\renewcommand\refname{\centerline{Daftar Pustaka}}
+
+
+\begin{document}
+% Memuat Daftar pemenggalan suku kata dan istilah dalam LaTeX
+\include{hype_indonesia} % Tambahakan data pemenggalan kata di file hype_indonesia.tex
+\linespread{1.25} %jarak baris 1,5
+\begin{center}
+\huge
+
+Proposal Skripsi
+
+\vskip2cm
+
+\centerline{\includegraphics[scale=0.4]{logo_ui.jpg}}
+
+\vskip2cm
+
+\Large
+
+Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal Sosio-Ekonomi (Studi Kasus: Provinsi Banten, DKI Jakarta, dan Jawa Barat 2020--2024).
+
+\vskip2cm
+\large
+
+Diajukan oleh\\ 
+
+\bigskip
+
+Ammar Hanafi\\
+
+\medskip
+% Alamat email harus menggunakan @sci.ui.ac.id
+
+(2206051582, ammar.hanafi@ui.ac.id)
+
+\vskip1cm
+
+Dosen Pembimbing\\
+
+Dr. Dra. Yekti Widyaningsih, M.Si., M.Si.\\
+
+\vskip2cm
+\LARGE
+Program Studi S1 Statistika\\
+Departemen Matematika FMIPA UI\\
+Depok, November 2025 
+\end{center}
+
+%===================================
+\newpage
+% Halaman Lembar Persetujuan
+\LARGE
+Lembar Persetujuan
+
+\vskip 1cm
+
+\normalsize
+Proposal Skripsi ini telah disetujui oleh Pembimbing I Proposal Skripsi untuk dinilai oleh dosen penguji proposal skripsi.
+
+\vskip 2cm
+
+\hskip 7cm Depok, 11 November 2025
+
+\hskip 7cm Pembimbing I Proposal Skripsi
+
+\vskip 2cm \hskip 7 cm Tanda tangan
+
+\hskip 7cm (Dr. Dra. Yekti Widyaningsih, M.Si., M.Si.)
+
+\hskip 7cm NIP. 196709151995012001
+
+%====================================
+% Halaman Ringkasan Proposal Skripsi
+%====================================
+\newpage
+\linenumbers
+\LARGE
+\centerline{Ringkasan Proposal Skripsi}
+\vskip1.5cm
+\normalsize
+
+Dinamika pembangunan di wilayah strategis Provinsi Banten, DKI Jakarta, dan Jawa Barat menunjukkan kompleksitas yang tinggi selama periode 2020--2024. Sebagai pusat aglomerasi ekonomi nasional, ketiga provinsi ini mengalami perubahan simultan akibat pandemi COVID-19 yang diikuti oleh fase pemulihan yang tidak seragam antar-kabupaten/kota. Perubahan ini tidak hanya terjadi pada indikator makroekonomi, tetapi juga merambat pada dimensi kesejahteraan sosial dan kualitas modal manusia. Untuk memahami evolusi struktur hubungan antar-indikator tersebut secara menyeluruh, diperlukan pendekatan analisis data tiga-arah (\textit{three-way data}) yang mampu memahami pola interaksi spasio-temporal.
+
+Penelitian ini menerapkan metode STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk menganalisis struktur kompromi dari 12 indikator pembangunan strategis—meliputi aspek ekonomi (PDRB), kesejahteraan (Kemiskinan, Pangan), pembangunan manusia (IPM, Pendidikan, Kesehatan), serta kesetaraan (Gender, Gini Ratio)—di seluruh kabupaten/kota pada ketiga provinsi tersebut. Metode ini bertujuan untuk mengidentifikasi struktur kompromi (\textit{compromise structure}) yang stabil lintas tahun serta menguji signifikansi stabilitasnya menggunakan uji permutasi pada matriks inter-struktur. Selain itu, penelitian ini mengintegrasikan konsep \textit{Dynamic Biplot} untuk memvisualisasikan posisi kabupaten/kota dan variabel dalam ruang berdimensi rendah, lengkap dengan lintasan (\textit{trajectory}) pergerakannya dari masa krisis hingga pemulihan.
+
+Seluruh prosedur analisis, mulai dari pra-pemrosesan data hingga visualisasi, diimplementasikan menggunakan bahasa pemrograman Python. Hasil akhir dari penelitian ini disajikan dalam bentuk aplikasi \textit{dashboard} web interaktif berbasis \textit{framework} Dash dan Plotly. Aplikasi ini memungkinkan pengguna untuk melakukan eksplorasi mandiri melalui fitur rotasi \textit{baseline} dan filter lintasan, sehingga diharapkan dapat menjadi alat bantu visual yang efektif bagi peneliti maupun pemangku kebijakan dalam memantau resiliensi dan pemerataan pembangunan daerah pasca-pandemi.
+
+\bigskip
+
+\noindent\textbf{Kata kunci}: STATIS, Dynamic Biplot, Spasio-Temporal, Pembangunan Regional, Visualisasi Interaktif, Banten-DKI-Jabar.
+
+%===================================
+% BAB 1 - PENDAHULUAN
+%===================================
+\newpage
+%\begin{center}
+%    \bfseries\large
+%    BAB I \\
+%    PENDAHULUAN
+%\end{center}
+%\addcontentsline{toc}{section}{BAB I PENDAHULUAN} % Masuk ke Daftar Isi
+%\setcounter{section}{1}
+%-----------------------------------
+% 1.1 Latar Belakang
+%-----------------------------------
+%\subsection{Latar Belakang}
+\section{Pendahuluan}
+Kawasan strategis yang meliputi Provinsi Banten, DKI Jakarta, dan Jawa Barat tidak hanya berperan sebagai mesin pertumbuhan ekonomi nasional, tetapi juga menjadi arena dinamika pembangunan manusia yang sangat kompleks dalam lima tahun terakhir. Meskipun wilayah ini memberikan kontribusi signifikan terhadap Produk Domestik Regional Bruto (PDRB) Indonesia, keberhasilan pembangunannya tidak dapat lagi diukur hanya melalui kacamata indikator makro ekonomi semata. Terdapat interaksi multidimensi yang melibatkan kualitas hidup yang tecermin dalam Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), serta tantangan kesejahteraan sosial—seperti kemiskinan dan ketahanan pangan—yang terus mengalami perubahan. Kompleksitas ini menuntut pembuktian empiris yang lebih mendalam untuk melihat bagaimana indikator-indikator tersebut terdistribusi secara nyata di seluruh kabupaten/kota.
+
+Secara empiris, lanskap pembangunan di ketiga provinsi ini menunjukkan polarisasi yang tajam antara pusat-pusat pertumbuhan utama dan wilayah penyangga. Meskipun data PDRB di kota-kota besar mencatat performa ekonomi yang kuat dengan nilai mencapai 532.606,87 miliar rupiah \citep{bpspdrb}, capaian tersebut tidak serta-merta diikuti oleh pemerataan kesejahteraan. Hal ini terlihat dari variasi spasial yang signifikan pada indikator kemiskinan, di mana Persentase Penduduk Miskin (PPM) terentang lebar dari 2,29 persen hingga mencapai 15,06 persen di wilayah lainnya. Kesenjangan ini juga terkonfirmasi oleh indikator daya beli, terlihat dari perbedaan Garis Kemiskinan (GK) dan Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) yang bervariasi signifikan antarwilayah \cite{bpspkkp}. Lebih jauh lagi, disparitas kapabilitas manusia juga terlihat mencolok; Rata-rata Lama Sekolah (RLS) dan Angka Harapan Hidup (AHH) masih menunjukkan perbedaan yang nyata. Indeks Pembangunan Gender (IPG) serta Tingkat Pengangguran Terbuka (TPT) masih berada di kisaran 6,55--10,12 persen pada rentang tahun 2020--2024. Namun, persoalan ketimpangan antarwilayah ini menjadi semakin rumit ketika diletakkan dalam konteks waktu yang penuh perubahan.
+
+Selain disparitas spasial, tantangan analisis meningkat akibat adanya dinamika temporal yang sangat fluktuatif sepanjang periode 2020--2024. Periode ini diawali dengan guncangan eksternal pandemi COVID-19 yang menekan indikator makroekonomi dan kesejahteraan secara serentak—terlihat dari kontraksi pertumbuhan ekonomi yang sempat mencapai angka 1,88 persen pada tahun 2020 \citep{bpspdrb}—namun diikuti oleh pola pemulihan yang lajunya tidak seragam di setiap daerah pada tahun-tahun berikutnya. Perubahan drastis dari masa kontraksi menuju pemulihan ini diduga kuat telah mengubah struktur hubungan antar-indikator secara fundamental; sebagai contoh, pola korelasi antara pertumbuhan ekonomi (PDRB) dengan tingkat pengangguran (TPT) saat krisis sangat mungkin berbeda dibandingkan saat kondisi normal kembali pulih pada tahun 2023--2024. Oleh karena itu, pendekatan analisis multivariat klasik yang mengasumsikan struktur hubungan variabel bersifat statis (tetap sepanjang waktu) menjadi tidak lagi relevan untuk membedah fenomena pada periode yang penuh fluktuasi ini.
+
+Untuk mengatasi keterbatasan asumsi stabilitas tersebut, diperlukan pendekatan analisis data tiga-arah (\textit{three-way data analysis}) yang mampu menangani struktur data kompleks yang terdiri dari objek (kabupaten/kota), variabel (indikator sosio-ekonomi), dan situasi (waktu). Penelitian ini mengusulkan penggunaan metode STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}), sebuah metode eksploratif yang diperkenalkan oleh \citep{lavit94,oliveira2024}. Berbeda dengan Analisis Komponen Utama (PCA) konvensional yang hanya bekerja pada data dua dimensi, STATIS dirancang khusus untuk mengekstraksi informasi dari sekumpulan tabel data yang berubah seiring waktu. Metode ini memiliki keunggulan dalam membentuk sebuah struktur kompromi (\textit{compromise structure}) yang merepresentasikan pola hubungan umum antar-indikator selama periode pengamatan, sekaligus memungkinkan identifikasi seberapa jauh struktur ekonomi setiap tahunnya menyimpang dari pola umum tersebut.
+
+Meskipun metode STATIS mampu menghasilkan struktur kompromi secara matematis, kompleksitas hasil analisis dari matriks berdimensi tinggi sering kali sulit dipahami jika hanya disajikan dalam bentuk tabel numerik. Oleh karena itu, penelitian ini mengintegrasikan pendekatan STATIS dengan teknik visualisasi \textit{Dynamic Biplot}. Pendekatan ini memungkinkan proyeksi posisi objek (kabupaten/kota) dan variabel (indikator ekonomi) ke dalam ruang berdimensi rendah, sekaligus menggambarkan pergerakan atau lintasan (\textit{trajectory}) perubahan posisi tersebut dari tahun ke tahun. Dengan memanfaatkan konsep \textit{trajectory}, pergeseran karakteristik suatu wilayah—--misalnya, sebuah kabupaten yang pada tahun 2020 memiliki tingkat pengangguran tinggi namun kemudian bergeser mendekati karakteristik wilayah dengan IPM tinggi pada tahun 2024---dapat dilacak secara visual. Visualisasi lintasan ini menjadi instrumen krusial untuk membedakan antara fluktuasi jangka pendek akibat pandemi dan perubahan struktural jangka panjang.
+
+Penerapan metode eksploratif multivariat seperti ini mengisi celah penting dalam literatur analisis regional di Indonesia yang selama ini didominasi oleh pendekatan inferensial klasik. Studi-studi terdahulu umumnya berfokus pada pemodelan regresi data panel atau model spasial ekonometrik untuk mengestimasi besaran pengaruh variabel independen terhadap variabel dependen. Sebagai contoh, penelitian yang dilakukan oleh \citep{nuswantari2021} dan \citep{ahmad2024} menggunakan pendekatan \textit{Dynamic Spatial Durbin Model} (SDM) untuk menganalisis fenomena penyebaran penyakit kusta di Pulau Jawa. Fokus utama dari penelitian-penelitian tersebut adalah pengukuran signifikansi pengaruh peubah-peubah penjelas (\textit{explanatory variables}) terhadap peubah respon (\textit{response variable}). Meskipun pendekatan tersebut berhasil mengidentifikasi faktor-faktor determinan yang signifikan, metode inferensial ini memiliki keterbatasan dalam memvisualisasikan struktur hubungan antarvariabel secara simultan (\textit{inter-variable structure}) dan bagaimana struktur tersebut berevolusi dari waktu ke waktu (\textit{spatio-temporal}). Hingga saat ini, belum terdapat penelitian yang secara spesifik menggunakan pendekatan eksploratif untuk memetakan dinamika struktur multivariat indikator ekonomi secara komprehensif tanpa membedakannya menjadi variabel bebas dan terikat.
+
+Kompleksitas informasi yang dihasilkan dari analisis spasio-temporal ini menuntut media penyajian yang lebih adaptif dibandingkan laporan statis konvensional. Untuk itu, penelitian ini tidak hanya berhenti pada tataran analisis teoritis, tetapi juga mengembangkan sebuah aplikasi visualisasi interaktif berbasis web menggunakan bahasa pemrograman Python dengan kerangka kerja (\textit{framework}) Dash dan Plotly. Pengembangan \textit{dashboard} ini bertujuan untuk memfasilitasi Eksplorasi Data (\textit{Exploratory Data Analysis}) secara mandiri oleh pengguna. Fitur-fitur interaktif yang disematkan---seperti seleksi tahun, filter wilayah, hingga rotasi \textit{baseline}---memungkinkan para pengambil kebijakan untuk mengamati pola interaksi multivariat secara lebih mendalam. Melalui antarmuka ini, pola-pola tersembunyi (\textit{latent patterns}) yang mungkin terlewatkan dalam tabel statistik standar dapat terdeteksi dengan lebih intuitif.
+
+Secara keseluruhan, penelitian ini diarahkan untuk menjawab kebutuhan akan metode pemantauan pembangunan daerah yang lebih menyeluruh dan dinamis. Dengan memadukan kekuatan analitis metode STATIS dalam memahami struktur kompromi (\textit{compromise structure}) lintas tahun dan kemampuan naratif visual dari \textit{Dynamic Biplot}. Penelitian ini diharapkan dapat memberikan kontribusi ganda: secara akademis memperkaya khazanah penerapan statistik multivariat pada data ekonomi regional, dan secara praktis menyediakan purwarupa alat bantu visual yang relevan bagi pemerintah daerah dalam mengevaluasi dampak kebijakan pasca-pandemi. Identifikasi struktur hubungan yang stabil maupun yang berubah selama lima tahun terakhir akan menjadi landasan penting dalam merumuskan strategi pembangunan yang lebih tangguh di masa depan.
+
+Pemilihan lokasi penelitian yang mencakup seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat didasarkan pada karakteristik interkonektivitas ekonomi yang kuat di antara ketiga wilayah ini. Sebagai kesatuan wilayah pembangunan utama di Pulau Jawa, ketiga provinsi ini memiliki keterkaitan rantai pasok, mobilitas tenaga kerja, dan arus investasi yang sangat intensif. Permasalahan ekonomi yang terjadi di pusat pertumbuhan utama (DKI Jakarta) diproyeksikan akan merambat (\textit{spillover}) ke wilayah penyangga di Banten dan Jawa Barat dengan skala yang berbeda-beda. Oleh karena itu, analisis yang hanya membatasi lingkup pada wilayah metropolitan Jabodetabek berpotensi mengabaikan dampak sistemik yang dirasakan oleh wilayah kabupaten non-metropolitan yang secara administratif berada dalam satu kesatuan provinsi namun memiliki karakteristik ekonomi yang jauh berbeda.
+
+Untuk memahami kompleksitas pembangunan tersebut, penelitian ini menggunakan dua belas indikator strategis yang merepresentasikan dimensi pembangunan secara menyeluruh. Pemilihan variabel ini tidak dilakukan tanpa alasan, melainkan dipertimbangkan untuk mencakup aspek makroekonomi (PDRB ADHK), kesejahteraan material (PPM, GK, PKKP), kualitas modal manusia (IPM, RLS, AHH Laki-laki dan Perempuan), kesetaraan (IPG, Gini Ratio), serta partisipasi pasar kerja (TPT, TPAK). Kombinasi variabel ini memungkinkan analisis untuk tidak hanya pada indikator pertumbuhan konvensional, namun juga aspek inklusivitas pembangunan. Sebagai contoh, analisis simultan antara Gini Ratio dan PDRB memungkinkan deteksi dini terhadap fenomena pertumbuhan yang tidak merata (\textit{exclusive growth}), sementara interaksi antara TPAK dan IPG dapat mengungkap hambatan struktural dalam partisipasi angkatan kerja berbasis gender.
+
+Ketiadaan studi yang menganalisis dinamika interaksi kedua belas indikator ini secara spasio-temporal pada periode kritis 2020--2024 menciptakan sebuah "kotak hitam" (\textit{black box}) dalam pemahaman mengenai resiliensi ekonomi regional. Tanpa analisis struktur kompromi dan visualisasi lintasan yang jelas, para pemangku kebijakan kehilangan panduan empiris mengenai bagaimana sebenarnya pola pemulihan berlangsung di tingkat lokal—apakah kembali ke struktur lama atau membentuk ekuilibrium baru. Berdasarkan urgensi untuk mengungkap fenomena tersebut secara statistik dan visual, penelitian ini disusun untuk menjawab pertanyaan-pertanyaan mendasar mengenai evolusi struktur ekonomi dan pembangunan di ketiga provinsi tersebut.
+
+%-----------------------------------
+% 1.2 Perumusan Masalah
+%-----------------------------------
+%\subsection{Rumusan Masalah}
+\section{Masalah Penelitian}
+
+Berdasarkan latar belakang yang telah diuraikan, permasalahan yang akan dikaji dalam penelitian ini dirumuskan sebagai berikut:
+
+\begin{enumerate}
+    \item Bagaimana karakteristik struktur kompromi (\textit{compromise structure}) yang merepresentasikan pola hubungan multivariat dua belas indikator pembangunan di seluruh kabupaten/kota Provinsi Banten, DKI Jakarta, dan Jawa Barat menggunakan metode STATIS untuk memahami pola umum lintas tahun?
+    \item Bagaimana menguji struktur hubungan antar-indikator tersebut secara statistik selama periode 2020--2024 menggunakan uji permutasi matriks inter-struktur untuk membuktikan keberadaan dinamika temporal?
+    \item Bagaimana dinamika perubahan karakteristik kabupaten/kota dan pergeseran karakteristik indikator dari masa krisis pandemi hingga masa pemulihan (2020--2024) melalui visualisasi \textit{Dynamic Biplot} 2D dan 3D, serta menganalisis pola lintasan (\textit{trajectory}) yang terbentuk pada bidang kompromi.
+    \item Bagaimana merancang aplikasi berbasis web menggunakan \textit{framework} Dash dan Plotly sebagai alat bantu eksplorasi data yang memungkinkan pengguna melakukan pemantauan indikator pembangunan secara interaktif?
+\end{enumerate}
+
+%-----------------------------------
+% 1.3 Tujuan Penelitian
+%-----------------------------------
+%\subsection{Tujuan Penelitian}
+\section{Tujuan Penelitian}
+
+Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah:
+
+\begin{enumerate}
+    \item Menganalisis karakteristik struktur kompromi (\textit{compromise structure}) yang merepresentasikan pola hubungan multivariat dua belas indikator pembangunan di seluruh kabupaten/kota Provinsi Banten, DKI Jakarta, dan Jawa Barat menggunakan metode STATIS untuk memahami pola umum lintas tahun.
+    \item Menganalisis struktur hubungan antar-indikator tersebut secara statistik selama periode 2020--2024 menggunakan uji permutasi matriks inter-struktur untuk membuktikan keberadaan dinamika temporal.
+    \item Menganalisis dinamika perubahan karakteristik kabupaten/kota dan pergeseran karakteristik indikator dari masa krisis pandemi hingga masa pemulihan (2020--2024) melalui visualisasi \textit{Dynamic Biplot} 2D dan 3D, serta menganalisis pola lintasan (\textit{trajectory}) yang terbentuk pada bidang kompromi.
+    \item Merancang aplikasi berbasis web menggunakan \textit{framework} Dash dan Plotly sebagai alat bantu eksplorasi data yang memungkinkan pengguna melakukan pemantauan indikator pembangunan secara interaktif.
+\end{enumerate}
+
+%-----------------------------------
+% 1.4 Batasan Penelitian
+%-----------------------------------
+%\subsection{Batasan Penelitian}
+\section{Batasan Penelitian}
+
+Agar pembahasan penelitian ini lebih terarah dan fokus, penulis menetapkan batasan-batasan masalah sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Variabel Penelitian:} Analisis menggunakan 12 indikator terpilih yang bersumber dari Badan Pusat Statistik (BPS), meliputi: Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), Persentase Penduduk Miskin (PPM), PDRB ADHK, Rata-rata Lama Sekolah (RLS), Angka Harapan Hidup Laki-laki (AHH\_L) dan Perempuan (AHH\_P), Garis Kemiskinan (GK), Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP), Tingkat Pengangguran Terbuka (TPT), Tingkat Partisipasi Angkatan Kerja (TPAK), dan Gini Ratio (GR).
+    \item \textbf{Metodologi:} Penelitian ini menggunakan pendekatan eksploratif multivariat (\textit{Descriptive Multivariate Analysis}). Penelitian tidak bertujuan untuk membangun model prediktif (peramalan masa depan) maupun model inferensial kausalitas (seperti uji pengaruh parsial dalam regresi).
+    \item \textbf{Aspek Spasial:} Istilah "spasial" dalam penelitian ini merujuk pada unit analisis berbasis wilayah (kabupaten/kota), bukan pada penggunaan matriks pembobot spasial (\textit{spatial weight matrix}) seperti pada Ekonometrika Spasial.
+    \item \textbf{Fungsionalitas Aplikasi:} Aplikasi web yang dikembangkan berfungsi sebagai alat bantu eksplorasi visual (\textit{Visual Exploratory Tool}) bagi pengguna, bukan sebagai Sistem Pendukung Keputusan (\textit{Decision Support System}) yang menghasilkan rekomendasi kebijakan berbasis data secara otomatis.
+\end{enumerate}
+
+%===================================
+% BAB 2 - LANDASAN TEORI
+%===================================
+\newpage
+%\begin{center}
+%    \bfseries\large
+%    BAB II \\
+%    LANDASAN TEORI
+%\end{center}
+%\addcontentsline{toc}{section}{BAB II LANDASAN TEORI}
+%\setcounter{section}{2}
+%\setcounter{subsection}{0}
+\section{Tinjauan Pustaka}
+
+Penelitian ini mengintegrasikan konsep statistika multivariat eksploratif dengan teknik visualisasi dinamis untuk membedah struktur data ekonomi regional. Bagian ini akan menguraikan landasan teoritis yang dimulai dari definisi struktur data, dasar aljabar matriks yang digunakan dalam dekomposisi, hingga algoritma metode STATIS dan konstruksi \textit{Dynamic Biplot}.
+
+% --- 2.1 ---
+\subsection{Analisis Data Tiga-Arah (\textit{Three-Way Data})}
+
+Dalam statistika multivariat klasik, data umumnya direpresentasikan dalam struktur dua-arah (\textit{two-way structure}), yaitu sebuah matriks $\mathbf{X}$ berukuran $n \times p$, dengan $n$ merepresentasikan jumlah objek (baris) dan $p$ merepresentasikan jumlah variabel (kolom). Struktur ini memadai untuk menganalisis fenomena statis pada satu titik waktu tertentu. Namun, dalam studi ekonomi regional yang melibatkan pemantauan berkala, struktur data menjadi lebih kompleks dengan hadirnya dimensi ketiga, yaitu waktu atau situasi \citep{kroonenberg2008}.
+
+Struktur data semacam ini dikenal sebagai data tiga-arah (\textit{three-way data}) atau sering disebut sebagai data panel multivariat. Secara formal, data tiga-arah dapat didefinisikan sebagai berikut:
+
+\begin{definition}[Data Tiga-Arah]
+	Misalkan terdapat $n$ objek penelitian (kabupaten/kota), $p$ variabel (indikator ekonomi), dan $K$ situasi waktu (tahun). Data tiga-arah adalah sekumpulan $K$ buah matriks data $\{\mathbf{X}_1, \mathbf{X}_2, \dots, \mathbf{X}_K\}$, di mana setiap matriks $\mathbf{X}_t$ (untuk $t=1, \dots, K$) berukuran $n \times p$.
+	
+	Elemen skalar dari data ini dinotasikan sebagai $x_{ijt}$, yang merepresentasikan nilai dari variabel ke-$j$ pada objek ke-$i$ saat tahun ke-$t$. Keseluruhan himpunan matriks ini sering diilustrasikan sebagai sebuah balok data (\textit{data cube}) dengan dimensi $n \times p \times K$.
+\end{definition}
+
+Dalam konteks penelitian ini, notasi matriks $\mathbf{X}_t$ akan digunakan secara konsisten untuk merepresentasikan kondisi sosio-ekonomi 12 indikator di seluruh kabupaten/kota pada tahun $t$. Metode STATIS, yang akan dibahas pada Sub-bab 2.5, dirancang secara spesifik untuk mengekstraksi informasi dari struktur $\{\mathbf{X}_t\}$ ini tanpa harus merata-ratakan data terlebih dahulu atau menggabungkannya menjadi satu matriks raksasa yang menghilangkan karakteristik tahunan \citep{lavit94}.
+
+% --- 2.2 ---
+\subsection{Analisis Data Spasio-Temporal}
+
+Tantangan utama dalam menganalisis data ekonomi regional adalah keberadaan dua ketergantungan simultan: ketergantungan antar-lokasi (spasial) dan ketergantungan antar-waktu (temporal). Analisis spasio-temporal bertujuan untuk memodelkan atau mendeskripsikan variabilitas fenomena yang terjadi dalam domain ruang dan waktu tersebut.
+
+Pendekatan konvensional dalam ekonometrika sering kali mendekati masalah ini menggunakan regresi data panel atau model dinamis spasial (\textit{Spatial Dynamic Panel Data}), di mana struktur hubungan antar-lokasi didefinisikan secara apriori menggunakan matriks pembobot spasial (\textit{spatial weight matrix}, $\mathbf{W}_{spasial}$) yang berisi informasi ketetanggaan \citep{baltagi2005}. Model tersebut berasumsi bahwa interaksi antar-wilayah hanya terjadi melalui batas geografis fisik.
+
+Namun, dalam pendekatan multivariat eksploratif yang digunakan dalam penelitian ini, definisi "spasial" dipandang dari perspektif yang berbeda.
+
+\begin{remark}[Konsep Spasial dalam STATIS]
+	Dalam kerangka metode STATIS, aspek spasial direpresentasikan melalui konfigurasi kemiripan antar-objek dalam ruang multivariat, bukan melalui matriks kontiguitas geografis. Struktur spasial pada tahun $t$ didefinisikan oleh matriks produk skalar $\mathbf{W}_t = \mathbf{X}_t \mathbf{X}_t^T$ (berukuran $n \times n$).
+\end{remark}
+
+Matriks $\mathbf{W}_t$ ini dapat memahami "geometri" hubungan antar kabupaten/kota berdasarkan profil indikator ekonominya. Jika dua daerah memiliki karakteristik ekonomi yang mirip, nilai elemen pada $\mathbf{W}_t$ akan tinggi, terlepas dari apakah kedua daerah tersebut bertetangga secara geografis atau tidak. Dengan demikian, analisis evolusi spasio-temporal dalam penelitian ini difokuskan pada pengamatan perubahan konfigurasi matriks $\mathbf{W}_t$ dari waktu ke waktu, untuk menjawab pertanyaan apakah "peta kemiripan" antar-daerah berubah selama periode krisis dan pemulihan.
+
+% --- 2.3 ---
+\subsection{Dasar Aljabar Linier dan Dekomposisi Matriks}
+
+Metode reduksi dimensi seperti PCA dan STATIS sangat bergantung pada operasi aljabar linier, khususnya dekomposisi matriks simetris. Pemahaman mengenai nilai eigen dan sifat \textit{trace} matriks menjadi prasyarat mutlak untuk memahami bagaimana metode ini mengekstraksi informasi struktural dari data.
+
+\begin{definition}[Nilai Eigen dan Vektor Eigen]
+	Diberikan sebuah matriks persegi $\mathbf{A}$ berukuran $p \times p$. Sebuah skalar $\lambda$ disebut sebagai \textbf{nilai eigen} (\textit{eigenvalue}) dari $\mathbf{A}$ jika terdapat sebuah vektor tak-nol $\mathbf{v}$ (berukuran $p \times 1$) yang disebut \textbf{vektor eigen} (\textit{eigenvector}), sedemikian sehingga berlaku hubungan linier:
+	\begin{equation}
+		\mathbf{A} \mathbf{v} = \lambda \mathbf{v}
+	\end{equation}
+    Vektor eigen menentukan "arah" dominan dari transformasi matriks $\mathbf{A}$, sedangkan nilai eigen menentukan besaran "kekuatan" atau variansi pada arah tersebut.
+\end{definition}
+
+Karena matriks kovarians atau korelasi dalam statistika selalu bersifat simetris ($\mathbf{A} = \mathbf{A}^T$), dapat dimanfaatkan sifat istimewa dekomposisi spektral.
+
+\begin{theorem}[Dekomposisi Spektral]
+	Setiap matriks simetris $\mathbf{A}$ berukuran $p \times p$ dapat didekomposisi menjadi:
+	\begin{equation}
+		\mathbf{A} = \mathbf{V} \mathbf{\Lambda} \mathbf{V}^T = \sum_{j=1}^{p} \lambda_j \mathbf{v}_j \mathbf{v}_j^T
+	\end{equation}
+	dengan $\mathbf{V}$ adalah matriks ortogonal ($p \times p$) yang kolom-kolomnya ($\mathbf{v}_j$) adalah vektor eigen yang saling tegak lurus, dan $\mathbf{\Lambda}$ adalah matriks diagonal yang elemen diagonalnya adalah nilai eigen terurut $\lambda_1 \ge \lambda_2 \ge \dots \ge \lambda_p \ge 0$.
+\end{theorem}
+
+Selain dekomposisi, konsep \textit{trace} matriks menjadi fundamental dalam metode STATIS, khususnya dalam perhitungan koefisien korelasi antar-konfigurasi (Koefisien RV).
+
+\begin{definition}[Trace Matriks]
+	\textit{Trace} (Jejak) dari sebuah matriks persegi $\mathbf{A}$ berukuran $n \times n$, dinotasikan sebagai $tr(\mathbf{A})$, adalah penjumlahan dari elemen-elemen diagonal utamanya:
+	\begin{equation}
+		tr(\mathbf{A}) = \sum_{i=1}^{n} a_{ii}
+	\end{equation}
+	Sifat penting dari \textit{trace} yang digunakan dalam pengukuran jarak antar-matriks adalah invariansi terhadap perputaran siklis, yaitu $tr(\mathbf{AB}) = tr(\mathbf{BA})$.
+\end{definition}
+
+% --- 2.4 ---
+\subsection{Analisis Komponen Utama (PCA) dan Biplot}
+
+Analisis Komponen Utama atau \textit{Principal Component Analysis} (PCA) adalah teknik dasar untuk mereduksi dimensi data multivariat dengan mentransformasi $p$ variabel asli yang saling berkorelasi menjadi $q$ variabel baru ($q < p$) yang tidak berkorelasi, yang disebut komponen utama \citep{hotelling1933}.
+
+Misalkan $\mathbf{X}$ adalah matriks data berukuran $n \times p$ yang telah dipusatkan (\textit{centered}) atau distandardisasi. PCA mengekstraksi informasi dengan mendekomposisi matriks kovarians $\mathbf{S} = \frac{1}{n-1}\mathbf{X}^T\mathbf{X}$. Berdasarkan Teorema Dekomposisi Spektral, $\mathbf{S} = \mathbf{V} \mathbf{\Lambda} \mathbf{V}^T$.
+
+Komponen hasil PCA terdiri dari dua elemen utama:
+\begin{enumerate}
+    \item \textbf{Loadings ($\mathbf{V}$):} Matriks vektor eigen yang berisi bobot kontribusi setiap variabel asli terhadap komponen utama.
+    \item \textbf{Scores ($\mathbf{F}$):} Proyeksi data asli ke dalam ruang komponen utama, dihitung sebagai:
+    \begin{equation}
+        \mathbf{F} = \mathbf{X} \mathbf{V}
+    \end{equation}
+\end{enumerate}
+
+Untuk memvisualisasikan hasil reduksi dimensi ini secara simultan, digunakan teknik Biplot.
+
+\begin{definition}[Biplot]
+	Biplot adalah representasi grafis dua dimensi yang memetakan baris (objek) dan kolom (variabel) dari matriks data $\mathbf{X}$ secara bersamaan \citep{gabriel1971}. Biplot didasarkan pada aproksimasi matriks rank-rendah:
+    \begin{equation}
+        \mathbf{X} \approx \mathbf{F} \mathbf{V}^T
+    \end{equation}
+    Dalam visualisasi ini:
+    \begin{itemize}
+        \item Objek ke-$i$ digambarkan sebagai titik koordinat berdasarkan baris ke-$i$ dari matriks Skor $\mathbf{F}$. Jarak Euclidean antar titik merepresentasikan kemiripan antar objek.
+        \item Variabel ke-$j$ digambarkan sebagai vektor (panah) berdasarkan baris ke-$j$ dari matriks Loadings $\mathbf{V}$. Sudut antar vektor merepresentasikan korelasi antar variabel (sudut lancip berart korelasi positif, tumpul berarti negatif).
+    \end{itemize}
+\end{definition}
+
+% --- 2.5 ---
+\subsection{Metode STATIS}
+
+STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) adalah metode analisis data eksploratif yang dirancang untuk menganalisis sekumpulan $K$ tabel data dengan membandingkan struktur internal antar-objek pada setiap situasi waktu \citep{lavit94}. Berbeda dengan metode yang menggabungkan data secara naif (seperti \textit{Pooled} PCA), STATIS mempertahankan integritas struktur masing-masing tahun melalui tiga tahapan analisis sistematis: intra-struktur, inter-struktur, dan kompromi.
+
+\subsubsection{Tahap 1: Intra-struktur (Representasi Geometri Spasial)}
+Tahap pertama bertujuan untuk mentransformasi tabel data asli setiap tahun menjadi sebuah representasi geometri yang dapat diperbandingkan. Misalkan setiap matriks data $\mathbf{X}_t$ telah distandardisasi. Alih-alih membandingkan nilai mentah variabel, STATIS membandingkan konfigurasi jarak antar-objek.
+
+Didefinisikan operator Escoufier $\mathbf{W}_t$ untuk setiap tahun $t=1, \dots, K$ sebagai matriks produk skalar berukuran $n \times n$:
+\begin{equation}
+	\mathbf{W}_t = \mathbf{X}_t \mathbf{X}_t^T
+\end{equation}
+Elemen-elemen dalam $\mathbf{W}_t$ merepresentasikan kemiripan antar kabupaten/kota pada tahun $t$. Matriks ini merangkum "peta" atau topologi spasial ekonomi pada tahun tersebut tanpa bergantung pada jumlah variabel $p$, sehingga memungkinkan perbandingan antar-tabel meskipun jumlah variabel berbeda (asalkan objeknya sama).
+
+\subsubsection{Tahap 2: Inter-struktur (Hubungan Temporal)}
+Setelah representasi spasial $\mathbf{W}_t$ diperoleh untuk setiap tahun, langkah selanjutnya adalah mengukur seberapa mirip struktur ekonomi antara satu tahun dengan tahun lainnya. Ukuran kemiripan yang digunakan adalah Koefisien RV (\textit{Rho Vectoriel}), yang merupakan generalisasi dari koefisien korelasi Pearson untuk matriks.
+
+\begin{definition}[Koefisien RV]
+	Koefisien RV antara dua matriks konfigurasi $\mathbf{W}_i$ dan $\mathbf{W}_j$ didefinisikan sebagai:
+	\begin{equation}
+		RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) tr(\mathbf{W}_j^2)}}
+	\end{equation}
+	Nilai $RV$ berkisar antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
+\end{definition}
+
+Koefisien RV dihitung untuk setiap pasangan tahun, membentuk sebuah matriks inter-struktur $\mathbf{R}$ berukuran $K \times K$, dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap tahun, dilakukan dekomposisi spektral pada matriks $\mathbf{R}$:
+\begin{equation}
+	\mathbf{R} \mathbf{u} = \theta \mathbf{u}
+\end{equation}
+Vektor eigen pertama ($\mathbf{u}_1$) yang berkorespondensi dengan nilai eigen terbesar ($\theta_1$) digunakan untuk menghitung bobot $\alpha_t$:
+\begin{equation}
+	\alpha_t = \frac{u_{1t}}{\sqrt{\sum_{k=1}^{K} u_{1k}^2}}
+\end{equation}
+Bobot $\alpha_t$ ini mencerminkan seberapa representatif tahun $t$ terhadap keseluruhan periode pengamatan. Tahun dengan bobot besar memiliki struktur yang paling mirip dengan pola umum (rata-rata) periode tersebut.
+
+\subsubsection{Tahap 3: Analisis Kompromi (Struktur Kompromi)}
+
+Tahap ini bertujuan membentuk sebuah struktur "rata-rata" yang disebut sebagai Kompromi. Matriks kompromi $\mathbf{W}_c$ dihitung sebagai rata-rata tertimbang dari matriks intra-struktur $\mathbf{W}_t$ menggunakan bobot $\alpha_t$ yang diperoleh dari tahap inter-struktur:
+
+\begin{equation}
+	\mathbf{W}_c = \sum_{t=1}^{K} \alpha_t \mathbf{W}_t
+\end{equation}
+
+Matriks $\mathbf{W}_c$ (berukuran $n \times n$) merepresentasikan pola hubungan spasial antar-kabupaten/kota yang paling stabil selama periode pengamatan. Untuk mendapatkan koordinat objek (skor) agar dapat diplot dalam grafik dua dimensi, dilakukan faktorisasi pada matriks $\mathbf{W}_c$.
+
+Berikut adalah penurunan langkah demi langkah untuk mendapatkan matriks skor kompromi $\mathbf{F}_c$:
+
+\begin{enumerate}
+    \item \textbf{Dekomposisi Spektral:} Karena $\mathbf{W}_c$ adalah kombinasi linier dari matriks simetris ($\mathbf{W}_t$), maka $\mathbf{W}_c$ juga merupakan matriks simetris positif semi-definit. Berdasarkan teorema spektral, $\mathbf{W}_c$ dapat didekomposisi menjadi:
+    \begin{equation}
+        \mathbf{W}_c = \mathbf{V}_c \mathbf{\Lambda}_c \mathbf{V}_c^T
+    \end{equation}
+    dengan $\mathbf{V}_c$ adalah matriks vektor eigen yang ortogonal, dan $\mathbf{\Lambda}_c$ adalah matriks diagonal berisi nilai eigen ($\lambda_1 \ge \lambda_2 \ge \dots \ge 0$).
+    
+    \item \textbf{Akar Kuadrat Matriks:} Matriks diagonal $\mathbf{\Lambda}_c$ dapat difaktorkan menjadi $\mathbf{\Lambda}_c^{1/2} \mathbf{\Lambda}_c^{1/2}$. Persamaan di atas dapat ditulis ulang sebagai:
+    \begin{equation}
+        \mathbf{W}_c = \mathbf{V}_c (\mathbf{\Lambda}_c^{1/2} \mathbf{\Lambda}_c^{1/2}) \mathbf{V}_c^T
+    \end{equation}
+    
+    \item \textbf{Pengelompokan Term:} Dengan sifat asosiatif perkalian matriks, dapat dikelompokkan persamaan tersebut:
+    \begin{equation}
+        \mathbf{W}_c = (\mathbf{V}_c \mathbf{\Lambda}_c^{1/2}) (\mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T)
+    \end{equation}
+    Perhatikan bahwa $(\mathbf{V}_c \mathbf{\Lambda}_c^{1/2})^T = (\mathbf{\Lambda}_c^{1/2})^T \mathbf{V}_c^T = \mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T$.
+    
+    \item \textbf{Definisi Skor Kompromi:} Kita mendefinisikan matriks skor kompromi $\mathbf{F}_c$ sebagai:
+    \begin{equation}
+        \mathbf{F}_c = \mathbf{V}_c \mathbf{\Lambda}_c^{1/2}
+    \end{equation}
+    Sehingga terbukti bahwa $\mathbf{W}_c = \mathbf{F}_c \mathbf{F}_c^T$. Hal ini konsisten dengan definisi awal bahwa matriks intra-struktur adalah produk skalar dari koordinat objek.
+\end{enumerate}
+
+Matriks $\mathbf{F}_c$ berukuran $n \times r$ (dengan $r$ adalah \textit{rank} matriks). Untuk visualisasi, umumnya hanya diambil dua kolom pertama (dua komponen utama) dari $\mathbf{F}_c$ yang berkorespondensi dengan dua nilai eigen terbesar.
+
+\subsubsection{Uji Signifikansi Stabilitas Struktur}
+
+Metode STATIS secara deskriptif menghasilkan struktur kompromi, namun tidak secara otomatis menjamin bahwa struktur tersebut signifikan secara statistik. Bisa saja struktur kompromi yang terbentuk hanya merupakan artefak matematika dari data yang sebenarnya acak dan tidak memiliki pola hubungan yang stabil antar-tahun.
+
+Untuk memvalidasi hal ini, digunakan uji permutasi non-parametrik yang diadopsi dari \cite{kazi1995}. Uji ini tidak mensyaratkan asumsi distribusi normal pada data.
+
+\begin{enumerate}
+    \item \textbf{Hipotesis Penelitian:}
+    \begin{itemize}
+        \item $H_0$: Tidak terdapat struktur kompromi yang signifikan (Struktur data antar-tahun bersifat acak/tidak homogen).
+        \item $H_1$: Terdapat struktur kompromi yang signifikan dan stabil antar-tahun.
+    \end{itemize}
+    
+    \item \textbf{Statistik Uji:}
+    Statistik yang digunakan adalah nilai eigen pertama ($\theta_1$) dari matriks inter-struktur $\mathbf{R}$. Nilai $\theta_1$ merepresentasikan proporsi variabilitas struktur yang dapat dijelaskan oleh dimensi utama (kompromi). Semakin besar nilai $\theta_1$, semakin kuat indikasi adanya struktur bersama yang stabil.
+    
+    \item \textbf{Prosedur Permutasi:}
+    Karena distribusi sampling dari $\theta_1$ tidak diketahui secara eksak, distribusi ini dibangun secara empiris melalui langkah-langkah berikut:
+    \begin{itemize}
+        \item[a.] Hitung nilai eigen pertama dari data asli, dinotasikan sebagai $\theta_1^{obs}$.
+        \item[b.] Lakukan pengacakan (permutasi) posisi label tahun/situasi pada himpunan tabel data awal. Hal ini mensimulasikan kondisi di mana tidak ada hubungan urutan waktu atau struktur yang konsisten.
+        \item[c.] Hitung ulang matriks inter-struktur $\mathbf{R}^*$ dari data yang telah diacak, dan dapatkan nilai eigen pertamanya $\theta_1^*$.
+        \item[d.] Ulangi langkah (b) dan (c) sebanyak $B$ kali (misalnya $B=1000$ kali) untuk membentuk distribusi null empiris.
+    \end{itemize}
+    
+    \item \textbf{Pengambilan Keputusan:}
+    Nilai $p$-value dihitung sebagai proporsi dari $\theta_1^*$ yang nilainya lebih besar atau sama dengan $\theta_1^{obs}$:
+    \begin{equation}
+        p\text{-value} = \frac{\sum_{b=1}^{B} I(\theta_1^{*(b)} \ge \theta_1^{obs})}{B}
+    \end{equation}
+    Jika $p\text{-value} < \alpha$ (misalnya 0.05), maka $H_0$ ditolak. Artinya, struktur kompromi yang dihasilkan oleh STATIS bukanlah kebetulan, melainkan mencerminkan pola hubungan spasio-temporal yang nyata dan stabil.
+\end{enumerate}
+
+% --- 2.6 ---
+\subsection{Dynamic Biplot dan Visualisasi Trajektori}
+
+Hasil dari dekomposisi kompromi ($\mathbf{F}_c$) hanya memberikan gambaran statis atau rata-rata posisi kabupaten/kota selama periode pengamatan. Untuk memahami dinamika perubahan dari tahun ke tahun, diperlukan perluasan metode yang disebut sebagai \textit{Dynamic Biplot} atau \textit{Trajectory Biplot} \citep{egido2015}.
+
+Konsep dasar dari visualisasi ini adalah memproyeksikan data tabel parsial (tahun tertentu) ke dalam ruang referensi yang stabil (ruang kompromi). Hal ini memungkinkan perbandingan posisi objek secara \textit{"apple-to-apple"} antar-waktu.
+
+\subsubsection{Proyeksi Lintasan (Trajectory)}
+
+Misalkan $\mathbf{Z}_t$ adalah matriks data terstandardisasi pada tahun $t$ ($n \times p$). Dan $\mathbf{V}_c$ adalah matriks \textit{loadings} (vektor eigen) dari solusi kompromi yang berukuran $p \times 2$ (untuk 2 dimensi). Koordinat objek pada tahun $t$, dinotasikan sebagai $\mathbf{F}_t$, dihitung melalui proyeksi linier:
+
+\begin{equation}
+	\mathbf{F}_t = \mathbf{Z}_t \mathbf{V}_c
+\end{equation}
+
+Persamaan ini memetakan kondisi ekonomi tahunan ke dalam sistem koordinat global yang sama. Dengan demikian, kita dapat mendefinisikan \textbf{trajektori} atau lintasan bagi kabupaten/kota ke-$i$ sebagai urutan vektor koordinat dari waktu ke waktu:
+\begin{equation}
+	\mathcal{T}_i = \{ \mathbf{f}_{i,2020}, \mathbf{f}_{i,2021}, \dots, \mathbf{f}_{i,2024} \}
+\end{equation}
+Visualisasi trajektori ini menghubungkan titik-titik koordinat tersebut dengan garis berarah, sehingga pergeseran karakteristik—misalnya dari kuadran kemiskinan tinggi menuju kuadran produktivitas tinggi—dapat teramati secara visual.
+
+\subsubsection{Rotasi Baseline}
+
+Salah satu sifat dasar dari solusi PCA dan Biplot adalah invariansi terhadap rotasi ortogonal. Artinya, memutar sumbu koordinat tidak mengubah jarak antar-objek maupun sudut antar-variabel, namun dapat sangat membantu interpretasi \citep{kroonenberg2008}.
+
+Jika $\mathbf{Q}$ adalah matriks rotasi ortogonal $2 \times 2$:
+\begin{equation}
+    \mathbf{Q} = \begin{pmatrix} \cos \theta & -\sin \theta \\ \sin \theta & \cos \theta \end{pmatrix}
+\end{equation}
+Maka koordinat baru yang terotasi ($\mathbf{F}^*$) didefinisikan sebagai:
+\begin{equation}
+    \mathbf{F}^* = \mathbf{F} \mathbf{Q}
+\end{equation}
+Dalam penelitian ini, fitur rotasi diterapkan secara interaktif untuk mensejajarkan variabel target tertentu (misalnya, variabel "PDRB") agar berimpit dengan sumbu horizontal (Sumbu X). Hal ini memudahkan pengguna untuk menilai posisi relatif kabupaten/kota semata-mata berdasarkan indikator tersebut tanpa gangguan visual dari dimensi lain.
+
+% --- 2.7 ---
+\subsection{Visualisasi Interaktif dengan Dash Framework}
+
+Kompleksitas informasi yang dihasilkan oleh STATIS dan Dynamic Biplot menuntut media penyajian yang lebih adaptif daripada grafik statis. Penelitian ini mengimplementasikan visualisasi menggunakan paradigma pemrograman reaktif (\textit{reactive programming}) melalui kerangka kerja Dash.
+
+Dash memungkinkan pembuatan aplikasi analitik web di mana visualisasi (grafik) merespons secara langsung terhadap perubahan \textit{input} pengguna (filter, pemilihan variabel, rotasi) melalui fungsi \textit{callback}. Secara konseptual, alur kerja visualisasi interaktif ini dapat diringkas sebagai:
+\begin{equation}
+    Input \xrightarrow{\text{Callback}} \{ \text{Preprocessing} \to \text{STATIS Algo} \to \text{Mapping} \} \xrightarrow{\text{Update}} Graph
+\end{equation}
+Pendekatan ini memfasilitasi \textit{Exploratory Data Analysis} (EDA) yang mendalam, memungkinkan pengguna untuk melakukan "slicing and dicing" terhadap data spasio-temporal yang kompleks.
+
+%===================================
+% Langkah Kerja (Sesuai Template)
+%===================================
+\newpage
+%\section*{Langkah Kerja}
+\section{Langkah Kerja}
+\bigskip
+
+\noindent
+Judul: Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal Ekonomi Kabupaten/Kota Jabodetabek 2020--2024. \\
+Kata kunci: STATIS, Dynamic Biplot, Spasio-Temporal, Ekonomi Regional, Visualisasi Interaktif.
+
+\bigskip
+
+Langkah kerja:
+\begin{enumerate}
+	\item Melakukan studi literatur mengenai analisis data tiga-arah (STATIS) \citep{lavit94, oliveira2024} dan visualisasi Dynamic Biplot \citep{egido2015}.
+	\item Melakukan pengumpulan data sekunder indikator ekonomi regional Jabodetabek dari Badan Pusat Statistik (BPS).
+	\item Melakukan pra-pemrosesan data, mencakup pembersihan, validasi, dan transformasi data panel menjadi format \textit{wide}.
+	\item Mengimplementasikan algoritma PCA per tahun (untuk Dynamic Biplot) dan algoritma STATIS (Intra-struktur, Inter-struktur, Kompromi) dalam bahasa Python.
+    \item \textbf{Melakukan uji hipotesis stabilitas struktur} menggunakan Uji Permutasi pada matriks inter-struktur STATIS \citep{kazi1995} untuk memvalidasi signifikansi perbedaan antar tahun.
+	\item Mengembangkan aplikasi web interaktif (visualisasi interaktif) menggunakan \textit{framework} Dash dan Plotly yang mengintegrasikan kedua metode analisis dan hasil uji hipotesis.
+	\item Menerapkan fitur visualisasi 2D/3D, trajektori (lintasan), dan rotasi \textit{baseline} dinamis pada aplikasi.
+	\item Menganalisis dan menginterpretasi hasil (struktur kompromi, trajektori, dan signifikansi stabilitas) untuk memahami dinamika ekonomi regional.
+	\item Menulis skripsi.
+	\item Ujian skripsi.
+\end{enumerate}
+\begin{comment}
+%===================================
+% BAB 3 - METODOLOGI PENELITIAN
+%===================================
+\newpage
+%\begin{center}
+%    \bfseries\large
+%    BAB III \\
+%    METODOLOGI PENELITIAN
+%\end{center}
+%\addcontentsline{toc}{section}{BAB III METODOLOGI PENELITIAN}
+%\setcounter{section}{3}
+%\setcounter{subsection}{0}
+\section{Metodologi Penelitian}
+
+Bab ini menguraikan tahapan teknis penelitian, mulai dari mekanisme pengumpulan data, pra-pemrosesan, algoritma analisis statistika, hingga pengembangan visualisasi interaktif. Seluruh prosedur komputasi diimplementasikan menggunakan bahasa pemrograman Python.
+
+\subsection{Tahapan Penelitian}
+
+Secara garis besar, penelitian ini dilaksanakan melalui empat tahapan utama sebagai berikut:
+\begin{enumerate}
+    \item \textbf{Tahap Persiapan Data:} Pengumpulan data sekunder, validasi kelengkapan, dan transformasi struktur data panel menjadi format matriks tiga-arah.
+    \item \textbf{Tahap Analisis STATIS:} Penerapan algoritma STATIS untuk mengekstraksi struktur kompromi dan melakukan uji stabilitas menggunakan permutasi.
+    \item \textbf{Tahap Konstruksi Biplot Dinamis:} Perhitungan koordinat proyeksi tahunan dan pembentukan lintasan (\textit{trajectory}) objek.
+    \item \textbf{Tahap Visualisasi Interaktif:} Pengembangan \textit{dashboard} berbasis web untuk eksplorasi hasil analisis.
+\end{enumerate}
+
+\subsection{Sumber dan Struktur Data}
+
+Penelitian ini menggunakan data sekunder yang bersumber dari publikasi resmi Badan Pusat Statistik (BPS) untuk Provinsi Banten, DKI Jakarta, dan Jawa Barat. 
+\begin{itemize}
+    \item \textbf{Unit Observasi ($n$):} Seluruh kabupaten dan kota administratif di ketiga provinsi tersebut ($n=41$ wilayah).
+    \item \textbf{Variabel ($p$):} 12 indikator sosio-ekonomi sebagaimana dirinci pada Bab 1.
+    \item \textbf{Dimensi Waktu ($K$):} Periode tahunan dari 2020 hingga 2024.
+\end{itemize}
+
+Struktur data input disusun dalam format \textit{spreadsheet} (.xlsx) yang terdiri dari $K$ lembar kerja (\textit{sheets}), di mana setiap lembar merepresentasikan satu tahun pengamatan $\mathbf{X}_t$ berukuran $n \times p$.
+
+\subsection{Pra-pemrosesan Data}
+
+Sebelum dilakukan analisis multivariat, data mentah melalui serangkaian proses pembersihan dan transformasi yang diimplementasikan dalam modul \texttt{pandas}:
+
+\begin{enumerate}
+    \item \textbf{Transformasi Tipe Data:} Konversi kolom numerik yang terdeteksi sebagai teks (karena format pemisah ribuan/desimal) menjadi tipe \textit{float}.
+    \item \textbf{Penanganan Data Hilang:} Pengecekan nilai kosong (\textit{missing values}). Jika terdapat variabel yang datanya tidak tersedia secara lengkap di seluruh tahun pengamatan ($t=2020, \dots, 2024$), maka variabel tersebut akan dieksklusi dari analisis untuk menjaga konsistensi dimensi matriks.
+    \item \textbf{Standardisasi:} Mengingat satuan pengukuran antar-variabel sangat beragam (misalnya: Rupiah untuk PDRB, Persen untuk Kemiskinan, Tahun untuk Angka Harapan Hidup), dilakukan standardisasi $Z$-score pada setiap tahun $t$ secara terpisah:
+    \begin{equation}
+        z_{ijt} = \frac{x_{ijt} - \bar{x}_{jt}}{s_{jt}}
+    \end{equation}
+    dengan $\bar{x}_{jt}$ dan $s_{jt}$ adalah rata-rata dan simpangan baku variabel $j$ pada tahun $t$. Hal ini menghasilkan matriks data standar $\mathbf{Z}_t$.
+\end{enumerate}
+
+\subsection{Prosedur Analisis STATIS}
+
+Algoritma STATIS diimplementasikan untuk mengekstraksi informasi struktural dari sekumpulan matriks standar $\{\mathbf{Z}_1, \dots, \mathbf{Z}_K\}$. Langkah-langkah komputasi adalah sebagai berikut:
+
+\subsubsection{Pembentukan Matriks Intra-struktur}
+Untuk setiap tahun $t$, dihitung matriks operator Escoufier $\mathbf{W}_t$ ($n \times n$) yang merepresentasikan konfigurasi kemiripan antar-wilayah:
+\begin{equation}
+    \mathbf{W}_t = \mathbf{Z}_t \mathbf{Z}_t^T
+\end{equation}
+
+\subsubsection{Perhitungan Matriks Inter-struktur dan Bobot}
+Matriks korelasi vektoriel $\mathbf{R}$ ($K \times K$) dibentuk dengan elemen $R_{ij}$ berupa koefisien RV antara $\mathbf{W}_i$ dan $\mathbf{W}_j$. Selanjutnya, dilakukan dekomposisi spektral pada $\mathbf{R}$:
+\begin{equation}
+    \mathbf{R} \mathbf{u} = \theta \mathbf{u}
+\end{equation}
+Bobot kompromi $\alpha_t$ diperoleh dari elemen vektor eigen pertama $\mathbf{u}_1$ yang dinormalisasi sehingga $\sum \alpha_t^2 = 1$.
+
+\subsubsection{Pembentukan Struktur Kompromi}
+Matriks kompromi $\mathbf{W}_c$ dihitung sebagai kombinasi linier dari struktur tahunan:
+\begin{equation}
+    \mathbf{W}_c = \sum_{t=1}^{K} \alpha_t \mathbf{W}_t
+\end{equation}
+Kemudian, dilakukan dekomposisi nilai eigen pada $\mathbf{W}_c$ untuk mendapatkan matriks koordinat objek (Skor Kompromi) $\mathbf{F}_c$:
+\begin{equation}
+    \mathbf{W}_c = \mathbf{V}_c \mathbf{\Lambda}_c \mathbf{V}_c^T \quad \rightarrow \quad \mathbf{F}_c = \mathbf{V}_c \mathbf{\Lambda}_c^{1/2}
+\end{equation}
+Dua kolom pertama dari $\mathbf{F}_c$ digunakan sebagai koordinat dasar untuk sumbu grafik (Sumbu 1 dan Sumbu 2).
+
+\subsection{Uji Stabilitas Struktur (Permutasi)}
+
+Untuk memvalidasi signifikansi struktur kompromi, dilakukan uji permutasi dengan langkah:
+\begin{enumerate}
+    \item Menghitung statistik uji $\theta_1^{obs}$ (nilai eigen pertama matriks $\mathbf{R}$ asli).
+    \item Melakukan iterasi sebanyak $B=1000$ kali. Pada setiap iterasi, label tahun pada himpunan data diacak, kemudian $\mathbf{R}^*$ dan $\theta_1^*$ dihitung ulang.
+    \item Menghitung $p$-value berdasarkan proporsi $\theta_1^*$ yang melebihi $\theta_1^{obs}$. Jika $p < 0.05$, struktur dinyatakan stabil signifikan.
+\end{enumerate}
+
+\subsection{Konstruksi Dynamic Biplot}
+
+Visualisasi dinamis dibangun dengan memproyeksikan data tahunan ke dalam ruang kompromi. Koordinat lintasan (\textit{trajectory}) untuk tahun $t$, dinotasikan $\mathbf{F}_t$, dihitung melalui teknik \textit{Supplementary Projection}:
+\begin{enumerate}
+    \item Menghitung matriks \textit{loadings} kompromi $\mathbf{G}$ ($p \times 2$) dengan mengkorelasikan variabel asli rata-rata terhadap skor kompromi $\mathbf{F}_c$.
+    \item Memproyeksikan data standar tahunan $\mathbf{Z}_t$ ke matriks \textit{loadings} tersebut:
+    \begin{equation}
+        \mathbf{F}_t = \mathbf{Z}_t \mathbf{G} (\mathbf{G}^T \mathbf{G})^{-1} \approx \mathbf{Z}_t \mathbf{V}_{loading}
+    \end{equation}
+    (Catatan: Dalam implementasi kode, proyeksi disederhanakan menggunakan hasil perkalian matriks standar dengan matriks rotasi loadings).
+\end{enumerate}
+
+\subsection{Pengembangan Dashboard Interaktif}
+
+Seluruh hasil analisis divisualisasikan dalam aplikasi web menggunakan \textit{framework} Dash.
+\begin{itemize}
+    \item \textbf{Backend:} Menggunakan Python untuk komputasi numerik (`numpy`, `pandas`, `scikit-learn`).
+    \item \textbf{Frontend:} Menggunakan komponen `dcc.Graph` dari pustaka Plotly untuk merender grafik 3D dan 2D yang responsif.
+    \item \textbf{Fitur Interaktif:}
+    \begin{itemize}
+        \item \textbf{Rotasi Baseline:} Memungkinkan pengguna memutar orientasi grafik sebesar sudut $\theta$ agar variabel tertentu sejajar dengan sumbu horizontal, mempermudah interpretasi posisi relatif.
+        \item \textbf{Filter Trajektori:} Memungkinkan pengguna memilih untuk menampilkan lintasan hanya pada kabupaten/kota tertentu untuk mengurangi kekusutan visual (\textit{visual clutter}).
+    \end{itemize}
+\end{itemize}
+\end{comment}
+\newpage
+\section{Jadwal Penelitian}
+
+Penelitian ini direncanakan akan dilaksanakan selama satu semester (kurang lebih 5 bulan), terhitung mulai dari penyusunan proposal hingga penyelesaian laporan akhir dan sidang skripsi. Rincian jadwal kegiatan disajikan pada Tabel \ref{tab:jadwal}.
+
+\begin{table}[htbp]
+\centering
+\caption{Rencana Jadwal Pelaksanaan Penelitian}
+\label{tab:jadwal}
+\vspace{0.3cm}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|c|l|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{No}} & \multicolumn{1}{c|}{\multirow{2}{*}{\textbf{Kegiatan}}} & \textbf{Sep} & \textbf{Okt} & \textbf{Nov} & \textbf{Des} & \textbf{Jan} \\
+ & & \textbf{2025} & \textbf{2025} & \textbf{2025} & \textbf{2025} & \textbf{2026} \\
+ \hline
+1 & Studi Literatur & \checkmark & & & & \\
+\hline
+2 & Pengumpulan Data Sekunder (BPS) & \checkmark & \checkmark & & & \\ \hline
+3 & Pre-processing \& Validasi Data & & \checkmark & & & \\
+\hline
+4 & Implementasi Algoritma STATIS (Python) & & \checkmark & \checkmark & & \\
+\hline
+5 & Pengembangan Dashboard Visualisasi & & & \checkmark & \checkmark & \\
+\hline
+6 & Analisis Hasil \& Interpretasi & & & & \checkmark & \checkmark \\ \hline
+7 & Penulisan Laporan Akhir & & & & \checkmark & \checkmark \\ \hline
+8 & Finalisasi \& Sidang Skripsi & & & & & \checkmark \\ \hline
+\end{tabular}
+}
+\end{table}
+
+Estimasi waktu di atas disusun dengan asumsi bahwa data telah tersedia sepenuhnya pada bulan Oktober, sehingga proses komputasi dan pengembangan aplikasi dapat dilakukan secara intensif pada bulan November dan Desember.
+
+%Buat daftar pustaka
+\newpage
+\nolinenumbers
+\bibliographystyle{apalike-ejor}
+\bibliography{pustaka}
+
+\end{document}

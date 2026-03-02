@@ -1,0 +1,78 @@
+This is BibTeX, Version 0.99e
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: induk.aux
+Reallocating 'name_of_file' (item size: 1) to 11 items.
+A level-1 auxiliary file: sampul.aux
+Reallocating 'name_of_file' (item size: 1) to 16 items.
+A level-1 auxiliary file: judul_dalam.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: orisinal.aux
+Reallocating 'name_of_file' (item size: 1) to 22 items.
+A level-1 auxiliary file: pengesahan_sidang.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: pengantar.aux
+Reallocating 'name_of_file' (item size: 1) to 26 items.
+A level-1 auxiliary file: persetujuan_publikasi.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+A level-1 auxiliary file: abstrak.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: abstract.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+A level-1 auxiliary file: bab1.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+A level-1 auxiliary file: bab2.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+A level-1 auxiliary file: bab3.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+A level-1 auxiliary file: bab4.aux
+Reallocating 'name_of_file' (item size: 1) to 9 items.
+A level-1 auxiliary file: bab5.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+The style file: apalike-ejor.bst
+Reallocating 'name_of_file' (item size: 1) to 8 items.
+Reallocating 'name_of_file' (item size: 1) to 17 items.
+A level-1 auxiliary file: markLampiran.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: lampiran.aux
+Database file #1: pustaka.bib
+You've used 16 entries,
+            1975 wiz_defined-function locations,
+            608 strings with 7055 characters,
+and the built_in function-call counts, 5852 in all, are:
+= -- 599
+> -- 188
+< -- 13
++ -- 64
+- -- 60
+* -- 464
+:= -- 1035
+add.period$ -- 50
+call.type$ -- 16
+change.case$ -- 106
+chr.to.int$ -- 16
+cite$ -- 16
+duplicate$ -- 234
+empty$ -- 413
+format.name$ -- 80
+if$ -- 1166
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 42
+newline$ -- 101
+num.names$ -- 48
+pop$ -- 79
+preamble$ -- 1
+purify$ -- 110
+quote$ -- 0
+skip$ -- 177
+stack$ -- 0
+substring$ -- 367
+swap$ -- 28
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 90
+warning$ -- 0
+while$ -- 46
+width$ -- 0
+write$ -- 241

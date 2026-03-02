@@ -1,0 +1,57 @@
+%-----------------------------------------------------------------------------
+% Informasi Mengenai Dokumen
+%-----------------------------------------------------------------------------
+
+% Judul laporan.
+% Tulis judul Skripsi/Thesis/Disertasi Anda di sini
+\var{\judul}{tulis disini}
+
+% Tulis kembali judul laporan, kali ini akan diubah menjadi huruf kapital
+% Tulis judul Skripsi/Thesis/Disertasi Anda di sini
+\Var{\Judul}{tulis disini}
+
+% Tulis kembali judul laporan namun dengan bahasa Ingris
+\var{\judulInggris}{write here}
+
+% Tipe laporan, dapat berisi Skripsi, Tugas Akhir, Thesis, atau Disertasi
+\var{\type}{Skripsi/thesis/disertasi}
+
+% Tulis kembali tipe laporan, kali ini akan diubah menjadi huruf kapital
+\Var{\Type}{Skripsi/thesis/disertasi}
+
+% Tulis nama penulis
+\var{\penulis}{tulis disini}
+
+% Tulis kembali nama penulis, kali ini akan diubah menjadi huruf kapital
+\Var{\Penulis}{tulis disini}
+
+% Tulis NPM penulis
+\var{\npm}{tulis disini}
+
+% Tuliskan Fakultas dimana penulis berada
+\Var{\Fakultas}{tulis disini}
+\var{\fakultas}{tulis disini}
+
+% Tuliskan Program Studi yang diambil penulis
+\Var{\Program}{tulis disini}
+\var{\program}{tulis disini}
+
+% Tuliskan tahun publikasi laporan
+\Var{\bulanTahun}{tulis disini}
+
+% Tuliskan gelar yang akan diperoleh dengan menyerahkan laporan ini
+\var{\gelar}{Sarjana/master/etc}
+
+% Tuliskan tanggal pengesahan laporan, waktu dimana laporan diserahkan ke
+% penguji/sekretariat
+\var{\tanggalPengesahan}{tulis disini}
+
+% Tuliskan tanggal keputusan sidang dikeluarkan dan penulis dinyatakan lulus/tidak lulus
+\var{\tanggalLulus}{tulis disini}
+
+% Tuliskan pembimbing
+\var{\pembimbinga}{tulis disini}
+\var{\pembimbingb}{tulis disini}
+
+% Alias untuk memudahkan alur penulisan paa saat menulis laporan
+\var{\saya}{tulis disini}

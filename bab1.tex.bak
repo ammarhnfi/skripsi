@@ -1,0 +1,48 @@
+\chapter{\normalsize PENDAHULUAN}
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Latar belakang}
+%-----------------------------------------------------------------------------%
+Teori spektral adalah salah satu cabang utama dari analisis fungsional. Secara garis besar, dalam teori spektral dari operator linear, dipelajari operator-operator inversi(\textit{inverse}). Yang diperhatikan adalah sifat-sifat umumnya dan hubungannya dengan operator linear aslinya. Operator inversi ini berkaitan dengan masalah tentang penyelesaian persamaan seperti sistem persamaan linear, sistem persamaan diferensial, dan sistem persamaan integral.
+
+Pada awalnya, diketahui tentang teori spektral yang dasar yaitu teori spektral dari matriks persegi kompleks. Misal matriks persegi $A$. Bentuk matriks $A_\lambda$ sebagai $A-\lambda I$ dengan $I$ adalah matriks identitas dan $\lambda$ suatu bilangan kompleks. Dalam teori spektral dari matriks $A$ ini, diperhatikan mengenai keberadaan inversi dari $A_\lambda$. Kumpulan nilai $\lambda$ yang membuat inversi dari $A-\lambda I$ ada, biasa disebut sebagai himpunan \textit{resolvent} dari $A$. Lalu, spektrum dari $A$ merupakan komplemen dari himpunan \textit{resolvent}-nya di bidang kompleks. Dalam aljabar, nilai $\lambda$ yang membuat $A-\lambda I$ tidak memiliki inversi disebut sebagai nilai eigen. Oleh karena itu, spektrum dari matriks persegi kompleks $A$ biasa dikenal sebagai kumpulan nilai eigen dari $A$.
+
+Dalam aljabar, operator linear di ruang vektor kompleks berdimensi hingga selalu memiliki matriks representasi, sehingga teori spektral di ruang vektor berdimensi hingga sama dengan teori spektral dari matriks. Operator linear di ruang vektor kompleks berdimensi tak hingga memiliki perbedaan, yaitu tidak memiliki matriks representasi. Teori spektral dari operator linear berdimensi tak hingga ini cukup menarik untuk dipelajari.
+
+Pada analisis fungsional, dipelajari operator linear terbatas dan operator linear \textit{self adjoint} terbatas. Sifat operator inversi dari kedua operator tersebut yang diperhatikan tidak hanya sekedar keberadaan saja, tapi juga keterbatasan. Selain itu juga terdapat sifat umum lainnya yang diperhatikan, sehingga teori spektral dari kedua operator linear tersebut sangat menarik untuk dikaji. Sifat-sifat spektrum dan himpunan \textit{resolvent} dari kedua operator linear tersebut menjadi hal utama yang ingin dipelajari lebih lanjut oleh penulis.
+
+\newpage
+%-----------------------------------------------------------------------------%
+\section{\normalsize Perumusan masalah dan ruang lingkup penelitian}
+%-----------------------------------------------------------------------------%
+Perumusan masalah dalam skrispi ini adalah
+\vspace*{-0.25cm}
+\begin{enumerate}
+  \item bagaimana sifat-sifat spektrum dan himpunan \textit{resolvent} dari operator linear terbatas?\vspace*{-0.25cm}
+  \item bagaimana sifat-sifat spektrum dan himpunan \textit{resolvent} dari operator linear \textit{self adjoint} terbatas?
+\end{enumerate}
+\vspace*{-0.25cm}
+\noindent Ruang lingkup penilitian dalam skripsi ini adalah operator linear di ruang Banach dan ruang Hilbert atas lapangan kompleks.
+
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Metodologi penelitian}
+%-----------------------------------------------------------------------------%
+Metode yang digunakan pada skrispi ini adalah studi literatur.
+
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Tujuan penelitian}
+%-----------------------------------------------------------------------------%
+Tujuan skripsi ini adalah\vspace*{-0.25cm}
+\begin{enumerate}
+  \item memahami sifat-sifat spektrum dan himpunan \textit{resolvent} dari operator linear terbatas, dan\vspace*{-0.25cm}
+  \item memahami sifat-sifat spektrum dan himpunan \textit{resolvent} dari operator linear \textit{self adjoint} terbatas.\vspace*{-0.25cm}
+\end{enumerate}
+
+
+
+

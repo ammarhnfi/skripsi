@@ -1,0 +1,285 @@
+\chapter{\normalsize METODOLOGI PENELITIAN}
+
+Bab ini menguraikan tahapan teknis penelitian, mulai dari mekanisme pengumpulan data, pra-pemrosesan, algoritma analisis statistika, hingga pengembangan visualisasi interaktif. Seluruh prosedur komputasi diimplementasikan menggunakan bahasa pemrograman Python.
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Tahapan Penelitian}
+%-----------------------------------------------------------------------------%
+Secara garis besar, penelitian ini dilaksanakan melalui empat tahapan utama sebagai berikut:
+\begin{enumerate}
+    \item \textbf{Tahap Persiapan Data:} Pengumpulan data sekunder, validasi kelengkapan, dan transformasi struktur data panel menjadi format matriks tiga-arah.
+    \item \textbf{Tahap Analisis STATIS:} Penerapan algoritma STATIS untuk mengekstraksi struktur kompromi dan melakukan uji stabilitas menggunakan permutasi.
+    \item \textbf{Tahap Konstruksi Biplot Dinamis:} Perhitungan koordinat proyeksi tahunan dan pembentukan lintasan (\textit{trajectory}) objek.
+    \item \textbf{Tahap Visualisasi Interaktif:} Pengembangan \textit{dashboard} berbasis web untuk eksplorasi hasil analisis.
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Sumber dan Struktur Data}
+%-----------------------------------------------------------------------------%
+Penelitian ini menggunakan data sekunder yang bersumber dari publikasi resmi Badan Pusat Statistik (BPS) untuk Provinsi Banten, DKI Jakarta, dan Jawa Barat. 
+\begin{itemize}
+    \item \textbf{Unit Observasi ($n$):} Seluruh kabupaten dan kota administratif di ketiga provinsi tersebut ($n=41$ wilayah).
+    \item \textbf{Variabel ($p$):} 12 indikator sosio-ekonomi sebagaimana dirinci pada Bab 1.
+    \item \textbf{Dimensi Waktu ($K$):} Periode tahunan dari 2020 hingga 2024.
+\end{itemize}
+
+Struktur data input disusun dalam format \textit{spreadsheet} (.xlsx) yang terdiri dari $K$ lembar kerja (\textit{sheets}), di mana setiap lembar merepresentasikan satu tahun pengamatan $\mathbf{X}_t$ berukuran $n \times p$.
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Pra-pemrosesan Data}
+%-----------------------------------------------------------------------------%
+Sebelum dilakukan analisis multivariat, data mentah melalui serangkaian proses pembersihan dan transformasi yang diimplementasikan dalam modul \texttt{pandas}:
+
+\begin{enumerate}
+    \item \textbf{Transformasi Tipe Data:} Konversi kolom numerik yang terdeteksi sebagai teks (karena format pemisah ribuan/desimal) menjadi tipe \textit{float}.
+    \item \textbf{Penanganan Data Hilang:} Pengecekan nilai kosong (\textit{missing values}). Jika terdapat variabel yang datanya tidak tersedia secara lengkap di seluruh tahun pengamatan ($t=2020, \dots, 2024$), maka variabel tersebut akan dieksklusi dari analisis untuk menjaga konsistensi dimensi matriks.
+    \item \textbf{Standardisasi:} Mengingat satuan pengukuran antar-variabel sangat beragam (misalnya: Rupiah untuk PDRB, Persen untuk Kemiskinan, Tahun untuk Angka Harapan Hidup), dilakukan standardisasi $Z$-score pada setiap tahun $t$ secara terpisah:
+    \begin{equation}
+        z_{ijt} = \frac{x_{ijt} - \bar{x}_{jt}}{s_{jt}}
+    \end{equation}
+    dengan $\bar{x}_{jt}$ dan $s_{jt}$ adalah rata-rata dan simpangan baku variabel $j$ pada tahun $t$. Hal ini menghasilkan matriks data standar $\mathbf{Z}_t$.
+    
+    \textbf{Ilustrasi Matriks Standardisasi:}
+    
+    Misalkan $\mathbf{X}_{2020}$ adalah matriks data mentah berukuran $41 \times 12$ (41 Kabupaten/Kota $\times$ 12 Indikator):
+    \[
+    \mathbf{X}_{2020} = 
+    \begin{pmatrix}
+    x_{1,1} & x_{1,2} & \cdots & x_{1,12} \\
+    x_{2,1} & x_{2,2} & \cdots & x_{2,12} \\
+    \vdots  & \vdots  & \ddots & \vdots   \\
+    x_{41,1} & x_{41,2} & \cdots & x_{41,12} 
+    \end{pmatrix}_{(41 \times 12)}
+    \]
+    
+    Setelah proses standardisasi $Z$-score, diperoleh matriks $\mathbf{Z}_{2020}$:
+    \[
+    \mathbf{Z}_{2020} = 
+    \begin{pmatrix}
+    \frac{x_{1,1}-\bar{x}_1}{s_1} & \cdots & \frac{x_{1,12}-\bar{x}_{12}}{s_{12}} \\
+    \vdots  & \ddots & \vdots   \\
+    \frac{x_{41,1}-\bar{x}_1}{s_1} & \cdots & \frac{x_{41,12}-\bar{x}_{12}}{s_{12}} 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    z_{1,1} & \cdots & z_{1,12} \\
+    \vdots  & \ddots & \vdots   \\
+    z_{41,1} & \cdots & z_{41,12} 
+    \end{pmatrix}_{(41 \times 12)}
+    \]
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Definisi Operasional Variabel}
+%-----------------------------------------------------------------------------%
+Agar setiap indikator dapat diinterpretasikan secara konsisten dan tidak menimbulkan ambiguitas, berikut disajikan definisi operasional untuk kedua belas variabel penelitian yang digunakan. Seluruh data diperoleh dari publikasi resmi Badan Pusat Statistik (BPS) Provinsi Banten, DKI Jakarta, dan Jawa Barat.
+
+\begin{longtable}{|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}p{8cm}|>{\raggedright\arraybackslash}p{3.5cm}|}
+\caption{Definisi Operasional Variabel Penelitian} \label{tab:definisi_variabel} \\
+\hline
+\textbf{Variabel} & \textbf{Definisi} & \textbf{Satuan} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Variabel} & \textbf{Definisi} & \textbf{Satuan} \\
+\hline
+\endhead
+\endfoot
+\endlastfoot
+
+IPM & Indeks komposit yang mengukur capaian pembangunan manusia berbasis tiga dimensi dasar: umur panjang dan sehat, pengetahuan, dan standar hidup layak. & Indeks (0--100) \\ \hline
+PDRB ADHK & Produk Domestik Regional Bruto (PDRB) atas dasar harga konstan 2010. Mencerminkan nilai tambah bruto barang dan jasa yang dihasilkan seluruh unit ekonomi di suatu wilayah tanpa pengaruh inflasi (pertumbuhan riil). & Ribu Rupiah (Juta) \\ \hline
+PPM & Persentase Penduduk Miskin. Proporsi penduduk yang memiliki rata-rata pengeluaran per kapita per bulan di bawah Garis Kemiskinan. & Persen (\%) \\ \hline
+GK & Garis Kemiskinan. Nilai rupiah pengeluaran minimum yang diperlukan seseorang untuk memenuhi kebutuhan pokok makanan (2100 kkal per hari) dan kebutuhan pokok non-makanan. & Rupiah/Kapita/Bulan \\ \hline
+PKKP & Prevalensi Ketidakcukupan Konsumsi Pangan. Estimasi proporsi populasi yang mengonsumsi energi (kalori) di bawah standar kecukupan minimum untuk hidup sehat dan aktif. & Persen (\%) \\ \hline
+TPT & Tingkat Pengangguran Terbuka. Persentase jumlah pengangguran terhadap jumlah angkatan kerja. & Persen (\%) \\ \hline
+TPAK & Tingkat Partisipasi Angkatan Kerja. Persentase penduduk usia kerja (15 tahun ke atas) yang termasuk dalam angkatan kerja (bekerja atau mencari kerja). & Persen (\%) \\ \hline
+RLS & Rata-rata Lama Sekolah. Rata-rata jumlah tahun yang telah ditempuh oleh penduduk usia 25 tahun ke atas dalam menempuh pendidikan formal. & Tahun \\ \hline
+AHH (L/P) & Angka Harapan Hidup saat lahir. Perkiraan rata-rata lama hidup yang akan dijalani oleh bayi yang baru lahir, dengan asumsi pola mortalitas saat kelahiran tetap. Dipisahkan menurut jenis kelamin (Laki-laki/Perempuan). & Tahun \\ \hline
+IPG & Indeks Pembangunan Gender. Rasio capaian pembangunan manusia perempuan terhadap laki-laki. Mengukur kesenjangan gender dalam dimensi kesehatan, pendidikan, dan ekonomi. & Indeks (0--100) \\ \hline
+Gini Ratio & Ukuran tingkat ketimpangan pengeluaran penduduk. Nilai 0 menunjukkan pemerataan sempurna, sedangkan nilai 1 menunjukkan ketimpangan sempurna. & Indeks (0--1) \\ \hline
+
+\end{longtable}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Prosedur Analisis STATIS}
+%-----------------------------------------------------------------------------%
+Algoritma STATIS diimplementasikan untuk mengekstraksi informasi struktural dari sekumpulan matriks standar $\{\mathbf{Z}_1, \dots, \mathbf{Z}_K\}$. Langkah-langkah komputasi adalah sebagai berikut:
+
+\subsection{\normalsize Pembentukan Matriks Intra-struktur}
+Untuk setiap tahun $t$, dihitung matriks operator Escoufier $\mathbf{W}_t$ ($n \times n$) yang merepresentasikan konfigurasi kemiripan antar-wilayah:
+\begin{equation}
+    \mathbf{W}_t = \mathbf{Z}_t \mathbf{Z}_t^T
+\end{equation}
+
+\textbf{Ilustrasi Perhitungan Matriks Intra-struktur:}
+
+Untuk mendapatkan matriks kemiripan $\mathbf{W}_{2020}$ ($41 \times 41$), dilakukan perkalian matriks standar $\mathbf{Z}_{2020}$ ($41 \times 12$) dengan transposenya $\mathbf{Z}_{2020}^T$ ($12 \times 41$):
+
+\[
+\mathbf{W}_{2020} = 
+\underbrace{
+\begin{pmatrix}
+z_{1,1} & \cdots & z_{1,12} \\
+\vdots  & \ddots & \vdots   \\
+z_{41,1} & \cdots & z_{41,12} 
+\end{pmatrix}
+}_{(41 \times 12)}
+\times
+\underbrace{
+\begin{pmatrix}
+z_{1,1} & \cdots & z_{41,1} \\
+\vdots  & \ddots & \vdots   \\
+z_{1,12} & \cdots & z_{41,12} 
+\end{pmatrix}
+}_{(12 \times 41)}
+=
+\underbrace{
+\begin{pmatrix}
+w_{1,1} & w_{1,2} & \cdots & w_{1,41} \\
+w_{2,1} & w_{2,2} & \cdots & w_{2,41} \\
+\vdots  & \vdots  & \ddots & \vdots   \\
+w_{41,1} & w_{41,2} & \cdots & w_{41,41} 
+\end{pmatrix}
+}_{(41 \times 41)}
+\]
+
+Elemen $w_{i,j}$ pada matriks hasil merepresentasikan produk skalar (kemiripan geometris) antara Kabupaten/Kota ke-$i$ dan ke-$j$ pada tahun 2020.
+
+
+\subsection{\normalsize Perhitungan Matriks Inter-struktur dan Bobot}
+Matriks korelasi vektoriel $\mathbf{R}$ ($K \times K$) dibentuk dengan elemen $R_{ij}$ berupa koefisien RV antara $\mathbf{W}_i$ dan $\mathbf{W}_j$. Selanjutnya, dilakukan dekomposisi spektral pada $\mathbf{R}$:
+\begin{equation}
+    \mathbf{R} \mathbf{u} = \theta \mathbf{u}
+\end{equation}
+
+\textbf{Ilustrasi Matriks Inter-struktur:}
+Dengan periode 5 tahun ($K=5$), matriks $\mathbf{R}$ memiliki dimensi $5 \times 5$:
+\[
+\mathbf{R} = 
+\begin{pmatrix}
+1 & RV(20,21) & RV(20,22) & RV(20,23) & RV(20,24) \\
+RV(21,20) & 1 & RV(21,22) & RV(21,23) & RV(21,24) \\
+\vdots & \vdots & \ddots & \vdots & \vdots \\
+RV(24,20) & RV(24,21) & \cdots & \cdots & 1
+\end{pmatrix}_{(5 \times 5)}
+\]
+
+Persamaan karakteristik untuk mendapatkan bobot kompromi $\alpha$:
+\[
+\begin{pmatrix}
+R_{1,1} & \cdots & R_{1,5} \\
+\vdots & \ddots & \vdots \\
+R_{5,1} & \cdots & R_{5,5}
+\end{pmatrix}
+\begin{pmatrix}
+u_{1} \\ \vdots \\ u_{5}
+\end{pmatrix}
+=
+\theta
+\begin{pmatrix}
+u_{1} \\ \vdots \\ u_{5}
+\end{pmatrix}
+\]
+
+Bobot kompromi $\alpha_t$ diperoleh dari elemen vektor eigen pertama $\mathbf{u}_1$ yang dinormalisasi sehingga $\sum \alpha_t^2 = 1$.
+
+
+\subsection{\normalsize Pembentukan Struktur Kompromi}
+Matriks kompromi $\mathbf{W}_c$ dihitung sebagai kombinasi linier dari struktur tahunan:
+\begin{equation}
+    \mathbf{W}_c = \sum_{t=1}^{K} \alpha_t \mathbf{W}_t
+\end{equation}
+
+\textbf{Ilustrasi Pembentukan Kompromi:}
+
+Matriks kompromi adalah hasil penjumlahan terbobot dari matriks intra-struktur setiap tahun.
+\[
+\mathbf{W}_c = \alpha_{20}\mathbf{W}_{20} + \alpha_{21}\mathbf{W}_{21} + \cdots + \alpha_{24}\mathbf{W}_{24}
+\]
+Dalam bentuk matriks $41 \times 41$:
+\[
+\mathbf{W}_c = 
+\alpha_{20}
+\begin{pmatrix}
+w_{1,1}^{(20)} & \cdots & w_{1,41}^{(20)} \\
+\vdots & \ddots & \vdots \\
+w_{41,1}^{(20)} & \cdots & w_{41,41}^{(20)}
+\end{pmatrix}
++ \cdots +
+\alpha_{24}
+\begin{pmatrix}
+w_{1,1}^{(24)} & \cdots & w_{1,41}^{(24)} \\
+\vdots & \ddots & \vdots \\
+w_{41,1}^{(24)} & \cdots & w_{41,41}^{(24)}
+\end{pmatrix}
+\]
+
+Kemudian, dilakukan dekomposisi nilai eigen pada $\mathbf{W}_c$ untuk mendapatkan matriks koordinat objek (Skor Kompromi) $\mathbf{F}_c$:
+\begin{equation}
+    \mathbf{W}_c = \mathbf{V}_c \mathbf{\Lambda}_c \mathbf{V}_c^T \quad \rightarrow \quad \mathbf{F}_c = \mathbf{V}_c \mathbf{\Lambda}_c^{1/2}
+\end{equation}
+
+\textbf{Ilustrasi Matriks Skor Kompromi:}
+
+Matriks skor $\mathbf{F}_c$ yang dihasilkan berukuran $41 \times 41$ (jika menggunakan semua dimensi), namun umumnya hanya diambil 2 kolom pertama untuk visualisasi 2D:
+
+\[
+\mathbf{F}_c = 
+\begin{pmatrix}
+f_{1,1} & f_{1,2} \\
+f_{2,1} & f_{2,2} \\
+\vdots & \vdots \\
+f_{41,1} & f_{41,2}
+\end{pmatrix}_{(41 \times 2)}
+\]
+Kolom pertama ($f_{i,1}$) digunakan sebagai koordinat Sumbu X (Kompromi 1), dan kolom kedua ($f_{i,2}$) sebagai Sumbu Y (Kompromi 2) dalam grafik \textit{scatter plot}.
+
+Dua kolom pertama dari $\mathbf{F}_c$ digunakan sebagai koordinat dasar untuk sumbu grafik (Sumbu 1 dan Sumbu 2).
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Uji Stabilitas Struktur (Permutasi)}
+%-----------------------------------------------------------------------------%
+Untuk memvalidasi signifikansi struktur kompromi, dilakukan uji permutasi dengan langkah:
+\begin{enumerate}
+    \item Menghitung statistik uji $\theta_1^{obs}$ (nilai eigen pertama matriks $\mathbf{R}$ asli).
+    \item Melakukan iterasi sebanyak $B=1000$ kali. Pada setiap iterasi, label tahun pada himpunan data diacak, kemudian $\mathbf{R}^*$ dan $\theta_1^*$ dihitung ulang.
+    \item Menghitung $p$-value berdasarkan proporsi $\theta_1^*$ yang melebihi $\theta_1^{obs}$. Jika $p < 0.05$, struktur dinyatakan stabil signifikan.
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Uji Autokorelasi Spasial (Global Moran's I)}
+%-----------------------------------------------------------------------------%
+Sebagai analisis pasca-faktum (\textit{post-hoc analysis}), penelitian ini melakukan pengujian autokorelasi spasial pada skor kompromi (terutama pada dimensi pertama $\mathbf{F}_{c,1}$) untuk mendeteksi keberadaan pola pengelompokan geografis. Global Moran's I dihitung menggunakan formula:
+\begin{equation}
+    I = \frac{N}{\sum_i \sum_j w_{ij}} \frac{\sum_i \sum_j w_{ij} (x_i - \bar{x})(x_j - \bar{x})}{\sum_i (x_i - \bar{x})^2}
+\end{equation}
+di mana $w_{ij}$ adalah matriks pembobot spasial berbasis singgungan (\textit{Queen Contiguity}), yang bernilai 1 jika wilayah $i$ dan $j$ berbatasan langsung, dan 0 jika tidak. Nilai $I$ yang signifikan positif ($I > E[I]$) mengindikasikan adanya klaster spasial kinerja ekonomi, sedangkan nilai negatif mengindikasikan pola menyebar.
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Konstruksi Dynamic Biplot}
+%-----------------------------------------------------------------------------%
+Visualisasi dinamis dibangun dengan memproyeksikan data tahunan ke dalam ruang kompromi. Koordinat lintasan (\textit{trajectory}) untuk tahun $t$, dinotasikan $\mathbf{F}_t$, dihitung melalui teknik \textit{Supplementary Projection}:
+\begin{enumerate}
+    \item Menghitung matriks \textit{loadings} kompromi $\mathbf{G}$ ($p \times 2$) dengan mengkorelasikan variabel asli rata-rata terhadap skor kompromi $\mathbf{F}_c$.
+    \item Memproyeksikan data standar tahunan $\mathbf{Z}_t$ ke matriks \textit{loadings} tersebut:
+    \begin{equation}
+        \mathbf{F}_t = \mathbf{Z}_t \mathbf{G} (\mathbf{G}^T \mathbf{G})^{-1} \approx \mathbf{Z}_t \mathbf{V}_{loading}
+    \end{equation}
+    (Catatan: Dalam implementasi kode, proyeksi disederhanakan menggunakan hasil perkalian matriks standar dengan matriks rotasi loadings).
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Pengembangan Dashboard Interaktif}
+%-----------------------------------------------------------------------------%
+Seluruh hasil analisis divisualisasikan dalam aplikasi berbasis web menggunakan \textit{framework} Dash.
+\begin{itemize}
+    \item \textbf{Backend:} Menggunakan Python untuk komputasi numerik (`numpy`, `pandas`, `scikit-learn`).
+    \item \textbf{Frontend:} Menggunakan komponen `dcc.Graph` dari pustaka Plotly untuk merender grafik 3D dan 2D yang responsif.
+    \item \textbf{Fitur Interaktif:}
+    \begin{itemize}
+        \item \textbf{Rotasi Baseline:} Memungkinkan pengguna memutar orientasi grafik sebesar sudut $\theta$ agar variabel tertentu sejajar dengan sumbu horizontal, mempermudah interpretasi posisi relatif.
+        \item \textbf{Filter Trajektori:} Memungkinkan pengguna memilih untuk menampilkan lintasan hanya pada kabupaten/kota tertentu untuk mengurangi kekusutan visual (\textit{visual clutter}).
+    \end{itemize}
+\end{itemize}

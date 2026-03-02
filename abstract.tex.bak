@@ -1,0 +1,29 @@
+%
+% Halaman Abstract
+%
+% @author  Andreas Febrian
+% @version 1.00
+%
+
+\chapter*{\normalsize ABSTRACT}
+
+\vspace*{0.2cm}
+
+\noindent \begin{tabular}{l l p{11.0cm}}
+	Name&: & \penulis \\ % ------------ Jangan diedit
+	Program&: & Mathematics \\ % ------------ Jangan diedit
+	Title&: & \judulInggris \\ % ------------ Jangan diedit
+\end{tabular} \\
+
+\vspace*{0.5cm}
+
+\noindent Spectral theory is one of the main branches of functional analysis. Spectral theory is study about the inverse operators of linear operator. It is concerned with their general properties and their relations to the original linear operator. In spectral theory, there are two adjoint sets called spectrum and resolvent set. There are two linear operators in this undergraduate thesis, they are bounded linear operator and bounded self adjoint linear operator from functional analysis. Spectrum and resolvent set properties of those linear operators is the main part of this undergraduate thesis. \\
+
+\vspace*{0.2cm}
+\noindent \begin{tabular}{l l p{10.0cm}}
+	Keywords&: & spectrum, spectral theory, resolvent set, bounded linear operator, bounded self adjoint linear operator \\ % ------------ Jangan diedit
+	x+40&: & 0 table and 0 diagram \\ % ------------ Jangan diedit
+	bibliography&: & 5 (1989-2009) \\ % ------------ Jangan diedit
+\end{tabular}
+
+\newpage 

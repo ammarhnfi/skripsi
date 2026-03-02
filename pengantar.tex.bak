@@ -1,0 +1,31 @@
+%-----------------------------------------------------------------------------%
+\chapter*{\normalsize KATA PENGANTAR}
+%-----------------------------------------------------------------------------%
+
+Puji syukur kepada Tuhan Yang Maha Esa atas segala berkat dan rahmat-Nya, sehingga penulis dapat menyelesaikan skripsi ini dengan sebaik-baiknya. Selama masa penulisan skripsi ini, penulis telah mendapat banyak semangat, dukungan, doa, bantuan, inspirasi, dan motivasi dari berbagai pihak. Untuk itu, penulis ingin berterima kasih kepada:
+\vspace*{-0.2cm}
+\begin{enumerate}
+	\item Bapak Dr. Hengki Tasman, M.Si. selaku dosen pembimbing skripsi yang telah bersedia meluangkan banyak waktu dan pikiran untuk membantu penulis dalam menyelesaikan skripsi ini. Terima kasih juga atas kesabaran, canda tawa serta nasihat selama bimbingan.
+\vspace*{-0.2cm}
+	\item Ibu Dra. Rianti Setiadi, M.Si. selaku dosen pembimbing akademik yang selama ini telah bersedia membimbing penulis untuk dapat memilih mata kuliah yang tepat selama menjalani masa kuliah.\vspace*{-0.2cm}
+    \item Ibu Dra. Suarsih Utama M.Si. dan bapak Drs. Frederik Moses Poyk M.S. yang telah hadir sebagai dosen penguji pada seminar usulan penelitian dan kolokium penulis. Terima kasih atas masukan dan inspirasi yang telah diberikan. \vspace*{-0.2cm}
+    \item Ibu Dr. Kiki Ariyanti Sugeng, ibu Dra. Siti Aminah M.Kom, dan bapak Prof. Dr. Djati Kerami yang telah hadir sebagai dosen penguji pada seminar kemajuan penelitian penulis. Terima kasih atas masukan dan inspirasi yang telah diberikan. \vspace*{-0.2cm}
+    \item Semua staf pengajar atas ilmu pengetahuan yang telah diberikan kepada penulis selama masa kuliah.\vspace*{-0.2cm}
+    \item Seluruh staf karyawan yang selalu melakukan tugas mereka dengan baik, sehingga memberikan kenyamanan pelayanan bagi siapa saja.\vspace*{-0.2cm}
+    \item Kedua orang tua penulis, Sujadi Salim dan Elliana, kakak penulis, Yully Salim, beserta seluruh anggota keluarga yang terus memberikan dukungan, doa, inspirasi, dan motivasi.\vspace*{-0.2cm}
+    \item Andreas Febrian dan Lia Sadita yang telah membuat kerangka penulisan skripsi di Latex.\vspace*{-0.2cm}
+    \item Andrew, Azki, Dian, Emyl, Maifiana, Rani, Sofwah, Soleman, Wilsan, dan Yanti sebagai teman seangkatan dan seperjuangan dalam penulisan skripsi ini.\vspace*{-0.2cm}
+    \item Seluruh teman-teman angkatan 2009 atas semangat, dukungan, canda tawa dan banyak hal penting selama masa kuliah.\vspace*{-0.2cm}
+    \item Kakak-kakak angkatan 2008, 2007, dan 2006 serta adik-adik angkatan 2010, dan 2011 yang terus memberi semangat.\vspace*{-0.2cm}
+    \item Seluruh pihak yang telah memberikan bantuan dan dukungan, yang tidak dapat penulis sebutkan satu per satu.\vspace*{-0.2cm}
+\end{enumerate}
+
+Layaknya pribahasa "tiada gading yang tak retak", penulis menyadari ketidaksempurnaan dari skripsi ini. Karenanya, penulis berharap atas masukan baik kritik maupun saran sehingga skripsi ini dapat menjadi lebih baik. Penulis juga berharap skripsi ini dapat bermanfaat bagi para pembaca.
+\vspace*{0.1cm}
+
+\begin{flushright}
+2012 \\[0.1cm] %---------- Jangan lupa diedit
+\vspace*{0.2cm}
+penulis % --------- Jangan diedit
+
+\end{flushright} 

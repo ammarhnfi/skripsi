@@ -1,0 +1,29 @@
+%
+% Halaman Abstrak
+%
+% @author  Andreas Febrian
+% @version 1.00
+%
+
+\chapter*{\normalsize ABSTRAK}
+
+\vspace*{0.2cm}
+
+\noindent \begin{tabular}{l l p{10cm}}
+	Nama&: & \penulis \\ % ----------- Jangan diedit
+	Program Studi&: & \program \\ % ----------- Jangan diedit
+	Judul&: & \judul \\ % ----------- Jangan diedit
+\end{tabular} \\
+
+\vspace*{0.5cm}
+
+\noindent Teori spektral adalah salah satu cabang utama dari analisis fungsional. Dalam teori spektral, dipelajari mengenai operator-operator inversi dari operator linear. Yang diperhatikan adalah sifat-sifat umumnya dan hubungan dengan operator linear aslinya. Dalam teori spektral, dikenal dua himpunan yang saling bebas yaitu spektrum dan himpunan \textit{resolvent}. Operator linear yang diperhatikan pada skripsi ini adalah operator linear terbatas dan operator linear \textit{self adjoint} terbatas yang telah dikenal di analisis fungsional. Sifat spektrum dan himpunan \textit{resolvent} dari kedua operator linear tersebut menjadi hal utama yang dikaji di skripsi ini.  \\
+
+\vspace*{0.2cm}
+
+\noindent \begin{tabular}{l l p{10.0cm}}
+	Kata kunci&: & spektrum, teori spektral, himpunan \textit{resolvent}, operator linear terbatas di ruang ber-\textit{norm}, operator linear \textit{self adjoint} terbatas di ruang Hilbert \\ % ------------ Jangan diedit
+	x+40&: & 0 tabel dan 0 diagram \\ % ------------ Jangan diedit
+	Daftar referensi&: & 5 (1989-2009) \\ % ------------ Jangan diedit
+\end{tabular}
+\newpage 

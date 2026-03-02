@@ -1,0 +1,47 @@
+\chapter{\normalsize PENDAHULUAN}
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Latar belakang}
+%-----------------------------------------------------------------------------%
+Dari buku yang dibuat oleh Kreyzig (1989), dimuat pembahasan mengenai teori spektral di ruang berdimensi hingga. Dari buku beliau, suatu $\lambda$ adalah nilai eigen dari suatu matriks persegi kompleks $A$ berukuran $n$ jika ada vektor $x$ tak nol yang memenuhi $Ax=\lambda x$. Pencarian nilai eigen dari $A$ menggunakan persamaan karakteristik $det(A-\lambda I)=0$. Matriks $A$ setidaknya memiliki paling sedikit satu nilai eigen dan paling banyak memiliki sebanyak $n$ nilai eigen. Himpunan semua nilai eigen dari matriks $A$ disebut spektrum dari $A$. Komplemen spektrum dari $A$ terhadap bidang kompleks adalah himpunan \textit{resolvent} dari $A$.
+
+Operator linear $S$ di ruang vektor berdimensi hingga selalu memiliki matriks representasi $[S]$. Jika $S$ memetakan dari ruang vektor kompleks berdimensi hingga $U$ ke $U$, maka memiliki matriks representasi yang persegi. Akibatnya $[S]$ setidaknya memiliki satu nilai eigen yang juga merupakan nilai eigen dari $S$. Spektrum dan himpunan \textit{resolvent} dari $[S]$ juga merupakan spektrum dan himpunan \textit{resolvent} dari $S$. Spektrum dari $S$ hanya terdiri dari titik-titik nilai eigen $[S]$ yang berarti spektrum adalah himpunan tutup. Berarti himpunan \textit{resolvent} dari $S$ adalah himpunan buka. Hal ini masih sebatas ruang vektor berdimensi hingga.
+
+Ketika membahas operator linear $T$ di ruang vektor kompleks berdimensi tak hingga, tentu sifatnya berbeda dengan $S$. Operator linear $T$ tidak dapat dibuat matriks representasinya, yang berarti nilai eigennya tidak dapat dicari menggunakan persamaan karakteristik dari matriks. Selain itu, ada operator linear yang tidak memiliki nilai eigen. Hal ini tentu mempengaruhi spektrum dan juga himpunan \textit{resolvent} dari $T$. Apabila pengertian spektrum dari $T$ seperti spektrum dari $A$, maka ada kemungkinan spektrumnya merupakan himpunan kosong. Dengan demikian, spektrumnya buka dan himpunan \textit{resolvent}-nya tutup. Hal ini berkebalikan dengan sifat spektrum yang ada di ruang vektor berdimensi hingga.
+
+Kembali pada operator linear $S$ di ruang vektor berdimensi hingga. Nilai eigen dari $S$ adalah suatu konstanta $\lambda$ di bidang kompleks yang sedemikian sehingga operator $S-\lambda I$ bukan suatu pemetaan satu-satu. Berdasarkan pengertian ini, operator $S-\lambda I$ (yang juga sebuah operator linear) menjadi fokus dalam pendefinisian nilai eigen dari $S$. Kembali lagi pada operator linear $T$ di ruang vektor berdimensi tak hingga. Keberadaan, keterbatasan, dan domain yang padat dari operator \textit{resolvent} (inversi dari operator $T-\lambda I$) menjadi sorotan, dan semuanya tergantung dari bilangan kompleks $\lambda$. Nilai $\lambda$ yang demikian dikumpulkan membentuk himpunan \textit{resolvent} dari $T$. Kemudian untuk menjaga harmonisasi pengertian, spektrum dari $T$ adalah komplemen dari himpunan \textit{resolvent} dari $T$. Hal ini mengakibatkan spektrum dari $T$ mungkin memiliki anggota yang bukan nilai eigen dari $T$.
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Perumusan masalah dan ruang lingkup penelitian}
+%-----------------------------------------------------------------------------%
+Perumusan masalah dalam skrispi ini adalah "bagaimana sifat-sifat spektrum dan \textit{resolvent} dari operator linear?".\\
+
+Ruang lingkup penilitian dalam skripsi ini adalah sebagai berikut,
+
+\begin{enumerate}
+               \item Lapangan yang ditinjau adalah lapangan kompleks.
+               \item Operator linear yang ditinjau adalah
+\begin{itemize}
+  \item Operator linear terbatas pada ruang ber-\textit{norm},
+  \item Operator linear self-adjoint pada ruang Hilbert.
+\end{itemize}
+\end{enumerate}
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Metodologi penelitian}
+%-----------------------------------------------------------------------------%
+Metode yang digunakan pada skrispi ini adalah studi literatur.
+
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Tujuan penelitian}
+%-----------------------------------------------------------------------------%
+Tujuan skripsi ini adalah memahami teori spektral dari operator linear mengenai sifat-sifat spektrum dan \textit{resolvent} dari operator linear.
+
+
+
+
+
