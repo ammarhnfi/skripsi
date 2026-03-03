@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  3 MAR 2026 04:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  3 MAR 2026 10:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -634,7 +634,10 @@ Underfull \hbox (badness 1205) in paragraph at lines 20--21
 []\OT1/ptm/m/n/12 Secara ke-selu-ruhan, peneli-tian ini di-arahkan un-tuk men-jawab ke-bu-tuhan akan
  []
 
-[3] [4]
+[3]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4]
 Underfull \hbox (badness 1406) in paragraph at lines 36--37
 []\OT1/ptm/m/n/12 Bagaimana pola lin-tasan (\OT1/ptm/m/it/12 tra-jec-tory\OT1/ptm/m/n/12 ) peru-ba-han karak-ter-is-tik ekonomi kabu-
  []
@@ -795,9 +798,9 @@ Here is how much of TeX's memory you used:
  42802 multiletter control sequences out of 15000+600000
  649796 words of font info for 87 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
- 75i,16n,79p,1424b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,16n,79p,1501b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (47 pages, 383444 bytes).
+Output written on induk.pdf (47 pages, 383428 bytes).
 PDF statistics:
  870 PDF objects out of 1000 (max. 8388607)
  202 named destinations out of 1000 (max. 500000)

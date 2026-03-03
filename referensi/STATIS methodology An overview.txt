@@ -1,0 +1,175 @@
+
+View
+Online 
+Export
+Citation
+RESEARCH ARTICLE |  JUNE 07 2024
+STATIS methodology: An overview
+Manuela Oliveira ; Eugénio Garção; Luís M. Grilo; Armando Alexandre; João Tiago Mexia
+AIP Conf. Proc. 3094, 450006 (2024)
+https://doi.org/10.1063/5.0212208
+ 02 November 2025 09:33:29
+
+STATIS Methodology: An Overview
+Manuela Oliveira1,a), Eug´enio Garc¸˜ao2, Lu´ıs M. Grilo1, Armando
+Alexandre1 and Jo˜ao Tiago Mexia3
+1Department of Mathematics, University of ´Evora, Col´egio Luis Ant´onio Verney, Rua Rom˜ao Ramalho, 59, 7000-671
+´Evora, Portugal
+ 2Department of Mechatronics Engineering, University of ´Evora, Evora, Portugal
+3NOVA Math - Center of Mathematics and its Applications, NOVA FCT, NOVA University of Lisbon, Lisbon, 
+Portugal
+a)Corresponding author: mmo@uevora.pt
+Abstract. The STATIS (Structuration des Tableaux a Trois Indices de la Statistique) methodology is a data analysis technique 
+which computes Euclidean distances between studies of the same observations obtained in k diﬀerent circumstances. The 
+Escouﬁer operators are used to obtain a geometrical representation for the studies in a series. In this study we present 
+developments in the STATIS methodology, namely how to make inferences when for each treatment of a model we have a series of 
+studies.
+Introduction
+The Analyse Conjointe de Tableaux (STATIS method Structuration des Tableaux a Trois Indices de la Statistique) is 
+an exploratory technique of multivariate data analysis based on linear algebra and especially on Euclidean vector 
+spaces. This method was introduced by [3], and developed by several authors, in particular by [4] and [5]. STATIS 
+can be used to analyze data in a variety of ﬁelds, including agriculture, environmental science, sociology, and 
+psychology. It is a powerful tool for exploring complex data structures and identifying relationships between 
+multiple variables, but it is important to be cautious about the results and to interpret them in the context of the data 
+and the assumptions of the methodology. The central idea of this methodology is to compare conﬁgurations of the 
+same individuals or variables in diﬀerent circumstances or moments in time. Therefore, this method allows us 
+not only to identify the moments in time in which the most signiﬁcant changes occurred, but also to rank variables 
+and individuals according to their contributions to the total changes. We are also able to draw the trajectory of 
+each individual or variable around its compromise (average) position. In the STATIS methodology we study series 
+of studies. The studies are matrix triplets
+(Xi, Dpi , Dn), where the ﬁrst matrix is a data matrix where columns contains the values of the considered variables in 
+the considered objects. They are two types of series:
+1.
+The objects are the same in all studies. We then have n× pi data matrices Xi with n the number of objects and pi
+the number of variables in the r-th study, i = 1, . . . , k. In each study we have also matrices, in general diagonal,
+Dpi and Dn with weights of the variables in the r-th study, i = 1, . . . , k, and of the objects in the series. In this
+case we have the triplet (Xi, Dpi, Dn), i = 1, . . . , k.
+2.
+The variables are the same in all studies. The data matrix Xi being of type ni × p with ni the number of objects in
+the r-th study and p the number of variables in the series. We have weights Dp and Dpi for variables and objects.
+In this case we have the triplet, (Xi, Dpi, Dni), i = 1, . . . , k.
+[2], deﬁned the matrices
+Ai = XiDpiXt
+iDn, i = 1, . . . , k
+and the matrices
+International Conference of Numerical Analysis and Applied Mathematics
+AIP Conf. Proc. 3094, 450006-1–450006-3; https://doi.org/10.1063/5.0212208
+Published under an exclusive license by AIP Publishing. 978-0-7354-4954-1/$30.00
+450006-1
+ 02 November 2025 09:33:29
+
+Bi = Xt
+iDniXiDp, i = 1, . . . , k
+to represent series of studies of the ﬁrst and series of studies of the second type, respectively. The STATIS methodology
+deﬁnes
+S ij = tr(AiAt
+j), i = 1, . . . , k, j = 1, . . . , k
+as the interstructure matrix with elements being the Hilbert–Schmidt scalar products (Ai|A j) = tr(AiAt
+j), i = 1, . . . , k,
+for series of ﬁrst type and (Bi|Bj) = tr(BiBt
+j), i = 1, . . . , k, for series of second type.
+The symmetric matrix shus the sprecteal decomposition
+S =
+k
+
+j=1
+λ jαjαt
+j
+with (λ j, αj), j = 1, . . . , j = 1, . . . , k been the pairs of it’s eigenvalues and eigenvectors. The h-th components of
+vectors λjαj, h = 1, . . . , k are the coordinates of the point representing the h-th study. There is a common structure
+when these points lie along the ﬁrst axis which happens when the ﬁrst eigenvalue is dominant (e.g. [4]).
+Models and inference
+If we have a common structure, λ1, . . . , λ j, j = 1, . . . , k will be small, λl << λj, l = 2, . . . , k, and the points represent-
+ing the studies fall along the ﬁrst axis, this led [7] to assume, the model
+S = λααt + ¯E
+with
+¯E = 1
+2(E + Et),
+when ¯E is such that
+Vec(E) ∼N(0, σ2Ik2).
+We can now use λ1 and α1 the ﬁrst eigenvalue and eigenvector of matrix S as estimators of λ and α. Actually through
+simulations the good behaviors of those estimators had already been showed (e.g. [8]). This model enables the con-
+centration of the information, concentrated in matrix S, into the estimated structure vector
+˜β = λ1α1
+and the sum of squares of residuals,
+V = ||S ||2 −||β||2.
+Moreover, ˜β is the estimator of the structure vector
+˜β = λα.
+Validating the model is centered on establishing the predominance of the ﬁrst eigenvalue of S. Actually, conﬁdence
+intervals for
+τ = λ2
+σ2
+(see [8]). In [1], the models formulation was reﬁned and the common structure of degree 1, associated to a single
+dominant eigenvalue for matrix S, has been extended for h degree common structure
+S = h
+2λiαiαt
+i + E =
+h
+
+i=1
+βiαt
+i + E
+with E an covariance matrix and
+βi = λiαi, i = 1, . . . , h.
+The structure vectors βi, i = 1, . . . , h, were estimated and the sum of squares of residues was obtained.
+450006-2
+ 02 November 2025 09:33:29
+
+Structure families of series of studies
+Up to now we have considered a single series of studies. Now we assume having for each treatment of a model such a
+series. Our goal will be to study the action of the factors in that model on the structure vectors. Two types of analysis
+are considered:
+•
+Transversal Analysis on the homologous components of the structure vectors. Usually only the ﬁrst such vectors
+are considered;
+•
+Longitudinal Analysis on linear applications on the estimated structure vectors. This type is now adequate when
+these is a progressive in the studies of the series. For instance if they were carried out in successive times. As
+stated above these analysis are usually carried out for the ﬁrst structure vectors since, many times, they are the
+sole ones for which we have estimators with suﬃcient precisions.
+Several applications are presented has led to other useful approaches to data analysis ([1]; [7]). [1] consider the
+validation of these model studied of local Portuguese elections of years (1985, 1989, 1993, 1997 and 2001). In this
+study, four districts stretching from North to South along the coast and four others along the border with Spain were
+selected. For each of these districts, two townships were selected. One of them contained the district capitalcity. Thus
+we had good coverage of the territory, being able to apply the proposed model to the 16 series of studies. That model
+was based on a new dimension for modelling the inter-structure of a series of studies in the ACT method.
+Final remarks
+STATIS methodology is used to identify patterns or structures in the data and to explore the relationships between
+multiple variables. Although to have a solid algebraic formulation, the STATIS methodology only gives empirical
+conclusions. The development of models has allowed for the possibility of making inference about the relationships
+between variables and to test hypotheses about the underlying structures in the data. This provides a deeper under-
+standing of the data and allows for the development of predictions and insights about the population and can help
+researchers to make more informed decisions and to further advance their understanding of the relationships between
+the variables.
+Acknowledgments
+MO research is partially supported by National Funds through FCT (Fundac¸˜ao para a Ciˆencia e a Tecnologia), project
+UIDB/04674/2020 (CIMA) and by the project ref. H2020-MSCA-RISE-2020/101007950, with the title ”DecisionES
+- Decision Support for the Supply of Ecosystem Services under Global Change”, funded by the Marie Curie Interna-
+tional StaﬀExchange Scheme.
+REFERENCES
+[1]
+A. Areia, M. Oliveira, J. T. Mexia, Models for a series of studies based on geometrical representation.
+Statistical Methodology, 5: 277-288 (2008).
+[2]
+Y. Escouﬁer, Le Traitement des Variables Vectorielles, Biometrics 29(4), 751–760 (1973).
+[3]
+T. Foucart, H. L’Hermier des Plantes, Structuration des Tableaux `a Trois Indices de la Statistique: th´eorie et
+application d’une m´ethode d’analyse conjointe, Th´ese de 3e cycle, Universit´e des Sciences et Techniques
+du Languedoc, Montepllier II, 1976.
+[4]
+C. Lavit, Analyse Conjointe de Tableaux Quantitatifs, Collection M´ethods + Programmes, chez Elsevier
+Masson, Paris, 1988.
+[5]
+C. Lavit, Y. Escouﬁer, R. Sabatier, P. Traissac, The ACT (STATIS method). Computational Statistics and
+Data Analysis, 18: 97-119 (1994).
+[6]
+J. T. Mexia, M. Oliveira, Asymptotic linearity and limit distributions, approximations. Journal of Statistical
+Planning and Inference, 140: 353-357 (2010).
+[7]
+J. T. Mexia, M. Oliveira, Non-observable regressors. Biometrical Letters, 44(2): 97-103 (2007).
+[8]
+M. Oliveira, J. T. Mexia, ANOVA-Like analysis of matched series of studies with a common structure.
+Journal of Statistical Planning and Inference, 137: 1862-1870 (2007).
+450006-3
+ 02 November 2025 09:33:29
+

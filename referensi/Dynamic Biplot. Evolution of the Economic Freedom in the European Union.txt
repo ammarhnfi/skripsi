@@ -1,0 +1,1763 @@
+_____________________________________________________________________________________________________ 
+ 
+*Corresponding author: E-mail: jegido@usal.es; 
+ 
+ 
+British Journal of Applied Science & Technology 
+11(3): 1-13, 2015, Article no.BJAST.20289 
+ISSN: 2231-0843 
+ 
+SCIENCEDOMAIN international 
+            www.sciencedomain.org 
+ 
+ 
+Dynamic Biplot. Evolution of the Economic Freedom 
+in the European Union  
+   
+Jaime Egido1* and Purificación Galindo1  
+ 
+1Department of Statistic, University of Salamanca, C/ Alfonso X El Sabio s/n, 37007 Salamanca, 
+Spain. 
+ 
+Authors’ contributions  
+ 
+This work was carried out in collaboration between both authors. Author JE designed the study, 
+performed the statistical analysis, wrote the protocol, and wrote the first draft of the manuscript and 
+managed literature searches. Authors JE and PG managed the analyses of the study and literature 
+searches. Both authors read and approved the final manuscript. 
+ 
+Article Information 
+ 
+DOI: 10.9734/BJAST/2015/20289 
+Editor(s): 
+(1) Can Tansel Tugcu, Faculty of Economics and Administrative Sciences, Nevsehir University, Turkey.  
+Reviewers: 
+(1) Anonymous, Open University of Kaohsiung, Taiwan. 
+(2) O. N. Arunkumar, Sree Narayana Gurukulam College of Engineering, Kerala, India. 
+(3) S. O. Yakubu, Nigerian Defence Academy, Nigeria. 
+(4) Obiekea Kenneth Nnnamdi, Ahmadu Bello University, Nigeria. 
+Complete Peer review History: http://sciencedomain.org/review-history/10633 
+ 
+ 
+ 
+Received 21st July 2015  
+Accepted 12th August 2015 
+Published 23rd August 2015 
+ 
+ 
+ABSTRACT 
+ 
+This paper presents a new method called ‘Dynamic Biplot’ that applies to the representation of 3-
+way data. The Dynamic Biplot method is undertaken in two stages: First, it carries out a biplot 
+analysis of the situation that is considered more representative in our analysis, the reference 
+situation (static analysis); in the second stage, the rest of the situations are represented onto the 
+analysis (dynamic analysis), obtaining trajectories of individuals and variables. The Dynamic Biplot 
+method is used to analyse the evolution of the economic freedom in the European Union. The main 
+results are that the countries outside the euro zone enjoy greater economic freedom and the Rule 
+of law area (Property Rights and Freedom from Corruption) are the ones that better discriminate 
+EU countries. To provide operational support to the Dynamic Biplot, it has developed a package in 
+R and it has been applied to describe the evolution of the economic freedom in the EU. 
+ 
+ 
+Keywords: Dynamic biplot; economic freedom; European Union; multivariate; three-way. 
+Original Research Article 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+2 
+ 
+1. INTRODUCTION AND BIPLOT REVIEW 
+ 
+Among the various methods used for multivariate 
+data analysis, Gabriel [1] Biplot methods are 
+capable of representing more than two variables 
+[2] 
+using 
+an 
+approximation 
+from 
+the 
+n-
+dimensional 
+space 
+to 
+another 
+of 
+lower 
+dimension, generally two. This method was 
+introduced by Gabriel [1] in the context of 
+principal component analysis (PCA). Specifically, 
+the biplot is a joint graphical representation, in a 
+low dimensional Euclidean space (usually a 
+plane), of a multivariate data matrix by markers 
+for its rows and columns, chosen in such a way 
+that the inner (or scalar) product represents the 
+elements of the data matrix. Due to the 
+properties of the inner product, the biplot is a 
+powerful data visualization tool, which can be 
+viewed as a multivariate extension of the 
+scatterplot. 
+ 
+The method used to obtain a reduced rank 
+approximation of a matrix is the one proposed by 
+Eckart and Young [3] and has been used by 
+Householder 
+and 
+Young 
+[4], 
+Gabriel 
+[1], 
+Greenacre [5] and other authors. An algorithm to 
+compute the decomposition is shown in Golub 
+and Reinsch [6]. Galindo [7] developed the HJ-
+Biplot 
+method 
+to 
+get 
+high 
+quality 
+of 
+representation 
+for 
+rows 
+and 
+columns 
+simultaneously. 
+These 
+factorizations 
+have 
+formed the basis for the development of multiple 
+approaches. The treatment of multiple tables with 
+biplot methods has been discussed in Meta-
+Biplot [8], Canonical STATIS - CANOSTATIS [9] 
+which generalizes discriminant analysis with 
+STATIS. 
+ 
+The data that have been processed have a 3-
+way structure. In the literature, the treatment of a 
+data cube has been performed in different ways: 
+concatenating the matrices [10,11], comparing 
+the main components of the groups [12,13], Lavit 
+et al. [14] propose the diagonalization of a matrix, 
+called 'common object' of the nature of the 
+groups, Flury [15] considering different models of 
+similarity between the components.  
+ 
+One of the most popular trends is based on 
+obtaining a consensus subspace for all arrays, 
+with different solutions like, e.g., STATIS and 
+Dual STATIS [14,16,17] for the same set of 
+individuals or variables respectively, Pagès and 
+Escoufier [18] proposed the Multiple Factor 
+Analysis - MFA for the same individuals in 
+several sets of variables, Chessel and Hanafi 
+[19] proposed the Multiple Co-Inertia Analysis – 
+MCOIA when the number of samples is low 
+compared to the number of variables, and Dazy 
+and Barzic [20] use Double Principal Component 
+Analysis – DPCA for these individuals and the 
+same variables. STATIS methods, have had 
+many contributions; as e.g., Jaffrenou [21] use 
+the Partial Triadic Analysis - PTA for the same 
+variables measured on the same observations; 
+Simier et al. [22] proposed the STATICO method; 
+Suazay et al. [23] presented a PTA on series of 
+cross product tables, external STATIS – (K+1)-
+STATIS with one external data set; Abdi et al. 
+[24] used DISTATIS for distance matrices; 
+Sabatier and Vivien [25] implement STATIS-4 for 
+more than two sets of data; Vivien and Sune [26] 
+used 
+Double-STATIS 
+(DO-ACT) 
+to 
+(K+1)-
+STATIS for two sets of data; Thioulouse [27] 
+developed COVSTATIS for covariance matrices 
+and COSTATIS, a co-inertia analysis of the 
+compromises 
+computed 
+by 
+the 
+PTA; 
+Bâenassâeni and Bennani Dosse [28] used 
+Power STATIS-ACT to set weights to the 
+matrices; Corrales and Rodriguez [29] developed 
+INTERSTATIS for interval valued data. A review 
+of the STATIS methods is shown in Abdi et al. 
+[30]. 
+ 
+This paper proposes the use of a new technique 
+for representing 3-way data: the Dynamic Biplot. 
+It is given that the term Dynamic Biplot has been 
+already used by Sparks et al. [31] for quality 
+control processing, considering a 2-way array. To 
+provide operational support to the theory of 
+Dynamic Biplot, it has developed a package in R 
+with a graphic user interface (GUI) that has been 
+called ‘dynBiplotGUI’.  
+ 
+The structure of this paper is as follows. First it is 
+performed a review of the Biplot methods. In the 
+next two sections it makes the working approach 
+and it develops the Dynamic Biplot. In another 
+section it presents the R package developed to 
+support Dynamic Biplot. Finally, it presents data 
+on Economic Freedom in the European Union 
+and the results obtained by applying the 
+technique exposed. 
+ 
+2. WORKING APPROACH 
+ 
+In Biplot methods, variables are generally 
+represented by vectors where the direction 
+responds to the one that best represents the 
+change in each variable. There are infinite 
+possible 
+factorizations 
+in 
+low-level 
+decompositions to produce rows and columns 
+markers: depending on the chosen one, different 
+properties are obtained. Among the biplot 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+3 
+ 
+methods developed by Gabriel [1], GH-Biplot 
+provides high-quality for columns and JK-Biplot 
+representing rows. Galindo [7] developed the HJ-
+Biplot which performs high quality for rows and 
+columns simultaneously. 
+ 
+The approach presented in this paper is radically 
+different to the method used by Sparks et al. [31] 
+for the Dynamic Biplot, which is a table of 2-way 
+data where one adds the number of cases that 
+occur. It aims to study the relationship of a set of 
+data that occurs more than once, i.e. of a 3-way 
+dataset. It is common, when working with 
+economic data, to study a certain magnitude 
+(GDP, production ...) concerning different entities 
+(countries, companies...) in repetitive situations 
+(year, production cycles...). 
+ 
+The STATIS method puts its focus on the 
+analysis of individuals while in the Dual STATIS 
+focus are the variables [14,17]. Both methods 
+treat the data in three steps. (i) Computing the 
+interstructure of the data matrices, diagonalizing 
+a matrix of scalar products between tables.       
+(ii) Computing the compromise matrix, a linear 
+combination of the initial tables with the aim of 
+constructing a mean table of maximum inertia. 
+(iii) Performing the analysis of the intrastructure 
+and trajectories, summarizing the variability of 
+the tables in comparison to the common 
+structure defined by the compromise matrix. 
+ 
+Compared to STATIS methods that achieve the 
+common part of all matrices and calculate the 
+trajectories of individuals or variables, the 
+Dynamic Biplot method proposed for us starts 
+with the best representation of a given situation 
+and simultaneously obtains both trajectories. 
+ 
+The nomenclature used is: C is a data cube of 
+dimension n × p × q; the 3rd way are the 
+situations and t is the reference situation; the n × 
+p data matrix Y represents the baseline t, and its 
+decomposition is Y=AB’=UDV’; z, x are generic 
+vectors and s, o, are their projections; J=UD, 
+K=V, 
+G=U, 
+H=VD 
+call 
+to 
+different 
+decompositions of matrix Y. Z is a general matrix 
+with elements to be projected and L, M 
+corresponding to the row and column projections. 
+The n × q matrix Zj, contains the values of the 
+variable j in different situations, being 1 ≤ j ≤ p. 
+The p × q matrix Xi, contains values of the 
+individual i in different situations, with 1 ≤ i ≤ n. 
+ 
+3. THE DYNAMIC BIPLOT 
+ 
+Let C be a 3-way data matrix: Individuals are 
+entered in rows, variables in columns, and 
+situations 
+for 
+various 
+occasions; 
+usually 
+correspond to the same subjects and variables 
+but measured at different times. Is set t as the 
+base situation according to which will be 
+represented the dynamism of the rest; t is the 
+situation that wants to analyze and it is 
+considered to have the more explanatory 
+information for our analysis. 
+ 
+The proposed technique, the Dynamic Biplot, 
+performs a multivariate analysis of the baseline 
+using biplot analysis, providing us with the best 
+multivariate 
+information 
+between 
+variables, 
+individuals and relationships between them. The 
+first step corresponds to the static analysis of our 
+procedure, according the biplot criterion. The 
+second step, the dynamic analysis, projects the 
+rest of the situations it wants to analyze on the 
+biplot graph obtained in the previous step. The 
+result is the set of trajectories of individuals and 
+variables on the reference situation biplot. 
+ 
+3.1 Step 1, Static Analysis 
+ 
+Let C be the data matrix, data cube, of dimension 
+n × p × q (Fig. 1a). They are extracted from these 
+data those corresponding to a time t, which will 
+be used as a reference, obtaining a matrix Y of 
+dimension n × p. Factorizing matrix Y=AB’ 
+through the singular values decomposition 
+proposed by Eckart and Young [3] aiming to 
+achieve a low rank approximation of the matrix in 
+the sense of least squares, is obtains Y=UDV’. 
+Matrices A and B contain markers of rows and 
+columns respectively. Matrices U and V contain 
+the eigenvectors, and the matrix 
+D, the 
+eigenvalues. 
+Depending 
+on 
+the 
+chosen 
+factorization and adapting the nomenclature A 
+and B to the customary name, named J=UD, 
+K=V, G=U, H=VD, which creates the different 
+types of biplot: JK-Biplot, GH-Biplot y HJ-Biplot. 
+With markers calculated, it is produced the biplot 
+graph of the reference situation t. 
+ 
+Galindo [7] shows us how the HJ-Biplot methods 
+are interpreted, which is based on simple 
+geometric 
+concepts. 
+Below 
+those 
+basic 
+interpretational rules are presented: (i) The 
+distances among row markers are interpreted as 
+an inverse function of similarities, in such a way 
+that closer markers (objects) are more similar;  
+(ii) The lengths of the column markers (vectors) 
+approximate the standard deviation of the 
+variables; (iii) The cosines of the angles among 
+the column vectors approximate the correlations 
+among variables in such a way that small acute 
+angles are associated with variables with high 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+4 
+positive correlations; obtuse angles near to the 
+straight angle are associated with variables with 
+high negative correlations and right angles are 
+associated with non-correlated variables. In the 
+same way, the cosines of the angles among the 
+variable 
+markers 
+and 
+the 
+axes 
+(Principal 
+Components) 
+approximate 
+the 
+correlations 
+between them; (iv) The order of the orthogonal 
+projections of the row markers (points) onto a 
+column marker (vector) approximates the order 
+of the row elements (values) in that column. 
+ 
+3.2 Step 2, Representation of Elements 
+onto the Biplot 
+ 
+The goal in this second step is to project, onto 
+the biplot obtained in the previous step, the rest 
+of situations included in the cube C, retaining 
+structures previously computed in t. These data 
+should 
+not be taken 
+into account when 
+calculating the biplot reference markers because 
+they correspond to past situations that do not 
+have to change the context under consideration. 
+However, it is important to represent their 
+positions and evolution in order to observe the 
+dynamic of its evolution. To incorporate new 
+information in the graph, must be found the 
+markers in the reduced dimension space 
+representing the element to be projected. Those 
+markers must be optimal in the sense of least 
+squares. Our proposal works in a similar way as 
+Graffelman and Aluja-Banet [32]. 
+ 
+3.2.1 Representation of variables onto the 
+reference biplot 
+ 
+Let z be a column vector with n values of a 
+variable to be incorporated into the biplot already 
+obtained and s the projection vector as
+discussed above. The best fitting projection 
+vector to z will be that minimizing the sum of the 
+squared differences between them. Is obtained 
+vector  performing the scalar product between 
+the orthogonal matrix A, with row markers, and 
+vector z. This vector is optimum if the sum of 
+squared errors is minimum. Calculating and 
+setting to zero the first order derivative, is 
+obtained 
+the 
+solution 
+to the minimization 
+problem:  
+ 
+ = (′)′ 
+(1) 
+ 
+ 
+The solution to (1) are the regression coefficients 
+obtained from the regression of the variable to be 
+projected and the columns of the matrix with row 
+markers 
+obtained 
+in 
+the 
+singular 
+value 
+decomposition of the data matrix in the reference 
+situation t. As the regression variables are 
+orthogonal, their coefficients are independent. 
+ 
+3.2.2 Representation of individuals onto the 
+reference biplot 
+ 
+If you expect to add the position of an individual, 
+i.e., a row, in the previously calculated biplot, the 
+procedure is similar. Let x be a column vector 
+with p values of the individual to be incorporated 
+and let o be the point in the biplot plane that 
+represents it. It is assumed that the vector x’ is 
+centered by the reference situation mean vector. 
+Is 
+obtained 
+the 
+vector 
+for 
+the 
+additional point by calculating the scalar product 
+of o with all the variables’ vectors represented in 
+the biplot, which define the rows of the matrix B. 
+This value is optimum if the sum of squared 
+errors is minimum. Calculating and setting to 
+zero the first order derivative is obtained the 
+solution to the minimization problem: 
+ 
+	 = (
+′
+)
+′ 
+    (2) 
+ 
+The solution to     (2) is again the regression 
+coefficients between the point to be projected 
+and the columns of the matrix B. The coefficients 
+are independent since the columns of the matrix 
+B are orthogonal. 
+ 
+Generalizing the foregoing, if Z is the matrix with 
+several variables or individuals that it is intended 
+to project in the biplot and LM 
+is its 
+decomposition, 
+they 
+can 
+be 
+obtained 
+for 
+equations (1) and     (2) respectively:  
+ 
+ 
+ 
+3.2.3 Trajectories 
+ 
+Being t the reference situation, they can be 
+extracted from the data cube C as many two-
+dimensional arrays as variables they have, i.e., p 
+matrices of dimension n × q; the scalar n 
+corresponds to the number of individuals (rows) 
+of Y, and q to the number of values that the 
+variable has had along the q situations. Let Zj be 
+each of the matrices thus obtained, with 1 ≤ j ≤ p, 
+once the data has been centered. On Fig. b, it 
+can be seen the representation of one of the 
+matrices. Let us proceed to project Zj in the biplot 
+graph obtained in step 1 as seen previously. If 
+are joined each of the points representing the 
+values that the variable has had in different 
+situations, and in the right order, can be obtained 
+
+the path followed by this variable 
+the variables and points represente
+varying 
+j 
+conveniently, 
+is 
+o
+representation of the trajectories of 
+ 
+Similarly, once the reference situati
+set in the data cube C, they can 
+two-dimensional arrays as individ
+matrices of dimension p × q where
+corresponds 
+to 
+the 
+number 
+(columns) of Y and q to the num
+that individuals have had along the
+Let Xi be each of the matrices thus 
+1 ≤ i ≤ n, once the data have been 
+the value of the mean of the variable
+it can be seen the representation 
+matrices. Projecting Xi in the 
+obtained in step 1 and joining 
+representing the values that an i
+had in different situations, and in th
+is obtained the path followed by the
+relation to the variables and points
+by situation t. Varying i convenient
+the representation of the trajec
+individuals.  
+ 
+3.2.4 Dynamic biplot properties 
+ 
+The biplot analysis of a reference c
+the properties of its chosen facto
+correct interpretation will give us 
+the static situation t. The elements
+different situations retain properti
+those of the chosen factorization 
+reference situation. 
+ 
+4. THE DYNBIPLOT SOFTWAR
+ 
+To provide operational support t
+behind the Dynamic Biplot me
+developed a package in R with a G
+Interface 
+(GUI) 
+that 
+it 
+has 
+dynBiplotGUI. It covers everything o
+to make and represent the Dynamic
+ 
+ 
+(a) 
+Fig. 1. Data cube representing th
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article
+ 
+5 
+in relation to 
+d at time t. By 
+obtained 
+the 
+all variables. 
+on t has been 
+get as many 
+duals, i.e., n 
+e the scalar p 
+of 
+variables 
+ber of values 
+e q situations. 
+obtained, with 
+centered with 
+es. On Fig. 1c 
+of one of the 
+biplot graph 
+every point 
+ndividual has 
+he right order, 
+e individual in 
+s represented 
+tly is obtained 
+ctories of all 
+context has all 
+orization. The 
+knowledge of 
+s projected in 
+es similar to 
+regarding the 
+RE 
+to the theory 
+ethod, it has 
+Graphical User 
+been 
+called 
+one may need 
+c Biplot.  
+Fig. 2. shows the appearance o
+window with the loaded data cube.
+ 
+The package dynBiplotGUI contain
+dynBiplot, which performs the Dyn
+processing is carried out with GU
+done using Spanish, English, 
+Portuguese. The outcome is 
+numerical results of the analysis. 
+ 
+The program dynBiplot contains fo
+allow us to carry out each of the 
+for the analysis, including guidin
+minimize errors. The first panel, 
+Panel’, allows to load the data on
+and to prepare its structure d
+whether they are 2-way or 3-w
+format of the individuals and varia
+the ‘Format Panel’. In the ‘Variab
+can be selected items, individuals 
+which they can be used in the cal
+model. Finally, the ‘Analysis Pane
+the necessary options to customiz
+and the chart. 
+ 
+Once the graph is obtained, it 
+change the settings and get a new
+times as necessary, without havin
+program and run it again. On the c
+can make the zoom needed to get 
+ 
+5. EVOLUTION 
+OF 
+THE 
+FREEDOM IN THE EUROPE
+ 
+5.1 Introduction 
+ 
+As result of the Economic and M
+(EMU), signed in 1992 by the Maa
+the European Union (EU) has a se
+and monetary policies that app
+member countries [33]. This treat
+the single currency, the euro, used
+countries forming the 'euro area'
+2013, Croatia has become part of t
+ 
+(b) 
+(c) 
+ 
+he reference situation t (a); matrix situations for v
+and the individual yi (c) 
+ 
+ 
+ 
+ 
+e no.BJAST.20289 
+ 
+ 
+of the program 
+ 
+ns the program 
+amic Biplot. All 
+UI, and can be 
+French and 
+graphical and 
+our panels that 
+tasks required 
+ng the user to 
+namely ‘Data 
+nto the module 
+depending on 
+way data. The 
+bles is done in 
+bles Panel’ you 
+and variables, 
+lculation of the 
+el’ contains all 
+ze the analysis 
+is possible to 
+w one as many 
+ng to close the 
+chart itself, one 
+more detail. 
+ECONOMIC 
+EAN UNION 
+Monetary Union 
+astricht Treaty, 
+et of economic 
+ply to its 27 
+ty gave rise to 
+d by the 17 EU 
+. On July 1st, 
+the EU. 
+ 
+variable yj (b) 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+6 
+ 
+ 
+ 
+Fig. 2. Window of dyn Biplot with the loaded data 
+ 
+Every year, since 1995, The Heritage Foundation 
+in association with The Wall Street Journal 
+releases the Economic Freedom Index [34], 
+which follows the theory of Adam Smith (1776). 
+The Heritage Foundation considers that if the 
+score of the Index of Economic Freedom of a 
+country is higher than 80, it has 'truly free' 
+economic policies; if the score is between 70-80, 
+those policies are 'mostly free', if between 60-70, 
+they are 'moderately free', if between 50-60, 
+‘mostly unfree’ and if the score is less than 50, it 
+is considered a country whose economy is 
+'repressed'. In the EU there are neither ‘truly free’ 
+countries nor economically 'repressed' ones. 
+Greece is the only EU country that reaches the 
+level of 'mostly unfree’ economic policies. 
+ 
+5.2 Materials and Methods 
+ 
+The data were used for this study has been 
+obtained from ‘The Heritage Foundation’ website 
+(www.heritage.org). It is an array of data which 
+includes the Index of Economic Freedom and the 
+ten specific indices that measure each of its 
+components for the countries of the European 
+continent, from which are selected the 28 
+countries comprising the EU. The result is a 
+matrix that can be converted into a data cube 
+with 28 countries (rows), and 11 variables 
+(columns) measured in 9 periods, corresponding 
+to the years between 2005 and 2013, both 
+included. It was added a variable to distinguish 
+the countries belonging to the euro area and 
+another to qualify the score on the overall index. 
+All scores of the freedom index range between 0 
+and 100. 
+The names used for the variables are listed 
+below. The overall index is Index of Economic 
+Freedom; in the area Rule of law: Property 
+Rights, Freedom from Corruption; in the area 
+Limited 
+Government: 
+Fiscal 
+Freedom, 
+Government Spending; in the area Regulatory 
+Efficiency: Business Freedom, Labor Freedom, 
+Monetary Freedom; in the area Open Markets: 
+Trade Freedom, Investment Freedom, Financial 
+Freedom.  
+ 
+Subsequently, using the technique of Dynamic 
+Biplot presented above, it has been analyzed the 
+relationship of each of the EU countries with the 
+index of economic freedom in 2013 and the 
+changes that took place, indices and countries, 
+to reach that situation, obtaining their trajectories. 
+It has been used in 2013 to be the closest of the 
+data processed. The method allows to set the 
+baseline for any of the periods. 
+ 
+5.3 Dynamic Biplot 
+ 
+5.3.1 Step 1: static analysis 
+ 
+It has been made the first step of the Dynamic 
+Biplot with the data cube containing the indices 
+of economic freedom (variables), the member 
+countries of the EU (individuals) and index 
+scores between 2005 and 2013, both included 
+(situations). In this study, it is taken as reference 
+situation the one corresponding to year 2013. 
+Obviously, this reference matrix can be changed. 
+ 
+This first step corresponds to the static analysis 
+of the data and the results are shown in Fig. 3, 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+7 
+ 
+where it presents the HJ-Biplot analysis of the 
+centered data. The plane 1-2 accounts for 78% 
+of the variability. Those elements, rows and 
+columns, which do not accumulate sufficient level 
+inertia (<300) have been hidden. Different marks 
+have been used for countries belonging () or 
+not (•) to the eurozone. Variables that are not 
+well represented in this plane and that have been 
+hidden are the Monetary Freedom and Trade 
+Freedom indices. The countries that have been 
+hidden are Cyprus, Malta and Spain. 
+ 
+Plane axis 1 (62.3%) is highly correlated with 
+variables 
+of 
+the 
+Rule 
+of 
+law 
+(Property, 
+Corruption) area. Axis 2 (16.12%) is correlated 
+with Labor Freedom and, to a lesser extent, by 
+the Index of Economic Freedom. Variables of the 
+Limited Government (Fiscal, Gov. Spending) 
+area, 
+Financial 
+Freedom 
+and 
+Investment 
+Freedom are plane variables. The Index of 
+Economic Freedom is correlated with variables of 
+the Open Markets (Trade, Investment, Financial) 
+and Rule of law (Property, Corruption) areas and 
+with 
+the 
+Labor 
+Freedom 
+index, 
+being 
+independent of the Business Freedom and 
+Limited Government (Fiscal, Gov. Spending) 
+area variables. 
+ 
+Regarding the position of different countries 
+according to variables they can be observed 
+different groups; a group of countries are well 
+positioned in relation to the Index of Economic 
+Freedom and the Open Markets (Investment, 
+Financial) area variables, like Ireland (IRL), 
+Estonia (EST), UK (GBR) and Austria (AUT). 
+Most countries with a good score on the overall 
+index are also well positioned in the Rule of law 
+area 
+(Property, 
+Corruption), 
+highlighting 
+Denmark (DNK); however, some countries with 
+good overall score as Czech Republic (CZE) and 
+Lithuania (LTU), have a poor score in this area, 
+like most countries outside the eurozone, which 
+are well positioned in the Limited Government 
+area. Another group of countries stand out 
+regarding Business Freedom, like Denmark 
+(DNK), 
+Sweden 
+(SWE), 
+Finland 
+(FIN), 
+Netherlands (NLD), Belgium (BEL) and Germany 
+(DEU). Countries like Croatia (HRV), Italy (ITA), 
+Portugal (PRT), Slovenia (SVN) and Greece 
+(GRC) get bad scores in almost all areas and 
+especially in Labor Freedom. France (FRA) 
+meets poorly in the Limited Government area 
+(Fiscal, Gov. Spending) and Labor Freedom 
+index getting its best score in Business Freedom. 
+ 
+ 
+ 
+Fig. 3. Results of Step 1 - Static HJ-Biplot analysis of economic freedom indices, year 2013. It 
+distinguishes between countries in the euro area () and non-euro area (•) 
+-100
+-50
+0
+50
+-60
+-40
+-20
+0
+20
+40
+Axis 1 :  62.3 %
+Axis 2 :  16.12 %
+AUT
+BEL
+BGR
+CZE
+DNK
+EST
+FIN
+FRA
+DEU
+GRC
+HUN
+IRL
+ITA
+LVA
+LTU
+LUX
+POL
+PRT
+ROU
+SVK
+SVN
+SWE
+NLD
+GBR
+HRV
+Economic Freedom
+Property
+Corruption
+Fiscal
+Gov. Spending
+Business
+Labor
+Investment
+Financial
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+8 
+ 
+5.3.2 Step 2: dynamic analysis 
+ 
+The second step of the Dynamic Biplot analysis 
+allows us to study the dynamics of the model by 
+observing the trajectories of both, economic 
+freedom (Fig. 4) and countries (Fig. 6). Each 
+trajectory is the path followed by every element 
+up to the position corresponding to the reference 
+situation, in 2013.  
+ 
+Zooming in Fig. 4 allows us to have a better look 
+at the trajectories (Fig. 5). Similarly one could 
+perform zoom rest of the figure. 
+ 
+In Fig. 5 there is a short path for the Index of 
+Economic Freedom with a decrease up to year 
+2007 followed by a slight recovery. There is also 
+a departure from Rule of law (Property, 
+Corruption) 
+area 
+variables. 
+Freedom 
+from 
+Corruption 
+and 
+Property 
+Rights 
+(Property) 
+variables show a decline up to 2010 and a 
+subsequent recovery to the current situation; it is 
+also seen a shift towards the global index 
+variable. 
+ 
+The trajectory of the Financial Freedom index 
+which, up to year 2009, has decreased and 
+shifted towards axis 1 followed by a decline in 
+freedom until 2012. The Labor Freedom variable 
+grew 
+throughout 
+the 
+studied 
+period. 
+The 
+Investment Freedom variable shows a decrease 
+in almost all the studied time periods. The 
+Business Freedom variable appears displaced 
+towards the independence of the Index of 
+Economic Freedom. 
+ 
+The variables of the Limited Government area, 
+Government Spending freedom grew until 2007, 
+declining after up to 2010 and recovering ever 
+since; Fiscal Freedom has had an erratic 
+trajectory with a trend to growth, although in the 
+last period has decreased slightly. 
+ 
+Country trajectories are represented in Fig. 6. 
+The label for every country is located on the 
+reference situation, in this case, at the end point. 
+ 
+Results show that Sweden (SWE) has increased 
+its Business Freedom until 2009 declining 
+thereafter but increasing the Index of Economic 
+Freedom. Finland (FIN) and Belgium (BEL) have 
+trajectories with ups and downs but in opposite 
+directions. Germany (DEU) has also improved its 
+global index, like France (FRA), although at 
+different levels. Portugal (PRT) suffers decline. 
+The trajectories of Italy (ITA) and Greece (GRC) 
+show a strong decrease in economic freedom, 
+while the newly incorporated Croatia (HRV), 
+Poland (POL) and Romania (ROU) have great 
+increments. Slovenia (SVN) has ups and downs. 
+The Czech Republic (CZE) shows the long 
+trajectory, increasing the Index of Economic 
+Freedom, Labor Freedom, Fiscal Freedom and 
+Government Spending scores. Trajectories of 
+other countries have ups and downs. 
+ 
+Zooming in Fig. 6 allows us to have a better look 
+at the trajectories (Fig. 7). Similarly one could 
+perform zoom rest of the figure.  
+ 
+Fig. 7 corresponds to countries with more 
+economic freedom. While Denmark (DNK) and 
+the Netherlands (NDL) are stable, Austria (AUT) 
+has a shift to Investment Freedom, Financial 
+Freedom and the Index of Economic Freedom. 
+United Kingdom (GBR) and Ireland (IRL) have 
+major setbacks in the Index of Economic 
+Freedom and in Labor Freedom. 
+ 
+6. DISCUSSION 
+ 
+In this paper it has been analyzed the 
+relationships between the indices that measure 
+the various expressions of economic freedom 
+and the positioning of the EU member countries 
+regarding to them. Although most EU countries 
+get good scores in the Index of Economic 
+Freedom, 
+not 
+all 
+the 
+areas 
+are 
+equally 
+developed. The Rule of law area (zone non-
+euro), especially the indicator Government 
+Spending (both areas), and the Labor Freedom 
+(eurozone) are those with lower scores. 
+ 
+It has been seen in our analysis that the EU has 
+well developed Property Rights, being this index 
+one of the indicators that helps to discriminate 
+among different countries. However, concerning 
+intellectual property policies, a law reform is 
+needed in order to adapt to the reality we are 
+living in, being a unique opportunity for the 
+economic development of the EU [35]. 
+ 
+The anticorruption policy, which is another 
+indicator that contributes to discrimination among 
+countries, also gives the desired results [36]. 
+Clark Williams and Seguí-Mas [37] say that 
+corruption is one problem that must be cut down 
+in all societies. The EU, European Council [38], 
+aims to promote policies against corruption by 
+adopting the ‘Stockholm Programme’ although 
+not all EU countries get the same results against 
+corruption as showed in this study and in those 
+carried out by other authors [39–41]. 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+9 
+ 
+ 
+ 
+Fig. 4. Step 2 dynamic biplot: Trajectory of indices of economic freedom, ending in the 
+reference year, 2013 
+ 
+ 
+ 
+Fig. 5. Zoom to better see the trajectories of the variables, each path ends in the reference year 
+2013 
+-100
+-50
+0
+50
+-60
+-40
+-20
+0
+20
+40
+Axis 1 :  62.3 %
+Axis 2 :  16.12 %
+AUT
+BEL
+BGR
+CZE
+DNK
+EST
+FIN
+FRA
+DEU
+GRC
+HUN
+IRL
+ITA
+LVA
+LTU
+LUX
+POL
+PRT
+ROU
+SVK
+SVN
+SWE
+NLD
+GBR
+HRV
+Economic Freedom
+Property
+Corruption
+Fiscal
+Gov. Spending
+Business
+Labor
+Investment
+Financial
+-100
+-80
+-60
+-40
+-20
+0
+-60
+-40
+-20
+0
+Axis 1 :  62.3 %
+Axis 2 :  16.12 %
+AUT
+BEL
+DNK
+EST
+FIN
+DEU
+IRL
+LUX
+SWE
+NLD
+GBR
+Economic Freedom
+Property
+Corruption
+Business
+Labor
+Investment
+Financial
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+10 
+ 
+ 
+ 
+Fig. 6. Step 2 dynamic biplot: Trajectory of countries, ending in the reference year, 2013 
+ 
+ 
+ 
+Fig. 7. Zoom to better see the trajectories of the countries, each path ends in the reference 
+year 2013 
+ 
+-100
+-50
+0
+50
+-60
+-40
+-20
+0
+20
+40
+Axis 1 :  62.3 %
+Axis 2 :  16.12 %
+AUT
+BEL
+BGR
+CZE
+DNK
+EST
+FIN
+FRA
+DEU
+GRC
+HUN
+IRL
+ITA
+LVA
+LTU
+LUX
+POL
+PRT
+ROU
+SVK
+SVN
+SWE
+NLD
+GBR
+HRV
+Economic Freedom
+Property
+Corruption
+Fiscal
+Gov. Spending
+Business
+Labor
+Investment
+Financial
+-100
+-80
+-60
+-40
+-20
+0
+-60
+-50
+-40
+-30
+-20
+-10
+0
+10
+Axis 1 :  62.3 %
+Axis 2 :  16.12 %
+AUT
+BEL
+DNK
+EST
+FIN
+DEU
+IRL
+LUX
+SWE
+NLD
+GBR
+Economic Freedom
+Property
+Corruption
+Business
+Labor
+Investment
+Financial
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+11 
+ 
+The EU hosts some of the most advanced 
+economies, whereas, even with common EU 
+policies, some others are not very developed. 
+But as you can see in Europa–Press Releases 
+[42], the Commission is imposing to most 
+countries an Excessive Deficit Procedure (EDP). 
+For the EU, our analysis shows that economic 
+freedom is barely influenced by measures to 
+restrict governments. We should not forget that 
+all countries except Greece, have a good score 
+on the Index of Economic Freedom. 
+ 
+As indicated by Miller et al. [34] in the 2013 Index 
+of Economic Freedom, France, Greece, Italy, 
+Portugal and the UK had similar scores two 
+decades ago, while Sweden, Germany, Czech 
+Republic, Poland, Romania and Bulgaria had 
+their best values in 2013. In our analysis we have 
+seen that, for the analyzed period, France and 
+Portugal improve their score, while Greece, Italy 
+and Britain worsen it. 
+ 
+The Index of Economic Freedom of The Heritage 
+Foundation has been used to apply various 
+techniques. Tausch [43] used it along with other 
+variables with ordinary least square standard 
+regression analysis to analyze the four freedoms: 
+goods, capital, labor and services of EU. Yerelí 
+[44] 
+discussed 
+the 
+economic 
+freedom 
+of 
+countries aspiring to EU membership, concluding 
+that “most of the transition economies which 
+joined the EU after 2004, have a regular 
+improvement on their level of economic freedom” 
+an issue that we have seen with the case of 
+Croatia.  
+ 
+In addition to the Index of Economic Freedom 
+developed by The Heritage Foundation, there are 
+other similar indices, as the one developed by 
+the Fraser Institute of Canada or The European 
+Economic Freedom Index [45]. Using these 
+indices, authors as Sell [46] make a classification 
+of EU countries after the 2004 expansion. Hall et 
+al. [47] discussed the differences in economic 
+freedom, concluding that “we find evidence that 
+the European Union was, on net, positive for 
+economic freedom… Further research is needed 
+to understand exactly how EU membership 
+affects economic freedom”. Our study poses an 
+advance on this line of research.  
+ 
+7. CONCLUSIONS 
+ 
+The Dynamic Biplot developed in this paper and 
+applied to the data presented allows us to reach 
+the following conclusions: 
+ 
+The Dynamic Biplot method has proven to be 
+a new approach to data processing 3-way. 
+Its use in conjunction with the developed 
+dynBiplotGUI package, obtains results easy 
+to represent and interpret. 
+ 
+The 
+Index 
+of 
+Economic 
+Freedom 
+is 
+correlated with the Regulatory Efficiency and 
+Rule of law areas and Labor Freedom index, 
+being independent of the Business Freedom 
+and Limited Government area variables. The 
+variables of the Rule of law area (Property 
+Rights and Freedom from Corruption) are the 
+ones that better discriminate among EU 
+countries. Both variables have a shift toward 
+the Index of Economic Freedom. 
+ 
+Countries outside the eurozone enjoy higher 
+economic freedom although some of them 
+have weaker economies than others in the 
+eurozone, such as France and Italy. Most 
+countries with good score on the overall 
+index, have also a good performance in the 
+Rule of law area and most countries in the 
+non-euro zone are well positioned in the area 
+of Limited Government. 
+ 
+Countries like Italy, Portugal, Slovenia and 
+Greece have bad scores in most areas, 
+especially in Labor Freedom. France and 
+Croatia also have little Labor Freedom but 
+perform better in Business Freedom and the 
+Limited Government area respectively. 
+ 
+Croatia, recently incorporated to the EU, 
+shows an improvement in its economic 
+freedom trajectory. 
+ 
+COMPETING INTERESTS 
+ 
+Authors have declared that no competing 
+interests exist. 
+ 
+REFERENCES 
+ 
+1. 
+Gabriel KR. The biplot graphic display of 
+matrices with application to principal 
+component analysis. Biometrika; 1971; 
+58(3):453-67. 
+2. 
+Gabriel 
+KR, 
+Odoroff 
+CL. 
+Biplots 
+in 
+Biomedical Research. Stat Med Stat Med. 
+1990;9(5):469-85. 
+3. 
+Eckart C, Young G. A principal axis 
+transformation for non-hermitian matrices. 
+Bull Amer Math Soc Bull Am Math Soc. 
+1939;45(2):118-22.  
+4. 
+Householder 
+AS, 
+Young 
+G. 
+Matrix 
+approximation and latent roots. Am Math 
+Mon. 1938;45(3):165-71. 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+12 
+ 
+5. 
+Greenacre M. Theory and applications of 
+correspondence analysis. London; Orlando  
+Fla.: Academic Press; 1984 
+6. 
+Golub GH, Reinsch C. Singular value 
+decomposition and least squares solutions. 
+Numer Math Numer Math. 1970;14(5):   
+403-20. 
+7. 
+P. Galindo An Alternative simultaneous 
+Representation: HJ-Biplot. Question. 1986; 
+10 (1).  
+8. 
+Martı́n-Rodrı́guez J, Galindo-Villardón MP, 
+Vicente-Villardón JL. Comparison and 
+integration of subspaces from a biplot 
+perspective. 
+J 
+Stat 
+Plan 
+Inference. 
+2002;102(2):411-23. 
+9. 
+Vallejo-Arboleda A, Vicente-Villardón JL, 
+Galindo-Villardón MP. Canonical STATIS: 
+biplot 
+analysis 
+of 
+multi-table 
+group 
+structured data based on STATIS-ACT 
+methodology. Comput Stat Data Anal. 
+2007;51(9):4193-205.  
+10. 
+Escoufier 
+Y. 
+The 
+vector 
+processing 
+variables. Biometrics. 29(4):751-60.  
+11. 
+Escoufier Y. The joint analysis of multiple 
+data matrices. Biometrics Time. 1980;59-
+72. 
+12. 
+Krzanowski 
+WJ. 
+Between-groups 
+comparison of principal components. J Am 
+Stat Assoc. 1979;74(367):703-7. 
+13. 
+Krzanowski 
+WJ. 
+Between-group 
+comparison of principal components some 
+sampling results. J Stat Comput Simul. 
+1982;15(2-3):141-54. 
+14. 
+Lavit C, Bernard M-C, Pérez-Hugalde C, 
+Escoufier Y. Analyse conjointe de tableaux 
+quantitatifs. 
+Paris; 
+Barcelone 
+[etc.]: 
+Masson; 1988. 
+15. 
+Flury BN. Common principal components 
+in 
+K 
+groups. 
+J 
+Am 
+Stat 
+Assoc. 
+1984;79(388):892-8. 
+16. 
+The Hermier H. Plants at three tables 
+structuring indices statistics: Theory and 
+application 
+of 
+joint 
+analysis 
+method. 
+[Montpellier]: University of Science and 
+Technology of Languedoc; 1976. 
+17. 
+Lavit C, Escoufier Y, Sabatier R, Traissac 
+P. The ACT (STATIS Method). 1994.  
+18. 
+Pagès J, Escoufier B. Multiple factor 
+analysis. Paris: Institute of statistics, 
+University Pierre and Marie Curie; 1984. 
+19. 
+Chessel D. Mr Hanafi analyses co-inertia K 
+points clouds. Applied Rev Stat. 1996; 
+44:35-60.  
+20. 
+20Dazy F, JF Barzic. Scalable data 
+analysis: Methods and applications. Paris: 
+Editions Technip; 1996. 
+21. 
+Jaffrenou PA. On the families gone 
+variables and vector analysis: Basics and 
+application to the algebraic Description 
+Statistics; 1978. 
+22. 
+Simier 
+M, 
+Hanafi 
+M, 
+Chessel 
+D. 
+Simultaneous approach k tables torques. 
+Book of abstracts of the 28th days of 
+communications statistics. Québec: Laval 
+University. 1996;673-6.  
+23. 
+Suazay L, Hanafi M, Qannari E, Schlich P. 
+Analyse de K + 1 Tableaux à l’Aide de la 
+Méthode 
+STATIS: 
+Application 
+en 
+Évaluation 
+Sensorielle. 
+Montpellier 
+(France). 2006;1-23. 
+24. 
+Abdi H, Valentin D, Chollet S, Chrea C. 
+Analyzing assessors and products in 
+sorting 
+tasks: 
+Distatis, 
+theory 
+and 
+applications. Food Qual Prefer. 2007; 
+18(4):627-40.  
+25. 
+Sabatier R, Vivien M. A new linear method 
+for analyzing four-way multiblock tables: 
+Statis-4. J Chemom [Internet]. 2008;22(6): 
+399-407.  
+26. 
+Vivien M, Sune F. Two four-way multiblock 
+methods 
+used 
+for 
+comparing 
+two 
+consumer panels of children. Food Qual 
+Prefer. 2009;20(7):472-81.  
+27. 
+Thioulouse J. Simultaneous analysis of a 
+sequence of paired ecological tables: A 
+comparison of several methods. Ann Appl 
+Stat. 2011;5(4):2300-25.  
+28. 
+Bâenassâeni 
+J, 
+Bennani 
+Dosse 
+M. 
+Analyzing multiset data by the power 
+STATIS-ACT Method. Adv Data Anal 
+Classif. 2012;6(1):49-65. 
+29. 
+Corrales D, Rodríguez O. Interstatis: Statis 
+method 
+for 
+data 
+type 
+interval. 
+Rev 
+Matemática Teoría Apl. 2014;21(1):73. 
+30. 
+Abdi H, Williams LJ, Valentin D, Bennani-
+Dosse M. STATIS and DISTATIS: optimum 
+multitable principal component analysis 
+and three way metric multidimensional 
+scaling. Wiley Interdiscip Rev Comput Stat. 
+2012;4(2):124-67. 
+31. 
+Sparks R, Adolphson, Allan, Phatak, 
+Aloke. Multivariate process monitoring 
+using the dynamic biplot. Rev Int Stat. 
+1997;65(3):325. 
+32. 
+Graffelman J, Aluja-Banet T. Optimal 
+representation of supplementary variables 
+in 
+biplots 
+from 
+principal 
+component 
+analysis and correspondence analysis. 
+Biom J Biom Z. 2003;45(4):491. 
+33. 
+Hitiris T. European Union Economics; 
+2003.  
+34. 
+Miller T, Holmes K, Feulner EJ. 2013 index 
+of economic freedom. Washington, D.C.; 
+
+ 
+ 
+ 
+ 
+Egido and Galindo; BJAST, 11(3): 1-13, 2015; Article no.BJAST.20289 
+ 
+ 
+ 
+13 
+ 
+New York, N.Y. Heritage Foundation; Wall 
+Street Journal; 2013. 
+35. 
+Hargreaves I, UK Intellectual Property 
+Office. Digital opportunity a review of 
+intellectual 
+property 
+and 
+growth: 
+An 
+Independent Report; 2011.  
+36. 
+Persson T. Do Political Institutions Shape 
+Economic Policy? Econometrica. 2002; 
+70(3):883-905.  
+37. 
+Clark Williams C, Seguí-Mas E. Corporate 
+Governance and Business Ethics in the 
+European Union: A Cluster Analysis. J 
+Glob Responsib. 2010;1(1):98-126. 
+38. 
+European 
+Council. 
+The 
+stockholm 
+programme - An open and secure Europe 
+serving and protecting citizens [Internet]. 
+Official Journal of the European Union; 
+2010  
+39. 
+Heywood PM. Corruption in Contemporary 
+Spain. PS Polit Sci Polit. 2007;40(4):695-9. 
+40. 
+Trejo Fuentes. Corruption and Inequality in 
+the European Union. Estud Rev Soc. 
+2010;37:106-20.  
+41. 
+Jiménez A. Political risk as a determinant 
+of Southern European FDI in neighboring 
+developing countries. Emerg Mark Finance 
+Trade. 2011;47(4):59-74. 
+42. 
+Europa P releases. Commission Takes 
+Steps 
+Under 
+the 
+Excessive 
+Deficit 
+Procedure; 2013  
+43. 
+Tausch A. The ‘Four Economic Freedoms’ 
+and life quality: General tendencies and 
+some hard lessons for EU-27-Europe. 
+Rochester, NY: Social Science Research 
+Network; 2011. Report No.: ID 1924133. 
+44. 
+Yerelí AB. The effects of the enlargement 
+of EU on the Economic freedom level of 
+transitional economies. Sos Bilim Derg. 
+2007;153-75.  
+45. 
+Ronca G, Guggiola G, Bussi P, Donati D. 
+Measure economic freedom: World, in 
+Europe, in Italy. Milan: Guerini and 
+Associates; Lazard; Centre for Research 
+and Documentation "Luigi Einaudi"; 2004. 
+46. 
+Sell CW. Economic Freedom in the 25-
+Member European Union: Insights Using 
+Classification Tools. En: Weihs PDC, Gaul 
+PDW, 
+editores. 
+Classification 
+— 
+the 
+Ubiquitous Challenge [Internet]. Springer 
+Berlin Heidelberg; 2005 
+47. 
+Hall JC, Lawson RA, Wogsland R. The 
+European Union and Economic Freedom. 
+Glob Econ J. 2011;11(3). 
+_________________________________________________________________________________ 
+© 2015 Egido and Galindo; This is an Open Access article distributed under the terms of the Creative Commons Attribution 
+License (http://creativecommons.org/licenses/by/4.0), which permits unrestricted use, distribution, and reproduction in any 
+medium, provided the original work is properly cited. 
+ 
+ 
+Peer-review history: 
+The peer review history for this paper can be accessed here: 
+http://sciencedomain.org/review-history/10633 
+

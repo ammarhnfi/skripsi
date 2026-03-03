@@ -1,0 +1,1540 @@
+ 
+ 
+ANALISIS REGRESI PANEL SPASIOTEMPORAL MENGGUNAKAN  
+MODEL SPASIAL DURBIN DINAMIS PADA PREVALENSI  
+KUSTA DI PULAU JAWA 
+ 
+ABDUSSALAM AHMAD 
+DEPARTEMEN STATISTIKA 
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+INSTITUT PERTANIAN BOGOR 
+BOGOR 
+2024 
+ 
+
+ 
+ 
+
+PERNYATAAN MENGENAI SKRIPSI DAN 
+SUMBER INFORMASI SERTA PELIMPAHAN HAK CIPTA 
+ 
+Dengan ini saya menyatakan bahwa skripsi dengan judul “Analisis Regresi 
+Panel Spasiotemporal Menggunakan Model Spasial Durbin Dinamis pada 
+Prevalensi Kusta di Pulau Jawa” adalah karya saya dengan arahan dari dosen 
+pembimbing dan belum diajukan dalam bentuk apa pun kepada perguruan tinggi 
+mana pun. Sumber informasi yang berasal atau dikutip dari karya yang diterbitkan 
+maupun tidak diterbitkan dari penulis lain telah disebutkan dalam teks dan 
+dicantumkan dalam Daftar Pustaka di bagian akhir skripsi ini. 
+Dengan ini saya melimpahkan hak cipta dari karya tulis saya kepada Institut 
+Pertanian Bogor. 
+ 
+Bogor, Juli 2024 
+ 
+ 
+Abdussalam Ahmad 
+G1401201075 
+ 
+ 
+
+ABSTRAK 
+ABDUSSALAM AHMAD 
+Analisis Regresi 
+Panel 
+Spasiotemporal 
+Menggunakan Model Spasial Durbin Dinamis pada Prevalensi Kusta di Pulau Jawa. 
+Dibimbing oleh BAGUS SARTONO dan AAM ALAMUDI.  
+ 
+Kusta adalah penyakit menular kronis yang menyerang kulit dan sistem saraf. 
+Indonesia menduduki peringkat ketiga sebagai negara dengan kasus kusta 
+terbanyak pada tahun 2021, dengan Pulau Jawa berkontribusi hampir setengah dari 
+kasus tersebut. Faktor sosial ekonomi dan sosial demografi merupakan beberapa 
+faktor yang menyebabkan tingginya prevalensi penyakit ini di Pulau Jawa. Studi ini 
+bertujuan untuk memperkirakan pengaruh peubah-peubah tersebut terhadap 
+kejadian kusta di Pulau Jawa dari tahun 2017 hingga 2021 melalui analisis 
+spasiotemporal. Model yang digunakan adalah model spasial dinamis Durbin, yaitu 
+model yang menggabungkan dependensi spasial, temporal, dan spasiotemporal dari 
+peubah dependen bersama dengan lag spasial dari peubah dependen. Hasil 
+penelitian menunjukkan bahwa penggunaan matriks bobot spasial queen's 
+contiguity menghasilkan model terbaik, dengan 86,46% keragaman dalam data 
+dapat dijelaskan oleh model. Lag temporal dan spasiotemporal ditemukan 
+signifikan, keduanya berdampak positif terhadap tingkat prevalensi kusta. Peubah 
+penjelas yang ditemukan signifikan adalah harapan lama sekolah, kepadatan 
+penduduk, dan persentase sanitasi yang baik. Harapan lama sekolah di wilayah 
+tersebut ditemukan berdampak negatif terhadap tingkat prevalensi, kepadatan 
+penduduk di wilayah yang berdekatan ditemukan mempengaruhi prevalensi kusta 
+secara, dan persentase sanitasi layak di wilayah terdekat ditemukan berdampak 
+negatif terhadap prevalensi kusta, namun kedua peubah tidak mempengaruhi 
+tingkat prevalensi kusta pada daerah yang sama.  
+ 
+Kata kunci: Kusta, Model spasial Durbin dinamis, Analisis spasiotemporal. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ABSTRACT 
+ABDUSSALAM AHMAD Spatiotemporal Panel Regression Analysis Using 
+Dynamic Spatial Durbin Model on Leprosy Prevalence in Island of Java. 
+Supervised by BAGUS SARTONO and AAM ALAMUDI.  
+ 
+ 
+Leprosy is a chronic infectious disease which affects the skin and nervous system. 
+As of 2021, Indonesia ranks third as the country with highest amount of leprosy 
+case, with the Island of Java contributing nearly half of those cases. Socioeconomic 
+and sociodemographic factors are among the many aspects which caused the high 
+of prevalence within the island. This study attempts to estimate the effects of those 
+variables to leprosy incidence in Java Island from 2017 to 2021 through 
+spatiotemporal analysis. Dynamic spatial Durbin model (DSDM), a model which 
+incorporates both spatial, temporal, and spatiotemporal lag from the dependent 
+variable together with spatial lag from the dependent variable is used. The results 
+showed that the use queen’s contiguity spatial weighting matrix results in the best 
+model, with 86.46% variance within the data is able to be explained by the model. 
+Temporal and spatiotemporal lag was found to be significant, with both of them 
+positively affecting leprosy prevalence levels. The regressors that was found to be 
+significant was expected years of school, population density, and percentage of 
+proper sanitation, with expected years of school within the region was found to 
+negatively affect prevalence levels, population density in nearby regions found to 
+positively affect leprosy prevalence, and percentage of proper sanitation in nearby 
+regions was found to negatively affect leprosy prevalence. However, both variables 
+does not affect leprosy prevalence within the same region.  
+ 
+Keywords: Leprosy, Dynamic Spatial Durbin Model, Spatiotemporal Analysis.  
+
+ 
+ 
+
+ 
+ 
+ 
+Skripsi 
+sebagai salah satu syarat untuk memperoleh gelar 
+Sarjana pada 
+Program Studi Statistika dan Sains Data 
+ANALISIS REGRESI PANEL SPASIOTEMPORAL MENGGUNAKAN 
+MODEL SPASIAL DURBIN DINAMIS PADA PREVALENSI  
+KUSTA DI PULAU JAWA 
+ 
+ABDUSSALAM AHMAD 
+DEPARTEMEN STATISTIKA 
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+INSTITUT PERTANIAN BOGOR 
+BOGOR 
+2024 
+ 
+
+ 
+ 
+Tim Penguji pada Ujian Skripsi:  
+1 Ir. Mohammad Masjkur, M.S. 
+ 
+
+ 
+ 
+
+Judul Skripsi : Analisis Regresi Panel Spasiotemporal Menggunakan Model 
+Spasial Durbin Dinamis pada Prevalensi Kusta di Pulau Jawa 
+Nama 
+: Abdussalam Ahmad 
+NIM 
+: G1401201075 
+ 
+ 
+ 
+ 
+ 
+ 
+Disetujui oleh 
+Pembimbing 1: 
+Dr. Bagus Sartono, S.Si, M.Si. 
+__________________ 
+Pembimbing 2: 
+Ir. Aam Alamudi, M.Si 
+__________________ 
+ 
+ 
+ 
+ 
+ 
+ 
+Diketahui oleh 
+ 
+Ketua Departemen Statistika: 
+Dr. Bagus Sartono, S.Si. M.Si. 
+NIP 197804112005011002 
+__________________ 
+ 
+ 
+ 
+Tanggal Ujian: 
+(28 Juni 2024)      
+Tanggal Lulus: 
+() 
+
+PRAKATA 
+ 
+Puji dan syukur penulis panjatkan kepada Allah subhanaahu wa ta’ala atas 
+segala karunia-Nya sehingga karya ilmiah ini berhasil diselesaikan. Tema yang 
+dipilih dalam penelitian yang dilaksanakan sejak bulan Januari 2024 sampai bulan 
+Juni 2024 ini ialah pemodelan spasiotemporal mengenai prevalensi Kusta, dengan 
+judul “Analisis Regresi Panel Spasiotemporal Menggunakan Model Spasial Durbin 
+Dinamis pada Prevalensi Kusta di Pulau Jawa”. 
+Terima kasih penulis ucapkan kepada para pembimbing, Dr. Bagus Sartono, 
+S.Si. M.Si. dan Ir. Aam Alamudi, M.Si. yang telah membimbing dan banyak 
+memberi saran. Ucapan terima kasih juga disampaikan kepada pembimbing 
+akademik, moderator seminar, dan Ir. Mohammad Masjkur, M.S. selaku penguji 
+luar komisi pembimbing. Di samping itu, penulis juga ingin mengucapkan 
+terimakasih kepada ibunda Ambarsari Dwi Cahyani, ayah Ervan Maksum, dan 
+seluruh anggota keluarga yang telah memberikan dukungan, doa, dan kasih 
+sayangnya. Rasa syukur dan ucapan terimakasih yang sebesar-sebesarnya juga 
+ingin penulis sampaikan kepada seluruh mahasiswa departemen statistika IPB 
+angkatan 57, Treazur, seluruh teman-teman dari Server Discord Robotik, dan 
+khususnya teman saya Maisan, Devan, Faza, Pasha, Nabila, Steven, Nana, dan 
+Herdian yang telah menemani, membersamai, dan menjadi semangat bagi penulis 
+selama proses penyusunan karya ilmiah ini. 
+Semoga karya ilmiah ini bermanfaat bagi pihak yang membutuhkan dan bagi 
+kemajuan ilmu pengetahuan. 
+ 
+ 
+Bogor, Juli 2024 
+ 
+Abdussalam Ahmad 
+ 
+ 
+ 
+
+DAFTAR ISI 
+DAFTAR TABEL 
+xi 
+DAFTAR GAMBAR 
+xi 
+I 
+PENDAHULUAN 
+1 
+1.1 
+Latar Belakang 
+1 
+1.2 
+Tujuan Penelitian 
+2 
+II TINJAUAN PUSTAKA 
+3 
+2.1 
+Penyakit Kusta 
+3 
+2.2 
+Faktor Risiko Kusta 
+3 
+2.3 
+Korelasi Serial 
+4 
+2.4 
+Autokorelasi Spasial 
+4 
+2.5 
+Matriks Pembobot Spasial 
+5 
+2.6 
+Model Spasial Dinamis Durbin 
+5 
+III METODOLOGI PENELITIAN 
+7 
+3.1 
+Data 
+7 
+3.2 
+Metode Analisis Data 
+7 
+IV HASIL DAN PEMBAHASAN 
+11 
+4.1 
+Praproses Data 
+11 
+4.2 
+Eksplorasi Data 
+11 
+4.3 
+Identifikasi Model 
+14 
+4.4 
+Pemodelan Spasial Dinamis 
+15 
+4.5 
+Uji Diagnostik Asumsi 
+16 
+4.6 
+Interpretasi Hasil Model 
+17 
+V SIMPULAN DAN SARAN 
+20 
+5.1 
+Simpulan 
+20 
+5.2 
+Saran 
+20 
+DAFTAR PUSTAKA 
+21 
+RIWAYAT HIDUP 
+24 
+ 
+ 
+
+DAFTAR TABEL 
+1 
+Peubah yang digunakan 
+7 
+2 
+Nilai VIF tiap peubah penjelas 
+14 
+3 
+Rata-rata nilai Indeks Moran tiap peubah 
+15 
+4 
+Koefisien model spasial dinamis Durbin tiap peubah respon 
+15 
+5 
+Penduga parameter model spasial Durbin dinamis 
+16 
+6 
+Hasil pemeriksaan asumsi sisaan 
+17 
+ 
+ 
+ 
+DAFTAR GAMBAR 
+7 
+Visualisasi titik optimum transformasi box-cox 
+11 
+8 
+Peta sebaran prevalensi kusta di Pulau Jawa tahun 2016-2021 
+12 
+9 
+Grafik deret waktu prevalensi kasus kusta tiap provinsi tahun 2016-2021
+ 
+13 
+10 
+Plot korelasi antar peubah setelah transformasi 
+14 
+11 
+Histogram sisaan model 
+17 
+ 
+ 
+
+
+ 
+1
+I 
+PENDAHULUAN 
+1.1 Latar Belakang 
+Kusta merupakan sebuah penyakit kulit menular yang memerlukan tingkat 
+perhatian yang tinggi. Menurut WHO (2023), kusta termasuk dalam neglected 
+tropical diseases (NTDs), yakni jenis penyakit yang umum terjadi di daerah tropis 
+dan lebih mempengaruhi masyarakat miskin. Pada tahun 2000, Indonesia telah 
+mencapai eliminasi kusta dengan angka kasus kusta terdaftar pada prevalensi 
+<10/100.000 jiwa penduduk dan terus menurun hingga tahun 2017 mencapai nilai 
+6.08 kasus per 100.000 penduduk (Infodatin 2018). Namun, kasus kusta di 
+Indonesia masih dapat terbilang tinggi. Pada tahun 2022, terdapat lebih dari 12 ribu 
+kasus kusta yang terjadi di Indonesia, yang menempatkan Indonesia menjadi urutan 
+ketiga kasus kusta terbanyak di dunia, dengan pulau Jawa menyumbang sebesar 
+5380 kasus (Kemenkes 2022). Hal ini menunjukkan bahwa masih diperlukan 
+adanya penanganan penyebaran kusta di Indonesia, terutamanya di Pulau Jawa. 
+  Penyebab tingginya prevalensi kasus kusta disebabkan oleh berbagai aspek. 
+Faktor sosioekonomi dan sosiodemografi seperti komponen-komponen Indeks 
+pembangunan manusia (IPM), tingkat pendidikan, persentase masyarakat miskin, 
+sanitasi yang layak, pertumbuhan ekonomi, dan tingkat kepadatan penduduk 
+memiliki pengaruh terhadap tingkat prevalensi penyakit kusta (Leano et al. 2019; 
+Li et al. 2021). Di beberapa daerah di Indonesia, terdapat beberapa aspek hal yang 
+mempengaruhi tingkat kasus kusta, diantaranya yakni tingkat pendidikan, kondisi 
+ekonomi, dan kebersihan yang buruk di Kabupaten Sampang (Zuhdan et al. 2017) 
+dan kondisi ekonomi keluarga dan kebersihan perorangan di Kabupaten Pekalongan 
+(Muharry 2014). Melihat adanya perbedaan pada faktor-faktor yang signifikan di 
+tiap daerah di pulau jawa dan pentingnya dimensi ruang dan waktu dalam 
+penyebaran penyakit menular (Tong et al. 2004), maka analisis spasiotemporal 
+penting dilakukan dalam mengidentifikasi pengaruh amatan prevalensi kusta dan 
+faktor-faktor yang mempengaruhi. 
+Penelitian terhadap prevalensi kusta dengan peubah terkait menggunakan 
+model spasial seperti model spasial Durbin signifikan dilakukan mengingat adanya 
+dependensi spasial yang umum terjadi tidak hanya pada penyebaran penyakit 
+menular, tetapi juga peubah-peubah sosioekonomi dan sosiodemografi (Nuswantari 
+2021). Pengaruh lag temporal yang ada dalam dynamic panel model juga menjadi 
+model yang relevan dalam analisis penyakit menular mengingat pola penyebaran 
+kusta yang memiliki masa inkubasi yang lama, yakni satu hingga dua puluh tahun. 
+Kombinasi pengaruh lag temporal dan lag spasial pada prevalensi kusta juga 
+mengimplikasikan bahwa lag spasiotemporal, yakni pengaruh prevalensi kusta di 
+daerah lain pada periode waktu sebelumnya, signifikan untuk diketahui dalam 
+melalui pemodelan regresi (Liu et al. 2022). Dalam kasus tersebut, pemodelan 
+terhadap kasus kusta menggunakan model spasial dinamis Durbin yang merupakan 
+gabungan antara kedua model spasial Durbin dan dynamic panel model menjadi 
+penting untuk digunakan. 
+ 
+Model spasial dinamis Durbin merupakan salah satu model spasiotemporal 
+yang merupakan gabungan antara model panel dinamis dan model spasial Durbin. 
+Pada dynamic panel model, peubah respon tidak hanya dipengaruhi oleh peubah 
+penjelas, tetapi juga dipengaruhi oleh amatan peubah respon sebelumnya (Moral-
+
+ 
+2 
+Benito et al. 2017). Pada spatial Durbin model, digunakan lag spasial tidak hanya 
+pada peubah dependen, tetapi juga peubah independen (Ispriyanti et al. 2018). 
+Model spasial Durbin dinamis merupakan salah satu model spasial dinamis yang 
+digunakan untuk menganalisis pengaruh peubah penjelas terhadap peubah respon 
+dengan dependensi spasial, temporal, dan spasiotemporal (Feng & Wang 2019). 
+Beberapa penelitian terdahulu yang telah dilakukan dengan metode model 
+spasial Durbin dinamis yakni studi kasus persentase populasi warga miskin di 
+Indonesia pada periode 2010-2019 (Sunandi et al. 2021), studi empiris dampak 
+konsumsi energi dan polusi udara di Beijing, Tianjin, dan Hebei pada tahun 2006-
+2015 (Shurui et al. 2018), dan studi efek peubah kehutanan terhadap emisi karbon 
+pada tahun 2007-2016 (Li et al. 2021). Dalam beberapa penelitian tersebut, 
+ditemukan kemiripan antara penelitian yang dilakukan dengan prevalensi kusta, 
+yakni terdapat dimensi ruang dan waktu yang mempengaruhi tersebarnya peubah 
+penjelas. Model spasial dinamis Durbin sendiri belum pernah digunakan dalam 
+studi penyebaran penyakit kusta, dengan beberapa analisis spasiotemporal yang 
+pernah dilakukan pada penyakit kusta yakni Chen & Shui (2021) yang menganalisis 
+gerombol spasial dan spasiotemporal menggunakan nilai Moran’s I di Yunnan, 
+Cina dan Bulstra et al. (2021) yang menggunakan model Poisson untuk melakukan 
+pemindaian spasial pada kasus kusta di daerah Barat Laut Bangladesh. 
+1.2 Tujuan Penelitian 
+Tujuan penelitian ini adalah  
+1. Menganalisis peubah-peubah yang relevan terhadap jumlah prevalensi 
+penyakit kusta di Pulau Jawa pada tahun 2017-2021 
+2. Mengetahui pengaruh efek spasial, temporal dan spasiotemporal dari 
+prevalensi kusta dan peubah-peubah yang relevan di Pulau Jawa 
+ 
+ 
+ 
+ 
+
+ 
+3
+II 
+TINJAUAN PUSTAKA  
+2.1 Penyakit Kusta 
+Penyakit kusta, dikenal juga dengan nama lain penyakit Hansen merupakan 
+sebuah penyakit menular yang diakibatkan oleh bakteri Mycobacterium leprae atau 
+Mycobacterium lepromatosis. Penyakit ini mempengaruhi kulit dan jaringan saraf 
+dengan beberapa gejala dari penyakit kusta dapat dimulai dari ruam dan bercak pada 
+kulit, kurangnya kemampuan pengindraan melalui kulit, kelemahan anggota gerak, 
+adanya rasa kesemutan pada anggota gerak, hingga terjadinya deformitas (cacat). 
+Terjadinya deformitas pada penderita kusta menyebabkan individu yang terdampak 
+sering mengalami stigmatisasi dan diskriminasi (WHO 2012). 
+Penyebaran penyakit kusta terjadi saat ada kontak erat antara individu yang 
+belum tertular dan individu yang terjangkit bakteri, dengan transmisi terjadi melalui 
+saluran pernapasan. Penularan tidak terjadi saat kontak dengan penderita terjadi 
+sesaat, melainkan diperlukan adanya interaksi dalam beberapa waktu yang lama. 
+Setelah penularan terjadi, terdapat masa inkubasi penyakit lama, dengan gejala 
+penyakit muncul dalam kisaran waktu satu hingga dua puluh tahun. Setelah 
+dilakukan deteksi pada penderita kusta, pengobatan melalui MDT (Multi drug 
+therapy), dengan penderita yang sedang melalui pengobatan berhenti menjadi 
+vektor penularan penyakit (WHO 2023). 
+Penyakit kusta diklasifikasikan sebagai salah satu dari dua puluh penyakit 
+NTD (neglected tropical diseases) oleh WHO, yakni penyakit menular yang umum 
+ditemukan di daerah tropis yang biasanya berhubungan dengan kondisi 
+sosioekonomi yang lemah. Brazil, India, Indonesia, beserta dengan negara-negara 
+tropis lainnya, terutama yang memiliki populasi masyarakat miskin yang besar 
+menjadi negara tempat sebagian besar kasus kusta ditemukan. Pada daerah-daerah 
+tersebut, masih umum ditemukan adanya daerah yang memiliki tingkat prevalensi 
+kusta yang tinggi, yakni lebih dari 10 kasus per 100.000 jiwa penduduk. Hal ini 
+mengakibatkan diberikannya perhatian khusus yang diberikan di negara pada 
+wilayah tropis dalam penanganan kasus kusta (WHO 2023). 
+2.2 Faktor Risiko Kusta 
+Faktor risiko, kadang juga disebut sebagai determinan penyakit didefinisikan 
+sebagai karakteristik genetik, fisiologis, perilaku, atau sosioekonomi yang 
+menyebabkan seorang individu memiliki peluang mengidap suatu penyakit lebih 
+tinggi. Dalam bidang kesehatan masyarakat, faktor risiko didefinisikan sebagai 
+risiko kesehatan yang umum, abstrak, terikat dengan kondisi ketimpangan sosial, 
+dan sulit dipengaruhi secara individu (WHO 2019). Faktor risiko umumnya 
+menjelaskan korelasi antara penyakit dan faktor risiko terkait dan tidak menjelaskan 
+sebab akibat antara kedua aspek tersebut (Burgess et al. 2018).  
+Beberapa aspek yang diketahui menjadi faktor risiko penyebaran kasus kusta 
+yakni aspek sosiodemografi, sosioekonomi, dan pendidikan. Berbagai peubah yang 
+termasuk dalam ketiga aspek tersebut diketahui sebagai faktor risiko yang 
+mempengaruhi peluang seorang individu untuk terinfeksi penyakit kusta. Aspek-
+aspek tersebut penting diketahui untuk memahami kondisi kesehatan dari suatu 
+penduduk. Beberapa aspek dapat mempengaruhi penyebaran kasus kusta dan 
+kondisi kesehatan secara langsung, seperti akses ke gizi yang cukup, sementara 
+
+ 
+4 
+beberapa aspek lain mempengaruhi penyebaran secara tidak langsung, seperti 
+pendidikan rata-rata penduduk dan persentase sanitasi layak. Dengan memahami 
+kondisi demografi dari suatu populasi di suatu daerah, dapat dipahami faktor risiko 
+yang paling mempengaruhi pola penyebaran kusta dan tahap penanganan yang 
+paling baik untuk dilaksanakan (Matos et al. 2018).  
+Hubungan antara kondisi sosioekonomi, terutama yang lebih lemah dan 
+penyakit kusta disebabkan berbagai hal, seperti kurangnya akses ke air bersih dan 
+sanitasi layak, kepadatan tempat tinggal yang tinggi yang dapat menyebabkan 
+kontak erat dengan penyakit lebih mungkin terjadi, dan kurangnya pengetahuan 
+mengenai penyakit yang diakibatkan rendahnya tingkat pendidikan menjadi 
+beberapa alasan yang menyebabkan masyarakat dengan kondisi sosioekonomi yang 
+lebih rendah memiliki tingkat penularan penyakit kusta yang lebih tinggi (Leano et 
+al. 2019). 
+2.3 Korelasi Serial 
+Korelasi serial atau autokorelasi didefinisikan sebagai korelasi antara amatan 
+pada suatu peubah dengan amatan pada periode lainnya. Pada struktur data panel, 
+autokorelasi dapat terjadi dalam suatu peubah pada individu yang sama. Korelasi 
+serial pada peubah respon penting diketahui dalam proses pemodelan panel dengan 
+efek dinamis, yakni komponen autoregresi pada amatan t-1, untuk mengetahui 
+adanya hubungan antar periode waktu (Baltagi et al. 2007). Untuk mengetahui 
+adanya autokorelasi dalam data panel, dapat digunakan beberapa uji, salah satunya 
+uji Wooldridge yang mengukur korelasi antara sisaan first differential (FD), dimana 
+korelasi antar sisaan FD bernilai -0.5 jika H0 ditolak (Drukker 2003). 
+2.4 Autokorelasi Spasial 
+Autokorelasi spasial merupakan korelasi antar nilai amatan yang 
+berhubungan dengan lokasi spasial dari peubah yang sama (Chen 2016). 
+Autokorelasi spasial pada data penting diketahui sebelum proses pemodelan untuk 
+mengetahui adanya hubungan antar daerah dalam data dan mengindikasikan bahwa 
+terdapat suatu aspek yang menyebabkan sebaran spasial tersebut (Haining 2001). 
+Uji Moran’s Index dapat digunakan untuk mengetahui autokorelasi spasial pada 
+tiap peubah. Di uji ini, diberikan nilai Moran I pada nilai -1 hingga 1 pada tiap 
+daerah amatan, dengan nilai positif menandakan autokorelasi spasial positif dan 
+sebaliknya, sementara nilai nol menandakan ketiadaan autokorelasi spasial dalam 
+data (Assuncao & Reis 1999). Hipotesis yang digunakan yakni: 
+𝐻0: 𝐼= 0 (Tidak terdapat autokorelasi spasial)  
+𝐻1: 𝐼≠0 (Terdapat autokorelasi spasial) 
+ Dengan statistik uji yang digunakan yakni:  
+𝑍(𝐼) = 𝐼−𝐸(𝐼)
+√𝑣𝑎𝑟(𝐼) 
+~𝑁(0,1) 
+(1) 
+Dimana: 
+𝐼=
+𝑁∑
+∑
+𝑤𝑖𝑗(𝑦𝑖−𝑦̅)(𝑦𝑗−𝑦̅)
+𝑁
+𝑗=1
+𝑁
+𝑖=1
+𝑆∑
+(𝑦𝑖−𝑦̅)2
+𝑁
+𝑖=1
+;𝐸(𝐼) = −
+1
+𝑛−1 ; dan 
+  𝑣𝑎𝑟(𝐼) =
+𝑁2𝑆1−𝑁𝑆2+3𝑆02
+(𝑁2−1)𝑆02
+−[𝐸(𝐼)]2  
+𝑆0 = ∑
+∑
+𝑤𝑖𝑗
+𝑛
+𝑗=1
+𝑛
+𝑖=1
+;     
+𝑆1 =
+1
+2 ∑
+∑
+(𝑤𝑖𝑗+ 𝑤𝑗𝑖)
+𝑛
+𝑗=1
+2
+𝑛
+𝑖=1
+; 
+
+ 
+5
+ 𝑆2 = ∑
+(∑
+𝑤𝑖𝑗
+𝑛
+𝑗=1
++ ∑
+𝑤𝑗𝑖
+𝑛
+𝑗=1
+)2
+𝑛
+𝑖=1
+ 
+H0 ditolak pada taraf nyata α jika 𝑍(𝐼) > 𝑍(1−𝛼
+2), dengan 𝑍(1−𝛼
+2) berdasarkan 
+nilai pada sebaran tabel 𝑍. 
+2.5 Matriks Pembobot Spasial 
+Matriks 
+pembobot 
+spasial 𝑊
+ merupakan 
+sebuah 
+matriks 
+yang 
+merepresentasikan struktur spasial dari data yang digunakan. Menurut Anselin 
+(1988), matriks pembobot spasial didefinisikan sebagai ekspresi formal dari 
+dependensi spasial antara satu amatan dan lainnya. Matriks pembobot spasial 
+digunakan dalam model regresi spasial untuk untuk mewakilkan pengaruh yang 
+diberikan oleh suatu daerah terhadap daerah lain. Matriks ini memiliki ukuran 
+𝑛× 𝑛 dengan n merupakan jumlah daerah dalam data, dengan  𝑤𝑖𝑖 merupakan 
+komponen diagonal matriks yang selalu bernilai 0 (Liu et al. 2021). Matriks 
+pembobot spasial dapat didefinisikan sebagai berikut. 
+𝑾= [
+𝑤11
+𝑤12
+⋯
+𝑤1𝑛
+𝑤21
+𝑤22
+ 
+⋮ 
+⋮
+ 
+⋱
+ 
+𝑤𝑛1
+⋯ 
+ 
+𝑤𝑛𝑛
+] 
+(2) 
+Pada penelitian ini, digunakan tiga macam matriks pembobot spasial, yakni 
+matriks queen’s contiguity, pembobotan invers jarak, dan K-nearest neighbour 
+(KNN). Pada matriks queen’s contiguity, diberikan nilai 1 pada daerah yang 
+bersebelahan, didefinisikan dengan kedua daerah berbagi titik yang sama, 
+sementara diberi nilai 0 pada daerah yang tidak bersebelahan. Pada pembobot 
+invers jarak, diberi nilai sebesar 𝑤𝑖𝑖=
+1
+𝑑  pada tiap komponen matriks pada daerah 
+yang bersebelahan, sementara diberi nilai 0 pada daerah yang tidak. Pada pembobot 
+KNN, ditentukan jumlah tetangga K, kemudian diberikan nilai 1 pada daerah 
+terdekat, sementara diberikan nilai 0 untuk daerah lainnya (Getis & Aldstadt 2003). 
+2.6 Model Spasial Dinamis Durbin 
+Regresi model spasial dinamis Durbin merupakan gabungan antara aspek 
+dari model spasial Durbin dan model panel dinamis dengan adanya lag spasial dan 
+amatan peubah respon periode sebelum dalam model dengan efek tetap pada model 
+data panel (Sunandi et al. 2019). Model spasial Durbin mempertimbangkan lag 
+spasial pada peubah respon dan peubah penjelas, sementara pada model panel 
+dinamis dipertimbangkan lag temporal pada amatan respon. Definisi dinamis 
+dalam model yakni nilai pada peubah respon dipengaruhi oleh nilai peubah lain di 
+masa lampau (LeSage dan Pace 2009). Pada model ditambahkan juga efek 
+spasiotemporal, yakni pengaruh dari amatan periode waktu sebelumnya dan daerah 
+spasial. Efek spasial yang ada pada model ditetapkan oleh matriks pembobot 
+spasial 𝑾 yang mendefinisikan struktur dependensi spasial pada model (Lee et al. 
+2008). 
+Model spasial dinamis relevan untuk digunakan dalam analisis penyakit 
+menular akibat penyebaran kasus yang cenderung dipengaruhi amatan lain dalam 
+dimensi ruang dan waktu. Komponen pembobot peubah penjelas dengan matriks 
+pembobot spasial pada model spasial Durbin digunakan untuk mengetahui dampak 
+peubah penjelas pada daerah di sekitarnya terhadap peubah respon di suatu daerah. 
+Dibandingkan model panel spasial Durbin statis, adanya komponen lag temporal 
+
+ 
+6 
+pada model dapat meningkatkan akurasi dan kemampuan model untuk 
+menghasilkan nilai pendugaan yang dapat diandalkan (Elhorst 2012). Model 
+spasial dinamis Durbin dapat didefinisikan sebagai berikut. 
+𝑦𝑖𝑡= 𝜆𝑦𝑖𝑡−1 + 𝜂𝑾𝑦𝑖𝑡−1 + 𝜌𝑾𝑦𝑖𝑡+ ∑
+𝑋𝑛,𝑖𝑡𝛽𝑛,1
+𝑁
+𝑛=1
++ ∑
+𝑾𝑋𝑛,𝑖𝑡𝛽𝑛,2
+𝑁
+𝑛=1
++ 𝑐𝑛+ 𝑒𝑖𝑡 
+(3) 
+Pada model tersebut, 𝑦𝑖𝑡 merupakan amatan peubah respon pada periode 
+waktu t dan daerah i, 𝑾 merupakan matriks pembobot spasial, 𝜌 merupakan 
+parameter autoregresi spasial, 𝜆 merupakan parameter autoregresi waktu, 𝜂 
+merupakan lag spasiotemporal dari peubah penjelas, 𝛽1  dan 𝛽2  merupakan 
+parameter respon dari peubah penjelas, dimana 𝛽𝑛,1 merupakan parameter regresi 
+umum pada peubah n dan 𝛽𝑛,2 parameter regresi spasial pada peubah n,  𝑋𝑛,𝑖𝑡 
+merupakan amatan peubah penjelas pada peubah n, periode waktu t dan daerah i, 
+𝑐𝑛 merupakan efek tetap, dan 𝑒𝑖𝑡 merupakan sisaan pada periode waktu t dan 
+daerah i yang menyebar normal dengan rataan galat sama dengan 0 dan ragam 
+terbatas (Sunandi et al. 2021).  
+Pendugaan parameter DSDM dapat dilakukan dengan berbagai cara, salah 
+satunya yakni quasi maximum likelihood (QML), yakni metode pendugaan model 
+yang menyerupai metode maximum likelihood estimation (MLE). Namun, berbeda 
+dengan fungsi log-likelihood pada MLE, fungsi yang digunakan dalam proses 
+pendugaan, yakni fungsi log-quasi likelihood, tidak menggunakan sebaran peluang 
+yang ada, namun digunakan fungsi umum yang menyesuaikan dengan sebaran dari 
+model (Hilbe & Hardin 2007). Lee et al. (2008) mendefinisikan fungsi log-quasi 
+likelihood dari model dinamis spasial Durbin sebagai berikut. 
+ 
+ln 𝐿𝑛,𝑇(𝜃, 𝒄) = −𝑛𝑇
+2 ln 2𝜋−𝑛𝑇
+2 ln 𝜎2 + ln|𝑆𝑛(𝜆)|
+−1
+2𝜎2 ∑𝜀𝑛𝑡
+′ (𝜁)𝜀𝑛𝑡(𝜁)
+𝑇
+𝑡=1
+ 
+(4) 
+Pada fungsi log-quasi likelihood tersebut, 𝜽= (𝛿′, 𝜆, 𝜎2)′, 𝜻= (𝛿, 𝜆, 𝑐𝑛
+′ ), dan 
+𝜹= (𝛾, 𝜌, 𝛽𝑛,1, 𝛽𝑛,2), dengan 𝜃, 𝑐𝑁, dan merupakan peubah yang dimaksimalkan 
+pada fungsi tersebut. 
+ 
+ 
+ 
+
+ 
+7
+III 
+METODOLOGI PENELITIAN 
+3.1 Data 
+Data peubah respon yang digunakan merupakan data prevalensi kusta per 
+seratus ribu penduduk di seluruh 119 kabupaten/kota Pulau Jawa dari tahun 2016 
+sampai 2021 yang diolah dari data jumlah kasus kusta Riset Kesehatan Dasar 
+(Riskesdas) dibagi jumlah penduduk dari BPS pada tahun 2016 hingga 2021. 
+Peubah penjelas yang digunakan dalam analisis merupakan faktor risiko dari 
+penyakit kusta berdasarkan sitasi pada tabel 1 yang didapatkan dari Badan Pusat 
+Statistik dan dikategorikan menjadi tiga, yakni kependudukan yakni DENSE dan 
+SANIT, sosial ekonomi yakni PPK, POVERTY, dan TPT, dan pendidikan yakni 
+HLS dan RLS. Peubah dapat dilihat pada tabel 1.   
+Tabel 1  Peubah yang digunakan 
+Kode 
+Peubah 
+Satuan 
+Sumber Pustaka 
+PREV 
+Prevalensi Kasus Kusta 
+Kasus Per Seratus 
+Ribu Jiwa 
+ 
+DENSE 
+Kepadatan Penduduk 
+Juta Jiwa/Km 
+Leano et al. 2019 
+SANIT 
+Persentase 
+penduduk 
+dengan sanitasi layak 
+Persentase 
+Leano et al. 2019 
+PPK 
+Pengeluaran Per Kapita 
+Disesuaikan 
+Juta Rupiah/Orang Leano et al. 2019, 
+Nery et al. 2019 
+POVERTY Persentase Kemiskinan 
+Persentase 
+Matos et al. 2018 
+TPT 
+Tingkat Pengangguran 
+Terbuka 
+Persentase 
+Nery et al. 2019, 
+Grantz et al. 2018 
+HLS 
+Harapan Lama Sekolah 
+Tahun 
+Pescarini et al. 2018 
+RLS 
+Rata-rata lama sekolah 
+Tahun 
+Pescarini et al. 2018 
+3.2 Metode Analisis Data 
+Tahap analisis dalam pemodelan Model Dinamis Spasial Durbin penyakit 
+kusta di Pulau Jawa menggunakan R versi 4.3.2 dan Rstudio adalah sebagai berikut. 
+1. Penanganan data hilang dengan interpolasi linear dengan fungsi sebagai 
+berikut. 
+𝑥̃(𝑡) =
+(𝑡−𝑡𝑘)(𝑥𝑘+1 −𝑥𝑘)
+𝑡𝑘+1 −𝑡𝑘
++ 𝑥𝑘 
+(5) 
+Dengan 𝑥̃(𝑡) merupakan amatan yang diinterpolasi, 𝑡 merupakan periode 
+dari amatan, 𝑥𝑘 dan 𝑥𝑘+1 merupakan amatan sebelum dan sesudah, dengan 
+𝑡𝑘 dan 𝑡𝑘+1 amatan dari 𝑥𝑘 dan 𝑥𝑘+1, dengan 𝑘= 1,2, … , 𝑇 (Gnauck 2004). 
+2. Melakukan eksplorasi data dengan nilai korelasi Pearson dan identifikasi 
+multikolinearitas pada peubah penjelas dengan variance inflation factor 
+(VIF), dengan VIF > 10 mengindikasikan adanya multikolinearitas 
+(Gujarati dan Porter 2009). Peubah dengan nilai VIF > 10 tidak akan 
+digunakan dalam tahapan pemodelan berikutnya. 
+3. Melakukan identifikasi model dengan tahapan sebagai berikut: 
+a. Menentukan matriks pembobot spasial berdasarkan kedekatan dan 
+jarak. Matriks pembobot spasial yang dipilih yaitu matriks dengan 
+
+ 
+8 
+nilai indeks Moran yang optimum (Rahayu 2019). Matriks indeks 
+spasial yang digunakan yakni sebagai berikut. 
+• Queen contiguity, yakni dibangun matriks dengan nilai 1 untuk 
+suatu daerah yang dianggap bersebelahan, yakni jika memiliki 
+sisi atau titik sudut yang sama. Jika tidak bertemu, maka bernilai 
+0. 
+• K-Nearest Neighbour (KNN) merupakan matriks yang 
+didefinisikan bernilai 1 jika wilayah i dan j bertetangga dan 0 
+apabila tidak bertetangga. Jumlah tetangga sebanyak dua 
+ditetapkan pada penelitian ini. 
+• Matriks invers jarak menggunakan jarak antar daerah untuk 
+membangun matriks pembobot (Shurui et al. 2019). Fungsi yang 
+digunakan untuk menghitung yakni sebagai berikut. 
+𝜔𝑖𝑗= 1/𝑑 
+b. Melakukan uji autokorelasi spasial menggunakan uji Moran’s I  
+c. Menguji pengaruh efek temporal menggunakan uji Wooldridge 
+untuk menentukan apakah terdapat autokorelasi serial pada data. 
+Hipotesis dari uji Wooldridge yakni: 
+𝐻0: Tidak terdapat korelasi serial dalam data 
+𝐻1: Terdapat korelasi serial dalam data 
+Statistik uji dari uji Wooldridge didapatkan dengan melakukan 
+regresi linear terhadap diferensial antara amatan pada periode 𝑡 dan 
+𝑡−1 sebagai berikut (Drukker 2003). 
+𝑢̂𝑖,𝑡= 𝛼+ 𝛿𝑢̂𝑖,𝑡−1 + 𝜂𝑖,𝑡 
+(6) 
+Statistik uji didapatkan dengan menghitung nilai F pada model 
+sebagai berikut. 
+𝐹ℎ𝑖𝑡= 𝑀𝑆𝑅
+𝑀𝑆𝐸  
+(7) 
+H0 ditolak pada taraf nyata 𝛼 jika  𝐹ℎ𝑖𝑡> 𝐹1,𝑛𝑡−2(1−𝛼/2 ).  
+4. Pemodelan model spasial dinamis Durbin 
+a. Prapemodelan dengan melakukan pemodelan model dinamis spasial 
+Durbin pada masing-masing peubah. Berdasarkan koefisien tiap 
+model yang didapatkan, dilakukan seleksi peubah jika nilai 
+koefisien peubah pada model sesuai dengan penelitian yang ada 
+pada penelitian terdahulu. 
+b. Pendugaan parameter dengan peubah terpilih menggunakan metode 
+Quasi Maximum Likelihood Estimation (QMLE). 
+c. Menguji signifikansi tiap parameter menggunakan uji parsial 
+dengan hipotesis sebagai berikut: (Fox & Weisberg 2019) 
+𝐻0: 𝛽𝑗
+∗= 0  
+𝐻1: 𝛽𝑗
+∗≠0; 𝑗= 1,2, … , 𝑝 
+Dengan statistik uji: 
+𝑡ℎ𝑖𝑡𝑢𝑛𝑔=
+𝛽̂𝑗
+∗
+𝑆𝐸(𝛽∗
+̂
+𝑗)   
+(8) 
+H0 ditolak pada taraf nyata 𝛼 jika 𝑡ℎ𝑖𝑡𝑢𝑛𝑔> 𝑡1−𝛼.  
+
+ 
+9
+5. Pengukuran akurasi dan pemilihan menggunakan 𝑅2 , Mean Absolute 
+Square (MAE) dan Root Mean Square Error (RMSE). Fungsi dari MAE 
+dapat dilihat sebagai berikut: 
+𝑀𝐴𝐸= 1
+𝑛 ∑
+|𝑦𝑖−𝑦̂𝑖|
+𝑛
+𝑖=1
+   
+(9) 
+Fungsi dari RMSE sebagai berikut: 
+𝑅𝑀𝑆𝐸= √∑(𝑦𝑖−𝑦̂𝑖)2
+𝑁
+  
+(10) 
+Fungsi dari R2 sebagai berikut: 
+𝑅2 = 1 −∑(𝑦𝑖−𝑦̂𝑖)2
+∑(𝑦𝑖−𝑦̅)2   
+(11) 
+Pemilihan model terbaik dilakukan berdasarkan model dengan nilai metrik 
+akurasi terbaik. Koefisien 𝑅2 yang didapatkan akan digunakan juga dalam 
+interpretasi keragaman model. 
+6. Diagnostik model berdasarkan beberapa asumsi berikut: 
+a. Normalitas Sisaan 
+Pengujian normalitas sisaan dilakukan menggunakan uji Shapiro-
+Wilk.  
+𝐻0: 𝜀 ~ 𝑁(0, 𝜎2)  
+𝐻1: Sisaan tidak menyebar normal  
+𝑊= (∑
+𝑎𝑖𝑥(𝑖)
+𝑛
+𝑖=1
+)
+2
+∑
+(𝑥𝑖−𝑥̅)2
+𝑛
+𝑖=1
+ 
+(12) 
+H0 ditolak jika p-value ≤𝛼 dengan 𝑥(𝑖) merupakan statistik ordo 
+dan 𝑥̅ merupakan rataan sisaan.  
+b. Kebebasan Sisaan 
+Pengujian kebebasan sisaan dilakukan untuk dengan uji H Durbin 
+yang merupakan modifikasi uji Durbin-Watson untuk model dengan 
+komponen autoregresif. Hipotesis pengujiannya yakni: 
+𝐻0: 𝜌= 0  
+𝐻1: 𝜌≠0 
+Pada hipotesis, 𝜌 merupakan koefisien autokorelasi. Statistik uji dari 
+pengujian H Durbin yaitu: 
+ℎ= (1 −1
+2 𝑑) √(
+𝑇
+1 −𝑇 ∙𝑉𝑎𝑟
+̂ (𝛽̂)) 
+(13) 
+H0 ditolak jika ℎ≥ 𝑍1−𝛼
+2  dan tak tolak H0 jika  ℎ< 𝑍1−𝛼
+2  , 𝑇 
+merupakan jumlah periode amatan, 𝑑 merupakan statistik uji 
+Durbin-Watson, dan 𝛽 merupakan parameter autoregresif yang telah 
+diduga. 
+c. Kehomogenan Ragam Sisaan 
+Kehomogenan 
+ragam 
+sisaan 
+atau 
+homoskedastisitas 
+dapat 
+didefinisikan sebagai ragam yang bersifat konstan atau homogen. 
+Pada asumsi ini, uji yang dapat digunakan yakni uji Bartlett dengan 
+hipotesis sebagai berikut. 
+𝐻0: 𝜎1
+2 = 𝜎2
+2 = 𝜎3
+2 = ⋯= 𝜎𝑝
+2  
+
+ 
+10 
+𝐻1: Terdapat minimal satu 𝜎𝑖
+2 ≠𝜎𝑝
+2  
+Dengan statistik uji sebagai berikut: 
+𝜒2 =
+(𝑁−𝑘) ln(𝑆𝑝
+2) −∑
+(𝑛𝑖−1) ln(𝑆𝑖
+2)
+𝑘
+𝑖=1
+1 +
+1
+3(𝑘−1) (∑
+(
+1
+𝑛𝑖−1 )
+𝑘
+𝑖=1
+−
+1
+𝑁−𝑘)
+ 
+(14) 
+H0 ditolak jika 𝜒2 > 𝜒𝑘−1,𝛼
+2
+ dan tak tolak H0 jika  𝜒2 ≤
+𝜒𝑘−1,𝛼
+2
+ .Terdapat 𝑘 kelompok sampel berukuran 𝑛𝑖 dengan tiap 
+kelompok sampel memiliki ragam sampel 𝑆𝑖
+2 . 𝑁 merupakan 
+ukuran seluruh kelompok sampel dan 𝑆𝑝
+2 merupakan ragam dari 
+seluruh kelompok sampel. 
+7. Interpretasi hasil model berdasarkan nilai koefisien dan akurasi. 
+ 
+ 
+
+ 
+11
+IV 
+HASIL DAN PEMBAHASAN  
+4.1 Praproses Data 
+Sebelum proses analisis data dilakukan, dilakukan praproses data berupa 
+penanganan data hilang. Data hilang ditemukan pada peubah Y dan TPT, dengan 
+data hilang pada peubah Y sebesar 9 amatan dan pada peubah RLS sebanyak 119 
+amatan. Interpolasi linear dilakukan untuk menangani data hilang dengan 𝑥𝑘 dan 
+𝑥𝑘+1 yang digunakan dalam proses interpolasi merupakan amatan pada daerah yang 
+sama pada amatan sebelum dan sesudah data hilang. 
+Proses translasi dan transformasi kemudian dilakukan pada peubah respon 
+untuk menghindari adanya pelanggaran asumsi normalitas dan homoskedastisitas. 
+Translasi dilakukan dengan adanya penambahan sebesar 1 pada setiap amatan agar 
+seluruh amatan bernilai positif, sehingga proses transformasi dapat dilakukan. 
+Transformasi box-cox. Proses transformasi yang dilakukan yakni transformasi 
+boxcox dengan λ sama dengan -0.182. Gambar 5 menunjukkan visualisasi nilai 
+optimum dari transformasi boxcox. Pada visualisasi tersebut, selang kepercayaan 
+95% tidak menyentuh nilai 0 pada lambda, sehingga dilakukan transformasi boxcox 
+dengan lambda dan tidak digunakan transfomasi menggunakan logaritma natural. 
+ 
+ 
+Gambar 1  Visualisasi titik optimum transformasi box-cox                         
+4.2 Eksplorasi Data 
+Sebelum dilakukan tahap pemodelan, dilakukan eksplorasi data untuk 
+memahami pola sebaran dan karakteristik data. Pada tahap eksplorasi ini, dilakukan 
+eksplorasi secara spasial pada Pulau Jawa pada keenam tahun amatan, plot deret 
+waktu pada keenam provinsi Pulau Jawa dari 2016 hingga 2021, plot korelasi 
+pearson antara seluruh peubah penjelas dan peubah respon, dan deteksi 
+multikolinearitas dengan VIF. Gambar 1 menunjukkan peta sebaran tingkat 
+prevalensi kasus kusta di Pulau Jawa per kabupaten/kota pada tahun 2016 hingga 
+2021. Beberapa daerah yang memiliki tingkat prevalensi tinggi pada tiap periode 
+seperti Kabupaten Bangkalan, Sampang, Blora, dan Situbondo lebih banyak berada 
+
+ 
+12 
+di daerah utara dari provinsi Jawa Tengah dan Jawa Timur, dengan nilai IPM yang 
+rendah dibandingkan dengan daerah dengan tingkat prevalensi di bawah 10 per 
+100.000 penduduk (BPS 2022). Terlihat bahwa sebaran nilai prevalensi kusta 
+cenderung membentuk gradien warna, yang dapat diinterpretasikan bahwa daerah 
+yang berdekatan cenderung memiliki nilai prevalensi kusta yang sama pada keenam 
+periode amatan. Hasil ini mengindikasikan bahwa terdapat dependensi spasial pada 
+peubah penjelas, sehingga layak dilakukan penelitian lebih lanjut secara spasial 
+pada aspek tersebut. Pada tahun 2019 terjadi peningkatan tingkat prevalensi 
+seiringan dengan adanya Permenkes Nomor 11 Tahun 2019 tentang 
+penanggulangan kusta (Permenkes 2019). Fluktuasi prevalensi kusta yang lebih 
+besar terjadi di daerah perkotaan, seperti Kota Probolinggo, Kota Jakarta Pusat, dan 
+Kota Pekalongan. Peningkatan daerah-daerah tersebut cenderung disusul oleh 
+penurunan yang signifikan pada periode amatan berikutnya. 
+ 
+ 
+Gambar 2 Peta sebaran prevalensi kusta di Pulau Jawa tahun 2016-2021 
+Gambar 3 menunjukkan grafik deret waktu tiap provinsi di Pulau Jawa dari 
+tahun 2016 hingga tahun 2021. Terlihat bahwa keenam provinsi memiliki tingkat 
+prevalensi kasus kusta yang menurun dari tahun 2016 dibandingkan 2021, kecuali 
+pada Provinsi Daerah Istimewa Yogyakarta (DIY), yang secara konstan 
+menunjukkan tingkat prevalensi kusta yang rendah. Peningkatan yang terjadi akibat 
+pelaksanaan Permenkes Nomor 11 tahun 2019 utamanya terjadi di Provinsi Jawa 
+Timur dan DKI Jakarta, dengan peningkatan di DKI Jakarta terjadi secara 
+signifikan. Peningkatan tersebut kemudian disusul oleh adanya penurunan pada 
+tahun berikutnya. Penurunan yang terjadi tidak hanya terjadi pada dua provinsi 
+berikut, tetapi juga di Provinsi Banten dan Jawa Tengah, meskipun tidak terjadi 
+peningkatan pada tahun 2019 di daerah tersebut. 
+ 
+
+ 
+13
+ 
+Gambar 3 Grafik deret waktu prevalensi kasus kusta tiap provinsi tahun 2016-
+2021 
+ 
+Gambar 4 menunjukkan korelasi antara tiap satu sama lain dari tiap peubah, 
+baik itu peubah respon maupun peubah penjelas. Nilai korelasi antara peubah 
+PREV dengan tiap peubah penjelas merupakan nilai yang didapatkan antara peubah 
+yang telah ditransformasi dan tiap peubah penjelas. Nilai korelasi antara peubah 
+penjelas dan prevalensi kusta cenderung memiliki nilai yang mendekati 0, dengan 
+RLS dan HLS menjadi dua peubah dengan koefisien korelasi tertinggi dengan nilai 
+-0.34 dan -0.33. Pada korelasi antara peubah independen, terdapat peubah yang 
+memiliki nilai korelasi yang secara umum tinggi seperti DENSE, PPK, dan RLS 
+yang korelasi yang kuat dengan peubah-peubah penjelas lain, dengan RLS memiliki 
+koefisien korelasi yang paling besar. 
+ 
+
+ 
+14 
+ 
+Gambar 4  Plot korelasi antar peubah setelah transformasi 
+Deteksi multikolinieritas menggunakan nilai VIF tertera pada tabel 2. Sesuai 
+dengan nilai koefisien korelasi, peubah RLS memiliki nilai VIF yang terbesar 
+dengan nilai 7.3447. Nilai yang tinggi tersebut dapat mengindikasikan bahwa 
+korelasi yang kuat antara peubah RLS dan peubah penjelas lain dapat 
+mengakibatkan multikolinearitas. Meskipun itu, akibat seluruh peubah memiliki 
+nilai VIF kurang dari 10, seluruh peubah masih digunakan dalam tahap pemodelan 
+berikutnya. 
+Tabel 2  Nilai VIF tiap peubah penjelas 
+DENSE 
+SANIT 
+PPK 
+POVERTY 
+TPT 
+HLS 
+RLS 
+VIF 
+3,9405 
+1,6691 
+3,878 
+2,3046 
+1,2839 
+2,2796 
+7,3447 
+4.3 Identifikasi Model 
+Ditentukan matriks pembobot yang tepat digunakan pada model berdasarkan 
+nilai dan uji indeks Moran. Tiap uji dilakukan pada tiap jenis matriks pembobot dan 
+pada tiap periode waktu, dari 2016 hingga 2017. Nilai indeks moran rata-rata dari 
+seluruh periode waktu dan hasil dari uji ditunjukkan pada tabel 3. Matriks pembobot 
+invers jarak memiliki peubah yang tak tolak H0, yakni peubah SANIT dan HLS, 
+meskipun peubah respon PREV menolak H0. Sementara itu, matriks queen’s 
+contiguity dan KNN mendapati seluruh peubah menolak H0, sehingga dapat 
+disimpulkan bahwa terjadi autokorelasi spasial di seluruh peubah pada tiap periode. 
+Matriks pembobot spasial queen’s contiguity memiliki nilai indeks moran yang 
+lebih kecil pada peubah respon dibandingkan matriks KNN, namun pada peubah 
+penjelas terdapat juga peubah yang memiliki nilai indeks moran yang lebih tinggi 
+dibandingkan matriks KNN. Berdasarkan hasil tersebut, matriks pembobot spasial 
+queen’s contiguity dan KNN yang akan digunakan dalam pemodelan sementara 
+pembobot invers jarak tidak  
+ 
+
+ 
+15
+Tabel 3  Rata-rata nilai Indeks Moran tiap peubah 
+Kode 
+Queen's Contiguity 
+Pembobot Invers Jarak 
+KNN (K = 2) 
+PREV 
+0,2891* 
+0,3682* 
+0,4941* 
+DENSE 
+0,6260* 
+0,9489* 
+0,5760* 
+SANIT 
+0,4129* 
+0,2762 
+0,5230* 
+PPK 
+0,4572* 
+0,5030* 
+0,4670* 
+POVERTY 
+0,5505* 
+0,8156* 
+0,5550* 
+TPT 
+0,7061* 
+0,9603* 
+0,6884* 
+HLS 
+0,3016* 
+0,2744 
+0,3201* 
+RLS 
+0,4718* 
+0,3928* 
+0,4493* 
+*Terjadi autokorelasi spasial pada seluruh periode amatan pada taraf nyata 5% 
+ 
+ 
+Setelah dilakukan uji autokorelasi, dilakukan uji korelasi serial panel 
+menggunakan uji Wooldridge. Uji tersebut menghasilkan 𝐹ℎ𝑖𝑡= 29.473. Nilai 
+tersebut lebih besar dari 𝐹1,593 (0.95) yang menyatakan bahwa F hitung lebih besar 
+dari F tabel dan H0 tak diterima. Berdasarkan hasil tersebut, dapat disimpulkan 
+bahwa terdapat korelasi spasial antar periode dalam amatan. Berdasarkan kedua 
+hasil tersebut, dapat disimpulkan bahwa terjadi autokorelasi spasial dan serial dalam 
+data, sehingga model spasial dinamis Durbin relevan untuk digunakan. 
+4.4 Pemodelan Spasial Dinamis 
+Tabel 4 menunjukkan hasil dari prapemodelan yang dilakukan. Berdasarkan 
+hasil tersebut, didapatkan hasil signifikan pada kedua pembobot yakni pada peubah 
+DENSE, SANIT, PPK, TPT, dan HLS, sementara pada peubah POVERTY dan 
+RLS tidak ada koefisien yang signifikan baik pada 𝛽1 dan 𝛽2. Saat dilakukan 
+penyesuaian antara pengaruh sesuai nilai koefisien terhadap prevalensi kusta 
+dengan penelitian terdahulu yang tertera pada tabel 1, ditemukan bahwa terdapat 
+ketidaksesuaian dan kesesuaian yang terjadi di peubah PPK, POVERTY, HLS, dan 
+RLS, dengan TPT menunjukkan ketidaksesuaian pada seluruh koefisien, sementara 
+DENSE yang mempengaruhi secara positif dan SANIT yang mempengaruhi secara 
+negatif menunjukkan kesesuaian dengan penelitian terdahulu pada seluruh 
+koefisien. Berdasarkan hasil tersebut, empat peubah yang digunakan yakni DENSE, 
+SANIT, PPK, dan HLS. Peubah POVERTY dan RLS tidak digunakan akibat 
+seluruh koefisien pada dua pembobot tidak signifikan, sementara pada TPT tidak 
+digunakan akibat seluruhnya tidak menunjukkan ketidaksesuaian dengan penelitian 
+terdahulu.  
+Tabel 4   Koefisien model spasial dinamis Durbin tiap peubah respon 
+Peubah 
+Queen's Contiguity 
+KNN (K = 2) 
+𝛽1 
+𝛽2 
+𝛽1 
+𝛽2 
+DENSE 
+0.0071981 
+0.0280211* 
+0.011910 
+0.019203 
+SANIT 
+-0.108722 
+-0.178360* 
+-0.196647 
+-0.406090* 
+PPK 
+-0.018978 
+-0.012380 
+ 0.120584 
+-0.116487* 
+POVERTY -3.497434 
+0.086260 
+-1.505918 
+-1.921799 
+TPT 
+-2.201414* 
+-1.195614* 
+-0.293107 
+-3.817837* 
+HLS 
+-0.154044* 
+0.031584 
+-0.066609 
+-0.035812 
+RLS 
+-0.151413 
+0.036869 
+-0.151413 
+0.036869 
+ 
+*Signifikan pada taraf nyata 5% 
+
+ 
+16 
+ 
+Pendugaan model spasial Durbin dinamis dilakukan menggunakan metode 
+Quasi Maximum Likelihood (QML). Pada pendugaan ini, matriks pembobot spasial 
+queen’s contiguity dan KNN digunakan. Digunakannya parameter lag temporal dan 
+spasiotemporal beserta adanya korelasi serial mengasumsikan bahwa peubah 
+respon bervariasi secara waktu dan dapat menjelaskan efek waktu dalam model, 
+sehingga hanya efek individu satu arah yang digunakan dalam model. Koefisien 
+model yang telah diduga tertera pada tabel 5. Berdsarkan hasil yang didapatkan, 
+model dengan matriks pembobot spasial Queen’s Contiguity memiliki tingkat 
+matriks akurasi yang lebih baik dibandingkan model dengan pembobot spasial 
+KNN baik itu pada nilai 𝑅2, MAE, maupun RMSE. Model dengan pembobot 
+spasial Queen’s Contiguity juga memiliki jumlah koefisien signifikan yang lebih 
+banyak dibandingkan KNN, yakni lag temporal, lag spasiotemporal, HLS pada 𝛽1, 
+dan DENSE dan SANIT pada 𝛽2, sementara koefisien yang signifikan pada model 
+KNN yakni lag temporal, serta SANIT dan PPK pada 𝛽2. Berdasarkan kedua hasil 
+tersebut, model dengan matriks pembobot queen’s contiguity menjadi model yang 
+digunakan.  
+Tabel 5   Penduga parameter model spasial Durbin dinamis 
+Koefisien 
+Matriks Pembobot Spasial 
+Queen's Contiguity 
+KNN (K = 2) 
+𝜌 
+0.023045 
+0.024606 
+𝜆 
+0.1484783* 
+0.126602* 
+𝜂 
+0.0685028* 
+0.023764 
+𝛽1  
+DENSE 
+0.0162807 
+0.018016 
+SANIT 
+-0.1133812 
+-0.113432 
+PPK 
+-0.0461046 
+0.135439 
+HLS 
+-0.1534833* 
+-0.099273 
+𝛽2 
+W*DENSE 
+0.0367166* 
+0.021308 
+W*SANIT 
+-0.1713528* 
+-0.359679* 
+W*PPK 
+-0.0015639 
+-0.129224* 
+W*HLS 
+0.0325951 
+-0.044902 
+𝑅2 
+0.8646926 
+0.8610812 
+MAE 
+0.1740439 
+0.1775157 
+RMSE 
+0.240637 
+0.2438271 
+*Peubah signifikan pada taraf nyata 5% 
+4.5 Uji Diagnostik Asumsi 
+Sebelum dilakukan pengecekan asumsi sisaan model melalui uji formal, 
+dilakukan eksplorasi menggunakan histogram dari nilai sisaan. Pada gambar 5, 
+dapat dilihat bahwa hampir seluruh sisaan cenderung menyebar secara sentral 
+dengan rataan pada nilai 0. Secara umum, sisaan menyebar dari nilai -1 hingga 1, 
+namun terdapat amatan yang menjadi pencilan pada kisaran -2. 
+
+ 
+17
+ 
+Gambar 5  Histogram sisaan model 
+Digunakan uji Bartlett untuk pengecekan asumsi homoskedastisitas antara 
+tiap provinsi, uji Shapiro-Wilk untuk normalitas sisaan, dan uji H Durbin untuk 
+asumsi non-autokorelasi dengan seluruh pengujian dilakukan pada taraf nyata 0.05. 
+Berdasarkan hasil pada tabel 5, model menerima H0 pada uji H Durbin dan Bartlett, 
+yang berarti tidak ada autokorelasi pada model dan tidak terjadi homoskedastisitas. 
+Sebaliknya, pada uji Shapiro-Wilk, H0 ditolak, yang berarti asumsi normalitas tidak 
+terpenuhi pada model.  
+ Asumsi normalitas yang tidak terpenuhi dapat mempengaruhi hasil dari uji 
+parsial t. Namun, menurut Schmid & Finan (2021), asumsi normalitas yang tidak 
+terpenuhi pada jumlah sampel yang besar yakni lebih dari 10 per peubah, tidak 
+mempengaruhi uji T secara signifikan. Pada model ini, jumlah amatan yang 
+digunakan model yang lebih besar dari angka tersebut, yakni 714 amatan. Sesuai 
+dengan penelitian tersebut, maka pelanggaran asumsi normalitas dapat diabaikan. 
+Tabel 6 Hasil pemeriksaan asumsi sisaan 
+Uji Asumsi 
+P-value 
+Asumsi 
+Uji Asumsi 
+Homoskedastisitas 
+Bartlett 
+0.1196 
+Normalitas 
+Shapiro-Wilk 
+8.645 x 10−13 
+Non-Autokorelasi 
+Durbin H-Test 
+0.7969 
+4.6 Interpretasi Hasil Model  
+Nilai akurasi pendugaan model yang didapatkan dan pemeriksaan asumsi 
+sisaan menghasilkan pemilihan keputusan bahwa model spasial Durbin dinamis 
+dengan matriks pembobot spasial queen’s contiguity merupakan model terbaik. 
+Berdasarkan nilai 𝑅2  yang didapat, dapat diinterpretasikan bahwa 86,46% 
+keragaman dalam data dapat diintepretasikan oleh model. Beberapa peubah yang 
+signifikan pada model yakni lag temporal dan lag spasiotemporal, Harapan lama 
+sekolah pada koefisien 𝛽1, dan kepadatan penduduk dan sanitasi layak pada 
+koefisien 𝛽2. 
+Parameter 𝜆 dan 𝜂 yang signifikan dapat diinterpretasikan bahwa tingkat 
+prevalensi kusta dipengaruhi oleh prevalensi kusta di periode sebelumnya di 
+
+ 
+18 
+dearah tersebut dan prevalensi kusta di periode sebelumnya di daerah 
+sebelumnya yang berinteraksi dengan daerah tersebut, yakni tiap daerah yang 
+memiliki perbatasan yang sama dengan daerah tersebut. Kedua koefisien bernilai 
+positif, sehingga nilai pada suatu amatan dipengaruhi oleh lag temporal dan lag 
+spasiotemporal secara positif. Lag spasial, yakni 𝜌,  yang tidak signifikan 
+terhadap prevalensi kusta dapat diinterpretasikan bahwa tingkat prevalensi kusta 
+di suatu daerah tidak dipengaruhi prevalensi kusta di daerah lain dalam periode 
+waktu yang sama. Kesimpulan ini sesuai dengan pola penyebaran penyakit kusta 
+yang memerlukan waktu panjang dan kontak dengan penderita penyakit yang 
+erat serta masa inkubasi yang membutuhkan waktu hingga bertahun-tahun, 
+sehingga interaksi daerah pada periode waktu yang sama tidak mempengaruhi 
+prevalensi kusta secara signifikan (Suzuki et al. 2011).  
+Harapan lama sekolah yang signifikan pada 𝛽1 mempengaruhi prevalensi 
+kusta secara negatif, yang dapat diinterpretasikan bahwa semakin tinggi harapan 
+lama sekolah di suatu daerah, semakin rendah prevalensi kusta di daerah tersebut. 
+Menurut Sales et al. (2011), individu dengan tingkat pendidikan lebih rendah 
+cenderung menjadi perwakilan dari kondisi sosioekonomi yang buruk. Akses 
+yang sulit terhadap fasilitas kesehatan juga umum dialami pada masyarakat 
+berpendidikan rendah yang menybabkan sulitnya penderita kusta mendapatkan 
+perhatian yang diperlukan dan lambatnya waktu deteksi, yang mengakibatkan 
+terjadinya penularan kusta terhadap individu di sekitar pengidap kusta tersebut. 
+Kepadatan penduduk dan persentase sanitasi layak yang signifikan pada 
+koefisien 𝛽2 dapat diartikan bahwa kepadatan penduduk dan persentase sanitasi 
+layak di daerah lain mempengaruhi daerah lain yang berinteraksi spasial. 
+Koefisien kepadatan penduduk yang bernilai positif dapat diinterpretasikan 
+bahwa semakin tinggi kepadatan penduduk di daerah lain yang berinteraksi 
+dengan daerah tersebut, maka semakin tinggi prevalensi kusta di daerah tersebut. 
+Hal sebaliknya terjadi pada koefisien persentase sanitasi layak, yakni semakin 
+tinggi tingkat sanitasi di daerah lain yang berinteraksi dengan daerah tersebut, 
+maka semakin rendah prevalensi kusta di daerah tersebut. Meskipun hasil 
+tersebut memiliki kesesuaian dengan penelitian-penelitian terdahulu, kedua 
+peubah tersebut tidak signifikan pada koefisien 𝛽1, sehingga tingkat prevalensi 
+kusta di suatu daerah tidak dipengaruhi oleh persentase sanitasi layak dan 
+kepadatan penduduk di suatu daerah secara langsung, melainkan lebih 
+dipengaruhi oleh daerah-daerah di sekitar daerah tersebut. Mengingat pola 
+penyebaran kusta yang memerlukan kontak erat dengan pengidap kusta, maka 
+diperlukan adanya penelitian lebih lanjut, terutama pada pola pergerakan antar 
+daerah, untuk menjelaskan bagaimana faktor risiko dari daerah lain lebih 
+mempengaruhi prevalensi kusta dibandingkan faktor risiko yang sama pada 
+daerah tersebut. 
+Hasil yang didapatkan merupakan analisis pada tingkat populasi 
+kabupaten/kota, dengan prevalensi kusta sendiri bukan merupakan peubah yang 
+mengukur jumlah kejadian kusta secara langsung, melainkan peubah yang 
+digunakan untuk mengukur ada tidaknya kusta di suatu daerah. Untuk 
+memahami lebih lanjut mengenai faktor risiko yang menyebabkan kejadian 
+kasus kusta, diperlukan adanya penelitian pada tingkat individu, terutama pada 
+individu yang terdampak dan masyarakat di sekitar individu tersebut. Penelitian 
+
+ 
+19
+tersebut dapat dilaksanakan agar dapat diterapkan kebijakan yang tepat dalam 
+penanganan kasus kusta.  
+ 
+ 
+
+ 
+20 
+V 
+SIMPULAN DAN SARAN 
+5.1 Simpulan 
+Pemodelan menghasilkan model spasial dinamis Durbin pada prevalensi 
+kusta di Pulau Jawa pada tahun 2017-2021 dengan matriks pembobot spasial 
+queen’s contiguity menjadi model yang digunakan dengan sebesar 86.46% 
+keragaman dalam data dapat dijelaskan oleh model. Tahap identifikasi model 
+menunjukkan bahwa terdapat autokorelasi spasial pada setiap peubah dan 
+autokorelasi serial pada peubah respon. Pada model yang dihasilkan, lag temporal 
+dan spasiotemporal mempengaruhi prevalensi kusta signifikan secara positif, yang 
+berarti amatan pada periode sebelumnya di suatu daerah dan daerah lain yang 
+berinteraksi. Peubah penjelas yang signifikan pada 𝛽1 yaitu harapan lama sekolah 
+yang mempengaruhi secara positif. Sementara itu, pada 𝛽2 yakni koefisien regresi 
+spasial peubah kepadatan penduduk mempengaruhi secara positif dan persentase 
+sanitasi layak mempengaruhi secara negatif.  
+5.2 Saran 
+Penggunaan analisis gerombol spasiotemporal untuk mengklasifikasikan 
+daerah yang menjadi titik panas (hotspot), sebagaimana penelitian Chen & Shui 
+(2021) di provinsi Yunnan, Cina pada tahun 2011-2020 dapat digunakan untuk 
+mengidentifikasi daerah-daerah khusus yang memerlukan perhatian spesifik. 
+Analisis lebih lanjut dapat dilakukan pada daerah yang menjadi titik panas. Dapat 
+digunakan juga model panel dengan asumsi heterogenitas spasial dibandingkan 
+dengan autokorelasi spasial seperti Geographicially Weighted Panel Regression 
+(GWPR) dan Geographically and Temporally Weighted Panel Regression (GTWR) 
+pada penelitian selanjutnya untuk mengetahui peubah berbeda yang signifikan pada 
+tiap daerah dan periode waktu.  
+ 
+ 
+ 
+ 
+
+ 
+21
+DAFTAR PUSTAKA 
+Assuncao RM, Reis EA. 1999. A new proposal to adjust Moran's I for population 
+density. Statistics in medicine. 18(16):2147-2162. 
+Baltagi BH, Song SH, Jung BC, Koh W. 2007. Testing for serial correlation, spatial 
+autocorrelation and random effects using panel data. Journal of econometrics. 
+140(1), pp.5-51. 
+Bulstra CA. Blok DJ. Alam K. Butlin CR. Roy JC. Bowers B. Nicholls P. de Vlas 
+SJ. Richardus JH. 2021. Geospatial epidemiology of leprosy in northwest 
+Bangladesh: a 20-year retrospective observational study. Infectious Diseases 
+of Poverty. 10:1-12. 
+Burgess S, Foley CN, Zuber V. 2018. Inferring causal relationships between risk 
+factors and outcomes from genome-wide association study data. Annual 
+review of genomics and human genetics. 19:303-327. 
+[BPS] Badan Pusat Statistik. 2022. Statistik Migrasi Indonesia Hasil Long Form 
+Sensus Penduduk 2020. Jakarta: BPS. 
+Chen X, Shui TJ. 2021. The state of the leprosy epidemic in Yunnan, China 2011–
+2020: a spatial and spatiotemporal analysis, highlighting areas for 
+intervention. PLoS neglected tropical diseases. 15(10). 
+Chen Y. 2016. Spatial autocorrelation approaches to testing residuals from least 
+squares regression. PloS one. 11(1):0146865. 
+Drukker DM. 2003. Testing for serial correlation in linear panel-data models. The 
+Stata Journal. 3(2). 168-177. 
+Elhorst JP. 2005. Unconditional maximum likelihood estimation of linear and log‐
+linear dynamic models for spatial panels. Geographical analysis. 37(1), 
+pp.85-106. 
+Feng Y, Wang X. 2020. Effects of urban sprawl on haze pollution in China based 
+on dynamic spatial Durbin model during 2003–2016. Journal of Cleaner 
+Production. 242. p.118368. 
+Fox J, Weisberg S. 2019. R Companion to Applied Regression. 3rd ed. Sage, 
+Thousand Oaks CA Thousand Oaks CA Sage. 
+Getis A, Aldstadt J. 2004. Constructing the spatial weights matrix using a local 
+statistic. Geographical analysis/ 36(2): 90-104. 
+Gnauck A. 2004. Interpolation and approximation of water quality time series and 
+process identification. Analytical and bioanalytical chemistry. 380: 484-492. 
+Grantz KH, Chabaari W, Samuel RK, Gershom B, Blum L, Worden L, Ackley S, 
+Liu F, Lietman TM, Galvani AP, Prajna L. 2018. Spatial distribution of 
+leprosy in India: an ecological study. Infectious diseases of poverty. 7(2). 
+pp.44-52. 
+Gujarati DN, Porter DC. 2009. Basic Econometrics. New York: McGraw-Hill/Irwin 
+Hardin J, Hilbe J. 2007. Generalized Linear Models and Extensions. 2nd ed. 
+College Station: Stata Press. 
+[Infodatin] Pusat Data dan Informasi Kementerian Kesehatan RI. 2018. Hapuskan 
+Stigma dan Diskriminasi terhadap Kusta. Jakarta: Kemenkes RI. 
+Ispriyanti D, Prahutama A, Taryono AP. 2018. Modelling space of spread Dengue 
+Hemorrhagic Fever (DHF) in Central Java use spatial Durbin model. Journal 
+of Physics: Conference Series. 1025(1): 1-9. 
+
+ 
+22 
+[Kemenkes RI] Kementerian Kesehatan Republik Indonesia. 2022. Laporan 
+validasi data kusta tahun 2021. 
+Leano HADM, Araújo KMDFA, Bueno IDC, Niitsuma ENA, Lana FCF. 2019. 
+Socioeconomic factors related to leprosy: an integrative literature review. 
+Revista brasileira de enfermagem. 72:1405-1415. 
+Yu J, De Jong R,  Lee L F. (2008). Quasi-maximum likelihood estimators for spatial 
+dynamic panel data with fixed effects when both n and T are large. Journal 
+of Econometrics. 146(1): 118-134. 
+LeSage J, Pace RK. 2009. Introduction to Spatial Econometrics. Balakrishnan N, 
+Schucany WR, editor. Boca Raton (USA): CRC Press 
+Li Z, Mighri, Z, Sarwar S, Wei C. 2021. Effects of forestry on carbon emissions in 
+China: Evidence from a dynamic spatial Durbin model. Frontiers in 
+Environmental Science. 9: 760675. 
+Liu H, Xiao Y, Wang B. Wu D. 2022. Effects of tourism development on economic 
+growth: An empirical study of China based on both static and dynamic spatial 
+Durbin models. Tourism Economics. 28(7): 1888-1913. 
+Liu Y, Liu M, Wang G, Zhao L, An P. 2021. Effect of environmental regulation on 
+high-quality economic development in China—An empirical analysis based 
+on dynamic spatial Durbin model. Environmental Science and Pollution 
+Research. 28(39). 54661-54678. 
+Liu H, Xiao Y, Wang B. Wu D. 2022. Effects of tourism development on economic 
+growth: An empirical study of China based on both static and dynamic spatial 
+Durbin models. Tourism Economics. 28(7): 1888-1913. 
+Matos AMF, Coelho ACO, Araújo LPT, Alves MJM, Baquero OS, Duthie MS, 
+Teixeira HC. 2018. Assessing epidemiology of leprosy and socio-economic 
+distribution of cases. Epidemiology & Infection. 146(14). 1750-1755. 
+Moral-Benito E, Allison PD, Williams RA. 2017. Dynamic panel data modelling 
+using maximum likelihood: an alternative to Arellano-Bond. Applied 
+Economics. 51:2221-2232 
+Nery JS, Ramond A, Pescarini JM, Alves A, Strina A, Ichihara MY, Penna MLF, 
+Smeeth L, Rodrigues LC, Barreto ML, Brickley EB. 2019. Socioeconomic 
+determinants of leprosy new case detection in the 100 Million Brazilian 
+Cohort: a population-based linkage study. The Lancet Global Health. 7(9): 
+1226-1236. 
+Nuswantari A. 2021. Pemodelan kemiskinan di pulau jawa tahun 2012 sampai 2018 
+dengan panel spasial dinamis [skripsi]. Bogor: IPB University 
+Pescarini JM, Strina A, Nery JS, Skalinski LM, Andrade KVFd, Penna MLF, et al. 
+2018 Socioeconomic risk markers of leprosy in high-burden countries: A 
+systematic review and meta-analysis. PLoS Negl Trop Dis. 12(7): 0006622. 
+[Permenkes] Peraturan Menteri Kesehatan Republik Indonesia Nomor 11 Tahun 
+2019 Tentang Penanggulanan Kusta. 2019. 
+Rahayu AD. 2019. Pemodelan regresi panel spasial dengan matriks pembobot k-
+nearest neighbor (Studi kasus pada data laju pertumbuhan ekonomi Provinsi 
+Jawa Timur tahun 2014-2017) [skripsi]. Malang: Universitas Brawijaya. 
+Sales AM, Ponce de Leon A, Düppre, NC, Hacker MA, Nery JAC, Sarno EN,  
+Penna, ML. 2011. Leprosy among patient contacts: a multilevel study of risk 
+factors. PLoS neglected tropical diseases. 5(3), p.e1013. 
+
+ 
+23
+Schmidt AF, Finan C. 2018. Linear regression and the normality assumption. 
+Journal of clinical epidemiology. 98. 146-151. 
+Shurui J, Jingyou W, Lei SHI, Zhong M. 2019. Impact of energy consumption and 
+air pollution on economic growth—an empirical study based on dynamic 
+spatial Durbin model. Energy Procedia. 158:4011-4016. 
+Sunandi E, Sumertajaya IM, Djuraidah A, Wigena AH, Fitrianto A. 2021. Dynamic 
+Spatial Durbin Modeling (Case: Percentage of Poor Population in Indonesia 
+2010-2019). Journal of Physics: Conference Series. 1863: 012046 
+Suzuki, K., Akama, T., Kawashima, A., Yoshihara, A., Yotsu, R.R. and Ishii, N., 
+2012. Current status of leprosy: epidemiology, basic science and clinical 
+perspectives. The Journal of dermatology. 39(2) 
+Tong S, Oldenburg B, Hu W. 2004. Application of spatio-temporal analytical 
+methods in surveillance and control of communicable disease. Australasian 
+Epidemiologist. 11(1): 6-12. 
+[WHO] World Health Organization. 2012. WHO Expert Committee on Leprosy – 
+Eight report. 
+[WHO] World Health Organization. 2023. Neglected tropical diseases. 
+[WHO] World Health Organization. 2023. Leprosy. 
+[WHO] World Health Organization. 2018. Guidelines for the diagnosis, treatment 
+and prevention of leprosy. 
+[WHO] World Health Organization. 2019. Health Impact Assessment (HIA): 
+Glossary of terms used. 
+ 
+ 
+
+ 
+24 
+RIWAYAT HIDUP 
+Penulis dilahirkan di Kota Jakarta Selatan, DKI Jakarta pada tanggal 6 Januari 
+2002 sebagai anak kedua dari pasangan bapak Ervan Maksum dan ibu Ambarsari 
+Dwicahyani. Pendidikan sekolah menengah atas ditempuh di SMA Negeri 28 
+Jakarta, dan lulus pada tahun 2020. Pada tahun 2020, penulis diterima sebagai 
+mahasiswa program sarjana (S1) di Program Studi Statistika dan Sains Data 
+Fakultas Matematika dan Ilmu Pengetahuan Alam di IPB.  
+Selama mengikuti program S-1, penulis aktif menjadi pengurus himpunan 
+profesi Gamma Sigma Beta pada periode kepengurusan 2023 sebagai staf Biro 
+Media dan Branding dan staf Divisi Content Creator pada Pekan Olahraga 
+Statistika. Penulis juga mengikuti lomba Statistika Ria dan Festival Sains Data 
+dalam cabang lomba Statistics Essay Competition (SEC) pada tahun 2022 dan 2023. 
+Penulis pernah berkesempatan magang pada Kementerian Perencanaan 
+Pembangunan Nasional (Kementerian PPN/Bappenas) dalam unit kerja Pusat Data 
+dan Informasi Perencanaan Pembangunan sebagai analis data yang berlangsung 
+selama 4 bulan. 
+  
+ 
+ 
+ 
+

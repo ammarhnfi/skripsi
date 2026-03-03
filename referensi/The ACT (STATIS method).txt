@@ -1,0 +1,1708 @@
+Computational 
+Statistics & Data Analysis 18 (1994) 97-119 
+North-Holland 
+97 
+The ACT (STATIS method) 
+Christine Lavit, Yves Escoufier 
+Uniti de BiomtQrie, ENSA.M-INRA-UM 
+II, Montpellier, France 
+Robert Sabatier 
+Faculte’ de Pharmacie, De’partement Pharmaceutique de Physique Industrielle, 
+Statistique et Informatique, UM I, Montpellier, France 
+Pierre Traissac 
+ORSTOM, Montpellier, France 
+Abstract: ACT (STATIS method) is a data analysis technique which computes Euclidean distances 
+between configurations 
+of the same observations obtained in K different circumstances, 
+and thus 
+handles three-way data as a set of K matrices. In this article, the recent developments 
+of the ACT 
+technique 
+are fully described 
+- concepts 
+and theorems 
+related 
+to Euclidean 
+scaling being 
+discussed in the Appendix - and the software manipulation 
+is illustrated on real data. 
+Keywords: Euclidean vector spaces; Spectral decomposition; 
+RV coefficient 
+1. Introduction 
+The ACT (STATIS method) is an exploratory technique 
+of multivariate 
+data 
+analysis based on linear algebra and especially Euclidean vector spaces (ACT 
+stands for Analyse Conjointe de Tableaux, STATIS stands for Structuration 
+des 
+Tableaux A Trois Indices de la Statistique). It has been devised for multiway 
+data situations 
+on the basic idea of computing 
+Euclidean 
+distances between 
+configurations 
+of points (Escoufier, 1973). 
+At the time or writing, ACT (STATIS method) 
+and ACT (dual STATIS 
+method) 
+can be obtained 
+from CISIA as executable codes running on a PC 
+under DOS. This package encloses also the Fortran 
+77 code which runs on 
+various mainframes. 
+A more general flexible software will be implemented 
+at 
+the end of 1993 in SPAD distributed by CISIA too. Besides, writing and running 
+the ACT procedure 
+in your own environment 
+is quite simple since only usual 
+Correspondence 
+to: C. Lavit, Unite de BiomCtrie, ENSA.M-INRA-UM 
+II, Place Viala, 34060 
+Montpellier, 
+France. 
+0167-9473/94/$07.00 
+0 1994 - Elsevier Science B.V. All rights reserved 
+SSDI 0167-9473(92)00003-A 
+
+98 
+C. Lauit et al. / The ACT (STATZS Method) 
+routines about matrix computations 
+and eigensystems are required. 
+For the time being, the software ACT (STATIS method) handles input data 
+of this sort: 
+- A set of K matrices X,, . . . , X,, 
+each X, of dimension I X Jk is a data matrix 
+of Jk quantitative variables measured on the same I observations. 
+- A set of I weights m,,...,m,. 
+- Parameters 
+to specify directives of computation 
+and output. 
+This program centers obligatorily each variable of each X, according to the 
+weights m,, . . . , m,. Denoting by W, the scalar products between observations 
+at stage k and D the diagonal matrix 
+1 
+ml 
+*** 
+1 
+mr 
+resealed to obey Cmi = 1, we obtain the following results: 
+- Euclidean distances between IV, and IV,, or, in other words, between configu- 
+rations of observations at stages k and k’. These distances are derived from the 
+scalar product 
+- Trajectories 
+which reflect the contribution 
+of each observation 
+to the Eu- 
+clidean distance between the W,‘s. 
+- A compromise 
+matrix of dummy scalar products between observations, com- 
+puted as a weighted sum of the Wk’s. 
+The software ACT (dual STATIS method) 
+deals with the following input 
+data: 
+- A set of K matrices X1,..., X, corresponding 
+to the same J quantitative 
+variables measured on K different groups of I,, . . . , IK observations. 
+- K sets Di,..., 
+D, of weights and, as before, parameters 
+to specify directives 
+of computation 
+and output. 
+If V, = XL D, X, denotes the covariance matrix at stage k, three main results 
+are then carried out: 
+- Euclidean distances between the covariance matrices Vk and Vk, derived from 
+the scalar product Tr(l/,l/,,). 
+- Trajectories which reflect the contribution 
+of each variable to the Euclidean 
+distance between the Vk’s. 
+- A compromise covariance matrix computed as a weighted sum of the Vk’s. 
+The next version of the software will let the user work on centred scalar 
+products (as it was the case for IV,>, non-centred 
+scalar products (as it was the 
+case for l/k) or scalar products 
+centred 
+on one on the I observations, 
+and 
+compute scalar products of the form Tr(W,SW,J), 
+S being any positive definite 
+symmetric matrix. 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+99 
+In the following chapter, we recall well-known underlying mathematics 
+and 
+geometric 
+properties 
+of scalar products 
+derived 
+from usual data matrices. 
+Chapter 3 describes the up-to-date 
+developments 
+of the ACT technique. 
+The 
+software manipulation 
+is illustrated 
+on real data in chapter 4. The Appendix 
+reviews concepts and theorems 
+related to Euclidean 
+scaling methods from an 
+algebraic viewpoint. 
+To conclude this chapter, it should be noted that, in a recent work, Franc 
+pointed 
+out connections 
+between 
+different 
+multiway techniques 
+by rewriting 
+them in a multilinear 
+algebra context (Franc, 1992). A n-way data matrix is 
+considered 
+as an element 
+of the tensor product 
+of n vector spaces. And 
+solutions 
+provided 
+by the 
+different 
+methods 
+(TUCKER, 
+PARAFAC/ 
+CANDECOMP, 
+CANDELINK 
+among others) are expressed as sums of tensor 
+products of vectors which obey specific constraints. 
+2. A few remarks on scalar products between observations 
+2.1. Scalar products derived from data matrices 
+Let XIXJ be a data matrix which consists of .Z variables measured 
+on Z 
+observations. 
+Example 1. We describe the set of observations as: 
+- Vectors x1, x2,..., 
+x1 of a real vector space of dimension 
+J, on which we 
+define the scalar product: (xi I xi,) = CjXijXi,j. The scalar product (xi I xi,> is the 
+element Wii, of W= XX’. 
+- Points of a metric space since d2(i, i’) = Cj(Xij - Xirjj2. 
+- A Z-dimensional configuration 
+of points M,, M2, . . . , M,. The coordinates 
+of 
+Mi are simply the elements Xil,. . . , Xi, of X. Thus we have 
+OMi.OM,:= 
+Kit 
+and 
+((M,M,:(I = d(i, i’). 
+Note that d2(i, i’> = II Xi -xxi, (I 2 where II * II is the norm induced by the scalar 
+product (. ) .>. Then 
+d2(i, i’) = Wii + W;:si, - 2&, 
+which implies that 
+Wii, = i[d2(0, 
+i) + d2(0, i’) - d2(i, i’)]. 
+Example 2. Suppose now that the columns of XIxJ are centred according to the 
+weights m,,..., 
+j= l,..., 
+m, with the constraint Cimi = 1. That is to say CimiXij = 0 for 
+J. Therefore we describe the set of variables as: 
+- Vectors x1, x2,..., 
+xJ of a real vector space of dimension 
+I. If we want the 
+
+100 
+C. Lavit et al. / The ACT (STATIS Method) 
+scalar product (Xi I xi,> to be the covariance between variables j and j’, it is 
+necessary that: 
+(Xj 1 Xj,) = CmiXijXij,. 
+The scalar product (xi 1 xi,> is the element jj’ of X’DX where D denotes the 
+diagonal matrix whose elements are m,, . . . , m,. 
+- A different approach is to consider 
+as the matrix of Xi in an orthogonal 
+but unstandardized 
+basis (e,, . . . , e,) 
+assuming 
+11 ei (1 2 = mi for i = 1,. , . , I. Then 
+xi = CiXijei 
+implies (xi I xi,) = 
+CiXijXij, (e, 1 e,> = CimiXijXij,. 
+Since the basis (e,, . . . , e,> is unstandardized, 
+we do not have any trivial configuration 
+of the variables using the original 
+coordinates 
+Xrj, . . . , Xii. 
+Generalization 
+Considering 
+that the columns of XIX, are the rows of the 
+transpose X&, 
+the two former examples are particular cases of the following 
+general formulation. Let XIxJ be a data matrix. We describe the set of the rows 
+as vectors xi,. . . , x, of a real vector space of dimension 
+J. We define the scalar 
+product (xi I xi,) = CjCj,QjjPXijXi,j, as the element ~ii, of W=XQX’, 
+Q being 
+a positive definite symmetric matrix. Then 
+is the matrix of Xi in any basis (e,, . . . , e,> obeying (ej ( ej,) = Qjj,. The rows of 
+X ,xJ can be plotted as points M, . . . M, generated by the original coordinates in 
+a set of axes neither orthogonal nor standardized. 
+Actually this representation 
+is 
+unsatisfactory 
+for our perception 
+used to classic Euclidean geometry in which 
+axes are assumed to be rectangular and to have unit length. It is the reason why 
+methods based on the spectral decomposition 
+of W calculate coordinates of the 
+points Ml,..., 
+M, in a new suitable set of axes. 
+2.2. Configuration of points 
+Let us consider 
+the matrix WIx, of scalar products 
+between 
+I elements, 
+forgetting the way it has been calculated. The problem is to plot the I elements 
+in a set of orthonormal 
+axes. We briefly note a few results, more or less known, 
+which are detailed in the Appendix. 
+
+C. Laoit et al. / The ACT (STATIS Method) 
+101 
+W is a positive semi-definite 
+symmetrix matrix. From the spectral decomposi- 
+tion of IV: 
+W = PlxrArxrP~~l 
+with 
+P’P = I,,, 
+(Identity matrix), 
+r denoting the rank of IV, we obtain an Euclidean configuration 
+M,, . . . , MI in a 
+r-dimensional 
+space. The r coordinates of iWi are the elements of the ith row of 
+PAlI*. Consequently, 
+the scalar products I+$ and the distances d(i, i’) can be 
+calculated in a classical Euclidean context since 
+OM;.OM,:= 
+IQ 
+and 
+((M,M,:/ = d(i, i’). 
+The spectral decomposition 
+of W is a particular singular value decomposition 
+as it is defined in the Appendix. Let S be any Z X Z positive definite symmetric 
+matrix. It will be shown that W can be written as 
+W= P,xrZ:rxrP~xl 
+with P’SP = I,,, 
+(Identity matrix). 
+The columns of P are the eigenvectors of the self adjoint matrix II’S, and x is 
+the diagonal matrix whose elements 
+are the corresponding 
+eigenvalues. If we 
+denote by r the rank of W (or WS), we obtain another set of r coordinates 
+of 
+Mi by taking the elements of the ith row of P2 ‘I*. Similarly the scalar products 
+IQ and the distances d(i, i’) can be calculated in an usual Euclidean context 
+since 
+OM;.OM,:= 
+Tit 
+and 
+/MiMi:(l = d(i, i’). 
+Remark If the scalar products have been derived from a data matrix XlxJ, and 
+hence from J coordinates, 
+the rank of WIxl is less than the minimum of I and 
+J. 
+2.3. Centred scalar products 
+Let us consider again a matrix of I observations 
+on J variables and suppose 
+now that the mean of the I observations 
+is significant. Then we can deal with 
+the centred matrix X obeying CiX,j = 0, or more generally CimiXij = 0 if the 
+observations 
+are weighted, 
+in order to shift the mean to the origin. This 
+derivation is equivalent to the transformation 
+of the original W in WC defined 
+by 
+I@ = l4$ - W;:.- II$.+ IV.. 
+where Wi.= C,~WZ~~~~~/C~UZ~ 
+and IV..= c,c,,mimi,w;:i,/<cimi)2. 
+The singular value decomposition 
+of WC, or WCS, S being any positive 
+definite symmetric matrix, provides a configuration 
+M,, . . . , it4, in a r-dimen- 
+sional space in which the origin 0 is the centroid G of M,, . . . , M, weighted by 
+
+102 
+C. Lauit et al. / The ACT (STATIS Method) 
+ml,..., 
+m,. The rank r of WG (or WCS) is less than the minimum of I - 1 and 
+J. Note that the case 
+ml 
+S=D= 
+*.. 
+1 
+1 
+mr 
+with the constraint 
+Cimi = 1 gives the principal components 
+of the PCA of the 
+centred data matrix XIxJ when the eigenvalues of WGD are ordered in the 
+usual way. This chaise leads to the agreeable interpretation 
+of eigenvalues as 
+variances of principal components. 
+2.4. Scalar product-like derived from dissimilarity matrices 
+If the data are available in the form of an IX I matrix A of dissimilarities 
+between pairs of observations, some results are still valid: 
+- Choosing the observation i, as origin, we can calculate the scalar product-like 
+matrix IV’% of dimension 
+I - 1, defined by 
+I$$% = $ [ A$ + A$ - A$] . 
+And reciprocally, given W we deduce 
+A$ = H$ + w,ri, - 2?4$. 
+- On the other hand, if we suppose that the mean of the I observations 
+is 
+significant, we can deal with the so-called Torgerson 
+symmetric matrix WG 
+defined by 
+where A,.= C,,mi,Aii,/Cimi 
+and A..= CiC,~mimi~Aii~/(Cimi)2, 
+m,, . . . , m, being 
+the weights of the observations. 
+- It is well known that Wwo (or WC) is positive semi-definite 
+if the dissimilari- 
+ties are Euclidean distances and reciprocally. In this particular case, the singular 
+value decomposition 
+of W or II’S provides a configuration 
+M,, . . . , M, of the 
+observations 
+in a r-dimensional 
+space whether 
+W is centred or not. In both 
+cases, the rank r of W (or KS) is less than I - 1. 
+3. Strategy for ACT: Scalar products between configurations 
+The central idea of the ACT technique is to compare configurations of the same 
+observations obtained in different circumstances. 
+Thus we need to introduce a 
+measure of similarity between two configurations. 
+This is equivalent to define a 
+distance between the corresponding 
+scalar product matrices. We can use the 
+classic Euclidean norm 
+II l+‘l- I+‘, II 2= C C [(WI - W,)iit12=Tr[(W, 
+- W,)‘]7 
+i 
+i’ 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+103 
+COMPUTATION OF THE W;, s 
+I elements 
+I 
+W 
+I 
+K 
++ 
+pzkq 
+I 
+Which elements do you want to compare ? 
+According to which configuration ? 
+I 
+WI 
+W, non centred ? W to centred on 
+element i, ? W p centred on centroid G ? 
+or weighted centrold G ? 
+TYBel 
+, 
+c 
+COMPROMISE 
+w== 
+cW,lW,., =Tr(W,SW,,S) 
++ 
+I 
+lzuclidean di~~~~;~e+ 
+I 
+W=ZakWk 
+cl 
+1 TRAJECTORIES [ 
+W reflects the majority 
+Decomposition of d ;%\lkWv ) element by element 
+of the W;s 
+Figure 1. The ACT procedure 
+or a weighted version 
+II wr - w* II 2 = C FSiiSifjf[(W, 
+- W,)iif12> 
+i 
+or, more generally 
+1) WI - W, II 2 = Tr[ (W,S - W,S)‘] 
+for any positive definite 
+symmetric 
+matrix 
+S. Although 
+distances 
+between 
+symmetric matrices have been studied for a long time, it is more convenient to 
+argue their properties as a particular case of distances between linear mappings. 
+Definitions and algebraic derivations are discussed in the Appendix. 
+According 
+to the data and the objectives of the analysis, we have first to 
+decide which elements have to be compared. 
+Then, it is necessary to specify 
+from which origin we compute the scalar products Wk’s (whereas this question 
+does not arise when we compute 
+distances). We will illustrate these decisive 
+choices and their consequences 
+on a few examples in the last section. 
+
+104 
+C. Lauit et al. / The ACT (STATIS Method) 
+3.1. In terstructure 
+First step: which distance between the W,‘s? Properties 
+of these distances are 
+discussed in the Appendix. We will simply list the different choices. 
+- d2(Wk, ?Vk,) = CiCi,[(W, - J%‘~,>~~,I~ 
+deduced 
+from 
+the 
+scalar 
+product 
+(W, I Wkp) = Tr(W,W,,) = Tr(W,SW,,S) 
+with S equal to the identity matrix. 
+- d2(Wk, Wk,) = CiCi’SiiS,,i,[(Wk - Wk,)ii,12 deduced 
+from 
+(W, I Wk,) = 
+Tr(W,SW,,S) 
+with S diagonal. 
+Note that for WkG centred 
+on a weighted 
+centroid G with weights m,, . . . , m,, the matrix S can be any diagonal matrix 
+and not necessarily 
+I 
+ml 
+*** 
+I* 
+m, 
+- d2(Wk, Wk,) = Tr[(W,S - W,S)2] deduced from the scalar product (Wk 1 Wkr) 
+= Tr(W,SW,S) 
+where S is any positive definite symmetric matrix. 
+Second step: do we compare 
+the Ways or the normed W,‘s? A large distance 
+d(W,, W,,) points out a strong difference between W, and W,,. Difference 
+in 
+shape or difference in size? To eliminate the second effect, we can compare the 
+normed scalar products 
+and thus calculate 
+i 
+wk 
+1 
+wF 
+= 
+II Jq, II II WV II I 
+Tr(W,SW,,S) 
+j$iy$$iqiqq’ 
+Graphical representation 
+of the interstructure. 
+Let WKxK be the interstructure 
+matrix whose elements are the scalar products (I+‘, I W,,). To plot the K stages 
+in a two or three-dimensional 
+space, say a h-dimensional 
+space, we use the least 
+squares approximation 
+W, of W, equal to the h first elements of the spectral 
+decomposition 
+a, p,p; 
++ - * . +u,p,pi 
+= PZP’ of W, with P’P = I. Stage k is 
+plotted as point Mk whose coordinates 
+are the h first elements of the kth row 
+of PZ1/2. The points M,, . . . , MK satisfy OM, -m’, 
+= (Whjkk,. And the loss 
+function is 
+IIW-w, 
+112= F S[(W- 
+W&]” 
+i 
+a:. 
+I=h+l 
+On this graph, scalar products are not easily readable, except for the norm 
+II I+‘, II approximated 
+by the length of vector mk, 
+and for the scalar product 
+between 
+normed 
+IV, and 
+normed 
+W,, approximated 
+by the 
+cosine 
+of 
+(oM,,oM,J. 
+Distances d(W,, IV,,) can also be readable on a graph using the first elements 
+of the spectral decomposition 
+of the interstructure 
+matrix WG, centred on the 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+105 
+centroid G of the K stages, in a similar way. On these two graphs, the projected 
+distance induced by least squares approximation 
+is systematically 
+lower than 
+d(W,, IV,,,). Besides, it is possible to distort Euclidean distances d(W,, W,,> into 
+ultrametric 
+distances 
+and build a dendrogram, 
+or use another 
+technique 
+of 
+visual information. 
+3.2. Compromise 
+In this section, the Wk’s are required to be positive semi-definite 
+whereas this 
+restrictive assumption was not necessary in the interstructure 
+derivations. 
+Property 1. Let WI = u1 p1 pi be the first element of the spectral decomposition of 
+the inter-structure matrix W. Components of p1 can be chosen positive. 
+To establish this particular case of the Frobenius theorem, see Property 8 in the 
+Appendix which implies that all the elements of W are positive. Consequently, 
+in the configuration of the K stages, cosines are positive and angles (mk,m’,) 
+acute. Thus the points Mk are situated inside a convex cone. 
+Definition 
+1. The IX I compromise 
+matrix W is defined as a weighted 
+sum 
+CkcykWk. The coefficient cyk is the coordinate of stage k in the one-dimensional 
+plot deduced from the first element W, of the spectral decomposition 
+of W. 
+Property 2. As the W,ls are positive semi-definite and the CY;S are positive, the 
+compromise matrix W is positive semi-definite. Thus W will be considered as a 
+scalar product matrix which induces a compromise configuration of the I elements. 
+Property 3. The compromise matrix W is the linear combination of the W,ls the 
+most related to each Wk. In other words, W maximizes 
+Recalling that W,, equals (Wk I W,>, we develop the numerator 
+into 
+c 
+bkak’~(wk 
+1 wl) 
+= 
+T 
+~akakttW2)krk. 
+k 
+k’ 
+I 
+In the spectral 
+decomposition 
+of W, p1 is the eigenvector 
+of wW* = W* 
+associated to the largest eigenvalue (see Property 7 of the Appendix). Thus the 
+quotient can be written as the Rayleigh quotient 
+, 
+which is maximum for x = p 1. 
+
+106 
+C. Lavit et al. / The ACT (STATIS Method) 
+Constraints 
+on the cyk’s. If the IV/s are centred on a centroid G, or a particular 
+element i,, the compromise matrix IV will obviously be centred in the same way. 
+Similarly, if the origin is equidistant 
+from the I elements at each stage k, this 
+property holds for IV. However when the Wls are correlation 
+matrices, it is 
+necessary to rescale the (u;s with the constraint Ckak = 1 in order to obtain a 
+compromise of the same nature. If the W,ls are normed, the compromise will be 
+resealed to be normed too. 
+Interpreting 
+the compromise. 
+If W, and II’,, correspond 
+to similar configura- 
+tions in shape and size, the angle (mk,mk,) 
+is small and the lenghts 
+IImk 
+II, IImp 
+II are nearly the same. This case leads to identical values for ak 
+and ok,. On the other hand, a large difference between the two configurations 
+induces either a large angle (mk,mk9) 
+or unequal 
+lenghts for OM, and 
+OM,? and different values for ok and ok, in both cases. Consequently 
+W gives 
+relatively less weight to outliers, and leads to a compromise configuration which 
+reflects the inter-element 
+distances as they are seen by the majority. 
+Graphical representation 
+of the compromise. 
+To plot the I elements according 
+to the compromise 
+in a h-dimensional 
+space, we use the least squares approxi- 
+mation IV, of IV, equal to the h first elements of the singular value decomposi- 
+tion a,p,p; 
++ *- - +u,p,p: 
+= PZ’P’ 
+of IV, with P’SP = I. Element i is plotted 
+as point Mi whose coordinates are the h first elements of the ith row of P2:‘12. 
+The points M,, . . . , h4, satisfy mi 
+* mir 
+= (WJiir 
+and the loss function is 
+IIW-IV’, 112=Tr[(WS-lV’J)2] 
+= 
+i 
+a:. 
+l=h+l 
+Note that it is logical, but not necessary, to take the same matrix S as the one 
+used in the computation 
+of the distances d(W,, Wk,). Think, for example, to the 
+case where S is not diagonal. 
+3.3. Trajectories 
+In this section, S is required to be diagonal. Then d*( W,, Wk,) can be written 
+element 
+by element, 
+as the sum CiSii(Ci,Si,i,[(Wk - Wk,)iiF]2) and split into 
+contributions 
+of the different 
+elements. 
+This decomposition 
+leads to an 
+I x [$K(K - l)] matrix from which we can detect which elements are strongly 
+perturbed 
+from one configuration 
+to another. 
+However knowing the direction of the perturbation 
+needs further investiga- 
+tions. We consider 
+the Wk’s and the compromise 
+IV as matrices of linear 
+mappings between an Euclidean vector space F and its dual F * (see Appendix, 
+Section 6). 
+I 
+Cwk)il 
+)+ 
+: 
+(W,)iI 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+107 
+is a vector of F * which appears 
+in the decomposition 
+of d*(W,, Wkf) = 
+cisii II w: - w;, (I *. It is iow of interest to know the direction of the different 
+vectors w: - wit. Eigenvectors 
+pl,. . . , p, of WS which occur in the singular 
+value decomposition 
+a, p1 pi + * - * +u,p,pi 
+of W, can be completed 
+to form a 
+s-orthonormal 
+basis of F *. The idea is to express w: in this new basis. 
+Graphical 
+representation 
+of the trqjectories. Unfortunately, 
+if we want to plot 
+the Z elements as they are seen by the different stages in a unique two-dimen- 
+sional space, it is obvious that none of the subspaces spanned 
+by pl,. . . , p, 
+corresponds 
+to the best choice, Nevertheless, 
+we decide to restrict W; to its 
+projection on the two-dimensional 
+space spanned by p1 and p2. 
+In this space, we know that a least squares approximation 
+of the compromise 
+configuration 
+is provided by the points M,, . . . , M, whose coordinates 
+are the 
+components 
+of aii12 Pl =u1 -1/2WSpI (namely the projections on p1 resealed by 
+0; ‘I*) and ai/*p, 
+= a; ‘/*WSp2. In order to draw the trajectory of element 
+i 
+around its compromise 
+position 
+Mi, we rescale the projections of the w;‘s for 
+k=l 
+, . . . , K, in the same way. More precisely, we plot the Z elements, as they 
+are seen by stage k, by the points M,k,. . . , M,? whose coordinates 
+are the I 
+components 
+of a; 1/2WkSpl on the first axis and a; ‘/*WkSp2 on the second 
+axis. In spite of this obvious lack of optimality, numerous examples show that, in 
+practice, 
+the vector M:M” I+ gives a good idea of the importance 
+and the 
+direction of the change of position of element 
+i between the stages k and k’. 
+3.4. Some applications of the ACT technique 
+Example 
+1. The first set of data, fully discussed in Chapter 4 consists of K 
+matrices Xl,. . . , X, of Z rows and J columns, corresponding 
+to the judgment of 
+K students on Z of their professors according to J criteria. In this particular 
+case, we decide to work on the matrices WkG = X, XL after having centred each 
+column of X,. In other words we compare the configurations 
+of the Z professors 
+as they are seen by each student, after having standardized 
+severe and generous 
+students to the same level of notation. Distances d(W,, W,,> are interpreted 
+as 
+disagreements 
+between judgments. 
+The compromise 
+matrix W provides a con- 
+figuration of the Z professors reflecting the majority opinion. And the trajecto- 
+ries point out who are the professors on which students are not in agreement. 
+On the other hand we can decide to study the correlation 
+matrices V, = 
+(1/1)X;& 
+(th e columns of X, being standardized 
+to have mean 0 and unit 
+variance). The objectives are then different. 
+Forgetting 
+the configurations 
+of 
+professors, we are now interested 
+in associations or oppositions between crite- 
+ria. Are they different from one student to another? Which criteria make the 
+difference? Answers are given by the interstructure 
+and the trajectories, whereas 
+the compromise 
+correlation matrix summarizes the Vk’s. 
+Example 2. Let us consider a set of five sociological data matrices XS4, X6*, Xb8, 
+XT5, X8, describing 
+the evolution of the working population 
+of Z communes 
+
+108 
+C. Lavit et al. / The ACT (STATIS Method) 
+around Montpellier 
+in the last forty years. It happens 
+that the definition 
+of 
+occupation 
+groups changed from 1975 to 1982. Thus, the population 
+has been 
+classified into nine occupation groups for the four first census returns and only 
+eight groups for the last one. Nevertheless 
+the five configurations 
+of the I 
+communes can be compared through the matrices lVkG (where the centroid G, 
+weighted or not, represents a dummy average commune) or through IV’;0 (if we 
+take Montpellier, 
+indexed by i,, as a reference). 
+Example 3. The third set of data consists of J variables characterizing different 
+stages of the sleep, collected on I, narcoleptics and I2 persons in good health, 
+after 16 hours, 20 hours and 24 hours of wakefulness. 
+Comparing 
+the six 
+correlation matrices by means of the interstructure 
+and the trajectories can be a 
+first approach to understand 
+how this disease disturbs the distribution 
+of the 
+different stages of the sleep, whereas the compromise 
+matrix is not of interest 
+here. 
+Example 4. The last set of data concerns I sites described by three specialists: a 
+botanist, 
+a pedologist 
+and a biologist. 
+The botanist 
+describes 
+the floristic 
+composition 
+of the sites by an IX J, presence-absence 
+data matrix. The 
+pedologist provides an I X J2 data matrix of chemical characteristics 
+of the soil, 
+and the biologist gives an I x J3 data matrix concerning 
+the abundance 
+of 
+various earthworms. 
+If two sites are claimed similar by the biologist, are they found similar by the 
+pedologist or the botanist? To deal with such a situation, we have to discuss with 
+each specialist which dissimilarity or distance is appropriate, 
+then derive scalar 
+product-like 
+matrices 
+IV,, IV.. and IV, centred 
+on a reference 
+site i,, and 
+compare them by means of the interstructure 
+for which the positivity of the Wk’s 
+is not required. Further information can be extracted from the decomposition 
+of 
+the squared distance d2(W~o, I&%> between specialists into contributions 
+of the 
+different sites. 
+Suppose now that the data are available in the form of K dissimilarity matrices, 
+each matrix corresponding 
+to a dissimilarity coefficient 6, whose square root is 
+an Euclidean 
+distance as Rogers and Tanimoto, 
+Russel and Rao or Ochidi 
+coefficients (Fichet and Le Calve, 1984). In this case, instead of performing only 
+the first step of ACT on the scalar product-like matrices straightforward 
+derived 
+from the a,$, we can operate the whole procedure on the positive semi-definite 
+IQ’s derived from the square roots & 
+as follows: 
+(W>)ii, = +[6,(i,, i) + 6,(i,, i’) - S,(i, i’)]. 
+The compromise 
+matrix W induces Euclidean 
+distances between sites which 
+satisfy d*(i, i’) = C,cu,G,(i, i’). And, all things considered, as fi is a monotonic 
+function of 6, performing 
+ACT on fi 
+instead of 6 turns out to be a useful 
+insight into the structure of the original dissimilarity matrices. 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+109 
+4. Input and output of the 01.90 version of ACT (STATIS method) 
+Input. K = 8 students 
+judge 
+I = 11 professors 
+by means 
+of J = 7 criteria: 
+competence, 
+lucid explanation, 
+pedagogy, 
+cheerfulness, 
+is the professor 
+dy- 
+namic? accessible? does the student find the subject interesting? 
+The data are 
+given in Table 1. 
+“Practice” having missing values, is considered 
+as a supplementary 
+row and 
+ignored when we compute the Wk’s and the compromise. 
+The other active rows 
+have identical weights m, = l/10. 
+Practice has weight 0. The preprocessing 
+of 
+the data consists of centering 
+each column of each X, according 
+to those 
+weights. Thus we compare the 10 x 10 matrices WkG centred on the centroid G 
+of the ten active rows, WbG being derived from only six criteria. 
+Interstructure output. The norms of the Wk’s are derived from the scalar 
+product (Wk ) IV,,> = Tr(W,SW,,S) 
+where S is diagonal and equal to 
+j 1’1° 
+**. l,lo]. 
+These norms are equal to 119, 151, 87, 78, 101,117, 137 and 102. Since they are 
+different, we decide to compute the Euclidean 
+distances between the normed 
+Wk’s deduced from the RV-coefficients 
+(Definition 9 of the Appendix). We note 
+that the opinion of judges no. 2 and no. 8 fairly differs from the others. 
+Compromise output. The compromise 
+matrix W is defined as the linear combi- 
+nation C,(Y,W, of normed Wk’s with (Ye equal to the coordinate 
+of judge k on 
+the first axis of Figure 2. W gives relatively less weight to judges nr. 2 and nr. 8, 
+and leads to a configuration 
+of the professors which reflects principally 
+the 
+opinion of the six judges left. 
+ffk 
+0.18 
+0.08 
+0.17 
+0.17 
+0.22 
+0.20 
+0.21 
+0.11 
+d*(W, W,) 
+0.46 
+1.32 
+0.60 
+0.61 
+0.19 
+0.33 
+0.27 
+1.06 
+Since the Wk’s are centred 
+on the centroid 
+G of the active rows, the 
+compromise W is centred in the same way. In addition, as the data are available 
+in the form of observations 
+X variables matrices, we have J, + . . . +.I, variables 
+at our disposal. We can then compute their correlations with the coordinates of 
+the compromise 
+points in order to explain the position of the different profes- 
+sors. 
+Trqjectories output. In the interstructure 
+output, we noted that the distances 
+between judge no. 2 and the others were quite important. 
+It is interesting 
+to 
+
+Table 1 
+computer science 
+judge nr. 1 
+judge nr. 2 
+judge nr. 3 
+architecture 
+13 18 8 1 13 3 20 
+181810 
+2141218 
+151810 
+410 
+018 
+theory 
+1210 
+5 3 9 5 7 
+6 4 8 2 41216 
+12 5 4 810 
+810 
+languages 
+410 
+6 6 610 
+2 
+2 2 2 4 22010 
+1012 
+5 6 5 310 
+practice 
+17 16 17 17 17 18 18 
+18 20 18 12 14 18 18 
+14 13 15 12 12 10 13 
+economics 
+15 12 13 14 13 18 9 
+14 16 14 12 10 18 10 
+13 12 12 12 12 11 11 
+accounting 
+16 18 15 11 13 15 15 
+18 18 18 12 16 16 18 
+17 15 15 14 12 14 14 
+management 
+1212 
+9 111 
+7 9 
+18 20 18 10 12 18 14 
+19 16 18 13 15 12 16 
+information system design 
+1018 
+0 212 
+217 
+16 18 18 16 14 18 16 
+16 2 2 2 2 212 
+statistics 
+17 12 16 19 20 19 13 
+18 16 18 12 12 18 14 
+15 6 14 12 15 10 5 
+operations research 
+11 8 5 18 
+115 
+18 16 14 0 14 6 16 
+15 13 8 2 2 2 10 
+English 
+17 18 15 10 13 15 15 
+10 4 2 0 4 4 8 
+15 10 10 0 12 5 4 
+computer science 
+judge nr. 5 
+judge nr. 6 
+judge nr. 7 
+architecture 
+14 15 0 0 7 0 15 
+19 18 5 3 15 1 18 
+15 15 0 0 11 5 13 
+theory 
+12 8 8 8 15 16 9 
+11 14 13 8 17 15 17 
+12 15 12 11 14 15 13 
+languages 
+5200280 
+8412111 
+10 0 5 5 15 
+1 
+practice 
+16 15 16 14 10 14 16 
+14 12 13 15 17 18 17 
+20 15 14 13 16 14 18 
+economics 
+12 10 15 15 10 15 7 
+9 12 15 17 16 14 15 
+15 12 15 16 15 18 14 
+accounting 
+16 15 15 12 14 13 14 
+19 17 18 15 17 3 15 
+16 13 15 11 14 14 14 
+management 
+814 
+9 215 
+8 3 
+15 13 15 12 17 5 15 
+1215121012 
+618 
+information system design 
+12 7 5 7 5 10 14 
+12 5 3 2101513 
+15 10 0 15 12 15 10 
+statistics 
+18 10 18 14 15 15 8 
+12 15 15 10 18 17 15 
+20 20 20 20 20 20 20 
+operations research 
+10 8 5 211 
+810 
+14 10 10 5 12 10 17 
+10 11 13 4 2 5 12 
+English 
+14 13 15 5 10 10 12 
+18 15 17 15 17 12 17 
+17171512141415 
+judge nr. 4 
+14 17 7 
+12 2 10 
+657 
+510 
+7 
+323 
+2 4 3 
+14 12 14 
+10 15 13 
+7 6 7 
+416 
+5 
+16 16 14 
+12 12 13 
+16 14 10 
+7 312 
+5 5 5 
+2 6 9 
+10 11 10 
+5 14 12 
+13 13 7 
+10 3 14 
+17 13 10 
+13 10 9 
+judge nr. 8 
+18 14 11 17 15 15 16 
+18 18 17 12 17 18 15 
+17 18 18 10 12 14 15 
+16 15 15 12 17 18 17 
+16 16 12 5 10 14 16 
+141011 
+9141016 
+19 18 19 17 17 14 12 
+1242292 
+15 11 12 7 14 14 16 
+13 15 10 11 12 10 17 
+
+C. Lavit et al. / The ACT @TATIS Method) 
+111 
+Table 2 
+RV-coefficients 
+1 
+0.17 
+1 
+0.45 
+0.28 
+1 
+0.43 
+0.30 
+0.42 
+1 
+0.69 
+0.22 
+0.53 
+0.54 
+1 
+0.48 
+0.16 
+0.54 
+0.63 
+0.76 
+1 
+0.63 
+0.18 
+0.49 
+0.41 
+0.87 
+0.73 
+1 
+0.42 
+0.11 
+0.31 
+0.23 
+0.29 
+0.19 
+0.40 
+1 
+Table 3 
+d’(k, k’)= 2(1-RV) 
+0 
+1.65 
+0 
+1.10 
+1.44 
+0 
+1.15 
+1.39 
+1.16 
+0 
+0.62 
+1.56 
+0.94 
+0.92 
+0 
+1.04 
+1.68 
+0.92 
+0.74 
+0.48 
+0 
+0.75 
+1.64 
+1.03 
+1.17 
+0.26 
+0.54 
+0 
+1.17 
+1.78 
+1.39 
+1.55 
+1.42 
+1.62 
+1.20 
+0 
+Fig. 2. Graphical representation of the interstucture. Loss function: )I W - W,, 1) 2 = a$ + . . . + U: 
+= 1.77 
+
+112 
+C. Lauit et al. / The ACT (STATIS Method) 
+b 
+Languages 
+accessible 
+Cheerf"l 
+c$= 0.18 
+. Economics 
+hf. 
+Sys. Design 
+Theo; 
+. 
+Statistics 
+. 
+op. Researd 
+English ’ 
+Accounting 
+. 
+kagement 
+Architecture 
+. 
+Fig. 3. Graphical representation 
+of the compromise. Loss function: 11 W - W, 11’ = TrNW - W~hS)* 
+= ($)‘Tr(W 
+- W,,>* = u.j + . . . + u; = 0.09 
+split those distances into contributions 
+& 11 wi - W; II 2 of the different elements 
+i to detect who are the professors on which the opinion of judge no. 2 differs 
+from the others. Table 4 shows that the difference 
+comes essentially from 
+languages, English, statistics and information 
+system design. 
+For sake of readibility, 
+only three 
+trajectories 
+are drawn on Figure 4: 
+languages, architecture 
+and the supplementary 
+element practice. The star corre- 
+sponds to the compromise 
+point. Recall that the vector between judges no. 2 
+and no. 6 is the projection of wd - WI on the two-dimensional 
+space spanned by 
+eigenvectors 
+p1 and p2 of the compromise. 
+(For practice, we compute 
+the 
+centred scalar products between this supplementary 
+row and the active ones and 
+Table 4 
+decomposition 
+of the squared distance between judge no. 2 and judge no. k in parts &,/I wi - 
+w: (( */d*(2, k) explained by professor i 
+squared distance d2(2, k) 
+between judge no. 2 and 
+no. 1 
+no. 3 
+no. 4 
+no. 5 
+no. 6 
+no. 7 
+no. 8 
+1.65 
+1.44 
+1.39 
+1.56 
+1.68 
+1.64 
+1.78 
+contributions (percentage) 
+architecture 
+2.51 
+3.01 
+3.36 
+9.47 
+2.41 
+5.70 
+2.56 
+theory 
+7.97 
+7.56 
+9.51 
+9.61 
+10.48 
+9.50 
+8.06 
+languages 
+10.41 
+14.53 
+16.94 
+18.62 
+27.26 
+22.84 
+12.48 
+economics 
+6.24 
+2.58 
+7.07 
+4.70 
+3.36 
+2.84 
+3.64 
+accounting 
+8.41 
+9.38 
+11.64 
+8.08 
+8.69 
+5.47 
+5.53 
+mana.gement 
+6.94 
+11.41 
+7.09 
+7.20 
+4.62 
+4.22 
+3.64 
+inf. sys. design 
+12.85 
+27.80 
+15.87 
+8.93 
+14.35 
+6.71 
+12.47 
+statistics 
+16.66 
+6.65 
+3.37 
+10.78 
+4.93 
+16.89 
+37.07 
+operations research 
+6.82 
+6.68 
+1.14 
+3.99 
+2.57 
+6.41 
+1.55 
+English 
+21.19 
+10.39 
+24.01 
+18.64 
+21.31 
+19.41 
+12.99 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+113 
+Practice 
+.3 ‘4 
+.2 
+4 
+. 
+Fig. 4. Graphical representation 
+of the trajectories. 
+project this vector in the same way). Keeping this distortion in mind, we note 
+that all the vectors of - w$, have significant norms for languages. It means that 
+languages contributes for a large part to any distances d2(k, k’) between judges 
+(and not only between judge no. 2 and the others), and between judges and the 
+compromise. 
+It seems on the contrary, that disagreements 
+between judgments 
+are less crucial for architecture 
+and practice. 
+Appendix: Euclidean distances between scalar product matrices 
+We review definitions 
+and properties 
+of linear mappings associated with Eu- 
+clidean scaling methods. 
+See Rao (1973, 19801, Robert and Escoufier (1976), 
+Sabatier (1987) and Lavit (1988) for proofs and complements. 
+1. Euclidean vector space 
+Definition 1. An Euclidean vector space (E, sJ> is the association of a J-dimen- 
+sional real vector space E and a scalar (or inner) product s,. (x I y>,, denotes 
+the scalar product of x and y. 
+Definition 2 (Dual of an euclidean vector space). The dual E * of an euclidean 
+vector space E is the set L( E, [w) of linear mappings between E and the set of 
+
+114 
+C. Lavit et al. / The ACT (STATIS Method) 
+real numbers. 
+Note that elements 
+of E* correspond 
+simply 
+written as row matrices. 
+This supplementary 
+mathematical 
+concept will appear to be an 
+later. 
+to vectors of E 
+appropriate 
+tool 
+Property 1. It is convenient to consider the scalar product on E as an one to one 
+linear correspondence 9 
+between E and E * (which implies that 9-l 
+does exist). 
+Vx E E, 23 x) E E * is defined as the row vector which, applied to y, gives 
+(~(X)>(Y) 
+= (x 1 YL* 
+Definition 3. s* is defined as follows: 
+Vu 
+VVEE” 
+(u I L$* 
+= up-l(u)) 
+is a scalar product on E *, called dual scalar product of s. 
+2. Adjoint of a linear mapping 
+Notation. E and F being two vector spaces, L(E, 
+F) denotes the vector space 
+of linear mappings between E and F. 
+Definition 4 (Transpose 
+of a linear mapping). 
+Let ti 
+be any element 
+of 
+L( E, F). The transpose of &’ is the element M’ of L(F *, E *) defined as: 
+VXEE 
+VUEF” 
+W’WW 
+= ~kw>~ 
+Definition 5 (Adjoint of a linear mapping). 
+Let B? be any linear mapping 
+between (E, sJ) and (F, s,). The adjoint of JX? is the element M* of L(F, 
+E) 
+defined as: 
+VXEE 
+VY EF 
+(-h’*(~))s,=(~(x)I~),, 
+or &* =~;5&f’91. 
+3. Self adjoint operator 
+Definition 6. An element of L(E, 
+E) is called operator of E. 
+Definition 7. An operator of (E, s) is self adjoint if JV =M *, or YB’ =&‘9’. 
+Property 2 (Spectral decomposition 
+of a self adjoint operator _w’ of (E, s)). x is 
+an eigenvector of _M if there exists a real number u such that M (x) = u x. It can 
+be shown that there exists a s-orthonormal basis of eigenvectors. In other words, 
+the matrix A can be written as A = PZP’ 
+with P’SP = I. 2 is diagonal and its 
+elements are the eigenvalues of A, 
+the columns of P are the corresponding 
+eigenvectors, S is the matrix of s and I is the identity matrix. 
+
+C. Lavit et al. / The ACT (STATIS Method) 
+115 
+4. Singular value decomposition 
+Property 3. Let JX? be any linear mapping between (E, sJ) and (F, st). Then JX’*B’ 
+and JV~ * satisfy the following statements: 
+- &*.w’ is a self adjoint operator of E, and it is positive, that is to say: 
+VXEE 
+(~*~‘(x)(x)~,~O. 
+&JX? * is a positive self adjoint operator of F, as well. 
+- Ker (M*&) = Ker (B!). 
+- &*.w’ and &JZ?* have the same eigenvalues. If x is an eigenvector of B’*& 
+obeying 11 n II s, = 1, and u the corresponding eigenvalue, then y = o-‘i2 
+M (x) is 
+the corresponding eigenvector of MM* obeying (1 y II s, = 1. 
+- &, &*, MM* and JY’*@ have identical rank. 
+Property 4 (Singular value decomposition 
+of ~‘1. Let r be the rank of M. The 
+operator JZ’ *zz’ being self adjoint and positive, have positive eigenvalues of, . . . , ur2. 
+The square roots ul, . . . , ur are called singular values of zz’. Let pl, . . . , pr be a set 
+or s,-orthonormal eigenvectors of MM*, 
+and ql,. . . , qr a set of sflrthonormal 
+eigenvectors of &*&, 
+corresponding 
+to the eigenvalues of,. . . , a,=. Then, the 
+matrix A,, 
+can be written as the sum 
+A = o,p,q;S, 
++ - * - +q-+q:S,, 
+or as the matrix product 
+A = PCQ’S, 
+with 
+P’S,P = I 
+and 
+Q’S,Q = I. 
+z1 ,xT is a diagonal matrix whose elements are the singular values ul, . . . , a, and the 
+columns of PI,, (respectively Q,,,) 
+are the eigenvectors pl,. . . , p, (respectively 
+41, f * * 7 q,) of 23?&* (respectively H*ti). 
+5. Euclidean distances between linear mappings 
+Definition 8 (Scalar product on L(E, 
+F). Let JX’ and 9 two linear mappings 
+between (E, s,) and (F, sr). Then 
+(MIS?) 
+= Tr(&B*) 
+= Tr(M9’;19?‘PI) 
+defines a scalar product on L(E, F). The induced norm is d2(&, 9) = (1 _ZY - 
+39 II = = Tr(W -9)~‘(& 
+-B’)‘.YJ 
+Property 5 (Approximation 
+of a linear mapping). Let d be any linear mapping of 
+rank r between E and F. Let us consider its singular value decomposition with 
+singular values ul, . . . , u, in decreasing order. Then 
+r 
+min 11~-~(12= 
+IId-dh(12= 
+C uF, 
+B’EL(E,F) 
+rankofS& 
+l=h+l 
+where tir, is the sum of the h first elements of the singular value decomposition of 
+&. 
+
+116 
+C. Laoit et al. / The ACT (STATIS Method) 
+6. Embedding W into an Euclidean vector space 
+Let us consider again a matrix W,, of scalar products (or scalar product-like) 
+between I elements. 
+(a) W can be viewed as an element of L(F, F *>. Let F be an I-dimensional 
+vector space, and (f,, . . . , f,> a basis of F, each vector fi being associated to one 
+of the I elements. The symmetric matrix W can be regarded as the matrix of a 
+bilinear mapping w between F X F and the set of real numbers R, defined on 
+the basis vectors by w(fi, fir> = Wji,. 
+Now, as it has been done for a scalar product in Property 1, we associate to w 
+the following element 
+$V of L(F, F*). For any vector x of F, Y(x) 
+is the 
+element of F *, which, applied to any vector y of F, gives 
+(W(X)>(Y) 
+= w(-? 
+Y). 
+(b) Euclidean structure of F. To calculate euclidean distances between the w’s 
+as we did in Section 5 between linear mappings, we need to enrich the structure 
+of F with a scalar product 
+denoted 
+9-l 
+instead 
+of the straightforward 
+designation 
+9 for a simple question of notation. Thus, the dual scalar product 
+on F * corresponds 
+to 9 and the adjoint mapping of V is simply 979 
+(and 
+not 9-‘5VY-‘>. 
+(cl Euclidean structure of L(F, F *>. Suppose that W, and W, are two matrices 
+of scalar products (or scalar product-like) 
+between the same I elements. We 
+associate 
+to WI and W, the corresponding 
+linear mappings 
+rr 
+and w2 
+between (F, s- ‘> and (F *, s). Then the scalar product 
+(Wr I ST..) = Tr(ZYrZY;) = Tr(W,SW,S) 
+induces the Euclidean distance 
+d*(W,, W,) = Tr[(W, - W,)S(W, - W2)S]. 
+This general formulation 
+includes two usual distances: 
+- If S is the identity matrix I, then d* <WI, W2> = CiCif[( W, - W2)iif]** The 
+basis (fl,...,fr) 
+is required to be s-orthonormal. 
+Ff 
+If S is diagonal, 
+then 
+d*(W,, W,) = C,Ci,Si,Sif,,[(W, - W2)iif]*. The basis 
+1,. . . , f,) is required to be s-orthogonal 
+but not necessarily standardized. 
+In 
+other words, weights of the elements are taken into account in the calculation of 
+d(W,, W,). 
+The more general case where S is not diagonal can be interpreted 
+as some 
+exogenous constraint 
+of contiguity between elements, which should be taken 
+into consideration 
+in the calculation of d(W,, WJ. 
+7. Special case of positive semi-definite W ‘s. 
+Property 6. If Y is p.s.d., then Z&KY k a positive self adjoint operator of F *. 
+
+C. Laoit et al. / The ACT (STATIS Method) 
+117 
+Property 7 (Singular value decomposition 
+of F). 
+If w is p.s.d., 
+the sing&r 
+value decomposition of W is deduced from the spectral decomposition of the 
+self-adjoint operator 
+2KY. 
+Namely 
+W= a,p,p; 
++ - - - +u,p,p: 
+= P2P’ 
+with 
+P’SP = I, where the singular values ul,. . . , or are the eigenvalues of WY, 
+and 
+Pl, * * *, p, are eigenvectors of WY. 
+It can be shown that eigenvectors 
+pl,. . . , pr of W2V* are eigenvectors of WY 
+and q1 =9’(pl>, 
+. . . , q, =Y( 
+p,) are eigenvectors 
+of 9F* W. Then the singular 
+value decomposition 
+of W = PZQ’S-’ 
+turns out to PZP’. 
+If S is the identity matrix, the singular value decomposition 
+of W is simply 
+designated as spectral decomposition 
+of W: PXP’ with P’P = I. 
+Property 8. If F 
+is p.s.d., (W, I TJ 
+= Tr(YiF~) 
+is a positive real number. 
+Property 9. Suppose that Y1 p.s.d. 
+has rank r and 2F2 p.s.d. 
+has rank h less 
+than r. If ul,..., 
+a,. denote the singular values of %V1 in decreasing order, then the 
+scalar product between W,/ 1) W, (I and Y2/ II 5~~ II verify 
+r 
+To establish this inequality, 
+apply Property 
+5 to & = wl,/II 5Y1 II and 9 = 
+w2/ )I w2 II recalling 
+that 
+(B’ IS’) 
+= it II d II * + I( 9’ II * - 
+II d -9 
+II *>. This 
+property must be kept in mind while interpreting 
+the ACT’s results on Example 
+4 of Chapter 3, as the number of flower species might be five times greater than 
+the number of variables measured by the pedologist. 
+8. Special case of matrices W = XQX ‘. 
+Let X, be an I x J, matrix of I observations on J, variables, and X2 an Z x .J2 
+matrix of the same observations 
+on J2 variables. The J, columns of X, are 
+centred according to weights m,, . . . , m,, with the constraint 
+Cm, = 1, and .J2 
+columns of X2 are likewise centred according to the same weights. 
+Thus W, =X,QIX; 
+and W, =X,Q,X; 
+are two matrices, obtained 
+in two 
+different circumstances, 
+of centred scalar products between the I elements. If, 
+in addition, we choose S equal to the diagonal matrix 
+usually denoted 
+D, the scalar product 
+Tr(Fiw2*l 
+= Tr(W,DW,D) 
+have the 
+following interesting statistical interpretation. 
+
+118 
+C. Lavit et al. / The ACT (STATIS Method) 
+Property -10. Tr( W, DW, 0) 
+is the sum of the squared covariances between each 
+variable of X, 
+and each variable of X2. If each column of X, 
+and X2 is 
+standardized to have unit variance, Tr(W, DW, D) is the sum of the squared 
+correlations . 
+Definition 9. The scalar product between normed W’s 
+Tr(W,DW,D) 
+is known as Rv-coefficient [Robert and Escoufier, 19761. 
+Remark. Whether S is equal to D with m, = - * - = m, or equal to the identity 
+matrix, the scalar product 
+Tr( W,SW,S) 
+/T$g/* 
+has the same value. 
+References 
+Carlier, A., Ch. Lavit, M. Pages, M.O. Pemin and JCh. Turlot, A comparative review of methods 
+which handle 
+a set of indexed data tables, Coppi and Bolasco, (ed.), in: Multiway Data 
+Analysis, (North-Holland, 
+Amsterdam, 
+1989) 85-101. 
+Escoufier, Y., Le traitement 
+des variables vectorielles, 
+iometrics, 29 (1973) 751-760. 
+Escoufier, Y., Operators related to a data matrix, in: 4 arra et al. (ed.), Recent Developments in 
+Statistics, (North-Holland, 
+Amsterdam, 
+1977) 125-131. 
+Fichet, B. and G. Le Calve, Structure 
+gtometrique 
+des principaux 
+indices de dissimilaritt 
+sur 
+signes de presence-absence, 
+Statktique et Analyse de Donnies, 9 (3) (1984) 11-44. 
+Franc, A., Etude algebrique des multi-tableaux. 
+Apports de l’algebre tensorielle, 
+doctoral thesis, 
+University of Montpellier 
+II, 1992. 
+Lavit, Ch., Analyse Conjointe de Tableaux Quantitatifs, (Masson, Paris, 1988). 
+Rao, C.R., Linear Statistical Inference and its Applications, (Wiley, New York, 1973). 
+Rao, C.R., Matrix approximations 
+and reduction 
+of dimensionality 
+in multivariate 
+statistical 
+analysis, in: Krishnaiah, (ed.), M&variate 
+Analysis, (North-Holland, 
+Amsterdam, 
+1980) 3-22. 
+Robert, P. and Y. Escoufier, A unifying tool for linear multivariate 
+statistical methods: the RV 
+coefficient, Applied Statistics C, 25 (3) (1976) 257-265. 
+Sabatier, R., MCthodes factorielles en analyse des donnees, doctoral thesis, University of Montpel- 
+lier II, 1987. 
+Availability of the software 
+Distributor: CISIA, 1, Avenue Herbillon, 94160 Saint MandC France. Tel.: (1) 
+43 74 20 20. Fax: (1) 43 74 17 29 
+
+C. Lavit et al. / The ACT (STATZS Method) 
+119 
+Author: Christine 
+Lavit, Unite de Biometric, 
+ENSA.M.-INRA-UM 
+II, Place 
+Viala - 34060 Montpellier, 
+France. 
+Release for IBM-compatible 
+micro-computers: 
+User’s guide + executable code 
+for ACT (STATIS method) 
+and ACT (dual STATIS method) + source code 
+written in portable FORTRAN 
+77 on floppy disks. Minimal hardware required 
+to run the executable code: 512 K RAM. 
+Other computers: The source code is available for implementing 
+the software on 
+other kind of computers, 
+work stations under UNIX and mainframes 
+as IBM, 
+VAX, UNIVAC.. 
+. 
+Cost: 1500 FF. 
+

@@ -346,7 +346,7 @@ function App() {
             <p>
               Metode STATIS menghasilkan struktur kompromi yang merupakan rata-rata
               peta posisi ekonomi 41 kabupaten/kota selama 5 tahun. Dari nilai
-              eigen utama (Principal Direction), kita dapat membedah struktur
+              eigen utama (Principal Direction), kita dapat menganalisis struktur
               kemiripan karakteristik antar wilayah. Dimensi yang diekstrak kemudian
               digunakan sebagai kanvas biplot untuk melacak perubahan struktur dari
               tahun ke tahun.

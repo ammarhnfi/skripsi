@@ -1,0 +1,1208 @@
+Household Joblessness 
+in US Metropolitan 
+Areas during the 
+COVID19 Pandemic:
+Polarization and the Role of Educational 
+Profiles
+Thomas Biegert1 2, Berkay Ozcan1, and Magdalena Rossetti-Youlton1
+Working Paper 
+November 2022 
+
+Department of Social Policy 
+London School of Economics and 
+Political Science Houghton Street 
+London WC2A 2AE 
+Email: soc.pol.webteam@lse.ac.uk 
+Telephone: +44 (0)20 7955 6001 
+lse.ac.uk/social-policy 
+Short sections of text, not to exceed two paragraphs, may be quoted without explicit permission provided that full 
+credit, including © notice, is given to the source. 
+To cite this paper: Biegert, T., Ozcan, B., Rossetti-Youlton, M. (2022) Household Joblessness in US Metropolitan Areas 
+during the COVID19 Pandemic: Polarization and the Role of Educational Profiles, Social Policy Working Paper 07-22, 
+London: LSE Department of Social Policy. 
+
+Household Joblessness in US Metropolitan Areas during the COVID19 
+Pandemic: Polarization and the Role of Educational Profiles 
+Thomas Biegert
+12, Berkay Özcan
+1, and Magdalena Rossetti-Youlton
+1 
+Abstract 
+This study uses Current Population Survey 2016-2021 data to analyze household joblessness across 
+metropolitan areas in the United States during the COVID19 pandemic. We first use shift-share 
+analysis to decompose the change in household joblessness into changes in individual joblessness, 
+household compositions, and polarization, i.e., the unequal distribution of joblessness across 
+households. Household joblessness US metropolitan areas rises during the pandemic largely due to 
+individual joblessness. But polarization contributes to household joblessness, indicating accumulation of 
+employment risks in households. Second, we use metropolitan area-level fixed effects regressions to 
+explain the large cross-labor market variance in household joblessness and polarization, focusing on the 
+labor market make up of metropolitan areas reflected in the educational profile of the population. We 
+measure three distinct features: educational levels, educational heterogeneity, and educational 
+homogamy. Household joblessness is strongly correlated to educational levels. How polarization 
+contributes to household joblessness is shaped by educational heterogeneity and homogamy. 
+Key words: household joblessness, COVID19, polarization; educational heterogeneity; educational 
+homogamy 
+JEL: D1, I380, J210 
+1 London School of Economics and Political Science, Department of Social Policy 
+2 Corresponding author: t.biegert@lse.ac.uk 
+
+2 
+ 
+1. Introduction 
+This study analyzes household joblessness during the COVID19 pandemic in United States (US) 
+metropolitan areas. Household joblessness is the phenomenon when no working age household 
+member is in employment. Existing research shows that household joblessness has detrimental 
+outcomes for all household members including children. The likelihood of poverty and material 
+deprivation is particularly high when entire households become jobless due to one or more members 
+losing their job (de Graaf-Zijl and Nolan 2011; Scutella and Wooden 2004; see also our discussion in 
+our conclusion section). Furthermore, the experience of living in a household in which no parent is 
+working detrimentally affects children’s education and labor market outcomes over and above the 
+impact of poverty (Curry, Mooi-Reci, and Wooden 2019, 2022; Ermisch, Francesconi, and Pevalin 
+2004; Mooi-Reci, Wooden, and Curry 2020). Thus, household joblessness has immediate adverse 
+effects on household members, and it entrenches social inequalities in the long term. Given the 
+detrimental consequences, there is surprisingly little sociological research on extent and development of 
+household joblessness. Our first contribution is to describe whether the COVID19 economic crisis has 
+exacerbated the issue in US metropolitan areas. 
+Our second contribution is to assess whether the development of household joblessness across 
+US metropolitan areas during the pandemic results from an accumulation of disadvantages in some 
+households. One reason for the dearth of research on household joblessness might be the assumption 
+that individual joblessness and household joblessness move in lockstep. If we understand variance in the 
+former, we can explain variance in the latter. However, previous work shows a decoupling between rising 
+individual employment rates and stagnant or increasing rates of household joblessness in many advanced 
+economies over the last several decades (Corluy and Vandenbroucke 2017; Gregg, Scutella, and 
+Wadsworth 2008). Gregg and colleagues (Gregg et al. 2008; Gregg and Wadsworth 2001) call this 
+process polarization, defined as the deviation in household joblessness from a counterfactual that 
+emerges if all individuals have the same risk of joblessness, i.e., joblessness is randomly distributed 
+across households. This trend is most visible in the rise of dual-earner households on one side and 
+completely jobless households on the other. It emerges because households accumulate employment 
+risks. Some have a greater share of household members with a higher likelihood to lose their job than 
+
+3 
+ 
+others. Polarization implies that assessing individual labor market outcomes cannot accurately capture 
+developments in household joblessness and thus misses an essential dimension of social inequality.  
+As our third contribution, we propose that educational profiles of the population can explain the 
+stark differences in household joblessness and polarization across metropolitan areas. Existing 
+comparative work on household joblessness during economic crises shows that sudden employment 
+shocks not only increase household joblessness but also accelerate polarization (Biegert and Ebbinghaus 
+2022; Corluy and Vandenbroucke 2017). But invoking welfare regimes and typical household structures 
+in cross-national comparisons does not yield satisfactory explanations of cross-national differences. We 
+argue that inequality in economic outcomes such as in the likelihood of job loss in a labor market is 
+reflected in educational levels and educational heterogeneity (Nielsen and Alderson 1997). How this 
+translates into household joblessness depends on how education is clustered in households, which can 
+be traced to dynamics of household formation, especially educational homogamy (Breen and Salazar 
+2011; Eika, Mogstad, and Zafar 2019; Schwartz 2010; Ultee, Dessens, and Jansen 1988). The 
+educational stratification in household and labor market formation, e.g., in the shape of greater 
+homogamy at different levels of education and educational heterogeneity, means that labor markets with 
+different educational profiles shape household joblessness and polarization risks. Assessing differences 
+in household joblessness and polarization across metropolitan areas with different educational profiles, 
+our study also contributes an important dimension to the literature on spatial inequality in the USA (e.g. 
+Chetty 2014; Jargowsky 1996; Moller, Alderson, and Nielsen 2009; VanHeuvelen and Copas 2019). 
+Our analysis uses quarterly data from the Current Population Survey (CPS) for 2016 to 2021 
+(Flood et al. 2021). Quarterly data allow us to follow the developments of the pandemic closely. We 
+focus on metropolitan areas as local labor markets following previous research on spatial economic 
+inequality in the USA (Abel and Deitz 2019; Doussard, Peck, and Theodore 2009; Jargowsky 1996; 
+Milkman and Dwyer 2002; Reardon and Bischoff 2011). The analysis proceeds in two steps. First, we 
+use shift-share analysis to decompose changes in household joblessness since before the onset of the 
+pandemic (Biegert and Ebbinghaus 2022; Gregg et al. 2008; Gregg and Wadsworth 2001). Subsequent 
+to describing trends in household joblessness, the decomposition enables us to assess how much of the 
+change in household joblessness can be attributed to polarization, i.e., the unequal distribution of 
+
+4 
+ 
+joblessness across households. Second, we use quarterly metropolitan area level CPS data in panel fixed-
+effects model to assess how the educational profiles of metropolitan area labor markets ameliorated or 
+exacerbated household joblessness and polarization during the pandemic. Analyzing metropolitan areas 
+provides us with a great opportunity to assess the role of educational profiles as they are relatively 
+comparable in their underlying shared macroeconomic conditions. The analysis systematically identifies 
+the areas in which a greater accumulation of employment risks in households causes short-term hardship 
+and entrenched long-term disadvantage. Assessing the importance of educational profiles contributes to 
+developing new theoretical arguments to explain growing multi-dimensional economic inequality across 
+geographical space. 
+2. Background 
+2.1 Polarization in household joblessness because of accumulation and absorption 
+When people lose their jobs in economic downturns, an increase in households in which no one is 
+working is almost unavoidable. But the extent to which individual job-loss translates to household 
+joblessness depends on how job-loss is distributed. We use a framework proposed by Gregg and 
+colleagues (Gregg et al. 2008; Gregg and Wadsworth 2001) that describes the unequal distribution of 
+individual joblessness across households as polarization. Importantly, the benchmark against which they 
+measure polarization is a random distribution of joblessness across households. The accumulation 
+scenario comes into play when job-loss disproportionately affects households that are more likely to be 
+thrown into household joblessness. This could be the case if many single earner households are hit or if 
+job-loss is so concentrated that both earners in dual earner households lose their job. These households 
+would thus accumulate joblessness while other dual earner households remain unscathed and keep both 
+jobs. In Gregg and colleagues (Gregg et al. 2008; Gregg and Wadsworth 2001) framework, accumulation 
+of individual joblessness in households means positive polarization (Biegert and Ebbinghaus 2022). By 
+contrast, in the absorption scenario job-loss is concentrated so that households with only one earner 
+keep their jobs and dual earner households lose one job but keep one household member in 
+employment. Households would thus absorb the job-loss of single members, leading to negative 
+
+5 
+ 
+polarization. In the accumulation scenario, there is a greater increase in household joblessness as 
+compared to a random distribution of job-loss. In the absorption scenario, there is less.  
+The few existing explanations of why some labor markets foster household joblessness and 
+accumulation whereas others show absorption have received only mixed empirical support. Previous 
+research applying the polarization framework describes national trends since the 1970s and changes 
+during the 2008 economic crisis (Biegert and Ebbinghaus 2022; Corluy and Vandenbroucke 2017; 
+Gregg et al. 2008; Gregg and Wadsworth 2001). To explain variation in household joblessness and 
+polarization across economies, these studies invoke typical household structures and welfare regimes. By 
+and large, there is evidence that countries with more traditional household structures in which single 
+breadwinners work in protected insider jobs are more negatively polarized. By contrast, countries with 
+individualized family structures and liberal or universal welfare support show more positive polarization 
+(Gregg et al. 2008; Gregg and Wadsworth 2001). However, there are exceptions. For instance, given its 
+residual welfare state and prevalence of non-traditional household structures, the USA shows 
+surprisingly low levels of polarization in the decades leading up to the 2008 economic and financial crisis 
+(Gregg et al. 2008). Moreover, the observed secular trends do not hold in times of economic crisis. 
+During the 2008 economic and financial crisis and thereafter, traditional male breadwinner countries in 
+the European South showed especially large increases in polarization (Biegert and Ebbinghaus 2022; 
+Corluy and Vandenbroucke 2017). Arguing from a micro perspective of employment risks and their 
+clustering in households, the following section will propose that educational profiles of labor markets 
+can help explain household joblessness and polarization.  
+ 2.2 Educational profiles of labor markets  
+How economic crises affect different local labor markets largely depends on their sectoral and 
+occupational structures. To explain how shocks affect spatial inequality, we thus need to consider the 
+distribution of jobs with different degrees of vulnerability across local labor markets. We furthermore 
+need to understand how jobs of varying risk are clustered within households. We propose that the 
+educational profile of the population in a local labor market provides a parsimonious way of combining 
+considerations about labor market structures and household compositions. Our argument primarily 
+relies on individuals, their education, and how they cluster in households. But because the educational 
+
+6 
+ 
+composition of a labor market’s population yields externalities, we need to look at the aggregate 
+educational profile of a local labor market to fully understand variation in household joblessness and 
+polarization between them. We focus on three aspects of the education profile of the population in a 
+metro area: educational level, educational heterogeneity, and educational homogamy.  
+It is well-established that workers with higher educational attainment experience fewer job losses 
+during economic downturns whereas lower education increases the likelihood of job-loss (Farber 2005, 
+2015; Nickell 1979). For instance, Farber (2015) finds that while there is a cyclical pattern in job loss for 
+all educational groups in the US between 1981 and 2013, job loss rates are dramatically higher for less 
+educated workers. Further, more educated workers find new employment more quickly after job loss, 
+shortening unemployment spells (Farber 2015; Gesthuizen, Solga, and Künster 2011; Klein 2015; 
+Riddell and Song 2011). Educational levels are thus important to understand varying levels of job-loss 
+during economic downturns across labor markets. Overall educational levels are also essential for how 
+joblessness is distributed across the labor market and households. For instance, lower educated 
+individuals profit from living in areas with higher educational levels. Areas with high stocks of human 
+capital deal better with economic shocks and yield positive externalities for their lower educated 
+occupants (Glaeser and Saiz 2004; Kemeny and Osman 2018; Moretti 2004). Winters (2013), for 
+instance,  finds that human capital externalities significantly decrease their probability to become 
+unemployed. By extension of individual joblessness, we thus expect household joblessness to rise more 
+strongly in labor markets with lower levels of education. 
+Beyond educational levels, the relative position of individuals in the educational distribution of a 
+labor market will affect their chances to lose their job in an economic downturn. The distribution of 
+human capital among the population is the main determinant of inequality in a labor market (Mincer 
+1970). Studies of US labor markets show that educational heterogeneity is one central drivers of within 
+labor market inequality in economic outcomes (Moller et al. 2009; Nielsen and Alderson 1997; 
+VanHeuvelen and Copas 2019). During an economic downturn, greater educational inequality might 
+lead to a concentration of job-loss among the lower educated. Educational heterogeneity thus should 
+affect the inequality in the likelihood of individual job-loss. This might be reflected in polarization of 
+household joblessness as well to the degree that households accumulate individual job-loss risks.  
+
+7 
+ 
+How much educational levels and heterogeneity affect household joblessness and polarization 
+depends on how education is clustered in households. Educational clustering in households is driven by 
+assortative mating. Highly educated couples are more likely to be dual earners in secure jobs, lower 
+educated households are more likely to be in precarious employment or jobless. Educational 
+homogamy thus increases the likelihood of positive polarization. The US has comparatively high levels 
+of educational homogamy (Greenwood et al. 2014; Hryshko, Juhn, and McCue 2017; Schwartz and 
+Mare 2005). But labor markets differ in how much they attract homogamous households. So-called 
+superstar cities and large metropolitan areas, for instance, house significant shares of highly educated 
+power couples because they offer them rewarding job opportunities (Costa and Kahn 2000).  
+We derive some guiding expectations: educational levels should be negatively correlated with 
+household joblessness. Whether household joblessness is exacerbated by positive polarization depends 
+on how unequally education is distributed and how it is clustered in households. When low educational 
+levels are combined with greater educational inequality and high homogamy, we can expect higher 
+household joblessness due to higher individual joblessness but also because higher polarization leads to 
+disproportionate household joblessness at a given level of individual joblessness because households 
+accumulate risks. Labor markets that combine high educational levels and low heterogeneity with lower 
+levels of homogamy should have lower polarization, they might even show absorption.  
+2.2 Context: The COVID19 economic crisis in US metropolitan areas 
+We assess the development of household joblessness during economic downturns, the role of 
+polarization, and the explanatory power of educational profiles of local labor markets by analyzing the 
+COVID19 pandemic in US metropolitan areas. The COVID19 pandemic caused job-loss in the US on 
+a scale not seen since the 2008 Great Recession. More than 9.6 million working-age individuals lost their 
+job over the course of 2020 (Bennett 2021). The existing evidence also shows large spatial variation in 
+the employment impacts across US labor markets (Dalton 2020; Mulligan 2022; Smith 2021).  
+Several specificities of the COVID19 crisis as compared to other economic downturns are 
+worth noting. First, job loss during the pandemic was concentrated around particular occupations. For 
+instance, areas with large hospitality sectors saw the steepest initial increases in unemployment whereas 
+areas with higher shares in finance and insurance were less affected (Dalton 2020; Smith 2021). The 
+
+8 
+ 
+COVID19 crisis also incited the so-called “Great Resignation”. The Great Resignation refers to the 
+massive number of workers who voluntarily left their jobs mostly for non-income reasons (Birinci and 
+Amburgey 2022; Kuzior, Kettler, and Rąb 2022). In 2021, the monthly resignation rates across all 
+industries in the US were the highest in the last 20 years, while the job openings were higher than the 
+number of hires (Faccini, Melosi, and Miles 2022). How job-loss was concentrated in the occupational 
+distribution and where it was located geographically might therefore differ from other economic 
+downturns. Second, the US welfare state traditionally compensates for the loss of earnings with only 
+meagre unemployment benefits. Household joblessness is therefore a particularly problematic situation. 
+Yet, the US Government amended payments during the initial phase of the pandemic via the 
+Coronavirus Aid, Relief, and Economic Security (CARES) Act. Still, the termination of the emergency 
+unemployment compensation puts a significant share of the population at risk of poverty. Third, 
+lockdown and isolation rules might have affected how households reacted to job loss as compared to 
+previous economic downturns. For instance, there is mixed evidence that households “doubled up” 
+during previous crises in order to cope with income loss, and, especially in the Great Recession, to cope 
+with housing debt with the collapse of the housing market (Bitler and Hoynes 2015; Mykyta and 
+Macartney 2011; Wiemers 2014). While changes in household composition during previous crises such 
+as the Great Recession were more persistent, during the COVID19 pandemic, there’s evidence that 
+headship rates decreased early in the pandemic but returned pre-pandemic levels within few months 
+(García and Paciorek 2022).  
+We analyze metropolitan areas as local labor markets. Recent literature on US local labor 
+markets prefers looking at commuting zones (e.g. Autor and Dorn 2013; VanHeuvelen and Copas 
+2019). Commuting zones more clearly outline local labor markets as they are constituted to represent 
+the geographic area that clusters individuals’ work travels. For analyzing variation across local labor 
+markets an added advantage of commuting zones is their higher case number (over 700). However, 
+given that no dataset that allows for the creation of commuting zones offers timely data on the 
+COVID19 pandemic, we choose to analyze the arguably next best option in metropolitan areas. There 
+are several good reasons for analyzing metropolitan areas. First, because more than 80% of Americans 
+live in metropolitan areas, their analysis provides an important insight into a large proportion of the US 
+
+9 
+ 
+population (US Census Bureau 2022). There is a rich literature on spatial economic inequality in the US 
+that we can connect to. Metropolitan areas in the US serve as key spatial units to study job polarization 
+(Doussard et al. 2009; Milkman and Dwyer 2002), economic segregation and income inequality (Abel 
+and Deitz 2019; Jargowsky 1996; Reardon and Bischoff 2011; Volscho 2007), and racial segregation 
+(Iceland et al. 2010; Lichter, Parisi, and Taquino 2015; Massey and Denton 1988; Tienda and Fuentes 
+2014). This is because, second, metropolitan areas are a good approximation of local labor markets as 
+they are made up of a large population center with dense economic activity, and adjacent communities 
+that economically and socially interact with the center (Abel and Deitz 2019; Fowler and Jensen 2020). 
+However, variations between metropolitan labor markets lead to significant inequalities between US 
+cities (Mulligan, Reid, and Moore 2014). Part of the explanation for variation between metropolitan 
+areas is that third, they have different educational profiles. A higher demand and “premium” pay in 
+some metropolitan areas lead to the concentration of skills (Li, Wallace, and Hyde 2019; Liu and 
+Grusky 2013). Essletzbichler (2015) finds that metropolitan areas with large shares of the top 1% are 
+characterized by higher levels of skill polarization, higher labor force participation and lower 
+unemployment  for those with little formal education. Metropolitan areas also vary in their attractiveness 
+to different household compositions, e.g. homogamous power couples (Costa and Kahn 2000). 
+Processes of household formation are strongly concentrated within metropolitan areas (Liao and Özcan 
+2013).  Finally, the COVID19 pandemic’s impact was strongest in metropolitan areas. The higher early 
+infection rates of COVID-19 in more densely populated urban areas caused severe employment losses 
+early on. Compared to rural residents, urban adults were more often unpaid for missed hours, inability 
+to work or to look for work (Brooks, Mueller, and Thiede 2021). These losses could have longer-term 
+effects on persistent job reductions in metropolitan areas (Cho, Lee, and Winters 2021).  
+
+10 
+ 
+3. Current Population Survey 2016-2021
+1 
+3.1 Data and sample 
+We use repeated monthly cross-sectional data (pooled in quarters) from the Current Population Survey 
+(CPS) 2016-2021 as provided by IPUMS (Flood et al. 2021). Our analysis proceeds in two steps. First, 
+we conduct a shift-share decomposition of the change in household joblessness across metropolitan 
+areas from before the pandemic to since its onset (Gregg et al. 2008; Gregg and Wadsworth 2001). The 
+decomposition enables us to separate the contribution of polarization to changes in household 
+joblessness from the contributions of changes in individual joblessness and changes in household size. 
+Second, we use our measures of household joblessness and polarization at the metropolitan-area level as 
+dependent variables in panel fixed-effects regressions to investigate their variation between metropolitan 
+areas with different educational profiles during the pandemic. 
+Monthly CPS data offers large sample sizes of ~125,000 individuals in 50,000 households and a 
+rich set of variables describing employment, socio-demographics, and family-structure status of these 
+households. Sample sizes vary widely for metropolitan areas. Some areas have less than 10 observations 
+in some months, whereas others consistently have many thousands. To achieve robust estimates, we 
+pool data in quarters. Our data includes 24 quarters starting with Q1 2016 and ending in Q4 2021. We 
+include all households with at least one working-age member (16-64). Both the shift-share analysis and 
+the panel fixed effects analyses operate at the (aggregate) level of metropolitan areas. To ensure that we 
+estimate all our metropolitan area level indicators robustly, we exclude metropolitan areas with less than 
+50 households in any quarter. That leaves us with 204 of the original 261 metropolitan areas. Aggregate 
+level variables are constructed based on, on average, 786 working age individuals in 409 households per 
+quarter and metropolitan area. We use survey weights included in CPS throughout to calculate aggregate 
+level indicators. Our metropolitan area level dataset contains 4,896 cases (204 metropolitan areas over 
+24 quarters). 
+ 
+1 Anonymized replication files can be found here: 
+https://osf.io/6cr3n/?view_only=cd28a6eeeb5f47db88a9c9e5373e3e93 
+
+11 
+ 
+3.2 Variables 
+Our two main outcomes of interest are household joblessness and polarization of household joblessness. 
+To construct our measure of household joblessness, we consider every individual employed (0) who 
+indicates to be employed whether they are at work or were not at work last week but have a job or are in 
+the armed forces. We code as non-employed (1) every other employment status - unemployed or not in 
+the labor force, including housework, education, inability to work, early retirement, and unpaid work. 
+We then code every household as jobless (1) if no working-age member is employed. Every household 
+with at least one member in employment is assigned not jobless (0). We calculate the household 
+joblessness rate at the level of metropolitan areas as the rate of working-age individuals who live in 
+entirely jobless households. 
+Our measure of polarization captures the inequality in the distribution of joblessness across 
+households. We follow Gregg and Wadsworth (2001) who measure polarization as the difference 
+between the actual rate of household joblessness and a counterfactual household jobless rate. The 
+counterfactual household joblessness rate is what would emerge if the distribution of joblessness across 
+individuals were random, i.e., every individual had the same probability of being jobless, with  
+𝑤̂𝑘= 𝑛𝑘
+(1) 
+where 𝑤̂𝑘 is the counterfactual household joblessness rate for a household of 𝑘 working age 
+household members and 𝑛 is the individual joblessness rate in a metropolitan area. This counterfactual 
+household joblessness rate does not entail any inequality in the likelihood of different households being 
+jobless. It can be calculated using the individual joblessness rate of a metropolitan area and information 
+about household sizes as defined by the number of working-age members. A household with only one 
+working-age member has the same counterfactual rate as the overall individual joblessness rate in a given 
+metropolitan area at a given time. The counterfactual household joblessness rate gets lower for 
+households with more working-age members. It is calculated as the individual joblessness rate to the 
+power of n, with n being the number of working-age household members. On the aggregate level of 
+metropolitan areas, the counterfactual household joblessness rate is then given by the individual 
+joblessness rate weighted by the distribution of working-age individuals across households of different 
+sizes with 
+
+12 
+ 
+𝑤̂ = ∑𝑆𝑘𝑤̂𝑘= ∑𝑆𝑘𝑛𝑘
+𝐾
+𝑘=1
+𝐾
+𝑘=1
+ 
+(2) 
+where 𝑆𝑘 is a weight that indicates the proportion of the population living in households of size 
+𝑘. A metropolitan area with a disproportional number of single households, for instance, would have a 
+relatively higher counterfactual household joblessness rate at a given individual joblessness rate. 
+Polarization is the difference between this counterfactual and the actual rate of household 
+joblessness, i.e., the proportion of working-age individuals living in households without any employment, 
+𝑃=  𝑤−𝑤̂ = ∑𝑆𝑘
+𝐾
+𝑘=1
+𝑤𝑘−∑𝑆𝑘𝑤̂𝑘= ∑𝑆𝑘(𝑤𝑘−𝑛𝑘)
+𝐾
+𝑘=1
+𝐾
+𝑘=1
+(3) 
+ If joblessness is distributed randomly, the counterfactual and actual household joblessness rates 
+become identical; thus, polarization becomes 0 (neutral). Negative polarization indicates that work is 
+distributed so that fewer households are without work than predicted by random distribution. We could 
+imagine this to be the case in contexts with strong male breadwinner models where the typical family 
+model entails one earner with several dependents. Polarization turns positive when there are more 
+jobless households than expected. We could imagine this in contexts with many multiple earner 
+households on the one side and many households with no one working on the other. Positive 
+polarization conforms to our understanding of risk accumulation in precarious jobless households while 
+many others are more fortunate. 
+The information on individual and household joblessness, polarization, and household sizes are 
+all we need for the shift-share analysis. For our metropolitan area level panel analysis, we create 
+additional measures that capture the make-up of metropolitan area labor markets and their demographic 
+composition.  
+We base the measures for our educational profiles on years of schooling of all 25 to 64 year old 
+individuals (as transformed from detailed information on educational attainment following Jaeger 
+(1997)). We measure educational levels as the average number of years of schooling in a metropolitan 
+area-quarter. Our measure of educational heterogeneity is a Theil index of years of schooling. The index 
+provides a measure of educational dividedness that takes a high value when individuals have varying 
+numbers of years in education and a low value when most individuals have similar numbers of years in 
+
+13 
+ 
+education. Finally, we measure the prevalence of educational homogamy as the correlation between the 
+higher educated partner and the lower (or equally) educated partner in partner households (married and 
+cohabiting).  
+We construct the other socio-demographic measures and indicators for labor market structures 
+as shares at the metropolitan area level. Our choices follow literature on spatial income inequality in the 
+US (Moller et al. 2009; VanHeuvelen and Copas 2019). To measure the ethnic composition of a 
+metropolitan area, we calculate the share of Black (% Black), Hispanic (% Hispanic), and White (% 
+white) population (these measures are based on the total population).  We measure the share of 
+migrants as percentage of the working age population (% migrant). We measure the prevalence of older 
+people by calculating the share of individuals 65 and older of the total population (% older). We 
+measure the prevalence of single households by calculating the share of households without a partner as 
+a percentage of the total number of households (% single). We measure the population size of 
+metropolitan areas as the total population in absolute numbers (population size). Finally, we measure 
+distribution of the population across the center and periphery of the metropolitan area (% living in the 
+central city). 
+To measure the economic prosperity of a metropolitan area, we use the median household 
+income (medianinc) equivalized by household size (OECD equivalence scale). Income data is not 
+available in the monthly CPS data. We calculate annual median household incomes using the CPS 
+Annual Social and Economic Supplement (ASEC). To model labor market sectoral structures, we 
+calculate four indicators. First, we measure the size of the government sector by the share of workers in 
+public administration (% gov). We measure the size of the manufacturing sector by the share of workers 
+in manufacturing (% manu). Third, we measure the size of the FIRE sector by the share of workers in 
+finance, insurance, and real estate service jobs (% fire). Finally, we measure the size of the service sector 
+as the share of workers in all other service jobs (% service).  
+
+14 
+ 
+4. Analytical strategy 
+4.1 Shift-share decomposition 
+Shift-share decomposition of changes in household joblessness uses data on individuals in households to 
+assess changes in joblessness at the individual level and  the household level (Gregg et al. 2008; Gregg 
+and Wadsworth 2001). The decomposition determines which part of the change in household 
+joblessness can be attributed to changes in individual joblessness, changes in household sizes, and 
+changes in polarization. We want to analyze changes in household joblessness since the onset of the 
+pandemic. We calculate changes in household joblessness and changes in the contributing factors for 
+each quarter starting from Q2 2020. Our comparison is the average of the respectively same quarter for 
+the years 2016 to 2019. By comparing the same quarter, we parse out seasonality effects. Using the 
+three-year average as a benchmark helps us estimate changes that were induced by the pandemic rather 
+than expressing a predetermined trend.  
+The change in household joblessness can be broken down into the change in the counterfactual 
+household joblessness rate and the change in the actual household joblessness rate subtracting the 
+counterfactual household joblessness rate (equation (4)).  
+∆𝑤= ∆𝑤̂ + ∆(𝑤−𝑤̂) 
+(4) 
+Following from equation (3), the two terms can be calculated using information on the change in 
+the individual joblessness rate 𝑛 for households of size 𝑘 weighted by the change in the share 𝑆 of 
+individuals living in households of size 𝑘 and information on the change in household joblessness of 
+households of size 𝑘 (equation (5)). 
+∆𝑤= ∑∆(𝑆𝑘𝑛𝑘) + ∑∆(𝑆𝑘(𝑤𝑘−𝑛𝑘))
+𝐾
+𝑘=1
+𝐾
+𝑘=1
+(5) 
+Eventually, the decomposition breaks down over-time shifts in household joblessness into 
+fluctuations in individual joblessness, structural changes in household sizes, and polarization (equation 
+(6)).  
+∆𝑤= 
+∑∆𝑆𝑘(0.5𝑛𝑡
+𝑘+ 0.5𝑛𝑡+1
+𝑘
+)
+𝐾
+𝑘=1
++ 
+
+15 
+ 
+∑∆𝑛𝑘(0.5𝑆𝑘,𝑡+ 0.5𝑆𝑘,𝑡+1)
+𝐾
+𝑘=1
++
+(6) 
+∑∆𝑆𝑘(0.5(𝑤𝑘−𝑛𝑘)𝑡+ 0.5(𝑤𝑘−𝑛𝑘)𝑡+1)
+𝐾
+𝑘=1
++ 
+∑∆(𝑤𝑘
+𝐾
+𝑘=1
+−𝑛𝑘)(0.5𝑆𝑘,𝑡+ 0.5𝑆𝑘,𝑡+1) 
+First, household joblessness changes because of structural changes in household size (first right-
+hand sum term in equation (6)). Households can pursue different strategies to buffer job loss of 
+individuals. For instance, they might “double up”, i.e., merge households, to pool resources (Bitler and 
+Hoynes 2015; Mykyta and Macartney 2011; Wiemers 2014). Unemployment might also cause 
+households to split up (Brand 2015; Charles and Stephens 2004). Such developments on a larger scale 
+would affect a metropolitan area’s household jobless rate. In our decomposition, we can show how 
+much such developments contribute to the overall change in household joblessness. 
+Second, change in individual employment (second right-hand sum term in equation (6)) during 
+the pandemic, will necessarily affect the expected probabilities of household joblessness. More 
+individuals without a job means more households entirely without work when job loss is distributed 
+randomly. In the shift-share analysis, we attribute the observed changes in household joblessness to 
+changes in individual joblessness for each household size (calculated as the change in the individual 
+joblessness rate to the power of the number of working-age members in the respective quarter). When 
+decomposing the change in household joblessness, we thus attribute that part to the fluctuations in 
+individual joblessness that equals the change in counterfactual household joblessness. 
+The third component contributing to the overall change in household joblessness is the change 
+in polarization. The decomposition breaks down changes in polarization into a between household-type 
+and a within household-type component. Between-polarization (third right-hand sum term equation (6)) 
+changes when job loss is unequally allocated across households of different sizes. For instance, between-
+polarization would rise if more single households lost their jobs and become household jobless whereas 
+couple households keep their jobs. Within-polarization (fourth right-hand sum term in equation (6)) 
+changes when joblessness is unequally distributed among households of the same size. This might result 
+
+16 
+ 
+from households facing different risks of job loss due to educational differences. In our presentation of 
+the decomposition, we will not focus on the two components of polarization. Instead, we present figures 
+on polarization in total, which we obtain by simply adding the two components up. We conduct the 
+shift-share decomposition for the merged sample of all 204 US metropolitan areas and for all 
+metropolitan areas separately. 
+4.2 Metropolitan area level panel fixed effects models 
+In our multivariate analysis, we estimate how the development of household joblessness and polarization 
+differed between metropolitan areas with different educational profiles. Our baseline model 
+specification is as follows:  
+𝑌𝑖𝑡= 𝑐𝑖+ 𝛽𝑄𝑄𝑖𝑡+ 𝛽𝐸𝐸𝑖𝑡+ 𝛽𝑄𝐸𝑄𝑖𝑡𝐸𝑖𝑡+ 𝛽𝑍𝑍𝑖𝑡+ 𝜗𝑖+ 𝜀𝑖𝑡
+(7) 
+Where 𝑌𝑖𝑡 is the level of household joblessness or polarization in a metropolitan area 𝑖 in quarter 𝑡. On 
+the right-hand side 𝑐𝑖 is the metropolitan area time-constant intercept. 𝑄𝑖𝑡 is an indicator of the quarter. 
+𝐸𝑖𝑡 represents our three measures of education, i.e., levels, heterogeneity, and homogamy. 𝑄𝑖𝑡𝐸𝑖𝑡 is the 
+interaction term of the quarter and the educational measures. We use these interactions (up to four-way) 
+to estimate differences between the metropolitan areas in the most flexible way and to capture all 
+combinations of education measures, which generate different “education profiles”. 𝑍𝑖𝑡 represents our 
+battery of time-varying metropolitan area level covariates. We include some as contemporaneous 
+covariates (% Black, % Hispanic, % migrants, populations size) and some as one quarter lags to avoid 
+overcontrol bias (% single, % older, median equivalized income, % public sector, % manufacturing, % 
+FIRE, % other services, % living in central city)  𝜗𝑖 and 𝜀𝑖𝑡 are the time-constant and the time-varying 
+component of the error term. We use fixed effects models to eliminate bias from time-constant 
+unobserved heterogeneity between the metro areas (Allison 2009). The fixed-effects transformation 
+eliminates the time-constant error term 𝜗𝑖 as well as the time-constant intercept. We cluster standard 
+errors at the metropolitan area level.  
+The fixed effects model estimates coefficients for the association between deviations from the 
+mean of metropolitan areas’ household joblessness or polarization and the deviations from the mean of 
+the right-hand side variables. We do not report the estimated regression coefficients from these 
+specifications because our 24 time (quarter) dummies and their two-way, three-way, and up to four-ways 
+
+17 
+ 
+interactions with our three key education measures generate numerous coefficients. Instead, we show 
+and discuss the predicted values from these regressions as profile plots. The profile plots allow us to 
+illustrate household joblessness and polarization for metropolitan areas with select combinations of 
+education measures that describe specific education profiles, which are more or less commonly 
+observed. 
+5. Results 
+5.1 Household joblessness and its decomposition in all US metropolitan areas combined 
+We first show overall trends in individual and household joblessness and polarization in all US 
+metropolitan areas combined. Figure 1 illustrates the clear rise in joblessness both for individuals and 
+households during the pandemic (left-hand y-axis). While the rate of household joblessness is naturally 
+lower, an average 10% of the working-age population lives in entirely jobless households even before the 
+pandemic hit. With the onset of the crisis, we see an uptick of about 5 percentage points. In 2021, both 
+individual and household joblessness are trending towards pre-pandemic levels, although household 
+joblessness plateaus slightly. That is because polarization increases, too (right-hand y-axis). Polarization 
+hovers around 0.4% points before the pandemic but increases to 0.8% points at its pandemic peak. At 
+this point, therefore, household joblessness is 0.8% points higher than we would expect for a random 
+distribution of individual joblessness across households. Before and since the pandemic, polarization is 
+always positive, thus indicating accumulation of employment risks in households. 
+In our shift-share analysis we use the respective average quarters 2016-19 as the pre-pandemic 
+baseline. We decompose changes relative to this baseline for each quarter from Q2 2020 until Q4 2021. 
+Figure 2 displays the decomposition for the entire metropolitan area US. The dashed line indicates the 
+total change in household jobless as compared to the 2016-2019 average (note that the line and bars do 
+not show the change from quarter to quarter but always in reference to the pre-pandemic period). The 
+bars in order from left to right represent the amount of the household jobless change for each quarter as 
+compared to 2016-19 that is due to changes in individual joblessness, household sizes, and polarization. 
+The three bars added together make up the total change in household joblessness compared to 2016-
+2019 (i.e., the dashed line). The horizontal line marks the onset of the pandemic. 
+
+18 
+ 
+Figure 1: Individual and household joblessness rates and polarization in metropolitan area US 2016-
+2021 
+ 
+Note: ‘Metropolitan area US’ is the population-weighted average of all 204 metropolitan areas in our sample. Left-hand y-axis 
+indicates joblessness rate, right-hand y-axis indicates polarization. Vertical dashed line marks the onset of the pandemic before 
+Q2 2020. Source: CPS 2016-2021, authors’ own calculations. 
+ 
+ 
+
+19 
+ 
+Figure 2: Decomposition of change in household joblessness in metropolitan area US (Q2 2020-Q4 
+2021) 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. ‘Metropolitan area US’ represents the 
+population-weighted average of all 204 metropolitan areas in our sample. Vertical dashed line marks the onset of the pandemic 
+before Q2 2020. Source: CPS 2016-21, authors’ own calculations.  
+Figure 2 shows an initial increase in household joblessness of about 5% points across 
+metropolitan area US. This rise can be attributed to a large part to the increase in individual joblessness. 
+Household joblessness decreases over the subsequent quarters as the contribution of individual 
+joblessness diminishes. Household size’s minimally negative contribution turns to a small positive 
+contribution. Whereas household joblessness decreases with the lowering of individual joblessness, the 
+contribution of polarization is increasing household joblessness by about 0.5 percentage points in most 
+quarter until the fourth quarter of 2021.  
+
+20 
+ 
+In robustness checks, we run the same decomposition for a sample that contains only 
+households with at least one member aged 16-49. This is to test whether older households drive our 
+findings, for instance, because they might prefer early retirement over searching for new, possibly worse 
+jobs as implied in arguments about the “Great Resignation” (Schuster and Radpour 2022). The 
+development of the components looks very similar for the younger subsample. Yet, while overall levels 
+of household joblessness are lower than for the full working age sample (increase of slightly above 4% 
+points in Q2 2020), the contribution of polarization is much larger (up to 1.8% points in Q2 2020) (see 
+Appendix, Figure A1). 
+5.2 Variation across metropolitan areas 
+Even though the contribution of polarization is not negligible and household joblessness increases initially, 
+looking at the US average might indicate that the issue is resolved by the end of 2021. This, however, 
+ignores the dramatic variation in household joblessness and the contribution of polarization across 
+metropolitan areas. Figure 2 showed that by Q1 2021 household joblessness was on average about 1.5% 
+points higher than before the pandemic and that the average contribution of the change in polarization 
+meant that household joblessness was 0.5% points higher than if job-loss was randomly distributed across 
+households. Figure 3 maps the metropolitan areas in our sample and indicates the overall change in 
+household joblessness (top panel) and the contribution of polarization to changes in household joblessness 
+(bottom panel) for the first quarter in 2021 (as compared to the 2016-2019 average). Across metropolitan 
+areas, the change in household joblessness ranged from -16% points to 17% points. The contribution 
+varied between less than -13% points and more than 15% points. As a reminder, a positive contribution 
+signifies how much larger household joblessness is than expected by a random distribution of individual 
+joblessness. A negative contribution signifies how much smaller household joblessness is than expected. 
+The first thing the maps tell us is that both household joblessness and polarization varied widely 
+across metropolitan areas. There are many areas, in which polarization reinforces the overall change. In 
+Arizona, for example, Phoenix has low negative contribution of polarization and negative household 
+joblessness. The neighboring Prescott Valley and Tuscon have high positive contributions to very high 
+increases in household joblessness. Yuma, in the west, shows a strong negative contribution to moderate 
+household joblessness. But there are also areas in which polarization contributions and overall 
+
+21 
+ 
+household joblessness diverge. Several areas in Wisconsin and Minnesota, for instance, have negative 
+polarization contributions but still increases in household joblessness. This is not unexpected because 
+overall increases in individual joblessness can account for rising household joblessness. Yet, there are 
+also single areas with positive polarization contributions but overall decreases in household joblessness, 
+e.g., Provo-Orem in Utah. 
+Figure 3: Change in household joblessness (top) and contribution of change in polarization (bottom) 
+across metropolitan areas in Q1 2021 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Source: CPS 2016-21, authors’ own 
+calculations. 
+Figures 4-7 show our shift share decomposition for selected metropolitan areas. To provide a 
+first look at how variance might be clustered across metropolitan areas with different educational 
+profiles, we select metropolitan areas according to their combinations of educational levels, educational 
+heterogeneity, and educational homogamy. We choose combinations that show high or low levels of the 
+
+22 
+ 
+three indicators as defined as being in the lowest third or the highest third of the distribution of the 
+respective indicator before the pandemic (average over all quarters 2016-2019). Not all combinations are 
+equally prevalent empirically (Figure A2 in the Appendix shows the distribution of metropolitan areas 
+over educational profiles, plotting the correlation between educational heterogeneity and educational 
+homogamy for three educational levels). We show the decompositions for the four largest metropolitan 
+areas of the four combinations with the largest number of metropolitan areas. 
+Figure 4 shows the decomposition for the four largest areas that combine low educational levels 
+with low heterogeneity and low homogamy. With the expectation of Youngstown, these areas show very 
+high increases in household joblessness initially (up to 15% points) and polarization contributes relatively 
+strongly (up to 7% points). Subsequent developments vary considerably. The contribution of 
+polarization diminishes and turns even negative at points. Youngstown after an initial moderate rise 
+shows a consistent decrease in household joblessness (more than -15% points) as compared to before 
+the pandemic. About half of this decrease is due to negative polarization, i.e. absorption. 
+Figure 5 shows metropolitan areas that combine educational levels in the lowest third with 
+educational heterogeneity and homogamy in the highest third. Overall changes in household joblessness 
+are much less dramatic here (at most 7% points). Both Houston and Los Angeles show moderate 
+contributions of polarization to household joblessness (at most around 2.5% points), which is nearing 
+pre-pandemic levels by the end of 2021. Household joblessness decreased initially in Tulsa but is higher 
+than before the pandemic by the end of 2021. Finally, household joblessness stayed close to pre-
+pandemic levels in Oxnard except for a period in late 2020/early 2021 in which negative polarization 
+drove a relative decrease of up to -7% points. 
+ 
+ 
+ 
+ 
+Figure 4: Decomposition of change in household joblessness in the four largest metropolitan areas with 
+low educational levels, low heterogeneity, and low homogamy (Q2 2020-Q4 2021) 
+
+23 
+ 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  
+Source: CPS 2016-21, authors’ own calculations. 
+ 
+ 
+
+24 
+ 
+Figure 5: Decomposition of change in household joblessness in the four largest metropolitan areas with 
+low educational levels, high heterogeneity, and high homogamy (Q2 2020-Q4 2021) 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  
+Source: CPS 2016-21, authors’ own calculations. 
+Figure 6 shows the four largest metropolitan areas with high educational levels but low 
+heterogeneity and low homogamy. All four metropolitan areas show increases in household joblessness 
+of up to around 5% points initially that slowly decrease and reach pre-pandemic levels by the end of our 
+observation window, Polarization plays a moderate role, contributing up to 1% point but also 
+contributing negatively at times in Jacksonville, St. Louis, and Urban Honolulu. 
+ 
+
+25 
+ 
+Figure 6: Decomposition of change in household joblessness in the four largest metropolitan areas with 
+high educational levels, low heterogeneity, and low homogamy (Q2 2020-Q4 2021) 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  
+Source: CPS 2016-21, authors’ own calculations. 
+ 
+
+26 
+ 
+Figure 7: Decomposition of change in household joblessness in the four largest metropolitan areas with 
+high educational levels, high heterogeneity, and high homogamy (Q2 2020-Q4 2021) 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  
+Source: CPS 2016-21, authors’ own calculations. 
+Finally, Figure 7 shows the four largest areas that combine high levels of education with high 
+heterogeneity and high homogamy. This group of areas contains some of the largest population centers 
+of the US. It is thus not surprising that the development of household joblessness in them resembles the 
+national trend. In New York, where overall increases in household joblessness were the largest (around 
+9% points), polarization contributes notably (up to 2.5% points) while it plays a moderate role in the 
+other areas. In all four areas, household joblessness and polarization are close to pre-pandemic levels by 
+the end of 2021. 
+
+27 
+ 
+In the Appendix, we present an alternative set of selected metropolitan areas. The selection is 
+based on alternative educational variables that use three levels of educational attainment to measure 
+average educational levels, educational heterogeneity, and educational homogamy. Figures A3-A6 show 
+the respective four largest areas for the four most frequent combinations of high and low levels of these 
+alternative educational measures.  Besides providing a look at other metropolitan areas, the findings 
+confirm that there is great variation across metropolitan areas with different educational profiles but also 
+within them. Using alternative educational measures also leads to different allocations of areas. For 
+instance, some of the metropolitan areas we group as high educational level, high educational 
+heterogeneity, and high educational homogamy in the main analysis (see Figure 7) are grouped as having 
+high educational levels, high educational homogamy, but low educational heterogeneity when using 
+educational attainment (see Figure A6). We prefer the measures based on years in education because 
+attainment measures mean a loss of information. 
+Overall, the decompositions illustrate a large increase in household joblessness as compared to 
+pre-pandemic levels in many metropolitan areas. By the end of 2021, household joblessness is close to 
+pre-pandemic levels in many areas. Developments and the role of polarization varied strongly across 
+areas. From our selected examples it is difficult to ascertain a pattern that aligns with our considerations 
+of the moderating role of educational profiles. Especially for the first group of areas (Figure 4), the lower 
+level of education seems to come with particularly large increases in household joblessness. Regarding 
+the contribution of polarization, we find the most consistent contribution in areas with low levels, high 
+heterogeneity, and high homogamy (Figure 6), but even here not all the selected examples show the 
+same pattern. For a more systematic test of the expected moderating role of educational profiles of 
+metropolitan areas, the following section shows the results from our panel regression models. 
+5.3 Fixed effects panel regressions of household joblessness and polarization 
+In our multivariate models, we regress the level of household joblessness and polarization on our 
+educational profiles fully interacted with a quarter indicator and adjusting for a battery of 
+contemporaneous and lagged covariates. In Figure 8 we display the predicted level of household 
+joblessness (left-hand panel) and polarization (right-hand panel) for all quarters since the onset of the 
+pandemic for metropolitan areas with different educational profiles from our model. Our models 
+
+28 
+ 
+include the educational profiles as time-variant variables. For the figure, we group areas by their pre-
+pandemic profiles so that the displayed predictions contain a fixed set of metropolitan areas. As before, 
+we group areas by low and high values as defined by being in the lowest or highest third of the three 
+variables pre-pandemic. Two theoretically possible combinations do not exist empirically (low levels 
+combined with low heterogeneity and high homogamy and high levels combined with high heterogeneity 
+and low homogamy) and another two are evident in only few metropolitan areas: we show the results for 
+areas with low levels, high heterogeneity and low homogamy (N=5) but omit areas with high levels 
+combined with low heterogeneity and high homogamy (N=1).  
+Among the more prevalent educational profiles, metropolitan areas with low educational levels 
+generally have higher levels of household joblessness. Areas that combine low levels with low 
+heterogeneity and low homogamy see particularly large increase (almost 6% points) at the start of the 
+pandemic (12 metropolitan areas representing about 2.1% of our sample). The overall lowest levels of 
+household joblessness by a wide margin are in areas in which high educational levels are combined with 
+high heterogeneity and high homogamy (12 metropolitan areas representing about 18.5% of our 
+sample). But even these areas experience a notable increase initially. All areas also see household 
+joblessness decline, many reaching close to pre-pandemic levels by the end of 2021. The exception here 
+are the areas that combine low levels of education with high heterogeneity and high homogamy as they 
+show a notable uptick in Q4 2021 (24 metropolitan areas representing about 10.5% of our sample).  
+The picture is more varied when inspecting how much polarization contributes to the increase 
+and subsequent decline in household joblessness across areas. Given their low levels of household 
+joblessness, polarization plays an outsize role in areas with high educational levels, high heterogeneity, 
+and high homogamy, adding almost 1.5% points before the pandemic and closing at 1.5% points by the 
+end of 2021. Areas with low levels, low heterogeneity, and low homogamy see a clear uptick to almost 
+1.8% points that remains high until Q3 2021 but returns to pre-pandemic levels of about 1% point in Q4 
+2021. The other three combinations see increases in polarization throughout the pandemic, albeit at 
+different levels. Areas that combine high educational levels with low heterogeneity and low homogamy 
+generally show the lowest levels and arrive at pre-pandemic levels by Q4 2021 (at about 0.8% points) (17 
+metropolitan areas representing about 7.6% of our sample). Areas that combine low levels with either 
+
+29 
+ 
+high heterogeneity and low homogamy (5 metropolitan areas representing about 2.4% of our sample) or 
+high heterogeneity and high homogamy arrive at notably higher levels of polarization in Q4 2021 as 
+compared to before the pandemic (both at around 1.5% points whereas they started at less than 0.8% 
+points). Thus, while educational levels seem to make the largest difference when it comes to overall 
+household jobless, educational heterogeneity and homogamy play an important role when it comes to 
+levels and change of polarization. On balance, there is some evidence indicating that lower heterogeneity 
+and lower homogamy correlate with less (increase in) polarization. 
+Here, too, we run a number of alternative analyses to assess robustness of our findings. First, we 
+use alternative thresholds of education our measures to represent the educational profiles of 
+metropolitan areas is in line with our findings. Using the median to determine low and high values 
+enables a look at all metropolitan areas (see Figure A7 in the Appendix). The overall levels and 
+developments resemble the ones presented here but, unsurprisingly, are generally more moderate and 
+differences between combinations are smaller. Using values in the lowest and highest quartile reduces 
+the number of represented areas and leads to more extreme differences (see Figure A8 in the 
+Appendix). We also test how reducing the sample to households with at least one member aged 16-49 
+changes our results (see Figure A9 in the Appendix). The main difference here is that polarization 
+patterns follow more closely the development of overall household joblessness. Finally, we show how 
+using alternative educational measures changes the results (see Figure A10 in the Appendix). As they 
+represent different metropolitan areas, the results show some different patterns. But they confirm that 
+household joblessness differs strongly for educational levels whereas the development of polarization is 
+affected by heterogeneity and homogamy as well.
+
+Figure 8: Predicted levels of household joblessness and polarization across educational profiles
+ 
+Note: Predictions from panel fixed effects regressions of household joblessness and polarization on fully interacted combinations of quarter, educational level, educational heterogeneity, and educational 
+homogamy. Models include all quarters from Q1 2016 to Q4 2021, but graphs only depict predictions from Q1 2020 onward. Predictions based on pre-pandemic averages of educational variables for 
+metropolitan areas. “low” = lowest third in the distribution, “high” = highest third in the distribution. Represented combinations selected based on case numbers. Contemporaneous covariates: % Black, 
+% Hispanic, % migrants, population size. Lagged covariates:  % single headed HHs, % older, median equivalized income, % public sector, % manufacturing, % FIRE sector, % other services, % living in 
+the central city. Vertical dashed lines mark the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, authors own calculations. 
+
+6. Conclusions and discussion 
+In this paper, we set out to answer three questions. First, how did household joblessness develop in the 
+US during the COVID19 economic crisis and how did it vary across local labor markets? Second, how 
+much of this development and cross-labor market variation was simply due to rising numbers in 
+individual joblessness and how much was due to the unequal distribution of job-loss across households, 
+i.e., polarization? Third, can we explain cross-labor market variation in household joblessness and 
+polarization with the educational profiles of these labor markets. We used monthly CPS data pooled in 
+quarters for 204 metropolitan areas 2016-2021. To answer the first two questions, we used a shift-share 
+decomposition that broke down changes in household joblessness since the start of the pandemic into 
+the contribution from individual joblessness, changes in household sizes, and polarization. We found a 
+large increase in household joblessness during the pandemic. This moved largely in step with individual 
+joblessness but positive polarization added a non-trivial amount. Moreover, variance across metropolitan 
+areas was large in the initial increase in household joblessness, its subsequent development, and in the 
+contribution from polarization. We used fixed effects panel regressions on the level of metropolitan 
+areas to answer our third question. Partly, the development of household joblessness and polarization 
+aligned with our expectations about the educational profiles of metropolitan areas. Areas with low 
+educational levels generally showed higher levels of household joblessness. Areas with low educational 
+levels but high heterogeneity and homogamy saw the steadiest increase in polarization. Areas with low 
+homogamy and heterogeneity combined with both low and high levels of education showed the lowest 
+levels of polarization at the end of our observation period. While these findings did partly align with our 
+expectations, metropolitan areas in with similar educational profiles showed notable differences in their 
+development of household joblessness and polarization. 
+Some limitations of our study might be related to inconsistencies in our findings. First, we used 
+CPS data and metropolitan areas because the CPS is the only available data source for analyzing 
+household joblessness during the pandemic as it publishes new data monthly. Metropolitan areas are the 
+spatial unit to analyze local labor markets in the CPS with sufficient case numbers, but smaller case 
+numbers for some metropolitan areas could lead to less robust findings. While looking at metropolitan 
+areas allowed us to extend existing research on US geographic economic inequality, we intend to explore 
+
+32 
+ 
+long term trends in US household joblessness using US Census/American Community Survey data in 
+future work. Studies analyzing commuting zones usually use US Census/American Community Survey 
+data, meaning data case numbers per spatial unit are also notably larger (e.g. Autor and Dorn 2013; 
+VanHeuvelen and Copas 2019).  Second, because we analyzed metropolitan areas, we had to work with 
+a very limited case number in our multivariate analysis. Our models included up to four-way interactions 
+and a battery of covariates for which a sample of 204 metropolitan areas arguably yields not enough 
+power. We were therefore able to cautiously describe differences in trends, but statistical tests of 
+differences will have to be conducted in future work with larger samples. Again, analyzing commuting 
+zones would provide a larger sample size of more than 700. Third, our focus was on the level of 
+metropolitan areas because polarization is intuitively a macro concept and because it enabled us to 
+consider externalities of educational measures. However, future work analyzing individual level data 
+could help us illustrate differences between households that accumulate employment risks more clearly. 
+Finally, analyzing household joblessness during the COVID19 pandemic might have limited 
+generalizability because of the occupational distribution of job-loss and idiosyncratic impacts on 
+household dynamics. Future work might test our education-based explanation for prior economic 
+downturns as well as long-term trends. 
+Overall, we might look at the development of household joblessness and interpret the return to 
+pre-pandemic levels by the end of 2021 as good news. On average, polarization levels also return to pre-
+pandemic levels, which are relatively low in international comparison (Biegert and Ebbinghaus 2022; 
+Gregg et al. 2008; Gregg and Wadsworth 2001). However, it took almost two years to arrive at pre-
+pandemic levels, meaning that an increased number of individuals experienced the hardships connected 
+to living in a jobless household. Also, we need to remember that pre-pandemic levels still mean that 
+about 10% of working age adults in metropolitan areas live in households with no-one working. 
+Moreover, both household joblessness and polarization are markedly above the national average in 
+some metropolitan areas. Because household joblessness increased by up to 5% points nationally and by 
+more than 15% points in some metropolitan areas, an increased share of the population lived at a higher 
+risk of poverty. In our sample, jobless households without children showed a poverty risk of around 65% 
+and almost 75% of jobless households with children were at risk of poverty (compared to around 15% 
+
+33 
+ 
+for employed households without children and 28% of employed households with children) (see Figure 
+A11 in the Appendix). Notably, poverty risks of jobless households with children increased in 2021 after 
+a brief drop in 2019-20. Thus, even though state support was generous in the first phase of the 
+pandemic, it was cut down soon again, leaving jobless households and particularly those with children 
+highly vulnerable to immediate adverse impacts of poverty. Experiencing household joblessness during 
+the pandemic and after is also likely to leave household members with scars that transcend the impact of 
+poverty (Curry et al. 2022; Ermisch et al. 2004; Mooi-Reci et al. 2020). Besides documenting the 
+challenge of household joblessness in the US, our study provided an explanation of variation in 
+household joblessness and polarization across labor markets that went beyond coarse models of welfare 
+regimes and dominant family models (Biegert and Ebbinghaus 2022; Corluy and Vandenbroucke 2017; 
+Gregg et al. 2008). Because high household joblessness implies an additional dimension of accumulated 
+risks, further developing the education-based model might proof helpful in identifying geographic 
+pockets of entrenched spatial economic disadvantage. 
+ 
+ 
+
+34 
+ 
+References 
+Abel, Jaison R., and Richard Deitz. 2019. “Why Are Some Places So Much More Unequal Than 
+Others?” Economic Policy Review 25(1):58–75. 
+Allison, Paul D. 2009. Fixed Effects Regression Models. Vol. 160. Los Angeles: SAGE. 
+Autor, David H., and David Dorn. 2013. “The Growth of Low-Skill Service Jobs and the Polarization of 
+the US Labor Market.” American Economic Review 103(5):1553–97. 
+Bennett, Jesse. 2021. “Fewer Jobs Have Been Lost in the EU than in the U.S. during the COVID-19 
+Downturn.” Pew Research Center. Retrieved November 8, 2021 
+(https://www.pewresearch.org/fact-tank/2021/04/15/fewer-jobs-have-been-lost-in-the-eu-
+than-in-the-u-s-during-the-covid-19-downturn/). 
+Biegert, Thomas, and Bernhard Ebbinghaus. 2022. “Accumulation or Absorption? Changing 
+Disparities of Household Non-Employment in Europe during the Great Recession.” Socio-
+Economic Review 20(1):141–68. 
+Birinci, Serdar, and Aaron Amburgey. 2022. “The Great Resignation vs. The Great Reallocation: 
+Industry-Level Evidence.” Economic Synopses 2022(4). 
+Bitler, Marianne, and Hilary Hoynes. 2015. “Living Arrangements, Doubling Up, and the Great 
+Recession: Was This Time Different?” American Economic Review 105(5):166–70. 
+Brand, Jennie E. 2015. “The Far-Reaching Impact of Job Loss and Unemployment.” Annual Review of 
+Sociology 41:359–75. 
+Breen, Richard, and Leire Salazar. 2011. “Educational Assortative Mating and Earnings Inequality in 
+the United States.” The American Journal of Sociology 117(3):808–43. 
+Brooks, Matthew M., J. Tom Mueller, and Brian C. Thiede. 2021. “Rural-Urban Differences in the 
+Labor-Force Impacts of COVID-19 in the United States.” Socius 7:23780231211022096. 
+Charles, Kerwin Kofi, and Melvin Jr. Stephens. 2004. “Job Displacement, Disability, and Divorce.” 
+Journal of Labor Economics 22(2):489–522. 
+Chetty, Raj. 2014. “Where Is the Land of Opportunity? The Geography of Intergenerational Mobility 
+in the United States.” The Quarterly Journal of Economics 129(4):1553–1623. 
+Cho, Seung Jin, Jun Yeong Lee, and John V. Winters. 2021. “Employment Impacts of the COVID-19 
+Pandemic across Metropolitan Status and Size.” Growth and Change 52(4):1958–96. 
+Corluy, Vincent, and Frank Vandenbroucke. 2017. “Individual Employment, Household Emplyment 
+and Risk of Poverty in the EU. A Decomposition Analysis.” Pp. 279–98 in Monitoring social 
+inclusion in Euope, edited by A. B. Atkinson, A.-C. Guio, and E. Marlier. Eurostat. 
+Costa, Dora L., and Matthew E. Kahn. 2000. “Power Couples: Changes in the Locational Choice of the 
+College Educated, 1940–1990*.” The Quarterly Journal of Economics 115(4):1287–1315. 
+Curry, Matthew, Irma Mooi-Reci, and Mark Wooden. 2019. “Parental Joblessness and the 
+Moderating Role of a University Degree on the School-to-Work Transition in Australia and 
+the United States.” Social Science Research 81:61–76. 
+
+35 
+ 
+Curry, Matthew, Irma Mooi-Reci, and Mark Wooden. 2022. “Intergenerationally Penalized? The Long-
+Term Wage Consequences of Parental Joblessness.” Social Science Research 103:102650. 
+Dalton, Michael. 2020. “Labor Market Effects of Local Spread of COVID-19 : U.S. Bureau of Labor 
+Statistics.” BLS Working Paper (254). 
+Doussard, Marc, Jamie Peck, and Nik Theodore. 2009. “After Deindustrialization: Uneven Growth and 
+Economic Inequality in ‘Postindustrial’ Chicago.” Economic Geography 85(2):183–207. 
+Eika, Lasse, Magne Mogstad, and Basit Zafar. 2019. “Educational Assortative Mating and Household 
+Income Inequality.” The Journal of Political Economy 127(6):2795–2835. 
+Ermisch, John, Marco Francesconi, and David J. Pevalin. 2004. “Parental Partnership and Joblessness 
+in Childhood and Their Influence on Young People’s Outcomes.” Journal of the Royal 
+Statistical Society: Series A (Statistics in Society) 167(1):69–101. 
+Essletzbichler, Jürgen. 2015. “The Top 1% in U.S. Metropolitan Areas.” Applied Geography 61:35–46.  
+Faccini, Renato, Leonardo Melosi, and Russell Miles. 2022. “The Effects of the ‘Great Resignation’ on 
+Labor Market Slack and Inflation.” Chicago Fed Letter (No. 465). 
+Farber, Henry S. 2005. “What Do We Know about Job Loss in the United States? Evidence from the 
+Displaced Workers Survey, 1984–2004.” Economic Perspectives 29(2):13–28. 
+Farber, Henry S. 2015. Job Loss in the Great Recession and Its Aftermath: U.S. Evidence from the 
+Displaced Workers Survey. Working Paper. 21216. National Bureau of Economic Research.  
+Flood, Sarah, Miriam King, Rodgers Renae, Steven Ruggles, Robert J. Warren, and Westberry, 
+Michael. 2021. “Integrated Public Use Microdata Series, Current Population Survey: Version 
+7.0 [Dataset].” 
+Fowler, Christopher S., and Leif Jensen. 2020. “Bridging the Gap between Geographic Concept and 
+the Data We Have: The Case of Labor Markets in the USA.” Environment and Planning A: 
+Economy and Space 52(7):1395–1414. 
+García, Daniel, and Andrew Paciorek. 2022. “The Remarkable Recent Rebound in Household 
+Formation and the Prospects for Future Housing Demand.” FEDS Notes. Washington: Board 
+of Governors of the Federal Reserve System. 
+Gesthuizen, Maurice, Heike Solga, and Ralf Künster. 2011. “Context Matters: Economic 
+Marginalization of Low-Educated Workers in Cross-National Perspective.” European 
+Sociological Review 27(2):264–80. 
+Glaeser, Edward L., and Albert Saiz. 2004. “The Rise of the Skilled City.” Brookings-Wharton Papers on 
+Urban Affairs 2004:47–105. 
+de Graaf-Zijl, Marloes, and Brian Nolan. 2011. “Household Joblessness and Its Impact on Poverty and 
+Deprivation in Europe.” Journal of European Social Policy 21(5):413–31. 
+Greenwood, Jeremy, Nezih Guner, Georgi Kocharkov, and Cezar Santos. 2014. “Marry Your Like: 
+Assortative Mating and Income Inequality.” American Economic Review 104(5):348–53. 
+
+36 
+ 
+Gregg, Paul, Rosanna Scutella, and Jonathan Wadsworth. 2008. “Reconciling Workless Measures at 
+the Individual and Household Level. Theory and Evidence from the United States, Britain, 
+Germany, Spain and Australia.” Journal of Population Economics 23(1):139–67. 
+Gregg, Paul, and Jonathan Wadsworth. 2001. “Everything You Ever Wanted to Know about 
+Measuring Worklessness and Polarization at the Household Level but Were Afraid to Ask.” 
+Oxford Bulletin of Economics and Statistics 63(Special Issue):777–806. 
+Hryshko, Dmytro, Chinhui Juhn, and Kristin McCue. 2017. “Trends in Earnings Inequality and Earnings 
+Instability among U.S. Couples: How Important Is Assortative Matching?” Labour Economics 
+48:168–82. 
+Iceland, John, Kimberly A. Goyette, Kyle Anne Nelson, and Chaowen Chan. 2010. “Racial and Ethnic 
+Residential Segregation and Household Structure: A Research Note.” Social Science Research 
+39(1):39–47. 
+Jaeger, David A. 1997. “Reconciling the Old and New Census Bureau Education Questions: 
+Recommendations for Researchers.” Journal of Business & Economic Statistics 15(3):300–
+309. 
+Jargowsky, Paul A. 1996. “Take the Money and Run: Economic Segregation in U.S. Metropolitan 
+Areas.” American Sociological Review 61(6):984. 
+Kemeny, Tom, and Taner Osman. 2018. “The Wider Impacts of High-Technology Employment: 
+Evidence from U.S. Cities.” Research Policy 47(9):1729–40. 
+Klein, Markus. 2015. “The Increasing Unemployment Gap between the Low and High Educated in 
+West Germany. Structural or Cyclical Crowding-Out?” Social Science Research 16. 
+Kuzior, Aleksandra, Karolina Kettler, and Łukasz Rąb. 2022. “Great Resignation—Ethical, Cultural, 
+Relational, and Personal Dimensions of Generation Y and Z Employees’ Engagement.” 
+Sustainability 14(11):6764. 
+Li, Angran, Michael Wallace, and Allen Hyde. 2019. “Degrees of Inequality: The Great Recession and 
+the College Earnings Premium in U.S. Metropolitan Areas.” Social Science Research 
+84:102342. 
+Liao, Tim F., and Berkay Özcan. 2013. “Family Forms Among First- and Second-Generation Immigrants 
+in Metropolitan America, 1960–2009.” in Fong, Eric, Chiang, Lan-Hung Nora and Denton, 
+Nancy, (eds.): Immigrant Adaptation in Multi-Ethnic Societies: Canada, Taiwan, and the 
+United States, Routledge advances in sociology. Routledge. 
+Lichter, Daniel T., Domenico Parisi, and Michael C. Taquino. 2015. “Toward a New Macro-
+Segregation? Decomposing Segregation within and between Metropolitan Cities and 
+Suburbs.” American Sociological Review 80(4):843–73. 
+Liu, Yujia, and David B. Grusky. 2013. “The Payoff to Skill in the Third Industrial Revolution.” American 
+Journal of Sociology 118(5):1330–74. 
+Massey, Douglas S., and Nancy A. Denton. 1988. “The Dimensions of Residential Segregation.” Social 
+Forces 67(2):281. 
+
+37 
+ 
+Milkman, Ruth, and Rachel E. Dwyer. 2002. “Growing Apart: The ‘New Economy’ and Job Polarization 
+in California, 1992-2000.” The State of California Labor : An Annual Publication of the 
+University of California, Institute for Labor & Employment 2002:3–35. 
+Mincer, Jacob. 1970. “The Distribution of Labor Incomes: A Survey With Special Reference to the 
+Human Capital Approach.” Journal of Economic Literature 8(1):1–26. 
+Moller, Stephanie, Arthur S. Alderson, and François Nielsen. 2009. “Changing Patterns of Income 
+Inequality in U.S. Counties, 1970–2000.” American Journal of Sociology 114(4):1037–1101.  
+Mooi-Reci, Irma, Mark Wooden, and Matthew Curry. 2020. “The Employment Consequences of 
+Growing up in a Dual-Parent Jobless Household: A Comparison of Australia and the United 
+States.” Research in Social Stratification and Mobility 68:100519. 
+Moretti, Enrico. 2004. “Estimating the Social Return to Higher Education: Evidence from Longitudinal 
+and Repeated Cross-Sectional Data.” Journal of Econometrics 121(1):175–212. 
+Mulligan, Gordon F. 2022. “Economic Vulnerability in US Metropolitan Areas.” The Annals of Regional 
+Science. 
+Mulligan, Gordon F., Neil Reid, and Michael S. Moore. 2014. “A Typology of Metropolitan Labor 
+Markets in the US.” Cities 41:S12–29. 
+Mykyta, Larryssa, and Suzanne Macartney. 2011. “The Effects of Recession on Household 
+Composition:‘Doubling up’ and Economic Well-Being.” US Census Bureau. Social, Economic 
+and Household Statistics Division Working Paper (4). 
+Nickell, Stephen. 1979. “Education and Lifetime Patterns of Unemployment.” Journal of Political 
+Economy 87(5):S117–31. 
+Nielsen, Francois, and Arthur S. Alderson. 1997. “The Kuznets Curve and the Great U-Turn: Income 
+Inequality in U.S. Counties, 1970 to 1990.” American Sociological Review 62(1):12. 
+Reardon, Sean F., and Kendra Bischoff. 2011. “Income Inequality and Income Segregation.” American 
+Journal of Sociology 116(4):1092–1153. 
+Riddell, W. Craig, and Xueda Song. 2011. “The Impact of Education on Unemployment Incidence and 
+Re-Employment Success: Evidence from the U.S. Labour Market.” 37. 
+Schuster, Barbara, and Siavash Radpour. 2022. No “Great Resignation” for Older Workers- Mass Job 
+Loss Drove the Retirement Surge. SCEPA publication series. 2022–01. Schwartz Center for 
+Economic Policy Analysis (SCEPA), The New School. 
+Schwartz, Christine R. 2010. “Earnings Inequality and the Changing Association between Spouses’ 
+Earnings.” American Journal of Sociology 115(5):1524–57.  
+Schwartz, Christine R., and Robert D. Mare. 2005. “Trends in Educational Assortative Marriage from 
+1940 to 2003.” Demography 42(4):621–46. 
+Scutella, Rosanna, and Mark Wooden. 2004. “Jobless Households in Australia: Incidence, 
+Characteristics and Financial Consequences.” The Economic and Labour Relations Review 
+14(2):187–207. 
+
+38 
+ 
+Smith, Aaron Klein and Ember. 2021. “Explaining the Economic Impact of COVID-19: Core Industries 
+and the Hispanic Workforce.” Brookings. Retrieved November 20, 2021 
+(https://www.brookings.edu/research/explaining-the-economic-impact-of-covid-19-core-
+industries-and-the-hispanic-workforce/). 
+Tienda, Marta, and Norma Fuentes. 2014. “Hispanics in Metropolitan America: New Realities and Old 
+Debates.” Annual Review of Sociology 40(1):499–520. 
+Ultee, Wout, J. O. S. Dessens, and W. I. M. Jansen. 1988. “Why Does Unemployment Come in 
+Couples? An Analysis of (Un)Employment and (Non)Employment Homogamy Tables for 
+Canada, the Netherlands and the United States in the 1980s.” European Sociological Review 
+4(2):111–22. 
+US Census Bureau. 2022. “Urban Areas Facts.” Census.Gov. Retrieved July 19, 2022 
+(https://www.census.gov/programs-surveys/geography/guidance/geo-areas/urban-rural/ua-
+facts.html). 
+VanHeuvelen, Tom, and Katherine Copas. 2019. “The Geography of Polarization, 1950 to 2015.” RSF: 
+The Russell Sage Foundation Journal of the Social Sciences 5(4):77–103. 
+Volscho, Thomas W. 2007. “Unions, Government Employment, and the Political Economy of Income 
+Distribution in Metropolitan Areas.” Research in Social Stratification and Mobility 25(1):1–12. 
+Wiemers, Emily E. 2014. “The Effect of Unemployment on Household Composition and Doubling Up.” 
+Demography 51(6):2155–78. 
+Winters, John V. 2013. “Human Capital Externalities and Employment Differences across 
+Metropolitan Areas of the USA.” Journal of Economic Geography 13(5):799–822. 
+
+Appendix 
+Figure A1: Decomposition of change in household joblessness in metropolitan area US (Q2 2020-Q4 
+2021) for sample of households with at least one member 16-49 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. ‘Metropolitan area US’ represents the 
+population-weighted average of all 204 metropolitan areas in our sample. Vertical dashed line marks the onset of the pandemic 
+before Q2 2020. Source: CPS 2016-21, authors’ own calculations. 
+ 
+
+40 
+ 
+Figure A2: Empirical distribution of educational profiles before the pandemic  
+ 
+Note: Figure correlates pre-pandemic averages of educational heterogeneity and educational homogamy. Colors indicate 
+different average educational levels. “low” = lowest third in the distribution, “medium” = middle third in the distribution, “high” 
+= highest third in the distribution. Lines fitted for correlation between educational heterogeneity and homogamy at three levels 
+of average education. Marker size indicates population size of metropolitan area. Source: CPS 2016-21, authors’ own 
+calculations. 
+ 
+ 
+
+41 
+ 
+Figure A3: Decomposition of change in household joblessness in the four largest metropolitan areas 
+with low educational levels, low heterogeneity, and low homogamy (Q2 2020-Q4 2021) using 
+educational attainment variables 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Educational measures based on three levels of educational attainment 
+(1 up to high school diploma, 2 some college, 3 college degree or more). Educational level is measure as share of individuals 
+with some college. Educational heterogeneity is based on Theil’s entropy formula as proposed by Nielsen and Alderson (1997). 
+Educational homogamy is calculated as the share of couples (married and cohabiting) with the same educational degree as a 
+percentage of all couples. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  Source: CPS 2016-21, 
+authors’ own calculations. 
+ 
+ 
+
+42 
+ 
+Figure A4: Decomposition of change in household joblessness in the four largest metropolitan areas 
+with low educational levels, low heterogeneity, and high homogamy (Q2 2020-Q4 2021) using 
+educational attainment variables 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Educational measures based on three levels of educational attainment 
+(1 up to high school diploma, 2 some college, 3 college degree or more). Educational level is measure as share of individuals 
+with some college. Educational heterogeneity is based on Theil’s entropy formula as proposed by Nielsen and Alderson (1997). 
+Educational homogamy is calculated as the share of couples (married and cohabiting) with the same educational degree as a 
+percentage of all couples. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  Source: CPS 2016-21, 
+authors’ own calculations. 
+ 
+ 
+
+43 
+ 
+Figure A5: Decomposition of change in household joblessness in the four largest metropolitan areas 
+with high educational levels, high heterogeneity, and low homogamy (Q2 2020-Q4 2021) using 
+educational attainment variables 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Educational measures based on three levels of educational attainment 
+(1 up to high school diploma, 2 some college, 3 college degree or more). Educational level is measure as share of individuals 
+with some college. Educational heterogeneity is based on Theil’s entropy formula as proposed by Nielsen and Alderson (1997). 
+Educational homogamy is calculated as the share of couples (married and cohabiting) with the same educational degree as a 
+percentage of all couples. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  Source: CPS 2016-21, 
+authors’ own calculations. 
+ 
+ 
+
+44 
+ 
+Figure A6: Decomposition of change in household joblessness in the four largest metropolitan areas 
+with high educational levels, low heterogeneity, and high homogamy (Q2 2020-Q4 2021) using 
+educational attainment variables 
+ 
+Note: Changes calculated as difference to quarter-specific average over 2016-2019. Educational profiles based on pre-pandemic 
+averages of educational variables for metropolitan areas. Educational measures based on three levels of educational attainment 
+(1 up to high school diploma, 2 some college, 3 college degree or more). Educational level is measure as share of individuals 
+with some college. Educational heterogeneity is based on Theil’s entropy formula as proposed by Nielsen and Alderson (1997). 
+Educational homogamy is calculated as the share of couples (married and cohabiting) with the same educational degree as a 
+percentage of all couples. Vertical dashed lines mark the onset of the pandemic before Q2 2020.  Source: CPS 2016-21, 
+authors’ own calculations. 
+
+Figure A7: Predicted levels of household joblessness and polarization across educational profiles using median thresholds to indicate low and high values on 
+educational variables 
+ 
+Note: Predictions from panel fixed effects regressions of household joblessness and polarization on fully interacted combinations of quarter, educational level, educational heterogeneity, and educational 
+homogamy. Models include all quarters from Q1 2016 to Q4 2021, but graphs only depict predictions from Q1 2020 onward. Predictions based on pre-pandemic averages of educational variables for 
+metropolitan areas. “low” = below median in the distribution, “high” = above median in the distribution. Represented combinations selected based on case numbers. Contemporaneous covariates: % 
+Black, % Hispanic, % migrants, population size. Lagged covariates:  % single headed HHs, % older, median equivalized income, % public sector, % manufacturing, % FIRE sector, % other services, % 
+living in the central city. Vertical dashed lines mark the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, authors own calculations. 
+ 
+
+46 
+ 
+Figure A8: Predicted levels of household joblessness and polarization across educational profiles using lowest and highest quartile thresholds to indicate low and 
+high values on educational variables 
+ 
+Note: Predictions from panel fixed effects regressions of household joblessness and polarization on fully interacted combinations of quarter, educational level, educational heterogeneity, and educational 
+homogamy. Models include all quarters from Q1 2016 to Q4 2021, but graphs only depict predictions from Q1 2020 onward. Predictions based on pre-pandemic averages of educational variables for 
+metropolitan areas. “low” = lowest quartile in the distribution, “high” = highest quartile in the distribution. Represented combinations selected based on case numbers. Contemporaneous covariates: % 
+Black, % Hispanic, % migrants, population size. Lagged covariates:  % single headed HHs, % older, median equivalized income, % public sector, % manufacturing, % FIRE sector, % other services, % 
+living in the central city. Vertical dashed lines mark the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, authors own calculations.  
+ 
+
+47 
+ 
+Figure A9: Predicted levels of household joblessness and polarization across educational profiles using sample of households with at least one member 16-49 
+ 
+Note: Predictions from panel fixed effects regressions of household joblessness and polarization on fully interacted combinations of quarter, educational level, educational heterogeneity, and educational 
+homogamy. Models include all quarters from Q1 2016 to Q4 2021, but graphs only depict predictions from Q1 2020 onward. Predictions based on pre-pandemic averages of educational variables for 
+metropolitan areas. “low” = lowest third in the distribution, “high” = highest third in the distribution. Represented combinations selected based on case numbers. Contemporaneous covariates: % Black, 
+% Hispanic, % migrants, population size. Lagged covariates:  % single headed HHs, % older, median equivalized income, % public sector, % manufacturing, % FIRE sector, % other services, % living in 
+the central city. Vertical dashed lines mark the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, authors own calculations.  
+ 
+
+48 
+ 
+Figure A10: Predicted levels of household joblessness and polarization across educational profiles using educational attainment variables 
+ 
+Note: Predictions from panel fixed effects regressions of household joblessness and polarization on fully interacted combinations of quarter, educational level, educational heterogeneity, and educational 
+homogamy. Educational measures based on three levels of educational attainment (1 up to high school diploma, 2 some college, 3 college degree or more). Educational level is measure as share of 
+individuals with some college. Educational heterogeneity is based on Theil’s entropy formula as proposed by Nielsen and Alderson (1997). Educational homogamy is calculated as the share of couples 
+(married and cohabiting) with the same educational degree as a percentage of all couples. Models include all quarters from Q1 2016 to Q4 2021, but graphs only depict predictions from Q1 2020 
+onward. Predictions based on pre-pandemic averages of educational variables for metropolitan areas. “low” = lowest third in the distribution, “high” = highest third in the distribution. Represented 
+combinations selected based on case numbers. Contemporaneous covariates: % Black, % Hispanic, % migrants, population size. Lagged covariates:  % single headed HHs, % older, median equivalized 
+income, % public sector, % manufacturing, % FIRE sector, % other services, % living in the central city. Vertical dashed lines mark the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, 
+authors own calculations.  
+
+Figure A11: Poverty rates for jobless households and households in employment, with and without 
+children in metropolitan area US 2016-2021 
+ 
+Note: ‘Metropolitan area US’ is the population-weighted average of all 204 metropolitan areas in our sample. Vertical dashed 
+line marks the onset of the pandemic before Q2 2020. Source: CPS 2016-2021, authors’ own calculations. 
+ 
+

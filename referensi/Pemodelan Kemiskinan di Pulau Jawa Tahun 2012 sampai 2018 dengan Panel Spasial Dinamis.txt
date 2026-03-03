@@ -1,0 +1,1877 @@
+PEMODELAN KEMISKINAN DI PULAU JAWA TAHUN 2012 
+SAMPAI 2018 DENGAN PANEL SPASIAL DINAMIS 
+ASTI NUSWANTARI 
+DEPARTEMEN STATISTIKA  
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+INSTITUT PERTANIAN BOGOR 
+BOGOR 
+2021 
+
+ 
+ 
+
+PERNYATAAN MENGENAI SKRIPSI DAN 
+SUMBER INFORMASI SERTA PELIMPAHAN HAK CIPTA 
+ 
+Dengan ini saya menyatakan bahwa skripsi dengan judul “Pemodelan 
+Kemiskinan di Pulau Jawa Tahun 2012 sampai 2018 dengan Panel Spasial Dinamis” 
+adalah karya saya dengan arahan dari dosen pembimbing dan belum diajukan dalam 
+bentuk apa pun kepada perguruan tinggi mana pun. Sumber informasi yang berasal 
+atau dikutip dari karya yang diterbitkan maupun tidak diterbitkan dari penulis lain 
+telah disebutkan dalam teks dan dicantumkan dalam Daftar Pustaka di bagian akhir 
+skripsi ini. 
+Dengan ini saya melimpahkan hak cipta dari karya tulis saya kepada Institut 
+Pertanian Bogor. 
+ 
+Bogor, Juli 2021 
+ 
+ 
+Asti Nuswantari 
+G14170024 
+ 
+ 
+
+ABSTRAK 
+ASTI NUSWANTARI. Pemodelan Kemiskinan di Pulau Jawa Tahun 2012 
+sampai 2018 dengan Panel Spasial Dinamis. Dibimbing oleh ANIK DJURAIDAH 
+dan UTAMI DYAH SYAFITRI. 
+Tiga provinsi di Pulau Jawa memiliki persentase kemiskinan di atas rata-rata 
+nasional sebesar 10.19% pada 2020. Salah satu metode untuk mengidentifikasi 
+faktor-faktor yang memengaruhi persentase kemiskinan adalah panel spasial 
+dinamis. Penelitian ini bertujuan untuk menentukan model panel spasial dinamis 
+terbaik berdasarkan matriks pembobot spasial dan menentukan peubah-peubah 
+yang memengaruhi persentase kemiskinan di Pulau Jawa. Matriks pembobot yang 
+dibandingkan adalah ketetanggaan langkah ratu, dua tetangga terdekat, invers jarak, 
+dan eksponensial jarak. Data yang digunakan di penelitian ini antara lain persentase 
+kemiskinan sebagai peubah respon, sedangkan pendapatan domestik regional bruto, 
+persentase pendidikan yang ditamatkan SD ke bawah, angka melek huruf, 
+persentase pengeluaran per kapita, persentase penduduk usia produktif, harapan 
+lama sekolah, rata-rata lama sekolah, dan persentase banyaknya puskesmas sebagai 
+peubah penjelas yang diamati tahun 2012-2018 di Pulau Jawa. Metode yang 
+digunakan meliputi eksplorasi data, uji dependensi, dan analisis panel spasial 
+dinamis. Hasil penelitian menunjukkan bahwa terdapat dependensi spasial pada 
+peubah respon dan penjelas sehingga digunakan adalah model spasial Durbin. 
+Model terbaik adalah model panel spasial Durbin dinamis dengan pengaruh tetap 
+dan matriks pembobot dua tetangga terdekat. Peubah yang berpengaruh signifikan 
+terhadap persentase kemiskinan adalah angka melek huruf, persentase penduduk 
+umur produktif, dan persentase puskesmas. Efek marginal menunjukkan 
+peningkatan pendapatan domestik regional bruto, persentase pendidikan yang 
+ditamatkan SD kebawah, angka melek huruf, dan pengeluaran per kapita dapat 
+menurunkan persentase kemiskinan bagi suatu kabupaten/kota di Pulau Jawa. 
+Kata kunci: efek marginal, kemiskinan, model panel spasial dinamis. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ABSTRACT 
+ASTI NUSWANTARI. Modelling of Proverty in Java Island 2012 until 2018 
+using Dynamic Spatial Panel. Supervised by ANIK DJURAIDAH and UTAMI 
+DYAH SYAFITRI.  
+Three provinces in Java had poverty percentages above the national average 
+at 10.19% in 2020. One of the methods to identify the factors that affect poverty is 
+the dynamic spatial panel model. This research aims to determine the best dynamic 
+spatial panel model based on several spatial weighting matrices and identify the 
+variables that affect the percentage of poverty in Java Island. The weighted matrices 
+compared in this research were queen contiguity, two nearest neighbors, inverse 
+distance, and exponential distance. The data used in this research were the 
+percentage of poverty as response variable, meanwhile the gross domestic product, 
+the percentage of education completed by elementary school, the literacy rate, 
+expenditure per capita, percentage of the productive age population, expected of 
+length school, the average of length school, and percentage of health centers as 
+predictor variables observed in 2012-2018 on Java Island. The methods used were 
+data exploration, dependency test, and dynamic spatial panel analysis. The results 
+of the spatial autocorrelation test show that there was a spatial dependency on the 
+dependent variable and predictors, so the model used was the Durbin spatial model. 
+The best model was a dynamic spatial Durbin panel with a fixed effect and two 
+nearest neighbor weighting matrices. Predictors that significantly affect poverty 
+were the literacy rate, percentage of the productive age population, and the 
+percentage of health centers. The marginal effect shows that an increase of gross 
+domestic product, the percentage of education completed by elementary school, the 
+literacy rate, and expenditure per capita could reduce the percentage of the city in 
+Java. 
+Keywords: dynamic spatial panel model, marginal effect, poverty. 
+
+ 
+ 
+
+ 
+ 
+ 
+Skripsi 
+sebagai salah satu syarat untuk memperoleh gelar  
+Sarjana pada 
+Program Studi Statistika dan Sains Data 
+PEMODELAN KEMISKINAN DI PULAU JAWA TAHUN 2012 
+SAMPAI 2018 DENGAN PANEL SPASIAL DINAMIS 
+ASTI NUSWANTARI 
+DEPARTEMEN STATISTIKA  
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+INSTITUT PERTANIAN BOGOR 
+BOGOR 
+2021 
+
+ 
+ 
+Tim Penguji pada Ujian Skripsi:  
+ Dr. Ir. Budi Susetyo, M.S. 
+ 
+
+ 
+ 
+
+Judul Skripsi : Pemodelan Kemiskinan di Pulau Jawa Tahun 2012 sampai 2018 
+dengan Panel Spasial Dinamis 
+Nama 
+: Asti Nuswantari 
+NIM 
+: G14170024 
+Disetujui oleh 
+Pembimbing 1: 
+Dr. Ir. Anik Djuraidah, M.S 
+__________________ 
+Pembimbing 2: 
+Dr. Utami Dyah Syafitri, M.Si 
+__________________ 
+Diketahui oleh 
+Ketua Ketua Departemen Statistika: 
+Dr. Anang Kurnia, M.Si 
+NIP 197308241997021001 
+__________________ 
+Tanggal Ujian: 
+(14 Juli 2021) 
+Tanggal Lulus: 
+
+PRAKATA 
+Puji dan syukur penulis panjatkan kepada Allah subhanaahu wa ta’ala atas 
+segala karunia-Nya sehingga penulis dapat menyelesaikan karya ilmiah yang 
+berjudul “Pemodelan Kemiskinan di Pulau Jawa Tahun 2012 sampai 2018 dengan 
+Panel Spasial Dinamis”. 
+Penulis ingin mengucapkan terima kasih dan memberikan penghargaan yang 
+setinggi-tingginya kepada:  
+1. Ibu Dr. Ir. Anik Djuraidah, M.S dan Ibu Dr. Utami Dyah Syafitri, M.Si selaku
+komisi pembimbing yang telah mengarahkan, membimbing, dan memotivasi
+penulis dalam menyelesaikan karya ilmiah ini.
+2. Bapak Dr. Budi Susetyo selaku dosen penguji yang telah memberikan saran dan
+kritik dalam penulisan karya ilmiah ini.
+3. Bapak Dr. Anang Kurnia selaku ketua Departemen Statistika yang selalu
+mendorong untuk menyelesaikan karya ilmiah ini tepat waktu.
+4. Bapak dan Ibu dosen Departemen Statistika yang telah mencurahkan ilmunya
+dan staf administrasi terutama Teh Enon yang telah menunjang segala kebutuhan
+administrasi penulis selama perkuliahan dan penelitian.
+5. Bapak, Ibu, Mbak Tika, Rani dan seluruh keluarga yang selalu memberikan doa,
+dukungan, nasihat, dan kasih sayang untuk penulis.
+6. Keluarga besar Statistika 54 serta sahabat-sahabat penulis yang tidak dapat
+disebutkan satu per satu atas kebersamaan dan dukungannya selama perkuliahan
+dan penyusunan karya ilmiah ini.
+Semoga karya ilmiah ini bermanfaat bagi pihak yang membutuhkan dan bagi 
+kemajuan ilmu pengetahuan. 
+Bogor, Juli 2021 
+Asti Nuswantari 
+
+DAFTAR ISI 
+DAFTAR TABEL 
+xi 
+DAFTAR GAMBAR 
+xi 
+DAFTAR LAMPIRAN 
+xi 
+I 
+PENDAHULUAN 
+1 
+1.1 
+Latar Belakang 
+1 
+1.2 
+Tujuan 
+1 
+II TINJAUAN PUSTAKA 
+2 
+2.1 
+Analisis Data Panel 
+2 
+2.2 
+Analisis Data Panel Spasial 
+3 
+2.3 
+Analisis Data Panel Spasial Dinamis 
+4 
+III METODE PENELITIAN 
+5 
+3.1 
+Data 
+5 
+3.2 
+Prosedur Analisis Data 
+6 
+IV HASIL DAN PEMBAHASAN 
+10 
+4.1 
+Eksplorasi Data 
+10 
+4.2 
+Identifikasi Model 
+13 
+4.3 
+Pemodelan Panel Spasial Dinamis 
+15 
+4.4 
+Pemeriksaan Asumsi Sisaan 
+17 
+V SIMPULAN 
+18 
+5.1 
+Simpulan 
+18 
+DAFTAR PUSTAKA 
+19 
+LAMPIRAN 
+22 
+RIWAYAT HIDUP 
+28 
+ 
+ 
+
+DAFTAR TABEL 
+1 
+Tabel 1 Peubah yang digunakan 
+5 
+2 
+Tabel 2 Nilai Variance Inflation Factor setiap peubah hasil transformasi 12 
+3 
+Tabel 3 Hasil uji Chow dan uji Hausman 
+13 
+4 
+Tabel 4 Hasil perhitungan indeks Moran tiap peubah 
+14 
+5 
+Tabel 5 Penduga parameter model panel spasial dinamis 
+15 
+6 
+Tabel 6 Efek marginal pada peubah penjelas 
+17 
+7 
+Tabel 7 Pemeriksaan asumsi regresi 
+18 
+ 
+ 
+DAFTAR GAMBAR 
+1 
+Gambar 1 Persentase kemiskinan di Pulau Jawa tahun 2012 hingga 2018 10 
+2 
+Gambar 2 Peta kemiskinan di Pulau Jawa tahun 2012 hingga 2018 
+11 
+3 
+Gambar 3 Plot pencaran antar peubah sebelum transformasi 
+11 
+4 
+Gambar 4 Plot pencaran antar peubah sesudah transformasi 
+12 
+5 
+Gambar 5 Plot ACF dan PACF 
+14 
+6 
+Gambar 6 Plot Kuantil-kuantil Normal dari Sisaan 
+17 
+7 
+Gambar 7 Plot antara Nilai Prediksi dengan Sisaan 
+18 
+ 
+ 
+DAFTAR LAMPIRAN 
+ 
+1 
+Lampiran 1 Dugaan intersep setiap kabupaten/kota 
+23 
+2 
+Lampiran 2 Peta intersep model spasial panel dinamis 
+26 
+ 
+
+
+ 
+1
+I 
+PENDAHULUAN 
+ 
+1.1 Latar Belakang 
+Kemiskinan merupakan masalah di hampir semua negara di dunia. Oleh 
+karena itu, Perserikatan Bangsa-Bangsa (PBB) menyepakati bahwa mengakhiri 
+kemiskinan menjadi tujuan “utama” dalam pembangunan berkelanjutan. Tujuan 
+tersebut dinilai penting karena menjadi fondasi yang melatari berbagai tujuan 
+pembangunan lainnya seperti energi, pariwisata, pendidikan dan lain-lain.  
+Menurut Badan Pusat Statistik (2020), Pulau Jawa menjadi pulau dengan 
+tingkat kontribusi perekonomian terbesar di Indonesia yaitu 59.03% pada tahun 
+2019. Meskipun begitu, tingkat kemiskinan di Pulau Jawa masih relatif tinggi. Hal 
+ini ditunjukkan dengan persentase kemiskinan di tiga provinsi di Pulau Jawa, yaitu 
+Provinsi Jawa Timur (11.46%), Jawa Tengah (11.84%), dan DI Yogyakarta 
+(12.8%) masih diatas rata-rata persentase nasional sebesar 10.19% pada tahun 2020. 
+Oleh karena itu, diperlukan penelitian untuk mengidentifikasi peubah-peubah yang 
+memengaruhi persentase kemiskinan di Pulau Jawa. 
+Pemodelan persentase kemiskinan dibutuhkan metode dan peubah-peubah 
+yang tepat agar memberikan hasil yang tepat. Penelitian terdahulu pernah dilakukan 
+oleh Puspita (2015) tentang kemiskinan di Pulau Jawa menggunakan analisis data 
+panel dengan hasil peubah Indeks Pembangunan Manusia (IPM) berpengaruh 
+terhadap kemiskinan. Giovanni (2018) pernah meneliti tentang kemiskinan di Pulau 
+Jawa pada tahun 2009-2016 dengan hasil peubah produk domestik regional bruto 
+(PDRB) berpengaruh nyata terhadap kemiskinan. 
+Analisis data panel merupakan analisis yang mencakup data unit individu dan 
+deret waktu. Analisis ini dapat bersifat dinamis agar menangkap tren waktu 
+sehingga peubah respon dipengaruhi oleh peubah respon di periode sebelumnya. 
+Model panel dinamis dapat ditambahkan pengaruh spasial pada unit individu. 
+Pengaruh spasial terjadi akibat dari lokasi yang berdekatan antar unit individu serta 
+dapat mengindikasi adanya dependensi spasial. Menurut hukum pertama Tobler, 
+semakin dekat jarak antar dua wilayah, maka hubungan yang dimiliki akan lebih 
+kuat (Tobler 1970). Oleh karena itu, penelitian ini menggunakan model panel 
+spasial dinamis. Penelitian tentang analisis panel spasial dinamis pernah dilakukan 
+oleh Mala et al. (2018) yang menganalisis PDRB dan kemiskinan di Jawa Barat 
+dengan menggunakan matriks ketetanggaan. 
+1.2 Tujuan 
+Tujuan penelitian ini adalah menentukan model panel spasial dinamis terbaik 
+berdasarkan matriks pembobot spasial dan menentukan peubah-peubah yang 
+memengaruhi persentase penduduk miskin di Pulau Jawa. 
+ 
+ 
+
+ 
+2 
+II 
+TINJAUAN PUSTAKA 
+ 
+2.1 Analisis Data Panel 
+Analisis data panel adalah analisis yang menggabungkan data deret waktu dan 
+data lintas individu. Data lintas individu adalah data yang dikumpulkan dalam satu 
+waktu terhadap banyak unit amatan sedangkan data deret waktu adalah data yang 
+dikumpulkan dari waktu ke waktu terhadap suatu unit amatan. Terdapat tiga 
+model regresi data panel menurut Baltagi (2011): 
+a. Model Gabungan 
+Model gabungan (Pooled Least Square) tidak memerhatikan efek 
+individu dan waktu, sedangkan komponen galat dari persamaan model yang 
+digunakan hanya berasal dari pendugaan. Pendugaan parameter pada model 
+gabungan menggunakan Metode Kuadrat Terkecil (Ordinary Least Square). 
+Persamaan dari model gabungan ini adalah:  
+𝑦𝑖𝑡=  𝜇+ 𝒙𝑖𝑡
+′ 𝜷+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon unit individu ke-i pada periode waktu ke-t, 𝜇 
+adalah sebuah konstanta, 𝒙𝑖𝑡
+′  merupakan vektor peubah penjelas berukuran 
+1 ×  𝑝 untuk unit individu ke-i pada periode waktu ke-t dengan 𝑝 
+menyatakan banyaknya peubah penjelas, 𝜷 adalah vektor koefisien 
+berukuran 𝑝 ×  1, dan 𝜀𝑖𝑡 adalah galat unit individu ke-i pada periode waktu 
+ke-t. 
+b. Model Pengaruh Tetap 
+Model pengaruh tetap memiliki pengaruh yang terbatas pada lokasi dan 
+waktu yang ditentukan oleh peneliti. Dengan demikian, pengaruh dari lokasi 
+dan waktu diasumsikan sebagai parameter tetap dan berupa suatu konstanta 
+pembentuk intersep pada model. Karena itu, intersep model ini berubah antar 
+lokasi dan waktu yang menjadi pembedanya. Namun, slope koefisien 
+diasumsikan konstan untuk semua individu. Maka model pengaruh tetap 
+untuk data panel adalah sebagai berikut: 
+𝑦𝑖𝑡= 𝜇𝑖+ 𝒙𝑖𝑡
+′ 𝜷+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon unit individu ke-i pada periode waktu ke-t,  𝜇𝑖 
+adalah koefisien intersep dari unit individu ke-i, 𝜷 adalah vektor koefisien 
+berukuran 𝑝 ×  1  dengan 𝑝 menyatakan banyaknya peubah penjelas, 𝒙𝑖𝑡
+′  
+merupakan vektor peubah penjelas berukuran 1 ×  𝑝 untuk pengamatan 
+lintas individu ke-i pada periode waktu ke-t, dan 𝜀𝑖𝑡 adalah galat lintas 
+individu ke-i pada periode waktu ke-t. 
+c. Model Pengaruh Acak 
+Pada model pengaruh acak untuk data panel, pemilihan lokasi dan waktu 
+dilakukan secara acak, sehingga pengaruh dari lokasi dan waktu diasumsikan 
+merupakan peubah acak. Dengan demikian, model pengaruh acak memiliki 
+
+ 
+3
+nilai intersep untuk setiap individu bersifat acak. Hal ini berarti bahwa semua 
+individu memiliki rata-rata intersep yang sama dan perbedaan individu dalam 
+nilai intersep direfleksikan sebagai galat dalam model. Model pengaruh acak 
+untuk data panel sebagai berikut: 
+𝑦𝑖𝑡= 𝜇𝑖+ 𝒙𝑖𝑡
+′ 𝜷+ 𝑣𝑖𝑡 
+𝑣𝑖𝑡= 𝜀𝑖+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon unit individu ke-i pada periode waktu ke-t, 𝜇𝑖  
+adalah sebuah konstanta, 𝜷 adalah vektor koefisien berukuran 𝑝 ×  1 dengan 
+𝑝 menyatakan banyaknya peubah penjelas, 𝒙𝑖𝑡
+′  merupakan vektor peubah 
+penjelas berukuran 1 ×  𝑝 untuk unit individu ke-i pada periode waktu ke-t, 
+𝑣𝑖𝑡 merupakan komponen galat yang terdiri dari dua komponen yaitu 𝜀𝑖 dan 
+𝜀𝑖𝑡, 𝜀𝑖 adalah komponen galat dari pengaruh spesifik individu ke-i, dan 𝜀𝑖𝑡 
+adalah galat lintas individu ke-i pada periode waktu ke-t. 
+ 
+2.2 Analisis Data Panel Spasial 
+Model panel spasial adalah model yang memerhatikan interaksi spasial antara 
+unit-unit spasial dalam waktu. Menurut Elhorst (2009), model spasial memiliki 
+peubah spasial lag pada peubah respon dan/atau peubah penjelas yang biasa 
+disebut dengan Spatial Autoregressive Model (SAR) dan Spatial Durbin Model 
+(SDM). 
+a. Spatial Autoregressive Model (SAR) 
+Model SAR merupakan model spasial dengan pendekatan area yang 
+terdapat pengaruh antar lokasi pada peubah respon (Anselin 1988). Dalam hal 
+ini, peubah respon pada model SAR bergantung pada peubah respon lainnya 
+yang bertetangga. Pendugaan parameternya menggunakan Pendugaan 
+Kemungkinan Maksimum (Maximum Likelihood Estimator). Model SAR 
+dinyatakan pada persamaan berikut:  
+𝑦𝑖𝑡= 𝜌∑𝑤𝑖𝑗𝑦𝑗𝑡
+𝑁
+𝑗=1
+ + 𝒙𝑖𝑡𝜷+ 𝜇𝑖+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon lintas individu ke-i pada periode waktu ke-t, 𝜌 
+merupakan koefisien autoregresif spasial, 𝑤𝑖𝑗 adalah elemen pada matriks 
+pembobot spasial individu ke-i dan individu ke-j, 𝒙′𝑖𝑡 adalah vektor 
+berukuran 1 × 𝑝 dari peubah penjelas untuk pengamatan lintas individu ke-i 
+pada periode waktu ke-t, 𝜷 merupakan vektor koefisien berukuran 𝑝 ×  1, 𝜇𝑖 
+merupakan pengaruh spesifik spasial individu ke-i dan 𝜀𝑖𝑡 komponen galat 
+individu ke-i pada periode waktu ke-t.  
+ 
+ 
+ 
+
+ 
+4 
+b. Spatial Durbin Model (SDM) 
+Model SDM merupakan model spasial yang memiliki dependensi spasial 
+pada peubah penjelas. Pendugaan parameternya menggunakan Pendugaan 
+Kemungkinan Maksimum (Maximum Likelihood Estimator). Model SDM 
+dinyatakan pada persamaan berikut: 
+𝑦𝑖𝑡= 𝜌∑𝑤𝑖𝑗𝑦𝑗𝑡
+𝑁
+𝑗=1
+ + 𝒙𝑖𝑡𝜷+ ∑𝑤𝑖𝑗𝒙𝑖𝑗𝑡𝜸
+𝑁
+𝑗=1
++ 𝜇𝑖+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon lintas individu ke-i pada periode waktu ke-
+t, 𝜌 merupakan koefisien autokorelasi spasial pada peubah respon, 𝑤𝑖𝑗 adalah 
+elemen pada matriks pembobot spasial individu ke-i dan individu ke-j, 𝒙𝑖𝑡 
+adalah matriks dari peubah penjelas, 𝜷 merupakan vektor koefisien 
+berukuran 𝑝 ×  1, 𝜸 merupakan vektor koefisien autokorelasi spasial pada 
+peubah penjelas, 𝜇𝑖 merupakan intersep dari unit individu ke-i, dan 𝜀𝑖𝑡 
+komponen galat individu ke-i pada periode waktu ke-t. 
+ 
+2.3 Analisis Data Panel Spasial Dinamis 
+Analisis data panel spasial dapat bersifat dinamis karena peubah-peubahnya 
+dapat dipengaruhi oleh peubah di periode waktu sebelumnya. Hal tersebut 
+terjadi karena hubungan antara peubah-peubah dalam bidang perekonomian 
+banyak yang bersifat dinamis. Menurut Jacobs et al. (2009), analisis panel 
+spasial dinamis dicirikan dengan adanya lag peubah respon. Model panel spasial 
+dinamis dapat ditulis sebagai berikut: 
+𝑦𝑖𝑡=  𝜏𝑦𝑖,𝑡−1 + 𝜌𝑾1𝑦𝑖𝑡+ 𝒙𝑖𝑡𝜷+ 𝑾2𝒙𝑖𝑡𝜸+ 𝜇𝑖+ 𝑢𝑖𝑡 
+𝑢𝑖𝑡= 𝛿𝑾3𝑢𝑖𝑡+ 𝜀𝑖𝑡 
+dengan 𝑦𝑖𝑡 merupakan respon lintas individu ke-i pada periode waktu ke-t, 𝜏 
+adalah koefisien dari lag peubah respon, 𝜌 adalah koefisien autoregresif spasial 
+pada peubah respon, 𝑾𝑗 adalah matriks pembobot spasial berukuran 𝑁 ×  𝑁, 
+𝜷 merupakan vektor koefisien berukuran 𝑝× 1,  𝒙𝑖𝑡 merupakan peubah 
+penjelas, 𝜸 merupakan vector koefisien autoregresif spasial pada peubah 
+penjelas, 𝜇𝑖 merupakan konstanta pada individu ke-i, 𝑢𝑖𝑡 merupakan galat dari 
+autoregresif spasial individu ke-i pada periode waktu ke-t, 𝛿 adalah koefisien 
+autoregresif spasial untuk galat, dan 𝜀𝑖𝑡 merupakan komponen galat individu 
+ke-i pada periode waktu ke-t. 
+Pendugaan model dilakukan dengan menggunakan metode Spatial 
+Corrected Arellano-Bond. Menurut Jacob et al. (2009), hasil pendugaan 
+parameternya sebagai berikut: 
+𝜽̂ = [∆𝒛′𝑯̃𝑨̃𝑯̃′∆𝒛]
+−1∆𝒛′𝑯̃𝑨̃𝑯̃′∆𝒚 
+dengan 
+
+ 
+5
+𝜽= [ 𝜏, 𝜌, 𝛿,𝜷′]
+′ 
+𝒛𝑡= [𝑦𝑡−1, 𝑾𝑦𝑡, 𝒙𝑡] 
+∆𝒚𝑡= ∆𝒛𝑡𝜽+ ∆𝒖𝑡 
+𝑨̃ = [𝑯̃′𝑮𝑯̃′]
+−1 
+𝑯̃ = [𝑰𝑁−𝛿̂𝑾3]𝑯 
+𝑮= 𝑰𝑁⨂𝐺𝑖𝑗 
+𝐺𝑖𝑗≡{
+2 𝑗𝑖𝑘𝑎 𝑖= 𝑗
+−1 𝑗𝑖𝑘𝑎 𝑖= 𝑗+ 1
+−1 𝑗𝑖𝑘𝑎 𝑗= 𝑖+ 1
+0 𝑙𝑎𝑖𝑛𝑛𝑦𝑎
+ 
+III 
+METODE PENELITIAN 
+ 
+3.1 Data 
+Penelitian ini menggunakan data sekunder yang diperoleh dari hasil publikasi 
+BPS pada tahun 2012 sampai 2018 (BPS 2012, 2013a, 2013b, 2014a, 2014b, 2015a, 
+2015b, 2016a, 2016b, 2017a, 2017b, 2017c, 2018a, 2018b, 2019a, 2019b). Unit 
+amatan pada penelitian ini adalah 118 kabupaten/kota di lima provinsi di Pulau 
+Jawa. Peubah yang digunakan dapat dilihat di Tabel 1. 
+Tabel 1 Peubah yang digunakan 
+Kode 
+Peubah 
+Satuan 
+Sumber Pustaka 
+MISKIN 
+Persentase penduduk miskin 
+Persen 
+ 
+PDRB 
+Pendapatan domestik 
+regional bruto  
+Miliar 
+rupiah 
+Giovanni (2018), Puspita 
+(2015) 
+PSD 
+Persentase pendidikan yang 
+ditamatkan SD kebawah 
+Persen 
+Puspita (2015) 
+AMH 
+Angka melek huruf 
+Persen 
+Fitri et al. (2021) 
+PKP 
+Persentase pengeluaran per 
+kapita 
+Persen 
+Sunandi et al. (2021), 
+Puspita (2015) 
+PKU 
+Persentase penduduk umur 
+produktif (15-64 tahun) 
+Persen 
+Jonaidi (2012) 
+HLS 
+Harapan lama sekolah 
+Tahun 
+Jonaidi (2012) 
+RLS 
+Rata-rata lama sekolah 
+Tahun 
+Jonaidi (2012) 
+PKM 
+Persentase banyaknya 
+puskesmas per 1000 
+penduduk 
+Persen 
+Puspita (2015) 
+
+ 
+6 
+Peubah respon pada penelitian ini adalah persentase penduduk miskin. Adapun 
+rumus untuk menghitung persentase penduduk miskin sebagai berikut (BPS 2020). 
+𝑃0 = 1
+𝑛∑[𝑧 − 𝑦𝑖
+𝑧
+]
+0
+𝑞
+𝑖=0
+ 
+𝑃0  
+: Headcount Index atau persentase penduduk miskin  
+𝑧  
+: Garis Kemiskinan  
+ 
+𝑦𝑖 
+: Rata‐rata pengeluaran per kapita sebulan penduduk yang berada di 
+bawah garis kemiskinan (i = 1, 2,…,q), 𝑦𝑖<𝑧  
+𝑞  
+: Banyaknya penduduk yang berada di bawah garis kemiskinan 
+𝑛  
+: Jumlah penduduk 
+ 
+3.2 Prosedur Analisis Data 
+Tahapan-tahapan yang dilakukan dalam penelitian ini adalah sebagai berikut: 
+1) Melakukan eksplorasi data untuk melihat karakteristik data secara umum. 
+2) Memilih model data panel dengan tahapan sebagai berikut: 
+a. Memilih model yang digunakan antara model gabungan atau model 
+pengaruh tetap dengan uji Chow (Baltagi 2011).  
+H0: Model gabungan 
+H1: Model pengaruh tetap 
+Statistik uji: 
+𝐹0 = (𝑅𝑅𝑆𝑆−𝑈𝑅𝑆𝑆)/(𝑠−1)
+𝑈𝑅𝑆𝑆/(𝑠𝑡−𝑠−𝑝)
+ 
+dengan RRSS (Restricted Residual Sums of Square) adalah jumlah 
+kuadrat galat hasil pendugaan model gabungan dan URSS (Unrestricted 
+Residuals Sums of Square) adalah jumlah kuadrat galat hasil pendugaan 
+model pengaruh tetap, 𝑁 adalah banyaknya unit lintas individu, 𝑇 adalah 
+banyaknya unit periode waktu dan 𝑝 adalah banyaknya peubah penjelas. 
+Keputusan dari statistik uji yaitu tolak H0 jika 𝐹0 > 𝐹𝑁−1,𝑁(𝑇−1)−𝑝. Jika 
+tolak H0 (model pengaruh tetap terpilih) maka lanjut ke langkah (b), jika 
+terima H0 (model gabungan terpilih) maka lanjut ke langkah (3). 
+b. Memilih model yang digunakan antara model pengaruh tetap atau model 
+pengaruh acak dengan uji Hausman (Baltagi 2011).  
+H0: Model pengaruh acak 
+H1: Model pengaruh tetap 
+Statistik uji: 
+𝑚1 = 𝒒̂′[𝑉𝑎𝑟(𝒒̂)]−1𝒒̂ 
+𝒒̂ = 𝜷̂𝑎𝑐𝑎𝑘−𝜷̂𝑡𝑒𝑡𝑎𝑝 
+
+ 
+7
+dengan 𝜷̂𝑎𝑐𝑎𝑘 merupakan vektor penduga parameter dari model 
+pengaruh acak dan 𝜷̂𝑡𝑒𝑡𝑎𝑝 merupakan vektor penduga parameter peubah 
+penjelas dari model pengaruh tetap. Keputusan dari statistik uji yaitu 
+tolak H0, jika 𝑚1 > 𝜒(𝑝,𝛼)
+2
+ dengan 𝑝 adalah banyaknya peubah penjelas. 
+3) Melakukan identifikasi model dengan tahapan sebagai berikut: 
+a. Menyusun matriks pembobot spasial yaitu ketetanggaan langkah ratu, k-
+tetangga terdekat, jarak invers, dan jarak eksponensial. Matriks 
+pembobot yang digunakan di penelitian ini sebagai berikut: 
+ Ketetanggaan langkah ratu (Queen Contiguity) adalah matriks 
+persinggungan sisi sudut yang mendefinisikan nilai 1 jika daerah 
+yang sisi atau titik sudut bertemu langsung dengan daerah 
+tetangganya dan nilai 0 jika tidak bertemu. 
+ K-tetangga terdekat (k-nearest neighbor) adalah matriks yang 
+didefinisikan bernilai 1 apabila wilayah i dan j bertetangga dan 
+bernilai 0 apabila tidak bertetangga. Penelitian ini menggunakan 
+tetangga terdekat sebanyak dua tetangga. 
+ Matriks invers jarak adalah salah satu matriks pembobot berdasarkan 
+jarak. Formula untuk menghitung matriks ini adalah 
+𝑤𝑖𝑗= 1 𝑑𝑖𝑗
+⁄
+ 
+ Matriks jarak eksponensial adalah salah satu matriks pembobot 
+berdasarkan jarak. Formula untuk menghitung matriks ini adalah 
+𝑤𝑖𝑗= 𝑒𝑥𝑝{−𝑑𝑖𝑗} 
+b. Melakukan uji Pesaran’s Cross-sectional Dependency (CD) untuk 
+mengetahui autokorelasi spasial pada peubah respon. Apabila peubah 
+respon memiliki autokorelasi spasial, maka model yang digunakan 
+adalah model SAR. Menurut Pesaran (2004), hipotesis uji Pesaran’s CD 
+sebagai berikut: 
+H0 : tidak ada korelasi spasial antar individu 
+H1 : ada korelasi spasial antar individu 
+Statistik uji: 
+𝐶𝐷= √
+2𝑇
+𝑁(𝑁−1) (∑∑𝜌𝑖𝑗
+𝑁
+𝑗=𝑖+1
+𝑁−1
+𝑖=1
+) 
+keterangan: 
+T = banyaknya unit waktu 
+N = banyaknya unit individu 
+𝜌𝑖𝑗 = korelasi sisaan pada unit individu ke i dan j 
+c. Melakukan uji Indeks Moran untuk mengetahui adanya autokorelasi pada 
+peubah penjelas. Apabila peubah respon dan penjelas memiliki 
+
+ 
+8 
+autokorelasi spasial, maka model yang digunakan adalah model SDM. 
+Hipotesis dari pengujian Indeks Moran sebagai berikut: 
+ 
+H0 : I = 0 ; Tidak terdapat autokorelasi spasial.  
+ 
+H1 : I > 0 ; Terdapat autokorelasi spasial positif. Artinya area yang 
+berdekatan mirip dan cenderung bergerombol dalam suatu area.  
+ 
+H1 : I < 0 ; Terdapat autokorelasi spasial negatif. Artinya area yang 
+berdekatan tidak mirip dan membentuk pola visual seperti papan 
+catur. 
+Statistik uji Moran menurut Fischer dan Wang (2011) adalah: 
+𝐼= 𝑁
+𝑊0
+∑
+∑
+𝑤𝑖𝑗(𝑧𝑖−𝑧̅)(𝑧𝑗−𝑧̅)
+𝑁
+𝑗=1
+𝑁
+𝑖=1
+∑
+(𝑧𝑖−𝑧̅)2
+𝑁
+𝑖=1
+ 
+  
+dengan 
+𝑁   = banyaknya unit individu 
+𝑧𝑖  = nilai amatan suatu peubah pada individu ke-i 
+𝑧̅  = rata-rata amatan suatu peubah  
+𝑤𝑖𝑗  = elemen matriks pembobot spasial baris ke-i kolom ke-j 
+𝑊0  = penjumlahan elemen matriks pembobot spasial 
+d. Melakukan uji Autoregresif Orde Satu AR(1) pada peubah respon 
+menggunakan plot ACF dan PACF. Menurut Montgomery et al. (2008), 
+data dikatakan memenuhi kondisi AR(1) apabila plot ACF mengalami 
+penurunan secara eksponensial (tails off) dan plot PACF terjadi cut off 
+setelah orde satu. Apabila peubah respon memenuhi kondisi AR(1), 
+maka efek dinamis ditambahkan pada model. 
+4) Melakukan analisis data panel spasial dinamis dengan menggunakan 
+pendugaan metode Spatial Corrected Arellano-Bond. 
+5) Memeriksa asumsi model dan mengatasi masalah pelanggaran asumsi. 
+a. Normalitas sisaan 
+Normalitas sisaan adalah asumsi yang untuk mengetahui sisaan 
+berdistribusi normal atau tidak serta memiliki nilai harapan sama dengan 
+nol. Secara eksplorasi, kenormalan sisaan dapat dilihat dari plot peluang 
+normal yang sering dinamakan plot kuantil-kuantil normal. Mattjik dan 
+Sumertajaya (2002) mengatakan bahwa apabila titik-titik pada plot 
+mendekati garis lurus atau linier, maka sisaan menyebar normal. Normalitas 
+sisaan dapat diuji secara formal menggunakan uji Kolmogorov-Smirnov 
+dengan hipotesis sebagai berikut: 
+H0: Sisaan menyebar normal 
+H1: Sisaan tidak menyebar normal 
+Statistik uji Kolmogorov-Smirnov (D) dapat dirumuskan sebagai berikut: 
+𝐷= 𝑠𝑢𝑝𝑥|𝐹𝑛(𝑥) −𝐹(𝑥)| 
+ 
+
+ 
+9
+b. Kehomogenan ragam sisaan 
+Ragam sisaan dikatakan homogen apabila 𝑉𝑎𝑟(𝑒) = 𝐸(𝑒2) = 𝜎2 . 
+Pemeriksaan kehomogenan ragam sisaan dapat melihat plot antara nilai 
+prediksi dengan sisaan. Apabila lebar pita sisaan relatif sama untuk semua 
+amatan, maka ragam sisaan dikatakan homogen. Kehomogenan ragam sisaan 
+dapat diperiksa menggunakan uji Breusch–Pagan (Breusch dan Pagan 1979). 
+Langkahnya adalah meregresikan nilai mutlak sisaan terhadap semua peubah 
+penjelas. Statistik uji Breusch–Pagan sebagai berikut: 
+𝐿𝑀= 𝑛𝑅2 
+dengan 𝑛 merupakan banyak amatan dan 𝑅2 adalah koefisien determinasi. 
+Ragam sisaan dikatakan homogen apabila statistik uji 𝐿𝑀 > 𝜒𝑝−1
+2
+ dengan 𝑝 
+merupakan banyaknya peubah penjelas. 
+c. Kebebasan sisaan 
+Kebebasan sisaan dapat diuji menggunakan uji Durbin-Watson dengan 
+hipotesis sebagai berikut: 
+H0 : sisaan saling bebas 
+H1 : sisaan tidak saling bebas 
+Statistik uji Durbin-Watson (DW) yaitu sebagai berikut: 
+𝐷𝑊=
+∑
+∑
+(𝑒𝑖𝑡−𝑒𝑖,𝑡−1)
+2
+𝑇
+𝑡=2
+𝑁
+𝑖=1
+∑
+∑
+𝑒𝑖𝑡2
+𝑇
+𝑡=1
+𝑁
+𝑖=1
+ 
+dengan 𝑒𝑖𝑡 merupakan komponen sisaan lintas individu ke-i pada waktu ke-t. 
+Menurut Gujarati dan Porter (2009), jika nilai statistik uji 𝑑𝑢(𝑁𝑇,𝑝) < 𝐷𝑊<
+ 4 −𝑑𝑢(𝑁𝑇,𝑝), maka dapat disimpulkan tidak ada autokorelasi antar sisaan 
+dengan 𝑑𝑢(𝑁𝑇,𝑝)merupakan nilai batas atas statistik DW yang diperoleh dari 
+tabel Durbin-Watson dengan 𝑁 yaitu banyaknya unit individu, 𝑇 yaitu 
+banyaknya unit waktu, dan 𝑝 yaitu banyaknya peubah penjelas. 
+6) Evaluasi 
+kebaikan 
+model 
+berdasarkan 
+nilai 
+koefisien 
+determinasi 
+(𝑃𝑠𝑒𝑢𝑑𝑜 𝑅2). Model yang paling baik memiliki nilai 𝑝𝑠𝑒𝑢𝑑𝑜 𝑅2 tertinggi. 
+Formula untuk menghitung ukuran kebaikan model adalah sebagai berikut. 
+𝑃𝑠𝑒𝑢𝑑𝑜 𝑅2 = 1 −𝑅𝑆𝑆
+𝑇𝑆𝑆 
+dengan RSS = jumlah kuadrat sisaan dan TSS = jumlah kuadrat total. 
+7) Menghitung efek marginal dari model terbaik. Menurut Vega dan Elhorst 
+(2013), efek marginal atau spillover merupakan ukuran besarnya dampak 
+perubahan peubah respon di suatu wilayah akibat dari perubahan peubah 
+penjelas di wilayah lainnya. Efek marginal dihitung dengan menurunkan y 
+pada wilayah ke-i terhadap peubah x pada wilayah ke-j yang dapat ditulis 
+dengan  𝜕𝑦𝑖𝜕𝑥𝑗
+⁄
+. 
+8) Interpretasi hasil dan kesimpulan. 
+
+ 
+10 
+IV 
+HASIL DAN PEMBAHASAN 
+ 
+4.1 Eksplorasi Data 
+Grafik persentase kemiskinan di Pulau Jawa dari tahun 2012 hingga 2018 
+disajikan pada Gambar 1. Persentase kemiskinan di Pulau Jawa cenderung 
+mengalami penurunan tiap tahun. Persentase kemiskinannya beragam di rentang 
+5% hingga 16%. Provinsi Banten dan DKI Jakarta memiliki persentase 
+kemiskinan dua kali lebih rendah dibandingkan dengan provinsi lainnya. Hal 
+tersebut dapat terjadi karena letak provinsi tersebut berada di pusat pemerintahan.  
+ 
+Gambar 1 Persentase kemiskinan di Pulau Jawa tahun 2012 hingga 2018 
+Gambar 2 merupakan peta persebaran persentase kemiskinan di Pulau Jawa. 
+Berdasarkan Gambar 2, daerah yang memiliki persentase kemiskinan terendah 
+adalah Provinsi Banten dan DKI Jakarta. Adapun daerah yang memiliki 
+persentase kemiskinan tertinggi berada di sebagian Jawa Tengah, Kabupaten 
+Sampang, Kabupaten Sumenep, Kabupaten Bangkalan, Kabupaten Probolinggo 
+di Jawa Timur serta Kabupaten Kulon Progo, Yogyakarta. Gambar 2 juga 
+memperlihatkan ada indikasi dependensi spasial karena kabupaten yang 
+berdekatan memiliki persentase kemiskinan yang relatif mirip. Hal tersebut 
+ditandai dengan warnanya yang relatif sama. 
+
+ 
+11
+ 
+ 
+Gambar 2 Peta kemiskinan di Pulau Jawa tahun 2012 hingga 2018 
+Syarat yang harus dipenuhi sebelum membuat model regresi yaitu peubah 
+respon dan penjelas memiliki hubungan yang linear. Gambar 3 menunjukkan bahwa 
+pola data tidak linear terutama plot antara peubah MISKIN dan PDRB sehingga 
+perlu dilakukan transformasi. Salah satu transformasi yang dapat dilakukan adalah 
+logaritma natural. Penelitian ini menggunakan transformasi logaritma natural pada 
+peubah MISKIN dan PDRB. Pola data sesudah transformasi menjadi lebih linear 
+yang dapat dilihat pada Gambar 4. 
+ 
+Gambar 3 Plot pencaran antar peubah sebelum transformasi 
+
+ 
+12 
+ 
+Gambar 4 Plot pencaran antar peubah sesudah transformasi 
+Syarat 
+selanjutnya 
+adalah 
+nonmultikolinearitas. 
+Multikolinearitas 
+merupakan kondisi saat suatu peubah penjelas memiliki hubungan yang kuat 
+terhadap peubah penjelas lain yang ditunjukkan oleh nilai Variance Inflation 
+Factor (VIF). Nilai VIF lebih dari 10 menunjukkan adanya multikolinearitas pada 
+peubah penjelas (Gujarati dan Porter 2009). Tabel 2 merupakan nilai VIF setiap 
+peubah hasil ditransformasi tahun 2012 hingga 2018. Berdasarkan Tabel 2, hanya 
+peubah RLS yang terdapat multikolinearitas karena memiliki nilai VIF lebih dari 
+10. Gambar 4 juga menunjukkan bahwa korelasi antara peubah RLS dengan 
+peubah lain sangat tinggi sehingga peubah RLS tidak diikutsertakan dalam model. 
+Sedangkan, nilai VIF pada peubah lainnya memiliki nilai kurang dari 10 artinya 
+tidak terdapat multikolinearitas. 
+Tabel 2 Nilai Variance Inflation Factor setiap peubah hasil transformasi 
+Tahun PDRB 
+PSD 
+AMH 
+PKP 
+PKU 
+HLS 
+RLS 
+PKM 
+2012 
+2.5746 4.3392 
+3.0707 6.1520 2.9342 2.1433 
+11.5458 1.2713 
+2013 
+2.4384 1.3585 
+2.0567 6.0940 3.1053 2.2532 
+9.4790 1.2907 
+2014 
+2.4147 3.2754 
+2.8249 5.3538 2.8812 2.2107 
+11.0025 1.3287 
+2015 
+2.3384 4.3414 
+2.2948 6.1486 1.7538 2.3339 
+11.6874 1.2255 
+2016 
+2.5458 2.8689 
+2.4852 5.9854 2.7458 2.6623 
+10.6515 1.2907 
+2017 
+2.8481 4.7396 
+3.1655 4.9889 3.1202 2.9261 
+10.5562 1.5557 
+2018 
+2.8846 3.7807 
+2.1300 3.8764 3.0916 2.7997 
+10.2523 1.7105 
+2012-
+2018 
+2.3711 2.5626 
+1.9033 3.7495 2.0269 1.9741 
+7.8847 1.1836 
+
+ 
+13
+4.2 Identifikasi Model 
+Pemilihan Model Panel 
+Data panel dapat membentuk tiga model yaitu model gabungan, model 
+pengaruh tetap, dan model pengaruh acak. Ketiga model data panel dipilih 
+menggunakan uji Chow dan uji Hausman (Baltagi 2011). Uji Chow merupakan 
+uji untuk memilih model gabungan atau model pengaruh tetap. Sedangkan uji 
+Hausman merupakan uji untuk memilih model pengaruh acak atau model 
+pengaruh tetap. Berdasarkan Tabel 3, keputusan dari uji Chow dan uji 
+Hausman adalah tolak H0. Dengan kata lain, cukup bukti untuk menyatakan 
+model sementara yang akan dipilih yaitu model pengaruh tetap. 
+ Tabel 3 Hasil uji Chow dan uji Hausman 
+ 
+ 
+Uji Autokorelasi Spasial 
+Uji 
+autokorelasi 
+spasial 
+dilakukan 
+untuk 
+mengetahui 
+adanya 
+ketergantungan spasial pada data panel. Penelitian ini menguji adanya 
+autokorelasi spasial menggunakan uji Pesaran’s Cross-sectional Dependency 
+(CD) dan Indeks Moran. Hoyos dan Sarafidis (2006) mengatakan bahwa uji 
+Lagrange Multiplier (LM) digunakan untuk menguji adanya ketergantungan 
+spasial pada peubah respon. Uji LM digunakan apabila banyaknya unit waktu 
+(T) lebih dari banyaknya unit individu (N). Namun apabila banyaknya unit 
+waktu (T) kurang dari banyaknya unit individu (N), maka digunakan uji 
+Pesaran’s CD. Penelitian ini memiliki 118 kabupaten atau kota sebagai unit 
+amatan dengan unit waktu sebesar 7 tahun. Oleh karena itu, uji yang akan 
+digunakan adalah uji Pesaran’s CD. Statistik uji CD yang diperoleh sebesar 
+56.198 dan nilai-p sebesar 2.2 × 10−16. Hal tersebut menunjukkan bahwa 
+hipotesis nol ditolak karena nilai-p kurang dari 𝛼= 5%. Dengan demikian, 
+data panel kemiskinan di Pulau Jawa terdapat ketergantungan spasial pada 
+peubah responnya. Hal ini menunjukkan bahwa kemiskinan di suatu 
+kabupaten/kota di Pulau Jawa selain dipengaruhi oleh peubah penjelas juga 
+dipengaruhi oleh kemiskinan di kabupaten/kota lainnya. 
+Indeks Moran bertujuan untuk menguji adanya ketergantungan spasial 
+pada peubah penjelas. Matriks pembobot spasial yang digunakan adalah 
+ketetanggaan langkah ratu, dua tetangga terdekat, jarak invers, dan jarak 
+eksponensial. Indeks Moran dari setiap peubah penjelas disajikan pada Tabel 
+4. Berdasarkan Tabel 4, peubah PDRB, PSD, AMH, PKP, PKU, dan HLS 
+memiliki Indeks Moran yang signifikan untuk semua matriks pembobot pada 
+taraf nyata 5%. Hal ini berarti peubah-peubah tersebut menunjukkan adanya 
+Uji 
+Statistik Uji 
+Nilai-p 
+Model terpilih 
+Chow 
+298.260  2.20 × 10−16  Model pengaruh tetap 
+Hausman 
+35.236 1.01 × 10−5 
+Model pengaruh tetap 
+
+ 
+14 
+dependensi spasial pada kabupaten dan kota di Pulau Jawa. Sedangkan, peubah 
+PKM memiliki nilai-p lebih dari taraf nyata 5%, artinya belum cukup bukti 
+untuk menyatakan bahwa terdapat autokorelasi spasial persentase puskesmas 
+dengan 1000 penduduk pada kabupaten dan kota di Pulau Jawa. Karena peubah 
+respon (MISKIN) dan sebagian peubah penjelas mempunyai dependensi 
+spasial, maka model yang digunakan adalah model SDM. 
+Tabel 4 Hasil perhitungan indeks Moran tiap peubah 
+Peubah 
+Indeks Moran 
+Ketetanggaan 
+langkah ratu  
+2-tetangga 
+Terdekat 
+Invers 
+Jarak 
+Eksponensial 
+Jarak 
+PDRB 
+0.3936* 
+0.3403* 
+0.1360* 
+0.0994* 
+PSD 
+0.5145* 
+0.5445* 
+0.1965* 
+0.1998* 
+AMH 
+0.5009* 
+0.7165* 
+0.2157* 
+0.2785* 
+PKP 
+0.4532* 
+0.4807* 
+0.1246* 
+0.0611* 
+PKU 
+0.6128* 
+0.5667* 
+0.1978* 
+0.0969* 
+HLS 
+0.3203* 
+0.3705* 
+0.0678* 
+0.0306* 
+PKM 
+0.0365 
+   -0.0766 
+  -0.0124 
+  -0.0185 
+*signifikan pada taraf nyata 5% 
+Uji Autoregresif Orde Satu AR(1) 
+Sebelum membentuk model dinamis, data perlu dilakukan pengujian 
+untuk melihat adanya pengaruh efek dinamis. Salah satu uji yang dapat 
+digunakan adalah uji autoregresif orde satu AR(1) dengan melihat plot 
+Autocorrelation Function (ACF) dan Partial Autocorrelation Function 
+(PACF). Adapun plot ACF dan PACF ditampilkan dalam Gambar 5. 
+Berdasarkan Gambar 5, terlihat bahwa plot ACF mengalami penurunan secara 
+eksponensial (tails off) dan pada plot PACF terjadi cut off setelah orde satu. 
+Kondisi ini disebut AR(1). Dengan demikian, peubah persentase kemiskinan 
+di suatu tahun dipengaruhi oleh persentase kemiskinan di tahun sebelumnya. 
+Oleh karena itu, model yang digunakan adalah model panel spasial dinamis. 
+ 
+Gambar 5 Plot ACF dan PACF 
+
+ 
+15
+4.3 Pemodelan Panel Spasial Dinamis 
+Penelitian ini menggunakan model data panel spasial dinamis. Pendugaan 
+model dilakukan dengan menggunakan metode Spatial Corrected Arellano-Bond. 
+Model panel yang dipilih adalah model pengaruh tetap dan model spasial yang 
+dipilih adalah model spasial Durbin (SDM) dengan tambahan efek dinamis. 
+Bentuk umum dari model tersebut adalah 
+𝑦𝑖𝑡=  𝜏𝑦𝑖,𝑡−1 + 𝜌𝑾1𝑦𝑖𝑡+ 𝒙𝑖𝑡𝜷+ 𝑾2𝒙𝑖𝑡𝜸+ 𝜇𝑖+ 𝜀𝑖𝑡 
+Langkah selanjutnya ialah menentukan matriks pembobot spasial dengan 
+cara membandingkan koefisien determinasi (𝑝𝑠𝑒𝑢𝑑𝑜 𝑅2) dari keempat matriks 
+tersebut. Hasil dugaan parameter model dan nilai 𝑝𝑠𝑒𝑢𝑑𝑜 𝑅2  menggunakan 
+matriks pembobot yang terstandarisasi baris dapat dilihat pada Tabel 5. Semakin 
+tinggi nilai R2, maka semakin baik model dalam menjelaskan keragamannya. 
+Berdasarkan Tabel 5, nilai 𝑝𝑠𝑒𝑢𝑑𝑜 𝑅2  tertinggi adalah model dengan dua 
+tetangga terdekat sebagai matriks pembobot yaitu sebesar 0.8614. Artinya, 
+keragaman peubah MISKIN yang dijelaskan oleh peubah penjelas sebesar 86.14%, 
+sedangkan sisanya dijelaskan di luar model. Maka dari itu, interpretasi model data 
+panel spasial dinamis dilakukan dengan menggunakan matriks tetangga terdekat. 
+Adapun pendugaan intersep tiap kabupaten/kota ditampilkan pada Lampiran 1. 
+Tabel 5 Penduga parameter model panel spasial dinamis 
+Koefisien 
+Matriks Pembobot Spasial 
+Ketetanggaan 
+langkah ratu 
+Dua 
+Tetangga 
+Terdekat 
+Invers 
+Jarak 
+Eksponensial 
+Jarak 
+𝜏 
+ 0.7043* 
+ 0.5823* 
+ 0.7194* 
+ 0.7313* 
+𝜌 
+ 0.7795* 
+ 0.5069* 
+ 1.8908* 
+ 1.7840* 
+𝛽 
+ln(PDRB) 
+-0.0518 
+-0.0563 
+-0.0446 
+-0.0466 
+PSD 
+ 0.0001 
+-0.0002 
+ 0.0005* 
+ 0.0004* 
+AMH 
+-0.0015* 
+-0.0019* 
+-0.0015* 
+-0.0020* 
+PKP 
+-0.0001 
+-0.0014 
+-0.0015 
+-0.0014 
+PKU 
+ 0.0000 
+ 0.0023* 
+ 0.0015 
+ 0.0012 
+HLS 
+-0.0052 
+-0.0057 
+-0.0094 
+-0.0105 
+PKM 
+ 0.0182* 
+ 0.0384* 
+-0.0024 
+-0.0020 
+𝛾 
+ln(PDRB) 
+ 0.1226* 
+-0.0219 
+ 0.9893* 
+ 0.7883* 
+PSD 
+ 0.0001 
+-0.0004 
+ 0.0133* 
+ 0.0172* 
+AMH 
+ 0.0037* 
+ 0.0031* 
+ 0.0050* 
+ 0.0034 
+PKP 
+-0.0004 
+-0.0008 
+ 0.0103* 
+ 0.0111* 
+PKU 
+ 0.0000 
+-0.0014 
+-0.0123* 
+-0.0105* 
+HLS 
+ 0.0206 
+ 0.0329* 
+-0.1011* 
+ 0.0059 
+𝑃𝑠𝑒𝑢𝑑𝑜 𝑅2 
+ 0.7551 
+ 0.8614 
+ 0.3004 
+ 0.0682 
+*signifikan pada taraf nyata 5% 
+
+ 
+16 
+Berdasarkan Tabel 5, koefisien 𝜏 sebesar 0.5823 menunjukkan bahwa 
+peubah persentase kemiskinan dipengaruhi oleh persentase kemiskinan di tahun 
+sebelumnya. Pernyataan tersebut dapat diinterpretasikan apabila persentase 
+kemiskinan meningkat sebesar 1 persen di suatu kabupaten/kota, maka akan 
+terjadi peningkatan persentase kemiskinan sebesar 𝑙𝑛(0.5823%)  pada tahun 
+berikutnya. Kemudian, koefisien 𝜌 sebesar 0.5069 yang signifikan menandakan 
+terdapat ketergantungan spasial terhadap persentase kemiskinan antar 
+kabupaten/kota. Hal ini sejalan dengan hasil uji Pesaran’s CD sebelumnya. 
+Persentase kemiskinan di suatu kabupaten/kota akan meningkat sebesar 
+𝑙𝑛(0.5069%) persen, apabila terjadi kenaikan persentase kemiskinan di dua 
+tetangga terdekat dari kabupaten/kota tersebut sebesar satu persen.  
+Peubah-peubah yang memengaruhi persentase kemiskinan secara signifikan 
+pada taraf nyata 5% adalah peubah AMH, PKU, dan PKM. Angka Melek Huruf 
+(AMH) merupakan proporsi penduduk usia 15 tahun ke atas yang dapat membaca 
+dan menulis. Angka melek huruf berkaitan dengan pendidikan. Seseorang yang 
+berpendidikan baik cenderung memiliki pendapatan yang lebih baik daripada 
+yang tidak berpendidikan. Hal ini diperkuat dengan penelitian oleh Sari dan 
+Nuraini (2020) yang menyatakan bahwa angka melek huruf berpengaruh 
+signifikan terhadap kemiskinan di Pulau Jawa. Peubah yang berpengaruh 
+signifikan lainnya adalah persentase penduduk umur produktif (PKU). Penduduk 
+umur produktif ialah penduduk yang berusia 15-64 tahun. Penduduk yang berusia 
+ini memegang peranan penting baik di bidang pendidikan, pemerintahan, ekonomi, 
+sosial, kesehatan, dan lain-lain. Peningkatan penduduk yang berusia produktif 
+seharusnya sejalan dengan peningkatan mutu dan kualitas sumber daya 
+manusianya. Peubah yang memengaruhi kemiskinan lainnya adalah persentase 
+banyaknya puskesmas per 1000 penduduk (PKM). Peubah PKM dan persentase 
+kemiskinan memiliki hubungan yang positif karena dugaan koefisiennya positif. 
+Namun, tidak dapat diartikan dengan semakin banyak puskesmas di suatu wilayah, 
+maka kemiskinan akan semakin meningkat. Untuk mengurangi persentase 
+kemiskinan, sebaiknya dilakukan pemerataan rasio puskesmas per penduduk agar 
+setiap wilayah memiliki puskesmas yang cukup serta tenaga medis yang memadai.  
+Tabel 6 menampilkan efek marginal berupa efek langsung, tak langsung, 
+dan total setiap peubah penjelas. Berdasarkan Tabel 6, peubah PDRB memiliki 
+efek langsung dan tak langsung tertinggi. Pengaruh langsung dari peubah PDRB 
+adalah sebesar -0.0688, artinya jika PDRB di suatu wilayah meningkat satu miliar 
+rupiah, maka kemiskinan di wilayah tersebut akan menurun sebesar 0.0688 persen, 
+apabila nilai lainnya tetap. Sedangkan efek tak langsungnya berarti apabila PDRB 
+di suatu wilayah meningkat sebesar satu miliar rupiah, maka kemiskinan di 
+wilayah lainnya akan menurun sebesar 0.0848 persen, jika peubah lainnya tetap. 
+Efek marginal peubah lainnya dapat dilihat pada Tabel 6. 
+ 
+
+ 
+17
+Tabel 6 Efek marginal pada peubah penjelas 
+Peubah 
+Efek 
+Langsung 
+Efek Tak 
+Langsung 
+Efek Total 
+PDRB 
+-0.0688 
+-0.0848 
+-0.1537 
+PSD 
+-0.0003 
+-0.0008 
+-0.0011 
+AMH 
+-0.0013 
+0.0038 
+0.0024 
+PKP 
+-0.0016 
+-0.0026 
+-0.0043 
+PKU 
+0.0022 
+-0.0007 
+0.0015 
+HLS 
+0.0014 
+0.0543 
+0.0558 
+PKM 
+0.0428 
+0.0349 
+0.0778 
+4.4 Pemeriksaan Asumsi Sisaan 
+Pemeriksaan asumsi model yang perlu dilakukan adalah normalitas sisaan, 
+kehomogenan ragam sisaan, dan kebebasan sisaan. Adapun nonmultikolinearitas 
+tidak diperiksa karena saat eksplorasi data telah dilakukan pemeriksaan. Pertama, 
+normalitas sisaan dapat diperiksa secara eksploratif dengan melihat histogram dan 
+plot kuantil-kuantil normal. Berdasarkan histogram pada Gambar 6, plot kuantil-
+kuantil normal menunjukkan sisaan menyebar normal karena cenderung 
+membentuk garis lurus.  
+ 
+Gambar 6 Plot Kuantil-kuantil Normal dari Sisaan 
+Asumsi kehomogenan ragam sisaan dapat diperiksa dengan menggunakan 
+plot antara prediksi peubah respon dengan sisaan. Gambar 7 merupakan plot 
+antara nilai prediksi peubah respon dengan sisaan. Secara eksploratif, asumsi 
+kehomogenan ragam terpenuhi karena lebar pita sisaan relatif sama untuk semua 
+nilai prediksi.  
+Kuantil Normal 
+Sisaan  
+
+ 
+18 
+ 
+Gambar 7 Plot antara Nilai Prediksi dengan Sisaan 
+Hasil pemeriksaan asumsi regresi disajikan pada Tabel 7. Asumsi 
+kenormalan sisaan dapat diperiksa menggunakan uji Kolmogorov-Smirnov, 
+sedangkan kehomogenan ragam sisaan menggunakan uji Breusch–Pagan. Karena 
+nilai-p lebih dari taraf nyata 5% untuk kedua pengujian asumsi, maka asumsi 
+kenormalan sisaan dan kehomogenan ragam sisaan terpenuhi. 
+Tabel 7 Pemeriksaan asumsi regresi 
+Asumsi 
+Statistik 
+Uji 
+Nilai-p Kesimpulan 
+Kenormalan 
+sisaan 
+0.0389 
+0.1633 
+Terpenuhi 
+Kehomogenan 
+ragam sisaan 
+13.2482 
+0.0663 
+Terpenuhi 
+ 
+Asumsi kebebasan sisaan atau autokorelasi sisaan dapat diperiksa dengan 
+menggunakan uji Durbin-Watson. Statistik uji D yang diperoleh sebesar 1.64439. 
+Karena nilai tersebut berada di antara 𝑑𝑢(𝑁𝑇,𝑝) = 1.639 dengan 4 −𝑑𝑢(𝑁𝑇,𝑝) =
+2.361, maka tak tolak H0. Hal ini berarti sisaan saling bebas sehingga dapat 
+dikatakan bahwa asumsi kebebasan sisaan terpenuhi. 
+ 
+V 
+SIMPULAN  
+5.1 Simpulan 
+Model panel spasial dinamis terbaik pada data persentase kemiskinan di Pulau 
+Jawa tahun 2012 hingga 2018 adalah model panel spasial Durbin dinamis dengan 
+pengaruh tetap dan menggunakan matriks pembobot dua tetangga terdekat. Nilai 
+𝑝𝑠𝑒𝑢𝑑𝑜 𝑅2 yang diperoleh dari model cukup baik yaitu sebesar 86.14%. Peubah-
+peubah yang berpengaruh terhadap persentase kemiskinan diantaranya angka melek 
+huruf, persentase penduduk umur produktif, dan persentase banyaknya puskesmas 
+per 1000 penduduk. Model juga menunjukkan bahwa peubah persentase 
+kemiskinan di suatu waktu dipengaruhi oleh persentase kemiskinan di periode 
+waktu sebelumnya. Selain itu, terdapat ketergantungan spasial terhadap persentase 
+kemiskinan antar kabupaten/kota di Pulau Jawa dan peubah penjelas.  
+y-hat 
+sisaan 
+
+ 
+19
+DAFTAR PUSTAKA 
+ 
+Anselin L. 1988. Spatial Econometrics: Methods and Models. Netherlands (NL): 
+Kluwer Academic Publishers. 
+[BPS] Badan Pusat Statistik. 2012. Data dan Informasi Kemiskinan 
+Kabupaten/Kota Tahun 2012. Jakarta: Badan Pusat Statistik. 
+[BPS] 2013a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2013. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2013b. Indeks Pembangunan Manusia 2012. Jakarta: Badan Pusat Statistik. 
+[BPS] 2014a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2014. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2014b. Indeks Pembangunan Manusia 2013. Jakarta: Badan Pusat Statistik. 
+[BPS] 2015a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2015. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2015b. Indeks Pembangunan Manusia 2014. Jakarta: Badan Pusat Statistik. 
+[BPS] 2016a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2016. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2016b. Indeks Pembangunan Manusia 2015. Jakarta: Badan Pusat Statistik. 
+[BPS] 2017a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2017. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2017b. Indeks Pembangunan Manusia 2016. Jakarta: Badan Pusat Statistik. 
+[BPS] 2017c. Tinjauan Regional Berdasarkan PDRB Kabupaten/Kota 2012-2016 
+(Buku 2 Pulau Jawa dan Bali). Jakarta: Badan Pusat Statistik. 
+[BPS] 2018a. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2018. 
+Jakarta: Badan Pusat Statistik. 
+[BPS] 2018b. Indeks Pembangunan Manusia 2017. Jakarta: Badan Pusat Statistik. 
+[BPS] 2019a. Indeks Pembangunan Manusia 2018. Jakarta: Badan Pusat Statistik. 
+[BPS] 2019b. Tinjauan Regional Berdasarkan PDRB Kabupaten/Kota 2014-2018 
+(Buku 2 Pulau Jawa dan Bali). Jakarta: Badan Pusat Statistik. 
+[BPS] 2020. Data dan Informasi Kemiskinan Kabupaten/Kota Tahun 2020. Jakarta: 
+Badan Pusat Statistik. 
+Baltagi BH. 2011. Econometrics. Ed ke-5. New York (NY): Springer. 
+Breusch TS, Pagan AR. 1979. A simple test for heteroscedasticity and random 
+coefficient variation. Econometrica: Journal of the Econometric Society, 
+1287- 1294. DOI:10.2307/1911963. 
+Elhorst JP. 2009. Spatial panel data models. In Fisher MM, A Getis, editor, 
+Handbook of Applied Spatial Analysis. New York (NY): Springer. 
+Fischer M, Wang J. 2011. Spatial Data Analysis: Models, Methods and Techniques. 
+Berlin: Springer Science & Business Media. 
+Fitri CD, Safitri WD, Chairunnas C. 2021. Analisis pengaruh penduduk usia 
+produktif yang tidak bekerja, zakat, pertumbuhan ekonomi, dan indeks 
+
+ 
+20 
+pembangunan manusia terhadap tingkat kemiskinan kabupaten/kota di 
+Provinsi Aceh. Ekobis Syariah. 1(2): 1-10. 
+Giovanni R. 2018. Analisis pengaruh PDRB, pengangguran dan pendidikan 
+terhadap Tingkat kemiskinan di Pulau Jawa tahun 2009-2016. Economics 
+Development Analysis Journal 7(1):23-31. DOI:10.15294/edaj.v7i1.21922. 
+Gujarati DN, Porter DC. 2009. Basic Econometrics. Ed ke-5. New York : The 
+McGraw-Hill Companies, Inc. 
+Hoyos RED, Sarafidis V. 2006. Testing for cross-sectional dependence in panel-
+data 
+models. 
+The 
+Stata 
+Journal. 
+6(4): 
+482–496. 
+DOI: 
+10.1177/1536867X0600600403. 
+Jacobs JPAM, Ligtharty JE, Vrijburg H. 2009. Dynamic Panel Data Models 
+Featuring Endogenous Interaction and Spatially Correlated Errors. Center 
+Discussion Paper Series. No. 2009-92.  
+Jonaidi A. 2012. Analisis pertumbuhan ekonomi dan kemiskinan di Indonesia. 
+Jurnal Kajian Ekonomi. 1(1):140-164.  
+Mala F, Fitriani R, Nurjannah. 2020. Modeling PDRB and poverty using 
+simultaneous dynamic spatial panel and SCBB-GMM approach. Journal of 
+Critical Reviews. 7 (13): 873-878. doi:10.31838/jcr.07.13.148. 
+Mattjik AA, Sumertajaya IM. 2002. Perancangan Percobaan dengan Aplikasi SAS 
+dan Minitab Jilid 1. Ed ke-2. Bogor : IPB Press. 
+Montgomery DC, Jennings CL, Kulahci M 2008 Introduction to Time Series 
+Analysis and Forecasting. Canada: Wiley Interscience. 
+Pesaran, M. H. 2004. General diagnostic tests for cross section dependence in 
+panels. University of Cambridge, Faculty of Economics, Cambridge Working 
+Papers in Economics No. 0435. 
+Puspita DW. 2015. Analisis determinan kemiskinan di Provinsi Jawa Tengah. 
+JEJAK Journal of Economics and Policy, 8(1): 100-107. [Diunduh 10 Jan 
+2021]. DOI: 10.15294/jejak.v8i1.3858. 
+Sari JNI, Nuraini I. 2020. Analisis faktor yang mempengaruhi tingkat kemiskinan 
+provinsi di Pulau Jawa. Jurnal Ilmu Ekonomi JIE, 4(2), 309-323. 
+DOI:10.22219/jie.v4i2.11875. 
+Sunandi E, Sumertajaya IM, Djuraidah A, Wigena AH, Fitrianto A. 2021. Dynamic 
+spatial Durbin modeling (Case: Percentage of poor population in Indonesia 
+2010-2019). In Journal of Physics: Conference Series. 1863(1): 012046. IOP 
+Publishing.  
+Tobler WR. 1970. A computer movie simulating urban growth in the Detroit 
+region. Economic Geography. 46(1): 234-240. 
+Vega SH, Elhorst JP. 2013. On spatial econometric models, spillover effects, and 
+W. 53rd Congress of the European Regional Science Association: "Regional 
+Integration: Europe, the Mediterranean and the World Economy". 27-31 
+August 2013. Palermo: European Regional Science Association (ERSA). 
+ 
+
+ 
+21
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+22 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+LAMPIRAN 
+ 
+
+ 
+23
+Lampiran 1 Dugaan intersep setiap kabupaten/kota 
+ 
+No 
+Provinsi 
+Kabupaten/kota 
+Intersep 
+1 Banten 
+Kota Cilegon 
+-0.38220 
+2 Banten 
+Kota Serang 
+-0.17380 
+3 Banten 
+Kota Tangerang 
+0.04521 
+4 Banten 
+Kota Tangerang Selatan 
+-0.64100 
+5 Banten 
+Lebak 
+-0.32563 
+6 Banten 
+Pandeglang 
+-0.20741 
+7 Banten 
+Serang 
+-0.29502 
+8 Banten 
+Tangerang 
+-0.03526 
+9 DI Yogyakarta 
+Bantul 
+-0.32320 
+10 DI Yogyakarta 
+Gunung Kidul 
+-0.37639 
+11 DI Yogyakarta 
+Kota Yogyakarta 
+-0.73075 
+12 DI Yogyakarta 
+Kulon Progo 
+-0.39841 
+13 DI Yogyakarta 
+Sleman 
+-0.63287 
+14 DKI Jakarta 
+Kepulauan Seribu 
+-0.77729 
+15 DKI Jakarta 
+Kota Jakarta Barat 
+-0.38392 
+16 DKI Jakarta 
+Kota Jakarta Pusat 
+-0.30708 
+17 DKI Jakarta 
+Kota Jakarta Selatan 
+-0.31411 
+18 DKI Jakarta 
+Kota Jakarta Timur 
+-0.41110 
+19 DKI Jakarta 
+Kota Jakarta Utara 
+-0.03799 
+20 Jawa Barat 
+Bandung 
+-0.20345 
+21 Jawa Barat 
+Bandung Barat 
+-0.03152 
+22 Jawa Barat 
+Bekasi 
+-0.18264 
+23 Jawa Barat 
+Bogor 
+-0.03928 
+24 Jawa Barat 
+Ciamis 
+-0.59985 
+25 Jawa Barat 
+Cianjur 
+-0.39210 
+26 Jawa Barat 
+Cirebon 
+-0.42864 
+27 Jawa Barat 
+Garut 
+-0.35816 
+28 Jawa Barat 
+Indramayu 
+-0.38477 
+29 Jawa Barat 
+Karawang 
+-0.14003 
+30 Jawa Barat 
+Kota Bandung 
+-0.54881 
+31 Jawa Barat 
+Kota Banjar 
+-0.78153 
+32 Jawa Barat 
+Kota Bekasi 
+-0.21672 
+33 Jawa Barat 
+Kota Bogor 
+-0.17816 
+34 Jawa Barat 
+Kota Cimahi 
+-0.49213 
+35 Jawa Barat 
+Kota Cirebon 
+-0.71911 
+36 Jawa Barat 
+Kota Depok 
+-0.30786 
+37 Jawa Barat 
+Kota Sukabumi 
+-0.58373 
+38 Jawa Barat 
+Kota Tasikmalaya 
+-0.31110 
+39 Jawa Barat 
+Kuningan 
+-0.43293 
+40 Jawa Barat 
+Majalengka 
+-0.45665 
+41 Jawa Barat 
+Purwakarta 
+-0.33976 
+42 Jawa Barat 
+Subang 
+-0.41404 
+43 Jawa Barat 
+Sukabumi 
+-0.52823 
+
+ 
+24 
+44 Jawa Barat 
+Sumedang 
+-0.28349 
+45 Jawa Barat 
+Tasikmalaya 
+-0.50699 
+46 Jawa Tengah 
+Banjarnegara 
+-0.58994 
+47 Jawa Tengah 
+Banyumas 
+-0.44422 
+48 Jawa Tengah 
+Batang 
+-0.43543 
+49 Jawa Tengah 
+Blora 
+-0.60167 
+50 Jawa Tengah 
+Boyolali 
+-0.31528 
+51 Jawa Tengah 
+Brebes 
+-0.09394 
+52 Jawa Tengah 
+Cilacap 
+-0.31026 
+53 Jawa Tengah 
+Demak 
+-0.08510 
+54 Jawa Tengah 
+Grobogan 
+-0.33712 
+55 Jawa Tengah 
+Jepara 
+-0.45570 
+56 Jawa Tengah 
+Karanganyar 
+-0.37488 
+57 Jawa Tengah 
+Kebumen 
+-0.39586 
+58 Jawa Tengah 
+Kendal 
+-0.26384 
+59 Jawa Tengah 
+Klaten 
+-0.31056 
+60 Jawa Tengah 
+Kota Magelang 
+-0.60589 
+61 Jawa Tengah 
+Kota Pekalongan 
+-0.66688 
+62 Jawa Tengah 
+Kota Salatiga 
+-0.66793 
+63 Jawa Tengah 
+Kota Semarang 
+-0.63794 
+64 Jawa Tengah 
+Kota Surakarta 
+-0.45268 
+65 Jawa Tengah 
+Kota Tegal 
+-0.66217 
+66 Jawa Tengah 
+Kudus 
+-0.44248 
+67 Jawa Tengah 
+Magelang 
+-0.34819 
+68 Jawa Tengah 
+Pati 
+-0.27000 
+69 Jawa Tengah 
+Pekalongan 
+-0.46060 
+70 Jawa Tengah 
+Pemalang 
+-0.22553 
+71 Jawa Tengah 
+Purbalingga 
+-0.43813 
+72 Jawa Tengah 
+Purworejo 
+-0.73247 
+73 Jawa Tengah 
+Rembang 
+-0.27387 
+74 Jawa Tengah 
+Semarang 
+-0.44590 
+75 Jawa Tengah 
+Sragen 
+-0.38749 
+76 Jawa Tengah 
+Sukoharjo 
+-0.53912 
+77 Jawa Tengah 
+Tegal 
+-0.54830 
+78 Jawa Tengah 
+Temanggung 
+-0.42750 
+79 Jawa Tengah 
+Wonogiri 
+-0.48637 
+80 Jawa Tengah 
+Wonosobo 
+-0.32202 
+81 Jawa Timur 
+Bangkalan 
+-0.16198 
+82 Jawa Timur 
+Banyuwangi 
+-0.58837 
+83 Jawa Timur 
+Blitar 
+-0.42309 
+84 Jawa Timur 
+Bojonegoro 
+-0.43676 
+85 Jawa Timur 
+Bondowoso 
+-0.36804 
+86 Jawa Timur 
+Gresik 
+-0.23727 
+87 Jawa Timur 
+Jember 
+-0.63573 
+88 Jawa Timur 
+Jombang 
+-0.32304 
+89 Jawa Timur 
+Kediri 
+-0.37566 
+90 Jawa Timur 
+Kota Batu 
+-0.55830 
+
+ 
+25
+91 Jawa Timur 
+Kota Blitar 
+-0.55468 
+92 Jawa Timur 
+Kota Kediri 
+-0.51270 
+93 Jawa Timur 
+Kota Madiun 
+-0.83576 
+94 Jawa Timur 
+Kota Malang 
+-0.53244 
+95 Jawa Timur 
+Kota Mojokerto 
+-0.70368 
+96 Jawa Timur 
+Kota Pasuruan 
+-0.49487 
+97 Jawa Timur 
+Kota Probolinggo 
+-0.64095 
+98 Jawa Timur 
+Kota Surabaya 
+-0.57004 
+99 Jawa Timur 
+Lamongan 
+-0.24590 
+100 Jawa Timur 
+Lumajang 
+-0.51332 
+101 Jawa Timur 
+Madiun 
+-0.29812 
+102 Jawa Timur 
+Magetan 
+-0.36132 
+103 Jawa Timur 
+Malang 
+0.02706 
+104 Jawa Timur 
+Mojokerto 
+-0.27069 
+105 Jawa Timur 
+Nganjuk 
+-0.33668 
+106 Jawa Timur 
+Ngawi 
+-0.17258 
+107 Jawa Timur 
+Pacitan 
+-0.43231 
+108 Jawa Timur 
+Pamekasan 
+-0.59970 
+109 Jawa Timur 
+Pasuruan 
+-0.12597 
+110 Jawa Timur 
+Ponorogo 
+-0.53545 
+111 Jawa Timur 
+Probolinggo 
+-0.13562 
+112 Jawa Timur 
+Sampang 
+-0.39510 
+113 Jawa Timur 
+Sidoarjo 
+-0.38599 
+114 Jawa Timur 
+Situbondo 
+-0.44503 
+115 Jawa Timur 
+Sumenep 
+-0.46778 
+116 Jawa Timur 
+Trenggalek 
+-0.38023 
+117 Jawa Timur 
+Tuban 
+-0.41646 
+118 Jawa Timur 
+Tulungagung 
+-0.54309 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+26 
+Lampiran 2 Peta intersep model spasial panel dinamis 
+ 
+
+ 
+27
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+28 
+RIWAYAT HIDUP 
+ 
+Penulis dilahirkan di Kota Bengkulu pada tanggal 6 Juli 1999. Penulis 
+merupakan putri kedua dari tiga bersaudara pasangan Ibu Nur dan Bapak Wasir. 
+Penulis telah menamatkan pendidikan menengah atas di SMAN 5 Kota Bengkulu 
+pada Tahun 2017. Pada tahun yang sama, penulis diterima sebagai mahasiswa 
+Departemen Statistika Institut Pertanian Bogor melalui jalur SNMPTN. 
+Selama masa perkuliahan, penulis aktif dalam organisasi kemahasiswaan 
+maupun kepanitiaan. Penulis pernah menjadi sekretaris Departemen Analisis Data 
+Himpunan Profesi Gamma Sigma Beta periode 2019/2020. Penulis juga pernah 
+menjadi bendahara umum dalam acara The 14th Statistika Ria yang diselenggarakan 
+pada 26-27 Oktober 2019. Selain itu, pada tahun 2020 penulis menjadi koordinator 
+lomba STEM Young Research Award (SYRA) dalam ajang Pesta Sains Nasional 
+pada tahun 2020. Selain aktif di dunia organisasi, penulis juga aktif mengikuti 
+berbagai lomba olimpiade matematika, statistika maupun data mining tingkat 
+nasional. Diantaranya adalah menjadi finalis dalam Kompetisi Statistika Nasional 
+(KSN) Satria Data 2020 dan Pekan Analisis Statistika (PAS) Jambore Statistika 
+2020 serta menjadi semifinalis dalam lomba Olimpiade Matematika UNY 2018 dan 
+Olimpiade Nasional Statistika UGM 2021. Penulis juga berkesempatan mengikuti 
+kegiatan praktik lapang di PT. Good Doctor Technology Indonesia (GrabHealth). 
+
