@@ -28,6 +28,13 @@ Baltagi, B. (2021).
 \newblock {\em Econometric Analysis of Panel Data}.
 \newblock \url{https://doi.org/10.1007/978-3-030-53953-5}
 
+\bibitem[Bholowalia \& Kumar, 2014]{bholowalia2014}
+Bholowalia, P. \& Kumar, A. (2014).
+\newblock Ebk-means: A clustering technique based on elbow method and k-means
+  in wsn.
+\newblock {\em International Journal of Computer Applications}, 105(9).
+\newblock \url{https://doi.org/10.5120/18405-9674}
+
 \bibitem[Biegert et~al., 2023]{biegert2023household}
 Biegert, T., \"Ozcan, B., \& Rossetti-Youlton, M. (2023).
 \newblock Household joblessness in u.s. metropolitan areas during the covid-19
@@ -75,6 +82,13 @@ Lavit, C., Escoufier, Y., Sabatier, R., \& Traissac, P. (1994).
 \newblock {\em Computational Statistics \& Data Analysis}, 18(1), 97--119.
 \newblock \url{https://doi.org/10.1016/0167-9473(94)90134-1}
 
+\bibitem[MacQueen, 1967]{macqueen1967}
+MacQueen, J. (1967).
+\newblock Some methods for classification and analysis of multivariate
+  observations.
+\newblock {\em Proceedings of the fifth Berkeley symposium on mathematical
+  statistics and probability}, volume~1, 281--297.
+
 \bibitem[Nuswantari, 2021]{nuswantari2021}
 Nuswantari, A. (2021).
 \newblock Pemodelan kemiskinan di pulau jawa tahun 2012 sampai 2018 dengan
@@ -110,5 +124,20 @@ Phipson, B. \& Smyth, G.~K. (2010).
 \newblock Plotly Technologies Inc.
 \newblock Dokumentasi resmi kerangka kerja Dash.
 \newblock \url{https://dash.plotly.com/}
+
+\bibitem[Syakur et~al., 2018]{syakur2018}
+Syakur, M., Khotimah, B., Rochman, E., \& Satoto, B. (2018).
+\newblock Integration k-means clustering method and elbow method for
+  identification of the best customer profile cluster.
+\newblock {\em IOP conference series: materials science and engineering},
+  volume 336, 012017.
+\newblock \url{https://doi.org/10.1088/1757-899X/336/1/012017}
+
+\bibitem[Ward~Jr, 1963]{ward1963}
+Ward~Jr, J.~H. (1963).
+\newblock Hierarchical grouping to optimize an objective function.
+\newblock {\em Journal of the American statistical association}, 58(301),
+  236--244.
+\newblock \url{https://doi.org/10.1080/01621459.1963.10500845}
 
 \end{thebibliography}

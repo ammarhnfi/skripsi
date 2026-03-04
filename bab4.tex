@@ -3,6 +3,7 @@
 Bab ini menyajikan hasil analisis data panel 3-arah menggunakan metode STATIS untuk memetakan dinamika pembangunan ekonomi di Provinsi Banten, DKI Jakarta, dan Jawa Barat periode 2020--2024. Pembahasan dimulai dengan eksplorasi data, diikuti oleh analisis struktur kompromi, uji stabilitas, dan interpretasi trajektori spasio-temporal.
 
 %-----------------------------------------------------------------------------%
+% --- 4.1 ---
 \section{\normalsize Eksplorasi Data Awal}
 %-----------------------------------------------------------------------------%
 Sebelum dilakukan analisis multivariat, gambaran umum indikator ekonomi (PDRB, IPM, Kemiskinan) dianalisis secara deskriptif untuk melihat tren perubahan makro.
@@ -18,6 +19,7 @@ Sebelum dilakukan analisis multivariat, gambaran umum indikator ekonomi (PDRB, I
 Secara visual pada Gambar \ref{fig:heatmap_awal}, terlihat adanya kesenjangan spasial yang persisten... \textit{[ISI BAGIAN INI: Jelaskan pola umum, misal Jakarta selalu tertinggi PDRB-nya, Lebak/Pandeglang tertinggi kemiskinannya]}.
 
 %-----------------------------------------------------------------------------%
+% --- 4.2 ---
 \section{\normalsize Analisis Inter-struktur (Hubungan Antar-Tahun)}
 %-----------------------------------------------------------------------------%
 Analisis inter-struktur bertujuan untuk mengukur seberapa konsisten konfigurasi ekonomi antar-tahun, khususnya dalam merespons peristiwa pandemi. Hubungan ini diukur menggunakan matriks koefisien RV.
@@ -39,6 +41,7 @@ Tahun & 2020 & 2021 & 2022 & 2023 & 2024 \\ \hline
 Berdasarkan Tabel \ref{tab:rv_matrix}, nilai koefisien RV antar seluruh pasangan tahun berada di atas 0.90 (Contoh hipotesis), yang mengindikasikan bahwa struktur spasial ekonomi relatif \textbf{stabil} meskipun terjadi pandemi. Artinya, kabupaten yang "maju" tetap maju, dan yang "tertinggal" tetap tertinggal; pandemi menekan level ekonomi tetapi tidak mengubah hierarki/struktur kemiripan antar-wilayah secara drastis.
 
 %-----------------------------------------------------------------------------%
+% --- 4.3 ---
 \section{\normalsize Analisis Struktur Kompromi (Kompromi)}
 %-----------------------------------------------------------------------------%
 Struktur kompromi merupakan representasi "rata-rata" dari kondisi ekonomi selama 5 tahun.
@@ -67,6 +70,7 @@ Hasil perhitungan menunjukkan nilai Moran's I sebesar \textbf{0.7252}, yang jauh
 
 
 %-----------------------------------------------------------------------------%
+% --- 4.4 ---
 \section{\normalsize Uji Stabilitas (Permutation Test)}
 %-----------------------------------------------------------------------------%
 Untuk memvalidasi apakah struktur kompromi tersebut signifikan secara statistik dan bukan terbentuk secara kebetulan, dilakukan uji permutasi dengan $B=1000$ iterasi.
@@ -79,9 +83,10 @@ Untuk memvalidasi apakah struktur kompromi tersebut signifikan secara statistik 
     \label{fig:perm_test}
 \end{figure}
 
-Hasil pengujian menunjukkan nilai eigen pertama observasi ($\theta_1^{obs}$) berada jauh di luar area distribusi null ($p$-value $< 0.05$). Hal ini membuktikan hipotesis penelitian bahwa terdapat struktur ekonomi multivariat yang stabil dan nyata (*statistically significant*) di wilayah studi selama periode 2020--2024.
+Hasil pengujian menunjukkan nilai eigen pertama observasi ($\theta_1^{obs}$) berada jauh di luar area distribusi null ($p$-value $< 0.05$). Hal ini membuktikan hipotesis penelitian bahwa terdapat struktur ekonomi multivariat yang stabil dan nyata (\textit{statistically significant}) di wilayah studi selama periode 2020--2024.
 
 %-----------------------------------------------------------------------------%
+% --- 4.5 ---
 \section{\normalsize Analisis Dinamika Spasio-Temporal (Trajectories)}
 %-----------------------------------------------------------------------------%
 Bagian ini menganalisis pergeseran posisi (nasib) kabupaten/kota spesifik dari masa krisis menuju pemulihan.
@@ -99,3 +104,46 @@ Kota-kota berbasis jasa seperti Jakarta Pusat dan Kota Bandung menunjukkan pola 
 
 \subsection{\normalsize Pola Stagnasi Wilayah Penyangga}
 Berbeda dengan kota metropolitan, wilayah penyangga seperti Kabupaten Lebak atau Pandeglang menunjukkan pergerakan trajektori yang relatif pendek (statis). Hal ini mengindikasikan bahwa perubahan makroekonomi maupun pemulihan tidak memberikan dampak perubahan struktural yang signifikan pada kesejahteraan relatif wilayah tersebut.
+
+%-----------------------------------------------------------------------------%
+% --- 4.6 ---
+\section{\normalsize Analisis Klaster Spasio-Temporal}
+%-----------------------------------------------------------------------------%
+Untuk mendapatkan wawasan mendalam mengenai pengelompokan tahunan dan perpindahannya, dilakukan analisis clustering pada skor utama PCA (PC1 dan PC2) di setiap tahun.
+
+\subsection{\normalsize Penentuan Jumlah Klaster (\texorpdfstring{$k$}{k})}
+Penentuan jumlah klaster optimal dilakukan secara empiris dengan memadukan Metode \textit{Elbow} dan \textit{Agglomerative Hierarchical Clustering} (Dendrogram).
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=0.45\textwidth]{elbow_plot.png}
+    % \includegraphics[width=0.45\textwidth]{dendrogram.png}
+    % TODO: Screenshot grafik Elbow dan Dendrogram dari Dashboard
+    \caption{Kurva Elbow dan Dendrogram}
+    \label{fig:elbow_dendro}
+\end{figure}
+
+Berdasarkan titik patahan (\textit{elbow}) pada kurva SSE dan evaluasi tinggi cabang pada dendrogram di Gambar \ref{fig:elbow_dendro}, jumlah klaster $k = \dots$ dipilih sebagai partisi optimal untuk tahun-tahun pengamatan.
+
+\subsection{\normalsize Pola Pengelompokan dan Matriks Transisi}
+Hasil pengelompokan membagi wilayah ke dalam $k$ klaster (misalnya: Klaster Kesejahteraan Tinggi, Menengah, dan Rendah). 
+
+\begin{figure}[htbp]
+    \centering
+    % \includegraphics[width=1.0\textwidth]{yearly_cluster_map.png}
+    % TODO: Screenshot Peta Sebaran Klaster Tahunan (Contoh: 2024)
+    \caption{Peta Sebaran Klaster Kabupaten/Kota}
+    \label{fig:cluster_map}
+\end{figure}
+
+Untuk menganalisis dinamika perubahan nasib (migrasi klaster) wilayah antara tahun terburuk pandemi (2020) dengan fase pemulihan, dibentuk suatu matriks perpindahan silang (\textit{transition matrix}).
+
+\begin{table}[htbp]
+\centering
+\caption{Matriks Transisi Klaster (Tahun 2020 $\to$ Tahun 2021)}
+\label{tab:transition_matrix}
+% TODO: Gunakan file hasil ekspor otomatis dari dashboard
+% \input{output_table_transition_2020_2021.tex}
+\end{table}
+
+Berdasarkan tabel matriks transisi di atas, sebagian besar wilayah (\dots kabupaten/kota) masih menetap di klasternya masing-masing (berada di diagonal utama). Namun, terdapat \dots wilayah yang berhasil naik "kelas" (bermigrasi ke klaster yang lebih baik) seiring dengan program pemulihan ekonomi daerah.

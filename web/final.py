@@ -780,16 +780,67 @@ app.layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px'
             )
         ]),
         html.Hr(style={'borderColor': '#B0BEC5', 'marginTop': '40px'}),
-        # --- [TAMBAHAN BARU] SECTION 5: CLUSTERING ---
+        # --- [TAMBAHAN BARU] SECTION 5: EVALUASI JUMLAH CLUSTER (ELBOW & DENDROGRAM) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Analisis Lanjutan: Clustering Trajektori & Wilayah", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-            html.P("Mengelompokkan Kabupaten/Kota berdasarkan kemiripan pola pergerakan (nasib) selama periode 2020-2024.", 
+            html.H5("Tahap Pembantu: Evaluasi Jumlah Cluster (Visual Aids)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.P("Gunakan kurva Elbow dan Dendrogram di bawah ini untuk menentukan jumlah cluster (k) yang optimal pada suatu tahun.", style={'textAlign': 'center', 'color': '#546E7A'}),
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Evaluasi Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='eval-year-dropdown', clearable=False, style={'width': '150px'})
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6("Metode Elbow (Inersia K-Means)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='elbow-graph', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6("Dendrogram (Agglomerative Hierarchical)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='dendrogram-graph', style={'height': '400px'})])
+                ])
+            ])
+        ]),
+
+        # --- [TAMBAHAN BARU] SECTION 6: CLUSTERING TAHUNAN & MATRIKS TRANSISI ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Analisis Klaster Spasio-Temporal (Tahunan & Migrasi)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Pasangan Tahun Transisi:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
+                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Input(id='trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
+                html.Button("RUN CLUSTERING TAHUNAN", id='btn-run-trans', n_clicks=0, 
+                            style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px'})
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6("Peta Sebaran Cluster (Tahun Tujuan)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-map', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6("Biplot Cluster (Tahun Tujuan)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-scatter', style={'height': '500px'})])
+                ])
+            ]),
+            html.Hr(),
+            html.H6("Matriks Transisi (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            dcc.Loading(children=[
+                dash_table.DataTable(id='trans-matrix-table', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ])
+        ]),
+
+        # --- SECTION 7: CLUSTERING TRAJEKTORI KESELURUHAN ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Analisis Lanjutan: Clustering Trajektori Keseluruhan (STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.P("Mengelompokkan Kabupaten/Kota berdasarkan kemiripan pola pergerakan (nasib) selama periode penuh.", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='cluster-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("RUN CLUSTERING", id='btn-run-cluster', n_clicks=0, 
+                html.Button("RUN CLUSTERING TRAJEKTORI", id='btn-run-cluster', n_clicks=0, 
                             style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px'})
             ]),
 
@@ -907,6 +958,8 @@ def cb_upload(contents, filename):
     Output('trajectory-dropdown-final', 'options'), Output('year-checklist-final', 'options'), Output('year-checklist-final', 'value'),
     Output('mirror-year-checklist-final', 'options'), Output('year-dropdown-2d-single', 'options'), Output('year-dropdown-2d-single', 'value'),
     Output('baseline-name-final', 'options'), 
+    Output('eval-year-dropdown', 'options'), Output('eval-year-dropdown', 'value'),
+    Output('trans-year-dropdown', 'options'), Output('trans-year-dropdown', 'value'),
     Input('global-data-store', 'data'), Input('baseline-type-final', 'value')
 )
 def cb_controls(data, base_type):
@@ -916,7 +969,12 @@ def cb_controls(data, base_type):
                  [{'label': f'{f} (Variabel)', 'value': f'loading_{f}'} for f in feats])
     y_opts = [{'label': str(y), 'value': y} for y in years]
     base_opts = [{'label': f, 'value': f} for f in (feats if base_type == 'loading' else kabs)]
-    return [{'label': f, 'value': f} for f in feats], feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts
+    
+    trans_y_opts = []
+    for i in range(1, len(years)):
+        trans_y_opts.append({'label': f"{years[i-1]} / {years[i]}", 'value': years[i]})
+    
+    return [{'label': f, 'value': f} for f in feats], feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts, y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None)
 
 # 2b. Sync Vector Selector with Selected Vars
 @app.callback(
@@ -1187,7 +1245,138 @@ def cb_run_perm(n_clicks, n_perm, res):
 def update_page_size(size):
     return size if size else 10
 
-# 9. CLUSTERING CALLBACK (NEW)
+# 9. EVALUASI CLUSTER (ELBOW & DENDROGRAM)
+@app.callback(
+    Output('elbow-graph', 'figure'),
+    Output('dendrogram-graph', 'figure'),
+    Input('eval-year-dropdown', 'value'),
+    State('statis-core-store', 'data')
+)
+def cb_eval_cluster(eval_year, res):
+    if not eval_year or not res: return {}, {}
+    coords = np.array(res['per_year_coords'][str(eval_year)])
+    obs_labels = res['obs_labels']
+    
+    # 1. ELBOW
+    sse = []
+    k_range = range(1, min(11, len(coords)))
+    for k in k_range:
+        km = KMeans(n_clusters=k, random_state=42, n_init=10)
+        km.fit(coords)
+        sse.append(km.inertia_)
+    
+    fig_elbow = go.Figure()
+    fig_elbow.add_trace(go.Scatter(x=list(k_range), y=sse, mode='lines+markers', line=dict(color=COLOR_ACCENT, width=3), marker=dict(size=8)))
+    fig_elbow.update_layout(title=f"Metode Elbow (Tahun {eval_year})", xaxis_title="Jumlah Cluster (k)", yaxis_title="Sum of Squared Errors (SSE)", template='plotly_white')
+    try: fig_elbow.write_image("../elbow_plot.png")
+    except: pass
+
+    # 2. DENDROGRAM
+    try:
+        import plotly.figure_factory as ff
+        from scipy.cluster.hierarchy import linkage
+        Z = linkage(coords, method='ward')
+        fig_dendro = ff.create_dendrogram(coords, labels=obs_labels, orientation='left', linkagefun=lambda x: Z, colorscale=px.colors.qualitative.Bold)
+        fig_dendro.update_layout(title=f"Dendrogram Hierarchical (Tahun {eval_year})", template='plotly_white', margin=dict(l=150))
+        try: fig_dendro.write_image("../dendrogram.png")
+        except: pass
+    except Exception as e:
+        fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
+
+    return fig_elbow, fig_dendro
+
+
+# 10. CLUSTERING TAHUNAN & MATRIKS TRANSISI
+@app.callback(
+    Output('trans-map', 'figure'),
+    Output('trans-scatter', 'figure'),
+    Output('trans-matrix-table', 'data'),
+    Output('trans-matrix-table', 'columns'),
+    Input('btn-run-trans', 'n_clicks'),
+    Input('trans-view-mode', 'value'),
+    State('trans-year-dropdown', 'value'),
+    State('trans-k-input', 'value'),
+    State('statis-core-store', 'data')
+)
+def cb_run_trans(n_clicks, view_mode, t2_year, k, res):
+    if not n_clicks or not t2_year or not res: return {}, {}, [], []
+    
+    years = sorted(list(res['per_year_coords'].keys()))
+    t2_idx = years.index(str(t2_year))
+    if t2_idx == 0: return go.Figure().add_annotation(text="Pilih tahun selain tahun pertama."), {}, [], []
+    t1_year = years[t2_idx - 1]
+    
+    coords_t1 = np.array(res['per_year_coords'][t1_year])
+    coords_t2 = np.array(res['per_year_coords'][str(t2_year)])
+    obs_labels = res['obs_labels']
+    
+    km_t1 = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels_t1 = km_t1.fit_predict(coords_t1)
+    km_t2 = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels_t2 = km_t2.fit_predict(coords_t2)
+    str_labels_t2 = [f"Cluster {l+1}" for l in labels_t2]
+    
+    # SCATTER
+    fig_scatter = px.scatter(x=coords_t2[:,0], y=coords_t2[:,1], color=str_labels_t2, text=obs_labels, title=f"Biplot Cluster (Tahun {t2_year})", color_discrete_sequence=px.colors.qualitative.Bold)
+    fig_scatter.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    try: fig_scatter.write_image("../yearly_cluster_biplot.png")
+    except: pass
+
+    # MAP
+    fig_map = go.Figure()
+    if indonesia_geojson:
+        df_map = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2})
+        df_map['match_key'] = df_map['Kab/Kota']
+        found_matches = 0
+        for feature in indonesia_geojson['features']:
+            props = feature['properties']
+            raw_name = props.get('NAME_2') or props.get('kab_kota') or props.get('NAMOBJ') or props.get('Name') or ""
+            clean_geo_name = str(raw_name)
+            feature['properties']['id_cocok'] = clean_geo_name
+            if clean_geo_name in df_map['match_key'].values: found_matches += 1
+
+        title_text = f"Peta Sebaran Cluster Tahun {t2_year} (Cocok: {found_matches} Wilayah)"
+        fig_map = px.choropleth_mapbox(df_map, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center={"lat": -6.9, "lon": 107.6}, zoom=7, opacity=0.7)
+        fig_map.update_layout(title=title_text, margin={"r":0,"t":40,"l":0,"b":0})
+        try: fig_map.write_image("../yearly_cluster_map.png")
+        except: pass
+
+    # MATRIKS TRANSISI
+    matrix_data, matrix_tex = [], []
+    matrix_tex.append(r"\begin{table}[H]")
+    matrix_tex.append(r"\centering")
+    matrix_tex.append(r"\caption{Matriks Transisi Klaster Tahun " + str(t1_year) + r" ke " + str(t2_year) + r"} \label{tab:transisi_" + str(t1_year) + r"_" + str(t2_year) + r"}")
+    matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*k + "}")
+    matrix_tex.append(r"\hline")
+    
+    header_row = [f"Tahun {t1_year} \\\\ {t2_year}"] + [f"Cluster {j+1} ({t2_year})" for j in range(k)]
+    matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
+    
+    for i in range(k):
+        row_dict = {f"Tahun {t1_year} \ {t2_year}": f"Cluster {i+1} ({t1_year})"}
+        tex_row = [f"\\textbf{{Cluster {i+1} ({t1_year})}}"]
+        for j in range(k):
+            intersect_indices = [idx for idx, (l1, l2) in enumerate(zip(labels_t1, labels_t2)) if l1 == i and l2 == j]
+            if view_mode == 'count': val = str(len(intersect_indices))
+            else: val = ", ".join([obs_labels[idx] for idx in intersect_indices]) if intersect_indices else "-"
+            row_dict[f"Cluster {j+1} ({t2_year})"] = val
+            tex_row.append(val.replace('&', r'\&').replace('%', r'\%'))
+        matrix_data.append(row_dict)
+        matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+        
+    matrix_tex.append(r"\end{tabular}")
+    matrix_tex.append(r"\end{table}")
+    try:
+        with open(f"../output_table_transition_matrix.tex", "w") as f: f.write("\n".join(matrix_tex))
+    except: pass
+    
+    cols = [{"name": c, "id": c} for c in matrix_data[0].keys()] if matrix_data else []
+    
+    return fig_map, fig_scatter, matrix_data, cols
+
+
+# 11. CLUSTERING TRAJEKTORI CALLBACK (STATIS FULL)
 @app.callback(
     Output('cluster-scatter', 'figure'),
     Output('cluster-dendrogram', 'figure'),
@@ -1197,7 +1386,7 @@ def update_page_size(size):
     State('cluster-k-input', 'value'),
     State('statis-core-store', 'data')
 )
-def cb_run_clustering(n_clicks, k_clusters, res):
+def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     if not n_clicks or not res: 
         return {}, {}, {}, "Silakan klik tombol 'RUN CLUSTERING'."
     

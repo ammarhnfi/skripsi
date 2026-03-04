@@ -3,6 +3,7 @@
 Bab ini menguraikan tahapan teknis penelitian, mulai dari mekanisme pengumpulan data, pra-pemrosesan, algoritma analisis statistika, hingga pengembangan visualisasi interaktif. Seluruh prosedur komputasi diimplementasikan menggunakan bahasa pemrograman Python.
 
 %-----------------------------------------------------------------------------%
+% --- 3.1 ---
 \section{\normalsize Tahapan Penelitian}
 %-----------------------------------------------------------------------------%
 Secara garis besar, penelitian ini dilaksanakan melalui empat tahapan utama sebagai berikut:
@@ -10,10 +11,12 @@ Secara garis besar, penelitian ini dilaksanakan melalui empat tahapan utama seba
     \item \textbf{Tahap Persiapan Data:} Pengumpulan data sekunder, validasi kelengkapan, dan transformasi struktur data panel menjadi format matriks tiga-arah.
     \item \textbf{Tahap Analisis STATIS:} Penerapan algoritma STATIS untuk mengekstraksi struktur kompromi dan melakukan uji stabilitas menggunakan permutasi.
     \item \textbf{Tahap Konstruksi Biplot Dinamis:} Perhitungan koordinat proyeksi tahunan dan pembentukan lintasan (\textit{trajectory}) objek.
-    \item \textbf{Tahap Visualisasi Interaktif:} Pengembangan \textit{dashboard} berbasis web untuk eksplorasi hasil analisis.
+    \item \textbf{Tahap Analisis Klaster Spasio-Temporal:} Menerapkan algoritma K-Means pada data tahunan berdasarkan evaluasi metode Elbow dan Hierarchical, dilanjutkan dengan penyusunan matriks transisi klasifikasi.
+    \item \textbf{Tahap Visualisasi Interaktif:} Pengembangan \textit{dashboard} berbasis web untuk eksplorasi hasil analisis beserta fungsionalitas ekspor dinamis.
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
+% --- 3.2 ---
 \section{\normalsize Sumber dan Struktur Data}
 %-----------------------------------------------------------------------------%
 Penelitian ini menggunakan data sekunder yang bersumber dari publikasi resmi Badan Pusat Statistik (BPS) untuk Provinsi Banten, DKI Jakarta, dan Jawa Barat. 
@@ -26,6 +29,7 @@ Penelitian ini menggunakan data sekunder yang bersumber dari publikasi resmi Bad
 Struktur data input disusun dalam format \textit{spreadsheet} (.xlsx) yang terdiri dari $K$ lembar kerja (\textit{sheets}), di mana setiap lembar merepresentasikan satu tahun pengamatan $\mathbf{X}_t$ berukuran $n \times p$.
 
 %-----------------------------------------------------------------------------%
+% --- 3.3 ---
 \section{\normalsize Pra-pemrosesan Data}
 %-----------------------------------------------------------------------------%
 Sebelum dilakukan analisis multivariat, data mentah melalui serangkaian proses pembersihan dan transformasi yang diimplementasikan dalam modul \texttt{pandas}:
@@ -70,42 +74,48 @@ Sebelum dilakukan analisis multivariat, data mentah melalui serangkaian proses p
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
+% --- 3.4 ---
 \section{\normalsize Definisi Operasional Variabel}
 %-----------------------------------------------------------------------------%
 Agar setiap indikator dapat diinterpretasikan secara konsisten dan tidak menimbulkan ambiguitas, berikut disajikan definisi operasional untuk kedua belas variabel penelitian yang digunakan. Seluruh data diperoleh dari publikasi resmi Badan Pusat Statistik (BPS) Provinsi Banten, DKI Jakarta, dan Jawa Barat.
 
-\begin{longtable}{|>{\raggedright\arraybackslash}p{2cm}|>{\raggedright\arraybackslash}p{8cm}|>{\raggedright\arraybackslash}p{3.5cm}|}
-\caption{Definisi Operasional Variabel Penelitian}
-\label{tab:definisi_variabel} \\
-\hline
-\textbf{Variabel} & \textbf{Definisi} & \textbf{Satuan} \\
-\hline
-\endfirsthead
-\hline
-\textbf{Variabel} & \textbf{Definisi} & \textbf{Satuan} \\
-\hline
-\endhead
-\hline
-IPM & Indeks komposit yang mengukur capaian pembangunan manusia berbasis tiga dimensi dasar: umur panjang dan sehat, pengetahuan, dan standar hidup layak. & Indeks (0--100) \\
-\hline
-PDRB ADHK & Produk Domestik Regional Bruto (PDRB) atas dasar harga konstan 2010. Mencerminkan nilai tambah bruto barang dan jasa yang dihasilkan seluruh unit ekonomi di suatu wilayah tanpa pengaruh inflasi (pertumbuhan riil). & Ribu Rupiah (Juta) \\
-\hline
-PPM & Persentase Penduduk Miskin. Proporsi penduduk yang memiliki rata-rata pengeluaran per kapita per bulan di bawah Garis Kemiskinan. & Persen (\%) \\
-\hline
-GK & Garis Kemiskinan. Nilai rupiah pengeluaran minimum yang diperlukan seseorang untuk memenuhi kebutuhan pokok makanan (2100 kkal per hari) dan kebutuhan pokok non-makanan. & Rupiah\/Kapita\/Bulan \\ \hline
-PKKP & Prevalensi Ketidakcukupan Konsumsi Pangan. Estimasi proporsi populasi yang mengonsumsi energi (kalori) di bawah standar kecukupan minimum untuk hidup sehat dan aktif. & Persen (\%) \\ \hline
-TPT & Tingkat Pengangguran Terbuka. Persentase jumlah pengangguran terhadap jumlah angkatan kerja. & Persen (\%) \\ \hline
-TPAK & Tingkat Partisipasi Angkatan Kerja. Persentase penduduk usia kerja (15 tahun ke atas) yang termasuk dalam angkatan kerja (bekerja atau mencari kerja). & Persen (\%) \\ \hline
-RLS & Rata-rata Lama Sekolah. Rata-rata jumlah tahun yang telah ditempuh oleh penduduk usia 25 tahun ke atas dalam menempuh pendidikan formal. & Tahun \\ \hline
-AHH (L\/P) & Angka Harapan Hidup saat lahir. Perkiraan rata-rata lama hidup yang akan dijalani oleh bayi yang baru lahir, dengan asumsi pola mortalitas saat kelahiran tetap. Dipisahkan menurut jenis kelamin (Laki-laki\/Perempuan). & Tahun \\ \hline
-IPG & Indeks Pembangunan Gender. Rasio capaian pembangunan manusia perempuan terhadap laki-laki. Mengukur kesenjangan gender dalam dimensi kesehatan, pendidikan, dan ekonomi. & Indeks (0--100) \\ \hline
-Gini Ratio & Ukuran tingkat ketimpangan pengeluaran penduduk. Nilai 0 menunjukkan pemerataan sempurna, sedangkan nilai 1 menunjukkan ketimpangan sempurna. & Indeks (0--1) \\ \hline
-\endfoot
-\hline
-\endlastfoot
-\end{longtable}
+\begin{enumerate}
+    \item \textbf{Indeks Pembangunan Manusia (IPM)}\\
+    Indeks komposit yang mengukur capaian pembangunan manusia berbasis tiga dimensi dasar: umur panjang dan sehat, pengetahuan, dan standar hidup layak. Satuan: Indeks (0--100).
+    
+    \item \textbf{Produk Domestik Regional Bruto (PDRB ADHK)}\\
+    Produk Domestik Regional Bruto (PDRB) atas dasar harga konstan 2010. Mencerminkan nilai tambah bruto barang dan jasa yang dihasilkan seluruh unit ekonomi di suatu wilayah tanpa pengaruh inflasi (pertumbuhan riil). Satuan: Ribu Rupiah (Juta).
+    
+    \item \textbf{Persentase Penduduk Miskin (PPM)}\\
+    Proporsi penduduk yang memiliki rata-rata pengeluaran per kapita per bulan di bawah Garis Kemiskinan. Satuan: Persen (\%).
+    
+    \item \textbf{Garis Kemiskinan (GK)}\\
+    Nilai rupiah pengeluaran minimum yang diperlukan seseorang untuk memenuhi kebutuhan pokok makanan (2100 kkal per hari) dan kebutuhan pokok non-makanan. Satuan: Rupiah/Kapita/Bulan.
+    
+    \item \textbf{Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP)}\\
+    Estimasi proporsi populasi yang mengonsumsi energi (kalori) di bawah standar kecukupan minimum untuk hidup sehat dan aktif. Satuan: Persen (\%).
+    
+    \item \textbf{Tingkat Pengangguran Terbuka (TPT)}\\
+    Persentase jumlah pengangguran terhadap jumlah angkatan kerja. Satuan: Persen (\%).
+    
+    \item \textbf{Tingkat Partisipasi Angkatan Kerja (TPAK)}\\
+    Persentase penduduk usia kerja (15 tahun ke atas) yang termasuk dalam angkatan kerja (bekerja atau mencari kerja). Satuan: Persen (\%).
+    
+    \item \textbf{Rata-rata Lama Sekolah (RLS)}\\
+    Rata-rata jumlah tahun yang telah ditempuh oleh penduduk usia 25 tahun ke atas dalam menempuh pendidikan formal. Satuan: Tahun.
+    
+    \item \textbf{Angka Harapan Hidup (AHH L/P)}\\
+    Perkiraan rata-rata lama hidup yang akan dijalani oleh bayi yang baru lahir, dengan asumsi pola mortalitas saat kelahiran tetap. Dipisahkan menurut jenis kelamin (Laki-laki/Perempuan). Satuan: Tahun.
+    
+    \item \textbf{Indeks Pembangunan Gender (IPG)}\\
+    Rasio capaian pembangunan manusia perempuan terhadap laki-laki. Mengukur kesenjangan gender dalam dimensi kesehatan, pendidikan, dan ekonomi. Satuan: Indeks (0--100).
+    
+    \item \textbf{Gini Ratio}\\
+    Ukuran tingkat ketimpangan pengeluaran penduduk. Nilai 0 menunjukkan pemerataan sempurna, sedangkan nilai 1 menunjukkan ketimpangan sempurna. Satuan: Indeks (0--1).
+\end{enumerate}
 
 %-----------------------------------------------------------------------------%
+% --- 3.5 ---
 \section{\normalsize Prosedur Analisis STATIS}
 %-----------------------------------------------------------------------------%
 Algoritma STATIS diimplementasikan untuk mengekstraksi informasi struktural dari sekumpulan matriks standar $\{\mathbf{Z}_1, \dots, \mathbf{Z}_K\}$. Langkah-langkah komputasi adalah sebagai berikut:
@@ -242,6 +252,7 @@ Kolom pertama ($f_{i,1}$) digunakan sebagai koordinat Sumbu X (Kompromi 1), dan 
 Dua kolom pertama dari $\mathbf{F}_c$ digunakan sebagai koordinat dasar untuk sumbu grafik (Sumbu 1 dan Sumbu 2).
 
 %-----------------------------------------------------------------------------%
+% --- 3.6 ---
 \section{\normalsize Uji Stabilitas Struktur (Permutasi)}
 %-----------------------------------------------------------------------------%
 Untuk memvalidasi signifikansi struktur kompromi, dilakukan uji permutasi dengan langkah:
@@ -252,6 +263,7 @@ Untuk memvalidasi signifikansi struktur kompromi, dilakukan uji permutasi dengan
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
+% --- 3.7 ---
 \section{\normalsize Uji Autokorelasi Spasial (Global Moran's I)}
 %-----------------------------------------------------------------------------%
 Sebagai analisis pasca-faktum (\textit{post-hoc analysis}), penelitian ini melakukan pengujian autokorelasi spasial pada skor kompromi (terutama pada dimensi pertama $\mathbf{F}_{c,1}$) untuk mendeteksi keberadaan pola pengelompokan geografis. Global Moran's I dihitung menggunakan formula:
@@ -262,6 +274,7 @@ di mana $w_{ij}$ adalah matriks pembobot spasial berbasis singgungan (\textit{Qu
 
 
 %-----------------------------------------------------------------------------%
+% --- 3.8 ---
 \section{\normalsize Konstruksi Dynamic Biplot}
 %-----------------------------------------------------------------------------%
 Visualisasi dinamis dibangun dengan memproyeksikan data tahunan ke dalam ruang kompromi. Koordinat lintasan (\textit{trajectory}) untuk tahun $t$, dinotasikan $\mathbf{F}_t$, dihitung melalui teknik \textit{Supplementary Projection}:
@@ -275,6 +288,7 @@ Visualisasi dinamis dibangun dengan memproyeksikan data tahunan ke dalam ruang k
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
+% --- 3.9 ---
 \section{\normalsize Pengembangan Dashboard Interaktif}
 %-----------------------------------------------------------------------------%
 Seluruh hasil analisis divisualisasikan dalam aplikasi berbasis web menggunakan \textit{framework} Dash.

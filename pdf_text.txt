@@ -1,0 +1,5306 @@
+ 
+ 
+ 
+UNIVERSITAS INDONESIA 
+ 
+ 
+PERBANDINGAN ANTARA HASIL BICLUSTERING DAN HASIL 
+CLUSTER-BIPLOT PADA DATA 119 KABUPATEN/KOTA DI 
+PULAU JAWA TAHUN 2022 BERDASARKAN INDIKATOR 
+KESEJAHTERAAN RAKYAT 
+ 
+ 
+ 
+ 
+ 
+ 
+SKRIPSI 
+ 
+ 
+ 
+ 
+ 
+ 
+ALFIA CHOIRUN NISA 
+1906299414 
+ 
+ 
+ 
+ 
+ 
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+PROGRAM STUDI SARJANA STATISTIKA 
+DEPOK 
+2024 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+ 
+ 
+ 
+UNIVERSITAS INDONESIA 
+ 
+ 
+PERBANDINGAN ANTARA HASIL BICLUSTERING DAN HASIL 
+CLUSTER-BIPLOT PADA DATA 119 KABUPATEN/KOTA DI 
+PULAU JAWA TAHUN 2022 BERDASARKAN INDIKATOR 
+KESEJAHTERAAN RAKYAT 
+ 
+ 
+ 
+ 
+ 
+SKRIPSI 
+ 
+Diajukan sebagai salah satu syarat untuk memperoleh gelar sarjana statistika 
+ 
+ 
+ 
+ 
+ 
+ALFIA CHOIRUN NISA 
+1906299414 
+ 
+ 
+ 
+ 
+ 
+FAKULTAS MATEMATIKA DAN ILMU PENGETAHUAN ALAM 
+PROGRAM STUDI SARJANA STATISTIKA 
+DEPOK 
+JANUARI 2024 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+iii 
+Universitas Indonesia 
+HALAMAN PERNYATAAN ORISINALITAS 
+ 
+ 
+ 
+Skripsi ini adalah hasil karya saya sendiri, 
+dan semua sumber baik yang dikutip maupun dirujuk 
+telah saya nyatakan dengan benar 
+ 
+ 
+ 
+Nama 
+ 
+: Alfia Choirun Nisa 
+NPM  
+ 
+: 1906299414 
+ 
+Tanda Tangan 
+:   
+ 
+Tanggal 
+ 
+: 12 Januari 2024 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+iv 
+Universitas Indonesia 
+HALAMAN PENGESAHAN 
+ 
+ 
+Skripsi ini diajukan oleh 
+ 
+Nama 
+: Alfia Choirun Nisa 
+NPM 
+: 1906299414 
+Program Studi 
+: Statistika 
+Judul Skripsi 
+: Perbandingan antara Hasil Biclustering dan Hasil Cluster-
+Biplot pada Data 119 Kabupaten/Kota di Pulau Jawa Tahun 
+2022 Berdasarkan Indikator Kesejahteraan Rakyat 
+ 
+ 
+ 
+ 
+ 
+Ditetapkan di : Depok  
+ 
+Tanggal  
+: 12 Januari 2024 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+v 
+Universitas Indonesia 
+KATA PENGANTAR 
+ 
+ 
+Assalamu’alaikum Warahmatullahi Wabarakatuh 
+ 
+Alhamdulillah. Puji syukur penulis panjatkan kepada Allah SWT atas segala rahmat dan 
+karunia-Nya, penulis dapat menjalani perkuliahan hingga menyelesaikan penulisan 
+skripsi ini. Penulisan skripsi ini dilakukan dalam rangka memenuhi salah satu syarat 
+untuk memperoleh gelar Sarjana Statistika pada program studi S1 Statistika, Fakultas 
+Matematika dan Ilmu Pengetahuan Alam, Universitas Indonesia. Penulis menyadari 
+bahwa selama menjalani perkuliahan sampai penyusunan skripsi ini, tidak terlepas dari 
+segala bantuan, dukungan, bimbingan, serta doa dari orang-orang di sekitar. Oleh karena 
+itu, penulis mengucapkan terima kasih kepada: 
+1. Bapak Prof. Alhadi Bustamam, S.Si., M.Kom., Ph.D. selaku Ketua Departemen 
+Matematika FMIPA UI yang telah memberikan arahan selama masa perkuliahan di 
+FMIPA UI. 
+2. Ibu Dr. Dra. Titin Siswantining, D.E.A. selaku Ketua Program Studi S1 Statistika dan 
+Pembimbing Akademis penulis. Terima kasih atas segala bantuan, perhatian, dan 
+kesabaran Ibu pada penulis selama masa perkuliahan. 
+3. Ibu Dr. Dra. Yekti Widyaningsih, M.Si. selaku Dosen Pembimbing skripsi penulis 
+yang telah memberikan waktu, tenaga, dan ilmu untuk membimbing penulis dalam 
+penyusunan skripsi ini sehingga selesai pada waktunya. Terima kasih atas segala 
+pengertian, dukungan, nasihat, dan doa yang diberikan sehingga penulis dapat 
+menyelesaikan skripsi ini.  
+4. Bapak Dr. Drs. Suryadi, M.T. dan Ibu Kurnia Susvitasari, S.Si., M.Sc., Ph.D. selaku 
+Dosen Penguji I dan Dosen Penguji II pada sidang skripsi penulis. Terima kasih atas 
+segala saran dan arahannya kepada penulis sehingga skripsi ini menjadi lebih baik. 
+5. Ibu Devvi Sarwinda, S.Si., M.Kom. selaku dosen penguji proposal penulis. Terima 
+kasih atas masukkan dari Ibu sehingga skripsi ini menjadi lebih baik.  
+6. Seluruh keluarga Departemen Matematika FMIPA UI yang telah memberikan banyak 
+ilmu yang bermanfaat bagi penulis. Terima kasih juga kepada para staf yang telah 
+berkontribusi dalam mendukung kelancaran perkuliahan. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+vi 
+Universitas Indonesia 
+7. Orang tua penulis, Ibu Siti Rukoyah dan Bapak Rokim yang sangat penulis sayangi. 
+Terima kasih atas segala pengertian, dukungan, dan doa yang telah diberikan sehingga 
+penulis dapat menjalani perkuliahan hingga selesai.  
+8. Teman-teman seperjuangan penulis: teman awal kuliah (Ervita/Mpit, Hana, 
+Hafsa/Aca, dan Tiara); teman kos (Ami dan Ani); teman bimbingan (Nabila dan 
+Deandra), serta teman-teman lainnya yang pernah penulis kenal. Terima kasih atas 
+dukungan dan bantuan yang begitu besar pada penulis. Penulis sangat bersyukur bisa 
+bertemu dan mengenal kalian. Kontribusi kalian membuat penulis dapat menjalani 
+perkuliahan dengan lebih mudah dan menyenangkan.  
+9. Seluruh pihak yang tanpa mengurangi rasa hormat, tidak bisa disebutkan satu per satu. 
+ 
+Semoga Allah SWT senantiasa memberikan kesehatan, kebahagiaan, keberkahan, serta 
+umur yang panjang. Penulis berharap skripsi ini dapat memberi manfaat untuk penelitian-
+penelitian selanjutnya. Akhir kata, penulis mengucapkan terima kasih kepada semua 
+pihak yang turut membantu dalam penelitian ini. 
+ 
+Wassalamu’alaikum Warahmatullahi Wabarakatuh 
+ 
+Depok, 12 Januari 2024 
+ 
+Alfia Choirun Nisa 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+vii 
+Universitas Indonesia 
+HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI 
+TUGAS AKHIR UNTUK KEPENTINGAN AKADEMIS 
+ 
+ 
+Sebagai sivitas akademik Universitas Indonesia, saya yang bertanda tangan di bawah ini:  
+ 
+Nama   
+: Alfia Choirun Nisa  
+NPM   
+: 1906299414  
+Program Studi : Sarjana Statistika  
+Fakultas  
+: Matematika dan Ilmu Pengetahuan Alam  
+Jenis Karya  
+: Skripsi 
+  
+demi pengembangan ilmu pengetahuan, menyetujui untuk memberikan kepada 
+Universitas Indonesia Hak Bebas Royalti Noneksklusif (Non-exclusive Royalty Free 
+Right) atas karya ilmiah saya yang berjudul:  
+ 
+Perbandingan antara Hasil Biclustering dan Hasil Cluster-Biplot pada Data 119 
+Kabupaten/Kota di Pulau Jawa Tahun 2022 Berdasarkan Indikator Kesejahteraan Rakyat 
+ 
+beserta perangkat yang ada (jika diperlukan). Dengan Hak Bebas Royalti Noneksklusif 
+ini, Universitas Indonesia berhak menyimpan, mengalihmedia/ formatkan, mengelola 
+dalam bentuk pangkalan data (data base), merawat, dan memublikasikan tugas akhir saya 
+selama tetap mencantumkan nama saya sebagai penulis/pencipta dan sebagai pemilik Hak 
+Cipta.  
+ 
+Demikian pernyatan ini saya buat dengan sebenarnya.  
+ 
+Dibuat di  
+: Depok  
+Pada tanggal  : 12 Januari 2024 
+Yang menyatakan 
+ 
+(Alfia Choirun Nisa) 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+viii 
+Universitas Indonesia 
+ABSTRAK 
+ 
+Nama 
+: Alfia Choirun Nisa 
+Program Studi 
+: Statistika 
+Judul 
+: Perbandingan antara Hasil Biclustering dan Hasil Cluster-Biplot 
+pada Data 119 Kabupaten/Kota di Pulau Jawa Tahun 2022 
+Berdasarkan Indikator Kesejahteraan Rakyat 
+Pembimbing 
+: Dr. Dra. Yekti Widyaningsih, M.Si. 
+ 
+Keberhasilan pembangunan suatu negara dapat dilihat dari kondisi kesejahteraan 
+rakyatnya. Peningkatan kesejahteraan rakyat menjadi sasaran utama dalam kegiatan 
+pembangunan yang dilaksanakan oleh pemerintah. Agar pembangunan yang dilakukan 
+efektif dan tepat sasaran, perlu dilakukan pengelompokan untuk mengetahui karakteristik 
+wilayah. Penelitian ini membahas mengenai pengelompokan kabupaten/kota di Pulau 
+Jawa berdasarkan indikator kesejahteraan rakyat tahun 2022. Kesejahteraan yang diukur 
+merupakan kesejahteraan materi. Variabel yang digunakan dalam penelitian ini adalah 
+persentase penduduk miskin, PDRB per kapita atas dasar harga berlaku, rata-rata lama 
+sekolah, harapan lama sekolah, persentase pengeluaran per kapita untuk makanan, tingkat 
+pengangguran terbuka, jumlah penduduk, kepadatan penduduk, dan angka harapan hidup. 
+Terdapat dua pendekatan yang digunakan dalam mengelompokkan kabupaten/kota 
+beserta 
+variabel-variabelnya. 
+Pendekatan 
+pertama 
+adalah 
+mengelompokkan 
+kabupaten/kota dan variabel-variabelnya secara simultan dengan menggunakan metode 
+biclustering plaid model. Pendekatan kedua adalah mengelompokkan kabupaten/kota 
+menggunakan clustering metode Ward dan dilanjutkan dengan metode biplot. Tujuan 
+penelitian ini adalah membandingkan hasil kedua pendekatan tersebut, yaitu hasil 
+biclustering dan hasil cluster-biplot pada data 119 kabupaten/kota di Pulau Jawa pada 
+tahun 2022 berdasarkan indikator kesejahteraan rakyat. Berdasarkan hasil penelitian, 
+didapatkan jumlah kelompok dari kedua pendekatan tersebut adalah sebanyak 2 dengan 
+kelompok 1 merupakan wilayah yang lebih sejahtera daripada kelompok 2. Ditinjau dari 
+nilai standar deviasinya, kelompok hasil biclustering plaid model memiliki nilai standar 
+deviasi yang lebih kecil dibanding kelompok hasil cluster-biplot. Dengan demikian, 
+secara umum pendekatan pertama menghasilkan kelompok yang lebih baik karena lebih 
+homogen dibandingkan dengan pendekatan kedua.  
+ 
+Kata Kunci:  
+Biclustering plaid model, clustering, metode silhouette, metode Ward, plaid model  
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+ix 
+Universitas Indonesia 
+ABSTRACT 
+ 
+Name 
+: Alfia Choirun Nisa 
+Study Program 
+: Statistics 
+Title 
+: Comparison between Biclustering Results and Cluster-Biplot 
+Results on Data from 119 Regencies/Cities on Java Island in 2022 
+Based on People's Welfare Indicators  
+Counsellor 
+: Dr. Dra. Yekti Widyaningsih, M.Si. 
+ 
+ 
+The success of a country's development can be known from the well-being of its people. 
+Improving the welfare of the population is the main goal in the development activities 
+carried out by government. To ensure that development is effective and targeted, grouping 
+is needed to understand the characteristics of the region. This study discusses the grouping 
+of regencies/cities in Java based on the people's welfare indicators in 2022. The measured 
+welfare is material well-being. Variables used in this study are the percentage of the poor 
+population, GDP per capita at current prices, average length of schooling, expected length 
+of schooling, percentage of per capita expenditure on food, open unemployment rate, 
+population, population density, and life expectancy. There are two approaches used in 
+grouping regencies/cities along with their variables. The first approach is to group 
+regencies/cities and their variables simultaneously using plaid model biclustering method. 
+The second approach is to group regencies/cities using the Ward clustering method and 
+then followed by the biplot method. The aim of this study is to compare the results of 
+these two approaches, namely the biclustering results and the cluster-biplot results on data 
+from 119 regencies/cities in Java in 2022 based on people's welfare indicators. Based on 
+the results of this study, the number of groups from each approach is 2, with group 1 
+being more prosperous than group 2. Judging from the standard deviation values, the plaid 
+model biclustering result groups have lower standard deviation values compared to the 
+cluster-biplot result groups. Therefore, in general the first approach produces better 
+groups as they are more homogeneous compared to the second approach. 
+ 
+Keywords: 
+Biclustering plaid model, clustering, plaid model, silhouette method, Ward method 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+x 
+Universitas Indonesia 
+DAFTAR ISI 
+ 
+HALAMAN PERNYATAAN ORISINALITAS ............................................................ iii 
+HALAMAN PENGESAHAN ......................................................................................... iv 
+KATA PENGANTAR ...................................................................................................... v 
+LEMBAR PERSETUJUAN PUBLIKASI KARYA ILMIAH ...................................... vii 
+ABSTRAK .................................................................................................................... viii 
+ABSTRACT .................................................................................................................... ix 
+DAFTAR ISI .................................................................................................................... x 
+DAFTAR TABEL .......................................................................................................... xii 
+DAFTAR GAMBAR ..................................................................................................... xiii 
+DAFTAR LAMPIRAN ................................................................................................. xiv 
+BAB I PENDAHULUAN ................................................................................................ 1 
+1.1 
+Latar Belakang .................................................................................................. 1 
+1.2 
+Perumusan Masalah .......................................................................................... 4 
+1.3 
+Tujuan Penelitian .............................................................................................. 4 
+1.4 
+Manfaat Penelitian ............................................................................................ 5 
+1.5 
+Batasan Penelitian ............................................................................................ 5 
+BAB II LANDASAN TEORI........................................................................................... 6 
+2.1 
+Kesejahteraan.................................................................................................... 6 
+2.2 
+Indikator Kesejahteraan Rakyat........................................................................ 6 
+2.3 
+Standardisasi Data .......................................................................................... 10 
+2.4 
+Analisis Clustering ......................................................................................... 11 
+2.5 
+Analisis Biclustering ...................................................................................... 11 
+2.6 
+Standar Deviasi ............................................................................................... 12 
+BAB III METODOLOGI PENELITIAN ....................................................................... 13 
+3.1 
+Metode Biclustering Plaid Model................................................................... 14 
+3.1.1 
+Contoh Penghitungan Metode Biclustering Plaid Model ....................... 19 
+3.2 
+Metode Cluster-Biplot .................................................................................... 23 
+3.2.1 
+Pemeriksaan Asumsi Analisis Clustering .............................................. 24 
+3.2.2 
+Analisis Komponen Utama ..................................................................... 27 
+3.2.3 
+Penentuan Jumlah Cluster Optimal ........................................................ 28 
+3.2.4 
+Clustering Metode Ward ........................................................................ 31 
+3.2.5 
+Contoh Penghitungan Clustering Menggunakan Metode Ward ............ 33 
+3.2.6 
+Analisis Biplot ........................................................................................ 35 
+BAB IV HASIL DAN PEMBAHASAN ........................................................................ 37 
+4.1 
+Data ................................................................................................................. 37 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+xi 
+Universitas Indonesia 
+4.2 
+Statistika Deskriptif ........................................................................................ 37 
+4.3 
+Penerapan Metode Biclustering Plaid Model pada Data ................................ 41 
+4.4 
+Penerapan Metode Cluster-Biplot pada Data ................................................. 44 
+4.4.1 
+Pemeriksaan Asumsi Clustering ............................................................. 44 
+4.4.2 
+Mereduksi Dimensi Menggunakan Analisis Komponen Utama ............ 45 
+4.4.3 
+Penentuan Jumlah Cluster Optimal Menggunakan Metode Silhouette .. 47 
+4.4.4 
+Penerapan Analisis Clustering Metode Ward ........................................ 47 
+4.4.5 
+Pemetaan Biplot ...................................................................................... 49 
+4.5. 
+Perbandingan Hasil Analisis Biclustering dan Cluster-Biplot ....................... 52 
+BAB V KESIMPULAN DAN SARAN ......................................................................... 55 
+5.1 
+Kesimpulan ..................................................................................................... 55 
+5.2 
+Saran ............................................................................................................... 56 
+DAFTAR PUSTAKA ..................................................................................................... 57 
+LAMPIRAN ................................................................................................................... 62 
+ 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+xii 
+Universitas Indonesia 
+DAFTAR TABEL 
+ 
+Tabel 3.1. Nilai KMO .................................................................................................... 26 
+Tabel 3.2. Interpretasi Nilai Silhouette .......................................................................... 30 
+Tabel 3.3. Interpretasi Nilai Koefisien Silhouette .......................................................... 30 
+Tabel 3.4. Hasil Clustering Metode Ward pada Data Contoh ....................................... 34 
+Tabel 4.1. Variabel Penelitian ........................................................................................ 37 
+Tabel 4.2. Statistika Deskriptif ...................................................................................... 41 
+Tabel 4.3. Hasil Metode Biclustering Plaid Model ....................................................... 42 
+Tabel 4.4. Nilai Rata-Rata Variabel Bicluster 1, Bicluster 2, dan Pulau Jawa .............. 43 
+Tabel 4.5. Hasil Uji KMO ............................................................................................. 45 
+Tabel 4.6. Nilai Eigen .................................................................................................... 46 
+Tabel 4.7. Nilai Loading Factor .................................................................................... 46 
+Tabel 4.8. Hasil Clustering Metode Ward ..................................................................... 47 
+Tabel 4.9. Nilai Rata-Rata Variabel Cluster 1, Cluster 2, dan Pulau Jawa ................... 49 
+Tabel 4.10. Nilai Standar Deviasi Bicluster dan Cluster ............................................... 52 
+Tabel 4.11. Perbandingan Anggota Bicluster dan Cluster ............................................. 53 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+xiii 
+Universitas Indonesia 
+DAFTAR GAMBAR 
+Gambar 2.1. Perbedaan Hasil Clustering dan Biclustering .......................................... 12 
+Gambar 3.1. Flowchart Metode Biclustering Plaid Model .......................................... 14 
+Gambar 3.2. Flowchart Metode Cluster-Biplot ............................................................ 24 
+Gambar 4.1. Persentase Penduduk Miskin.................................................................... 38 
+Gambar 4.2. PDRB Per Kapita ADHB berdasarkan Provinsi di Pulau Jawa ............... 38 
+Gambar 4.3. Rata-Rata Lama Sekolah berdasarkan Provinsi di Pulau Jawa ................ 38 
+Gambar 4.4. Harapan Lama Sekolah berdasarkan Provinsi di Pulau Jawa .................. 38 
+Gambar 4.5. Tingkat Pengangguran Terbuka berdasarkan Provinsi di Pulau Jawa ..... 39 
+Gambar 4.6. Persentase Pengeluaran Per Kapita untuk Makanan berdasarkan Provinsi 
+di Pulau Jawa .................................................................................................................. 39 
+Gambar 4.7. Jumlah Penduduk berdasarkan Provinsi di Pulau Jawa ........................... 40 
+Gambar 4.8. Kepadatan Penduduk berdasarkan Provinsi di Pulau Jawa ...................... 40 
+Gambar 4.9. Angka Harapan Hidup berdasarkan Provinsi ........................................... 40 
+Gambar 4.10. Heatmap Hasil Biclustering Plaid Model .............................................. 42 
+Gambar 4.11. Peta Wilayah Bicluster 1 (Warna Merah Pekat) .................................... 44 
+Gambar 4.12. Peta Wilayah Bicluster 2 (Warna Biru Pekat) ....................................... 44 
+Gambar 4.13. Nilai Koefisien Silhouette untuk Clustering Metode Ward ................... 47 
+Gambar 4.14. Biplot ...................................................................................................... 50 
+ 
+ 
+ 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+ 
+xiv 
+Universitas Indonesia 
+DAFTAR LAMPIRAN 
+Lampiran 1. Data awal.................................................................................................... 62 
+Lampiran 2. Summary analisis komponen utama ........................................................... 66 
+Lampiran 3. Data hasil analisis komponen utama .......................................................... 67 
+Lampiran 4. R-code metode biclustering plaid model ................................................... 70 
+Lampiran 5. R-code peta hasil biclustering plaid model ................................................ 71 
+Lampiran 6. R-code metode cluster-biplot ..................................................................... 73 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+1 
+Universitas Indonesia 
+BAB I 
+PENDAHULUAN 
+1.1 
+Latar Belakang 
+Indonesia merupakan negara dengan jumlah penduduk terbanyak nomor empat di 
+dunia. Persebaran penduduk di Indonesia sangat tidak merata dengan 56,10% dari total 
+penduduknya terkonsentrasi di Pulau Jawa yang hanya seluas 7% dari total wilayah di 
+Indonesia (Badan Pusat Statistik, 2021). Secara umum, ketidakmerataan tersebut terjadi 
+karena Pulau Jawa hampir memiliki semua fasilitas yang dibutuhkan oleh penduduk 
+sehingga terlihat menarik untuk mencoba peruntungan di Pulau Jawa (Arif & Nurwati, 
+2022). Pemadatan penduduk yang terjadi di satu tempat dapat menimbulkan berbagai 
+permasalahan sosial sehingga akan berpengaruh pada kesejahteraan penduduknya. 
+Salah satu unsur keberhasilan pembangunan suatu negara dapat dilihat dari 
+kondisi kesejahteraan rakyatnya. Kesejahteraan diartikan sebagai kemampuan keluarga 
+untuk memenuhi semua kebutuhan untuk bisa hidup layak, sehat, dan produktif (Mulia & 
+Saputra, 2020). Kesejahteraan rakyat merupakan hal yang sangat diperhatikan oleh setiap 
+negara karena berpengaruh terhadap perekonomian dan stabilitas pemerintahan. Oleh 
+karena itu, peningkatan kesejahteraan rakyat menjadi sasaran utama dalam kegiatan 
+pembangunan yang dilaksanakan oleh pemerintah. Agar pembangunan yang dilakukan 
+efektif dan tepat sasaran, langkah yang dapat dilakukan adalah mengelompokkan wilayah 
+berdasarkan indikator tertentu. Pengelompokan wilayah yang dilakukan dapat membantu 
+pemerintah untuk mengetahui karakteristik wilayah dari masing-masing kelompok. Oleh 
+karena itu, pengelompokan kabupaten/kota di Pulau Jawa berdasarkan indikator 
+kesejahteraan rakyat dapat menjadi salah satu sumber informasi untuk mendukung 
+keberhasilan pemerataan pembangunan yang dilakukan oleh pemerintah setempat. 
+Berdasarkan permasalahan yang telah dipaparkan sebelumnya, maka dilakukan 
+pengelompokan kabupaten/kota di Pulau Jawa beserta variabel-variabel yang berkaitan 
+dengan indikator kesejahteraan rakyat. Pengelompokan ini bertujuan untuk membagi 
+kabupaten/kota di Pulau Jawa ke dalam beberapa kelompok berdasarkan indikator 
+kesejahteraan rakyat sehingga dapat dilihat kabupaten/kota mana saja yang perlu 
+diprioritaskan untuk ditingkatkan kesejahteraan rakyatnya. Hasil pengelompokan 
+tersebut diharapkan dapat memberi gambaran mengenai kondisi kesejahteraan rakyat di 
+Pulau Jawa agar kebijakan yang diambil oleh pemerintah menjadi lebih tepat sasaran. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+2 
+ 
+ 
+Universitas Indonesia 
+Dengan demikian, tujuan pemerataan pembangunan dapat tercapai dan permasalahan 
+yang ditimbulkan dari padatnya penduduk di Pulau Jawa dapat ditangani. 
+Penelitian mengenai pengelompokan wilayah berdasarkan indikator kesejahteraan 
+rakyat sudah pernah dilakukan sebelumnya oleh Yulianto dan Hidayatullah (2014) 
+dengan judul “Analisis Klaster untuk Pengelompokan Kabupaten/Kota di Provinsi Jawa 
+Tengah Berdasarkan Indikator Kesejahteraan Rakyat”. Penelitian tersebut bertujuan 
+untuk mengelompokkan 35 kabupaten/kota di Provinsi Jawa Tengah dan mengetahui 
+karakteristik setiap kelompok berdasarkan indikator kesejahteraan rakyat tahun 2010. 
+Data yang digunakan bersumber dari Badan Pusat Statistik (BPS) dengan variabel-
+variabel yang digunakan, yaitu Produk Domestik Regional Bruto (PDRB) perkapita, 
+kepadatan penduduk, penduduk miskin, jumlah angkatan kerja, pengeluaran riil perkapita 
+yang disesuaikan, angka harapan hidup, dan rata-rata lama sekolah. Pada penelitian 
+tersebut digunakan analisis clustering metode hirarki average linkage dengan teknik 
+agglomerative dan ukuran jarak euclidean. Hasil dari penelitian tersebut diperoleh tiga 
+kelompok dengan masing-masing kelompok memiliki perbedaan kecenderungan nilai di 
+setiap variabel. 
+Penelitian serupa juga pernah dilakukan oleh Dwitiyanti (2019) yang berjudul 
+“Penerapan Fuzzy C-Means Cluster dalam Pengelompokan Provinsi Indonesia Menurut 
+Indikator Kesejahteraan Rakyat”. Penelitian tersebut bertujuan untuk mengelompokkan 
+provinsi di Indonesia menggunakan Fuzzy C-Means Clustering. Variabel-variabel yang 
+digunakan, yaitu kepadatan penduduk, persentase penduduk miskin, laju penduduk, 
+angka harapan hidup, angka partisipasi sekolah, tingkat partisipasi angkatan kerja, tingkat 
+pengangguran terbuka, dan rata-rata pengeluaran per kapita. Hasil dari penelitian tersebut 
+berupa dua kelompok dengan kelompok 2 berisi provinsi-provinsi yang lebih sejahtera 
+daripada provinsi-provinsi pada kelompok 1. 
+Pada penelitian ini, digunakan dua pendekatan dalam mengelompokkan 
+kabupaten/kota beserta variabel-variabelnya yang berkaitan dengan indikator 
+kesejahteraan rakyat. Pendekatan pertama yaitu mengelompokkan kabupaten/kota dan 
+variabel-variabelnya secara simultan (bersamaan) menggunakan metode biclustering 
+plaid model. Metode bisclustering pertama kali dikenalkan oleh Cheng & Church (2000) 
+di mana metode ini dapat diterapkan pada pengamatan (baris) dan atribut (kolom) data 
+secara bersamaan. Biclustering mampu mengklasifikasikan pola secara simultan dalam 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+3 
+ 
+ 
+Universitas Indonesia 
+arah baris dan kolom dalam matriks data. Salah satu metode analisis biclustering yang 
+cukup fleksibel adalah metode plaid model (Majd et al., 2015). Plaid model 
+memperhitungkan nilai dari suatu submatriks yang diberikan dalam matriks. Selain itu, 
+metode plaid model juga memperhitungkan efek dari baris dan kolom. Kelompok yang 
+terbentuk dari hasil biclustering merupakan submatriks dari data keseluruhan. Kelompok 
+tersebut dinamakan sebagai bicluster. 
+Pendekatan kedua yaitu mengelompokkan kabupaten/kota berdasarkan variabel-
+variabelnya kemudian dilanjutkan dengan memetakan hasil pengelompokan yang 
+menampilkan variabel-variabel dominan berada di sekitar anggota kelompok. Metode 
+yang digunakan adalah cluster-biplot. Cluster-biplot adalah dua metode multivariat, yaitu 
+clustering dan biplot. Clustering merupakan teknik analisis data yang bertujuan untuk 
+mengelompokkan objek ke dalam beberapa kelompok yang memiliki sifat berbeda antar 
+kelompok, sehingga objek yang terletak di dalam satu kelompok akan mempunyai sifat 
+yang relatif homogen (Talakua et al., 2017). Kelompok yang terbentuk dari hasil 
+clustering disebut cluster. Setelah mendapatkan cluster, selanjutnya dilakukan pemetaan 
+kedekatan 
+antara 
+individu-individu 
+anggota 
+cluster 
+dan 
+variabel-variabelnya 
+menggunakan metode biplot. 
+Metode clustering yang digunakan adalah metode Ward. Metode ward merupakan 
+metode clustering yang bersifat agglomerative (penggabungan) untuk memperoleh 
+kelompok yang memiliki varian internal sekecil mungkin. Metode ini menggunakan 
+perhitungan yang lengkap dan memaksimalkan homogenitas dalam suatu kelompok. 
+Menurut 
+Johnson 
+dan 
+Wichern 
+(2014), 
+metode 
+Ward 
+mempertimbangkan 
+pengelompokan secara hirarki berdasarkan minimalisasi informasi yang hilang dalam 
+menggabungkan dua kelompok. Berdasarkan penelitian yang telah dilakukan oleh 
+Wibowo et al. (2020), metode Ward memberikan hasil yang lebih baik dibandingkan 
+metode average linkage dalam pengelompokan data karena cluster yang terbentuk 
+dengan  menggunakan metode Ward memiliki karakteristik yang lebih berbeda antar-
+cluster ditinjau dari nilai indeks R-Squared yang lebih besar. Demikian pula pada 
+penelitian yang telah dilakukan oleh Imasdiani, Purnamasari, dan Amijaya (2022), 
+metode Ward memberikan hasil yang lebih baik ditinjau dari nilai rata-rata rasio standar 
+deviasi dalam cluster dengan standar deviasi antar-cluster yang bernilai lebih kecil. 
+Dalam penentuan jumlah cluster yang optimal pada metode Ward, digunakan nilai 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+4 
+ 
+ 
+Universitas Indonesia 
+koefisien silhouette. Selanjutnya dilakukan pemetaan cluster, titik pengamatan, dan 
+variabel-variabelnya menggunakan metode biplot. Metode biplot dapat memberikan 
+empat informasi penting, yakni kedekatan atau kemiripan antar-pengamatan yang 
+diamati, nilai relatif variabel pada suatu pengamatan, korelasi antar-variabel, serta 
+keragaman variabel (Mattjik et al., 2011). 
+Keterbaruan pada penelitian ini adalah membandingkan hasil pengelompokan 
+metode biclustering dengan hasil pengelompokan metode cluster-biplot. Data yang 
+digunakan pada penelitian ini terdiri dari kabupaten/kota di Pulau Jawa dan variabel-
+variabel yang berkaitan dengan indikator kesejahteraan rakyat. Data yang digunakan 
+terdiri dari 119 pengamatan (kabupaten/kota di Pulau Jawa) dan 9 variabel (indikator 
+kesejahteraan rakyat). 
+ 
+1.2 
+Perumusan Masalah 
+Berdasarkan latar belakang yang telah dipaparkan, maka perumusan masalah pada 
+penelitian ini adalah sebagai berikut.   
+a. Bagaimana 
+penerapan 
+metode 
+biclustering 
+dalam 
+mengelompokkan 
+kabupaten/kota di Pulau Jawa dan variabel indikator kesejahteraan rakyat 
+secara simultan (bersamaan)? 
+b. Bagaimana penerapan metode cluster-biplot dalam mengelompokkan 
+kabupaten/kota di Pulau Jawa berdasarkan indikator kesejahteraan rakyatnya? 
+c. Bagaimana perbandingan hasil penerapan antara metode biclustering dan 
+metode cluster-biplot dalam mengelompokkan kabupaten/kota di Pulau Jawa 
+berdasarkan indikator kesejahteraan rakyatnya. 
+ 
+1.3 
+Tujuan Penelitian 
+Berdasarkan perumusan masalah, maka tujuan dari penulisan penelitian ini 
+adalah. 
+a. Menerapkan metode biclustering dalam mengelompokkan kabupaten/kota di 
+Pulau Jawa dan variabel indikator kesejahteraan rakyat secara simultan 
+(bersamaan). 
+b. Menerapkan metode cluster-biplot dalam mengelompokkan kabupaten/kota di 
+Pulau Jawa berdasarkan indikator kesejahteraan rakyatnya. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+5 
+ 
+ 
+Universitas Indonesia 
+c. Membandingkan hasil penerapan antara metode biclustering dan metode 
+cluster-biplot dalam mengelompokkan kabupaten/kota di Pulau Jawa beserta 
+indikator kesejahteraan rakyatnya. 
+ 
+1.4 
+Manfaat Penelitian 
+Manfaat dari penelitian ini adalah. 
+a. Mengetahui kelompok-kelompok yang terbentuk dari kedua metode yang 
+digunakan serta karakteristik dari masing-masing kelompok tersebut. 
+b. Penelitian ini dapat menjadi bahan kajian untuk penelitian-penelitian 
+selanjutnya. 
+c. Hasil dari penelitian ini diharapkan dapat digunakan sebagai bahan 
+pertimbangan bagi pihak yang berkepentingan untuk menentukan wilayah 
+mana saja yang perlu diprioritaskan dalam rangka meningkatkan kesejahteraan 
+rakyat. 
+ 
+1.5 
+Batasan Penelitian 
+Pada penelitian ini, data yang digunakan merupakan data numerik yang bersumber 
+dari publikasi Badan Pusat Statistik (BPS). Data tersebut terdiri dari 119 pengamatan 
+(kabupaten/kota di Pulau Jawa) dan 9 variabel indikator kesejahteraan rakyat yang dipilih 
+oleh peneliti. Variabel-variabel yang digunakan terdiri dari persentase penduduk miskin, 
+PDRB per kapita atas dasar harga berlaku, rata-rata lama sekolah, harapan lama sekolah, 
+persentase pengeluaran per kapita untuk makanan, tingkat pengangguran terbuka, jumlah 
+penduduk, kepadatan penduduk, dan angka harapan hidup. Metode biclustering yang 
+digunakan adalah metode plaid model dengan menggunakan model efek background 
+yang hanya berisi efek mean (Θ𝑖𝑗𝑘= 𝜇𝑘). Metode cluster-biplot yang digunakan terdiri 
+dari clustering menggunakan metode Ward dan pemetaan hasil clustering menggunakan 
+metode biplot. Perbandingan hasil pengelompokan dari masing-masing metode ditinjau 
+menggunakan nilai standar deviasi. 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+6 
+Universitas Indonesia 
+BAB II 
+LANDASAN TEORI 
+Bab ini berisi penjelasan mengenai teori-teori mendasar tentang kesejahteraan, 
+indikator kesejahteraan rakyat, standardisasi data, analisis clustering, analisis 
+biclustering, dan standar deviasi. 
+ 
+2.1 
+Kesejahteraan 
+Kesejahteraan memiliki arti yang luas tergantung pada sudut pandang. Secara 
+umum kata “kesejahteraan” mengacu pada kondisi makmur, tercukupi, damai, dan 
+terlepas dari segala macam gangguan (KBBI, 2016). Dalam definisi lain, kesejahteraan 
+adalah kondisi yang menghendaki terpenuhinya kebutuhan dasar bagi individu atau 
+kelompok baik berupa kebutuhan pangan, pendidikan, dan kesehatan. Pada penelitian ini, 
+kesejahteraan yang diperhatikan adalah kesejahteraan materi. Kesejahteraan materi 
+menuntut terpenuhinya kebutuhan manusia yang meliputi kebutuhan primer, sekunder, 
+dan tersier. Kebutuhan primer meliputi pangan, sandang, papan, kesehatan, dan 
+keamanan yang layak. Kebutuhan sekunder seperti pengadaan sarana transportasi 
+(sepeda, sepeda motor, mobil dan lain sebagainya), informasi dan telekomunikasi (radio, 
+televisi, telepon, gawai, internet dan lain sebagainya). Kebutuhan tersier seperti sarana 
+rekreasi dan hiburan. 
+ 
+2.2 
+Indikator Kesejahteraan Rakyat 
+Tujuan utama pembangunan adalah mewujudkan kesejahteraan rakyat. Untuk 
+mengukur keberhasilan pembangunan di suatu wilayah, dibutuhkan indikator-indikator 
+yang mampu mencerminkan taraf kesejahteraan rakyat. Indikator kesejahteraan rakyat 
+cukup luas dan juga kompleks sehingga suatu taraf kesejahteraan rakyat hanya dapat 
+dinilai melalui indikator-indikator terukur dari berbagai bidang pembangunan. Beberapa 
+bidang yang dijadikan acuan dalam mengukur kesejahteraan rakyat, yaitu bidang 
+kependudukan, bidang kesehatan, bidang pendidikan, bidang ketenagakerjaan, bidang 
+taraf dan pola konsumsi, bidang kemiskinan, serta bidang sosial lainnya (Badan Pusat 
+Statistik, 2023). Setiap bidang memiliki beberapa variabel yang digunakan sebagai 
+indikator kesejahteraan rakyat. Variabel-variabel yang digunakan pada penelitian ini, 
+yaitu persentase penduduk miskin, rata-rata lama sekolah, harapan lama sekolah, angka 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+7 
+ 
+ 
+Universitas Indonesia 
+harapan hidup, persentase pengeluaran per kapita untuk makanan, tingkat pengangguran 
+terbuka, PDRB per kapita atas dasar harga berlaku, kepadatan penduduk, dan jumlah 
+penduduk. 
+ 
+a. 
+Persentase Penduduk Miskin 
+Persentase penduduk miskin adalah persentase jumlah penduduk yang memiliki 
+rata-rata pengeluaran per kapita per bulan di bawah Garis Kemiskinan (Badan Pusat 
+Statistik, 2022). Garis Kemiskinan (GK) mencerminkan nilai rupiah pengeluaran 
+minimum yang diperlukan seseorang untuk memenuhi kebutuhan pokok hidupnya selama 
+sebulan, baik kebutuhan makanan maupun non-makanan (Badan Pusat Statistik, 2022). 
+Daerah yang sejahtera, umumnya memiliki persentase penduduk miskin yang relatif 
+kecil. 
+ 
+b. 
+Rata-Rata Lama Sekolah 
+Indikator pada bidang pendidikan salah satunya adalah angka rata-rata lama 
+sekolah. Rata-rata lama sekolah merupakan rata-rata jumlah tahun yang digunakan oleh 
+penduduk usia 25 tahun ke atas dalam menjalani pendidikan formal (Badan Pusat 
+Statistik, 2022). Rata-rata lama sekolah dihitung untuk usia 25 tahun ke atas dengan 
+asumsi pada umur 25 tahun proses pendidikan sudah berakhir. Daerah yang tingkat 
+kesejahteraannya baik memiliki rata-rata lama sekolah yang lebih tinggi dibandingkan 
+dengan daerah yang kurang sejahtera. Semakin sejahtera suatu daerah, maka semakin 
+banyak pula penduduk yang memiliki kesadaran akan pentingnya pendidikan sehingga 
+nilai rata-rata lama sekolah menjadi lebih besar.  
+Berdasarkan hasil penelitian yang dilakukan oleh Kusuma dan Bendesa (2022), 
+variabel rata-rata lama sekolah berpengaruh positif dan signifikan terhadap kesejahteraan 
+yang dilihat dari nilai IPM (Indeks Pembangunan Manusia) pada kabupaten/kota di 
+Provinsi Bali. Hal itu menunjukkan bahwa semakin tinggi rata-rata lama sekolah, maka 
+semakin tinggi pula kesejahteraan rakyat di wilayah tersebut. 
+ 
+c. 
+Harapan Lama Sekolah  
+Sejak tahun 2010, Badan Pusat Statistik (BPS) menggunakan angka harapan lama 
+sekolah sebagai indikator pada bidang pendidikan. Harapan lama sekolah didefinisikan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+8 
+ 
+ 
+Universitas Indonesia 
+sebagai lamanya sekolah (dalam tahun) yang diharapkan akan dirasakan oleh anak pada 
+umur tertentu di masa mendatang (Badan Pusat Statistik, 2022). Angka harapan lama 
+sekolah dihitung pada penduduk yang berusia 7 tahun ke atas karena mengikuti kebijakan 
+pemerintah yaitu program wajib belajar. Angka harapan lama sekolah dapat digunakan 
+untuk mengetahui kondisi pembangunan sistem pendidikan di berbagai jenjang yang 
+ditunjukkan dalam bentuk lamanya pendidikan (dalam tahun) yang diharapkan dapat 
+dicapai oleh setiap anak. 
+ 
+d. 
+Angka Harapan Hidup  
+Angka harapan hidup digunakan sebagai indikator kesehatan karena dapat 
+menggambarkan kondisi tingkat kesehatan masyarakat. Angka harapan hidup merupakan 
+rata-rata jumlah tahun hidup yang akan dijalani oleh bayi yang baru lahir pada suatu tahun 
+tertentu (Badan Pusat Statistik, 2022). Angka harapan hidup merupakan alat untuk 
+mengevaluasi kinerja pemerintah dalam meningkatkan kesejahteraan penduduk pada 
+umumnya, serta meningkatkan derajat kesehatan pada khususnya. Berdasarkan hasil 
+penelitian yang dilakukan oleh Kusuma dan Bendesa (2022), variabel angka harapan 
+hidup berpengaruh positif dan signifikan terhadap kesejahteraan rakyat yang dilihat dari 
+nilai Indeks Pembangunan Manusia (IPM) pada kabupaten/kota di Provinsi Bali. Hal itu 
+menunjukkan bahwa semakin tinggi angka harapan hidup, maka semakin tinggi pula 
+kesejahteraan rakyat di wilayah tersebut. 
+ 
+e. 
+Persentase Pengeluaran Per Kapita untuk Makanan  
+Persentase pengeluaran per kapita untuk makanan adalah persentase pengeluaran 
+rata-rata per kapita makanan terhadap jumlah pengeluaran perkapita keseluruhan 
+(makanan dan non-makanan). Pengeluaran rata-rata per kapita untuk makanan adalah 
+biaya yang dikeluarkan untuk konsumsi makanan semua anggota rumah selama sebulan 
+dibagi dengan banyaknya anggota rumah tangga dalam rumah tangga tersebut (Badan 
+Pusat Statistik, 2022).  
+Makanan merupakan kebutuhan primer bagi setiap orang. Memenuhi kebutuhan 
+makanan akan lebih diprioritaskan daripada memenuhi kebutuhan lainnya. Seseorang 
+dengan kondisi ekonomi menengah ke bawah cenderung akan menghabiskan sebagian 
+besar penghasilannya untuk memenuhi kebutuhan makanan terlebih dahulu. Sedangkan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+9 
+ 
+ 
+Universitas Indonesia 
+seseorang dengan kondisi ekonomi menengah ke atas cenderung memiliki pengeluaran 
+yang lebih besar pada non-makanan, seperti memenuhi kebutuhan perumahan, fasilitas 
+rumah tangga, pakaian, pajak, asuransi, keperluan pesta, serta aneka barang dan jasa 
+lainnya. 
+ 
+f. 
+Tingkat Pengangguran Terbuka  
+Indikator utama yang dapat memberikan gambaran kondisi ketenagakerjaan di 
+suatu wilayah adalah tingkat pengangguran terbuka. Pengangguran terbuka didefinisikan 
+sebagai orang yang mencari pekerjaan atau yang sedang mempersiapkan usaha atau yang 
+tidak mencari pekerjaan karena merasa tidak mungkin lagi mendapatkan pekerjaan, 
+termasuk mereka yang baru mendapat kerja tetapi belum mulai bekerja (Badan Pusat 
+Statistik, 2022). Tingkat pengangguran terbuka adalah presentase jumlah pengangguran 
+terhadap jumlah angkatan kerja. Angkatan kerja yang dimaksud adalah penduduk usia 
+kerja (15 tahun ke atas) yang bekerja, punya pekerjaan namun sementara tidak bekerja, 
+atau pengangguran (Badan Pusat Statistik, 2022). 
+ 
+g. 
+Jumlah Penduduk  
+Jumlah penduduk adalah jumlah individu atau orang yang berdomisili di suatu 
+wilayah selama enam bulan atau lebih, atau mereka yang berdomisili kurang dari enam 
+bulan tetapi bertujuan untuk menetap (Badan Pusat Statistik, 2022). Jumlah penduduk 
+suatu daerah sangat menentukan tingkat kesejahteraan masyarakat, semakin banyak 
+jumlah penduduk akan menuntut pelayanan sosial dan tanggung jawab dari pemerintah 
+daerah (Stefandy et al., 2014). Berdasarkan penelitian yang telah dilakukan oleh Astuti 
+dan Astika (2016), jumlah penduduk berpengaruh negatif terhadap kesejahteraan rakyat 
+di Provinsi Bali.  
+ 
+h. 
+Kepadatan Penduduk  
+Berdasarkan indikator kesejahteraan yang disebutkan oleh Badan Pusat Statistik 
+pada salah satu publikasinya, kepadatan penduduk termasuk ke dalam indikator 
+kesejahteraan di bidang kependudukan. Kepadatan penduduk merupakan jumlah 
+penduduk untuk setiap kilometer persegi luas suatu wilayah (Badan Pusat Statistik, 2022). 
+Pada tahun 2022, kepadatan penduduk tertinggi di Pulau Jawa diduduki oleh Provinsi 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+10 
+ 
+ 
+Universitas Indonesia 
+DKI Jakarta dengan kepadatan penduduk sekitar 16.158 jiwa per km2. Sedangkan 
+kepadatan penduduk terendah di Pulau Jawa diduduki oleh Provinsi Jawa Timur dengan 
+kepadatan penduduk sekitar 857 jiwa per km2. Walaupun demikian, kepadatan penduduk 
+di Provinsi Jawa Timur masih jauh lebih tinggi dibandingkan dengan kepadatan 
+penduduk Indonesia yaitu sekitar 146 jiwa per km2 (BPS, 2023). Padatnya penduduk di 
+suatu wilayah dapat mengindikasikan bahwa wilayah tersebut merupakan wilayah yang 
+sangat diminati oleh siapa pun untuk mencari peruntungan. Dengan kata lain, 
+perekonomian di wilayah tersebut lebih berkembang dibandingan dengan wilayah 
+lainnya. Jika dilihat secara angka, pendapatan per kapita di wilayah yang padat 
+penduduknya cenderung lebih tinggi, contohnya seperti pendapatan per kapita di Provinsi 
+DKI Jakarta yang lebih tinggi dibandingkan dengan pendapatan per kapita di Provinsi 
+Jawa Timur. 
+ 
+i. 
+Produk Domestik Regional Bruto per Kapita Atas Dasar Harga Berlaku  
+Produk Domestik Regional Bruto (PDRB) per kapita atas dasar harga berlaku 
+mengukur rata-rata pendapatan per individu dalam suatu wilayah pada periode (tahun) 
+tersebut, dengan mempertimbangkan harga-harga aktual yang berlaku di pasar pada saat 
+itu (Badan Pusat Statistik, 2022). Berdasarkan penelitian yang telah dilakukan oleh Mulia 
+dan Saputra (2020), variabel PDRB per kapita berpengaruh positif dan signifikan 
+terhadap kesejahteraan rakyat di Kota Padang. Selain itu, penelitian yang telah dilakukan 
+oleh Bustamam, Yulianti, dan Dewi (2021) juga menyatakan bahwa variabel PDRB 
+berpengaruh signifikan terhadap kesejahteraan rakyat di Kota Pekanbaru. 
+ 
+2.3 
+Standardisasi Data 
+Perbedaan nilai yang besar antar-variabel dapat menyebabkan bias dalam analisis 
+pengelompokan sehingga perlu menyamakan ukuran satuan variabilitasnya. Standarisasi 
+adalah suatu teknik melakukan perubahan skala di mana data yang dimiliki akan diubah 
+sehingga memiliki rata-rata bernilai 0 (terpusat) dan standar deviasi bernilai 1. 
+Berdasarkan Walpole (1993), persamaan standardisasi data untuk pengamatan ke-𝑖 pada 
+variabel ke-𝑗 adalah sebagai berikut. 
+𝑌𝑖𝑗
+′ = 𝑌𝑖𝑗−𝜇𝑗
+𝜎𝑗
+,
+𝑖= 1,2, … , 𝑛,
+𝑗= 1,2, … , 𝑝 
+(2.1) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+11 
+ 
+ 
+Universitas Indonesia 
+dengan: 
+𝑌𝑖𝑗
+′  
+: nilai hasil standardisasi pada pengamatan ke-𝑖 variabel ke-𝑗 
+𝑌𝑖𝑗 
+: nilai pengamatan ke-𝑖 variabel ke-𝑗 
+𝜇𝑗 
+: nilai rata-rata pengamatan pada variabel ke-𝑗 
+𝜎𝑗 
+: standar deviasi variabel ke-𝑗 
+𝑛 
+: banyaknya pengamatan 
+𝑝 
+: banyaknya variabel 
+ 
+2.4 
+Analisis Clustering 
+Analisis clustering merupakan metode statistik yang bertujuan untuk 
+mengelompokkan pengamatan menjadi beberapa kelompok sedemikian sehingga 
+pengamatan yang berada dalam kelompok yang sama akan memiliki tingkat kemiripan 
+yang tinggi dibandingkan dengan pengamatan yang berada pada kelompok lain. 
+Kelompok yang didapat dari hasil clustering disebut sebagai cluster. 
+Struktur data yang digunakan biasanya dalam bentuk matriks dengan 𝑛 pengamatan 
+(baris) dan 𝑝 variabel (kolom) yang akan disebut sebagai matriks data. Berikut adalah 
+bentuk dari matriks data (𝒀). 
+ 
+𝒀=
+(
+ 
+𝑌11
+𝑌12
+𝑌21
+𝑌22
+⋯
+𝑌1𝑝
+⋯
+𝑌2𝑝
+⋮
+⋮
+𝑌𝑛1
+𝑌𝑛2
+⋱
+⋮
+⋯
+𝑌𝑛𝑝)
+  
+(2.2) 
+ 
+  
+2.5 
+Analisis Biclustering 
+Analisis biclustering merupakan metode yang bertujuan untuk menemukan pola 
+pada sekumpulan baris tertentu dan sekumpulan kolom tertentu secara simultan (Kasim 
+et al., 2016). Pada analisis biclustering, proses pengelompokan dilakukan secara simultan 
+pada dua dimensi matriks data, yaitu baris dan kolom. Dengan menggunakan metode ini, 
+akan ditemukan submatriks dari matriks data dengan elemen-elemen yang menunjukkan 
+pola yang khas pada kedua dimensi tersebut. Submatriks ini terdiri dari subset kolom 
+yang bisa mencirikan suatu kelompok baris. Submatriks dari hasil biclustering disebut 
+sebagai bicluster. Perbedaan hasil clustering dan biclustering pada matriks data dapat 
+diilustrasikan seperti pada Gambar 2.1 berikut. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+12 
+ 
+ 
+Universitas Indonesia 
+ 
+Gambar 2.1. Perbedaan Hasil Clustering dan Biclustering 
+ 
+2.6 
+Standar Deviasi 
+Standar deviasi merupakan suatu nilai yang menunjukkan keragaman data atau 
+seberapa jauh pengamatan-pengamatan menyebar dari rata-ratanya. Menurut Ghozali 
+(2016), standar deviasi atau simpangan baku merupakan ukuran penyebaran yang paling 
+baik karena menggambarkan besarnya penyebaran tiap-tiap unit pengamatan. Semakin 
+besar nilai standar deviasi maka semakin beragam nilai-nilainya atau semakin tidak 
+akurat terhadap nilai rata-rata. Sebaliknya, semakin kecil nilai standar deviasi, maka 
+semakin mirip nilai-nilainya atau semakin akurat terhadap nilai rata-rata. Untuk data 
+sampel yang berukuran 𝑛 pengamatan dan 𝑝 variabel, rumus standar deviasinya adalah 
+sebagai berikut. 
+ 
+𝜎𝑗= √∑
+(𝑌𝑖𝑗−𝜇𝑗)
+2
+𝑛
+𝑖=1
+𝑛−1
+,
+𝑖= 1,2, … , 𝑛,
+𝑗= 1,2, … , 𝑝 
+(2.3) 
+ 
+dengan: 
+𝜎𝑗 
+: nilai standar deviasi variabel ke-j 
+𝑌𝑖𝑗 
+: nilai pengamatan ke-i pada variabel ke-j 
+𝜇𝑗 
+: nilai rata-rata variabel ke-j 
+n 
+: banyaknya pengamatan 
+ 
+ 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+13 
+Universitas Indonesia 
+BAB III 
+METODOLOGI PENELITIAN 
+Bab ini berisi pembahasan mengenai metode biclustering dan cluster-biplot. 
+Metode biclustering dilakukan dengan menggunakan algoritma plaid model. Hasil dari 
+biclustering berupa submatriks yang disebut bicluster. Metode cluster-biplot merupakan 
+gabungan dari dua metode analisis multivariat yaitu clustering dan biplot. Clustering 
+dilakukan dengan menggunakan metode Ward. Kelompok yang dihasilkan dari clustering 
+disebut cluster. Selanjutnya dilakukan pemetaan cluster, titik pengamatan, dan variabel-
+variabel menggunakan metode biplot. 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+14 
+ 
+ 
+Universitas Indonesia 
+3.1 
+Metode Biclustering Plaid Model 
+Secara umum, proses yang dilakukan dalam metode biclustering menggunakan 
+algoritma plaid model ditampilkan pada Gambar 3.1. 
+ 
+Gambar 3.1. Flowchart Metode Biclustering Plaid Model 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+15 
+ 
+ 
+Universitas Indonesia 
+Pada plaid model, nilai pengamatan dilambangkan sebagai 𝑌𝑖𝑗, dengan 𝑖=
+1,2, … , 𝑛 adalah indeks untuk baris (pengamatan) dan 𝑗= 1,2, … , 𝑝 adalah indeks untuk 
+kolom (variabel). Nilai pengamatan pada plaid model memiliki bentuk sebagai berikut.  
+ 
+𝑌𝑖𝑗= Θ𝑖𝑗0 + ∑Θ𝑖𝑗𝑘𝜌𝑖𝑘𝜅𝑗𝑘
+𝐾
+𝑘=1
++ 𝜀𝑖𝑗 
+= (𝜇0 + 𝛼𝑖0 + 𝛽𝑗0) + ∑Θ𝑖𝑗𝑘𝜌𝑖𝑘𝜅𝑗𝑘
+𝐾
+𝑘=1
++ 𝜀𝑖𝑗 
+(3.1) 
+ 
+dengan: 
+𝑌𝑖𝑗 
+: nilai pengamatan baris ke-𝑖 dan kolom ke-𝑗 
+Θ𝑖𝑗0 : background effect pada baris ke-𝑖 dan kolom ke-𝑗. 
+𝑘 
+: indeks bicluster, 𝑘= 1,2, … , 𝐾.  
+K  
+: jumlah bicluster 
+Θ𝑖𝑗𝑘 : background effect bicluster ke-𝑘 pada baris ke-𝑖 dan kolom ke-𝑗. 
+𝜌𝑖𝑘 
+: parameter keanggotaan bicluster ke-𝑘 pada baris ke-𝑖. 
+𝜅𝑗𝑘 
+: parameter keanggotaan bicluster ke-𝑘 pada kolom ke-𝑗. 
+𝜇0 
+: efek mean 
+𝛼𝑖0 
+: efek baris ke-𝑖 
+𝛽𝑗0 
+: efek kolom ke-j 
+𝜀𝑖𝑗  : error pengamatan ke-𝑖 pada variabel ke-𝑗. 
+Θ𝑖𝑗𝑘 memiliki bentuk yang berbeda-beda. Berikut adalah empat kemungkinan 
+bentuk dari Θ𝑖𝑗𝑘 pada suatu bicluster ke-𝑘 : 
+ 
+Θ𝑖𝑗𝑘= {
+𝜇𝑘
+𝜇𝑘+ 𝛼𝑖𝑘
+𝜇𝑘+ 𝛽𝑗𝑘
+𝜇𝑘+ 𝛼𝑖𝑘+ 𝛽𝑗𝑘
+ 
+(3.2) 
+dengan : 
+𝜇𝑘 
+: efek mean dari bicluster ke-𝑘. 
+𝛼𝑖𝑘 : efek baris ke-𝑖 dari bicluster ke-𝑘. 
+𝛽𝑗𝑘 : efek kolom ke-𝑗 dari bicluster ke-𝑘. 
+Parameter keanggotaan bicluster pada metode plaid model dilambangkan dengan 
+𝜌𝑖𝑘 dan 𝜅𝑗𝑘. 𝜌𝑖𝑘 bernilai 1 jika pengamatan ke-𝑖 berada dalam bicluster ke-𝑘 dan bernilai 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+16 
+ 
+ 
+Universitas Indonesia 
+0 jika pengamatan ke-𝑖 tidak berada dalam bicluster ke-𝑘. Begitu pula dengan 𝜅𝑗𝑘, 
+bernilai 1 jika variabel ke-𝑗 berada dalam bicluster ke-𝑘 dan bernilai 0 jika variabel ke-𝑗 
+tidak berada dalam bicluster ke-𝑘. 𝜀𝑖𝑗 merupakan error pengamatan ke-𝑖 dan variabel ke-
+𝑗. 
+Metode plaid model memungkinkan suatu pengamatan atau variabel berada dalam 
+lebih dari satu bicluster atau tidak sama sekali. Hal ini dapat kita nyatakan dalam 
+penjumlahan parameter 𝜌𝑖𝑘 dan 𝜅𝑗𝑘. Penjumlahan parameter 𝜌𝑖𝑘 untuk setiap 𝑌𝑖𝑗 bernilai 
+1 ketika pengamatan ke-𝑖 hanya merupakan anggota dari satu bicluster, bernilai ≥2 
+ketika pengamatan ke-𝑖 merupakan anggota dari dua atau lebih bicluster, dan bernilai 0 
+ketika pengamatan ke-𝑖 bukan merupakan anggota bicluster.  
+Hal yang sama juga berlaku pada penjumlahan parameter 𝜅𝑗𝑘. Penjumlahan 
+parameter 𝜅𝑗𝑘 untuk setiap 𝑌𝑖𝑗 bernilai 1 ketika variabel ke-𝑗 hanya merupakan anggota 
+dari satu bicluster, bernilai ≥2 ketika variabel ke-𝑗 merupakan anggota dari dua atau 
+lebih bicluster, dan bernilai 0 ketika variabel ke-𝑗 bukan merupakan anggota bicluster.  
+Sebagaimana pada Gambar 3.1, berikut adalah langkah-langkah dalam melakukan 
+biclustering menggunakan metode plaid model (Siswantining et al.,2021). 
+1. 
+Mengubah data ke dalam bentuk matriks data (𝒀). 
+2. 
+Membuat model awal dan menghitung nilai efek-efek, yaitu grand mean (𝜇̂0), efek 
+baris (𝛼̂𝑖0), dan efek kolom (𝛽̂𝑗0). Efek-efek pada model awal tersebut dapat 
+diperoleh menggunakan persamaan berikut. 
+ 
+𝜇̂0 = 𝑌̅.. 
+𝛼̂𝑖0 = 𝑌̅𝑖. −𝑌̅.. 
+𝛽̂𝑗0 = 𝑌̅.𝑗−𝑌̅.. 
+(3.3) 
+dengan: 
+𝜇̂0 
+: estimasi grand mean  
+𝛼̂𝑖0 
+: estimasi efek baris ke-𝑖  
+𝛽̂𝑗0 
+: estimasi efek kolom ke-𝑗  
+𝑌̅.. 
+: rata-rata pada matriks data (𝒀) 
+𝑌̅𝑖. 
+: rata-rata baris ke-𝑖 pada matriks data (𝒀) 
+𝑌̅.𝑗 
+: rata-rata kolom ke-𝑗 pada matriks data (𝒀) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+17 
+ 
+ 
+Universitas Indonesia 
+3. 
+Membentuk matriks residual (𝒁𝑛×𝑝). Sebelum ditemukan satu pun bicluster, nilai 
+elemen matriks residual dicari dengan menggunakan persamaan berikut. 
+ 
+𝑍𝑖𝑗= 𝑌𝑖𝑗−(𝜇̂0 + 𝛼̂𝑖0 + 𝛽̂𝑗0) 
+(3.4) 
+dengan: 
+𝑌𝑖𝑗 
+: nilai pengamatan baris ke-𝑖 pada kolom ke-𝑗 
+𝑍𝑖𝑗 
+: nilai residual baris ke-𝑖 pada kolom ke-𝑗 
+𝜇̂0 
+: estimasi grand mean pada matriks data 
+𝛼̂𝑖0 
+: estimasi efek baris ke-𝑖 
+𝛽̂𝑗0 
+: estimasi efek kolom ke-𝑗 
+Setelah ditemukan sebanyak (𝑙−1) bicluster, nilai elemen dari matriks residual 
+dapat dicari dengan persamaan berikut. 
+ 
+𝑍𝑖𝑗= 𝑌𝑖𝑗−Θ̂𝑖𝑗0 −∑Θ̂𝑖𝑗𝑘𝜌̂𝑖𝑘𝜅̂𝑗𝑘
+𝑙−2
+𝑘=1
+ 
+(3.5) 
+dengan : 
+𝑍𝑖𝑗 
+: nilai residual pada baris ke-𝑖 dan kolom ke-𝑗 
+𝑌𝑖𝑗 
+: nilai pengamatan baris ke-𝑖 pada kolom ke-𝑗 
+Θ̂𝑖𝑗0 : estimasi background effect pada baris ke-𝑖 dan kolom ke-𝑗 
+Θ̂𝑖𝑗𝑘 : estimasi background effect bicluster ke-𝑘 pada baris ke-𝑖 dan kolom ke-𝑗. 
+𝜌̂𝑖𝑘 
+: estimasi parameter keanggotaan bicluster ke-𝑘 pada baris ke-𝑖. 
+𝜅̂𝑗𝑘 
+: estimasi parameter keanggotaan bicluster ke-𝑘 pada kolom ke-𝑗. 
+4. 
+Menentukan kandidat awal bicluster dengan menggunakan clustering algoritma k-
+means untuk mengelompokkan pengamatan dan variabel secara terpisah. 
+Kemudian dipilih cluster yang berukuran kecil atau memiliki anggota lebih sedikit. 
+Kemudian cluster pengamatan dipasangkan dengan cluster variabel untuk 
+membentuk bicluster awal. 
+5. 
+Mengestimasi parameter efek bicluster ( 𝜇̂𝑘, 𝛼̂𝑖𝑘, dan 𝛽̂𝑗𝑘) dengan menggunakan 
+plaid model. Misalkan telah didapat bicluster 𝒁∗ yang merupakan submatriks dari 
+matriks residual (𝒁). Estimasi parameter efek bicluster dapat dicari dengan 
+persamaan berikut. 
+ 
+𝜇̂𝑘= 𝑍̅..𝑘
+∗ 
+(3.6) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+18 
+ 
+ 
+Universitas Indonesia 
+𝛼̂𝑖𝑘= 𝑍̅𝑖.𝑘
+∗−𝑍̅..𝑘
+∗ 
+𝛽̂𝑗𝑘= 𝑍̅.𝑗𝑘
+∗−𝑍̅..𝑘
+∗ 
+dengan : 
+𝜇̂𝑘 
+: estimasi efek mean pada bicluster ke-𝑘 
+𝛼̂𝑖𝑘 : estimasi efek baris ke-𝑖 pada bicluster ke-𝑘 
+𝛽̂𝑗𝑘 : estimasi efek kolom ke-𝑗 pada bicluster ke-𝑘 
+𝑍̅..𝑘
+∗ : nilai rata-rata residual bicluster ke-𝑘 
+𝑍̅𝑖.𝑘
+∗ : nilai rata-rata residual baris ke-𝑖 pada bicluster ke-𝑘 
+𝑍̅.𝑗𝑘
+∗ : nilai rata-rata residual kolom ke-𝑗 pada bicluster ke-𝑘 
+Estimasi parameter efek bicluster akan terus diperbarui sebanyak 𝑆 kali iterasi. 
+6. 
+Mengestimasi parameter keanggotaan bicluster (𝜌̂𝑖𝑘 dan 𝜅̂𝑗𝑘) yang dilakukan 
+dengan mencoba kemungkinan nilai parameter keanggotaan (0 atau 1) pada 
+persamaan (3.7) dan (3.8). Gunakan nilai parameter keanggotaan yang 
+menghasilkan nilai terkecil pada persamaan tersebut. 
+ 
+∑[𝑍̂𝑖𝑗𝑘−𝜌̂𝑖𝑘Θ̂𝑖𝑗𝑘𝜅̂𝑗𝑘]
+2
+𝐽
+𝑗=1
+ 
+ (3.7) 
+ 
+∑[𝑍̂𝑖𝑗𝑘−𝜅̂𝑗𝑘Θ̂𝑖𝑗𝑘𝜌̂𝑖𝑘]
+2
+𝐼
+𝑖=1
+ 
+ (3.8) 
+dengan : 
+𝑍̂𝑖𝑗𝑘 : estimasi nilai residual baris ke-𝑖 dan kolom ke-𝑗 pada bicluster ke-𝑘. 
+Θ̂𝑖𝑗𝑘 : estimasi background effect baris ke-𝑖 dan kolom ke-𝑗 pada bicluster ke-𝑘. 
+𝜌̂𝑖𝑘 
+: estimasi parameter keanggotaan bicluster ke-𝑘 pada baris ke-𝑖. 
+𝜅̂𝑗𝑘 
+: estimasi parameter keanggotaan bicluster ke-𝑘 pada kolom ke-𝑗. 
+Estimasi parameter ini dilakukan sebanyak 𝑆 kali yang ditentukan oleh peneliti. 
+7. 
+Melakukan pemangkasan bicluster berdasarkan nilai threshold (𝜏1 dan 𝜏2) yang 
+ditentukan oleh peneliti. Nilai threshold berfungsi sebagai pembatas ketika 
+dilakukan pemangkasan bicluster dengan 𝜏1 sebagai pembatas pemangkasan pada 
+pengamatan dan 𝜏2 sebagai pembatas pemangkasan pada variabel. Berikut adalah 
+nilai parameter keanggotaan bicluster berdasarkan proses pemangkasan bicluster. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+19 
+ 
+ 
+Universitas Indonesia 
+𝜌̃𝑖= {
+1,
+𝑗𝑖𝑘𝑎 𝜌̂𝑖= 1 𝑑𝑎𝑛 ∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+< (1 −𝜏1) ∑(𝑍̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+0,
+𝑙𝑎𝑖𝑛𝑛𝑦𝑎.                                                                                           
+ 
+(3.9) 
+𝜅̃𝑗= {
+1,
+𝑗𝑖𝑘𝑎 𝜅̂𝑗= 1 𝑑𝑎𝑛 ∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑗:𝜌̂𝑖=1
+< (1 −𝜏2) ∑(𝑍̂𝑖𝑗)
+2
+𝑗:𝜌̂𝑖=1
+0,
+𝑙𝑎𝑖𝑛𝑛𝑦𝑎.                                                                                           
+ 
+(3.10) 
+dengan: 
+𝜌̃𝑖 
+: parameter keanggotaan bicluster baris ke-𝑖 berdasarkan proses  
+ 
+  pemangkasan bicluster 
+𝜅̃𝑗 
+: parameter keanggotaan bicluster kolom ke-𝑗 berdasarkan proses  
+ 
+  pemangkasan bicluster 
+𝜏1  
+: nilai threshold dalam pemangkasan pada parameter keanggotaan baris 
+𝜏2  
+: nilai threshold dalam pemangkasan pada parameter keanggotaan kolom 
+𝑍̂𝑖𝑗 
+: estimasi nilai baris ke-𝑖 dan kolom ke-𝑗 pada matriks residual 
+Θ̂𝑖𝑗 
+: estimasi nilai background effect dari bicluster ke-𝑘.  
+Nilai threshold bernilai antara 0 dan 1. Nilai threshold yang mendekati 1 akan 
+memberikan hasil bicluster semakin koheren atau semakin mirip nilainya, dan 
+sebaliknya. Akan tetapi penggunaan nilai threshold yang kecil dapat menerima 
+bicluster secara lebih mudah sehingga dapat menerima banyak bicluster. Busygin 
+et al. (2008) menyarankan penggunaan nilai threshold antara 0,5 sampai 0,7. 
+8. 
+Melakukan back fitting atau beberapa kali penghitungan untuk mencapai 
+konvergensi. Menurut Turner (2005), untuk mendapatkan hasil bicluster yang lebih 
+baik gunakan satu hingga tiga kali penghitungan back fitting sebagai titik tengah 
+antara akurasi efek bicluster dan beban perhitungan. 
+ 
+3.1.1 Contoh Penghitungan Metode Biclustering Plaid Model 
+ 
+Pada subbab ini, diberikan contoh penghitungan untuk mempermudah penjelasan 
+mengenai metode yang digunakan. Misalkan data awal dibentuk menjadi matriks data 
+(𝒀). 
+𝒀= [
+12
+12
+4
+12
+3
+−7
+−4
+−7
+−7
+] 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+20 
+ 
+ 
+Universitas Indonesia 
+ 
+Dilakukan pengelompokan menggunakan metode biclustering plaid model pada 
+matriks data (Y). Berikut adalah penjelasan mengenai proses penghitungan yang 
+dilakukan. 
+1. Menentukan model. Model efek background (Θ𝑖𝑗) yang akan digunakan hanya 
+berisi efek mean (𝜇0), maka dicari nilai 𝜇0 dengan penghitungan sebagai berikut. 
+𝜇0 = 12(3) + 3 −7(3) −2 + 2
+9
+= 2 
+2. Mencari matriks residual (𝒁) sebagai berikut. 
+𝒁= [
+12
+12
+4
+12
+3
+−7
+−4
+−7
+−7
+] −[
+2
+2
+2
+2
+2
+2
+2
+2
+2
+] = [
+10
+10
+2
+10
+1
+−9
+−6
+−9
+−9
+] 
+3. Menentukan kandidat bicluster. Kandidat awal bicluster didapatkan melalui 
+pendekatan clustering dua arah (baris dan kolom) menggunakan metode k-means. 
+Pendekatan tersebut diterapkan pada matriks residual (𝒁) yang telah didapatkan 
+sebelumnya. Misalkan hasil clustering tersebut yaitu baris pertama dan kedua 
+pada clustering baris serta kolom pertama dan kedua pada clustering kolom. 
+Kandidat bicluster tersebut dapat diilustrasikan dengan angka yang diberi warna 
+merah sebagai berikut. 
+𝒁= [
+𝟏𝟎
+𝟏𝟎
+2
+𝟏𝟎
+𝟏
+−9
+−6
+−9
+−9
+] 
+Misalkan kandidat bicluster ditulis dalam matriks 𝒁∗, maka berikut adalah bentuk 
+matriks 𝒁∗. 
+𝒁∗= [10
+10
+10
+1 ] 
+4. Melakukan penaksiran parameter efek bicluster. Pertama ditentukan nilai dari S 
+atau jumlah iterasi yang akan dilakukan. Pada contoh ini, akan digunakan S = 1, 
+artinya penaksiran parameter hanya akan dilakukan satu kali. Dilakukan 
+penghitungan efek dari bicluster sebagai berikut. 
+𝜇̂𝑘= 𝑍..
+∗ 
+𝜇̂𝑘= 10 + 10 + 10 + 1
+4
+= 7,75 
+5. Penaksiran parameter keanggotaan bicluster (𝜌𝑖 dan 𝜅𝑗). Hasil taksiran dari kedua 
+parameter tersebut akan bernilai 1 atau 0. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+21 
+ 
+ 
+Universitas Indonesia 
+6. Pertama dicari estimasi dari parameter 𝜌𝑖. Kandidat bicluster memiliki jumlah 
+baris sebanyak 2 atau 𝐼= 2. Akan dicari estimasi nilai parameter 𝜌𝑖 dari masing-
+masing baris yang memberikan nilai terkecil pada Persamaan (3.7) dengan jumlah 
+kolom pada kandidat bicluster adalah 2 atau 𝐽= 2.  
+∑[𝑍̂𝑖𝑗−𝜌𝑖Θ̂𝑖𝑗𝜅̂𝑗]
+2
+2
+𝑗=1
+ 
+Untuk 𝜌1 = 1 berlaku, 
+[𝑍̂11 −𝜌1Θ̂11𝜅̂1]
+2 + [𝑍̂12 −𝜌1Θ̂12𝜅̂2]
+2 
+= [10 −1(7,75)(1)]2 + [10 −1(7,75)(1)]2 = 10,125 
+Untuk 𝜌1 = 0 berlaku 
+[𝑍̂11 −𝜌1Θ̂11𝜅̂1]
+2 + [𝑍̂12 −𝜌1Θ̂12𝜅̂2]
+2 
+= [10 −0(7,75)(1)]2 + [10 −0(7,75)(1)]2 = 200 
+Untuk 𝜌2 = 1 berlaku, 
+[𝑍̂21 −𝜌2Θ̂21𝜅̂1]
+2 + [𝑍̂22 −𝜌2Θ̂22𝜅̂2]
+2 
+= [10 −1(7,75)(1)]2 + [1 −1(7,75)(1)]2 = 50,625 
+Untuk 𝜌2 = 0 berlaku, 
+[𝑍̂21 −𝜌2Θ̂21𝜅̂1]
+2 + [𝑍̂22 −𝜌2Θ̂22𝜅̂2]
+2 
+= [10 −0(7,75)(1)]2 + [1 −0(7,75)(1)]2 = 101 
+Nilai JKE (Jumlah Kuadrat Eror) yang terkecil terjadi saat 𝜌1 = 1 dan 𝜌2 = 1, 
+maka nilai ini yang akan digunakan.  
+7. Kemudian mengestimasi nilai paramater 𝜅𝑗. Akan dicari nilai parameter 𝜅𝑗 dari 
+masing-masing kolom yang memberikan nilai terkecil pada Persamaan (3.8) 
+dengan jumlah baris pada kandidat bicluster adalah 2 atau 𝐼= 2. 
+∑[𝑍̂𝑖𝑗−𝜅𝑗Θ̂𝑖𝑗𝜌̂𝑖]
+2
+2
+𝑖=1
+ 
+Untuk 𝜅1 = 1 berlaku, 
+[𝑍̂11 −𝜅1Θ̂11𝜌̂1]
+2 + [𝑍̂21 −𝜅1Θ̂21𝜌̂2]
+2 
+= [10 −1(7,75)(1)]2 + [10 −1(7,75)(1)]2 = 10,125 
+Untuk 𝜅1 = 0 berlaku, 
+[𝑍̂11 −𝜅1Θ̂11𝜌̂1]
+2 + [𝑍̂21 −𝜅1Θ̂21𝜌̂2]
+2 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+22 
+ 
+ 
+Universitas Indonesia 
+= [10 −0(7,75)(1)]2 + [10 −0(7,75)(1)]2 = 200 
+Untuk 𝜅2 = 1 berlaku, 
+[𝑍̂12 −𝜅2Θ̂12𝜌̂1]
+2 + [𝑍̂22 −𝜅2Θ̂22𝜌̂2]
+2 
+= [10 −1(7,75)(1)]2 + [1 −1(7,75)(1)]2 = 50,625 
+Untuk 𝜅2 = 0 berlaku, 
+[𝑍̂12 −𝜅2Θ̂12𝜌̂1]
+2 + [𝑍̂22 −𝜅2Θ̂22𝜌̂2]
+2 
+= [10 −0(7,75)(1)]2 + [1 −0(7,75)(1)]2 = 101 
+Nilai yang terkecil terjadi saat 𝜅1 = 1 dan  𝜅2 = 1, maka nilai ini yang akan 
+digunakan. Telah dimiliki hasil dari estimasi parameter keanggotaan, yaitu 𝜌1 =
+1, 𝜌2 = 1, 𝜅1 = 1, 𝜅2 = 1. 
+8. Pemangkasan bicluster. Pada langkah ini, perlu ditentukan terlebih dahulu nilai P 
+dan nilai threshold (𝜏1 dan 𝜏2). P adalah jumlah iterasi dalam pemangkasan 
+bicluster. Pada contoh ini, digunakan P = 1. Nilai threshold yang digunakan juga 
+dipilih oleh peneliti, yaitu 𝜏1 = 0,5 dan 𝜏2 = 0,5. Selanjutnya diperiksa apakah 
+parameter keanggotaan (𝜌𝑖 dan 𝜅𝑗) yang dimiliki akan dipangkas berdasarkan 
+Pertidaksamaan (3.9) dan (3.10). Pertama-tama akan diperiksa untuk parameter 
+𝜌̂1 = 1. 
+∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+< (1 −𝜏1) ∑(𝑍̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+ 
+(𝑍̂11 −7,75)
+2 + (𝑍̂12 −7,75)
+2 < (1 −𝜏1) [(𝑍̂11)
+2 + (𝑍̂12)
+2] 
+(10 −7,75)2 + (10 −7,75)2 < (1 −0,5)[102 + 102] 
+10,125 < 100 
+Karena syarat terpenuhi, maka didapat nilai 𝜌̂1 = 1. Selanjutnya akan diperiksa 
+untuk parameter 𝜌̂2 = 1. 
+∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+< (1 −𝜏1) ∑(𝑍̂𝑖𝑗)
+2
+𝑗:𝜅̂𝑗=1
+ 
+(𝑍̂21 −7,75)
+2 + (𝑍̂22 −7,75)
+2 < (1 −𝜏1) [(𝑍̂21)
+2 + (𝑍̂22)
+2] 
+(10 −7,75)2 + (1 −7,75)2 < (1 −0,5)[102 + 12] 
+50,625 > 50,5 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+23 
+ 
+ 
+Universitas Indonesia 
+Karena syarat tidak terpenuhi, maka 𝜌̂2 = 0 sehingga baris kedua terpangkas. 
+Selanjutnya akan diperiksa untuk parameter 𝜅̂1 = 1. 
+∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑖:𝜌̂𝑖=1
+< (1 −𝜏2) ∑(𝑍̂𝑖𝑗)
+2
+𝑖:𝜌̂𝑖=1
+ 
+(𝑍̂11 −7,75)
+2 + (𝑍̂21 −7,75)
+2 < (1 −𝜏2) [(𝑍̂11)
+2 + (𝑍̂21)
+2] 
+(10 −7,75)2 + (10 −7,75)2 < (1 −0,5)[102 + 102] 
+10,125 < 100 
+Karena syarat terpenuhi, maka didapat nilai 𝜅̂1 = 1. Selanjutnya akan diperiksa 
+untuk parameter 𝜅̂2 = 1. 
+∑(𝑍̂𝑖𝑗−Θ̂𝑖𝑗)
+2
+𝑖:𝜌̂𝑖=1
+< (1 −𝜏2) ∑(𝑍̂𝑖𝑗)
+2
+𝑖:𝜌̂𝑖=1
+ 
+(𝑍̂12 −7,75)
+2 + (𝑍̂22 −7,75)
+2 < (1 −𝜏2) [(𝑍̂12)
+2 + (𝑍̂22)
+2] 
+(10 −7,75)2 + (1 −7,75)2 < (1 −0,5)[102 + 12] 
+50,625 > 50,5 
+Karena syarat tidak terpenuhi, maka 𝜅̂2 = 0 sehingga kolom kedua terpangkas. 
+Dengan demikian pada penghitungan ini, kandidat bicluster diterima sebagai 
+sebuah bicluster 𝑨. 
+𝑨= [12] 
+ 
+3.2 
+Metode Cluster-Biplot 
+Cluster-biplot terdiri dari dua metode, yaitu clustering dan biplot. Clustering 
+bertujuan untuk mengelompokkan pengamatan ke dalam beberapa kelompok sehingga 
+pengamatan yang terletak di dalam kelompok yang sama akan mempunyai sifat yang 
+relatif homogen (Talakua et al., 2017). Kelompok yang terbentuk dari hasil clustering 
+disebut cluster. Setelah mendapatkan cluster, selanjutnya dilakukan pemetaan anggota 
+cluster dan variabel-variabelnya menggunakan metode biplot. Secara umum, proses yang 
+dilakukan dalam metode cluster-biplot ditampilkan pada Error! Reference source not f
+ound.. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+24 
+ 
+ 
+Universitas Indonesia 
+ 
+Gambar 3.2. Flowchart Metode Cluster-Biplot 
+ 
+3.2.1 Pemeriksaan Asumsi Analisis Clustering 
+Sebelum dilakukan clustering, terdapat beberapa asumsi yang harus dipenuhi. 
+Berdasarkan Hair et al. (2014), terdapat dua asumsi yang harus dipenuhi sebelum 
+melakukan clustering yaitu asumsi bahwa sampel mewakili populasi dan asumsi tidak 
+terdapat multikolinearitas antar-variabel yang digunakan dalam penelitian. Pemeriksaan 
+asumsi sampel mewakili populasi dilakukan dengan menggunakan uji Kaiser Meyer 
+Olkin (KMO). Kemudian pemeriksaan asumsi tidak terdapat multikolinearitas dilakukan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+25 
+ 
+ 
+Universitas Indonesia 
+dengan menggunakan uji Bartlett Test of Sphericity. Kedua uji asumsi ini memerlukan 
+matriks korelasi (𝐂) dalam penghitungannya. Berikut adalah bentuk dari matriks korelasi 
+(𝐂) untuk p variabel. 
+ 
+𝐂= (𝑐𝑥𝑦) =
+(
+ 
+1
+𝑐12
+⋯
+𝑐1𝑝
+𝑐21
+1
+⋯
+𝑐2𝑝
+⋮
+⋮
+⋱
+⋮
+𝑐𝑝1
+𝑐𝑝2
+⋯
+1 )
+  
+(3.11) 
+dengan setiap elemennya merupakan korelasi antara variabel 𝑥 dengan variabel 𝑦 yang 
+ditunjukkan pada Persamaan 3.12 (Rencher dan Christensen, 2012). 
+ 
+𝑐𝑥𝑦=
+(𝑛∑
+𝑥𝑖𝑦𝑖
+𝑛
+𝑖=1
+−∑
+𝑥𝑖
+𝑛
+𝑖=1
+∑
+𝑦𝑖
+𝑛
+𝑖=1
+)
+√[𝑛∑
+𝑥𝑖
+2
+𝑛
+𝑖=1
+−(∑
+𝑥𝑖
+𝑛
+𝑖=1
+)2] [𝑛∑
+𝑦𝑖
+2
+𝑛
+𝑖=1
+−(∑
+𝑦𝑖
+𝑛
+𝑖=1
+)2]
+ 
+(3.12) 
+dengan: 
+𝑐𝑥𝑦 
+: korelasi sampel antara variabel 𝑥 dan variabel 𝑦 
+𝑥𝑖 
+: pengamatan ke-𝑖 pada variabel 𝑥 
+𝑦𝑖 
+: pengamatan ke-𝑖 pada variabel 𝑦 
+n 
+: jumlah pengamatan 
+ 
+(a) 
+Asumsi Sampel Mewakili Populasi 
+Data yang digunakan dalam melakukan analisis umumnya merupakan data 
+sampel yang diharapkan mampu mewakili populasi. Oleh karena itu, penting untuk 
+dilakukan pemeriksaan bahwa sampel yang digunakan sudah mewakili populasi sehingga 
+hasil analisis dapat digeneralisasi untuk populasi tersebut (Hair et al., 2014). Pemeriksaan 
+asumsi sampel mewakili populasi dilakukan dengan menggunakan uji Kaiser Meyer 
+Olkin (KMO). Statistik dari uji KMO adalah sebagai berikut.  
+ 
+𝐾𝑀𝑂=
+∑∑
+𝑐𝑥𝑦
+2
+𝑥≠𝑦
+∑∑
+𝑐𝑥𝑦
+2
+𝑥≠𝑦
++ ∑∑
+𝑎𝑥𝑦
+2
+𝑥≠𝑦
+ 
+(3.13) 
+dengan: 
+𝑎𝑥𝑦= −
+𝑅𝑥𝑦
+√𝑅𝑥𝑥𝑅𝑦𝑦, 𝑅𝑥𝑦= (−1)𝑥+𝑦𝑀𝑥𝑦  
+𝑐𝑥𝑦 : korelasi sampel antara variabel 𝑥 dan variabel 𝑦 
+𝑎𝑥𝑦 : matriks korelasi parsial antara variabel 𝑥 dan 𝑦 
+𝑅𝑥𝑦 : kofaktor dari elemen 𝑐𝑥𝑦 pada matriks korelasi 𝑪 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+26 
+ 
+ 
+Universitas Indonesia 
+𝑀𝑥𝑦 : determinan dari submatriks yang tersisa setelah baris ke-𝑥 dan kolom ke-𝑦 pada 
+matriks 𝑪 dihilangkan. 
+ 
+Nilai KMO menunjukkan kecukupan dan kelayakan dari sampel. Nilai KMO 
+berkisar antara 0 sampai 1. Sampel dikatakan mewakili populasi jika nilai KMO ≥0,5. 
+Kategori nilai KMO untuk melihat kelayakan data ditunjukkan pada Tabel 3.1 (Shrestha, 
+2021). Nilai KMO yang semakin mendekati 1 menunjukkan bahwa data yang digunakan 
+semakin memadai untuk dilakukan analisis faktor. 
+Tabel 3.1. Nilai KMO 
+Nilai KMO 
+Kategori Penilaian 
+0,8 ≤𝐾𝑀𝑂≤1,0 
+Data sangat memadai 
+0,7 ≤𝐾𝑀𝑂< 0,8 
+Data memadai 
+0,6 ≤𝐾𝑀𝑂< 0,7 
+Data cukup 
+0,5 ≤𝐾𝑀𝑂< 0,6 
+Data tidak memadai 
+𝐾𝑀𝑂< 0,5 
+Data tidak dapat digunakan 
+ 
+(b) 
+Asumsi Tidak Terdapat Multikolinearitas 
+Multikolinearitas merupakan suatu keadaan di mana nilai korelasi antar-variabel 
+yang tinggi. Pemeriksaan ada atau tidaknya multikolinearitas dilakukan dengan 
+menggunakan Bartlett Test of Spherecity. Uji ini dilakukan untuk melihat apakah secara 
+signifikan matriks korelasinya mirip dengan matriks identitas (Ayuni dan Sari, 2017). 
+Jika demikian, maka setiap variabel hanya berkorelasi dengan dirinya sendiri.  
+Berdasarkan Shrestha (2021), langkah-langkah dalam melakukan uji Bartlett Test 
+of Spherecity yaitu sebagai berikut. 
+1. Hipotesis Penelitian 
+𝐻0: 𝐂= 𝐈 (Matriks korelasi merupakan matriks identitas) 
+𝐻1: 𝐂≠𝐈 (Matriks korelasi bukan merupakan matriks identitas) 
+Bentuk matriks identitas (𝐈) adalah sebagai berikut. 
+ 
+𝐈= (
+1
+0
+⋯
+0
+0
+1
+⋯
+0
+⋮
+⋮
+⋱
+⋮
+0
+0
+⋯
+1
+) 
+(3.14) 
+2. Statistik Uji 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+27 
+ 
+ 
+Universitas Indonesia 
+ 
+𝜒ℎ𝑖𝑡𝑢𝑛𝑔
+2
+= −ln|𝐂| [(𝑛−1) −2𝑝+ 5
+6
+] 
+(3.15) 
+dengan: 
+𝜒ℎ𝑖𝑡𝑢𝑛𝑔
+2
+ 
+: statistik uji chi-square 
+|𝐂| 
+: nilai determinan dari matriks korelasi 
+𝑛 
+: banyaknya pengamatan 
+𝑝 
+: banyaknya variabel 
+3. Kriteria Pemenuhan Asumsi 
+𝐻0 akan ditolak jika nilai 𝜒ℎ𝑖𝑡𝑢𝑛𝑔
+2
+≥𝜒𝛼,𝑝(𝑝−1)
+2
+2
+. Dapat juga dilihat melalui nilai 
+signifikansi atau p-value, yaitu 𝐻0 akan ditolak ketika p-value < 0,05 yang 
+menandakan terdapat multikolinearitas sehingga asumsi tidak terpenuhi.  
+Apabila terdapat multikolinearitas, maka perlu dilakukan reduksi dimensi salah satunya 
+dengan menggunakan analisis komponen utama. 
+ 
+3.2.2 Analisis Komponen Utama 
+Analisis komponen utama atau Principal Component Analysis (PCA) merupakan 
+analisis multivariat yang bertujuan untuk melihat pola data dengan cara mereduksi 
+dimensi (variabel) data menjadi dimensi yang lebih kecil dan tetap mempertahankan 
+informasi yang terdapat dalam data. Pada analisis komponen utama, akan dicari sebuah 
+persamaan yang berisi kombinasi linear dari berbagai variabel yang dapat menjelaskan 
+keragaman data dengan maksimal. Persamaan tersebut disebut komponen utama. Antara 
+komponen utama satu dengan yang lainnya adalah saling bebas sehingga analisis 
+komponen utama dapat mengatasi masalah multikolinearitas pada data. Berdasarkan 
+Johnson dan Wichern (2014), langkah-langkah dalam melakukan analisis komponen 
+utama adalah sebagai berikut. 
+1. Misalkan terdapat vektor acak 𝑿= [𝑥1, 𝑥2, … , 𝑥𝑝]. Hitung matriks kovariansi (𝚺) 
+dari vektor tersebut yang memiliki pasangan nilai eigen (𝜆) dan vektor eigen (𝒗), 
+yaitu (𝜆1, 𝒗1 ), (𝜆2, 𝒗2 ), … , (𝜆𝑝, 𝒗𝑝), dengan nilai eigen 𝜆1 ≥𝜆2 ≥⋯≥𝜆𝑝≥0. 
+2. Mencari persamaan karakteristik. 
+ 
+(𝚺−𝜆𝑰)𝒗= 0 
+(3.16) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+28 
+ 
+ 
+Universitas Indonesia 
+Saat |𝚺−𝜆𝑰| ≠0, maka 𝒗= 0 akan menjadi satu-satunya solusi. Dengan 
+demikian, akan ditetapkan |𝚺−𝜆𝑰| = 0 yang disebut sebagai persamaan 
+karakteristik. 
+3. Menghitung nilai eigen menggunakan persamaan karakteristik tersebut. 
+4. Menghitung vektor eigen menggunakan persamaan (𝚺−𝜆𝑰)𝒗= 0. 
+5. Membentuk 𝑌𝑖 atau komponen utama ke-𝑖 dengan persamaan berikut. 
+ 
+𝑌𝑖= 𝒗𝑖
+′𝒙= 𝑣𝑖1𝑥1 + 𝑣𝑖2𝑥2 + ⋯+ 𝑣𝑖𝑝𝑥𝑝,
+𝑖= 1,2, … , 𝑝 
+(3.17) 
+Semua komponen utama yang telah didapat pada akhirnya tidak berkorelasi, 
+sehingga akan memiliki matriks kovariansi 𝚺 dengan bentuk berikut. 
+ 
+𝚺= (
+𝑠11
+0
+⋯
+0
+0
+𝑠22
+⋯
+0
+⋮
+⋮
+⋱
+⋮
+0
+0
+⋯
+𝑠𝑝𝑝
+) 
+(3.18) 
+Variansi dari komponen utama merupakan nilai eigen dari matriks kovariansi 𝚺 atau 
+𝑣𝑎𝑟(𝑌𝑖) = 𝒗𝑖
+′𝚺𝒗𝑖= 𝜆𝑖, 𝑖= 1,2, … , 𝑝. Sedangkan kovariansi dari suatu komponen utama 
+dengan komponen utama lainnya bernilai 0 atau dapat ditulis 𝑐𝑜𝑣(𝑌𝑖, 𝑌𝑘) = 𝒗𝒊
+′𝚺𝒗𝒌=
+0, 𝑖≠𝑘. 
+Menurut Johnson dan Wichern (2014), berikut adalah beberapa cara yang dapat 
+digunakan untuk menentukan banyaknya jumlah komponen utama. 
+1. Menggunakan nilai eigen, yaitu dengan mempertahankan komponen utama yang 
+memiliki nilai eigen lebih besar dari 1. 
+2. Menggunakan screeplot, yaitu dengan mempertahankan jumlah komponen utama 
+yang digunakan saat kurva mulai melandai. 
+3. Menggunakan total variansi yang dapat dijelaskan oleh komponen utama. 
+ 
+3.2.3 Penentuan Jumlah Cluster Optimal 
+Sebelum melakukan analisis clustering menggunakan metode Ward, perlu 
+dilakukan penentuan jumlah kelompok optimal. Pada penelitian ini, digunakan metode 
+silhouette untuk menentukan jumlah cluster optimal yang didasari pada penelitian yang 
+dilakukan oleh Dewi dan Pramita (2019) di mana menunjukkan keunggulan metode 
+silhouette jika dibandingkan dengan metode elbow pada pengelompokan kerajinan di Bali 
+menggunakan metode K-Medoids. Pada penelitian yang dilakukan oleh Vania dan Sari 
+(2023) juga menyimpulkan bahwa metode silhouette lebih unggul dibandingkan dengan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+29 
+ 
+ 
+Universitas Indonesia 
+metode elbow dalam menentukan jumlah cluster yang optimal pada clustering jumlah 
+produksi padi dan luas lahan padi di Jawa Barat pada tahun 2020, 2021, dan 2022 
+menggunakan algoritma k-means. 
+Koefisien silhouette adalah sebuah nilai yang digunakan untuk melihat kualitas 
+cluster yaitu seberapa baik objek ditempatkan dalam sebuah cluster. Berdasarkan 
+Kaufman (2009), langkah-langkah mencari koefisien silhouette adalah sebagai berikut. 
+1. Menghitung rata-rata jarak antar-pengamatan yang berada di cluster yang sama. 
+Misalkan terdapat cluster A dengan 𝑖 merupakan suatu pengamatan yang berada 
+di cluster A. Rata-rata jarak pengamatan i dengan pengamatan lainnya yang 
+berada di cluster A dinotasikan dengan 𝑎(𝑖). 
+ 
+𝑎(𝑖) =
+1
+𝑛𝐴−1
+∑
+𝑑(𝑖, 𝑟)
+𝑛𝐴
+𝑟=1,𝑟≠𝑖
+ 
+(3.19) 
+dengan: 
+𝑎(𝑖) 
+: rata-rata jarak pengamatan i dengan pengamatan lainnya yang berada di 
+cluster A 
+𝑛𝐴 
+: banyaknya anggota cluster A 
+𝑑(𝑖, 𝑟) : jarak euclidean antara pengamatan 𝑖 dan 𝑟 dengan 𝑖, 𝑟 sama-sama berada 
+di cluster A. 
+2. Menghitung rata-rata jarak suatu pengamatan dengan semua pengamatan yang 
+berada di cluster yang berbeda. Misalkan terdapat cluster C dengan cluster A≠C. 
+Rata-rata jarak pengamatan 𝑖 yang berada di cluster A dengan semua pengamatan 
+yang berada di cluster C dinotasikan sebagai 𝑎(𝑖, 𝐶). 
+ 
+𝑎(𝑖, 𝐶) = 1
+𝑛𝐶
+∑𝑑(𝐴𝑖, 𝐶𝑗)
+𝑛𝐶
+𝑗=1
+ 
+(3.20) 
+dengan:  
+𝑎(𝑖, 𝐶) 
+: rata-rata jarak pengamatan i dengan semua pengamatan yang berada  
+ 
+  di cluster C 
+𝑛𝐶 
+: banyaknya anggota cluster C 
+𝑑(𝐴𝑖, 𝐶𝑗) : jarak euclidean pengamatan 𝑖 yang berada di cluster A dengan  
+ 
+  pengamatan 𝑗 yang berada di cluster 𝐶. 
+3. Menghitung nilai 𝑏(𝑖) menggunakan persamaan berikut. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+30 
+ 
+ 
+Universitas Indonesia 
+ 
+𝑏(𝑖) = min
+𝐴≠𝐶𝑎(𝑖, 𝐶) 
+(3.21) 
+4. Menghitung nilai silhouette yang dinotasikan dengan 𝑠(𝑖) menggunakan 
+persamaan berikut. 
+ 
+𝑠(𝑖) =
+𝑏(𝑖) −𝑎(𝑖)
+max {𝑎(𝑖), 𝑏(𝑖)} 
+(3.22) 
+Nilai 𝑠(𝑖) berada pada rentang -1 sampai 1 (Shutaywi dan Kachouie, 2021). Nilai 
+𝑠(𝑖) yang negatif menandakan bahwa jarak antar-pengamatan dalam suatu cluster 
+lebih besar dibandingan dengan cluster lainnya dan sebaliknya. Berikut adalah 
+interpretasi dari nilai 𝑠(𝑖) (Kaufman dan Rousseeuw, 2009). 
+Tabel 3.2. Interpretasi Nilai Silhouette 
+Nilai 𝒔(𝒊) 
+Interpretasi 
+𝑠(𝑖) ≈−1 
+pengamatan 𝑖 berada di cluster yang tidak tepat. 
+𝑠(𝑖) ≈0 
+pengamatan 𝑖 berada di antara dua cluster 
+𝑠(𝑖) ≈1 
+pengamatan 𝑖 sudah berada di cluster yang tepat. 
+5. Menghitung nilai koefisien silhouette (𝐾𝑆) dari clustering dengan 𝑛 banyaknya 
+pengamatan menggunakan persamaan berikut. 
+ 
+𝐾𝑆= 1
+𝑛∑𝑠(𝑖)
+𝑛
+𝑖=1
+ 
+(3.23) 
+Berdasarkan Kaufman dan Rousseeuw (2009), kriteria pengukuran nilai 
+koefisien silhouette adalah sebagai berikut. 
+Tabel 3.3. Interpretasi Nilai Koefisien Silhouette 
+Koefisien Silhouette 
+Keterangan 
+0,7 < 𝐾𝑆≤1 
+Terdapat ikatan yang sangat baik antara pengamatan 
+dengan kelompok yang terbentuk (Strong Structure) 
+0,5 < 𝐾𝑆≤0,7 
+Terdapat ikatan yang cukup baik antara pengamatan 
+dengan kelompok yang terbentuk (Medium Structure) 
+0,25 < 𝐾𝑆≤0,5 
+Terdapat ikatan yang lemah antara pengamatan 
+dengan kelompok yang terbentuk (Weak Structure) 
+𝐾𝑆≤0,25 
+Tidak terdapat ikatan antara pengamatan dengan 
+kelompok yang terbentuk 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+31 
+ 
+ 
+Universitas Indonesia 
+3.2.4 Clustering Metode Ward 
+Dalam metode Ward, pembentukan cluster didasarkan pada nilai JKE (Jumlah 
+Kuadrat Eror) yang dihitung dari total penyimpangan kuadrat setiap pengamatan dari 
+rata-rata cluster asalnya (Rencher dan Christensen, 2012). Misalkan terdapat dua buah 
+cluster, yaitu cluster A dan cluster C. Nilai JKE dari masing-masing cluster dapat dicari 
+dengan persamaan berikut. 
+ 
+𝐽𝐾𝐸𝐴= ∑(𝒚𝑖−𝒚̅𝐴)′(𝒚𝑖−𝒚̅𝐴)
+𝑛𝐴
+𝑖=1
+ 
+(3.24) 
+ 
+𝐽𝐾𝐸𝐶= ∑(𝒚𝑖−𝒚̅𝐶)′(𝒚𝑖−𝒚̅𝐶)
+𝑛𝐶
+𝑖=1
+ 
+(3.25) 
+Nilai JKE yang dihasilkan saat menggabungkan cluster A dengan cluster C yang 
+dinotasikan sebagai 𝐽𝐾𝐸𝐴𝐶, dapat dihitung menggunakan persamaan berikut (Rencher 
+dan Christensen, 2012). 
+ 
+𝐽𝐾𝐸𝐴𝐶= ∑(𝒚𝑖−𝒚̅𝐴𝐶)′(𝒚𝑖−𝒚̅𝐴𝐶)
+𝑛𝐴𝐶
+𝑖=1
+ 
+(3.26) 
+dengan 
+ 
+𝒚̅𝐴𝐶= 𝑛𝐴𝒚̅𝐴+ 𝑛𝐶𝒚̅𝐶
+𝑛𝐴+ 𝑛𝐶
+ 
+(3.27) 
+dan  
+𝑦𝑖 
+ 
+: nilai pengamatan ke-𝑖 dalam suatu cluster 
+𝑦̅𝐴, 𝑦̅𝐶, 𝑦̅𝐴𝐶 
+: nilai rata-rata pengamatan pada masing-masing cluster 𝐴, 𝐶, dan 𝐴𝐶 
+𝑛𝐴, 𝑛𝐶, 𝑛𝐴𝐶 
+: banyaknya pengamatan pada masing-masing cluster 𝐴, 𝐶, dan 𝐴𝐶 
+ 
+  
+Berdasarkan Rencher dan Christensen (2012), langkah-langkah melakukan 
+clustering menggunakan metode Ward adalah sebagai berikut. 
+1. Membuat sebanyak 𝑘 buah cluster dengan setiap cluster beranggotakan satu 
+pengamatan.  
+2. Menghitung nilai peningkatan JKE saat menggabungkan dua cluster yang 
+dinotasikan dengan 𝐼. Nilai 𝐼 dihitung untuk setiap kemungkinan pasangan 
+cluster. Misalkan akan dihitung nilai 𝐼 antara cluster A dan cluster C. Berikut 
+adalah persamaannya. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+32 
+ 
+ 
+Universitas Indonesia 
+ 
+𝐼𝐴𝐶=
+𝑛𝐴𝑛𝐶
+𝑛𝐴+ 𝑛𝐶
+(𝑦̅𝐴−𝑦̅𝐶)′(𝑦̅𝐴−𝑦̅𝐶) 
+(3.28) 
+dengan: 
+𝑦𝑖 
+ 
+: nilai pengamatan ke-𝑖 dalam suatu cluster 
+𝑦̅𝐴, 𝑦̅𝐶, 𝑦̅𝐴𝐶 
+: nilai rata-rata pengamatan pada masing-masing cluster 𝐴, 𝐶, dan 
+𝐴𝐶 
+𝑛𝐴, 𝑛𝐶, 𝑛𝐴𝐶 
+: banyaknya pengamatan pada masing-masing cluster 𝐴, 𝐶, dan 𝐴𝐶 
+3. Menggabungkan dua cluster yang menghasilkan nilai 𝐼 terkecil.  
+4. Ulangi langkah 2 dan 3 hingga menghasilkan 1 cluster yang berisi semua 
+pengamatan. 
+Hasil dari metode Ward ditunjukkan dalam sebuah dendogram, dengan sumbu 
+vertikal menunjukkan pengamatan dan sumbu horizontal menunjukkan nilai JKE saat 
+terjadi penggabungan cluster yang nilainya sudah ditransformasi.  
+Menurut Hair et al. (2014), terdapat beberapa hal yang harus dipertimbangkan 
+untuk menentukan jumlah cluster yang digunakan.  
+1. Melihat peningkatan 𝑆𝑆𝐸. 
+Peningkatan nilai JKE yang besar pada Tahap ke-𝑖 mengindikasikan bahwa terjadi 
+penggabungan dua cluster yang cukup berbeda. Oleh sebab itu, jumlah cluster 
+yang dipilih adalah sebanyak jumlah cluster yang ada pada Tahap ke-(𝑖−1). 
+Peningkatan 𝑆𝑆𝐸 pada tahap ke-𝑖 dihitung dengan persamaan berikut. 
+ 
+𝐽𝐾𝐸(𝑖) −𝐽𝐾𝐸(𝑖−1) 
+(3.29) 
+dengan: 
+𝐽𝐾𝐸(𝑖) 
+: JKE pada Tahap ke-𝑖 
+𝐽𝐾𝐸(𝑖−1) 
+: JKE pada Tahap ke-(𝑖−1) 
+2. Melihat proporsi peningkatan 𝑆𝑆𝐸𝑡𝑜𝑡𝑎𝑙.  
+Nilai 𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 yang besar mengindikasikan bahwa terjadi penggabungan cluster 
+yang cukup berbeda dan sebaliknya. Saat proporsi peningkatan 𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 bernilai 
+cukup besar antara Tahap ke-(𝑖−1) dan ke-𝑖, maka jumlah cluster yang 
+digunakan adalah sebanyak jumlah cluster yang terdapat pada Tahap ke-(𝑖−1). 
+Proporsi peningkatan 𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 pada Tahap ke-𝑖 dihitung dengan persamaan 
+berikut. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+33 
+ 
+ 
+Universitas Indonesia 
+ 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙(𝑖) −𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙(𝑖−1)
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙(𝑖−1)
+× 100 
+(3.30) 
+dengan: 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙(𝑖) 
+: JKE total pada Tahap ke-𝑖 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙(𝑖−1) : JKE total pada Tahap ke-(𝑖−1) 
+ 
+3.2.5 Contoh Penghitungan Clustering Menggunakan Metode Ward 
+ 
+Pada subbab ini, diberikan contoh penghitungan clustering menggunakan metode 
+Ward. Misalkan dilakukan clustering pada 5 buah pengamatan yang masing-masing 
+bernilai A=5, B=7, C=10, D=15, E=16. Di awal, jumlah cluster ada sebanyak jumlah 
+pengamatan dan masing-masing cluster berisi satu pengamatan. 
+1. Tahap ke-1 
+Pada tahap ini, kemungkinan cluster berisikan dua anggota. Cluster-cluster yang 
+mungkin terbentuk adalah AB, AC, AD, AE, BC, BD, BE, CD, CE, dan DE. 
+Ditemukan bahwa pembentukan cluster DE menghasilkan nilai 𝐼 yang terkecil, 
+yaitu sebesar 0,5 dengan perhitungan sebagai berikut. 
+𝐼𝐷𝐸=
+𝑛𝐷𝑛𝐸
+𝑛𝐷+ 𝑛𝐸
+(𝑦̅𝐷−𝑦̅𝐸)′(𝑦̅𝐷−𝑦̅𝐸) = 1(1)
+1 + 1 (15 −16)′(15 −16) = 0,5 
+Sehingga pada tahap ini memiliki 𝑆𝑆𝐸𝑡𝑜𝑡𝑎𝑙(1) = 0,5.  
+2. Tahap ke-2 
+Pada tahap ini, cluster-cluster yang mungkin terbentuk adalah AB, AC, ADE, BC, 
+BDE, dan CDE. Ditemukan bahwa pembentukan cluster AB menghasilkan nilai 
+𝐼 yang terkecil, yaitu sebesar 2 dengan perhitungan sebagai berikut. 
+𝐼𝐴𝐵=
+𝑛𝐴𝑛𝐵
+𝑛𝐴+ 𝑛𝐵
+(𝑦̅𝐴−𝑦̅𝐵)′(𝑦̅𝐴−𝑦̅𝐵) = 1(1)
+1 + 1 (5 −7)′(5 −7) = 2 
+Sehingga pada tahap ini memiliki 𝑆𝑆𝐸𝑡𝑜𝑡𝑎𝑙(2) = 0,5 + 2 = 2,5.  
+3. Tahap ke-3 
+Pada tahap ini, cluster-cluster yang mungkin terbentuk adalah ABC, ABDE, dan 
+CDE. Ditemukan bahwa pembentukan cluster ABC menghasilkan nilai 𝐼 yang 
+terkecil, yaitu sebesar 10,67 dengan perhitungan sebagai berikut. 
+𝐼𝐴𝐵𝐶=
+𝑛𝐴𝐵𝑛𝑐
+𝑛𝐴𝐵+ 𝑛𝐶
+(𝑦̅𝐴𝐵−𝑦̅𝐶)′(𝑦̅𝐴𝐵−𝑦̅𝐶) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+34 
+ 
+ 
+Universitas Indonesia 
+= 2(1)
+2 + 1 (5 + 7
+2
+−10)
+′
+(5 + 7
+2
+−10) 
+= 10,67 
+Sehingga pada tahap ini memiliki 𝑆𝑆𝐸𝑡𝑜𝑡𝑎𝑙(3) = 2,5 + 10,67 = 13,17. 
+4. Tahap ke-4 
+Pada tahap ini, cluster yang mungkin terbentuk adalah ABCDE. Ditemukan 
+bahwa pembentukan cluster ABCDE menghasilkan nilai 𝐼 sebesar 80,033 dengan 
+perhitungan sebagai berikut. 
+𝐼𝐴𝐵𝐶𝐷𝐸=
+𝑛𝐴𝐵𝐶𝑛𝐷𝐸
+𝑛𝐴𝐵𝐶+ 𝑛𝐷𝐸
+(𝑦̅𝐴𝐵𝐶−𝑦̅𝐷𝐸)′(𝑦̅𝐴𝐵𝐶−𝑦̅𝐷𝐸) 
+= 3(2)
+3 + 2 (5 + 7 + 10
+3
+−15 + 16
+2
+)
+′
+(5 + 7 + 10
+3
+−15 + 16
+2
+) 
+= 6
+5 (22
+3 −31
+2 )
+′
+(22
+3 −31
+2 ) 
+= 80,033 
+Sehingga pada tahap ini memiliki 𝑆𝑆𝐸𝑡𝑜𝑡𝑎𝑙(3) = 13,17 + 80,033 = 93,203. 
+5. Menentukan jumlah cluster dengan melihat peningkatan JKE dan proporsi 
+peningkatan 𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 (%). 
+Tabel 3.4. Hasil Clustering Metode Ward pada Data Contoh 
+Tahap 
+Cluster yang 
+digabungkan 
+JKE 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 
+Peningkatan 
+JKE 
+Proporsi 
+Peningkatan 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 
+(%) 
+Jumlah 
+Cluster 
+1 
+D dan E 
+0,5 
+0,5 
+0,5 
+- 
+4 = {A, B, 
+C, DE} 
+2 
+A dan B 
+2 
+2,5 
+1,5 
+400 
+3 = {AB, 
+C, DE} 
+3 
+AB dan C 
+10,67 
+13,17 
+8,67 
+426,8 
+2 = {ABC, 
+DE} 
+4 
+ABC dan 
+DE 
+80,033 
+93,203 
+69,363 
+607,69 
+1 = 
+{ABCDE} 
+Pada Tabel 3.4 terlihat bahwa peningkatan JKE dan proporsi peningkatan 
+𝐽𝐾𝐸𝑡𝑜𝑡𝑎𝑙 (%) yang terbesar terdapat pada Tahap ke-4 sehingga jumlah cluster 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+35 
+ 
+ 
+Universitas Indonesia 
+yang digunakan adalah jumlah cluster pada Tahap ke-3, yaitu dua cluster. Dengan 
+demikian terbentuk dua cluster, yaitu ABC dan DE. 
+ 
+3.2.6 Analisis Biplot 
+Analisis biplot merupakan analisis ekplorasi yang menyajikan data multivariat 
+dalam ruang bidang dua dimensi. Informasi yang disajikan oleh biplot mencakup titik 
+pengamatan dan variabel secara simultan dalam ruang bidang dua dimensi. Metode biplot 
+dapat memberikan empat informasi penting, yakni kedekatan atau kemiripan antar-
+pengamatan yang diamati, nilai relatif variabel pada suatu pengamatan, korelasi antar-
+variabel, serta keragaman variabel (Mattjik et al., 2011). Berdasarkan Rencher dan 
+Christensen (2012), langkah-langkah dalam analisis biplot adalah sebagai berikut. 
+1. Menyusun data ke dalam bentuk matriks 𝑿 yang berukuran (𝑛× 𝑝) dengan 𝑛 
+banyaknya pengamatan dan 𝑝 banyaknya variabel.  
+2. Menghitung matriks 𝑿′𝑿. 
+3. Menghitung nilai eigen (𝜆) dari matriks 𝑿′𝑿. 
+4. Menghitung matriks 𝑼, 𝚲, dan 𝑽′. Berdasarkan Singular Value Decompotition 
+(SVD), matriks data (𝑿) dapat ditulis sebagai berikut. 
+ 
+𝑿= 𝑼𝜦𝑽′ 
+(3.32) 
+dengan: 
+𝑼 : matriks ortogonal berukuran (𝑛× 𝑟) 
+𝜦 : matriks diagonal berukuran (𝑟 × 𝑟), 𝚲= diag(√𝜆1, √𝜆2, … , √𝜆𝑟) 
+𝑽 : matriks ortogonal berukuran (𝑝× 𝑟) 
+𝑟 : rank matriks X. 
+Elemen diagonal pada matriks 𝜦 merupakan akar kuadrat dari nilai eigen matriks 
+𝑿′𝑿 dengan √𝜆1 ≥√𝜆2 ≥⋯≥√𝜆𝑟. Matriks 𝑽 berisi vektor eigen yang 
+bersesuaian dengan nilai eigen dari matriks 𝑿′𝑿 di mana 𝑽= [𝒗𝟏, 𝒗𝟐, … , 𝒗𝒓] 
+yang elemennya merupakan vektor kolom yang dinormalisasi. Elemen matriks 𝑼 
+yang dinotasikan dengan 𝑈𝑖 dapat dihitung dengan persamaan berikut. 
+ 
+𝑈𝑖= 1
+√𝜆𝑖
+× 𝒗𝒊 
+(3.33) 
+dengan: 
+𝑈𝑖 
+: elemen ke-𝑖 pada matriks U 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+36 
+ 
+ 
+Universitas Indonesia 
+𝜆𝑖 
+: nilai eigen ke-𝑖 dari matriks 𝑿′𝑿 
+𝒗𝑖 
+: elemen ke-𝑖 pada matriks 𝑽 
+5. Menghitung matriks 𝑮= 𝑼𝜦𝛼 dan 𝑯′ = 𝜦1−𝛼𝑽′ dengan 0 ≤𝛼≤1. Sehingga 
+akan didapatkan persamaan sebagai berikut. 
+ 
+𝑿= 𝑼𝜦𝑽′ 
+= 𝑼𝜦𝛼𝜦1−𝛼𝑽′ 
+= 𝑮𝑯′ 
+(3.34) 
+elemen ke-(𝑖, 𝑗) dari matriks 𝑿 dapat dituliskan sebagai berikut. 
+ 
+𝑥𝑖𝑗= 𝒈𝑖
+′𝒉𝑗 ;  𝑖= 1,2, … , 𝑛; 𝑗= 1,2, … , 𝑝 
+(3.35) 
+𝒈𝑖
+′ dan 𝒉𝑗 berturut-turut adalah vektor baris yang berasal dari matriks 𝑮 dan vektor 
+kolom dari matriks 𝑯 yang memiliki 𝑟 dimensi. Jika digunakan 𝛼= 0, maka akan 
+memberikan kesesuaian untuk keragaman data (Jolliffe, 2010). 
+6. Mencari koordinat pengamatan dengan cara mengambil dua kolom pertama dari 
+masing-masing matriks 𝑮 dan 𝑯 yang ditulis sebagai matriks 𝑮𝟐 dan 𝑯𝟐. 
+7. Membuat biplot menggunakan matriks 𝑮𝟐 dan 𝑯𝟐. Setiap baris pada matriks 𝑮𝟐 
+merupakan koordinat (𝑥, 𝑦) untuk setiap pengamatan dan setiap baris pada matriks 
+𝑯𝟐 merupakan koordinat (𝑥, 𝑦) untuk setiap variabel.  
+8. Mengukur kualitas pemetaan biplot menggunakan persamaan berikut. 
+ 
+𝜌2 = 𝜆1 + 𝜆2
+∑
+𝜆𝑘
+𝑟
+𝑘=1
+ 
+(3.36) 
+dengan:  
+𝜆1: nilai eigen terbesar ke-1  
+𝜆2: nilai eigen terbesar ke-2  
+𝜆𝑘: nilai eigen terbesar ke-𝑘, 𝑘= 1,2, … , 𝑟. 
+Saat nilai 𝜌2 mendekati satu menandakan bahwa pemetaan biplot semakin baik 
+dalam menyajikan informasi data yang sebenarnya. 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+37 
+Universitas Indonesia 
+BAB IV 
+HASIL DAN PEMBAHASAN 
+Bab ini berisi pembahasan mengenai data yang digunakan, statistika deskriptif, 
+penerapan biclustering metode plaid model pada data, penerapan cluster-biplot pada data, 
+serta perbandingan hasil pengelompokan. 
+ 
+4.1 
+Data 
+Data yang digunakan pada penelitian ini merupakan data sekunder yang 
+bersumber dari publikasi Badan Pusat Statistik Republik Indonesia (2023). Data terdiri 
+dari 119 pengamatan (kabupaten/kota) dan 9 variabel indikator kesejahteraan rakyat. 
+Variabel-variabel yang digunakan pada penelitian ini, yaitu persentase penduduk miskin, 
+PDRB per kapita atas dasar harga berlaku, rata-rata lama sekolah, harapan lama sekolah, 
+persentase pengeluaran per kapita untuk makanan, tingkat pengangguran terbuka, jumlah 
+penduduk, kepadatan penduduk, dan angka harapan hidup. 
+Tabel 4.1. Variabel Penelitian 
+No Variabel 
+Deskripsi Variabel 
+Satuan 
+Tipe Data 
+1 
+kabkot 
+Nama kabupaten/kota 
+- 
+Kategorik 
+2 
+PPM 
+Persentase penduduk miskin 
+Persen 
+Numerik 
+3 
+PDRB 
+PDRB per kapita menurut harga 
+berlaku 
+Juta rupiah 
+per tahun 
+Numerik 
+4 
+RLS 
+Rata-rata lama sekolah 
+Tahun 
+Numerik 
+5 
+HLS 
+Harapan lama sekolah 
+Tahun 
+Numerik 
+6 
+PKM 
+Persentase pengeluaran per kapita 
+untuk konsumsi makanan 
+Persen 
+Numerik 
+7 
+TPT 
+Tingkat pengangguran terbuka 
+Persen 
+Numerik 
+8 
+JP 
+Jumlah penduduk 
+Jiwa 
+Numerik 
+9 
+KP 
+Kepadatan penduduk 
+Jiwa per km2 
+Numerik 
+10 
+AHH 
+Angka harapan hidup 
+Tahun 
+Numerik 
+ 
+4.2 
+Statistika Deskriptif 
+Pada penelitian ini, digunakan 119 kabupaten/kota yang berada di Pulau Jawa. 
+Untuk memperumum statistika deskriptif, kabupaten/kota tersebut dikelompokkan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+38 
+ 
+ 
+Universitas Indonesia 
+berdasarkan provinsi, yaitu Banten, DKI Jakarta, Jawa Barat, Jawa Tengah, Jawa Timur, 
+dan DI Yogyakarta.  
+ 
+Gambar 4.1. Persentase Penduduk Miskin  
+berdasarkan Provinsi di Pulau Jawa 
+ 
+Gambar 4.2. PDRB Per Kapita ADHB 
+berdasarkan Provinsi di Pulau Jawa
+Berdasarkan Gambar 4.1, rata-rata PPM pada kabupaten/kota di Provinsi DI 
+Yogyakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan pada pada 
+kabupaten/kota di Provinsi Banten dan DKI Jakarta cenderung lebih rendah daripada 
+provinsi lainnya. Sementara itu, pada Gambar 4.2 terlihat bahwa rata-rata PDRB pada 
+kabupaten/kota di Provinsi DKI Jakarta cenderung lebih tinggi daripada provinsi lainnya. 
+Sedangkan pada pada kabupaten/kota di Provinsi Jawa Tengah dan Jawa Barat cenderung 
+lebih rendah daripada provinsi lainnya. 
+ 
+Gambar 4.3. Rata-Rata Lama Sekolah 
+berdasarkan Provinsi di Pulau Jawa 
+ 
+Gambar 4.4. Harapan Lama Sekolah 
+berdasarkan Provinsi di Pulau Jawa
+Berdasarkan Gambar 4.3, rata-rata RLS pada kabupaten/kota di Provinsi DKI 
+Jakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan pada pada 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+39 
+ 
+ 
+Universitas Indonesia 
+kabupaten/kota di Provinsi Jawa Tengah dan Jawa Timur cenderung lebih rendah 
+daripada provinsi lainnya. Sementara itu, pada Gambar 4.4 terlihat bahwa rata-rata HLS 
+pada kabupaten/kota di Provinsi DI Yogyakarta cenderung lebih tinggi daripada provinsi 
+lainnya. Sedangkan pada pada kabupaten/kota di Provinsi Jawa Barat dan Jawa Tengah 
+cenderung lebih rendah daripada provinsi lainnya. 
+ 
+Gambar 4.5. Tingkat Pengangguran 
+Terbuka berdasarkan Provinsi di Pulau 
+Jawa 
+ 
+Gambar 4.6. Persentase Pengeluaran Per 
+Kapita untuk Makanan berdasarkan 
+Provinsi di Pulau Jawa
+Berdasarkan Gambar 4.5, rata-rata TPT pada kabupaten/kota di Provinsi DI 
+Yogyakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan pada pada 
+kabupaten/kota di Provinsi Banten dan DKI Jakarta cenderung lebih rendah daripada 
+provinsi lainnya. Sementara itu, pada Gambar 4.6 terlihat bahwa rata-rata PKM pada 
+kabupaten/kota di Provinsi DKI Jakarta cenderung lebih tinggi daripada provinsi lainnya. 
+Sedangkan pada pada kabupaten/kota di Provinsi Jawa Tengah dan Jawa Barat cenderung 
+lebih rendah daripada provinsi lainnya. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+40 
+Universitas Indonesia 
+ 
+Gambar 4.7. Jumlah Penduduk 
+berdasarkan Provinsi di Pulau Jawa 
+ 
+Gambar 4.8. Kepadatan Penduduk 
+berdasarkan Provinsi di Pulau Jawa 
+Berdasarkan Gambar 4.7, rata-rata JP pada kabupaten/kota di Provinsi Jawa Barat 
+dan DKI Jakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan pada pada 
+kabupaten/kota di Provinsi DI Yogyakarta cenderung lebih rendah daripada provinsi 
+lainnya. Sementara itu, pada Gambar 4.8 terlihat bahwa rata-rata KP pada kabupaten/kota 
+di Provinsi DKI Jakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan 
+pada pada kabupaten/kota di Provinsi Jawa Timur dan Jawa Tengah cenderung lebih 
+rendah daripada provinsi lainnya. 
+ 
+Gambar 4.9. Angka Harapan Hidup berdasarkan Provinsi 
+Berdasarkan Gambar 4.9, rata-rata AHH pada kabupaten/kota di Provinsi Jawa 
+Tengah dan DI Yogyakarta cenderung lebih tinggi daripada provinsi lainnya. Sedangkan 
+pada pada kabupaten/kota di Provinsi Banten cenderung lebih rendah daripada provinsi 
+lainnya. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+41 
+ 
+ 
+Universitas Indonesia 
+Tabel 4.2. Statistika Deskriptif 
+No Variabel Rata-Rata Minimum Maksimum Standar Deviasi 
+1 
+PPM 
+9,6 
+2,5 
+21,6 
+3,8 
+2 
+PDRB 
+70,5 
+19,96 
+736,06 
+96,9 
+3 
+RLS 
+8,6 
+5,06 
+11,9 
+1,6 
+4 
+HLS 
+13,25 
+11,78 
+17,61 
+1,04 
+5 
+PKM 
+51,04 
+32,12 
+65,38 
+6,85 
+6 
+TPT 
+6,12 
+1,36 
+10,78 
+2,28 
+7 
+JP 
+1.298.672 
+28.925 
+5.566.838 
+864.879 
+8 
+KP 
+3.340 
+383 
+23.249 
+4.532 
+9 
+AHH 
+73,055 
+65,18 
+77,82 
+2,519 
+Pada Tabel 4.2Tabel 4.3, dapat dilihat nilai rata-rata, minimum, maksimum, range 
+serta standar deviasi dari masing-masing variabel. Nilai standar deviasi suatu variabel 
+yang lebih besar dari nilai rata-rata menandakan variabel tersebut memiliki keragaman 
+data yang besar. Keragaman data yang besar terdapat pada variabel PDRB dan KP. 
+Sedangkan keragaman data yang kecil terdapat pada variabel PPM, RLS, HLS, PKM, 
+TPT, JP, dan AHH.   
+ 
+4.3 
+Penerapan Metode Biclustering Plaid Model pada Data 
+Model yang digunakan merupakan model yang paling sederhana, yaitu Θ𝑖𝑗𝑘= 𝜇𝑘. 
+Semakin sederhana model yang digunakan, maka semakin mudah dalam pencarian 
+bicluster sehingga dapat memaksimalkan jumlah bicluster yang akan terbentuk. Nilai 
+threshold yang dipilih oleh peneliti merupakan nilai threshold yang paling minimum dari 
+yang disarankan oleh Busygin et al. (2008), yaitu 𝜏1 = 0,5 dan 𝜏2 = 0,5. Digunakan nilai 
+threshold yang lebih kecil karena semakin besar nilai threshold yang digunakan maka 
+semakin banyak juga anggota bicluster yang terpangkas. Dipilih nilai threshold sekecil 
+mungkin agar tidak terlalu banyak pengamatan dan variabel yang terpangkas saat proses 
+pemangkasan bicluster. Kemudian digunakan back fitting sebanyak 3 kali. 
+Dengan bantuan software RStudio didapatkan dua bicluster yang tidak tumpang 
+tindih. Visualisasi dari dua bicluster tersebut dapat dilihat pada Gambar 4.10. Semakin 
+pekat warna heatmap pada suatu pengamatan, maka semakin besar nilai variabel pada 
+pengamatan tersebut dan sebaliknya. Pada heatmap, terlihat bahwa anggota bicluster 
+memiliki warna yang lebih pudar artinya pengamatan yang termasuk dalam suatu 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+42 
+ 
+ 
+Universitas Indonesia 
+bicluster memiliki nilai yang relatif kecil pada variabel yang termasuk dalam bicluster 
+tersebut. 
+ 
+Gambar 4.10. Heatmap Hasil Biclustering Plaid Model 
+Spesifikasi dari masing-masing bicluster tertera pada Tabel 4.3. Berdasarkan 
+Tabel 4.3, bicluster 1 berukuran 26 × 2 artinya terdapat 26 pengamatan dan 2 variabel 
+pada bicluster tersebut. Dengan demikian, dapat dideteksi bahwa 2 variabel (PPM dan 
+PKM) yang termasuk dalam bicluster 1 berpengaruh pada 26 pengamatan tersebut. 
+Sedangkan bicluster 2 berukuran 30 × 5 artinya terdapat 30 pengamatan dan 5 variabel 
+pada bicluster tersebut. Dengan demikian, dapat dideteksi bahwa 5 variabel (RLS, HLS, 
+KP, PDRB, dan TPT) yang termasuk dalam bicluster 2 berpengaruh pada 30 pengamatan 
+tersebut. 
+Tabel 4.3. Hasil Metode Biclustering Plaid Model 
+Bicluster Ukuran 
+Kabupaten/Kota 
+Variabel 
+1 
+26 × 2 
+Kota Tangerang, Kota Tangerang Selatan, Kota 
+Jakarta Selatan, Kota Jakarta Timur, Kota Jakarta 
+Pusat, Kota Jakarta Barat, Kota Jakarta Utara, 
+Bekasi, Kota Bogor, Kota Bandung, Kota Bekasi, 
+Kota Depok, Kota Cimahi, Kota Magelang, Kota 
+Salatiga, 
+Kota 
+Semarang, 
+Sleman, 
+Kota 
+Yogyakarta, Sidoarjo, Kota Blitar, Kota Malang, 
+Kota Probolinggo, Kota Mojokerto, Kota Madiun, 
+Kota Surabaya, Kota Batu 
+PPM, 
+PKM 
+2 
+30 × 5 
+ Majalengka, 
+Pangandaran, 
+Purbalingga, 
+Banjarnegara, Wonosobo, Magelang, Boyolali, 
+RLS, 
+HLS, 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+43 
+ 
+ 
+Universitas Indonesia 
+Wonogiri, Sragen, Grobogan, Blora, Rembang, 
+Pati, Jepara, Temanggung, Batang, Pekalongan, 
+Gunung Kidul, Pacitan, Trenggalek, Blitar, 
+Lumajang, Bondowoso, Situbondo, Probolinggo, 
+Nganjuk, Ngawi, Bojonegoro, Tuban, Sampang 
+TPT, 
+KP, 
+PDRB 
+Perbedaan karakteristik antar-bicluster dilihat dari nilai rata-rata variabel pada 
+masing-masing bicluster sebagaimana tertera pada Tabel 4.4. Pada variabel PPM dan 
+PKM, nilai rata-rata bicluster 1 lebih kecil dibandingkan dengan nilai rata-rata bicluster 
+2 dan nilai rata-rata Pulau Jawa. Sedangkan pada variabel RLS, HLS, AHH, TPT, PDRB, 
+KP, JP, nilai rata-rata bicluster 1 lebih besar dibandingkan dengan nilai rata-rata bicluster 
+2 dan nilai rata-rata Pulau Jawa. Secara umum, kabupaten/kota anggota bicluster 1 
+merupakan wilayah yang lebih sejahtera dilihat dari nilai rata-rata PPM dan PKM yang 
+lebih kecil, serta nilai rata-rata RLS, HLS, AHH, dan PDRB yang lebih besar 
+dibandingkan dengan nilai rata-rata Pulau Jawa. Sedangkan kabupaten/kota anggota 
+bicluster 2 merupakan wilayah yang kurang sejahtera dilihat dari nilai rata-rata PPM dan 
+PKM yang lebih besar, serta nilai rata-rata RLS, HLS, dan PDRB yang lebih kecil 
+dibandingkan dengan nilai rata-rata Pulau Jawa. Kabupaten/kota yang bukan anggota 
+bicluster 1 dan 2 merupakan wilayah yang kurang sejahtera dibanding bicluster 1, tetapi 
+lebih sejahtera dibanding bicluster 2. 
+Tabel 4.4. Nilai Rata-Rata Variabel pada Bicluster 1, Bicluster 2, dan Pulau Jawa 
+Variabel 
+Bicluster 1 
+Bicluster 2 
+Pulau Jawa 
+PPM 
+5,17 
+12,31 
+9,59 
+PKM 
+41,10 
+54,21 
+51,04 
+RLS 
+10,94 
+7,44 
+8,60 
+HLS 
+14,37 
+12,60 
+13,25 
+AHH 
+74,35 
+73,27 
+73,05 
+TPT 
+7,41 
+5,60 
+6,12 
+PDRB 
+139,40 
+33,98 
+70,50 
+KP 
+9.441,09 
+1.177,07 
+3.361,93 
+JP 
+1.403.090 
+1.086.796 
+1.298.672 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+44 
+ 
+ 
+Universitas Indonesia 
+ 
+Peta persebaran wilayah yang termasuk dalam bicluster 1 dan bicluster 2 masing-
+masing dapat dilihat pada Gambar 4.11 dan Gambar 4.12. Pada Gambar 4.11, wilayah 
+dengan warna merah pekat merupakan kabupaten/kota anggota bicluster 1. Wilayah 
+tersebut umumnya merupakan daerah perkotaan. Pada Gambar 4.12, wilayah dengan 
+warna biru pekat merupakan kabupaten/kota anggota bicluster 2. Wilayah tersebut 
+umumnya merupakan daerah perdesaan.  
+ 
+Gambar 4.11. Peta Wilayah Bicluster 1 (Warna Merah Pekat) 
+ 
+ 
+Gambar 4.12. Peta Wilayah Bicluster 2 (Warna Biru Pekat) 
+ 
+4.4 
+Penerapan Metode Cluster-Biplot pada Data 
+4.4.1 Pemeriksaan Asumsi Clustering 
+ 
+Pada subbab ini, dilakukan pemeriksaan asumsi clustering, yaitu asumsi sampel 
+mewakili populasi dengan menggunakan uji Kaiser Meyer Olkin (KMO) dan asumsi 
+tidak terdapat multikolinearitas dengan menggunakan Bartlett test of sphericity. Apabila 
+asumsi sampel mewakili populasi tidak terpenuhi, maka dibutuhkan penambahan 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+45 
+ 
+ 
+Universitas Indonesia 
+variabel. Sedangkan apabila asumsi tidak terdapat multikolinearitas tidak terpenuhi, maka 
+perlu dilakukan reduksi dimensi menggunakan analisis komponen utama. 
+ 
+(a) 
+Asumsi Sampel Mewakili Populasi 
+Uji KMO digunakan untuk memeriksa kecukupan dan kelayakan sampel. 
+Sebagaimana tertera pada Tabel 4.5, didapat nilai KMO overall (secara keseluruhan) 
+sebesar 0,76 ≥0,5 sehingga dapat dikatakan bahwa sampel mewakili populasi. 
+Berdasarkan Tabel 3.1, nilai KMO sebesar 0,76 menandakan bahwa data yang digunakan 
+memadai untuk dilakukan analisis faktor. Dengan demikian, asumsi ini terpenuhi dan data 
+yang digunakan dalam penelitian ini sudah layak untuk dilakukan analisis lebih lanjut. 
+Tabel 4.5. Hasil Uji KMO 
+Variabel 
+PPM RLS HLS AHH PKM TPT PDRB 
+JP 
+KP 
+Nilai KMO 
+0,84 
+0,75 
+0,72 
+0,63 
+0,85 
+0,60 
+0,82 
+0,47 0,77 
+Nilai KMO Overall 
+0,76 
+ 
+(b) 
+Asumsi Tidak Terdapat Multikolinearitas 
+Pemeriksaan asumsi tidak terdapat multikolinearitas dilakukan dengan 
+menggunakan Bartlett test of sphericity. Pada pengujian ini, didapatkan nilai p-value =
+2,22 × 10−16 < 0,05 = 𝛼. Dengan tingkat kepercayaan 95%, dapat disimpulkan bahwa 
+terdapat multikolinearitas pada data sehingga asumsi ini tidak terpenuhi. Sebelum 
+melanjutkan ke analisis clustering, perlu dilakukan analisis komponen utama terlebih 
+dahulu untuk mereduksi variabel yang berkorelasi menjadi beberapa komponen.  
+ 
+4.4.2 Mereduksi Dimensi Menggunakan Analisis Komponen Utama 
+Pada 
+pemeriksaan 
+asumsi 
+sebelumnya, 
+diketahui 
+bahwa 
+terdapat 
+multikolinearitas. Kemudian untuk mengatasi hal tesebut, maka kita bisa melakukan 
+reduksi dimensi menggunakan analisis komponen utama. Data yang digunakan telah 
+memadai untuk dilakukan analisis faktor sehingga analisis komponen utama pun dapat 
+dilakukan. Banyaknya jumlah komponen utama dilihat dari nilai eigen > 1. Berdasarkan 
+Tabel 4.6, terdapat dua nilai eigen yang lebih besar dari 1, yaitu komponen utama 1 
+dengan nilai eigen sebesar 4,15 dan komponen utama 2 dengan nilai eigen sebesar 1,64. 
+Dengan demikian, terbentuk dua komponen utama dari hasil reduksi sembilan variabel 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+46 
+ 
+ 
+Universitas Indonesia 
+yang ada. Dua komponen utama yang didapat akan dinotasikan dengan PC1 dan PC2. 
+Total keragaman data yang mampu dijelaskan oleh kedua komponen utama tersebut yaitu 
+sebesar 64,3%. 
+Tabel 4.6. Nilai Eigen 
+Jumlah Komponen 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+Nilai Eigen 
+4,14 1,64 0,95 0,77 0,52 0,39 0,35 0,15 0,09 
+Untuk mengetahui variabel mana saja yang dominan pada masing-masing 
+komponen utama, dapat dilihat dari nilai loading factor terbesarnya pada Tabel 4.7. Nilai 
+loading factor merupakan vektor eigen yang digunakan untuk membentuk komponen 
+utama. Semakin besar nilai loading factor suatu variabel pada komponen utama, semakin 
+besar pula hubungan pengaruh variabel tersebut dengan komponen utama yang 
+bersesuaian. Dengan demikian, variabel yang dominan pada PC1 adalah PPM, RLS, HLS, 
+PKM, KP, dan PDRB. Sedangkan variabel yang dominan pada PC2 adalah AHH, TPT, 
+dan JP. 
+Tabel 4.7. Nilai Loading Factor  
+Variabel 
+PC1 
+PC2 
+PPM 
+𝟎, 𝟑𝟖 
+−0,19 
+RLS 
+−𝟎, 𝟒𝟕 
+−0,04 
+HLS 
+−𝟎, 𝟑𝟑 
+−0,29 
+AHH 
+−0,23 
+−𝟎, 𝟑𝟔 
+PKM 
+𝟎, 𝟒𝟓 
+0,13 
+TPT 
+−0,16 
+𝟎, 𝟔𝟎 
+JP 
+−0,01 
+𝟎, 𝟓𝟗 
+KP 
+−𝟎, 𝟒𝟎 
+0,13 
+PDRB 
+−𝟎, 𝟐𝟖 
+0,09 
+Didapatkan data hasil analisis komponen utama yang tertera pada Lampiran 3. 
+Data tersebut yang akan digunakan dalam melakukan analisis clustering menggunakan 
+metode Ward. 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+47 
+ 
+ 
+Universitas Indonesia 
+4.4.3 Penentuan Jumlah Cluster Optimal Menggunakan Metode Silhouette 
+ 
+Pada penelitian ini, ditentukan jumlah cluster optimal untuk clustering metode 
+Ward dengan menggunakan metode silhouette. Dari Gambar 4.13, terlihat bahwa nilai 
+koefisien silhouette tertinggi berada saat jumlah cluster sebanyak dua buah atau 𝑘= 2. 
+Oleh karena itu, penelitian ini akan dilanjutkan dengan melakukan clustering metode 
+Ward dengan menggunakan jumlah cluster sebanyak dua buah. 
+ 
+Gambar 4.13. Nilai Koefisien Silhouette untuk Clustering Metode Ward 
+ 
+4.4.4 Penerapan Analisis Clustering Metode Ward 
+Pada subbab sebelumnya telah ditentukan jumlah cluster optimal, yaitu sebanyak 
+dua cluster. Selanjutnya dilakukan clustering menggunakan metode Ward dengan cluster 
+yang terbentuk sebanyak dua buah. Hasil clustering metode Ward dapat dilihat pada 
+Tabel 4.8. Cluster 1 berisi 33 kabupaten/kota dan cluster 2 berisi 86 kabupaten/kota. 
+Cluster 1 didominasi oleh kabupaten/kota yang umumnya merupakan daerah perkotaan. 
+Sedangkan cluster 2 didominasi oleh kabupaten/kota yang umumnya merupakan daerah 
+pedesaan. 
+Tabel 4.8. Hasil Clustering Metode Ward 
+Cluster 
+Jumlah Anggota 
+Anggota 
+1 
+33 
+Kota Tangerang, Kota Tangerang Selatan, Kota Jakarta 
+Selatan, Kota Jakarta Timur, Kota Jakarta Pusat, Kota 
+Jakarta Barat, Kota Jakarta Utara, Kota Bogor, Kota 
+Sukabumi, Kota Bandung, Kota Cirebon, Kota Bekasi, 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+48 
+ 
+ 
+Universitas Indonesia 
+Kota Depok, Kota Cimahi, Kota Banjar, Kota 
+Magelang, Kota Surakarta, Kota Salatiga, Kota 
+Semarang, Kota Pekalongan, Kota Tegal, Sleman, Kota 
+Yogyakarta, Sidoarjo, Kota Kediri, Kota Blitar, Kota 
+Malang, Kota Probolinggo, Kota Pasuruan, Kota 
+Mojokerto, Kota Madiun, Kota Surabaya, Kota Batu 
+2 
+86 
+Pandeglang, Lebak, Tangerang, Serang, Kota Cilegon, 
+Kota Serang, Kepulauan Seribu, Bogor, Sukabumi, 
+Cianjur, Bandung, Garut, Tasikmalaya, Ciamis, 
+Kuningan, 
+Cirebon, 
+Majalengka, 
+Sumedang, 
+Indramayu, Subang, Purwakarta, Karawang, Bekasi, 
+Bandung Barat, Pangandaran, Kota Tasikmalaya, 
+Cilacap, 
+Banyumas, 
+Purbalingga, 
+Banjarnegara, 
+Kebumen, Purworejo, Wonosobo, Magelang, Boyolali, 
+Klaten, Sukoharjo, Wonogiri, Karanganyar, Sragen, 
+Grobogan, Blora, Rembang, Pati, Kudus, Jepara, 
+Demak, Semarang, Temanggung, Kendal, Batang, 
+Pekalongan, Pemalang, Tegal, Brebes, Kulon Progo, 
+Bantul, Gunungkidul, Pacitan, Ponorogo, Trenggalek, 
+Tulungagung, Blitar, Kediri, Malang, Lumajang, 
+Jember, 
+Banyuwangi, 
+Bondowoso, 
+Situbondo, 
+Probolinggo, Pasuruan, Mojokerto, Jombang, Nganjuk, 
+Madiun, 
+Magetan, 
+Ngawi, 
+Bojonegoro, 
+Tuban, 
+Lamongan, Gresik, Bangkalan, Sampang, Pamekasan, 
+Sumenep 
+Perbedaan karakteristik antar-cluster dilihat dari nilai rata-rata variabel pada 
+masing-masing cluster sebagaimana tertera pada Tabel 4.9. Pada variabel PPM dan PKM, 
+nilai rata-rata cluster 1 lebih kecil daripada nilai rata-rata cluster 2 dan nilai rata-rata 
+Pulau Jawa. Sedangkan pada variabel RLS, HLS, AHH, TPT, PDRB, KP, JP, nilai rata-
+rata cluster 1 lebih besar daripada nilai rata-rata cluster 2 dan nilai rata-rata Pulau Jawa. 
+Secara umum, kabupaten/kota anggota cluster 1 diduga merupakan wilayah yang lebih 
+sejahtera dilihat dari nilai rata-rata PPM dan PKM yang lebih kecil, serta nilai rata-rata 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+49 
+ 
+ 
+Universitas Indonesia 
+RLS, HLS, AHH, dan PDRB yang lebih besar dibandingkan dengan nilai rata-rata pada 
+Pulau Jawa. Sedangkan kabupaten/kota anggota cluster 2 diduga merupakan wilayah 
+yang kurang sejahtera dilihat dari nilai rata-rata PPM dan PKM yang lebih besar, serta 
+RLS, HLS, AHH, dan PDRB yang lebih kecil dibandingkan dengan nilai rata-rata pada 
+Pulau Jawa. 
+Tabel 4.9. Nilai Rata-Rata Variabel Cluster 1, Cluster 2, dan Pulau Jawa 
+Variabel 
+Cluster 1 
+Cluster 2 
+Pulau Jawa 
+PPM 
+5,33 
+10,78 
+9,59 
+PKM 
+41,28 
+53,77 
+51,04 
+RLS 
+11,06 
+7,91 
+8,6 
+HLS 
+14,46 
+12,91 
+13,25 
+AHH 
+74,40 
+72,68 
+73,05 
+TPT 
+7,22 
+5,82 
+6,12 
+PDRB 
+164,40 
+44,25 
+70,5 
+KP 
+9.857,25 
+1.546,03 
+3.361,93 
+JP 
+1.310.319,73 
+1.295.415,39 
+1.298.672 
+ 
+4.4.5 Pemetaan Biplot 
+ 
+Dilakukan pemetaan hasil clustering serta variabel indikator kesejahteraan rakyat 
+dengan metode biplot. Visualisasi dari dua cluster yang terbentuk beserta titik 
+pengamatan dan variabel, ditampilkan pada Gambar 4.14 berikut. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+50 
+ 
+ 
+Universitas Indonesia 
+ 
+Gambar 4.14. Biplot 
+Telah dilakukan reduksi dimensi pada analisis komponen utama, yaitu mereduksi 
+9 dimensi (variabel) menjadi 2 dimensi (komponen utama). Persentase pada Dim1 dan 
+Dim2 merupakan besar keragaman data yang dapat dijelaskan oleh masing-masing PC1 
+(komponen utama 1) dan PC2 (komponen utama 2). Berdasarkan Gambar 4.14, dapat 
+dilihat bahwa proporsi keragaman data yang mampu diterangkan oleh biplot adalah 
+sebesar 64,3%, yaitu 46% (Dim1) + 18,3% (Dim2). Hal tersebut menunjukkan bahwa 
+metode biplot mampu menerangkan data dengan cukup baik.  
+Kedekatan antar-pengamatan pada biplot menunjukkan kemiripan karakteristik 
+dengan kabupaten/kota yang berdekatan memiliki karakteristik yang semakin mirip. Titik 
+pengamatan yang letaknya searah dengan suatu vektor variabel menandakan bahwa titik 
+pengamatan tersebut memiliki nilai rata-rata yang relatif lebih besar pada variabel 
+tersebut. Sedangkan titik pengamatan yang letaknya berlawanan arah dengan suatu vektor 
+variabel menandakan bahwa titik pengamatan tersebut memiliki nilai rata-rata yang relatif 
+lebih kecil pada variabel tersebut.  
+Titik kabupaten/kota pada cluster 1 dominan menyebar pada kuadran 3 dan 
+kuadran 4. Cluster ini cenderung berdekatan dengan variabel PDRB, KP, RLS, HLS, dan 
+AHH. Hal ini menunjukkan bahwa 33 kabupaten/kota pada cluster 1 memiliki nilai yang 
+relatif besar pada variabel-variabel tersebut. Sementara itu, letak cluster 1 berlawanan 
+dengan variabel PKM dan PPM yang artinya 33 kabupaten/kota pada cluster 1 memiliki 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+51 
+ 
+ 
+Universitas Indonesia 
+nilai yang relatif kecil pada kedua variabel tersebut. Dengan demikian, diduga bahwa 
+kabupaten/kota pada cluster 1 merupakan wilayah yang lebih sejahtera. 
+Titik kabupaten/kota pada cluster 2 dominan menyebar pada kuadran 1 dan 
+kuadran 2. Cluster ini cenderung berdekatan dengan variabel PKM dan PPM. Hal ini 
+menunjukkan bahwa 86 kabupaten/kota pada cluster 2 memiliki nilai yang relatif besar 
+pada variabel-variabel tersebut. Sementara itu, letak cluster 2 dominan berlawanan 
+dengan variabel PDRB, KP, RLS, HLS, dan AHH yang artinya 86 kabupaten/kota pada 
+cluster 2 memiliki nilai yang relatif kecil pada kedua variabel tersebut. Dengan demikian, 
+diduga bahwa kabupaten/kota pada cluster 2 merupakan wilayah yang kurang sejahtera. 
+Sudut yang terbentuk di antara dua vektor menunjukkan korelasi antara kedua 
+variabel pada vektor tersebut. Sudut lancip menandakan bahwa kedua variabel memiliki 
+korelasi positif, sudut tumpul menandakan bahwa kedua variabel memiliki korelasi 
+negatif, dan sudut siku-siku menandakan bahwa kedua variabel tidak berkorelasi. Pada 
+Gambar 4.14 terlihat bahwa terbentuk sudut lancip di antara vektor variabel PKM dan 
+PPM. Hal tersebut menandakan variabel PKM dan PPM memiliki korelasi positif. Selain 
+itu, sudut lancip juga terbentuk di antara vektor variabel PDRB, KP, RLS, HLS, dan AHH 
+yang artinya terdapat korelasi positif di antara variabel-variabel tersebut. Sementara itu, 
+baik vektor variabel PPM maupun PKM membentuk sudut tumpul dengan vektor variabel 
+TPT, PDRB, KP, RLS, HLS, dan AHH yang artinya terdapat korelasi negatif di antara 
+variabel-variabel tersebut.  
+Keragaman pada suatu variabel dapat diketahui dengan memperhatikan ukuran 
+panjang vektor variabel tersebut pada Gambar 4.14. Semakin panjang suatu vektor 
+variabel, maka semakin besar keragaman pada variabel tersebut. Sebaliknya, semakin 
+pendek suatu vektor variabel, maka semakin kecil keragaman pada vektor tersebut. Pada 
+Gambar 4.14, terlihat bahwa variabel RLS dan PKM memiliki vektor terpanjang yang 
+menandakan bahwa kedua variabel tersebut memiliki keragaman terbesar dibandingkan 
+dengan variabel-variabel lainnya. Sedangkan variabel AHH memiliki vektor terpendek 
+yang menandakan bahwa variabel tersebut memiliki keragaman terkecil dibandingkan 
+dengan variabel-variabel lainnya. Dengan demikian, indikator kesejahteraan yang paling 
+dominan adalah RLS dan PKM serta yang paling tidak dominan adalah AHH. 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+52 
+ 
+ 
+Universitas Indonesia 
+4.5. 
+Perbandingan Hasil Analisis Biclustering dan Cluster-Biplot 
+ 
+Hasil analisis biclustering dapat kita amati pada Gambar 4.10 dan Tabel 4.3. 
+Diketahui bahwa kabupaten/kota yang berada dalam bicluster memiliki nilai yang relatif 
+kecil pada variabel-variabel dalam bicluster tersebut. Berdasarkan Tabel 4.4, anggota 
+bicluster 1 memiliki nilai rata-rata yang relatif besar pada variabel RLS, HLS, AHH, TPT, 
+PDRB, HP, dan JP. Sementara itu, anggota bicluster 2 memiliki nilai rata-rata yang relatif 
+besar pada variabel PPM dan PKM. 
+ 
+Hasil analisis cluster-biplot dapat kita amati pada Tabel 4.8 dan Gambar 4.14. 
+Titik pengamatan (kabupaten/kota) yang searah dengan suatu vektor variabel memiliki 
+nilai yang relatif besar pada variabel tersebut. Cluster 1 berisi kabupaten/kota yang berada 
+di sekitar vektor variabel PDRB, KP, RLS, HLS, dan AHH. Cluster 2 berisi 
+kabupaten/kota yang berada di sekitar vektor variabel PPM dan PKM.  
+Berdasarkan Tabel 4.4 dan Tabel 4.9, karakteristik kabupaten/kota anggota cluster 
+1 secara umum mirip dengan kabupaten/kota anggota bicluster 1 dan karakteristik 
+kabupaten/kota anggota cluster 2 secara umum mirip dengan kabupaten/kota anggota 
+bicluster 2. Baik bicluster 2 maupun cluster 2 merupakan daerah yang kurang sejahtera 
+daripada bicluster 1 maupun cluster 1. 
+ 
+Pada metode biclustering, terdapat proses pemangkasan bicluster sehingga tidak 
+semua pengamatan maupun variabel akan menjadi salah satu anggota bicluster. 
+Sedangkan pada metode cluster-biplot, semua pengamatan pasti akan menjadi salah satu 
+anggota cluster. Hal ini menyebabkan anggota bicluster lebih sedikit daripada anggota 
+cluster karena proses penyeleksian anggotanya lebih spesifik.  
+Tabel 4.10. Nilai Standar Deviasi Bicluster dan Cluster 
+Variabel 
+Standard Deviasi 
+Bicluster 1 
+Cluster 1 
+Bicluster 2 
+Cluster 2 
+PPM 
+1,449 
+1,646 
+3,149 
+3,365 
+PKM 
+3,762 
+3,951 
+2,955 
+4,633 
+RLS 
+0,673 
+0,452 
+0,672 
+1,026 
+HLS 
+1,148 
+1,157 
+0,411 
+0,697 
+AHH 
+1,544 
+2,072 
+2,526 
+2,514 
+TPT 
+1,768 
+1,695 
+1,312 
+2,335 
+PDRB 
+145,459 
+163,750 
+11,082 
+39,620 
+KP 
+5.872,425 
+5.639,483 
+264,417 
+1.671,190 
+JP 
+1.034.699,329 968.068,868 251.776,271 839.464,094 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+53 
+ 
+ 
+Universitas Indonesia 
+Diketahui bahwa nilai standar deviasi yang besar menandakan keragaman data 
+yang besar. Nilai standar deviasi dari masing-masing kelompok tertera pada Tabel 4.10. 
+Pada bicluster 1, nilai standar deviasi variabel PPM, PKM, HLS, AHH, dan PDRB lebih 
+kecil dibandingkan dengan cluster 1 artinya bicluster 1 memiliki anggota yang lebih 
+homogen terutama pada variabel-variabel tersebut. Sedangkan pada bicluster 2, nilai 
+standar deviasi variabel PPM, PKM, RLS, HLS, TPT, PDRB, KP, dan JP lebih kecil 
+dibandingkan dengan cluster 2 artinya bicluster 2 memiliki anggota yang lebih homogen 
+terutama pada variabel-variabel tersebut. Secara umum kelompok hasil biclustering plaid 
+model lebih homogen daripada kelompok hasil cluster-biplot. Dengan demikian, metode 
+biclustering menghasilkan kelompok yang lebih baik dibandingkan dengan metode 
+cluster-biplot ditinjau dari nilai standar deviasinya. 
+Perbedaan anggota hasil biclustering dan cluster-biplot dapat dilihat pada Tabel 
+4.11. Pada tabel tersebut, kabupaten/kota yang diberi warna hitam merupakan anggota 
+yang sama. Sedangkan kabupaten/kota yang diberi warna merah merupakan anggota yang 
+berbeda. 
+Tabel 4.11. Perbandingan Anggota Bicluster dan Cluster 
+Bicluster 
+/Cluster 
+Anggota Bicluster 
+Anggota Cluster 
+1 
+Kota Tangerang, Kota 
+Tangerang Selatan, Kota 
+Jakarta Selatan, Kota Jakarta 
+Timur, Kota Jakarta Pusat, 
+Kota Jakarta Barat, Kota 
+Jakarta Utara, Bekasi, Kota 
+Bogor, Kota Bandung, Kota 
+Bekasi, Kota Depok, Kota 
+Cimahi, Kota Magelang, Kota 
+Salatiga, Kota Semarang, 
+Sleman, Kota Yogyakarta, 
+Sidoarjo, Kota Blitar, Kota 
+Malang, Kota Probolinggo, 
+Kota Tangerang, Kota Tangerang 
+Selatan, Kota Jakarta Selatan, Kota 
+Jakarta Timur, Kota Jakarta Pusat, Kota 
+Jakarta Barat, Kota Jakarta Utara, Kota 
+Bogor, Kota Sukabumi, Kota Bandung, 
+Kota Cirebon, Kota Bekasi, Kota 
+Depok, Kota Cimahi, Kota Banjar, Kota 
+Magelang, Kota Surakarta, Kota 
+Salatiga, Kota Semarang, Kota 
+Pekalongan, Kota Tegal, Sleman, Kota 
+Yogyakarta, Sidoarjo, Kota Kediri, 
+Kota Blitar, Kota Malang, Kota 
+Probolinggo, Kota Pasuruan, Kota 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+54 
+ 
+ 
+Universitas Indonesia 
+Kota Mojokerto, Kota Madiun, 
+Kota Surabaya, Kota Batu 
+Mojokerto, Kota Madiun, Kota 
+Surabaya, Kota Batu 
+2 
+Majalengka, Pangandaran, 
+Purbalingga, Banjarnegara, 
+Wonosobo, Magelang, 
+Boyolali, Wonogiri, Sragen, 
+Grobogan, Blora, Rembang, 
+Pati, Jepara, Temanggung, 
+Batang, Pekalongan, 
+Gunungkidul, Pacitan, 
+Trenggalek, Blitar, Lumajang, 
+Bondowoso, Situbondo, 
+Probolinggo, Nganjuk, Ngawi, 
+Bojonegoro, Tuban, Sampang 
+Pandeglang, Lebak, Tangerang, Serang, 
+Kota Cilegon, Kota Serang, Kepulauan 
+Seribu, Bogor, Sukabumi, Cianjur, 
+Bandung, Garut, Tasikmalaya, Ciamis, 
+Kuningan, Cirebon, Majalengka, 
+Sumedang, Indramayu, Subang, 
+Purwakarta, Karawang, Bekasi, 
+Bandung Barat, Pangandaran, Kota 
+Tasikmalaya, Cilacap, Banyumas, 
+Purbalingga, Banjarnegara, Kebumen, 
+Purworejo, Wonosobo, Magelang, 
+Boyolali, Klaten, Sukoharjo, Wonogiri, 
+Karanganyar, Sragen, Grobogan, Blora, 
+Rembang, Pati, Kudus, Jepara, Demak, 
+Semarang, Temanggung, Kendal, 
+Batang, Pekalongan, Pemalang, Tegal, 
+Brebes, Kulon Progo, Bantul, 
+Gunungkidul, Pacitan, Ponorogo, 
+Trenggalek, Tulungagung, Blitar, 
+Kediri, Malang, Lumajang, Jember, 
+Banyuwangi, Bondowoso, Situbondo, 
+Probolinggo, Pasuruan, Mojokerto, 
+Jombang, Nganjuk, Madiun, Magetan, 
+Ngawi, Bojonegoro, Tuban, Lamongan, 
+Gresik, Bangkalan, Sampang, 
+Pamekasan, Sumenep 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+ 
+55 
+Universitas Indonesia 
+BAB V 
+KESIMPULAN DAN SARAN 
+5.1 
+Kesimpulan 
+ 
+Kesimpulan yang didapatkan dari penelitian ini adalah. 
+1. Pengelompokan kabupaten/kota dan variabelnya secara simultan (bersamaan) 
+menggunakan metode biclustering plaid model menghasilkan sebanyak dua 
+bicluster. Dua bicluster hasil pengelompokan menggunakan biclustering metode 
+plaid model, yaitu: 
+▪ Bicluster 1 yang berisi 26 kabupaten/kota dan 2 variabel (PPM dan PKM). 
+Dapat dideteksi bahwa 2 variabel tersebut berpengaruh pada 26 
+kabupaten/kota yang berada dalam bicluster 1. 
+▪ Bicluster 2 yang berisi 30 kabupaten/kota dan 5 variabel (RLS, HLS, TPT, 
+KP, dan PDRB). Dapat dideteksi bahwa 5 variabel tersebut berpengaruh pada 
+30 kabupaten/kota yang berada dalam bicluster 2. 
+Tabel 4.4 menyajikan nilai rata-rata setiap variabel untuk bicluster 1, bicluster 2, 
+dan Pulau Jawa. Pada variabel PPM dan PKM, nilai rata-rata bicluster 2 lebih 
+besar daripada nilai rata-rata bicluster 1 dan nilai rata-rata Pulau Jawa. Sedangkan 
+pada variabel RLS, HLS, AHH, TPT, PDRB, KP, JP, nilai rata-rata bicluster 2 
+lebih kecil daripada nilai rata-rata bicluster 1 dan nilai rata-rata Pulau Jawa. 
+Dengan demikian, diduga bahwa kabupaten/kota anggota bicluster 2 merupakan 
+wilayah yang kurang sejahtera daripada wilayah lainnya sehingga menjadi 
+prioritas untuk ditingkatkan kesejahteraannya. 
+2. Pengelompokan kabupaten/kota beserta variabelnya menggunakan metode 
+cluster-biplot menghasilkan sebanyak dua cluster. Dua cluster hasil 
+pengelompokan menggunakan metode cluster-biplot, yaitu: 
+▪ Cluster 1 berisi 33 kabupaten/kota. 
+▪ Cluster 2 berisi 86 kabupaten/kota. 
+Tabel 4.9 menyajikan nilai rata-rata setiap variabel untuk cluster 1, cluster 2, dan 
+Pulau Jawa. Pada variabel PPM dan PKM, nilai rata-rata cluster 2 lebih besar 
+daripada nilai rata-rata cluster 1 dan nilai rata-rata Pulau Jawa. Sedangkan pada 
+variabel RLS, HLS, AHH, TPT, PDRB, KP, JP, nilai rata-rata cluster 2 lebih kecil 
+daripada nilai rata-rata cluster 1 dan nilai rata-rata Pulau Jawa. Dengan demikian, 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+56 
+ 
+ 
+Universitas Indonesia 
+diduga bahwa kabupaten/kota anggota cluster 2 merupakan wilayah yang kurang 
+sejahtera daripada wilayah lainnya sehingga menjadi prioritas untuk ditingkatkan 
+kesejahteraannya. 
+3. Kedua metode yang digunakan menghasilkan jumlah kelompok yang sama, yaitu 
+sebanyak dua kelompok dengan bicluster 2 maupun cluster 2 merupakan wilayah 
+yang kurang sejahtera daripada bicluster 1 maupun cluster 1. Pada metode 
+biclustering, terdapat proses pemangkasan bicluster sehingga tidak semua 
+pengamatan maupun variabel akan menjadi salah satu anggota bicluster. 
+Sedangkan pada metode cluster-biplot, semua pengamatan pasti akan menjadi 
+salah satu anggota cluster. Hal ini menyebabkan kabupaten/kota anggota bicluster 
+lebih sedikit daripada anggota cluster karena proses penyeleksian anggotanya 
+lebih spesifik. Ditinjau dari nilai standar deviasinya, kelompok hasil biclustering 
+secara umum lebih baik karena lebih homogen daripada kelompok hasil cluster-
+biplot. 
+ 
+5.2 
+Saran 
+ 
+Saran yang dapat disampaikan adalah sebagai berikut. 
+1. Penelitian selanjutnya dapat menggunakan metode lain dan membandingkan 
+hasilnya dengan hasil biclustering algoritma plaid model. 
+2. Penelitian selanjutnya dapat menggunakan ukuran lain untuk mengukur seberapa 
+baik hasil pengelompokan yang telah dilakukan. 
+3. Penelitian selanjutnya dapat memperluas wilayah pengamatan dengan 
+mengikutsertakan beberapa pulau atau menggunakan objek pengamatan yang 
+lebih spesifik, seperti kecamatan agar hasil analisis lebih akurat. 
+4. Pemerintah setempat diharapkan agar lebih memprioritaskan wilayah yang kurang 
+sejahtera serta dapat membuat kebijakan yang disesuaikan dengan kebutuhan 
+masing-masing wilayah dalam rangka meningkatkan kesejahteraan rakyat. 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+57 
+ 
+ 
+Universitas Indonesia 
+DAFTAR PUSTAKA 
+Arif,  A. F. N. & Nurwati, N. (2022). Pengaruh Konsentrasi Penduduk Indonesia di 
+Pulau Jawa Terhadap Kesejahteraan Masyarakat. Jurnal Ilmu Kesejahteraan 
+Sosial 
+“Humanitas” 
+Fisip 
+Unpas, 
+4(1), 
+54-70. 
+https://doi.org/10.23969/humanitas.v4iI.3920.  
+Astuti, I. A. P. & Astika, I. B. P. (2016). Pengaruh Jumlah Penduduk, dana Alokasi 
+Umum, dan Dana alokasi Khusus Terhadap Kesejahteraan Masyarakat 
+Kabupaten/Kota di Provinsi Bali. E-Jurnal Akuntansi Universitas Udayana, 17(3), 
+2416-2446. 
+Bali, 
+Indonesia. 
+https://ojs.unud.ac.id/index.php/akuntansi/article/view/23690.  
+Ayuni, N. W. D., & Sari, K. K. (2017). Analysis of Factors that Influencing The Interest 
+of Bali State Polytechnic’s Students in Entrepreneurship. Journal of Physics: 
+Conf. Series 953, 012071. http://dx.doi.org/10.1088/1742-6596/953/1/012071.  
+Badan Pusat Statistik. (2021). Hasil Sensus Penduduk 2020. Jakarta: Badan Pusat 
+Statistik. 
+https://www.bps.go.id/id/pressrelease/2021/01/21/1854/hasil-sensus-
+penduduk-2020.html.  
+Badan  Pusat Statistik. (2023). Indikator Kesejahteraan Rakyat Provinsi Jawa Timur 
+2023. 
+Jawa 
+Timur: 
+Badan 
+Pusat 
+Statistik. 
+https://jatim.bps.go.id/publication/2022/11/30/c82ee032c495763f94139708/indi
+kator-kesejahteraan-rakyat-provinsi-jawa-timur-2022.html.  
+Badan Pusat Statistik. (2023). Provinsi Banten dalam Angka 2023. Banten: Badan Pusat 
+Statistik 
+Provinsi 
+Banten. 
+https://banten.bps.go.id/publication/2023/02/28/482ee839483674f34dd96faf/pro
+vinsi-banten-dalam-angka-2023.html. 
+Badan Pusat Statistik. (2023). Provinsi Daerah Istimewa Yogyakarta dalam Angka 2023. 
+DI 
+Yogyakarta: 
+Badan 
+Pusat 
+Statistik 
+Provinsi 
+DI 
+Yogyakarta. 
+https://yogyakarta.bps.go.id/publication/2023/02/28/026aad493ec54b735d60848
+3/provinsi-di-yogyakarta-dalam-angka-2023.html.  
+Badan Pusat Statistik. (2023). Provinsi DKI Jakarta dalam Angka 2023. Jakarta: Badan 
+Pusat 
+Statistik 
+Provinsi 
+DKI 
+Jakarta. 
+https://jakarta.bps.go.id/publication/2023/02/28/fd35fcb5d10a1e03f0d71348/pro
+vinsi-dki-jakarta-dalam-angka-2023.html.  
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+58 
+ 
+ 
+Universitas Indonesia 
+Badan Pusat Statistik. (2023). Provinsi Jawa Barat dalam Angka 2023. Jawa Barat: Badan 
+Pusat 
+Statistik 
+Provinsi 
+Jawa 
+Barat. 
+https://jabar.bps.go.id/publication/2023/02/28/57231a828abbfdd50a21fe31/provi
+nsi-jawa-barat-dalam-angka-2023.html. 
+Badan Pusat Statistik. (2023). Provinsi Jawa Tengah dalam Angka 2023. Jawa Tengah: 
+Badan 
+Pusat 
+Statistik 
+Provinsi 
+Jawa 
+Tengah. 
+https://jateng.bps.go.id/publication/2023/02/28/754e4785496c09ab1f787570/pro
+vinsi-jawa-tengah-dalam-angka-2023.html.  
+Badan Pusat Statistik. (2023). Provinsi Jawa Timur dalam Angka 2023. Jawa Timur: 
+Badan 
+Pusat 
+Statistik 
+Provinsi 
+Jawa 
+Timur. 
+https://jatim.bps.go.id/publication/2023/02/28/446036fbb58d36b009212dbc/pro
+vinsi-jawa-timur-dalam-angka-2023.html.  
+Badan Pusat Statistik. (2023). Statistik Indonesia 2023. Jakarta: Badan Pusat Statistik. 
+https://archive.bps.go.id/publication/2023/02/28/18018f9896f09f03580a614b/sta
+tistik-indonesia-2023.html.  
+Bustamam, N., Yulianti, S., & Dewi, K. S. (2021). Analisis Faktor-Faktor yang 
+Mempengaruhi Indikator Kesejahteraan Masyarakat Di Kota Pekanbaru. Jurnal 
+Ekonomi 
+KIAT, 
+Vol. 
+32, 
+No.1. 
+http://dx.doi.org/10.25299/kiat.2021.vol32(1).7677. 
+Busygin, S., Prokopyev, O., & Pardalos, P. M. (2008). Biclustering in Data Mining. 
+Computers 
+& 
+Operations 
+Research, 
+35(9), 
+2964–2987. 
+https://doi.org/10.1016/j.cor.2007.01.005.  
+Cheng, Y, dan M.G. Church. (2000). Biclustering of Expression Data. Intelligent Systems 
+in Molecular Biology, 8, 93-103.  
+Dewi, D. A., & Pramita, D. A. (2019). Analisis Perbandingan Metode Elbow dan 
+Silhouette pada Algoritma Clustering K-Medoids dalam Pengelompokan 
+Produksi Kerajinan Bali. Matrix : Jurnal Manajemen Teknologi dan Informatika, 
+9(3), 102-109. http://dx.doi.org/10.31940/matrix.v9i3.1662.  
+Dwitiyanti, N., Selvia, N., & Andrari, F. R. (2019). Penerapan Fuzzy C-Means Cluster 
+dalam Pengelompokan Provinsi Indonesia Menurut Indikator Kesejahteraan 
+Rakyat. 
+Faktor 
+Exacta, 
+12(3), 
+201-209. 
+http://dx.doi.org/10.30998/faktorexacta.v12i3.4526.  
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+59 
+ 
+ 
+Universitas Indonesia 
+Ghozali, I. (2016). Aplikasi Analisis Multivariete Dengan Program IBM SPSS 23. Edisi 
+8. Semarang: Badan penerbit Universitas Diponegoro. 
+Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2014). Multivariate Data 
+Analysis 7th Edition. New York: Pearson Education, Inc. 
+Imasdiani, Purnamasari, I., & Amijaya, F. D. T. (2022). Perbandingan Hasil Analisis 
+Cluster Dengan Menggunakan Metode Average Linkage Dan Metode Ward (Studi 
+Kasus : Kemiskinan Di Provinsi Kalimantan Timur Tahun 2018). Jurnal 
+Eksponensial, 13(1), 9 – 18. 
+Johnson, R. A. & Wichern, D. W. (2014). Applied Multivariate Statistical Analysis (Vol. 
+6). Pearson London, UK. 
+Jolliffe, I. T. (2010). Principal Component Analysis, 2nd Edition. Springer. New York. 
+Kasim, A., Shkedy, Z., Kaiser, S., Hochreiter, S., & Talloen, W. (2016). Applied plied 
+Biclustering Methods for Big and High-dimensional Data Using R. CRC Press. 
+Kaufman, L., & Rousseeuw, P. J. (2009). Finding Groups in Data: An Introduction to 
+Cluster Analysis (Vol. 344). John Wiley & Sons. 
+KBBI. (2016). Kamus Besar Bahasa Indonesia Edisi ke-6 (Versi Online). Diakses pada 1 
+September 2023. 
+Kusuma, I. M. C. P. & Bendesa, I. K. G. (2022). Analisis Pengaruh Angka Harapan 
+Hidup, Rata-Rata Lama Sekolah, Tingkat kemiskinan Terhadap Kesejahteraan 
+Pada Kabupaten/Kota Di Provinsi Bali. E-Jurnal EP Unud, 11(11), 4059 – 4081. 
+Bali, Indonesia. 
+Majd,  H. A. et al. (2015). Evaluation of Plaid Models in Biclustering of Gene Expression 
+Data. 
+Hindawi 
+Publishing 
+Coorporation, 
+2016. 
+http://dx.doi.org/10.1155/2016/3059767. 
+Mattjik, A. A. & Sumertajaya, I. M. (2011). Sidik Peubah Ganda dengan Menggunakan 
+SAS. Bogor: IPB Press. 
+Mulia,  R. A. & Saputra, N. (2020). Analisis Faktor-Faktor yang Mempengaruhi 
+Kesejahteraan Masyarakat Kota Padang. Jurnal El-Riyasah, 11(1), 67-83. 
+http://dx.doi.org/10.24014/jel.v11i1.10069.  
+Rencher, A. C. & Christensen, W. F. (2012). Methods of Multivariate Analysis 3rd ed. 
+New Jersey: John Wiley & Sons. 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+60 
+ 
+ 
+Universitas Indonesia 
+Shrestha, N. (2021). Factor Analysis as a Tool for Survey Analysis. American Journal of 
+Applied 
+Mathematics 
+and 
+Statistics, 
+9(1), 
+4-11. 
+doi:https://dx.doi.org/10.12691/ajams-9-1-2.  
+Shutaywi, M. & Kachouie, N. N. (2021). Silhouette Analysis for Performance Evaluation 
+in Machine Learning with Applications to Clustering. Entropy, 23(6), 1–17. 
+https://doi.org/10.3390/e23060759.  
+Siswantining, T., Aminanto, A. E., Sarwinda, D., & Swasti, O. (2021). Biclustering 
+Analysis Using Plaid Model on Gene Expression Data of Colon Cancer. In 
+Austrian 
+Journal 
+of 
+Statistics, 
+50, 
+101-114. 
+https://doi.org/10.17713/ajs.v50i5.1195.  
+Talakua, M. W., Leleury, Z. A., Talluta, A. W. (2017). Analisis Cluster dengan 
+menggunakan Metode K-Means untuk Pengelompokan Kabupaten/Kota di 
+Provinsi Maluku Berdasarkan Indikator Indeks Pembangunan Manusia Tahun 
+2014. 
+Jurnal 
+Ilmu 
+Matematika 
+Terapan, 
+11(2), 
+119-128. 
+https://doi.org/10.30598/barekengvol11iss2pp119-128.  
+Turner, H., Bailey, T., & Krzanowski, W. (2005). Improved Biclustering of Microarray 
+Data Demonstrated Through Systematic Performance Tests. Computational 
+Statistics 
+& 
+Data 
+Analysis, 
+48(2), 
+235-254. 
+https://doi.org/10.1016/j.csda.2004.02.003.  
+Vania, P. & Sari, B. N. (2023). Perbandingan Metode Elbow dan Silhouette untuk 
+Penentuan Jumlah Klaster yang Optimal pada Clustering Produksi Padi 
+menggunakan Algoritma K-Means. Jurnal Ilmiah Wahana Pendidikan, 9(21), 
+547-558. https://doi.org/10.5281/zenodo.10081332.   
+Walpole, R. E., Myers, R. H., Myers, S. L., & Ye, K. (1993). Probability and Statistics 
+for Engineers and Scientists. New Jersey: Prentice Hall. 
+Wibowo, R. A., Nisa, K., Faisol, A., & Setiawan, E. (2020). Simulasi Pemilihan Metode 
+Analisis Cluster Hirarki Agglomerative Terbaik Antara Average Linkage Dan 
+Ward Pada Data Yang Mengandung Masalah Multikolinearitas. Jurnal Siger 
+Matematika, 
+1(2), 
+49–55. 
+Lampung, 
+Indonesia. 
+http://dx.doi.org/10.23960/jsm.v1i2.2497.  
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+61 
+ 
+ 
+Universitas Indonesia 
+Yulianto, S. & Hidayatullah, K. H. (2014). Analisis Klaster untuk Pengelompokan 
+Kabupaten/Kota di Provinsi Jawa Tengah Berdasarkan Indikator Kesejahteraan 
+Rakyat. Statistika, 2(1), 56-63. https://doi.org/10.26714/jsunimus.2.1.2014.%25p.  
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+62 
+ 
+ 
+Universitas Indonesia 
+LAMPIRAN 
+Lampiran 1. Data awal 
+No 
+kabkot 
+PPM 
+RLS 
+HLS 
+AHH 
+PKM 
+TPT 
+JP 
+KP 
+PDRB 
+1 
+Pandeglang 
+9,32 
+7,13 
+13,72 
+65,2 
+58,08 
+9,24 
+1307090 
+472 
+24,50 
+2 
+Lebak 
+8,91 
+6,59 
+12,09 
+67,74 
+63,9 
+8,55 
+1433853 
+433 
+23,34 
+3 
+Tangerang 
+6,92 
+8,92 
+12,85 
+70,28 
+55,59 
+7,88 
+3352472 
+3262 
+47,78 
+4 
+Serang 
+4,96 
+7,78 
+12,78 
+65,18 
+61,12 
+10,61 
+1678915 
+1142 
+52,40 
+5 
+Kota 
+Tangerang 
+5,77 
+10,84 
+13,88 
+71,91 
+45,27 
+7,16 
+1930556 
+10825 
+94,38 
+6 
+Kota Cilegon 
+3,64 
+10,34 
+13,2 
+67,02 
+49,94 
+8,1 
+450271 
+2771 
+268,16 
+7 
+Kota Serang 
+5,94 
+8,9 
+12,81 
+68,54 
+54,78 
+8,17 
+720362 
+2710 
+50,98 
+8 
+Kota 
+Tangerang 
+Selatan 
+2,5 
+11,84 
+14,67 
+72,78 
+41,16 
+6,59 
+1378466 
+8361 
+69,74 
+9 
+Kepulauan 
+Seribu 
+14,11 
+9,02 
+12,65 
+69,2 
+62,12 
+8,47 
+28925 
+2770 
+350,38 
+10 
+Kota Jakarta 
+Selatan 
+3,52 
+11,66 
+13,35 
+74,49 
+38,37 
+5,63 
+2244623 
+16449 
+325,32 
+11 
+Kota Jakarta 
+Timur 
+4,3 
+11,73 
+13,97 
+74,83 
+42,27 
+8,39 
+3083883 
+17650 
+177,33 
+12 
+Kota Jakarta 
+Pusat 
+4,9 
+11,53 
+13,28 
+74,48 
+43,17 
+5,88 
+1079995 
+23249 
+736,06 
+13 
+Kota Jakarta 
+Barat 
+4,22 
+11,13 
+12,82 
+73,81 
+35,77 
+7,1 
+2448975 
+20717 
+220,79 
+14 
+Kota Jakarta 
+Utara 
+7,24 
+10,82 
+12,66 
+73,47 
+32,12 
+8,04 
+1793550 
+12652 
+327,65 
+15 
+Bogor 
+7,73 
+8,34 
+12,5 
+71,65 
+51,47 
+10,64 
+5566838 
+1861 
+48,10 
+16 
+Sukabumi 
+7,34 
+7,11 
+12,25 
+71,54 
+60,85 
+7,77 
+2806664 
+674 
+27,17 
+17 
+Cianjur 
+10,55 
+7,2 
+12,01 
+70,58 
+58,57 
+8,41 
+2542793 
+700 
+21,23 
+18 
+Bandung 
+6,8 
+9,08 
+12,71 
+74,01 
+48,76 
+6,98 
+3718660 
+2136 
+38,46 
+19 
+Garut 
+10,42 
+7,83 
+12,15 
+71,85 
+60,86 
+7,6 
+2627220 
+847 
+25,35 
+20 
+Tasikmalaya 
+10,73 
+7,73 
+12,59 
+69,95 
+59,74 
+4,17 
+1906288 
+705 
+22,38 
+21 
+Ciamis 
+7,72 
+8 
+14,28 
+72,3 
+54,36 
+3,75 
+1247768 
+782 
+29,47 
+22 
+Kuningan 
+12,76 
+7,88 
+12,24 
+74,03 
+56,44 
+9,81 
+1196017 
+1003 
+24,68 
+23 
+Cirebon 
+12,01 
+7,4 
+12,28 
+72,47 
+56,12 
+8,11 
+2315417 
+2150 
+24,47 
+24 
+Majalengka 
+11,94 
+7,49 
+12,24 
+70,76 
+53,93 
+4,16 
+1335460 
+1004 
+28,29 
+25 
+Sumedang 
+10,14 
+8,72 
+12,99 
+72,91 
+51,5 
+7,72 
+1167033 
+745 
+34,46 
+26 
+Indramayu 
+12,77 
+6,83 
+12,27 
+72,15 
+61,67 
+6,49 
+1871832 
+902 
+48,49 
+27 
+Subang 
+9,75 
+7,2 
+11,78 
+72,92 
+52,71 
+7,77 
+1624386 
+750 
+28,39 
+28 
+Purwakarta 
+8,7 
+8,11 
+12,13 
+71,47 
+54,71 
+8,75 
+1028569 
+1036 
+74,35 
+29 
+Karawang 
+8,44 
+7,96 
+12,19 
+72,62 
+52,59 
+9,87 
+2505247 
+1309 
+107,07 
+30 
+Bekasi 
+5,01 
+9,53 
+13,11 
+74,04 
+46,66 
+10,31 
+3214791 
+2570 
+114,34 
+31 
+Bandung 
+Barat 
+10,82 
+8,22 
+11,89 
+72,79 
+53,95 
+9,63 
+1846969 
+1439 
+28,65 
+32 
+Pangandaran 
+9,32 
+8,03 
+12,11 
+71,89 
+57,62 
+1,56 
+432380 
+383 
+30,45 
+33 
+Kota Bogor 
+7,1 
+10,63 
+13,43 
+74,13 
+41,94 
+10,78 
+1063513 
+9550 
+49,76 
+34 
+Kota 
+Sukabumi 
+8,02 
+10,14 
+13,59 
+72,85 
+45,27 
+8,83 
+356410 
+7377 
+39,82 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+63 
+ 
+ 
+Universitas Indonesia 
+35 
+Kota 
+Bandung 
+4,25 
+11 
+14,23 
+74,75 
+40,73 
+9,55 
+2461553 
+14776 
+133,38 
+36 
+Kota Cirebon 
+9,82 
+10,33 
+13,14 
+72,74 
+45,43 
+8,42 
+341235 
+8646 
+78,00 
+37 
+Kota Bekasi 
+4,43 
+11,44 
+14,11 
+75,48 
+39,29 
+8,81 
+2590257 
+12159 
+42,42 
+38 
+Kota Depok 
+2,53 
+11,47 
+13,94 
+74,92 
+41,52 
+7,82 
+2123349 
+10622 
+38,23 
+39 
+Kota Cimahi 
+5,11 
+11,21 
+13,82 
+74,5 
+43,14 
+10,77 
+575235 
+13557 
+65,26 
+40 
+Kota 
+Tasikmalaya 
+12,72 
+9,53 
+13,47 
+72,63 
+51,93 
+6,62 
+733467 
+3988 
+34,05 
+41 
+Kota Banjar 
+6,73 
+8,78 
+13,25 
+71,49 
+51,51 
+5,53 
+206457 
+1576 
+23,81 
+42 
+Cilacap 
+11,02 
+7,18 
+12,66 
+74,07 
+55,41 
+9,62 
+1988622 
+930 
+60,82 
+43 
+Banyumas 
+12,84 
+7,78 
+13,21 
+73,88 
+53,8 
+6,05 
+1806013 
+1360 
+34,80 
+44 
+Purbalingga 
+15,3 
+7,33 
+12,01 
+73,28 
+52,48 
+5,23 
+1019840 
+1311 
+28,26 
+45 
+Banjarnegara 
+15,2 
+6,84 
+11,81 
+74,37 
+53,08 
+6,38 
+1038718 
+971 
+24,06 
+46 
+Kebumen 
+16,41 
+7,85 
+13,36 
+73,7 
+51,06 
+5,92 
+1376825 
+1073 
+23,68 
+47 
+Purworejo 
+11,53 
+8,32 
+13,52 
+75,03 
+51,05 
+4,45 
+778257 
+752 
+27,43 
+48 
+Wonosobo 
+16,17 
+6,88 
+11,78 
+72,05 
+54,17 
+5,01 
+896346 
+910 
+24,09 
+49 
+Magelang 
+11,09 
+7,81 
+12,58 
+74,03 
+50,89 
+4,97 
+1312573 
+1209 
+28,53 
+50 
+Boyolali 
+9,82 
+8,08 
+12,62 
+76,12 
+48,75 
+4,92 
+1079952 
+1064 
+35,94 
+51 
+Klaten 
+12,33 
+9,09 
+13,4 
+76,95 
+48,85 
+4,31 
+1275850 
+1946 
+36,54 
+52 
+Sukoharjo 
+7,61 
+9,62 
+13,9 
+77,82 
+46,99 
+2,47 
+916627 
+1964 
+46,71 
+53 
+Wonogiri 
+10,99 
+7,42 
+12,51 
+76,41 
+55,19 
+1,95 
+1057087 
+580 
+31,88 
+54 
+Karanganyar 
+9,85 
+8,79 
+13,7 
+77,64 
+49,18 
+5,7 
+947642 
+1227 
+45,50 
+55 
+Sragen 
+12,94 
+7,79 
+12,91 
+75,87 
+51,51 
+4,69 
+992243 
+1048 
+44,63 
+56 
+Grobogan 
+11,8 
+7,26 
+12,45 
+74,93 
+55,95 
+4,4 
+1470150 
+744 
+21,64 
+57 
+Blora 
+11,53 
+7,01 
+12,44 
+74,6 
+55,56 
+3,7 
+888224 
+495 
+34,87 
+58 
+Rembang 
+14,65 
+7,41 
+12,13 
+74,68 
+57,02 
+1,76 
+650770 
+642 
+33,97 
+59 
+Pati 
+9,33 
+7,79 
+12,95 
+76,32 
+52,34 
+4,45 
+1339572 
+898 
+37,41 
+60 
+Kudus 
+7,41 
+9,06 
+13,25 
+76,76 
+48,33 
+3,21 
+856472 
+2014 
+133,88 
+61 
+Jepara 
+6,88 
+8,09 
+12,77 
+75,97 
+52,19 
+4,1 
+1192811 
+1188 
+29,34 
+62 
+Demak 
+12,09 
+8,1 
+13,33 
+75,52 
+55,48 
+6,11 
+1223217 
+1363 
+24,73 
+63 
+Semarang 
+7,27 
+8,05 
+13,04 
+75,86 
+51,13 
+4,81 
+1068492 
+1128 
+53,00 
+64 
+Temanggung 
+9,33 
+7,41 
+12,55 
+75,7 
+47,44 
+2,54 
+799764 
+919 
+30,93 
+65 
+Kendal 
+9,48 
+7,71 
+12,97 
+74,53 
+51,98 
+7,34 
+1033367 
+1031 
+48,10 
+66 
+Batang 
+8,98 
+6,9 
+12,14 
+74,79 
+53,41 
+6,64 
+813791 
+1031 
+31,32 
+67 
+Pekalongan 
+9,67 
+7,46 
+12,43 
+73,8 
+55,46 
+3,23 
+986455 
+1180 
+26,36 
+68 
+Pemalang 
+15,06 
+6,5 
+11,98 
+73,65 
+59,18 
+6,63 
+1500754 
+1483 
+19,96 
+69 
+Tegal 
+7,9 
+7,25 
+12,91 
+71,85 
+51,37 
+9,64 
+1623595 
+1846 
+25,12 
+70 
+Brebes 
+16,05 
+6,35 
+12,15 
+69,74 
+55,61 
+9,48 
+2010617 
+1213 
+26,74 
+71 
+Kota 
+Magelang 
+7,1 
+10,94 
+14,31 
+77,02 
+43,35 
+6,71 
+121675 
+6715 
+82,91 
+72 
+Kota 
+Surakarta 
+8,84 
+10,92 
+14,89 
+77,43 
+43,93 
+5,83 
+523008 
+11878 
+107,01 
+73 
+Kota Salatiga 
+4,73 
+10,95 
+15,43 
+77,72 
+35,85 
+5,58 
+195065 
+3683 
+78,99 
+74 
+Kota 
+Semarang 
+4,25 
+10,8 
+15,54 
+77,69 
+40,43 
+7,6 
+1659975 
+4442 
+137,12 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+64 
+ 
+ 
+Universitas Indonesia 
+75 
+Kota 
+Pekalongan 
+7 
+9,2 
+12,86 
+74,51 
+50 
+4,98 
+309742 
+6889 
+40,68 
+76 
+Kota Tegal 
+7,91 
+9 
+13,08 
+74,64 
+50,07 
+6,68 
+278299 
+8069 
+63,62 
+77 
+Kulon Progo 
+16,39 
+9,17 
+14,38 
+75,28 
+46,14 
+2,8 
+448131 
+782 
+31,69 
+78 
+Bantul 
+12,27 
+9,59 
+15,48 
+73,9 
+43,63 
+3,97 
+1064286 
+1980 
+30,79 
+79 
+Gunungkidul 
+15,86 
+7,31 
+13,33 
+74,23 
+53,57 
+2,08 
+776705 
+523 
+29,50 
+80 
+Sleman 
+7,74 
+10,94 
+16,76 
+75 
+41,55 
+4,78 
+1282804 
+2000 
+47,63 
+81 
+Kota 
+Yogyakarta 
+6,62 
+11,89 
+17,61 
+74,83 
+33,1 
+7,18 
+449890 
+11546 
+112,50 
+82 
+Pacitan 
+13,8 
+7,82 
+12,66 
+72,48 
+56,14 
+3,65 
+592916 
+414 
+30,34 
+83 
+Ponorogo 
+9,32 
+7,77 
+13,76 
+73,2 
+51,05 
+5,51 
+964253 
+680 
+23,88 
+84 
+Trenggalek 
+10,96 
+7,89 
+12,5 
+74,26 
+53,47 
+5,37 
+739669 
+592 
+28,23 
+85 
+Tulungagung 
+6,71 
+8,65 
+13,33 
+74,54 
+55,86 
+6,65 
+1105337 
+966 
+39,93 
+86 
+Blitar 
+8,71 
+7,82 
+12,64 
+73,98 
+50,68 
+5,45 
+1240322 
+711 
+33,36 
+87 
+Kediri 
+10,65 
+8,23 
+13,61 
+72,97 
+53,75 
+6,83 
+1656020 
+1087 
+28,18 
+88 
+Malang 
+9,55 
+7,68 
+13,38 
+72,95 
+50,72 
+6,57 
+2685900 
+773 
+43,73 
+89 
+Lumajang 
+9,06 
+6,87 
+12,02 
+70,61 
+56,66 
+4,97 
+1137227 
+633 
+32,24 
+90 
+Jember 
+9,39 
+6,5 
+13,44 
+69,68 
+58,05 
+4,06 
+2567718 
+775 
+34,30 
+91 
+Banyuwangi 
+7,51 
+7,66 
+13,11 
+71,06 
+51,9 
+5,26 
+1731731 
+482 
+53,88 
+92 
+Bondowoso 
+13,47 
+6,22 
+13,31 
+67,29 
+52,5 
+4,32 
+781417 
+503 
+29,31 
+93 
+Situbondo 
+11,78 
+6,63 
+13,18 
+69,62 
+57,7 
+3,38 
+691260 
+418 
+33,46 
+94 
+Probolinggo 
+17,12 
+6,13 
+12,58 
+67,78 
+60,06 
+3,25 
+1159965 
+673 
+33,56 
+95 
+Pasuruan 
+8,96 
+7,42 
+12,76 
+70,55 
+56,99 
+5,91 
+1619035 
+1084 
+106,64 
+96 
+Sidoarjo 
+5,36 
+10,77 
+14,95 
+74,36 
+44,73 
+8,8 
+2103401 
+2905 
+116,58 
+97 
+Mojokerto 
+9,71 
+8,97 
+12,96 
+72,93 
+53,29 
+4,83 
+1133584 
+1151 
+84,46 
+98 
+Jombang 
+9,04 
+8,76 
+13,58 
+72,86 
+55,94 
+5,47 
+1335972 
+1204 
+34,38 
+99 
+Nganjuk 
+10,7 
+8,12 
+13,07 
+71,95 
+54,42 
+4,74 
+1117033 
+867 
+27,59 
+100 
+Madiun 
+10,79 
+7,94 
+13,18 
+71,9 
+51,35 
+5,84 
+757665 
+6668 
+28,88 
+101 
+Magetan 
+9,84 
+8,66 
+14,05 
+72,97 
+52,52 
+4,33 
+678343 
+960 
+31,25 
+102 
+Ngawi 
+14,15 
+7,59 
+12,84 
+72,81 
+53,84 
+2,48 
+877432 
+629 
+25,59 
+103 
+Bojonegoro 
+12,21 
+7,43 
+12,84 
+72,16 
+56,27 
+4,69 
+1315125 
+569 
+76,41 
+104 
+Tuban 
+15,02 
+7,37 
+12,24 
+71,97 
+53,15 
+4,54 
+1209543 
+613 
+62,16 
+105 
+Lamongan 
+12,53 
+8,33 
+14,01 
+72,86 
+55,94 
+6,05 
+1371509 
+783 
+33,13 
+106 
+Gresik 
+11,06 
+9,75 
+13,96 
+72,99 
+50,27 
+7,84 
+1332664 
+1061 
+122,99 
+107 
+Bangkalan 
+19,44 
+5,97 
+11,91 
+70,54 
+64,77 
+8,05 
+1086620 
+835 
+25,00 
+108 
+Sampang 
+21,61 
+5,06 
+12,39 
+68,38 
+60,67 
+3,11 
+984162 
+801 
+23,38 
+109 
+Pamekasan 
+13,93 
+6,88 
+13,67 
+68,03 
+60,16 
+1,4 
+857818 
+1079 
+22,46 
+110 
+Sumenep 
+18,76 
+5,93 
+13,51 
+71,99 
+65,38 
+1,36 
+1136632 
+545 
+35,42 
+111 
+Kota Kediri 
+7,23 
+10,45 
+15,44 
+74,34 
+45,51 
+4,38 
+289418 
+4305 
+527,93 
+112 
+Kota Blitar 
+7,37 
+10,65 
+14,56 
+74,26 
+42,74 
+5,39 
+151960 
+4577 
+51,55 
+113 
+Kota Malang 
+4,37 
+10,69 
+15,76 
+73,75 
+38,07 
+7,66 
+846126 
+7617 
+100,23 
+114 
+Kota 
+Probolinggo 
+6,65 
+9,29 
+13,67 
+70,68 
+40,97 
+4,57 
+243200 
+4448 
+53,17 
+115 
+Kota 
+Pasuruan 
+6,37 
+9,67 
+13,64 
+71,96 
+48,47 
+6,18 
+211497 
+5424 
+44,70 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+65 
+ 
+ 
+Universitas Indonesia 
+116 
+Kota 
+Mojokerto 
+5,98 
+10,8 
+14,02 
+73,74 
+44,12 
+5,05 
+134350 
+6645 
+56,84 
+117 
+Kota Madiun 
+4,76 
+11,67 
+14,43 
+73,13 
+43,49 
+6,39 
+199192 
+5514 
+79,45 
+118 
+Kota 
+Surabaya 
+4,72 
+10,51 
+14,83 
+74,47 
+41,6 
+7,62 
+2887223 
+8595 
+227,08 
+119 
+Kota Batu 
+3,79 
+9,63 
+14,4 
+72,97 
+47,22 
+8,43 
+216735 
+1116 
+85,76 
+ 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+66 
+ 
+ 
+Universitas Indonesia 
+Lampiran 2. Summary analisis komponen utama 
+PC1 
+PC2 
+PC3 
+PC4 
+PC5 
+PC6 
+PC7 
+PC8 
+PC9 
+Standar 
+Deviasi 
+2,035 1,282 0,975 0,879 0,718 0,628 0,590 0,382 0,296 
+Proporsi 
+Variansi 
+0,460 0,183 0,106 0,086 0,057 0,044 0,039 0,016 0,010 
+Proporsi 
+Variansi 
+Kumulatif 
+0,460 0,643 0,749 0,834 0,892 0,935 0,974 0,990 
+1 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+67 
+ 
+ 
+Universitas Indonesia 
+Lampiran 3. Data hasil analisis komponen utama 
+Kabkot 
+PC1 
+PC2 
+Pandeglang 
+1,586537 
+1,880551 
+Lebak 
+2,436588 
+2,016012 
+Tangerang 
+0,237979 
+2,557544 
+Serang 
+1,219883 
+3,06855 
+Kota Tangerang 
+−2,33535 0,955784 
+Kota Cilegon 
+−1,27488 1,242565 
+Kota Serang 
+0,312318 
+1,130942 
+Kota Tangerang Selatan −3,22158 0,057974 
+Kepulauan Seribu 
+0,681135 
+0,700888 
+Kota Jakarta Selatan 
+−4,37993 0,888929 
+Kota Jakarta Timur 
+−4,18106 1,885486 
+Kota Jakarta Pusat 
+−5,66834 0,794727 
+Kota Jakarta Barat 
+−4,2741 
+1,606495 
+Kota Jakarta Utara 
+−3,68737 1,165608 
+Bogor 
+0,112503 
+4,544192 
+Sukabumi 
+1,540048 
+2,172218 
+Cianjur 
+1,823719 
+2,153403 
+Bandung 
+−0,3706 
+1,905321 
+Garut 
+1,6471 
+1,818779 
+Tasikmalaya 
+1,936008 
+0,535663 
+Ciamis 
+0,455503 −0,77787 
+Kuningan 
+1,201858 
+0,890205 
+Cirebon 
+1,379816 
+1,491289 
+Majalengka 
+1,752525 −0,02442 
+Sumedang 
+0,370892 
+0,294934 
+Indramayu 
+2,179242 
+0,880082 
+Subang 
+1,255519 
+1,02781 
+Purwakarta 
+0,809444 
+1,114047 
+Karawang 
+0,34996 
+2,245301 
+Bekasi 
+−1,44069 2,449823 
+Bandung Barat 
+0,924071 
+1,620914 
+Pangandaran 
+1,756115 −1,27324 
+Kota Bogor 
+−2,41508 0,922038 
+Kota Sukabumi 
+−1,52917 
+0,02525 
+Kota Bandung 
+−3,8406 
+1,574987 
+Kota Cirebon 
+−1,43298 0,027991 
+Kota Bekasi 
+−3,5246 
+1,188712 
+Kota Depok 
+−3,24862 0,830169 
+Kota Cimahi 
+−3,26137 0,662671 
+Kota Tasikmalaya 
+0,085931 −0,43476 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+68 
+ 
+ 
+Universitas Indonesia 
+Kota Banjar 
+0,178713 −0,61688 
+Cilacap 
+0,93167 
+1,373583 
+Banyumas 
+0,964925 
+0,033709 
+Purbalingga 
+1,790519 −0,44126 
+Banjarnegara 
+1,890836 −0,21243 
+Kebumen 
+1,163779 −0,56145 
+Purworejo 
+0,492618 −1,35909 
+Wonosobo 
+2,370213 −0,35892 
+Magelang 
+0,894529 −0,40774 
+Boyolali 
+0,344694 −0,86956 
+Klaten 
+−0,05938 −1,35869 
+Sukoharjo 
+−0,94683 −2,14872 
+Wonogiri 
+1,351577 −1,61798 
+Karanganyar 
+−0,41453 −1,27093 
+Sragen 
+0,84564 
+−1,12676 
+Grobogan 
+1,518705 −0,49157 
+Blora 
+1,61265 
+−1,00256 
+Rembang 
+2,126702 
+−1,7365 
+Pati 
+0,531134 −0,84195 
+Kudus 
+−0,71888 −1,52657 
+Jepara 
+0,301069 −0,81798 
+Demak 
+0,750624 −0,56306 
+Semarang 
+0,093143 −0,79285 
+Temanggung 
+0,666503 −1,59908 
+Kendal 
+0,456655 −0,03591 
+Batang 
+1,083483 −0,11956 
+Pekalongan 
+1,35833 
+−0,84858 
+Pemalang 
+2,327918 
+0,363296 
+Tegal 
+0,47796 
+1,452596 
+Brebes 
+2,33141 
+1,859461 
+Kota Magelang 
+−2,50293 −1,47804 
+Kota Surakarta 
+−2,98068 −1,56795 
+Kota Salatiga 
+−3,29819 −2,24855 
+Kota Semarang 
+−3,43296 −0,55732 
+Kota Pekalongan 
+−0,64578 
+−0,9043 
+Kota Tegal 
+−0,86568 −0,54367 
+Kulon Progo 
+0,215788 −2,64825 
+Bantul 
+−0,91078 −1,84588 
+Gunungkidul 
+1,704267 −1,96921 
+Sleman 
+−2,52127 −1,82386 
+Kota Yogyakarta 
+−4,92216 −1,76606 
+Pacitan 
+1,787684 −1,10286 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+69 
+ 
+ 
+Universitas Indonesia 
+Ponorogo 
+0,458612 −0,63786 
+Trenggalek 
+1,065808 −0,66643 
+Tulungagung 
+0,116168 −0,08851 
+Blitar 
+0,621099 −0,23244 
+Kediri 
+0,552198 
+0,242132 
+Malang 
+0,470565 
+0,958215 
+Lumajang 
+1,874688 
+0,343 
+Jember 
+1,760864 
+0,835663 
+Banyuwangi 
+0,70647 
+0,441067 
+Bondowoso 
+2,188769 −0,24641 
+Situbondo 
+2,13383 
+−0,67802 
+Probolinggo 
+3,311166 −0,16985 
+Pasuruan 
+1,162373 
+0,802201 
+Sidoarjo 
+−2,43543 0,665913 
+Mojokerto 
+0,40298 
+−0,37346 
+Jombang 
+0,46925 
+−0,18892 
+Nganjuk 
+1,075357 −0,37023 
+Madiun 
+0,311985 −0,24329 
+Magetan 
+0,313165 −1,19516 
+Ngawi 
+1,726506 −1,36963 
+Bojonegoro 
+1,49176 
+−0,20182 
+Tuban 
+1,848231 −0,33068 
+Lamongan 
+0,806532 −0,31274 
+Gresik 
+−0,53591 0,156673 
+Bangkalan 
+3,538089 
+0,804331 
+Sampang 
+4,153658 −0,55739 
+Pamekasan 
+2,533116 
+−1,0553 
+Sumenep 
+3,34281 
+−1,52908 
+Kota Kediri 
+−3,24404 −1,49946 
+Kota Blitar 
+−1,88847 −1,58607 
+Kota Malang 
+−3,42945 −0,58377 
+Kota Probolinggo 
+−1,00347 −0,94305 
+Kota Pasuruan 
+−0,93484 −0,55115 
+Kota Mojokerto 
+−1,93575 −1,30578 
+Kota Madiun 
+−2,49322 −0,91585 
+Kota Surabaya 
+−3,35178 1,150617 
+Kota Batu 
+−1,49576 −0,28515 
+ 
+ 
+ 
+ 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+70 
+ 
+ 
+Universitas Indonesia 
+Lampiran 4. R-code metode biclustering plaid model 
+ 
+ 
+ 
+# import data 
+library(readxl) 
+datafix <- read_excel("datafix.xlsx") 
+data <- datafix[-1] 
+data1 <- scale(data) 
+data2 <- as.matrix(data1) 
+row.names(data2) <- datafix$kabkot 
+write.csv2(data1,"data1.csv") 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+71 
+ 
+ 
+Universitas Indonesia 
+Lampiran 5. R-code peta hasil biclustering plaid model 
+ 
+library(maptools) 
+library(RColorBrewer) 
+library(sp) 
+library(foreign) 
+library(lattice) 
+library(rgdal) 
+library(classInt) 
+library(class) 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+72 
+ 
+ 
+Universitas Indonesia 
+ 
+ 
+ 
+ 
+## PETA BICLUSTER 2 
+kelompok2 <- read_excel("datafix.xlsx", sheet = "bicluster2") 
+View(kelompok2) 
+temp <- merge(shp_all, kelompok2, by="ID", all.x=T, sort=F) 
+plotvar <- temp$kelompok 
+nclr <- 7 
+plotclr <- brewer.pal(nclr,"Blues") 
+plotclr <- plotclr[1:nclr] 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+73 
+ 
+ 
+Universitas Indonesia 
+Lampiran 6. R-code metode cluster-biplot 
+ 
+ 
+ 
+# IMPORT DATA 
+library(readxl) 
+datafix <- read_excel("datafix.xlsx") 
+data <- datafix[-1] 
+df <- data.frame(scale(data)) 
+row.names(df) <- datafix$kabkot 
+ 
+# UJI ASUMSI 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023
+74 
+ 
+ 
+Universitas Indonesia 
+ 
+# Biplot 
+library(FactoMineR) 
+library(tidyverse) 
+# plot dengan nama kabkot 
+biplot <- fviz_pca_biplot(pca, 
+                          habillage = ind.coord$cluster, 
+                          addEllipses = T, 
+                          col.var = "black", 
+Perbandingan antara hasil …, Alfia Choirun Nisa, FMIPA UI, 2023

@@ -257,6 +257,49 @@ Maka koordinat baru yang terotasi ($\mathbf{F}^*$) didefinisikan sebagai:
 Dalam penelitian ini, fitur rotasi diterapkan secara interaktif untuk mensejajarkan variabel target tertentu (misalnya, variabel "PDRB") agar berimpit dengan sumbu horizontal (Sumbu X). Hal ini memudahkan pengguna untuk menilai posisi relatif kabupaten/kota semata-mata berdasarkan indikator tersebut tanpa gangguan visual dari dimensi lain.
 
 % --- 2.7 ---
+\section{\normalsize Metode Pengelompokan Data (Clustering)}
+
+Meskipun metode STATIS mampu memetakan seluruh letak relatif kabupaten/kota selama 5 tahun menjadi satu bidang \textit{Dynamic Biplot}, analisis lanjutan diperlukan untuk mengidentifikasi klasifikasi daerah-daerah tersebut ke dalam kelompok-kelompok yang lebih diskrit pada setiap tahunnya. Metode pengelompokan (clustering) yang digunakan mencakup Hierarchical Clustering sebagai fungsi bantu visual dan K-Means Clustering sebagai alat pemisah utama.
+
+\subsection{\normalsize K-Means Clustering}
+K-Means merupakan algoritma \textit{partitioning clustering} non-hierarkis yang bertujuan mempartisi $n$ objek observasi ke dalam $k$ buah klaster, sedemikian rupa sehingga variansi (jarak kuadrat) antar objek di dalam satu klaster (\textit{within-cluster variation}) menjadi sekecil mungkin \citet{macqueen1967}.
+
+Misalkan terdapat himpunan data $\mathbf{X} = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_n\}$ di mana $\mathbf{x}_i \in \mathbb{R}^p$ adalah vektor observasi (dalam penelitian ini, representasi 12 indikator sosio-ekonomi untuk wilayah ke-$i$). Algoritma K-Means meminimumkan fungsi objektif \textit{Sum of Squared Errors} (SSE) atau inersia:
+\begin{equation}
+    SSE = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} || \mathbf{x}_i - \boldsymbol{\mu}_j ||^2
+\end{equation}
+dengan $C_j$ adalah himpunan objek pada klaster ke-$j$, dan $\boldsymbol{\mu}_j$ adalah titik pusat (sentroid) dari klaster $C_j$. Algoritma ini bekerja secara iteratif dengan memindahkan objek ke klaster dengan sentroid terdekat hingga tidak ada objek yang berpindah tempat.
+
+\subsection{\normalsize Penentuan Jumlah Klaster (Metode Elbow)}
+Tantangan utama algoritma partisional seperti K-Means adalah penentuan jumlah klaster ($k$) awal yang bersifat apriori. Untuk menentukan $k$ optimal secara empiris, metode \textit{Elbow} digunakan sebagai panduan heuristik \citet{bholowalia2014}. 
+
+Metode Elbow mengevaluasi efektivitas partisi dengan merencanakan kurva nilai inersia ($SSE$) pada sumbu Y terhadap nilai $k$ yang bervariasi (misalnya 1 hingga 10) pada sumbu X. Semakin banyak klaster, nilai SSE secara matematis akan selalu menurun karena jarak objek ke sentroidnya terdekat akan semakin memendek. Namun, pada suatu titik tertentu ($k$), penurunan drastis SSE akan mulai melandai sehingga membentuk sudut (patahan/siku). Titik patahan inilah—yang menunjukkan \textit{diminishing returns} terhadap penambahan jumlah klaster—yang direkomendasikan sebagai jumlah klaster optimal agar model tidak mengalami \textit{overfitting} \citet{syakur2018}.
+
+\subsection{\normalsize Agglomerative Hierarchical Clustering (Dendrogram)}
+Sebagai alat bantu komplementer bagi metode Elbow, pendekatan hierarkis \textit{Agglomerative Clustering} dengan metode \textit{Ward's Linkage} digunakan untuk memvisualisasikan struktur pengelompokan secara hierarkis lewat Dendrogram \citet{ward1963}.
+
+Metode Ward menggunakan pendekatan \textit{Analysis of Variance} (ANOVA) untuk mengevaluasi jarak antar-klaster. Pada setiap tahap aglomerasi, metode ini menggabungkan sepasang klaster yang meminimalkan peningkatan \textit{Error Sum of Squares} (ESS) total. Peningkatan ESS agregat saat menggabungkan klaster $A$ dan $B$ untuk membentuk $A \cup B$ dihitung sebagai:
+\begin{equation}
+    \Delta(A, B) = \frac{n_A n_B}{n_A + n_B} || \boldsymbol{\mu}_A - \boldsymbol{\mu}_B ||^2
+\end{equation}
+Hasil dari proses hierarkis bottom-up ini menghasilkan grafik pohon (Dendrogram) interaktif dalam \textit{dashboard}. Jarak vertikal cabang sebelum berpotongan secara visual mengindikasikan ketidaksamaan struktur. Pemotongan konseptual secara horizontal pada dendrogram dapat membantu memvalidasi indikasi titik $k$ dari grafik Elbow.
+
+\subsection{\normalsize Analisis Transisi Temporal (Matriks Perpindahan)}
+Setelah hasil clustering ditetapkan per tahun pengamatan $t$, diperlukan alat analisis untuk melihat konstelasi pergeseran performa wilayah. Dalam penelitian ini, diperkenalkan matriks transisi temporal atau Tabel Pemindahan Silang (\textit{Crosstab}).
+
+Sebuah matriks transisi $\mathbf{T}$ berdimensi $k \times k$ disusun untuk memetakan kondisi dari tahun $t_1$ (misalnya 2020) ke tahun $t_2$ (misalnya 2021). Elemen $T_{xy}$ pada matriks tersebut mendeskripsikan observasi (jumlah atau daftar observasi wilayah) yang awalnya berada pada klaster $x$ di tahun $t_1$ namun kemudian bermigrasi menjadi anggota klaster $y$ di tahun $t_2$:
+\begin{equation}
+    \mathbf{T} = 
+    \begin{pmatrix}
+    T_{1,1} & T_{1,2} & \cdots & T_{1,k} \\
+    T_{2,1} & T_{2,2} & \cdots & T_{2,k} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    T_{k,1} & T_{k,2} & \cdots & T_{k,k}
+    \end{pmatrix}
+\end{equation}
+Diagonal utama dari matriks ini ($T_{1,1}, T_{2,2}, \dots, T_{k,k}$) merepresentasikan stabilitas jumlah kabupaten/kota yang tidak mengalami perubahan klaster. Sebaliknya, wilayah yang menduduki blok \textit{off-diagonal} merupakan wilayah anomali yang mengalami penyesuaian capaian sosio-ekonomi pasca-guncangan pandemi, baik membaik maupun memburuk.
+
+% --- 2.8 ---
 \section{\normalsize Visualisasi Interaktif dengan Plotly dan Dash}
 
 Kompleksitas informasi yang dihasilkan oleh metode STATIS dan Dynamic Biplot menuntut media penyajian yang lebih adaptif daripada grafik statis. Untuk menjawab kebutuhan ini, penelitian ini mengintegrasikan pustaka grafis \textbf{Plotly} \citet{plotly2015} dalam kerangka kerja aplikasi berbasis web \textbf{Dash} \citet{dash_docs}.
