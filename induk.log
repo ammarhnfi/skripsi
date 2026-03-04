@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  3 MAR 2026 10:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 MAR 2026 08:24
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -166,6 +166,45 @@ Package tocbibind Info: The document has chapter divisions on input line 50.
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
+) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has chapter divisions on input line 51.
+\cftparskip=\skip59
+\cftbeforetoctitleskip=\skip60
+\cftaftertoctitleskip=\skip61
+\cftbeforepartskip=\skip62
+\cftpartnumwidth=\skip63
+\cftpartindent=\skip64
+\cftbeforechapskip=\skip65
+\cftchapindent=\skip66
+\cftchapnumwidth=\skip67
+\cftbeforesecskip=\skip68
+\cftsecindent=\skip69
+\cftsecnumwidth=\skip70
+\cftbeforesubsecskip=\skip71
+\cftsubsecindent=\skip72
+\cftsubsecnumwidth=\skip73
+\cftbeforesubsubsecskip=\skip74
+\cftsubsubsecindent=\skip75
+\cftsubsubsecnumwidth=\skip76
+\cftbeforeparaskip=\skip77
+\cftparaindent=\skip78
+\cftparanumwidth=\skip79
+\cftbeforesubparaskip=\skip80
+\cftsubparaindent=\skip81
+\cftsubparanumwidth=\skip82
+\cftbeforeloftitleskip=\skip83
+\cftafterloftitleskip=\skip84
+\cftbeforefigskip=\skip85
+\cftfigindent=\skip86
+\cftfignumwidth=\skip87
+\c@lofdepth=\count300
+\c@lotdepth=\count301
+\cftbeforelottitleskip=\skip88
+\cftafterlottitleskip=\skip89
+\cftbeforetabskip=\skip90
+\cfttabindent=\skip91
+\cfttabnumwidth=\skip92
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
@@ -180,31 +219,29 @@ Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@hangindent=\dimen175
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count300
-\c@continuedfloat=\count301
+\c@caption@flags=\count302
+\c@continuedfloat=\count303
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip59
-\multirow@cntb=\count302
-\multirow@dima=\skip60
+\multirow@colwidth=\skip93
+\multirow@cntb=\count304
+\multirow@dima=\skip94
 \bigstrutjot=\dimen176
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count303
-\sf@farskip=\skip61
+\c@KVtest=\count305
+\sf@farskip=\skip95
 \sf@captopadj=\dimen177
-\sf@capskip=\skip62
-\sf@nearskip=\skip63
-\c@subfigure=\count304
-\c@subfigure@save=\count305
-\c@lofdepth=\count306
-\c@subtable=\count307
-\c@subtable@save=\count308
-\c@lotdepth=\count309
-\sf@top=\skip64
-\sf@bottom=\skip65
+\sf@capskip=\skip96
+\sf@nearskip=\skip97
+\c@subfigure=\count306
+\c@subfigure@save=\count307
+\c@subtable=\count308
+\c@subtable@save=\count309
+\sf@top=\skip98
+\sf@bottom=\skip99
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
@@ -213,8 +250,8 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \ar@mcellbox=\box55
 \extrarowheight=\dimen179
 \NC@list=\toks31
-\extratabsurround=\skip66
-\backup@length=\skip67
+\extratabsurround=\skip100
+\backup@length=\skip101
 \ar@cellbox=\box56
 )
 \rotheadsize=\dimen180
@@ -222,10 +259,10 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \TeXr@lab=\toks32
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
-\LTleft=\skip68
-\LTright=\skip69
-\LTpre=\skip70
-\LTpost=\skip71
+\LTleft=\skip102
+\LTright=\skip103
+\LTpre=\skip104
+\LTpost=\skip105
 \LTchunksize=\count311
 \LTcapwidth=\dimen181
 \LT@head=\box57
@@ -240,21 +277,35 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LT@p@ftn=\toks33
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
-\f@nch@headwidth=\skip72
-\f@nch@offset@elh=\skip73
-\f@nch@offset@erh=\skip74
-\f@nch@offset@olh=\skip75
-\f@nch@offset@orh=\skip76
-\f@nch@offset@elf=\skip77
-\f@nch@offset@erf=\skip78
-\f@nch@offset@olf=\skip79
-\f@nch@offset@orf=\skip80
-\f@nch@height=\skip81
-\f@nch@footalignment=\skip82
-\f@nch@widthL=\skip83
-\f@nch@widthC=\skip84
-\f@nch@widthR=\skip85
+\f@nch@headwidth=\skip106
+\f@nch@offset@elh=\skip107
+\f@nch@offset@erh=\skip108
+\f@nch@offset@olh=\skip109
+\f@nch@offset@orh=\skip110
+\f@nch@offset@elf=\skip111
+\f@nch@offset@erf=\skip112
+\f@nch@offset@olf=\skip113
+\f@nch@offset@orf=\skip114
+\f@nch@height=\skip115
+\f@nch@footalignment=\skip116
+\f@nch@widthL=\skip117
+\f@nch@widthC=\skip118
+\f@nch@widthR=\skip119
 \@temptokenb=\toks34
+) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip18
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+) (setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+) (fncychap.sty
+Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
+\RW=\skip120
+\mylen=\skip121
+\myhi=\skip122
+\px=\skip123
+\py=\skip124
+\pyy=\skip125
+\pxx=\skip126
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
@@ -315,10 +366,6 @@ Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count321
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
-\Urlmuskip=\muskip18
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen183
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
@@ -352,18 +399,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
 )
-\Hy@SectionHShift=\skip86
-) (setspace.sty
-Package: setspace 2011/12/19 v6.7a set line spacing
-) (fncychap.sty
-Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
-\RW=\skip87
-\mylen=\skip88
-\myhi=\skip89
-\px=\skip90
-\py=\skip91
-\pyy=\skip92
-\pxx=\skip93
+\Hy@SectionHShift=\skip127
 )
 \c@theorem=\count328
 \c@definition=\count329
@@ -371,8 +407,8 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box62
-\beforetitleunit=\skip94
-\aftertitleunit=\skip95
+\beforetitleunit=\skip128
+\aftertitleunit=\skip129
 \ttl@plus=\dimen186
 \ttl@minus=\dimen187
 \ttl@toksa=\toks35
@@ -386,7 +422,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count331
-) (induk.aux (sampul.aux) (judul_dalam.aux) (orisinal.aux) (pengesahan_sidang.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (markLampiran.aux) (lampiran.aux))
+) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (markLampiran.aux) (lampiran.aux))
 \openout1 = `induk.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
@@ -477,7 +513,7 @@ Package hyperref Info: Link coloring OFF on input line 143.
 \openout2 = `sampul.aux'.
 
  (sampul.tex
-<pics/makara.png, id=236, 154.86429pt x 154.34807pt>
+<pics/makara.png, id=247, 154.86429pt x 154.34807pt>
 File: pics/makara.png Graphic file (type png)
 <use pics/makara.png>
 Package pdftex.def Info: pics/makara.png  used on input line 14.
@@ -498,21 +534,39 @@ Package pdftex.def Info: pics/makara.png  used on input line 12.
 
 
 ])
-\openout2 = `orisinal.aux'.
+\openout2 = `pengesahan.aux'.
 
- (orisinal.tex
-LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+ (pengesahan.tex
+LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 17.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13.
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-) [2
+)
+Underfull \hbox (badness 10000) in paragraph at lines 12--18
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--22
+
+ []
+
+[3
+
+
+
+
+])
+\openout2 = `orisinal.aux'.
+
+ (orisinal.tex [4
 
 
 
@@ -535,7 +589,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--61
 
  []
 
-[3
+[5
+
+
+
+
+])
+\openout2 = `pakai_ai.aux'.
+
+ (pakai_ai.tex [6
 
 
 
@@ -543,36 +605,33 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--61
 ])
 \openout2 = `pengantar.aux'.
 
- (pengantar.tex) [4
+ (pengantar.tex) [7
 
 
+
+
+] [8
 
 
 ]
 \openout2 = `persetujuan_publikasi.aux'.
 
  (persetujuan_publikasi.tex
-Underfull \hbox (badness 10000) in paragraph at lines 30--36
+Underfull \hbox (badness 10000) in paragraph at lines 35--41
 
  []
 
-[5
-
-
+[9
 
 
 ])
 \openout2 = `abstrak.aux'.
 
  (abstrak.tex
-Underfull \hbox (badness 1014) in paragraph at lines 30--32
-\OT1/ptm/m/n/12 Kata kunci: Banten-DKI-Jabar, Dy-namic Bi-plot, Pem-ban-gu-nan Re-gional, Spasio-
- []
-
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 33.
-(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 37.
+ (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [6
+) [10
 
 
 
@@ -580,36 +639,37 @@ File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 ])
 \openout2 = `abstract.aux'.
 
- (abstract.tex
-Underfull \hbox (badness 10000) in paragraph at lines 12--17
-
- []
-
-[7
+ (abstract.tex [11
 
 
 
 
-]) (induk.toc [8
+
+
+]) [12
 
 
 
-] [9])
+
+] (induk.toc [13] [14])
 \tf@toc=\write4
 \openout4 = `induk.toc'.
 
- [10] (induk.lot)
+ [15] [16
+
+
+] (induk.lot)
 \tf@lot=\write5
 \openout5 = `induk.lot'.
 
- [11
+ [17] [18
 
 
 ] (induk.lof)
 \tf@lof=\write6
 \openout6 = `induk.lof'.
 
- [12
+ [19] [20
 
 
 ]
@@ -623,10 +683,6 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.11 
       [1
-
-
-
-
 
 
 ] [2]
@@ -677,7 +733,12 @@ Underfull \hbox (badness 2103) in paragraph at lines 166--167
 []\OT1/ptm/b/n/12 Akar Kuadrat Ma-triks: \OT1/ptm/m/n/12 Ma-triks di-ag-o-nal $\OT1/cmr/bx/n/12 ^^C[]$ \OT1/ptm/m/n/12 da-pat di-fak-torkan men-jadi
  []
 
-[13] [14] [15] [16]) [17]
+[13] [14] [15] [16]) [17] [18
+
+
+
+
+]
 \openout2 = `bab3.aux'.
 
  (bab3.tex
@@ -685,33 +746,34 @@ Underfull \hbox (badness 2103) in paragraph at lines 166--167
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 31.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [18
+) [19
 
 
-
-
-] [19]
-Overfull \hbox (2.4141pt too wide) in paragraph at lines 94--94
-[]|\OT1/ptm/m/n/12 Rupiah/Kapita/Bulan|  
- []
-
-bab3.tex:102: ignored error: Infinite glue shrinkage found in box being split [20] [21]
-Underfull \vbox (badness 5741) has occurred while \output is active []
-
- [22]
+] [20] [21]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [23] [24]) [25]
+ [22]
+Overfull \vbox (848.77509pt too high) has occurred while \output is active []
+
+ [23] [24]) [25] [26
+
+
+
+
+]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
 \normalsize BAB 4.
-[26
+[27
+
+
+] [28]) [29] [30
 
 
 
 
-] [27]) [28]
+]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
@@ -726,12 +788,10 @@ Underfull \hbox (badness 7433) in paragraph at lines 17--19
 []\OT1/ptm/b/n/12 Dinamika Tra-jek-tori Pemuli-han: \OT1/ptm/m/n/12 Vi-su-al-isasi \OT1/ptm/m/it/12 Dy-namic Bi-plot \OT1/ptm/m/n/12 berhasil
  []
 
-[29
+[31
 
 
-
-
-]) [30] (induk.bbl
+]) [32] (induk.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
 []\OT1/ptm/m/n/12 Badan Pusat Statis-tik (2025).  \OT1/ptm/m/it/12 Tin-jauan re-gional berdasarkan
  []
@@ -756,11 +816,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 20--25
 \OT1/ptm/m/n/12 domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
  []
 
-[31
+[33
 
 
 
-]) [32]
+
+
+]) [34]
 \openout2 = `markLampiran.aux'.
 
  (markLampiran.tex
@@ -777,32 +839,32 @@ l.13 \end{titlepage}
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.255 	\include{lampiran}
+l.307 	\include{lampiran}
                           [2
 
 
 
 
-] (induk.aux (sampul.aux) (judul_dalam.aux) (orisinal.aux) (pengesahan_sidang.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (markLampiran.aux) (lampiran.aux))
+] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (markLampiran.aux) (lampiran.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `induk.out' has not changed.
-(rerunfilecheck)             Checksum: 37113782A4F5516C60CB2A5E345929A0;11441.
+(rerunfilecheck)             Checksum: F153CCA91E00625940B4347AB672F989;11729.
  ) 
 Here is how much of TeX's memory you used:
- 14570 strings out of 467871
- 230757 string characters out of 5418376
- 654532 words of memory out of 5000000
- 42802 multiletter control sequences out of 15000+600000
- 649796 words of font info for 87 fonts, out of 8000000 for 9000
+ 14922 strings out of 467871
+ 236632 string characters out of 5418376
+ 675347 words of memory out of 5000000
+ 43112 multiletter control sequences out of 15000+600000
+ 650315 words of font info for 88 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
  75i,16n,79p,1501b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (47 pages, 383423 bytes).
+Output written on induk.pdf (56 pages, 392226 bytes).
 PDF statistics:
- 870 PDF objects out of 1000 (max. 8388607)
- 202 named destinations out of 1000 (max. 500000)
- 478 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 940 PDF objects out of 1000 (max. 8388607)
+ 226 named destinations out of 1000 (max. 500000)
+ 494 words of extra memory for PDF output out of 10000 (max. 10000000)
 

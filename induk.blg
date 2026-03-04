@@ -5,10 +5,14 @@ Reallocating 'name_of_file' (item size: 1) to 11 items.
 A level-1 auxiliary file: sampul.aux
 Reallocating 'name_of_file' (item size: 1) to 16 items.
 A level-1 auxiliary file: judul_dalam.aux
+Reallocating 'name_of_file' (item size: 1) to 15 items.
+A level-1 auxiliary file: pengesahan.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 A level-1 auxiliary file: orisinal.aux
 Reallocating 'name_of_file' (item size: 1) to 22 items.
 A level-1 auxiliary file: pengesahan_sidang.aux
+Reallocating 'name_of_file' (item size: 1) to 13 items.
+A level-1 auxiliary file: pakai_ai.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: pengantar.aux
 Reallocating 'name_of_file' (item size: 1) to 26 items.
@@ -37,7 +41,7 @@ A level-1 auxiliary file: lampiran.aux
 Database file #1: pustaka.bib
 You've used 16 entries,
             1975 wiz_defined-function locations,
-            608 strings with 7055 characters,
+            610 strings with 7081 characters,
 and the built_in function-call counts, 5852 in all, are:
 = -- 599
 > -- 188

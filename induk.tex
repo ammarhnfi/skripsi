@@ -24,6 +24,7 @@
 \usepackage{indentfirst} % Kalimat pertama masuk beberapa cm
 \usepackage{natbib} % Untuk merujuk pustaka
 \usepackage{tocbibind}
+\usepackage{tocloft}
 %\usepackage{multirow} % Membuat banyak baris dalam 1 baris di tabel
 %\usepackage{colortbl} % Membuat tabel berwarna-warni.
 \usepackage{caption}
@@ -36,8 +37,6 @@
 %\usepackage{pdfpages} % Package untuk memasukan berkas pdf sebagai bagian dari dokumen.
 
 \PassOptionsToPackage{hyphens}{url}
-\usepackage{hyperref}
-\hypersetup{pdfstartview=FitH,pdfview=FitH}
 
 \usepackage{array}
 \usepackage{url}
@@ -47,7 +46,8 @@
 \linespread{1.3} % Jarak baris 1,5
 
 \usepackage[ConnyRevised]{fncychap} % Membantu dalam mengatur jarak antara tepi kertas dengan posisi header.
-
+\usepackage{hyperref} %paket ini harus diletakkan di akhir daftar paket agar halaman tugas akhir benar.
+\hypersetup{pdfstartview=FitH,pdfview=FitH}
 %-----------------------------------------------------------------------------%
 % Konfigurasi
 %-----------------------------------------------------------------------------%
@@ -107,10 +107,10 @@
 % Tambahkan kata-kata yang dimasukan kedalam Table of Contents.
 \newcommand{\addChapter}[1]{\phantomsection \addcontentsline{toc}{chapter}{#1}}
 
-\renewcommand{\bibname}{\normalsize DAFTAR REFERENSI}
 \renewcommand{\contentsname}{\normalsize DAFTAR ISI}
 \renewcommand{\listfigurename}{\normalsize DAFTAR GAMBAR}
 \renewcommand{\listtablename}{\normalsize DAFTAR TABEL}
+\renewcommand{\bibname}{\normalsize DAFTAR PUSTAKA}
 \renewcommand{\figurename}{\normalsize Gambar}
 \renewcommand{\tablename}{\normalsize Tabel}
 \renewcommand{\chaptername}{\normalsize BAB}
@@ -161,16 +161,19 @@
 % Memuat halaman judul dalam
 \addChapter{HALAMAN JUDUL}
 \include{judul_dalam} % Dilarang mengubah isi file judul_dalam.tex
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
-\setcounter{page}{2} % nomor halaman selanjutnya adalah 2
+\setcounter{page}{3} % nomor halaman selanjutnya adalah 2
 
 % Memuat halaman pengesahan
-%\addChapter{LEMBAR PERSETUJUAN}
-%\include{pengesahan} % Dilarang mengubah isi file pengesahan.tex 
+\addChapter{LEMBAR PERSETUJUAN}
+\include{pengesahan} % Dilarang mengubah isi file pengesahan.tex 
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 % load halaman orisinalitas
 \addChapter{HALAMAN PERNYATAAN ORISINALITAS}
 \include{orisinal} % Dilarang mengubah isi file orisinal.tex
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 %pengaturan rata kiri
 %\raggedright
@@ -178,12 +181,23 @@
 
 \addChapter{HALAMAN PENGESAHAN}
 \include{pengesahan_sidang} % File pengesahan_sidang.tex mungkin perlu diubah sesuai dengan banyaknya pembimbing dan penguji kolokium atau sidang Anda
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
+
+% load halaman penggunaan AI
+% PILIH SALAH SATU DARI FILE tidak_pakai_ai.tex atau pakai_ai.tex
+% Berikan tanda % di depan baris \addChapter, baris \include dan baris \clearpage untuk file yang tidak dipilih.
+\addChapter{SURAT PERNYATAAN}
+\include{pakai_ai} % Mahasiswa wajib mengedit file pakai_ai.tex jika mahasiswa memakai AI.
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 \addChapter{KATA PENGANTAR}
 \include{pengantar} % Anda HARUS isi file pengantar.tex -------------
+-------------
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
-\addChapter{HALAMAN PERSETUJUAN PUBLIKASI ILMIAH}
+\addChapter{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI}
 \include{persetujuan_publikasi} % Dilarang ubah file persetujuan_publikasi.tex 
+% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 %pengaturan header footer halaman
 \renewcommand{\headrulewidth}{0.0pt}
@@ -199,19 +213,50 @@
 
 \addChapter{ABSTRAK}
 \include{abstrak} % Abstrak dalam bahasa Indonesia. Ubah file abstrak.tex.
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 \addChapter{ABSTRACT}
 \include{abstract} % Abstrak dalam bahasa Inggris. Ubah file abstract.tex.
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
-% Daftar isi, gambar, dan tabel
+% Daftar isi
+\renewcommand{\cfttoctitlefont}{\hspace*{\fill}\Huge\bfseries} % untuk table of content
+\renewcommand{\cftaftertoctitle}{\hspace*{\fill}}
+\renewcommand{\cftchappresnum}{BAB~}
+\setlength{\cftchapnumwidth}{4em}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}} % tambah titik-titik
 \tableofcontents
-\clearpage
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
-\listoftables % jika ada tabel
-\clearpage
 
-\listoffigures % jika ada gambar
-\clearpage{\thispagestyle{empty}\cleardoublepage}
+% Daftar tabel (jika tidak ada, berikan tanda % di awal baris)
+\renewcommand{\cftlottitlefont}{\hspace*{\fill}\Huge\bfseries} % untuk list of table
+\renewcommand{\cftafterlottitle}{\hspace*{\fill}}
+\renewcommand{\cfttabpresnum}{Tabel~}
+\setlength{\cfttabnumwidth}{4.5em}
+\listoftables 
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
+
+
+% Daftar gambar (jika tidak ada, berikan tanda % di awal baris)
+\renewcommand{\cftloftitlefont}{\hspace*{\fill}\Huge\bfseries} % untuk list of figure
+\renewcommand{\cftafterloftitle}{\hspace*{\fill}}
+\renewcommand{\cftfigpresnum}{Gambar~}
+\setlength{\cftfignumwidth}{5.5em}
+\listoffigures 
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
+
+% Daftar lampiran (jika tidak ada, berikan tanda % di awal baris)
+%\chapter*{DAFTAR LAMPIRAN}
+% Definisikan daftar baru: DAFTAR LAMPIRAN
+%\newlistof{lampiran}{loa}{DAFTAR LAMPIRAN}
+
+%\renewcommand{\cftloatitlefont}{\hspace*{\fill}\normalsize\bfseries} % untuk list of figure
+%\renewcommand{\cftafterloatitle}{\hspace*{\fill}}
+
+%\addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+%\listoflampiran 
+%\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
 
 % Gunakan penomoran Arab (1, 2, 3, ...) setelah bagian ini.
 \pagenumbering{arabic}
@@ -235,13 +280,20 @@
   	\renewcommand{\footrulewidth}{0pt}
 }
 
-\clearpage{\thispagestyle{empty}\cleardoublepage}
 \include{bab1}
-\clearpage{\thispagestyle{empty}\cleardoublepage}
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal bab 2 berhalaman ganjil
+
 \include{bab2}
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal bab 3 berhalaman ganjil
+
 \include{bab3}
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal bab 4 berhalaman ganjil
+
 \include{bab4}
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal bab 5 berhalaman ganjil
+
 \include{bab5}
+\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal bab 6 berhalaman ganjil
 
 % Daftar Pustaka
 %Buat daftar pustaka
@@ -250,8 +302,8 @@
 
 % Lampiran (jika ada)
 
-\begin{appendix}
+%\begin{appendix}
 	\include{markLampiran}
 	\include{lampiran}
-\end{appendix}
+%\end{appendix}
 \end{document} 
