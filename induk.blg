@@ -34,14 +34,10 @@ A level-1 auxiliary file: bab5.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 The style file: apalike-ejor.bst
 Reallocating 'name_of_file' (item size: 1) to 8 items.
-Reallocating 'name_of_file' (item size: 1) to 17 items.
-A level-1 auxiliary file: markLampiran.aux
-Reallocating 'name_of_file' (item size: 1) to 13 items.
-A level-1 auxiliary file: lampiran.aux
 Database file #1: pustaka.bib
 You've used 20 entries,
             1975 wiz_defined-function locations,
-            643 strings with 8000 characters,
+            641 strings with 7972 characters,
 and the built_in function-call counts, 7586 in all, are:
 = -- 781
 > -- 238
