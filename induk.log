@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 MAR 2026 10:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 MAR 2026 10:35
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Skripsi/my/induk.tex
-(d:/Skripsi/my/induk.tex
+**./induk.tex
+(induk.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -24,14 +23,18 @@ File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count284
@@ -46,17 +49,24 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen155
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks18
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen157
@@ -71,14 +81,17 @@ Package: amsmath 2025/07/09 v2.17z AMS math features
 For additional information on amsmath, use the `?' option.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen159
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen160
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count287
@@ -128,9 +141,11 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -148,21 +163,24 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip55
 \thm@headsep=\skip56
 \dth@everypar=\toks30
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip57
 \bibsep=\skip58
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count299
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
-
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
@@ -205,9 +223,11 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforetabskip=\skip90
 \cfttabindent=\skip91
 \cfttabnumwidth=\skip92
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen168
 \captionmargin=\dimen169
@@ -221,15 +241,18 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count302
 \c@continuedfloat=\count303
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip93
 \multirow@cntb=\count304
 \multirow@dima=\skip94
 \bigstrutjot=\dimen176
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 \c@KVtest=\count305
 \sf@farskip=\skip95
@@ -242,9 +265,11 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 \c@subtable@save=\count309
 \sf@top=\skip98
 \sf@bottom=\skip99
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen178
 \ar@mcellbox=\box55
@@ -257,7 +282,8 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \rotheadsize=\dimen180
 \c@nlinenum=\count310
 \TeXr@lab=\toks32
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip102
 \LTright=\skip103
@@ -275,8 +301,10 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \c@LT@tables=\count314
 \c@LT@chunks=\count315
 \LT@p@ftn=\toks33
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip106
 \f@nch@offset@elh=\skip107
 \f@nch@offset@erh=\skip108
@@ -292,10 +320,12 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip118
 \f@nch@widthR=\skip119
 \@temptokenb=\toks34
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (setspace.sty
+)
+(setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 ) (fncychap.sty
 Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
@@ -306,41 +336,63 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
 \py=\skip124
 \pyy=\skip125
 \pxx=\skip126
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count316
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count317
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
 )
 \@linkdim=\dimen182
 \Hy@linkcounter=\count318
@@ -368,10 +420,14 @@ Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count321
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen183
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count322
 \Field@Width=\dimen184
@@ -388,23 +444,30 @@ Package hyperref Info: PDF/A mode OFF on input line 6108.
 \c@Hfootnote=\count325
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count326
 \c@bookmark@seq@number=\count327
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
 )
 \Hy@SectionHShift=\skip127
 )
 \c@theorem=\count328
 \c@definition=\count329
 \c@example=\count330
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box62
 \beforetitleunit=\skip128
@@ -415,14 +478,22 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen188
 \titlewidthlast=\dimen189
 \titlewidthfirst=\dimen190
-) (laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 143.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+)
+(laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+43.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count331
-) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux))
+) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux)
+(orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux)
+(persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux)
+(bab3.aux) (bab4.aux) (bab5.aux))
 \openout1 = `induk.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
@@ -478,7 +549,9 @@ LaTeX Font Info:    ... okay on input line 143.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count332
 \scratchdimen=\dimen191
@@ -491,22 +564,29 @@ LaTeX Font Info:    ... okay on input line 143.
 \MPnumerator=\count336
 \makeMPintoPDFobject=\count337
 \everyMPtoPDFconversion=\toks37
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: longtable package is loaded.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring OFF on input line 143.
- (induk.out) (induk.out)
+
+(induk.out) (induk.out)
 \@outlinefile=\write3
 \openout3 = `induk.out'.
 
@@ -521,7 +601,9 @@ Package pdftex.def Info: pics/makara.png  used on input line 14.
  [1
 
 
-{C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./pics/makara.png>])
+{C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/amma
+r/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./pics/makara.png
+>])
 \openout2 = `judul_dalam.aux'.
 
  (judul_dalam.tex
@@ -538,15 +620,20 @@ Package pdftex.def Info: pics/makara.png  used on input line 12.
 
  (pengesahan.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13
+.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 Underfull \hbox (badness 10000) in paragraph at lines 12--18
@@ -627,10 +714,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--41
 \openout2 = `abstrak.aux'.
 
  (abstrak.tex
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 37.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
+7.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
-) [9
+)
+[9
 
 
 
@@ -659,7 +749,8 @@ File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 \openout6 = `induk.lof'.
 
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.283 \include{bab1}
@@ -673,7 +764,8 @@ l.283 \include{bab1}
 
 ] [3]
 Underfull \hbox (badness 1205) in paragraph at lines 21--22
-[]\OT1/ptm/m/n/12 Secara ke-selu-ruhan, peneli-tian ini di-arahkan un-tuk men-jawab ke-bu-tuhan akan
+[]\OT1/ptm/m/n/12 Secara ke-selu-ruhan, peneli-tian ini di-arahkan un-tuk men-j
+awab ke-bu-tuhan akan
  []
 
 [4]
@@ -681,17 +773,20 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
 Underfull \hbox (badness 1406) in paragraph at lines 38--39
-[]\OT1/ptm/m/n/12 Bagaimana pola lin-tasan (\OT1/ptm/m/it/12 tra-jec-tory\OT1/ptm/m/n/12 ) peru-ba-han karak-ter-is-tik ekonomi kabu-
+[]\OT1/ptm/m/n/12 Bagaimana pola lin-tasan (\OT1/ptm/m/it/12 tra-jec-tory\OT1/p
+tm/m/n/12 ) peru-ba-han karak-ter-is-tik ekonomi kabu-
  []
 
 
 Underfull \hbox (badness 1286) in paragraph at lines 38--39
-\OT1/ptm/m/n/12 paten/kota dari masa kri-sis pan-demi (2020) hingga masa pemuli-han (2024)
+\OT1/ptm/m/n/12 paten/kota dari masa kri-sis pan-demi (2020) hingga masa pemuli
+-han (2024)
  []
 
 [6]
 Underfull \hbox (badness 1286) in paragraph at lines 64--65
-\OT1/ptm/m/n/12 paten/kota dari masa kri-sis pan-demi (2020) hingga masa pemuli-han (2024)
+\OT1/ptm/m/n/12 paten/kota dari masa kri-sis pan-demi (2020) hingga masa pemuli
+-han (2024)
  []
 
 ) [7]
@@ -699,28 +794,33 @@ Underfull \hbox (badness 1286) in paragraph at lines 64--65
 
  (bab2.tex
 \normalsize BAB 2.
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 19.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 1
+9.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [8
+)
+[8
 
 
 
 
 ]
 Underfull \hbox (badness 1946) in paragraph at lines 41--42
-[]\OT1/ptm/m/n/12 Matriks $\OT1/cmr/bx/n/12 W[]$ \OT1/ptm/m/n/12 ini da-pat mema-hami "geo-me-tri" hubun-gan an-tar kabu-paten/kota
+[]\OT1/ptm/m/n/12 Matriks $\OT1/cmr/bx/n/12 W[]$ \OT1/ptm/m/n/12 ini da-pat mem
+a-hami "geo-me-tri" hubun-gan an-tar kabu-paten/kota
  []
 
 [9] [10] [11] [12] [13]
 Underfull \hbox (badness 2103) in paragraph at lines 166--167
-[]\OT1/ptm/b/n/12 Akar Kuadrat Ma-triks: \OT1/ptm/m/n/12 Ma-triks di-ag-o-nal $\OT1/cmr/bx/n/12 ^^C[]$ \OT1/ptm/m/n/12 da-pat di-fak-torkan men-jadi
+[]\OT1/ptm/b/n/12 Akar Kuadrat Ma-triks: \OT1/ptm/m/n/12 Ma-triks di-ag-o-nal $
+\OT1/cmr/bx/n/12 ^^C[]$ \OT1/ptm/m/n/12 da-pat di-fak-torkan men-jadi
  []
 
 [14] [15] [16]
 Underfull \vbox (badness 5578) has occurred while \output is active []
 
- [17] [18] [19]) [20]
+ [17]
+[18] [19]) [20]
 \openout2 = `bab3.aux'.
 
  (bab3.tex
@@ -731,19 +831,22 @@ Underfull \vbox (badness 5578) has occurred while \output is active []
 
 
 ]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 35.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 3
+5.
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Underfull \vbox (badness 2213) has occurred while \output is active []
 
- [22] [23] [24]
+ [22]
+[23] [24]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [26] [27]) [28]
+ [26]
+[27]) [28]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
@@ -760,12 +863,14 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 \normalsize BAB 5.
 
 Underfull \hbox (badness 1412) in paragraph at lines 12--14
-[]\OT1/ptm/b/n/12 Stabilitas Struk-tur Ekonomi Re-gional: \OT1/ptm/m/n/12 Berdasarkan ana-li-sis inter-struktur
+[]\OT1/ptm/b/n/12 Stabilitas Struk-tur Ekonomi Re-gional: \OT1/ptm/m/n/12 Berda
+sarkan ana-li-sis inter-struktur
  []
 
 
 Underfull \hbox (badness 7433) in paragraph at lines 18--20
-[]\OT1/ptm/b/n/12 Dinamika Tra-jek-tori Pemuli-han: \OT1/ptm/m/n/12 Vi-su-al-isasi \OT1/ptm/m/it/12 Dy-namic Bi-plot \OT1/ptm/m/n/12 berhasil
+[]\OT1/ptm/b/n/12 Dinamika Tra-jek-tori Pemuli-han: \OT1/ptm/m/n/12 Vi-su-al-is
+asi \OT1/ptm/m/it/12 Dy-namic Bi-plot \OT1/ptm/m/n/12 berhasil
  []
 
 [33
@@ -775,34 +880,42 @@ Underfull \hbox (badness 7433) in paragraph at lines 18--20
 
 ]) [34] (induk.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
-[]\OT1/ptm/m/n/12 Badan Pusat Statis-tik (2025).  \OT1/ptm/m/it/12 Tin-jauan re-gional berdasarkan
+[]\OT1/ptm/m/n/12 Badan Pusat Statis-tik (2025).  \OT1/ptm/m/it/12 Tin-jauan re
+-gional berdasarkan
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
-\OT1/ptm/m/it/12 pdrb kabu-paten/kota 2020--2024\OT1/ptm/m/n/12 .  Di-ak-ses dari si-tus resmi
+\OT1/ptm/m/it/12 pdrb kabu-paten/kota 2020--2024\OT1/ptm/m/n/12 .  Di-ak-ses da
+ri si-tus resmi
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
-\OT1/ptm/m/n/12 Badan Pusat Statis-tik.  []$https : / / www . bps . go . id / id / statistics -[] table / 3 /
+\OT1/ptm/m/n/12 Badan Pusat Statis-tik.  []$https : / / www . bps . go . id / i
+d / statistics -[] table / 3 /
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
 \OT1/ptm/m/n/12 WkdVMWRYVnBkMnBvVEhKSVkyWXhNblZtTjJSbmR6MDkjMw = = / produk -[]
+
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 20--25
-\OT1/ptm/m/n/12 domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
+\OT1/ptm/m/n/12 domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[
+] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
  []
 
 [35
 
 
 
-]) [36] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux))
+]) [36] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux)
+(orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux)
+(persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux)
+(bab3.aux) (bab4.aux) (bab5.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
@@ -811,14 +924,34 @@ Package rerunfilecheck Info: File `induk.out' has not changed.
 (rerunfilecheck)             Checksum: 88357E2329FDE6A7D6A8149E1D3F2D12;13588.
  ) 
 Here is how much of TeX's memory you used:
- 14923 strings out of 467871
- 236016 string characters out of 5418376
+ 14921 strings out of 467871
+ 235974 string characters out of 5418376
  660352 words of memory out of 5000000
  43099 multiletter control sequences out of 15000+600000
  651078 words of font info for 93 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
- 75i,16n,79p,1501b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+ 75i,16n,79p,1489b,679s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pu
+blic/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ammar/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/User
+s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><
+C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr
+8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public
+/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ammar/AppData/Local/Programs/MiK
+TeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ammar/AppData/Local/Programs/M
+iKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Program
+s/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
 Output written on induk.pdf (48 pages, 436812 bytes).
 PDF statistics:
  1003 PDF objects out of 1200 (max. 8388607)

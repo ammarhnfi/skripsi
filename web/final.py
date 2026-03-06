@@ -813,12 +813,22 @@ app.layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px'
             ]),
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
-                    html.H6("Peta Sebaran Cluster (Tahun Tujuan)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-map', style={'height': '500px'})])
+                    html.H6(id='title-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-map-t1', style={'height': '500px'})])
                 ]),
                 html.Div(className='six columns', children=[
-                    html.H6("Biplot Cluster (Tahun Tujuan)", style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-scatter', style={'height': '500px'})])
+                    html.H6(id='title-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-map-t2', style={'height': '500px'})])
+                ])
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-scatter-t1', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-scatter-t2', style={'height': '500px'})])
                 ])
             ]),
             html.Hr(),
@@ -866,6 +876,64 @@ app.layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px'
             # -------------------------------------
 
             html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'})
+        ]),
+
+        # --- [TAMBAHAN BARU] SECTION 8: BASELINE MATRIKS TRANSISI (IPM/UNDP) ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Disclaimer & Baseline: Matriks Transisi Berdasarkan Kategori IPM (UNDP)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#E64A19'}),
+            html.P("Sebelum menentukan jumlah klaster k-means, Anda dapat melihat kondisi riil perpindahan wilayah berdasarkan 4 kategori Indeks Pembangunan Manusia (UNDP): Sangat Tinggi (≥80), Tinggi (70-79.99), Sedang (55-69.99), dan Rendah (<55).", 
+                   style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+            
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Pasangan Tahun Transisi IPM:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='ipm-trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
+                html.Button("TAMPILKAN BASELINE IPM", id='btn-run-ipm-trans', n_clicks=0, 
+                            style={'backgroundColor': '#E64A19', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px'})
+            ]),
+            
+            html.Div(id='ipm-disclaimer-text', style={'textAlign': 'center', 'marginBottom': '20px', 'fontStyle': 'italic', 'fontWeight': 'bold'}),
+            
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='ipm-trans-view-mode', options=[
+                    {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
+                    {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
+                ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            
+            dcc.Loading(children=[
+                dash_table.DataTable(id='ipm-trans-matrix-table', style_table={'overflowX': 'auto'}, 
+                                     style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
+                                     style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ])
+        ]),
+
+        # --- [TAMBAHAN BARU] SECTION 9: PERBANDINGAN CLUSTER VS IPM (CROSS-TABULATION) ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Perbandingan Anggota Cluster K-Means vs Kategori IPM (UNDP)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#00695C'}),
+            html.P("Bagian ini menampilkan tabel tabulasi silang (cross-tabulation) antara cluster yang dibentuk oleh algoritma K-Means dengan pengelompokan baku dari UNDP berdasarkan skor IPM. Ini berguna untuk mengevaluasi apakah cluster data-driven sejalan dengan standar institusi global.", 
+                   style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+            
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='cross-year-dropdown', clearable=False, style={'width': '120px', 'marginRight': '20px'}),
+                html.Label("Jumlah Cluster K-Means (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Input(id='cross-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
+                html.Button("TAMPILKAN PERBANDINGAN", id='btn-run-cross', n_clicks=0, 
+                            style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px'})
+            ]),
+            
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='cross-view-mode', options=[
+                    {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
+                    {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
+                ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            
+            dcc.Loading(children=[
+                dash_table.DataTable(id='cross-table', style_table={'overflowX': 'auto'}, 
+                                     style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
+                                     style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ])
         ])
     ])
 ])
@@ -960,6 +1028,8 @@ def cb_upload(contents, filename):
     Output('baseline-name-final', 'options'), 
     Output('eval-year-dropdown', 'options'), Output('eval-year-dropdown', 'value'),
     Output('trans-year-dropdown', 'options'), Output('trans-year-dropdown', 'value'),
+    Output('ipm-trans-year-dropdown', 'options'), Output('ipm-trans-year-dropdown', 'value'),
+    Output('cross-year-dropdown', 'options'), Output('cross-year-dropdown', 'value'),
     Input('global-data-store', 'data'), Input('baseline-type-final', 'value')
 )
 def cb_controls(data, base_type):
@@ -974,7 +1044,7 @@ def cb_controls(data, base_type):
     for i in range(1, len(years)):
         trans_y_opts.append({'label': f"{years[i-1]} / {years[i]}", 'value': years[i]})
     
-    return [{'label': f, 'value': f} for f in feats], feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts, y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None)
+    return [{'label': f, 'value': f} for f in feats], feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts, y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), y_opts, years[-1]
 
 # 2b. Sync Vector Selector with Selected Vars
 @app.callback(
@@ -1268,7 +1338,9 @@ def cb_eval_cluster(eval_year, res):
     fig_elbow = go.Figure()
     fig_elbow.add_trace(go.Scatter(x=list(k_range), y=sse, mode='lines+markers', line=dict(color=COLOR_ACCENT, width=3), marker=dict(size=8)))
     fig_elbow.update_layout(title=f"Metode Elbow (Tahun {eval_year})", xaxis_title="Jumlah Cluster (k)", yaxis_title="Sum of Squared Errors (SSE)", template='plotly_white')
-    try: fig_elbow.write_image("../elbow_plot.png")
+    import os
+    os.makedirs("../huggingface", exist_ok=True)
+    try: fig_elbow.write_image(f"../huggingface/elbow_plot_{eval_year}.png")
     except: pass
 
     # 2. DENDROGRAM
@@ -1278,7 +1350,7 @@ def cb_eval_cluster(eval_year, res):
         Z = linkage(coords, method='ward')
         fig_dendro = ff.create_dendrogram(coords, labels=obs_labels, orientation='left', linkagefun=lambda x: Z, colorscale=px.colors.qualitative.Bold)
         fig_dendro.update_layout(title=f"Dendrogram Hierarchical (Tahun {eval_year})", template='plotly_white', margin=dict(l=150))
-        try: fig_dendro.write_image("../dendrogram.png")
+        try: fig_dendro.write_image(f"../huggingface/dendrogram_{eval_year}.png")
         except: pass
     except Exception as e:
         fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
@@ -1288,8 +1360,14 @@ def cb_eval_cluster(eval_year, res):
 
 # 10. CLUSTERING TAHUNAN & MATRIKS TRANSISI
 @app.callback(
-    Output('trans-map', 'figure'),
-    Output('trans-scatter', 'figure'),
+    Output('title-trans-map-t1', 'children'),
+    Output('trans-map-t1', 'figure'),
+    Output('title-trans-map-t2', 'children'),
+    Output('trans-map-t2', 'figure'),
+    Output('title-trans-scatter-t1', 'children'),
+    Output('trans-scatter-t1', 'figure'),
+    Output('title-trans-scatter-t2', 'children'),
+    Output('trans-scatter-t2', 'figure'),
     Output('trans-matrix-table', 'data'),
     Output('trans-matrix-table', 'columns'),
     Input('btn-run-trans', 'n_clicks'),
@@ -1299,11 +1377,11 @@ def cb_eval_cluster(eval_year, res):
     State('statis-core-store', 'data')
 )
 def cb_run_trans(n_clicks, view_mode, t2_year, k, res):
-    if not n_clicks or not t2_year or not res: return {}, {}, [], []
+    if not n_clicks or not t2_year or not res: return "", {}, "", {}, "", {}, "", {}, [], []
     
     years = sorted(list(res['per_year_coords'].keys()))
     t2_idx = years.index(str(t2_year))
-    if t2_idx == 0: return go.Figure().add_annotation(text="Pilih tahun selain tahun pertama."), {}, [], []
+    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", {}, "", {}, "", {}, "", {}, [], []
     t1_year = years[t2_idx - 1]
     
     coords_t1 = np.array(res['per_year_coords'][t1_year])
@@ -1314,66 +1392,101 @@ def cb_run_trans(n_clicks, view_mode, t2_year, k, res):
     labels_t1 = km_t1.fit_predict(coords_t1)
     km_t2 = KMeans(n_clusters=k, random_state=42, n_init=10)
     labels_t2 = km_t2.fit_predict(coords_t2)
+    str_labels_t1 = [f"Cluster {l+1}" for l in labels_t1]
     str_labels_t2 = [f"Cluster {l+1}" for l in labels_t2]
     
-    # SCATTER
-    fig_scatter = px.scatter(x=coords_t2[:,0], y=coords_t2[:,1], color=str_labels_t2, text=obs_labels, title=f"Biplot Cluster (Tahun {t2_year})", color_discrete_sequence=px.colors.qualitative.Bold)
-    fig_scatter.update_traces(marker=dict(size=9), textposition='top center')
-    fig_scatter.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
-    try: fig_scatter.write_image("../yearly_cluster_biplot.png")
+    # SCATTER T1
+    fig_scatter_t1 = px.scatter(x=coords_t1[:,0], y=coords_t1[:,1], color=str_labels_t1, text=obs_labels, title="", color_discrete_sequence=px.colors.qualitative.Bold)
+    fig_scatter_t1.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t1.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    # SCATTER T2
+    fig_scatter_t2 = px.scatter(x=coords_t2[:,0], y=coords_t2[:,1], color=str_labels_t2, text=obs_labels, title="", color_discrete_sequence=px.colors.qualitative.Bold)
+    fig_scatter_t2.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t2.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    import os
+    os.makedirs("../huggingface", exist_ok=True)
+    try: fig_scatter_t1.write_image(f"../huggingface/cluster_biplot_{t1_year}.png")
+    except: pass
+    try: fig_scatter_t2.write_image(f"../huggingface/cluster_biplot_{t2_year}.png")
     except: pass
 
-    # MAP
-    fig_map = go.Figure()
+    # MAP T1 & T2
+    fig_map_t1 = go.Figure()
+    fig_map_t2 = go.Figure()
     if indonesia_geojson:
-        df_map = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2})
-        df_map['match_key'] = df_map['Kab/Kota']
-        found_matches = 0
+        # Menyesuaikan Center & Zoom sesuai request user
+        # mapbox_center = {"lat": -6.9, "lon": 108.5} # Geser ke kiri (bujur lebih tinggi maka map ketarik ke kiri relatif terhadap frame)
+        # zoom sekitar 6.2 dari asalnya 7
+        mapbox_center = {"lat": -6.9, "lon": 107}
+        mapbox_zoom = 6.5
+        
+        df_map_t1 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t1, 'match_key': obs_labels})
+        df_map_t2 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2, 'match_key': obs_labels})
+        
         for feature in indonesia_geojson['features']:
             props = feature['properties']
             raw_name = props.get('NAME_2') or props.get('kab_kota') or props.get('NAMOBJ') or props.get('Name') or ""
-            clean_geo_name = str(raw_name)
-            feature['properties']['id_cocok'] = clean_geo_name
-            if clean_geo_name in df_map['match_key'].values: found_matches += 1
+            feature['properties']['id_cocok'] = str(raw_name)
 
-        title_text = f"Peta Sebaran Cluster Tahun {t2_year} (Cocok: {found_matches} Wilayah)"
-        fig_map = px.choropleth_mapbox(df_map, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center={"lat": -6.9, "lon": 107.6}, zoom=7, opacity=0.7)
-        fig_map.update_layout(title=title_text, margin={"r":0,"t":40,"l":0,"b":0})
-        try: fig_map.write_image("../yearly_cluster_map.png")
+        fig_map_t1 = px.choropleth_mapbox(df_map_t1, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t1.update_layout(title="", margin={"r":0,"t":0,"l":0,"b":0})
+        
+        fig_map_t2 = px.choropleth_mapbox(df_map_t2, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t2.update_layout(title="", margin={"r":0,"t":0,"l":0,"b":0})
+        
+        try: fig_map_t1.write_image(f"../huggingface/cluster_map_{t1_year}.png")
+        except: pass
+        try: fig_map_t2.write_image(f"../huggingface/cluster_map_{t2_year}.png")
         except: pass
 
     # MATRIKS TRANSISI
-    matrix_data, matrix_tex = [], []
-    matrix_tex.append(r"\begin{table}[H]")
-    matrix_tex.append(r"\centering")
-    matrix_tex.append(r"\caption{Matriks Transisi Klaster Tahun " + str(t1_year) + r" ke " + str(t2_year) + r"} \label{tab:transisi_" + str(t1_year) + r"_" + str(t2_year) + r"}")
-    matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*k + "}")
-    matrix_tex.append(r"\hline")
-    
-    header_row = [f"Tahun {t1_year} \\\\ {t2_year}"] + [f"Cluster {j+1} ({t2_year})" for j in range(k)]
-    matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
-    
-    for i in range(k):
-        row_dict = {f"Tahun {t1_year} \ {t2_year}": f"Cluster {i+1} ({t1_year})"}
-        tex_row = [f"\\textbf{{Cluster {i+1} ({t1_year})}}"]
-        for j in range(k):
-            intersect_indices = [idx for idx, (l1, l2) in enumerate(zip(labels_t1, labels_t2)) if l1 == i and l2 == j]
-            if view_mode == 'count': val = str(len(intersect_indices))
-            else: val = ", ".join([obs_labels[idx] for idx in intersect_indices]) if intersect_indices else "-"
-            row_dict[f"Cluster {j+1} ({t2_year})"] = val
-            tex_row.append(val.replace('&', r'\&').replace('%', r'\%'))
-        matrix_data.append(row_dict)
-        matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+    def build_matrix(mode):
+        matrix_data, matrix_tex = [], []
+        matrix_tex.append(r"\begin{table}[H]")
+        matrix_tex.append(r"\centering")
+        matrix_tex.append(r"\caption{Matriks Transisi Klaster Tahun " + str(t1_year) + r" ke " + str(t2_year) + r"} \label{tab:transisi_" + str(t1_year) + r"_" + str(t2_year) + r"}")
+        matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*k + "}")
+        matrix_tex.append(r"\hline")
         
-    matrix_tex.append(r"\end{tabular}")
-    matrix_tex.append(r"\end{table}")
+        header_row = [f"Tahun {t1_year} \\\\ {t2_year}"] + [f"Cluster {j+1} ({t2_year})" for j in range(k)]
+        matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
+        
+        for i in range(k):
+            row_dict = {f"Tahun {t1_year} \\ {t2_year}": f"Cluster {i+1} ({t1_year})"}
+            tex_row = [f"\\textbf{{Cluster {i+1} ({t1_year})}}"]
+            for j in range(k):
+                intersect_indices = [idx for idx, (l1, l2) in enumerate(zip(labels_t1, labels_t2)) if l1 == i and l2 == j]
+                if mode == 'count': val = str(len(intersect_indices))
+                else: val = ", ".join([obs_labels[idx] for idx in intersect_indices]) if intersect_indices else "-"
+                row_dict[f"Cluster {j+1} ({t2_year})"] = val
+                tex_row.append(val.replace('&', r'\\&').replace('%', r'\\%'))
+            matrix_data.append(row_dict)
+            matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+            
+        matrix_tex.append(r"\end{tabular}")
+        matrix_tex.append(r"\end{table}")
+        return matrix_data, matrix_tex
+
+    data_count, tex_count = build_matrix('count')
+    data_names, tex_names = build_matrix('names')
+    
     try:
-        with open(f"../output_table_transition_matrix.tex", "w") as f: f.write("\n".join(matrix_tex))
+        with open(f"../huggingface/output_table_transition_matrix_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../huggingface/output_table_transition_matrix_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
     except: pass
     
-    cols = [{"name": c, "id": c} for c in matrix_data[0].keys()] if matrix_data else []
+    req_data = data_count if view_mode == 'count' else data_names
+    cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
     
-    return fig_map, fig_scatter, matrix_data, cols
+    return (
+        f"Peta Sebaran Cluster (Tahun {t1_year})", fig_map_t1,
+        f"Peta Sebaran Cluster (Tahun {t2_year})", fig_map_t2,
+        f"Biplot Cluster (Tahun {t1_year})", fig_scatter_t1,
+        f"Biplot Cluster (Tahun {t2_year})", fig_scatter_t2,
+        req_data, cols
+    )
 
 
 # 11. CLUSTERING TRAJEKTORI CALLBACK (STATIS FULL)
@@ -1417,6 +1530,10 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     )
     fig_scatter.update_traces(marker=dict(size=8), textposition='top center')
     fig_scatter.update_layout(template='plotly_white', width=800, height=800)
+    import os
+    os.makedirs("../huggingface", exist_ok=True)
+    try: fig_scatter.write_image("../huggingface/cluster_compromise_biplot.png")
+    except: pass
 
     # --- 3. Dendrogram (Dengan Pewarnaan Sesuai K) ---
     try:
@@ -1448,6 +1565,10 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         )
         
         fig_dendro.update_layout(title="Dendrogram Kemiripan Trajektori", template='plotly_white', margin=dict(l=150))
+        import os
+        os.makedirs("../huggingface", exist_ok=True)
+        try: fig_dendro.write_image("../huggingface/dendrogram_compromise.png")
+        except: pass
     except Exception as e:
         fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
 
@@ -1512,10 +1633,14 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
             color_discrete_sequence=px.colors.qualitative.Bold,
             hover_name='Kab/Kota',
             mapbox_style="carto-positron",
-            center={"lat": -6.9, "lon": 107.6}, # Fokus Jawa Barat
-            zoom=7, opacity=0.7
+            center={"lat": -6.9, "lon": 107}, # Geser ke kiri (zoom out 2x)
+            zoom=6.5, opacity=0.7
         )
         fig_map.update_layout(title=title_text, margin={"r":0,"t":40,"l":0,"b":0})
+        import os
+        os.makedirs("../huggingface", exist_ok=True)
+        try: fig_map.write_image("../huggingface/cluster_compromise_map.png")
+        except: pass
     else:
         fig_map.add_annotation(text="Gagal memuat data GeoJSON.", showarrow=False)
 
@@ -1531,6 +1656,197 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         if i < len(counts)-1: interp_text.append(" | ")
     
     return fig_scatter, fig_dendro, fig_map, interp_text
+
+# 12. IPM MATRIX CALLBACK (UNDP CATEGORIES)
+@app.callback(
+    Output('ipm-disclaimer-text', 'children'),
+    Output('ipm-trans-matrix-table', 'data'),
+    Output('ipm-trans-matrix-table', 'columns'),
+    Input('btn-run-ipm-trans', 'n_clicks'),
+    Input('ipm-trans-view-mode', 'value'),
+    State('ipm-trans-year-dropdown', 'value'),
+    State('global-data-store', 'data')
+)
+def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
+    if not n_clicks or not t2_year or not data: return "", [], []
+    
+    df = pd.read_json(io.StringIO(data['df_json']), orient='split')
+    years = data['years']
+    
+    if 'IPM' not in df.columns:
+        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], []
+        
+    t2_idx = years.index(t2_year)
+    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], []
+    t1_year = years[t2_idx - 1]
+    
+    # Filter Data untuk T1 dan T2
+    df_t1 = df[df['Tahun'] == t1_year].set_index('Kabupaten/Kota')
+    df_t2 = df[df['Tahun'] == t2_year].set_index('Kabupaten/Kota')
+    
+    common_kabs = df_t1.index.intersection(df_t2.index)
+    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], []
+    
+    df_t1 = df_t1.loc[common_kabs]
+    df_t2 = df_t2.loc[common_kabs]
+    
+    # Kategori UNDP
+    def categorize_ipm(val):
+        if val >= 80: return "Sangat Tinggi"
+        elif val >= 70: return "Tinggi"
+        elif val >= 55: return "Sedang"
+        else: return "Rendah"
+        
+    df_t1['IPM_Cat'] = df_t1['IPM'].apply(categorize_ipm)
+    df_t2['IPM_Cat'] = df_t2['IPM'].apply(categorize_ipm)
+    
+    categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
+    
+    # Hitung Disclaimer / Summary
+    counts_t1 = df_t1['IPM_Cat'].value_counts()
+    counts_t2 = df_t2['IPM_Cat'].value_counts()
+    
+    disclaimer_parts = []
+    disclaimer_parts.append(html.Span(f"Tahun {t1_year}: ", style={'color': '#1565C0'}))
+    for cat in categories:
+        if cat in counts_t1: disclaimer_parts.append(f"{cat} ({counts_t1[cat]}), ")
+    disclaimer_parts.append(html.Br())
+    disclaimer_parts.append(html.Span(f"Tahun {t2_year}: ", style={'color': '#D81B60'}))
+    for cat in categories:
+        if cat in counts_t2: disclaimer_parts.append(f"{cat} ({counts_t2[cat]}), ")
+        
+    # Bangun Matriks
+    def build_ipm_matrix(mode):
+        matrix_data, matrix_tex = [], []
+        matrix_tex.append(r"\begin{table}[H]")
+        matrix_tex.append(r"\centering")
+        matrix_tex.append(r"\caption{Matriks Transisi IPM Tahun " + str(t1_year) + r" ke " + str(t2_year) + r"} \label{tab:ipm_transisi_" + str(t1_year) + r"_" + str(t2_year) + r"}")
+        matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*len(categories) + "}")
+        matrix_tex.append(r"\hline")
+        
+        header_row = [f"Tahun {t1_year} \\\\ {t2_year}"] + [f"{cat} ({t2_year})" for cat in categories]
+        matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
+        
+        for cat_t1 in categories:
+            row_dict = {f"Tahun {t1_year} \\ {t2_year}": f"{cat_t1} ({t1_year})"}
+            tex_row = [f"\\textbf{{{cat_t1} ({t1_year})}}"]
+            for cat_t2 in categories:
+                # Ambil daerah yang pindah dari cat_t1 ke cat_t2
+                mask = (df_t1['IPM_Cat'] == cat_t1) & (df_t2['IPM_Cat'] == cat_t2)
+                kabs = df_t1[mask].index.tolist()
+                
+                if mode == 'count': val = str(len(kabs))
+                else: val = ", ".join(kabs) if kabs else "-"
+                row_dict[f"{cat_t2} ({t2_year})"] = val
+                tex_row.append(val.replace('&', r'\\&').replace('%', r'\\%'))
+                
+            matrix_data.append(row_dict)
+            matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+            
+        matrix_tex.append(r"\end{tabular}")
+        matrix_tex.append(r"\end{table}")
+        return matrix_data, matrix_tex
+
+    data_count, tex_count = build_ipm_matrix('count')
+    data_names, tex_names = build_ipm_matrix('names')
+    
+    import os
+    os.makedirs("../huggingface", exist_ok=True)
+    try:
+        with open(f"../huggingface/output_table_ipm_matrix_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../huggingface/output_table_ipm_matrix_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
+    except: pass
+        
+    req_data = data_count if view_mode == 'count' else data_names
+    cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
+    
+    return disclaimer_parts, req_data, cols
+
+
+# 13. CROSS TABULATION CALLBACK (K-MEANS VS IPM)
+@app.callback(
+    Output('cross-table', 'data'),
+    Output('cross-table', 'columns'),
+    Input('btn-run-cross', 'n_clicks'),
+    Input('cross-view-mode', 'value'),
+    State('cross-year-dropdown', 'value'),
+    State('cross-k-input', 'value'),
+    State('global-data-store', 'data'),
+    State('statis-core-store', 'data')
+)
+def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store):
+    if not n_clicks or not sel_year or not data_store or not statis_store: return [], []
+    
+    # 1. Ambil IPM kategories dari data asli
+    df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
+    if 'IPM' not in df.columns: return [], []
+    
+    df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
+    def categorize_ipm(val):
+        if val >= 80: return "Sangat Tinggi"
+        elif val >= 70: return "Tinggi"
+        elif val >= 55: return "Sedang"
+        else: return "Rendah"
+    df_yr['IPM_Cat'] = df_yr['IPM'].apply(categorize_ipm)
+    
+    # 2. Ambil label K-Means dari statis store
+    obs_labels = statis_store['obs_labels']
+    str_year = str(sel_year)
+    if str_year not in statis_store['per_year_coords']: return [], []
+    
+    coords = np.array(statis_store['per_year_coords'][str_year])
+    kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+    labels = kmeans.fit_predict(coords)
+    
+    # Gabung
+    df_clusters = pd.DataFrame({'Cluster_KMeans': [f"Cluster {l+1}" for l in labels]}, index=obs_labels)
+    df_merged = df_yr.join(df_clusters).dropna(subset=['Cluster_KMeans', 'IPM_Cat'])
+    
+    # Tabulasi Silang
+    categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
+    
+    def build_cross_matrix(mode):
+        matrix_data, matrix_tex = [], []
+        matrix_tex.append(r"\begin{table}[H]")
+        matrix_tex.append(r"\centering")
+        matrix_tex.append(r"\caption{Perbandingan Anggota Cluster dengan Kategori IPM (" + str(sel_year) + r")} \label{tab:ipm_cross_" + str(sel_year) + r"}")
+        matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*len(categories) + "}")
+        matrix_tex.append(r"\hline")
+        
+        header_row = ["Cluster K-Means"] + categories
+        matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
+        
+        for c_idx in range(k):
+            c_name = f"Cluster {c_idx+1}"
+            row_dict = {"Cluster K-Means": c_name}
+            tex_row = [f"\\textbf{{{c_name}}}"]
+            for cat in categories:
+                kabs = df_merged[(df_merged['Cluster_KMeans'] == c_name) & (df_merged['IPM_Cat'] == cat)].index.tolist()
+                if mode == 'count': val = str(len(kabs))
+                else: val = ", ".join(kabs) if kabs else "-"
+                row_dict[cat] = val
+                tex_row.append(val.replace('&', r'\\&').replace('%', r'\\%'))
+            matrix_data.append(row_dict)
+            matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+            
+        matrix_tex.append(r"\end{tabular}")
+        matrix_tex.append(r"\end{table}")
+        return matrix_data, matrix_tex
+        
+    data_count, tex_count = build_cross_matrix('count')
+    data_names, tex_names = build_cross_matrix('names')
+    
+    import os
+    os.makedirs("../huggingface", exist_ok=True)
+    try:
+        with open(f"../huggingface/output_table_cross_matrix_sum_{sel_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../huggingface/output_table_cross_matrix_name_{sel_year}.tex", "w") as f: f.write("\n".join(tex_names))
+    except: pass
+    
+    req_data = data_count if view_mode == 'count' else data_names
+    cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
+    return req_data, cols
+
 
 if __name__ == '__main__':
     # Disable reloader to prevent restart loop when writing LaTeX files
