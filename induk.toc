@@ -8,8 +8,8 @@
 \contentsline {chapter}{ABSTRAK}{ix}{section*.16}%
 \contentsline {chapter}{ABSTRACT}{x}{section*.18}%
 \contentsline {chapter}{\normalsize DAFTAR ISI}{xi}{section*.20}%
-\contentsline {chapter}{\normalsize DAFTAR TABEL}{1}{section*.21}%
-\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{1}{section*.22}%
+\contentsline {chapter}{\normalsize DAFTAR TABEL}{xiii}{section*.21}%
+\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xiii}{section*.22}%
 \contentsline {chapter}{\numberline {1}\normalsize PENDAHULUAN}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}\normalsize Latar Belakang}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}\normalsize Rumusan Masalah}{6}{section.1.2}%
@@ -53,15 +53,16 @@
 \contentsline {section}{\numberline {4.2}\normalsize Analisis Inter-struktur (Hubungan Antar-Tahun)}{29}{section.4.2}%
 \contentsline {section}{\numberline {4.3}\normalsize Analisis Struktur Kompromi (Kompromi)}{30}{section.4.3}%
 \contentsline {subsection}{\numberline {4.3.1}\normalsize Interpretasi Bidang Kompromi (The Compromise Plane)}{30}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}\normalsize Pengujian Pola Spasial (Moran's I)}{30}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.2}\normalsize Pengujian Pola Spasial (Moran's I)}{31}{subsection.4.3.2}%
 \contentsline {section}{\numberline {4.4}\normalsize Uji Stabilitas (Permutation Test)}{31}{section.4.4}%
 \contentsline {section}{\numberline {4.5}\normalsize Analisis Dinamika Spasio-Temporal (Trajectories)}{31}{section.4.5}%
 \contentsline {subsection}{\numberline {4.5.1}\normalsize Pola Pemulihan Kota Metropolitan (V-Shape)}{31}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}\normalsize Pola Stagnasi Wilayah Penyangga}{31}{subsection.4.5.2}%
-\contentsline {section}{\numberline {4.6}\normalsize Analisis Klaster Spasio-Temporal}{31}{section.4.6}%
+\contentsline {subsection}{\numberline {4.5.2}\normalsize Pola Stagnasi Wilayah Penyangga}{32}{subsection.4.5.2}%
+\contentsline {section}{\numberline {4.6}\normalsize Analisis Klaster Spasio-Temporal}{32}{section.4.6}%
 \contentsline {subsection}{\numberline {4.6.1}\normalsize Penentuan Jumlah Klaster ($k$)}{32}{subsection.4.6.1}%
 \contentsline {subsection}{\numberline {4.6.2}\normalsize Pola Pengelompokan dan Matriks Transisi}{32}{subsection.4.6.2}%
-\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{33}{chapter.5}%
-\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{33}{section.5.1}%
-\contentsline {section}{\numberline {5.2}\normalsize Saran}{34}{section.5.2}%
-\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{35}{chapter*.31}%
+\contentsline {subsection}{\numberline {4.6.3}\normalsize Evaluasi Klaster terhadap Kategori IPM (UNDP)}{33}{subsection.4.6.3}%
+\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{35}{chapter.5}%
+\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{35}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\normalsize Saran}{36}{section.5.2}%
+\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{37}{chapter*.33}%

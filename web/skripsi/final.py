@@ -1,187 +1,84 @@
-from dash import Dash
-from dash import Dash, dcc, html, Input, Output, State, dash_table, exceptions, ctx
-from dash import Dash, dcc, html, dash_table
-from dash import dash_table
-from dash import html, dcc
-from scipy.cluster.hierarchy import dendrogram, linkage
-from sklearn.cluster import KMeans
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
-import base64
+# Import Library
 import dash
-import geopandas as gpd
-import io
 import json
+import geopandas as gpd
+from dash import Dash, dcc, html, Input, Output, State, dash_table, exceptions, ctx
+from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.cluster import KMeans
+from scipy.cluster.hierarchy import dendrogram, linkage
 import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-import scipy.stats as stats
+import io
+import base64
 
+# Inisialisasi library
+pd.set_option('display.max_columns', None)
+scaler = StandardScaler()
+pca = PCA(n_components=2)
 
+# --- KONFIGURASI LINK DATASET CONTOH ---
+BASE_URL = "https://huggingface.co/spaces/ammarhnfi/skripsi/resolve/main" 
+EXAMPLE_DATASETS = [
+    {"name": "Data Gabungan (FINAL DATA.xlsx)", "url": f"{BASE_URL}/FINAL DATA.xlsx"},
+]
 
-math_style = {
-    'padding': '15px', 'backgroundColor': '#F8FAFC', 'borderLeft': '4px solid #1976D2', 
-    'marginTop': '10px', 'borderRadius': '5px', 'overflowX': 'auto'
+# --- STYLING (Modern Blue Theme) ---
+EXTERNAL_STYLESHEETS = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
+
+# Warna Tema
+COLOR_BG_MAIN = "#F0F4F8"       # Abu kebiruan sangat muda (Background)
+COLOR_CARD_BG = "#FFFFFF"       # Putih (Card)
+COLOR_HEADER_TEXT = "#1565C0"   # Biru Tua (Judul)
+COLOR_ACCENT = "#1976D2"        # Biru (Tombol/Highlight)
+COLOR_BORDER = "#BBDEFB"        # Biru Muda (Border)
+
+CARD_STYLE = {
+    "boxShadow": "0 2px 5px 0 rgba(0,0,0,0.05)",
+    "borderRadius": "8px",
+    "backgroundColor": COLOR_CARD_BG,
+    "padding": "25px",
+    "marginBottom": "25px",
+    "border": f"1px solid {COLOR_BORDER}"
 }
-summary_style = {
-    'fontWeight': 'bold', 'cursor': 'pointer', 'color': '#1565C0', 'fontSize': '16px',
-    'padding': '10px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px'
+
+HEADER_STYLE = {
+    "textAlign": "center", 
+    "color": COLOR_HEADER_TEXT, 
+    "fontWeight": "700", 
+    "marginBottom": "15px",
+    "letterSpacing": "0.5px"
 }
 
-def render_step(title, content):
-    c_strip = content.strip()
-    if c_strip.startswith("$$") and c_strip.endswith("$$"):
-        core = c_strip[2:-2].strip()
-        content = f"\n\n$$\n{core}\n$$\n\n"
-    return html.Div([
-        html.H6(title, style={'fontWeight': 'bold', 'marginTop': '10px'}),
-        dcc.Markdown(mathjax=True, dangerously_allow_html=True, children=content)
-    ])
+LABEL_STYLE = {
+    "fontWeight": "600",
+    "color": "#37474F",
+    "fontSize": "1.4rem",
+    "marginBottom": "8px"
+}
 
-def render_diagnostic_formulas(n=None, df_k=None, r_sq=None, q_sq=None, kmo_val=None, kmo_str="", bart_chi=None, bart_p=None, bart_str=""):
-    
-    # --- KMO ---
-    kmo_f1 = r"$$ KMO = \frac{\sum_{j \neq k} r_{jk}^2}{\sum_{j \neq k} r_{jk}^2 + \sum_{j \neq k} q_{jk}^2} $$"
-    kmo_f2 = f"$$ KMO = \\frac{{{r_sq:.4f}}}{{{r_sq:.4f} + {q_sq:.4f}}} $$" if r_sq is not None else "$$ KMO = \\dots $$"
-    kmo_f3 = f"$$ KMO = {kmo_val:.4f} \\quad \\text{{({kmo_str})}} $$" if kmo_val is not None else "$$ KMO = \\dots $$"
-    
-    # --- Bartlett ---
-    bart_f1 = r"$$ \chi^2 \approx - \left( n - 1 - \frac{2p + 5}{6} \right) \ln |R| $$"
-    if n is not None and df_k is not None:
-        bart_f2 = f"$$ \\chi^2 \approx - \\left( {n} - 1 - \\frac{{2({int(df_k)}) + 5}}{{6}} \\right) \\ln |R| = {bart_chi:.4f} $$" if bart_chi is not None else "$$ \\dots $$"
-    else: 
-        bart_f2 = "$$ \\chi^2 \\approx \\dots $$"
+# --- [GANTI BAGIAN LOAD DATA] ---
+# Jika file .shp ada di folder laptop Anda (misal: 'peta_indo.shp')
+try:
+    print("Sedang membaca Shapefile...")
+    # Baca Shapefile pakai Geopandas
+    gdf = gpd.read_file("gadm41_IDN_2.shp") 
+    print("Mengoptimalkan/Menyederhanakan geometri peta...")
+    # 2. SIMPLIFIKASI GEOMETRI (PENTING!)
+    # tolerance=0.005 derajat (sekitar 500m). Ini drastis mengurangi ukuran file 
+    # tapi bentuk pulau/kota masih sangat dikenali untuk visualisasi web.
+    gdf['geometry'] = gdf['geometry'].simplify(tolerance=0.005, preserve_topology=True)
+    # KONVERSI KE GEOJSON (Wajib! Karena Plotly cuma ngerti GeoJSON)
+    indonesia_geojson = json.loads(gdf.to_json())
+    print("Peta berhasil dimuat, disederhanakan, dan dikonversi!")
+except Exception as e:
+    print(f"Gagal memuat Shapefile: {e}")
+    indonesia_geojson = None
 
-    bart_f3 = f"$$ p = {bart_p} \\quad \\text{{({bart_str})}} $$" if bart_p is not None else "$$ p = \\dots $$"
-
-    return html.Div([
-        html.Details([
-            html.Summary("1. Uji Kaiser-Meyer-Olkin (KMO) Measure of Sampling Adequacy", style=summary_style),
-            html.Div([
-                html.P("Tujuan: Mengukur kelayakan data untuk analisis multivariat.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula", kmo_f1),
-                render_step("2. Substitution", kmo_f2),
-                render_step("3. Final Result", kmo_f3),
-            ], style=math_style)
-        ], style={'marginBottom': '10px', 'marginTop': '10px'}),
-        
-        html.Details([
-            html.Summary("2. Bartlett's Test of Sphericity", style=summary_style),
-            html.Div([
-                html.P("Tujuan: Menguji apakah matriks korelasi berbeda secara signifikan dari matriks identitas.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula", bart_f1),
-                render_step("2. Substitution", bart_f2),
-                render_step("3. Final Result", bart_f3),
-            ], style=math_style)
-        ], style={'marginBottom': '10px'})
-    ])
-
-def render_statis_formulas(alpha_vals=None, years=None, w_c_slice=None, inter_rv=None, t1=None, t2=None):
-    
-    # -- RV --
-    # Tampilkan contoh perhitungan RV (misal antara tahun pertama dan kedua)
-    rv_f1 = r"$$ RV(\mathbf{W}_A, \mathbf{W}_B) = \frac{tr(\mathbf{W}_A \mathbf{W}_B)}{\sqrt{tr(\mathbf{W}_A^2) tr(\mathbf{W}_B^2)}} $$"
-    t_a, t_b = (years[0], years[1]) if years and len(years) > 1 else ("A", "B")
-    rv_val = inter_rv[0,1] if (inter_rv is not None and inter_rv.shape[0]>1) else 0.0
-    
-    rv_f2 = f"$$ RV(\\mathbf{{W}}_{{{t_a}}}, \\mathbf{{W}}_{{{t_b}}}) = \\dots $$"
-    rv_f3 = f"$$ RV = {rv_val:.4f} $$" if (inter_rv is not None) else "$$ RV = \\dots $$"
-    
-    # -- Wc --
-    wc_f1 = r"$$ W_c = \sum_{t=1}^{K} \alpha_t W_t $$"
-    if alpha_vals is not None and years is not None:
-        sub_parts = [f"({a:.3f})W_{{{years[i]}}}" for i, a in enumerate(alpha_vals)]
-        wc_f2 = f"$$ W_c = {' + '.join(sub_parts)} $$"
-    else: wc_f2 = "$$ W_c = \\alpha_1 W_1 + \\alpha_2 W_2 \\dots $$"
-
-    if w_c_slice is not None:
-        matrix_rows = [" & ".join([f"{float(v):.2f}" for v in r]) for r in w_c_slice]
-        matrix_str = ' \\\\ '.join(matrix_rows)
-        wc_f3 = f"$$ W_c \\approx \\begin{{bmatrix}} {matrix_str} \\end{{bmatrix}} $$"
-    else: wc_f3 = "$$ W_c = \\dots $$"
-    
-    return html.Div([
-        html.Details([
-            html.Summary("1. Peta Kemiripan Tahunan (Intra-struktur $\\mathbf{W}_t$)", style=summary_style),
-            html.Div([
-                html.P("Mengubah data z-score mentah menjadi konfigurasi jarak spasial antar wilayah.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula", r"$$ \mathbf{W}_t = \mathbf{Z}_t \mathbf{Z}_t^T $$")
-            ], style=math_style)
-        ], style={'marginBottom': '10px', 'marginTop': '10px'}),
-        
-        html.Details([
-            html.Summary("2. Hubungan Antar-Tahun (Koefisien RV & Bobot $\\alpha$)", style=summary_style),
-            html.Div([
-                html.P("Mengukur tingkat kesamaan (korelasi matriks) antara tiap tahun pengamatan.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula", rv_f1),
-                render_step(f"2. Substitution (Tahun {t_a} vs {t_b})", rv_f2),
-                render_step("3. Final Result", rv_f3),
-            ], style=math_style)
-        ], style={'marginBottom': '10px'}),
-
-        html.Details([
-            html.Summary("3. Matriks Kompromi ($W_c$)", style=summary_style),
-            html.Div([
-                html.P("Dihitung sebagai kombinasi linear dari semua matriks W tahunan dikali bobot utamanya.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula", wc_f1),
-                render_step("2. Substitution", wc_f2),
-                render_step("3. Final Result (Slice 3x3)", wc_f3),
-            ], style=math_style)
-        ], style={'marginBottom': '10px'}),
-        
-        html.Details([
-            html.Summary("4. Dekomposisi Singular (SVD) Kompromi", style=summary_style),
-            html.Div([
-                html.P("Mendapatkan titik kordinat akhir untuk memetakan objek di grafik Biplot.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula (SVD)", r"$$ W_c = U S V^T $$"),
-                render_step("2. Final Coordinates", r"$$ \mathbf{F}_c = U \sqrt{S} $$")
-            ], style=math_style)
-        ], style={'marginBottom': '10px'})
-    ])
-
-def render_cluster_formulas(moran_i=None, moran_exp=None, n=None, sum_w=None, sum_w_dev=None, sum_dev_sq=None):
-    
-    m_f1 = r"$$ I = \frac{N}{\sum_i \sum_j w_{ij}} \frac{\sum_i \sum_j w_{ij} (x_i - \bar{x})(x_j - \bar{x})}{\sum_i (x_i - \bar{x})^2} $$"
-    
-    if all(v is not None for v in [n, sum_w, sum_w_dev, sum_dev_sq]):
-        m_f2 = f"$$ I = \\left( \\frac{{{n}}}{{{sum_w:.2f}}} \\right) \\frac{{{sum_w_dev:.2f}}}{{{sum_dev_sq:.2f}}} $$"
-    else: m_f2 = "$$ I = \\dots $$"
-    
-    if moran_i is not None and moran_exp is not None:
-        m_f3 = f"$$ I_{{obs}} = {moran_i:.4f} \\quad \\text{{(Ekspektasi: }} {moran_exp:.4f} \\text{{)}} $$"
-    else: m_f3 = "$$ I_{{obs}} = \\dots $$"
-    
-    return html.Div([
-        html.Details([
-            html.Summary("1. Global Moran\'s I (Autokorelasi Spasial PC1)", style=summary_style),
-            html.Div([
-                render_step("1. General Formula", m_f1),
-                render_step("2. Substitution", m_f2),
-                render_step("3. Final Result", m_f3),
-            ], style=math_style)
-        ], style={'marginBottom': '10px', 'marginTop': '10px'}),
-        
-        html.Details([
-            html.Summary("2. Fungsi Objektif K-Means", style=summary_style),
-            html.Div([
-                render_step("1. General Formula", r"$$ J = \sum_{j=1}^{k} \sum_{i \in C_j} ||\mathbf{x}_i^{(traj)} - \boldsymbol{\mu}_j||^2 $$")
-            ], style=math_style)
-        ], style={'marginBottom': '10px'})
-    ])
-
-
-# ==========================================
-
-# Import Library
-
-COLOR_ACCENT = '#1976D2'
-
-
-
-
+# -----------------------------
 # Helper Functions
-
 # -----------------------------
 def get_rotation_angle(df_pc, df_load, baseline_type, baseline_name, year):
     try:
@@ -281,12 +178,15 @@ def _calculate_moran_manual(gdf, value_analytics, obs_names_analytics):
         moran_i = (n / np.sum(W)) * (numerator / sum_sq_dev) if np.sum(W) > 0 else 0
         
         # Hitung Z-score (Approximation)
+        # E[I] = -1 / (N-1)
+        expected_i = -1.0 / (n - 1)
+        # Var[I] simple approximation (Bootstrap atau analytical kompleks, kita pakai simple visual interpretation saja dulu atau 0)
         # Biar aman kita return I dan Expected saja
-        return moran_i, expected_i, n, np.sum(W_std), numerator, sum_sq_dev
+        return moran_i, expected_i
         
     except Exception as e:
         print(f"Moran Error: {e}")
-        return None, None, None, None, None, None
+        return None, None
 
 def create_dendrogram_plot(X, labels):
     # Hitung Linkage Matrix
@@ -308,9 +208,7 @@ def create_dendrogram_plot(X, labels):
         return fig
 
 # -----------------------------
-
 # LATEX EXPORT HELPERS
-
 # -----------------------------
 def export_core_latex(res):
     try:
@@ -445,146 +343,7 @@ def export_perm_latex(p_val, desc):
         print(f"Failed to export LaTeX Perm: {e}")
 
 # -----------------------------
-
-# PLOT HELPERS (With Visual Scaling)
-
-# -----------------------------
-def apply_visual_adjustments(scores, loadings, norm_scores, scale_loadings):
-    """
-    Melakukan scaling HANYA untuk plotting, tidak mengubah data tabel.
-    """
-    plot_scores = scores.copy()
-    plot_loadings = loadings.copy()
-    
-    # 1. Normalize Scores (Optional)
-    if norm_scores:
-        max_val = np.max(np.abs(plot_scores))
-        if max_val > 0: plot_scores = plot_scores / max_val
-            
-    # 2. Scale Loadings (Visual scaling to match score magnitude)
-    if scale_loadings:
-        max_score_mag = np.max(np.abs(plot_scores))
-        max_load_mag = np.max(np.abs(plot_loadings))
-        if max_load_mag > 0:
-            scale_factor = (max_score_mag / max_load_mag) * 0.8 
-            plot_loadings = plot_loadings * scale_factor
-            
-    return plot_scores, plot_loadings
-
-def create_biplot(scores, loadings, labels, vars, title, color=COLOR_ACCENT, show_loadings=True):
-    fig = go.Figure()
-    
-    # Points
-    fig.add_trace(go.Scatter(x=scores[:,0], y=scores[:,1], mode='markers+text',
-                             text=labels, textposition='top center',
-                             marker=dict(size=8, color=color, opacity=0.8), name='Objek'))
-    
-    # Vectors
-    if show_loadings and len(vars) > 0:
-        for i, var in enumerate(vars):
-            fig.add_trace(go.Scatter(x=[0, loadings[i,0]], y=[0, loadings[i,1]], 
-                                     mode='lines+markers+text', marker=dict(size=6, symbol='arrow-bar-up'),
-                                     line=dict(color='#D81B60', width=2), text=[None, var],
-                                     textposition='top center', name=f'{var}', 
-                                     hoverinfo='text', hovertext=f"<b>{var}</b><br>Loading: ({loadings[i, 0]:.4f}, {loadings[i, 1]:.4f})"))
-
-    fig.update_layout(title=title, xaxis=dict(constrain='domain'), yaxis=dict(scaleanchor='x', scaleratio=1),
-                      width=600, height=600, autosize=False, margin=dict(l=40, r=40, t=60, b=40), showlegend=False,
-                      template="plotly_white")
-    return fig
-
-# -----------------------------
-# DATA DIAGNOSTICS HELPERS
-# -----------------------------
-
-def calc_kmo_bartlett(df_dict, variables):
-    try:
-        kmos, p_vals = [], []
-        n, p, r_sq, q_sq, chi2_stat = 0, 0, 0, 0, 0
-        for sheet, df in df_dict.items():
-            if len(variables) < 2: return 0, 1.0, "Need >1 var", "Need >1 var"
-            data = df[variables].values
-            R = np.corrcoef(data.T)
-            
-            # KMO
-            try:
-                inv_R = np.linalg.inv(R)
-                D = np.diag(1.0 / np.sqrt(np.diag(inv_R)))
-                Q = D @ inv_R @ D
-                r_sq = np.sum(R**2) - np.sum(np.diag(R**2))
-                q_sq = np.sum(Q**2) - np.sum(np.diag(Q**2))
-                kmos.append(r_sq / (r_sq + q_sq) if (r_sq + q_sq) > 0 else 0)
-            except: kmos.append(0)
-            
-            # Bartlett
-            n, p = data.shape
-            det_R = np.linalg.det(R)
-            if det_R > 0:
-                chi2_stat = - (n - 1 - (2*p + 5)/6) * np.log(det_R)
-                df_chi = p * (p - 1) / 2
-                p_val = stats.chi2.sf(chi2_stat, df_chi)
-                p_vals.append(p_val)
-            else: p_vals.append(1.0)
-            
-        mean_kmo = np.mean(kmos)
-        mean_p = np.mean(p_vals)
-        kmo_interp = "Excellent" if mean_kmo >= 0.9 else "Great" if mean_kmo >= 0.8 else "Good" if mean_kmo >= 0.7 else "Acceptable" if mean_kmo >= 0.5 else "Poor"
-        bart_interp = "Significant (Suitable)" if mean_p < 0.05 else "Not Significant (Orthogonal)"
-        return mean_kmo, mean_p, kmo_interp, bart_interp, n, p, r_sq, q_sq, chi2_stat
-    except: return 0.0, 1.0, "Error", "Error", 0, 0, 0, 0, 0
-
-# -----------------------------
-
-
-# ==========================================
-
-# Import Library
-
-
-
-# STATIS Core Logic
-# DATA DIAGNOSTICS HELPERS
-
-# -----------------------------
-
-def calc_kmo_bartlett(df_dict, variables):
-    try:
-        kmos = []
-        p_vals = []
-        for sheet, df in df_dict.items():
-            if len(variables) < 2: return 0, 1.0, "Need >1 var", "Need >1 var"
-            data = df[variables].values
-            R = np.corrcoef(data.T)
-            
-            # KMO
-            try:
-                inv_R = np.linalg.inv(R)
-                D = np.diag(1.0 / np.sqrt(np.diag(inv_R)))
-                Q = D @ inv_R @ D
-                r_sq = np.sum(R**2) - np.sum(np.diag(R**2))
-                q_sq = np.sum(Q**2) - np.sum(np.diag(Q**2))
-                kmos.append(r_sq / (r_sq + q_sq) if (r_sq + q_sq) > 0 else 0)
-            except: kmos.append(0)
-            
-            # Bartlett
-            n, p = data.shape
-            det_R = np.linalg.det(R)
-            if det_R > 0:
-                chi2_stat = - (n - 1 - (2*p + 5)/6) * np.log(det_R)
-                df_chi = p * (p - 1) / 2
-                p_val = stats.chi2.sf(chi2_stat, df_chi)
-                p_vals.append(p_val)
-            else: p_vals.append(1.0)
-            
-        mean_kmo = np.mean(kmos)
-        mean_p = np.mean(p_vals)
-        kmo_interp = "Excellent" if mean_kmo >= 0.9 else "Great" if mean_kmo >= 0.8 else "Good" if mean_kmo >= 0.7 else "Acceptable" if mean_kmo >= 0.5 else "Poor"
-        bart_interp = "Significant (Suitable)" if mean_p < 0.05 else "Not Significant (Orthogonal)"
-        return mean_kmo, mean_p, kmo_interp, bart_interp
-    except: return 0.0, 1.0, "Error", "Error"
-
-# -----------------------------
-
+# STATIS Core Logic (Perhitungan Berat)
 
 # -----------------------------
 def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
@@ -649,11 +408,9 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
     Wc = np.zeros_like(Ws[0])
     for a, W in zip(alphas, Ws): Wc += a * W
 
-    # 6. Dekomposisi Wc (Mendapatkan Skor Fc) menggunakan SVD
-    # Memperbaiki error kompleks di server linux (Hugging Face)
-    U, S, Vt = np.linalg.svd(Wc)
-    eig_vals_c = S
-    eig_vecs_c = U
+    # 6. Dekomposisi Wc (Mendapatkan Skor Fc)
+    eig_vals_c, eig_vecs_c = np.linalg.eig(Wc)
+    eig_vals_c, eig_vecs_c = np.real(eig_vals_c), np.real(eig_vecs_c)
     idxc = np.argsort(eig_vals_c)[::-1]
     eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]
     
@@ -769,30 +526,59 @@ def run_permutation_test(X_matrices, k, lambda_obs, n_permutations):
     return dist_lambdas, p_value
 
 # -----------------------------
+# PLOT HELPERS (With Visual Scaling)
+# -----------------------------
+def apply_visual_adjustments(scores, loadings, norm_scores, scale_loadings):
+    """
+    Melakukan scaling HANYA untuk plotting, tidak mengubah data tabel.
+    """
+    plot_scores = scores.copy()
+    plot_loadings = loadings.copy()
+    
+    # 1. Normalize Scores (Optional)
+    if norm_scores:
+        max_val = np.max(np.abs(plot_scores))
+        if max_val > 0: plot_scores = plot_scores / max_val
+            
+    # 2. Scale Loadings (Visual scaling to match score magnitude)
+    if scale_loadings:
+        max_score_mag = np.max(np.abs(plot_scores))
+        max_load_mag = np.max(np.abs(plot_loadings))
+        if max_load_mag > 0:
+            scale_factor = (max_score_mag / max_load_mag) * 0.8 
+            plot_loadings = plot_loadings * scale_factor
+            
+    return plot_scores, plot_loadings
 
+def create_biplot(scores, loadings, labels, vars, title, color=COLOR_ACCENT, show_loadings=True):
+    fig = go.Figure()
+    
+    # Points
+    fig.add_trace(go.Scatter(x=scores[:,0], y=scores[:,1], mode='markers+text',
+                             text=labels, textposition='top center',
+                             marker=dict(size=8, color=color, opacity=0.8), name='Objek'))
+    
+    # Vectors
+    if show_loadings and len(vars) > 0:
+        for i, var in enumerate(vars):
+            fig.add_trace(go.Scatter(x=[0, loadings[i,0]], y=[0, loadings[i,1]], 
+                                     mode='lines+markers+text', marker=dict(size=6, symbol='arrow-bar-up'),
+                                     line=dict(color='#D81B60', width=2), text=[None, var],
+                                     textposition='top center', name=f'{var}', 
+                                     hoverinfo='text', hovertext=f"<b>{var}</b><br>Loading: ({loadings[i, 0]:.4f}, {loadings[i, 1]:.4f})"))
 
-# ==========================================
+    fig.update_layout(title=title, xaxis=dict(constrain='domain'), yaxis=dict(scaleanchor='x', scaleratio=1),
+                      width=600, height=600, autosize=False, margin=dict(l=40, r=40, t=60, b=40), showlegend=False,
+                      template="plotly_white")
+    return fig
 
-# Import Library
+# -----------------------------
+# APP LAYOUT
+# -----------------------------
+app = Dash(__name__, external_stylesheets=EXTERNAL_STYLESHEETS)
+server = app.server
 
-
-
-pd.set_option('display.max_columns', None)
-scaler = StandardScaler()
-pca = PCA(n_components=2)
-
-
-COLOR_BG_MAIN = '#F0F4F8'
-COLOR_CARD_BG = '#FFFFFF'
-COLOR_HEADER_TEXT = '#1565C0'
-COLOR_ACCENT = '#1976D2'
-COLOR_BORDER = '#BBDEFB'
-CARD_STYLE = {'boxShadow': '0 2px 5px 0 rgba(0,0,0,0.05)', 'borderRadius': '8px', 'backgroundColor': COLOR_CARD_BG, 'padding': '25px', 'marginBottom': '25px', 'border': f'1px solid {COLOR_BORDER}'}
-HEADER_STYLE = {'textAlign': 'center', 'color': COLOR_HEADER_TEXT, 'fontWeight': '700', 'marginBottom': '15px', 'letterSpacing': '0.5px'}
-LABEL_STYLE = {'fontWeight': '600', 'color': '#37474F', 'fontSize': '1.4rem', 'marginBottom': '8px'}
-BASE_URL = "https://huggingface.co/spaces/ammarhnfi/skripsi/resolve/main"
-EXAMPLE_DATASETS = [{"name": "Data Gabungan (FINAL DATA.xlsx)", "url": f"{BASE_URL}/FINAL DATA.xlsx"}]
-layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'fontFamily': 'Segoe UI, Roboto, Helvetica, Arial, sans-serif'}, children=[
+app.layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'fontFamily': 'Segoe UI, Roboto, Helvetica, Arial, sans-serif'}, children=[
     dcc.Store(id='global-data-store'), 
     dcc.Store(id='pca-results-store'),
     dcc.Store(id='statis-core-store'), # Menyimpan hasil STATIS lengkap
@@ -891,31 +677,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Label('Filter Vektor Spesifik (Visualisasi):', style={'fontWeight':'bold'}),
                 dcc.Dropdown(id='vector-selector-final', multi=True, placeholder="Pilih vektor spesifik untuk ditampilkan (Kosong = Semua)...")
             ])
-        ]),
-        html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'width': '100%', 'marginTop': '20px', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'})
+        ])
     ]),
-
-    # --- [NEW] DATA DIAGNOSTICS ---
-    html.Div(style=CARD_STYLE, children=[
-        html.H5("1. Diagnostic Tests", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-        html.Div(style={'textAlign': 'center', 'marginBottom': '20px'}, children=[
-            html.Button('RUN DIAGNOSTIK', id='btn-run-diag', n_clicks=0, style={'backgroundColor': '#FFB300', 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px', 'width': '200px'})
-        ]),
-        dcc.Loading(children=[
-            html.Div(className='row', id='diag-results-container', style={'display': 'none'}, children=[
-                html.Div(className='six columns', children=[
-                    html.H6("Kaiser-Meyer-Olkin (KMO) Test", style={'fontWeight': 'bold'}),
-                    html.Div(id='kmo-result', style={'fontSize': '16px', 'padding': '10px', 'backgroundColor': '#E8F5E9', 'borderRadius': '5px'})
-                ]),
-                html.Div(className='six columns', children=[
-                    html.H6("Bartlett's Test of Sphericity", style={'fontWeight': 'bold'}),
-                    html.Div(id='bartlett-result', style={'fontSize': '16px', 'padding': '10px', 'backgroundColor': '#E8F5E9', 'borderRadius': '5px'})
-                ])
-            ])
-        ]),
-        html.Div(id='formula-diag-output', style={'marginTop': '20px'})
-    ]),
-
 
     # --- 3. DYNAMIC BIPLOT ---
     html.Div(style=CARD_STYLE, children=[
@@ -953,7 +716,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
     # --- 4. STATIS ANALYSIS ---
     html.Div(style=CARD_STYLE, children=[
         html.H5("Analisis STATIS (Struktur Kompromi)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-        dcc.Loading(children=[html.Div(id='formula-statis-output', style={'marginBottom': '20px'})]),
+        
         # 4 Plot Grid
         html.Div(className='row', style={'marginBottom':'120px'}, children=[
             html.Div(className='six columns', children=[
@@ -1112,8 +875,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             ]),
             # -------------------------------------
 
-            html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'}),
-            dcc.Loading(children=[html.Div(id='formula-cluster-output', style={'marginTop': '20px'})])
+            html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'})
         ]),
 
         # --- [TAMBAHAN BARU] SECTION 8: BASELINE MATRIKS TRANSISI (IPM/UNDP) ---
@@ -1177,17 +939,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 ])
 
 # -----------------------------
-
-
-# ==========================================
-
-# Import Library
-
-
-
-COLOR_ACCENT = '#1976D2'
-
-
+# CALLBACKS
 # -----------------------------
 
 # 1. Upload & Validasi
@@ -1310,8 +1062,6 @@ def cb_sync_vector_selector(selected_vars):
 def cb_pca_calc(vars, data):
     if not vars or not data: raise exceptions.PreventUpdate
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
-    pca = PCA(n_components=2)
-    scaler = StandardScaler()
     pc_list, load_list = [], []
     for y in data['years']:
         df_y = df[df['Tahun'] == y]
@@ -1328,46 +1078,13 @@ def cb_pca_calc(vars, data):
 
 # 4. STATIS Core Calculation
 @app.callback(
-    Output('statis-core-store', 'data'), 
-    Input('btn-run-statis', 'n_clicks'),
-    State('variable-dropdown-final', 'value'),
+    Output('statis-core-store', 'data'), Input('variable-dropdown-final', 'value'),
     State('upload-data', 'contents'), State('global-data-store', 'data')
 )
-def cb_statis_calc(n_clicks, vars, contents, global_data):
-    if not n_clicks or not vars or not contents: raise exceptions.PreventUpdate
+def cb_statis_calc(vars, contents, global_data):
+    if not vars or not contents: raise exceptions.PreventUpdate
     try: return run_statis_core(contents, vars, global_data['sheet_names'])
     except: return None
-
-# 4b. DIAGNOSTICS & MATH FORMULAS CALLBACK
-@app.callback(
-    Output('kmo-result', 'children'),
-    Output('kmo-result', 'style'),
-    Output('bartlett-result', 'children'),
-    Output('bartlett-result', 'style'),
-    Output('diag-results-container', 'style'),
-    Output('formula-diag-output', 'children'),
-    Input('btn-run-diag', 'n_clicks'),
-    State('global-data-store', 'data'),
-    State('variable-dropdown-final', 'value')
-)
-def cb_diag_math(n_clicks, data_store, vars):
-    if not n_clicks or not data_store or not vars: 
-        return "Wait...", {}, "Wait...", {}, {'display': 'none'}, render_diagnostic_formulas()
-    
-    # 1. Diagnostics
-    df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
-    df_dict = {y: df[df['Tahun'] == y] for y in data_store['years']}
-    kmo_val, p_val, kmo_int, bart_int, n, df_k, r_sq, q_sq, chi2_stat = calc_kmo_bartlett(df_dict, vars)
-    
-    kmo_txt = f"KMO = {kmo_val:.3f} ({kmo_int})"
-    bart_txt = f"P-value = {p_val} ({bart_int})" # No Rounding!
-    
-    kmo_style = {'fontSize': '16px', 'padding': '10px', 'borderRadius': '5px', 'backgroundColor': '#E8F5E9' if kmo_val >= 0.5 else '#FFEBEE'}
-    bart_style = {'fontSize': '16px', 'padding': '10px', 'borderRadius': '5px', 'backgroundColor': '#E8F5E9' if p_val < 0.05 else '#FFEBEE'}
-
-    formula_ui = render_diagnostic_formulas(n, df_k, r_sq, q_sq, kmo_val, kmo_int, chi2_stat, p_val, bart_int)
-
-    return kmo_txt, kmo_style, bart_txt, bart_style, {'display': 'flex'}, formula_ui
 
 # 5. DYNAMIC BIPLOT PLOTS
 @app.callback(
@@ -1471,12 +1188,12 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
     Output('statis-compromise', 'figure'), Output('statis-biplot', 'figure'),
     Output('statis-interstructure', 'figure'), Output('statis-trajectory', 'figure'),
     Output('statis-table-selector', 'options'), Output('statis-detail-table', 'data'), Output('statis-detail-table', 'columns'),
-    Output('table-info-display', 'children'), Output('formula-statis-output', 'children'),
+    Output('table-info-display', 'children'),
     Input('statis-core-store', 'data'), Input('statis-table-selector', 'value'), Input('visual-scaling-opts', 'value'),
     Input('table-page-size', 'value')
 )
 def cb_statis_viz(res, table_key, vis_opts, page_size):
-    if not res: return {}, {}, {}, {}, [], [], [], "", render_statis_formulas()
+    if not res: return {}, {}, {}, {}, [], [], [], ""
     
     # Cek Opsi Visualisasi
     norm_score = 'norm_score' in vis_opts if vis_opts else False
@@ -1564,18 +1281,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     export_core_latex(res)
     export_tables_latex(res)
 
-    
-    # Render Statis Formulas
-    wc = np.array(res['Matriks Kompromi (Wc)'])
-    w_slice = None
-    if wc.shape[0] > 0:
-        # ambil top 3x3 numeric part of it
-        w_slice = [[float(v) for v in list(r.values())[1:4]] for r in wc[:3]]
-        
-    r_matrix = np.array(res['R'])
-    form_statis_ui = render_statis_formulas(res['alphas'], res['sheet_names'], w_slice, r_matrix)
-
-    return fig_comp, fig_bi, fig_inter, fig_traj, table_opts, tbl_data, tbl_cols, info_text, form_statis_ui
+    return fig_comp, fig_bi, fig_inter, fig_traj, table_opts, tbl_data, tbl_cols, info_text
 
 
 # 7. Permutation Test
@@ -1598,7 +1304,7 @@ def cb_run_perm(n_clicks, n_perm, res):
     # --- AUTO EXPORT LATEX ---
     export_perm_latex(p_val, interp)
     
-    return fig, f"P-value = {p_val}. Interpretasi: {interp}" # No Rounding!
+    return fig, f"P-value = {p_val:.4f}. Interpretasi: {interp}"
 
 
 # 8. Update Table Page Size
@@ -1726,31 +1432,9 @@ def cb_run_trans(n_clicks, view_mode, t2_year, k, res):
 
         fig_map_t1 = px.choropleth_mapbox(df_map_t1, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
         fig_map_t1.update_layout(title="", margin={"r":0,"t":0,"l":0,"b":0})
-        # Add Text Labels
-        lon_list, lat_list, text_list = [], [], []
-        for _, row in df_map_t1.iterrows():
-            area = row['Kab/Kota']
-            geom = gdf[gdf['id_cocok'] == area]
-            if not geom.empty:
-                lon_list.append(geom.geometry.centroid.x.values[0])
-                lat_list.append(geom.geometry.centroid.y.values[0])
-                text_list.append(area)
-        if text_list:
-            fig_map_t1.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
         
         fig_map_t2 = px.choropleth_mapbox(df_map_t2, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_sequence=px.colors.qualitative.Bold, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
         fig_map_t2.update_layout(title="", margin={"r":0,"t":0,"l":0,"b":0})
-        # Add Text Labels
-        lon_list2, lat_list2, text_list2 = [], [], []
-        for _, row in df_map_t2.iterrows():
-            area = row['Kab/Kota']
-            geom = gdf[gdf['id_cocok'] == area]
-            if not geom.empty:
-                lon_list2.append(geom.geometry.centroid.x.values[0])
-                lat_list2.append(geom.geometry.centroid.y.values[0])
-                text_list2.append(area)
-        if text_list2:
-            fig_map_t2.add_trace(go.Scattermapbox(lon=lon_list2, lat=lat_list2, mode='text', text=text_list2, textfont=dict(size=9, color='black'), showlegend=False))
         
         try: fig_map_t1.write_image(f"../huggingface/cluster_map_{t1_year}.png")
         except: pass
@@ -1812,14 +1496,13 @@ def cb_run_trans(n_clicks, view_mode, t2_year, k, res):
     Output('cluster-dendrogram', 'figure'),
     Output('cluster-map', 'figure'),
     Output('cluster-interpretation', 'children'),
-    Output('formula-cluster-output', 'children'),
     Input('btn-run-cluster', 'n_clicks'),
     State('cluster-k-input', 'value'),
     State('statis-core-store', 'data')
 )
 def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     if not n_clicks or not res: 
-        return {}, {}, {}, "Silakan klik tombol 'RUN CLUSTERING'.", render_cluster_formulas()
+        return {}, {}, {}, "Silakan klik tombol 'RUN CLUSTERING'."
     
     obs_labels = res['obs_labels']
     coords_dict = res['per_year_coords']
@@ -1892,8 +1575,6 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
 
     # --- 3B. Hitung Moran's I untuk PC1 Kompromi (Sumbu Ekonomi Utama) ---
     moran_text = ""
-    formulas_m_i = None
-    formulas_m_exp = None
     if res and indonesia_geojson and gdf is not None:
         try:
             # Ambil skor PC1
@@ -1902,12 +1583,11 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
             obs_labels_mc = res['obs_labels']
             
             # Hitung
-            m_i, m_exp, n, sum_w, sum_w_dev, sum_dev_sq = _calculate_moran_manual(gdf, pc1_scores, obs_labels_mc)
+            m_i, m_exp = _calculate_moran_manual(gdf, pc1_scores, obs_labels_mc)
             
             if m_i is not None:
                 status = "Berkelompok (Clustered)" if m_i > m_exp else "Menyebar (Dispersed/Random)"
                 moran_text = f" | Global Moran's I (PC1): {m_i:.4f} (Exp: {m_exp:.4f}) -> Pola: {status}"
-                formulas_m_i, formulas_m_exp, formulas_n, formulas_sum_w, formulas_sum_w_dev, formulas_sum_dev_sq = m_i, m_exp, n, sum_w, sum_w_dev, sum_dev_sq
         except Exception as e:
             print(f"Gagal hitung Moran di callback: {e}")
 
@@ -1958,17 +1638,6 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
             zoom=6.5, opacity=0.7
         )
         fig_map.update_layout(title=title_text, margin={"r":0,"t":40,"l":0,"b":0})
-        # Add Text Labels
-        lon_list_c, lat_list_c, text_list_c = [], [], []
-        for _, row in df_map.iterrows():
-            area = row['Kab/Kota']
-            geom = gdf[gdf['id_cocok'] == area]
-            if not geom.empty:
-                lon_list_c.append(geom.geometry.centroid.x.values[0])
-                lat_list_c.append(geom.geometry.centroid.y.values[0])
-                text_list_c.append(area)
-        if text_list_c:
-            fig_map.add_trace(go.Scattermapbox(lon=lon_list_c, lat=lat_list_c, mode='text', text=text_list_c, textfont=dict(size=9, color='black'), showlegend=False))
         import os
         os.makedirs("../huggingface", exist_ok=True)
         try: fig_map.write_image("../huggingface/cluster_compromise_map.png")
@@ -1987,13 +1656,7 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         interp_text.append(f"Cluster {i+1}: {count} Wilayah.")
         if i < len(counts)-1: interp_text.append(" | ")
     
-    # --- 6. Formulasi ---
-    if formulas_m_i is not None:
-        math_ui = render_cluster_formulas(formulas_m_i, formulas_m_exp, formulas_n, formulas_sum_w, formulas_sum_w_dev, formulas_sum_dev_sq)
-    else:
-        math_ui = render_cluster_formulas()
-
-    return fig_scatter, fig_dendro, fig_map, interp_text, math_ui
+    return fig_scatter, fig_dendro, fig_map, interp_text
 
 # 12. IPM MATRIX CALLBACK (UNDP CATEGORIES)
 @app.callback(
@@ -2191,30 +1854,3 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
 if __name__ == '__main__':
     # Disable reloader to prevent restart loop when writing LaTeX files
     app.run(debug=True, use_reloader=False, port=3333)
-
-
-# ==========================================
-
-# Import Library
-
-
-
-EXTERNAL_STYLESHEETS = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-MATHJAX_SCRIPT = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML'
-
-app = Dash(__name__, external_stylesheets=EXTERNAL_STYLESHEETS, external_scripts=[MATHJAX_SCRIPT], suppress_callback_exceptions=True)
-server = app.server
-
-app.layout = layout
-
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=7860)
-
-
-# ==========================================
-
-
-
-if __name__ == '__main__':
-    app.run_server(debug=True, port=8050)

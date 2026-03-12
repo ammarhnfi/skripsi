@@ -51,8 +51,7 @@ Gambar \ref{fig:compromise_biplot} menampilkan proyeksi kabupaten/kota dan indik
 
 \begin{figure}[htbp]
     \centering
-    % \includegraphics[width=0.9\textwidth]{gambarku/statis_biplot.png}
-    % TODO: Screenshot "Compromise Biplot" dari Dashboard
+    \includegraphics[width=0.9\textwidth]{huggingface/cluster_compromise_biplot.png}
     \caption{Biplot Kompromi Indikator Ekonomi dan Kabupaten/Kota}
     \label{fig:compromise_biplot}
 \end{figure}
@@ -116,10 +115,9 @@ Penentuan jumlah klaster optimal dilakukan secara empiris dengan memadukan Metod
 
 \begin{figure}[htbp]
     \centering
-    % \includegraphics[width=0.45\textwidth]{elbow_plot.png}
-    % \includegraphics[width=0.45\textwidth]{dendrogram.png}
-    % TODO: Screenshot grafik Elbow dan Dendrogram dari Dashboard
-    \caption{Kurva Elbow dan Dendrogram}
+    \includegraphics[width=0.45\textwidth]{huggingface/elbow_plot_2024.png}
+    \includegraphics[width=0.45\textwidth]{huggingface/dendrogram_2024.png}
+    \caption{Kurva Elbow dan Dendrogram (Tahun 2024)}
     \label{fig:elbow_dendro}
 \end{figure}
 
@@ -130,20 +128,24 @@ Hasil pengelompokan membagi wilayah ke dalam $k$ klaster (misalnya: Klaster Kese
 
 \begin{figure}[htbp]
     \centering
-    % \includegraphics[width=1.0\textwidth]{yearly_cluster_map.png}
-    % TODO: Screenshot Peta Sebaran Klaster Tahunan (Contoh: 2024)
-    \caption{Peta Sebaran Klaster Kabupaten/Kota}
+    \includegraphics[width=0.9\textwidth]{huggingface/cluster_map_2024.png}
+    \caption{Peta Sebaran Klaster Kabupaten/Kota (Tahun 2024)}
     \label{fig:cluster_map}
 \end{figure}
 
 Untuk menganalisis dinamika perubahan nasib (migrasi klaster) wilayah antara tahun terburuk pandemi (2020) dengan fase pemulihan, dibentuk suatu matriks perpindahan silang (\textit{transition matrix}).
 
-\begin{table}[htbp]
-\centering
-\caption{Matriks Transisi Klaster (Tahun 2020 $\to$ Tahun 2021)}
-\label{tab:transition_matrix}
-% TODO: Gunakan file hasil ekspor otomatis dari dashboard
-% \input{output_table_transition_2020_2021.tex}
-\end{table}
+\input{huggingface/output_table_transition_matrix_sum_2020x2021.tex}
 
 Berdasarkan tabel matriks transisi di atas, sebagian besar wilayah (\dots kabupaten/kota) masih menetap di klasternya masing-masing (berada di diagonal utama). Namun, terdapat \dots wilayah yang berhasil naik "kelas" (bermigrasi ke klaster yang lebih baik) seiring dengan program pemulihan ekonomi daerah.
+
+\subsection{\normalsize Evaluasi Klaster terhadap Kategori IPM (UNDP)}
+Sebagai \textit{baseline} evaluasi, pengelompokan K-Means dibandingkan dengan standar klasifikasi Indeks Pembangunan Manusia (IPM) dari UNDP. Berikut adalah tabel dinamika transisi wilayah berdasarkan kategori IPM.
+
+\input{huggingface/output_table_ipm_matrix_sum_2020x2021.tex}
+
+Selanjutnya, untuk memastikan apakah klaster yang dibentuk oleh algoritma \textit{K-Means} selaras dengan kondisi riil di lapangan, dilakukan tabulasi silang (\textit{cross-tabulation}) antara anggota klaster K-Means dengan kategori IPM di tahun akhir pengamatan (2024).
+
+\input{huggingface/output_table_cross_matrix_sum_2024.tex}
+
+Dari tabulasi silang di atas, terlihat bahwa wilayah pada Klaster \dots didominasi oleh daerah dengan kategori IPM "Sangat Tinggi" dan "Tinggi", yang secara empiris memvalidasi bahwa penamaan label klaster tersebut sebagai kelompok "Maju/Sejahtera" sudah sangat tepat.
