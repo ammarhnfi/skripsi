@@ -19,20 +19,34 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [pdfScale, setPdfScale] = useState(1.2);
 
-  // Gallery Lightbox State
-  const [lightboxImage, setLightboxImage] = useState(null);
-
   // Gallery Data
-  const galleryItems = [
-    {
-      src: "/images/pca_biplot_animation.gif",
-      caption: "Animasi Perubahan Struktur (Dynamic Biplot)"
-    },
-    {
-      src: "/images/titik_dan_vektor_v2.png",
-      caption: "Detail Titik dan Vektor Korelasi STATIS"
-    }
-  ];
+  const [allResults, setAllResults] = useState([]);
+  const [selectedGroup, setSelectedGroup] = useState('Hasil Utama STATIS');
+  const [texContent, setTexContent] = useState(null);
+
+  useEffect(() => {
+    fetch('/output_app_manifest.json')
+      .then(res => res.json())
+      .then(data => {
+        // Pre-pend existing static gallery items to the relevant groups or a new 'Highlights' group
+        const staticItems = [
+          {
+            src: "/images/pca_biplot_animation.gif",
+            caption: "Animasi Perubahan Struktur (Dynamic Biplot)",
+            type: 'image',
+            group: 'Highlights'
+          },
+          {
+            src: "/images/titik_dan_vektor_v2.png",
+            caption: "Detail Titik dan Vektor Korelasi STATIS",
+            type: 'image',
+            group: 'Highlights'
+          }
+        ];
+        setAllResults([...staticItems, ...data]);
+      })
+      .catch(err => console.error("Failed to load results manifest:", err));
+  }, []);
 
   // Re-run MathJax typesetting when a modal is opened, just in case MathJax missed it initially
   useEffect(() => {
@@ -59,6 +73,18 @@ function App() {
   const closeModal = () => {
     setActiveModal(null);
     setLightboxImage(null);
+    setTexContent(null);
+  };
+
+  const openTexPreview = async (src) => {
+    try {
+      const response = await fetch(src);
+      const text = await response.text();
+      setTexContent(text);
+      setActiveModal('tex-preview');
+    } catch (err) {
+      console.error("Failed to load .tex file:", err);
+    }
   };
 
   const handlePdfSubmit = () => {
@@ -336,39 +362,111 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect">
+        <div className="modal-content glass-effect" style={{ maxWidth: '1000px', width: '95vw' }}>
           <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
-          <h2>Dokumentasi & Hasil</h2>
+          <h2>Dokumentasi & Hasil Analisis</h2>
           <div className="modal-body">
-            <h3>Hasil Utama STATIS</h3>
             <p>
-              Metode STATIS menghasilkan struktur kompromi yang merupakan rata-rata
-              peta posisi ekonomi 41 kabupaten/kota selama 5 tahun. Dari nilai
-              eigen utama (Principal Direction), kita dapat menganalisis struktur
-              kemiripan karakteristik antar wilayah. Dimensi yang diekstrak kemudian
-              digunakan sebagai kanvas biplot untuk melacak perubahan struktur dari
-              tahun ke tahun.
+              Hasil pengolahan data STATIS, K-Means Clustering, dan Uji Spasial
+              Moran's I yang dihasilkan secara otomatis oleh sistem.
             </p>
 
-            <h3>Galeri Visualisasi</h3>
-            <p style={{ fontSize: '0.9rem', color: '#94a3b8' }}>
-              Klik gambar untuk melihat dalam ukuran penuh.
-            </p>
-            <div className="photo-grid">
-              {galleryItems.map((item, index) => (
-                <div
-                  key={index}
-                  className="thumbnail-container"
-                  onClick={() => setLightboxImage(item)}
+            {/* Group Selector Tags */}
+            <div className="group-selector" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px', padding: '10px 0' }}>
+              {[...new Set(allResults.map(r => r.group))].sort().map(group => (
+                <button
+                  key={group}
+                  onClick={() => setSelectedGroup(group)}
+                  style={{
+                    padding: '6px 14px',
+                    borderRadius: '20px',
+                    border: '1px solid rgba(255,255,255,0.2)',
+                    background: selectedGroup === group ? 'rgba(59, 130, 246, 0.6)' : 'rgba(255,255,255,0.05)',
+                    color: 'white',
+                    cursor: 'pointer',
+                    fontSize: '0.85rem',
+                    transition: 'all 0.2s'
+                  }}
                 >
-                  <img src={item.src} alt={item.caption} className="thumbnail-img" />
-                  <div className="thumbnail-caption">{item.caption}</div>
-                </div>
+                  {group}
+                </button>
               ))}
             </div>
 
+            <div className="photo-grid" style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', 
+              gap: '20px',
+              maxHeight: '60vh',
+              overflowY: 'auto',
+              paddingRight: '10px'
+            }}>
+              {allResults.filter(item => item.group === selectedGroup).map((item, index) => (
+                <div
+                  key={index}
+                  className="thumbnail-container"
+                  onClick={() => item.type === 'image' ? setLightboxImage(item) : openTexPreview(item.src)}
+                  style={{ transition: 'transform 0.2s', cursor: 'pointer' }}
+                >
+                  {item.type === 'image' ? (
+                    <img src={item.src} alt={item.caption} className="thumbnail-img" style={{ width: '100%', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} />
+                  ) : (
+                    <div style={{ 
+                      width: '100%', 
+                      aspectRatio: '3/2', 
+                      background: 'rgba(0,0,0,0.3)', 
+                      display: 'flex', 
+                      flexDirection: 'column',
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      borderRadius: '8px',
+                      border: '1px solid rgba(255,255,255,0.2)',
+                      padding: '10px',
+                      textAlign: 'center'
+                    }}>
+                      <div style={{ fontSize: '2rem', marginBottom: '5px' }}>📄</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{item.name}</div>
+                    </div>
+                  )}
+                  <div className="thumbnail-caption" style={{ marginTop: '8px', fontSize: '0.8rem', textAlign: 'center', color: '#cbd5e1' }}>
+                    {item.caption}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* TEX PREVIEW MODAL */}
+      <div
+        className={`modal ${activeModal === 'tex-preview' ? 'active' : ''}`}
+        onClick={(e) => {
+          if (e.target.classList.contains('modal')) closeModal();
+        }}
+      >
+        <div className="modal-content glass-effect" style={{ maxWidth: '800px', width: '90vw' }}>
+          <button className="close-btn" onClick={closeModal} title="Tutup">
+            &times;
+          </button>
+          <h2>Preview Tabel LaTeX</h2>
+          <div className="modal-body">
+            <div style={{ 
+              background: '#0f172a', 
+              color: '#38bdf8', 
+              padding: '20px', 
+              borderRadius: '8px', 
+              fontFamily: 'monospace', 
+              fontSize: '0.85rem',
+              overflowX: 'auto',
+              maxHeight: '60vh',
+              overflowY: 'auto',
+              border: '1px solid rgba(255,255,255,0.1)'
+            }}>
+              <pre>{texContent}</pre>
+            </div>
           </div>
         </div>
       </div>

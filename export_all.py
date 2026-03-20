@@ -1171,3 +1171,14 @@ print(f"   Semua file disimpan ke: {OUT_DIR}")
 total_files = len([f for f in os.listdir(OUT_DIR)])
 print(f"   Total file di folder: {total_files}")
 print("="*60)
+
+# --- Post-process: Update Landing Page Assets ---
+try:
+    print("\n[POST-PROCESS] Menyiapkan aset untuk Landing Page...")
+    import subprocess
+    subprocess.run(["python", r"d:\Skripsi\my\prepare_landing_assets.py"], check=True)
+    print("[POST-PROCESS] Landing Page assetsupdated!")
+except Exception as e:
+    print(f"[WARN] Gagal update landing page assets: {e}")
+
+print("="*60)
