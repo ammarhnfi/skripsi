@@ -375,7 +375,7 @@ function App() {
 
             {/* Group Selector Tags */}
             <div className="group-selector" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px', padding: '10px 0' }}>
-              {[...new Set(allResults.map(r => r.group))].sort().map(group => (
+              {[...new Set(allResults.map(r => String(r.group || 'Lain-lain')))].sort().map(group => (
                 <button
                   key={group}
                   onClick={() => setSelectedGroup(group)}
@@ -403,15 +403,15 @@ function App() {
               overflowY: 'auto',
               paddingRight: '10px'
             }}>
-              {allResults.filter(item => item.group === selectedGroup).map((item, index) => (
+              {(allResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup).map((item, index) => (
                 <div
                   key={index}
                   className="thumbnail-container"
-                  onClick={() => item.type === 'image' ? setLightboxImage(item) : openTexPreview(item.src)}
+                  onClick={() => item && item.type === 'image' ? setLightboxImage(item) : openTexPreview(item.src)}
                   style={{ transition: 'transform 0.2s', cursor: 'pointer' }}
                 >
-                  {item.type === 'image' ? (
-                    <img src={item.src} alt={item.caption} className="thumbnail-img" style={{ width: '100%', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} />
+                  {item && item.type === 'image' ? (
+                    <img src={item.src} alt={String(item.caption || '')} className="thumbnail-img" style={{ width: '100%', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} />
                   ) : (
                     <div style={{ 
                       width: '100%', 
@@ -427,11 +427,11 @@ function App() {
                       textAlign: 'center'
                     }}>
                       <div style={{ fontSize: '2rem', marginBottom: '5px' }}>📄</div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{item.name}</div>
+                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{String(item ? (item.name || item.caption) : '')}</div>
                     </div>
                   )}
                   <div className="thumbnail-caption" style={{ marginTop: '8px', fontSize: '0.8rem', textAlign: 'center', color: '#cbd5e1' }}>
-                    {item.caption}
+                    {String((item ? item.caption : '') || '')}
                   </div>
                 </div>
               ))}
