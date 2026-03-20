@@ -12,7 +12,6 @@ function LatexTable({ tex }) {
   if (!tex) return null;
 
   // 1. IMPROVED EXTRACTION: Handle nested braces in column spec
-  // Find \begin{tabular}{ or \begin{longtable}{
   const beginMatch = tex.match(/\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{/);
   if (!beginMatch) {
     return (
@@ -32,7 +31,10 @@ function LatexTable({ tex }) {
     specEnd++;
   }
 
-  // Content after spec is the body
+  const colSpec = tex.substring(specStart, specEnd - 1);
+  // Detect expected column count from spec (count chars like l, c, r, p, m, X)
+  const expectedCols = colSpec.replace(/[| ]|{[^{}]*}/g, '').length || 2;
+
   const bodyWithEnd = tex.substring(specEnd);
   const endTagMatch = bodyWithEnd.match(/(.*?)\\end\{(?:tabular|longtable)\}/s);
   if (!endTagMatch) return <pre style={{ whiteSpace: 'pre-wrap' }}>{tex}</pre>;
@@ -40,16 +42,13 @@ function LatexTable({ tex }) {
   const body = endTagMatch[1];
 
   // 2. ROBUST CLEANING
-  // Handle breaks inside \makecell so they don't split rows
   const bodyProcessed = body.replace(/\\makecell\{(.*?)\}/sg, (m, p1) => {
     return p1.replace(/\\\\/g, '<br/>');
   });
 
-  // Split rows by \\ (ignoring escaped ones inside commands done above)
   const rowsRaw = bodyProcessed.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
   
   const rows = rowsRaw.map(rowStr => {
-    // Remove technical artifacts leaking from LaTeX preamble/spec
     let cleanRow = rowStr
       .replace(/\\hline/g, '')
       .replace(/\\rule{.*?}{.*?}/g, '')
@@ -61,9 +60,8 @@ function LatexTable({ tex }) {
     
     if (!cleanRow || cleanRow === '}') return null;
 
-    return cleanRow.split('&').map(cell => {
+    let cells = cleanRow.split('&').map(cell => {
       let content = cell.trim();
-      // Unescape characters and remove LaTeX macros
       content = content
         .replace(/\\textbf\{(.*?)\}/g, '$1')
         .replace(/\\bfseries/g, '')
@@ -76,12 +74,22 @@ function LatexTable({ tex }) {
         .replace(/\\_/g, '_')
         .replace(/\\rightarrow/g, ' → ')
         .replace(/\\textrightarrow/g, ' → ')
-        .replace(/\\\(|\\\)/g, '') // remove math mode parens \(\)
+        .replace(/\\\(|\\\)/g, '')
         .replace(/\\text\{(.*?)\}/g, '$1')
-        .replace(/\{/g, '').replace(/\}/g, ''); // remove any remaining braces
+        .replace(/\{/g, '').replace(/\}/g, '');
       
       return content;
     });
+
+    // AUTO-MERGE: If there are more & than expected columns, merge the excess into the last column
+    if (cells.length > expectedCols) {
+      const fixedCells = cells.slice(0, expectedCols - 1);
+      const mergedExtra = cells.slice(expectedCols - 1).join(': ');
+      fixedCells.push(mergedExtra);
+      cells = fixedCells;
+    }
+
+    return cells;
   }).filter(r => r !== null && r.length > 0);
 
   return (
