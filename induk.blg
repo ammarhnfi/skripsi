@@ -34,45 +34,49 @@ A level-1 auxiliary file: bab5.aux
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 The style file: apalike-ejor.bst
 Reallocating 'name_of_file' (item size: 1) to 8 items.
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: lampiran1.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+A level-1 auxiliary file: lampiran2.aux
 Database file #1: pustaka.bib
-You've used 20 entries,
+You've used 30 entries,
             1975 wiz_defined-function locations,
-            641 strings with 7972 characters,
-and the built_in function-call counts, 7586 in all, are:
-= -- 781
-> -- 238
-< -- 18
-+ -- 80
-- -- 76
-* -- 592
-:= -- 1314
-add.period$ -- 62
-call.type$ -- 20
-change.case$ -- 134
-chr.to.int$ -- 20
-cite$ -- 20
-duplicate$ -- 314
-empty$ -- 538
-format.name$ -- 102
-if$ -- 1535
-int.to.chr$ -- 1
+            711 strings with 9542 characters,
+and the built_in function-call counts, 11061 in all, are:
+= -- 1135
+> -- 336
+< -- 27
++ -- 117
+- -- 106
+* -- 877
+:= -- 1922
+add.period$ -- 92
+call.type$ -- 30
+change.case$ -- 198
+chr.to.int$ -- 29
+cite$ -- 30
+duplicate$ -- 449
+empty$ -- 794
+format.name$ -- 146
+if$ -- 2223
+int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 51
-newline$ -- 124
-num.names$ -- 60
-pop$ -- 101
+missing$ -- 82
+newline$ -- 181
+num.names$ -- 90
+pop$ -- 146
 preamble$ -- 1
-purify$ -- 138
+purify$ -- 203
 quote$ -- 0
-skip$ -- 250
+skip$ -- 351
 stack$ -- 0
-substring$ -- 484
-swap$ -- 54
+substring$ -- 729
+swap$ -- 63
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 114
+type$ -- 168
 warning$ -- 0
-while$ -- 60
+while$ -- 90
 width$ -- 0
-write$ -- 301
+write$ -- 441

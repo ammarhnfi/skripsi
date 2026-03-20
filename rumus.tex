@@ -127,7 +127,7 @@ Memastikan bahwa pola kestabilan yang ditemukan bukan kebetulan semata.
     \item \textbf{Kesimpulan:} \statisKet.
 \end{itemize}
 
-\section*{6. Uji Autokorelasi Spasial (Global Moran's I)}
+\section*{6. Uji Autokorelasi Spasial (Global Moran's~$I$)}
 Mengukur apakah wilayah yang berdekatan memiliki karakteristik ekonomi yang mirip (pengelompokan spasial) pada Skor Kompromi.
 
 \begin{equation}
@@ -139,7 +139,7 @@ Mengukur apakah wilayah yang berdekatan memiliki karakteristik ekonomi yang miri
     \item $x_i$: Nilai Skor Kompromi (PC1) wilayah $i$.
     \item $w_{ij}$: Elemen matriks pembobot spasial (bernilai 1 jika wilayah $i$ dan $j$ bertetangga/bersentuhan, 0 jika tidak). \textbf{Catatan:} Matriks $w_{ij}$ ini berbeda dengan matriks $\mathbf{W}_t$ (produk skalar) pada analisis STATIS.
     \item \textit{Implementasi Python:} \texttt{final.py} Baris 119 (\texttt{\_calculate\_moran\_manual}).
-    \item \textit{Interpretasi:} Jika $I > E[I]$, pola cenderung berkelompok (Clustered).
+    \item \textit{Interpretasi:} Jika $I > E[I]$, pola cenderung berkelompok (\textit{Clustered}).
 \end{itemize}
 
 \section*{7. Clustering Trajektori (K-Means)}

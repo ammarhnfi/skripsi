@@ -1,0 +1,42 @@
+\chapter{\normalsize PENDAHULUAN}
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Latar Belakang}
+%-----------------------------------------------------------------------------%
+Telah ditemukan model matematika untuk mempelajari bagaimana dinamika penularan penyakit dari waktu ke waktu. Model menggunakan pendekatan persamaan diferensial biasa untuk mempelajari bagaimana penyakit menyebar di suatu populasi dari waktu ke waktu. Populasi dibagi menjadi tiga kompartemen, yaitu \textit{susceptible} (orang rentan penyakit), \textit{infected} (orang terinfeksi), dan \textit{recovered} (orang kebal penyakit).Model Kermack-McKendrick diberikan oleh sistem persamaan:
+\begin{align}
+\frac{dS}{dt} &= -\beta SI \nonumber\\
+\frac{dI}{dt} &= \beta SI-\gamma I \label{model:sirawal}\\
+\frac{dR}{dt} &= \gamma I \nonumber
+\end{align}
+dengan $\beta$ adalah \textit{rate} menginfeksi dan $\gamma$ adalah \textit{rate} penyembuhan. Kemudian model \eqref{model:sirawal} berkembang tidak hanya untuk satu populasi, melainkan untuk beberapa populasi.
+
+Oleh karena itu, pada skripsi ini akan dikonstruksi model multi grup SIS dengan pembagian kompartemen adalah pasif dan aktif. Individu dikatakan pasif jika ia tidak beraktivitas di kota lain, sedangkan individu dikatakan aktif jika ia beraktivitas di kota lain. Untuk penginterpretasian menggunakan simulasi numerik, akan ditinjau kasus untuk dua kota, kota besar (metropolitan) dan kota kecil, dimana fasilitas pengobatan kedua kota berbeda. Pendekatan matematika yang diterapkan adalah teori kontrol optimal, untuk menentukan opsi efisien dalam mengontrol penyakit. Selain itu juga akan ditinjau bagaimana hubungan antara penyebaran infeksi terhadap kontrol pengobatan, lamanya seseorang menetap di kota asal, atau lamanya seseorang menetap di kota lain.
+
+\lipsum[2-4]
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Rumusan Masalah}
+%-----------------------------------------------------------------------------%
+
+Berdasarkan latar belakang di atas, adapun rumusan masalah yang dibahas pada skripsi ini adalah bagaimana model matematika yang merepresentasikan mobilitas antar populasi dengan pembagian kompartemen aktif dan pasif ?
+
+
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Tujuan Penelitian}
+%-----------------------------------------------------------------------------%
+Berdasarkan rumusan masalah di atas, tujuan penulisan skripsi ini adalah membangun model penyebaran penyakit dua kota dengan intervensi pengobatan
+
+
+\section{\normalsize Manfaat Penelitian}
+Penelitian ini bermanfaat untuk memahami dinamika penyebaran penyakit malaria dalam populasi, sehingga dapat dibuat strategi pencegahan yang efektif.
+
+%-----------------------------------------------------------------------------%
+\section{\normalsize Ruang Lingkup Penelitian}
+%-----------------------------------------------------------------------------%
+Untuk menyederhanakan permasalahan tanpa mengurangi esensi dari permasalahan, maka dibuatlah pembatasan masalah. Adapun ruang lingkup permasalahan yang dibahas pada skripsi ini yaitu:
+\begin{enumerate}
+	\item Populasi manusia (yang berasal dari kota-$i$) konstan.
+	\item Tidak ada individu yang meninggal karena penyakit. 
+\end{enumerate}

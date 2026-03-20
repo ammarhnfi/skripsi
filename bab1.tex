@@ -1,7 +1,6 @@
 \chapter{\normalsize PENDAHULUAN}
 
 %-----------------------------------------------------------------------------%
-% --- 1.1 ---
 \section{\normalsize Latar Belakang}
 %-----------------------------------------------------------------------------%
 Kawasan strategis yang meliputi Provinsi Banten, DKI Jakarta, dan Jawa Barat tidak hanya berperan sebagai mesin pertumbuhan ekonomi nasional, tetapi juga menjadi arena dinamika pembangunan manusia yang sangat kompleks dalam lima tahun terakhir. Meskipun wilayah ini memberikan kontribusi yang sangat dominan terhadap perekonomian nasional dengan rata-rata pangsa Produk Domestik Regional Bruto (PDRB) berkisar 33,8 persen dari PDRB Indonesia \citet{bpspdrb}---keberhasilan pembangunannya tidak dapat lagi diukur hanya melalui kacamata indikator makro ekonomi semata. Terdapat interaksi multidimensi yang melibatkan kualitas hidup yang tecermin dalam Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), serta tantangan kesejahteraan sosial seperti kemiskinan dan ketahanan pangan yang terus mengalami perubahan. Kompleksitas ini menuntut pembuktian empiris yang lebih mendalam untuk melihat bagaimana indikator-indikator tersebut terdistribusi secara nyata di seluruh kabupaten/kota.
@@ -18,7 +17,7 @@ Penerapan metode eksploratif multivariat seperti ini mengisi celah penting dalam
 
 Kompleksitas informasi yang dihasilkan dari analisis spasio-temporal ini menuntut media penyajian yang lebih adaptif dibandingkan laporan statis konvensional. Untuk itu, penelitian ini tidak hanya berhenti pada tataran analisis teoritis, tetapi juga mengembangkan sebuah aplikasi visualisasi interaktif berbasis web menggunakan bahasa pemrograman Python dengan kerangka kerja (\textit{framework}) Dash dan Plotly. Pengembangan \textit{dashboard} ini bertujuan untuk memfasilitasi Eksplorasi Data (\textit{Exploratory Data Analysis}) secara mandiri oleh pengguna. Fitur-fitur interaktif yang disematkan seperti seleksi tahun, filter wilayah, hingga rotasi \textit{baseline} memungkinkan para pengambil kebijakan untuk mengamati pola interaksi multivariat secara lebih mendalam. Melalui antarmuka ini, pola-pola tersembunyi (\textit{latent patterns}) yang mungkin terlewatkan dalam tabel statistik standar dapat terdeteksi dengan lebih intuitif.
 
-Secara keseluruhan, penelitian ini diarahkan untuk menjawab kebutuhan akan metode pemantauan pembangunan daerah yang lebih menyeluruh dan dinamis. Dengan memadukan kemampuan analitis metode STATIS dalam memahami struktur kompromi (\textit{compromise structure}) lintas tahun dan kemampuan naratif visual dari \textit{Dynamic Biplot}. Penelitian ini diharapkan dapat memberikan kontribusi ganda: secara akademis memperkaya khazanah penerapan statistik multivariat pada data ekonomi regional, dan secara praktis menyediakan purwarupa alat bantu visual yang relevan bagi pemerintah daerah dalam mengevaluasi dampak kebijakan pasca-pandemi. Identifikasi struktur hubungan yang stabil maupun yang berubah selama lima tahun terakhir akan menjadi landasan penting dalam merumuskan strategi pembangunan yang lebih tangguh di masa depan.
+Secara keseluruhan, penelitian ini diarahkan untuk menjawab kebutuhan akan metode pemantauan pembangunan daerah yang lebih menyeluruh dan dinamis. Dengan memadukan kemampuan analitis metode STATIS dalam memahami struktur kompromi (\textit{compromise structure}) lintas tahun dan kemampuan naratif visual dari \textit{Dynamic Biplot}. Penelitian ini diharapkan dapat memberikan kontribusi ganda: secara akademis memperkaya khazanah penerapan statistik multivariat pada data ekonomi regional, dan secara praktis menyediakan prototipe alat bantu visual yang relevan bagi pemerintah daerah dalam mengevaluasi dampak kebijakan pasca-pandemi. Identifikasi struktur hubungan yang stabil maupun yang berubah selama lima tahun terakhir akan menjadi landasan penting dalam merumuskan strategi pembangunan yang lebih tangguh di masa depan.
 
 Pemilihan lokasi penelitian yang mencakup seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat didasarkan pada karakteristik interkonektivitas ekonomi yang kuat di antara ketiga wilayah ini. Sebagai kesatuan wilayah pembangunan utama di Pulau Jawa, ketiga provinsi ini memiliki keterkaitan rantai pasok, mobilitas tenaga kerja, dan arus investasi yang sangat intensif. Permasalahan ekonomi yang terjadi di pusat pertumbuhan utama (DKI Jakarta) diproyeksikan akan merambat (\textit{spillover}) ke wilayah penyangga di Banten dan Jawa Barat dengan skala yang berbeda-beda. Oleh karena itu, analisis yang hanya membatasi lingkup pada wilayah metropolitan Jabodetabek berpotensi mengabaikan dampak sistemik yang dirasakan oleh wilayah kabupaten non-metropolitan yang secara administratif berada dalam satu kesatuan provinsi namun memiliki karakteristik ekonomi yang jauh berbeda.
 
@@ -27,7 +26,6 @@ Untuk memahami kompleksitas pembangunan tersebut, penelitian ini menggunakan dua
 Ketiadaan studi yang menganalisis dinamika interaksi kedua belas indikator ini secara spasio-temporal pada periode kritis 2020--2024 menciptakan sebuah "kotak hitam" (\textit{black box}) dalam pemahaman mengenai resiliensi ekonomi regional. Tanpa analisis struktur kompromi dan visualisasi lintasan yang jelas, para pemangku kebijakan kehilangan panduan empiris mengenai bagaimana sebenarnya pola pemulihan berlangsung di tingkat lokal apakah kembali ke struktur lama atau membentuk ekuilibrium baru. Berdasarkan urgensi untuk mengungkap fenomena tersebut secara statistik dan visual, penelitian ini disusun untuk menjawab pertanyaan-pertanyaan mendasar mengenai evolusi struktur ekonomi dan pembangunan di ketiga provinsi tersebut.
 
 %-----------------------------------------------------------------------------%
-% --- 1.2 ---
 \section{\normalsize Rumusan Masalah}
 %-----------------------------------------------------------------------------%
 Berdasarkan latar belakang yang telah diuraikan, permasalahan yang akan dikaji dalam penelitian ini dirumuskan sebagai berikut:
@@ -41,19 +39,6 @@ Berdasarkan latar belakang yang telah diuraikan, permasalahan yang akan dikaji d
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
-% --- 1.3 ---
-\section{\normalsize Ruang Lingkup Penelitian}
-%-----------------------------------------------------------------------------%
-Agar pembahasan penelitian ini lebih terarah dan fokus, penulis menetapkan batasan-batasan masalah sebagai berikut:
-
-\begin{enumerate}
-    \item \textbf{Variabel Penelitian:} Analisis menggunakan 12 indikator terpilih yang bersumber dari Badan Pusat Statistik (BPS), meliputi: Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), Persentase Penduduk Miskin (PPM), PDRB ADHK, Rata-rata Lama Sekolah (RLS), Angka Harapan Hidup Laki-laki (AHH\_L) dan Perempuan (AHH\_P), Garis Kemiskinan (GK), Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP), Tingkat Pengangguran Terbuka (TPT), Tingkat Partisipasi Angkatan Kerja (TPAK), dan Gini Ratio (GR).
-    \item \textbf{Aspek Spasial:} Istilah "spasial" dalam penelitian ini merujuk pada unit analisis berbasis wilayah (kabupaten/kota), bukan pada penggunaan matriks pembobot spasial (\textit{spatial weight matrix}) seperti pada Ekonometrika Spasial.
-    \item \textbf{Fungsionalitas Aplikasi:} Aplikasi berbasis web yang dikembangkan berfungsi sebagai alat bantu eksplorasi visual (\textit{Visual Exploratory Tool}) bagi pengguna, bukan sebagai Sistem Pendukung Keputusan (\textit{Decision Support System}) yang menghasilkan rekomendasi kebijakan berbasis data secara otomatis.
-\end{enumerate}
-
-%-----------------------------------------------------------------------------%
-% --- 1.4 ---
 \section{\normalsize Tujuan Penelitian}
 %-----------------------------------------------------------------------------%
 Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah:
@@ -66,8 +51,20 @@ Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah:
     \item Merancang aplikasi berbasis web menggunakan \textit{framework} Dash dan Plotly sebagai alat bantu eksplorasi data yang memungkinkan pengguna melakukan pemantauan indikator pembangunan secara interaktif.
 \end{enumerate}
 
+\section{\normalsize Manfaat Penelitian}
+Penelitian ini bermanfaat untuk:
+\begin{enumerate}
+    \item Secara akademis memperkaya khazanah penerapan statistik multivariat terutama metode STATIS dan \textit{Dynamic Biplot} pada data ekonomi regional di Indonesia.
+    \item Secara praktis menyediakan prototipe alatbantu visual berbasis web yang relevan bagi pemerintah daerah dalam mengevaluasi perkembangan indikator pembangunan dan dampak kebijakan pasca-pandemi.
+\end{enumerate}
+
 %-----------------------------------------------------------------------------%
-% --- 1.5 ---
-\section{\normalsize Metodologi Penelitian}
+\section{\normalsize Ruang Lingkup Penelitian}
 %-----------------------------------------------------------------------------%
-Penelitian ini menggunakan pendekatan eksploratif multivariat (\textit{Descriptive Multivariate Analysis}). Penelitian tidak bertujuan untuk membangun model prediktif (peramalan masa depan) maupun model inferensial kausalitas (seperti uji pengaruh parsial dalam regresi).
+Agar pembahasan penelitian ini lebih terarah dan fokus, penulis menetapkan batasan-batasan masalah sebagai berikut:
+
+\begin{enumerate}
+    \item \textbf{Variabel Penelitian:} Analisis menggunakan 12 indikator terpilih yang bersumber dari Badan Pusat Statistik (BPS), meliputi: Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), Persentase Penduduk Miskin (PPM), PDRB ADHK, Rata-rata Lama Sekolah (RLS), Angka Harapan Hidup Laki-laki (AHH\_L) dan Perempuan (AHH\_P), Garis Kemiskinan (GK), Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP), Tingkat Pengangguran Terbuka (TPT), Tingkat Partisipasi Angkatan Kerja (TPAK), dan Gini Ratio (GR).
+    \item \textbf{Aspek Spasial:} Istilah "spasial" dalam penelitian ini merujuk pada unit analisis berbasis wilayah (kabupaten/kota), bukan pada penggunaan matriks pembobot spasial (\textit{spatial weight matrix}) seperti pada Ekonometrika Spasial.
+    \item \textbf{Fungsionalitas Aplikasi:} Aplikasi berbasis web yang dikembangkan berfungsi sebagai alat bantu eksplorasi visual (\textit{Visual Exploratory Tool}) bagi pengguna, bukan sebagai Sistem Pendukung Keputusan (\textit{Decision Support System}) yang menghasilkan rekomendasi kebijakan berbasis data secara otomatis.
+\end{enumerate}

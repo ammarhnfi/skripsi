@@ -1,0 +1,53 @@
+%
+% Halaman Pengesahan Sidang
+%
+% @author  Andreas Febrian, Andre Tampubolon
+% @version 1.02
+%
+
+\chapter*{\normalsize HALAMAN PENGESAHAN}
+
+\vspace*{0.4cm}
+\noindent
+
+\noindent
+\begin{tabular}{ll p{9cm}}
+	\type~ini diajukan oleh&: & \\ % ---- Jangan diedit ----
+	Nama&: & \penulis \\ % ---- Jangan diedit ----
+	NPM&: & \npm \\ % ---- Jangan diedit ----
+	Program Studi&: & \program \\ % ---- Jangan diedit ----
+	Judul \type&: & \judul \\ % ---- Jangan diedit ----
+\end{tabular} \\
+
+\vspace*{1.0cm}
+
+\noindent Telah berhasil dipertahankan di hadapan Dewan Penguji
+dan diterima sebagai bagian persyaratan yang diperlukan untuk
+memperoleh gelar \gelar~pada Program Studi \program, Fakultas
+\fakultas, Universitas Indonesia.\\[0.2cm] % ---- Jangan diedit ----
+
+\begin{center}
+	DEWAN PENGUJI
+\end{center}
+
+\vspace*{0.3cm}
+
+\begin{tabular}{l l l l }
+	& & & \\
+	Pembimbing&: & \pembimbinga & (\hspace*{3.0cm}) \\ % ---- Jangan diedit ----
+    & & & \\
+	Pembimbing&: & \pembimbingb & (\hspace*{3.0cm}) \\ % ---- Jangan diedit ----
+	& & & \\
+	Penguji&: & Tulis disini & (\hspace*{3.0cm}) \\ % ---- Silakan edit bagian ini ------
+	& & & \\
+	Penguji&: & Tulis disini & (\hspace*{3.0cm}) \\ % ---- Silakan edit atau hapus bagian ini ------
+\end{tabular}\\
+
+\vspace*{2.0cm}
+
+\begin{tabular}{ll l}
+	Ditetapkan di&: & Depok\\ % ---- Jangan diedit ----
+	Tanggal&: & \tanggalLulus \\ % ---- Jangan diedit ----
+\end{tabular}
+
+\newpage 

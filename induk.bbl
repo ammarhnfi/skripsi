@@ -8,6 +8,11 @@ Ahmad, A. (2024).
 \newblock Diakses: 20 November 2025.
 \newblock \url{https://repository.ipb.ac.id/handle/123456789/154545}
 
+\bibitem[Anselin, 1988]{anselin1988}
+Anselin, L. (1988).
+\newblock {\em Spatial Econometrics: Methods and Models}.
+\newblock Kluwer Academic Publishers.
+
 \bibitem[{Badan Pusat Statistik}, 2024]{bpspkkp}
 {Badan Pusat Statistik} (2024).
 \newblock {\em Prevalensi ketidakcukupan konsumsi pangan (persen) per
@@ -16,8 +21,15 @@ Ahmad, A. (2024).
 \newblock
   \url{https://www.bps.go.id/id/statistics-table/2/MjI2OSMy/prevalensi-ketidakcukupan-konsumsi-pangan--persen--per-kabupaten-kota--persen-.html}
 
-\bibitem[{Badan Pusat Statistik}, 2025]{bpspdrb}
-{Badan Pusat Statistik} (2025).
+\bibitem[{Badan Pusat Statistik}, 2025a]{bpsikr2025}
+{Badan Pusat Statistik} (2025a).
+\newblock {\em Indikator kesejahteraan rakyat 2025}.
+\newblock Katalog 4102004, ISSN 0215-4641.
+\newblock
+  \url{https://www.bps.go.id/id/publication/2025/12/30/bcc229ac31403d023f2d26a3/indikator-kesejahteraan-rakyat-2025.html}
+
+\bibitem[{Badan Pusat Statistik}, 2025b]{bpspdrb}
+{Badan Pusat Statistik} (2025b).
 \newblock {\em Tinjauan regional berdasarkan pdrb kabupaten/kota 2020--2024}.
 \newblock Diakses dari situs resmi Badan Pusat Statistik.
 \newblock
@@ -27,6 +39,14 @@ Ahmad, A. (2024).
 Baltagi, B. (2021).
 \newblock {\em Econometric Analysis of Panel Data}.
 \newblock \url{https://doi.org/10.1007/978-3-030-53953-5}
+
+\bibitem[Bartlett, 1954]{bartlett1954}
+Bartlett, M.~S. (1954).
+\newblock A note on the multiplying factors for various $\chi^2$
+  approximations.
+\newblock {\em Journal of the Royal Statistical Society: Series B
+  (Methodological)}, 16(2), 296--298.
+\newblock \url{https://doi.org/10.1111/j.2517-6161.1954.tb00174.x}
 
 \bibitem[Bholowalia \& Kumar, 2014]{bholowalia2014}
 Bholowalia, P. \& Kumar, A. (2014).
@@ -42,12 +62,25 @@ Biegert, T., \"Ozcan, B., \& Rossetti-Youlton, M. (2023).
 \newblock {\em Socius: Sociological Research for a Dynamic World}, 9, 1--18.
 \newblock \url{https://doi.org/10.1177/23780231231158087}
 
+\bibitem[Dziuban \& Shirkey, 1974]{dziuban1974}
+Dziuban, C.~D. \& Shirkey, E.~C. (1974).
+\newblock When is a correlation matrix appropriate for factor analysis? some
+  decision rules.
+\newblock {\em Psychological Bulletin}, 81(6), 358--361.
+\newblock \url{https://doi.org/10.1037/h0036316}
+
 \bibitem[Egido \& Galindo, 2015]{egido2015}
 Egido, J. \& Galindo, P. (2015).
 \newblock Dynamic biplot. evolution of the economic freedom in the european
   union.
 \newblock {\em British Journal of Applied Science \& Technology}, 11(3), 1--13.
 \newblock \url{https://doi.org/10.9734/BJAST/2015/20289}
+
+\bibitem[Escoufier, 1973]{escoufier1973}
+Escoufier, Y. (1973).
+\newblock Le traitement des variables vectorielles.
+\newblock {\em Biometrics}, 29(4), 751--760.
+\newblock \url{https://doi.org/10.2307/2529140}
 
 \bibitem[Gabriel, 1971]{gabriel1971}
 Gabriel, K.~R. (1971).
@@ -56,12 +89,34 @@ Gabriel, K.~R. (1971).
 \newblock {\em Biometrika}, 58(3), 453--467.
 \newblock \url{https://doi.org/10.1093/biomet/58.3.453}
 
+\bibitem[Hair et~al., 2019]{hair2019}
+Hair, J.~F., Black, W.~C., Babin, B.~J., \& Anderson, R.~E. (2019).
+\newblock {\em Multivariate Data Analysis} (8 ed.).
+\newblock Cengage Learning.
+
 \bibitem[Hotelling, 1933]{hotelling1933}
 Hotelling, H. (1933).
 \newblock Analysis of a complex of statistical variables into principal
   components.
 \newblock {\em Journal of Educational Psychology}, 24(6), 417--441.
 \newblock \url{https://doi.org/10.1037/h0071325}
+
+\bibitem[Johnson \& Wichern, 2007]{johnson2007}
+Johnson, R.~A. \& Wichern, D.~W. (2007).
+\newblock {\em Applied Multivariate Statistical Analysis} (6 ed.).
+\newblock Pearson Prentice Hall.
+
+\bibitem[Kaiser, 1970]{kaiser1970}
+Kaiser, H.~F. (1970).
+\newblock A second generation little jiffy.
+\newblock {\em Psychometrika}, 35(4), 401--415.
+\newblock \url{https://doi.org/10.1007/BF02291817}
+
+\bibitem[Kaiser, 1974]{kaiser1974}
+Kaiser, H.~F. (1974).
+\newblock An index of factorial simplicity.
+\newblock {\em Psychometrika}, 39(1), 31--36.
+\newblock \url{https://doi.org/10.1007/BF02291575}
 
 \bibitem[Kazi-Aoual et~al., 1995]{kazi1995}
 Kazi-Aoual, F., Hitier, S., Sabatier, R., \& Lebreton, J.~D. (1995).
@@ -88,6 +143,14 @@ MacQueen, J. (1967).
   observations.
 \newblock {\em Proceedings of the fifth Berkeley symposium on mathematical
   statistics and probability}, volume~1, 281--297.
+
+\bibitem[Nisa, 2024]{alfia2024}
+Nisa, A.~C. (2024).
+\newblock Perbandingan antara hasil biclustering dan hasil cluster-biplot pada
+  data 119 kabupaten/kota di pulau jawa tahun 2022 berdasarkan indikator
+  kesejahteraan rakyat.
+\newblock Universitas Indonesia, Depok.
+\newblock \url{https://doi.org/10.30598/barekengvol19iss2pp1009-1022}
 
 \bibitem[Nuswantari, 2021]{nuswantari2021}
 Nuswantari, A. (2021).

@@ -1,0 +1,57 @@
+\chapter{\normalsize LANDASAN TEORI}
+Pada bab ini membahas mengenai model SIS, \textit{Basic Reproduction Number}, teori kontrol optimal, prinsip Pontryagin, dan metode \textit{Gradient Descent}.
+
+\lipsum[2-3]
+
+\section{\normalsize Model SIS}
+%----------------------------------------------------------------------------
+Model epidemik penyebaran penyakit adalah representasi sederhana bagaimana infeksi menyebar di seluruh populasi dari waktu ke waktu. Sebagian besar model berdasarkan pada pembagian populasi menjadi beberapa kompartemen \citep{Lenhart}. Salah satu model epidemik penyebaran penyakit adalah model SIS, dimana individu rentan akan menjadi terinfeksi kemudian akan rentan kembali setelah pulih dari penyakit. Secara rinci, kedua kompartemen pada model SIS sebagai berikut.
+\begin{enumerate}
+\item \textit{Susceptible} (S): individu yang tidak terinfeksi penyakit, namun rentan terhadap infeksi penyakit.
+\item \textit{Infected} (I): individu yang terinfeksi penyakit dan berpotensi menularkan penyakitnya ke individu rentan lainnya.
+\end{enumerate}
+Model SIS sederhana diberikan oleh sistem persamaan:
+\begin{align}
+\frac{dS}{dt}&=-\beta SI+\gamma I \nonumber\\
+\frac{dI}{dt}&=\beta SI-\gamma I \label{model:sisawal}
+\end{align}
+dengan $\beta$ adalah \textit{rate} menginfeksi dan $\gamma$ adalah \textit{rate} penyembuhan \citep{Martcheva}. Model \eqref{model:sisawal} relatif mudah dianalisis secara analitik.
+
+\section{\normalsize \textit{Basic Reproduction Number}}
+\textit{Basic Reproduction Number} ($\mathscr{R}_0$) adalah ekspektasi banyaknya infeksi sekunder yang di hasilkan secara langsung dari individu primer yang terinfeksi selama periode infeksi dalam suatu populasi \textit{susceptible} tertutup \citep{Diekmann}.  Tertutup artinya pengurangan atau penambahan jumlah populasi hanya dikarenakan kelahiran dan kematian.
+
+\begin{theorem} \citep{Diesche} \label{thm:translasi}
+	Sebuah translasi $T:\mathbb{R}^2\to\mathbb{R}^2$ memiliki representasi matriks \vspace*{-0.25cm}
+	\begin{equation*}
+		\begin{bmatrix}
+			1&0&a\\
+			0&1&b\\
+			0&0&1
+		\end{bmatrix}.
+	\end{equation*} \vspace*{-0.25cm} \\
+	\noindent $T^{-1}$ juga merupakan translasi dan memiliki representasi matriks \vspace*{-0.25cm}
+	\begin{equation*}
+		\begin{bmatrix}
+			1&0&-a\\
+			0&1&-b\\
+			0&0&1
+		\end{bmatrix}. 
+	\end{equation*}\vspace{-0.25 cm}
+\end{theorem}
+
+\begin{definition} \citep{Diesche} \label{definisi:nilairegular}
+	Misal $X \neq \{0\}$ adalah ruang ber-norm kompleks dan $T:D(T) \longrightarrow X$ adalah operator linear dengan $D(T) \subset X$.  \textbf{Nilai biasa} (\textit{regular value}) $\lambda$ dari $T$ adalah bilangan kompleks sedemikian sehingga\vspace*{-0.25cm}
+	\begin{description}
+		\item[(R1)] $R_{\lambda}(T)$ ada\vspace*{-0.25cm}
+		\item[(R2)] $R_{\lambda}(T)$ terbatas\vspace*{-0.25cm}
+		\item[(R3)] $R_{\lambda}(T)$ terdefinisi pada himpunan yang padat terhadap $X$.\vspace*{-0.25cm}
+	\end{description}
+	\textbf{Himpunan \textit{resolvent}} $\rho (T)$ dari $T$ adalah kumpulan semua nilai biasa $\lambda$ dari $T$.
+	Komplemennya $\sigma (T)=\mathbb{C}-\rho (T)$ di bidang kompleks $\mathbb{C}$ disebut \textbf{spektrum} dari $T$, dan $\lambda \in \sigma (T)$ disebut \textbf{nilai spektral} dari $T$. Lebih lanjut, spektrum $\sigma (T)$ dipartisi menjadi tiga himpunan yang saling bebas, yaitu:
+	\begin{enumerate}\vspace*{-0.25cm}
+		\item \textbf{Spektrum titik} atau spektrum diskrit $\sigma_p (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ tidak ada. Nilai $\lambda \in \sigma_p (T)$ disebut \textbf{nilai eigen} dari $T$.\vspace*{-0.25cm}
+		\item \textbf{Spektrum kontinu} $\sigma_c (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ ada dan memenuhi (R3) tapi tidak memenuhi (R2), yaitu $R_\lambda (T)$ tidak terbatas.\vspace*{-0.25cm}
+		\item \textbf{Spektrum \textit{residual}} $\sigma_r (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ ada (bisa sebagai operator linear terbatas atau tidak) namun tidak memenuhi (R3), yaitu domain dari $R_\lambda (T)$ tidak padat di $X$.\vspace*{-0.25cm}
+	\end{enumerate}
+\end{definition}
+

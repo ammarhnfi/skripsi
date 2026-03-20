@@ -320,7 +320,7 @@ function App() {
             )}
             {activeModal === 'web-app' && (
               <iframe
-                src="https://ammarhnfi-skripsi.hf.space"
+                src="https://ammarhnfi-skripsiv2.hf.space"
                 style={{ width: '100%', height: '100%', border: 'none' }}
                 title="Aplikasi Python Interaktif"
                 onLoad={() => setIframeLoading(false)}

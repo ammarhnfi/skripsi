@@ -1,0 +1,571 @@
+\chapter{\normalsize LANDASAN TEORI}
+
+Pada skripsi ini operator linear yang ditinjau adalah operator linear terbatas dan operator linear \textit{self adjoint} terbatas. Operator linear terbatas adalah operator linear di ruang ber-\textit{norm} dan operator linear \textit{self adjoint} adalah operator linear di ruang Hilbert. Karenanya, pada landasan teori ini, diperkenalkan ruang ber-\textit{norm}, ruang Hilbert dan operator linear beserta hal-hal yang berhubungan dengan ketiga hal tersebut di subbab 2.1 dan 2.2. Lalu pada subbab 2.3, diperkenalkan spektrum dan himpunan \textit{resolvent} pada operator linear di ruang vektor berdimensi hingga. Sebagian besar pembahasan pada skripsi ini merujuk dari Kreyzig (1989).
+
+
+\section{\normalsize Ruang metrik, ruang vektor, ruang ber-\textit{norm}, dan ruang hasil kali dalam}
+Pada subbab ini diperkenalkan tentang ruang metrik di 2.1.1, ruang vektor di 2.1.2, ruang ber-\textit{norm} beserta ruang Banach di 2.1.3, dan ruang hasil kali dalam beserta ruang Hilbert di 2.1.4.
+\subsection{\normalsize Ruang metrik}
+Pada bagian ini diperkenalkan mengenai ruang metrik, subhimpunan pada ruang metrik, ruang metrik yang lengkap, pemetaan kontinu, dan isometrik. Berikut ini adalah pengertian dari ruang metrik.
+\begin{definition}
+\textbf{Ruang \textit{metrik}} adalah pasangan $(X,d)$, dengan $X$ adalah himpunan dan $d$ adalah metrik di $X$ (atau fungsi jarak di $X$). \textbf{Metrik} $d$ adalah fungsi yang terdefinisi di $X \times X$ yang untuk setiap $x,y,z $ di $X$ berlaku:\vspace*{-0.25cm}
+\begin{description}
+   \item[(M1)] $d$ bernilai real, hingga dan tidak negatif.\vspace*{-0.25cm}
+   \item[(M2)] $d(x,y)=0$ jika dan hanya jika $x=y$.\vspace*{-0.25cm}
+   \item[(M3)] $d(x,y)=d(y,x) \; \; \; \;$ (simetris).\vspace*{-0.25cm}
+   \item[(M4)] $d(x,y)\leq d(x,z)+d(z,y) \; \; \; \;$   (pertidaksamaan segitiga).\vspace*{-0.25cm}
+\end{description}
+%\emph{(Kreyzig, 1989, hal. 3)}
+\end{definition}
+
+Untuk mendefinisikan himpunan buka dan himpunan tertutup digunakan bola buka. Berikut ini adalah pengertian dari bola buka.
+\begin{definition}\label{bolabuka}
+Diberikan titik $x_0 \in (X,d)$ dan bilangan real $r>0$.  \textbf{Bola buka} dengan pusat $x_0$ dan jari-jari $r$ adalah himpunan
+\begin{eqnarray*}
+B(x_0;r)=\{x\in X| d(x,x_0) < r\}
+\end{eqnarray*}
+%\emph{(Kreyzig, 1989, hal. 18)}
+\end{definition}
+
+Misal $M$ adalah subhimpunan  dari ruang metrik $X$. Himpunan $M$ disebut \textbf{buka} jika setiap $m \in M$ terdapat $\epsilon >0$ sedemikan sehingga bola buka $B(m,\epsilon)$ termuat di $M$. Himpunan $M$ disebut \textbf{tertutup} jika komplemennya di ruang $X$ buka.  Merujuk dari Munkres (2000), irisan dari semua himpunan tertutup (subhimpunan dari $X$) yang memuat $M$ dilambangkan dengan $\overline{M}$ dan dibaca "$M$ \textit{closure}". Perlu diketahui bahwa untuk setiap $x \in \overline{M}$ pasti terdapat suatu barisan $(x_n)$ di $M$ yang konvergen ke $x$. Apabila $\overline{M}$ adalah $X$ maka $M$ disebut \textbf{padat} (\textit{dense}) di $X$. Himpunan $M$ disebut \textbf{kompak} jika setiap barisan di $M$ mempunyai subbarisan yang konvergen dan limitnya adalah anggota $M$.
+
+Ruang metrik yang lengkap adalah bagian dari pengertian ruang Banach dan ruang Hilbert. Berikut ini adalah definisi dari ruang metrik yang lengkap.
+\begin{definition}
+Barisan $(x_n)$ pada ruang \textit{metrik} $X=(X,d)$ disebut \textbf{\textit{Cauchy}} (atau fundamental) jika untuk setiap $\epsilon > 0$ terdapat $N=N(\epsilon)$ yang memenuhi
+\begin{eqnarray*}\vspace*{-0.2cm}
+d(x_m,x_n) < \epsilon, \, \, \, \forall \, m,n > N.\vspace*{-0.2cm}
+\end{eqnarray*}
+Ruang $X$ disebut \textbf{lengkap} bila setiap barisan \textit{Cauchy} di $X$ konvergen (limitnya merupakan anggota $X$). %\emph{(Kreyzig, 1989, hal. 28)}
+\end{definition}
+
+Perlu diketahui bahwa setiap barisan yang konvergen di ruang metrik juga merupakan barisan Cauchy. Selanjutnya adalah pengertian dari pemetaan kontinu.
+
+\begin{definition}
+Misal $X=(X,d)$ dan $Y=(Y,\widetilde{d})$ adalah ruang metrik. Suatu pemetaan $T:X \longrightarrow Y$ disebut kontinu di titik $x_0 \in X$ jika untuk setiap $\epsilon > 0$ terdapat suatu $\delta > 0$ sedemikian sehingga
+\begin{eqnarray*}
+  \widetilde{d}(T(x),T(x_0))< \epsilon \; \; \mbox{untuk setiap}\; x \; \mbox{yang memenuhi} \; \; d(x,x_0)< \delta
+\end{eqnarray*}
+$T$ disebut \textbf{kontinu} jika $T$ kontinu di setiap titik di $X$.
+%\emph{(Kreyzig, 1989, hal.20)}
+\end{definition}
+
+Apabila $T$ kontinu, maka untuk setiap barisan $(x_n)$ di $D(T)$ yang konvergen ke $x \in D(T)$ mengakibatkan barisan $(T(x_n))$ konvergen ke $T(x)$.
+
+Berikut ini adalah pengertian isometrik.
+\begin{definition}
+Suatu pemetaan $T$ dari ruang metrik $(X,d)$ ke ruang metrik $(\widetilde{X},\widetilde{d})$ disebut \textbf{isometrik} bila untuk setiap $x,y \in X$ berlaku
+\begin{eqnarray*}
+  \widetilde{d}(T(x),T(y))=d(x,y).
+\end{eqnarray*}
+%\emph{(Kreyzig, 1989, hal. 41)}
+\end{definition}
+
+\subsection{\normalsize Ruang vektor}
+Pada bagian ini diperkenalkan ruang vektor, subruang, dan hasil jumlah langsung. Berikut ini adalah pengertian dari ruang vektor.
+\begin{definition}
+\textbf{Ruang vektor} atas lapangan $K$ adalah himpunan tak kosong $X$ dengan anggota $x,y, \cdots $ (disebut vektor) bersama dengan dua operasi aljabar. Operasi-operasi aljabar ini adalah penjumlahan vektor dan perkalian vektor dengan skalar.\\
+\textbf{Penjumlahan vektor} menghubungkan pasangan vektor $(x,y)$ dengan vektor $x+y$. Penjumlahan vektor bersifat komutatif dan asosiatif, yaitu
+\begin{eqnarray*}
+  x+y&=&y+x\\
+  x+(y+z)&=&(x+y)+z;
+\end{eqnarray*}
+lebih lanjut, terdapat vektor $0$ (vektor nol) dan untuk setiap vektor $x$ terdapat vektor $-x$ dengan
+\begin{eqnarray*}
+  x+0&=&x\\
+  x+(-x)&=&0.
+\end{eqnarray*}
+\textbf{Perkalian dengan skalar} menghubungkan setiap skalar $a$ dan vektor $x$ dengan vektor $ax$ (juga bisa ditulis $xa$). Untuk setiap vektor $x,y$ dan skalar $a,b$ berlaku
+\begin{eqnarray*}
+  a(bx)&=&(ab)x\\
+  1x&=&x
+\end{eqnarray*}
+dan hukum distribusi
+\begin{eqnarray*}
+  a(x+y)&=&ax+ay\\
+  (a+b)x&=&ax+bx.
+\end{eqnarray*}
+%\emph{(Kreyzig, 1989, hal. 50)}
+\end{definition}
+
+\textbf{Subruang} dari ruang vektor $X$ adalah subhimpunan tak kosong $Y$ dari $X$ sedemikian sehingga $Y$ juga merupakan ruang vektor dengan dua operasi aljabar yang sama dengan operasi aljabar di $X$. Berikut ini adalah pengertian dari hasil tambah langsung.
+
+\begin{definition}
+Ruang vektor $X$ disebut sebagai \textbf{hasil tambah langsung} (\textit{direct sum}) antara dua subruang $Y$ dan $Z$ dari $X$, ditulis
+\begin{equation*}
+  X=Y\oplus Z,
+\end{equation*}
+jika setiap $x \in X$ mempunyai representasi yang unik
+\begin{equation*}
+  x=y+z, \; y \in Y, \; z\in Z.
+\end{equation*}
+%\emph{(Kreyzig, 1989, hal. 146)}
+\end{definition}
+
+\subsection{\normalsize Ruang ber-\textit{norm}}
+Pada bagian ini diperkenalkan mengenai ruang ber-\textit{norm} beserta ruang Banach. Berikut ini adalah pengertian dair ruang ber-\textit{norm} dan ruang Banach.
+\begin{definition}\label{definisinorm}
+\textbf{Ruang ber-\textit{norm}} $X$ merupakan ruang vektor dengan suatu \textit{norm} terdefinisi didalamnya. \textbf{Ruang Banach} adalah ruang ber-\textit{norm} yang lengkap (lengkap di metrik yang didefinisikan dari \textit{norm}; lihat persamaan (\ref{metrikdarinorm})). \textbf{\textit{Norm}} pada ruang vektor real atau kompleks $X$ adalah pemetaan bernilai real di $X$ dengan nilai pada suatu $x \in X$ ditulis
+\begin{equation*}
+\|x\| \; \; \; \mbox{(dibaca "\textit{norm} dari $x$")}
+\end{equation*}
+dan mempunyai sifat-sifat:\vspace*{-0.25cm}
+\begin{description}
+   \item[(N1)] $\|x\| \geq 0$.\vspace*{-0.25cm}
+   \item[(N2)] $\|x\| = 0$ jika dan hanya jika $x = 0$.\vspace*{-0.25cm}
+   \item[(N3)] $\|ax\| = |a| \|x\|$.\vspace*{-0.25cm}
+   \item[(N4)] $\|x+y\| \leq \|x\|+\|y\|$,\vspace*{-0.25cm}
+\end{description}
+dengan $x,y \in X$ dan $a$ adalah skalar.
+\textit{Norm} di $X$ dapat mendefinisikan metrik $d$ di $X$ sebagai
+\begin{equation} \label{metrikdarinorm}
+d(x,y)=\|x-y\|
+\end{equation}
+dan disebut sebagai metrik yang dibangun dari \textit{norm}. Ruang ber-\textit{norm} ditulis dengan $(X,\|\cdot\|)$ atau disingkat dengan $X$.
+%\emph{(Kreyzig, 1989, hal. 59)}
+\end{definition}
+
+Berdasarkan definisinya, ruang ber-\textit{norm} juga merupakan ruang metrik. Perlu diketahui bahwa tidak semua ruang metrik adalah ruang ber-\textit{norm}. Himpunan kompak pada ruang ber\textit{norm} memiliki sifat yang diterangkan pada teorema berikut ini.
+\begin{theorem}\label{kompak}
+Pada ruang ber-\textit{norm} berdimensi hingga $X$, $M\subset X$ adalah himpunan kompak jika dan hanya jika $M$ tertutup dan terbatas.
+%\emph{(Kreyzig, 1989, hal. 77)}
+\end{theorem}
+Himpunan $M$ pada Teorema \ref{kompak} dikatakan \textbf{terbatas} apabila terdapat bilangan $c$ sedemikian sehingga $\|x\| \leq c$ untuk setiap $x \in M$.
+\subsection{\normalsize Ruang Hilbert}
+Pada bagian ini diperkenalkan mengenai ruang hasil kali dalam beserta ruang Hilbert, tegak lurus dan diberikan contoh-contoh dari ruang Hilbert. Berikut ini adalah pengertian dari ruang hasil kali dalam dan ruang Hilbert.
+\begin{definition}
+\textbf{Ruang hasil kali dalam} adalah ruang vektor $X$ (atas lapangan $K$) dengan suatu hasil kali dalam yang terdefinisi di $X$. \textbf{Ruang Hilbert} adalah ruang hasil kali dalam yang lengkap (lengkap di metrik yang didefinisikan dari hasil kali dalam; lihat persamaan (\ref{metrikdarihasilkalidalam})). \textbf{Hasil kali dalam} di $X$ adalah pemetaan dari $X \times X$ ke lapangan $K$; dengan setiap pasang vektor $x$ dan $y$ berasosiasi dengan skalar yang ditulis  \begin{equation*}
+\langle x, y \rangle  \; \; \; \mbox{(dibaca hasil kali dalam dari $x$ dan $y$)},
+\end{equation*}
+yang untuk setiap $x$, $y$, $z$ di $X$ dan skalar $a$ berlaku:\vspace*{-0.25cm}
+\begin{description}
+   \item[(IP1)] $\langle x+y,z \rangle = \langle x,z \rangle + \langle y,z \rangle$,.\vspace*{-0.25cm}
+   \item[(IP2)] $\langle ax,y \rangle = a \langle x,y \rangle$.\vspace*{-0.25cm}
+   \item[(IP3)] $\langle x,y \rangle = \overline{\langle y,x \rangle}$.\vspace*{-0.25cm}
+   \item[(IP4)] $\langle x,x \rangle \geq 0$.\vspace*{-0.25cm}
+   \item[(IP5)] $\langle x,x \rangle = 0$ jika dan hanya jika $x=0$.\vspace*{-0.25cm}
+\end{description}
+Hasil kali dalam pada $X$ mendefinisikan \textit{norm} pada $X$ sebagai
+\begin{equation}\label{normdarihasilkalidalam}
+\|x\|=\sqrt{\langle x,x \rangle} \geq 0
+\end{equation}
+dan metrik pada $X$ sebagai
+\begin{equation}\label{metrikdarihasilkalidalam}
+d(x,y)=\|x-y\|=\sqrt{\langle x-y,x-y \rangle}.
+\end{equation}
+%\emph{(Kreyzig, 1989, hal. 129)}
+\end{definition}
+
+Berdasarkan definisinya, ruang hasil kali dalam juga merupakan ruang ber-\textit{norm} dan ruang Hilbert juga merupakan ruang Banach. Perlu diketahui bahwa tidak semua ruang ber-\textit{norm} adalah ruang hasil kali dalam. Berikut ini adalah pengertian dari tegak lurus.
+
+\begin{definition}\label{tegakkkklurussss}
+Suatu anggota $x$ dari ruang hasil kali dalam $X$ disebut \textbf{tegak lurus} dengan suatu $y \in X$ jika
+\begin{equation}
+  \langle x,y \rangle =0.
+\end{equation}
+Dapat dikatakan $x$ dan $y$ saling tegak lurus dan ditulis $x \perp y$. Untuk $A, B \subset X$, ditulis $x \perp A$ jika $x \perp a$ untuk setiap $a \in A$ dan $A \perp B$ jika $a \perp b$ untuk setiap $a \in A$ dan $b \in B$.
+%\emph{(Kreyzig, 1989, hal. 131)}
+\end{definition}
+
+Subhimpunan $B$ pada Definisi \ref{tegakkkklurussss} ditulis sebagai $A^\perp$ apabila terdiri dari semua $x\in X$ yang tegak lurus dengan setiap anggota $A$. Subruang tertutup di ruang Hilbert memiliki sifat yang diterangkan pada teorema berikut ini.
+\begin{theorem}\label{directsumhahaa}
+Misal $Y$ subruang tertutup dari ruang Hilbert $H$. Maka
+\begin{equation*}
+  H=Y \oplus Y^{\perp}.
+\end{equation*}
+%\emph{(Kreyzig, 1989,hal. 146)}
+\end{theorem}
+
+Salah satu pertidaksamaan yang terkenal di ruang hasil kali dalam adalah pertidaksamaan Schwarz yang terdapat di Lema berikut ini.
+\begin{lemma}\label{schwarzz}
+Hasil kali dalam dan \textit{norm} (yang didefinisikan dari hasil kali dalam) memenuhi pertidaksamaan Schwarz dan pertidaksamaan segitiga seperti berikut\vspace*{-0.25cm}
+\begin{enumerate}
+\item Pertidaksamaan Schwarz
+\begin{equation*}
+|\langle x, y \rangle| \leq \|x\| \|y\|.
+\end{equation*}
+\vspace*{-0.25cm}
+\item Pertidaksamaan segitiga
+\begin{equation*}
+\|x+y\| \leq \|x\|+\|y\|.
+\end{equation*}
+Persamaan berlaku jika dan hanya jika $y=0$ atau $x=cy$ ($c \geq 0$).\vspace*{-0.25cm}
+\end{enumerate}
+%\emph{(Kreyzig, 1989, hal. 137)}
+\end{lemma}
+
+Lema berikut ini adalah suatu sifat dari hasil kali dalam.
+\begin{lemma}\label{v1v2itusama}
+Misal $v_1,v_2$ merupakan anggota dari ruang hasil kali dalam $X$. Jika $\langle v_1, w\rangle =\langle v_2, w\rangle$ untuk setiap $w \in X$, maka $v_1=v_2$. Khususnya, $\langle v_1, w\rangle=0$ untuk setiap $w \in X$ mengakibatkan $v_1=0$.
+%\emph{(Kreyzig, 1989, hal. 190)}
+\end{lemma}
+
+Berikut ini adalah beberapa contoh dari ruang Hilbert yang juga merupakan ruang Banach.
+\begin{example}
+\emph{\textbf{Ruang Euclidean $\mathbb{R}^n$} \\
+Ruang $\mathbb{R}^n$ adalah himpunan dari semua n-\textit{tuples} terurut bilangan real yang anggotanya ditulis
+\begin{eqnarray*}
+x=(a_1,\cdots,a_n), \, \, y=(b_1,\cdots,b_n).
+\end{eqnarray*}
+Ruang $\mathbb{R}^n$ adalah ruang Hilbert dengan hasil kali dalam
+\begin{eqnarray*}
+\langle x,y \rangle =a_1b_1+\cdots+a_nb_n.
+\end{eqnarray*}
+Dengan persamaan (\ref{normdarihasilkalidalam}) didapat
+\begin{eqnarray*}
+\|x\|=\langle x,x \rangle ^{1/2}=\sqrt{a_1^2+\cdots+a_n^2}.
+\end{eqnarray*}
+Dari persamaan (\ref{metrikdarihasilkalidalam}) didapat juga
+\begin{eqnarray*}
+d(x,y)=\|x-y\|=\sqrt{(a_1-b_1)^2+\cdots+(a_n-b_n)^2}.
+\end{eqnarray*}
+}
+\end{example}
+
+\begin{example}\label{ruangunitarycn}
+\emph{\textbf{Ruang Unitary $\mathbb{C}^n$} \\
+Ruang Unitary $\mathbb{C}^n$ adalah ruang dari semua n-\textit{tuples} terurut bilangan kompleks, yang anggotanya ditulis \begin{eqnarray*}
+x=(a_1,\cdots,a_n), \, \, y=(b_1,\cdots,b_n).
+\end{eqnarray*}
+Ruang $\mathbb{C}^n$ adalah ruang Hilbert dengan hasil kali dalam
+\begin{eqnarray*}
+\langle x,y \rangle = a_1\overline{b_1}+\cdots+a_n\overline{b_n},
+\end{eqnarray*}
+\textit{norm}
+\begin{eqnarray*}
+\|x\|=\langle x,x \rangle ^{1/2} =\sqrt{|a_1|^2+\cdots+|a_n|^2},
+\end{eqnarray*}
+dan metrik
+\begin{eqnarray*}
+d(x,y)=\sqrt{|a_1-b_1|^2+\cdots+|a_n-b_n|^2}.
+\end{eqnarray*}
+}
+\end{example}
+
+\begin{example}
+\emph{\textbf{Ruang barisan Hilbert $\ell^2$} \\
+Ruang yang diperkenalkan dan dipelajari oleh Hilbert (1912) ini adalah himpunan dari barisan $x=(a_j)=(a_1,a_2,\cdots)$ dengan $|a_1|^2+|a_2|^2+\cdots$ konvergen. Barisan ini dapat terdiri dari bilangan real atau kompleks.
+Ruang $\ell^2$ adalah ruang Hilbert dengan hasil kali dalam yang didefinisikan sebagai
+\begin{eqnarray}
+\langle x,y \rangle =\sum_{j=1}^{\infty}a_j\overline{b_j},\label{2.4}
+\end{eqnarray}
+dengan $y=(b_j)$.
+Kekonvergenan dari barisan $(a_n \overline{b_n})$ ini dijamin dari pertidaksamaan Cauchy-Schwarz untuk penjumlahan
+\begin{eqnarray*}
+\sum_{j=1}^{\infty} |a_jb_j| \leq \sqrt{\sum_{k=1}^{\infty}|a_k|^2} \sqrt{\sum_{m=1}^{\infty}|b_m|^2}.
+\end{eqnarray*}
+\textit{Norm} dan metrik pada ruang $\ell^2$ didefinisikan sebagai
+\begin{eqnarray}
+\|x\|&=&\sqrt{\sum_{j=1}^{\infty}|a_j|^2}, \label{normell2}\\
+d(x,y)&=&\sqrt{\sum_{j=1}^{\infty}|a_j-b_j|^2} \nonumber.
+\end{eqnarray}
+Kekonvergenan dari $d(x,y)$ ini dijamin dari pertidaksamaan Minkowski untuk penjumlahan
+\begin{eqnarray*}
+\left(\sum_{j=1}^{\infty}|a_j+b_j|^p\right)^{1/p} \leq \left(\sum_{k=1}^{\infty}|a_k|^p\right)^{1/p}+\left(\sum_{m=1}^{\infty}|b_m|^p\right)^{1/p}, \, \, \, p\geq 1.
+\end{eqnarray*}
+}
+\end{example}
+
+\begin{example}
+\emph{\textbf{Ruang $L^2[a,b]$}\\
+Ruang $L^2[a,b]$ adalah himpunan dari fungsi bernilai kompleks yang kontinu pada interval real $[a,b]$.
+Hasil kali dalam pada $L^2[a,b]$ didefinisikan sebagai
+\begin{eqnarray}
+\langle x,y \rangle = \int_a^b x(t)\overline{y(t)}dt. \label{2.5}
+\end{eqnarray}
+Lalu, \textit{norm} dan metrik pada ruang $L^2[a,b]$ didefinisikan sebagai
+\begin{eqnarray}
+\|x\|&=&\left(\int_a^b |x(t)|^2dt\right)^{1/2},\label{normL2}\\
+d(x,y)&=&\left(\int_a^b |x(t)-y(t)|^2 dt\right)^{1/2}. \nonumber
+\end{eqnarray}
+}
+\end{example}
+
+%Himpunan $\ell^2$ dan $L^2[0,1]$ banyak digunakan sebagai contoh pada bagian selanjutnya.
+
+\section{\normalsize Operator linear}
+Pemetaan antar ruang vektor disebut sebagai \textbf{operator}. Pada subbab ini diperkenalkan mengenai operator linear. Dilanjutkan dengan operator linear terbatas di 2.2.1, operator linear \textit{self adjoint} terbatas di 2.2.2, operator linear tertutup di 2.2.3, dan pemetaan buka di 2.2.4. Berikut ini adalah pengertian dari operator linear.
+\begin{definition}
+\textbf{Operator linear} $T$ adalah operator yang\vspace*{-0.25cm}
+\begin{enumerate}
+  \item domain $D(T)$ dari $T$ adalah ruang vektor dan \textit{range} $\mathfrak{R}(T)$ berada di ruang vektor atas lapangan yang sama,\vspace*{-0.25cm}
+  \item untuk setiap $x,y \in D(T)$ dan skalar a,
+  \begin{eqnarray*}
+  T(x+y) &=& T(x)+T(y)\\
+  T(ax) &=& aT(x).
+    \end{eqnarray*}
+\end{enumerate}
+%\emph{(Kreyzig, 1989, hal. 83)}
+\end{definition}
+
+
+Inversi (\textit{inverse}) dari operator $T$ dilambangkan dengan $T^{-1}$ dan memenuhi $TT^{-1}=T^{-1}T=I$. Operator $I$ adalah operator identitas yang memetakan setiap $x$ ke dirinya sendiri, atau dapat ditulis $I(x)=x$. Inversi dari operator linear $T$ memiliki sifat-sifat seperti pada teorema berikut ini.
+
+\begin{theorem}\label{inversilinear}
+Misal $X,Y$ suatu ruang vektor, dan keduanya real atau keduanya kompleks. Misal $T: D(T)\longrightarrow Y$ adalah operator linear dengan $D(T) \subset X$ dan \textit{range} $\mathfrak{R}(T) \subset Y$. Maka:\vspace*{-0.25cm}
+\begin{description}
+  \item[(a)] Inversi $T^{-1}:\mathfrak{R}(T) \longrightarrow D(T)$ ada jika dan hanya jika $T(x)=0$ menyebabkan $x=0$.\vspace*{-0.25cm}
+  \item[(b)] Jika $T^{-1}$ ada maka $T^{-1}$ adalah operator linear.\vspace*{-0.25cm}
+\end{description}
+%\emph{(Kreyzig, 1989, hal. 88)}
+\end{theorem}
+
+\subsection{\normalsize Operator linear terbatas}
+Pada bagian ini diperkenalkan mengenai operator linear terbatas. Berikut ini adalah pengertian dari operator linear terbatas.
+\begin{definition}\label{definisidariterbatas}
+Misal X dan Y adalah ruang ber-\textit{norm} dan $T:D(T) \longrightarrow Y$ adalah sebuah operator linear, dengan $D(T) \subset X$. Operator $T$ disebut \textbf{terbatas} bila ada bilangan real $c$ sedemikian sehingga untuk setiap $x \in D(T)$
+\begin{eqnarray}\label{pertidaksmaandariterbatas}
+  \| T(x) \| \leq c \|x\|.
+\end{eqnarray}
+%\emph{(Kreyzig, 1989, hal. 91)}
+\end{definition}
+
+\textit{Norm} dari $T$ adalah
+\begin{eqnarray}\label{normsebenarnyat}
+\|T\|= \sup_{\substack{x \in D(T) \\ x \neq 0}} {\frac{\|T(x)\|}{\|x\|}}.
+\end{eqnarray}
+dapat dilihat bahwa $\|T\|$ dapat dipilih sebagai $c$ pada Definisi \ref{definisidariterbatas} sehingga pertidaksamaan (\ref{pertidaksmaandariterbatas}) menjadi
+\begin{eqnarray}\label{terbatas nih yeeee}
+\| T(x) \| \leq \|T\| \|x\|.
+\end{eqnarray}
+
+Dari persamaan (\ref{normsebenarnyat}) dapat dibentuk persamaan \textit{norm} dari $T$ berikut ini
+\begin{eqnarray}\label{normt2}
+\|T\|=\sup_{\substack{x\in D(T) \\\|x\|=1 }} \|T(x)\|.
+\end{eqnarray}
+
+Operator linear terbatas juga merupakan pemetaan kontinu, hal ini terdapat pada teorema berikut ini.
+\begin{theorem}\label{kontinuterbatas}
+Misal $T:D(T) \longrightarrow Y$ adalah operator linear, dengan $D(T) \subset X$ dan $X,Y$ adalah ruang ber-\textit{norm}. $T$ kontinu jika dan hanya jika $T$ terbatas.
+%\emph{(Kreyzig, 1989, hal. 97)}
+\end{theorem}
+
+\subsection{Operator linear \textit{self adjoint} terbatas}
+Pada bagian ini diperkenalakan mengenai operator linear \textit{self adjoint} terbatas. Berikut ini adalah pengertian operator linear \textit{self adjoint} terbatas.
+\begin{definition} \label{definisi:bab2}
+Misal $T:H_1\longrightarrow H_2$ adalah operator linear terbatas dengan $H_1$ dan $H_2$ merupakan ruang Hilbert. \textbf{Operator adjoint Hilbert} $T^*$ dari $T$ adalah operator
+\begin{equation*}
+T^{*}:H_2\rightarrow H_1
+\end{equation*}
+sedemikian sehingga untuk setiap $x\in H_1$ dan $y\in H_2$,
+\begin{eqnarray*}
+  \langle T(x),y \rangle=\langle x,T^*(y) \rangle.
+\end{eqnarray*}
+Operator $T$ disebut \textbf{\textit{selfadjoint}} bila $T^*=T$.
+%\emph{(Kreyzig, 1989, hal. 196)}
+\end{definition}
+
+Teorema berikut ini adalah suatu sifat dari operator linear \textit{self adjoint} terbatas.
+\begin{theorem} \label{teorema:selfadjoint}
+Misal $H$ adalah ruang Hilbert dan operator $T:H \longrightarrow H$ adalah operator linear terbatas. Jika $T$ self adjoint, maka untuk setiap $x$ di $H$, $\langle T(x),x\rangle$ bernilai real.
+%\emph{(Kreyzig, 1989, hal. 203)}
+\end{theorem}
+
+Berikut ini adalah beberapa contoh dari operator linear \textit{self adjoint} terbatas.
+
+\begin{example}\label{ell2}
+\emph{Misalkan $T:\ell^2 \longrightarrow \ell^2$ didefinisikan sebagai $(a_n)\longmapsto (\lambda_n\, a_n)$, dengan $(\lambda_n)$ adalah barisan terbatas di $\mathbb{R}$. Misalkan $\lambda$ adalah suprimum dari barisan $(\lambda_n)$. Operator $T$ merupakan operator linear karena untuk setiap $x,y \in \ell^2$, dengan $x=(a_n)$ dan $y=(b_n)$, didapat
+\begin{eqnarray*}
+T(x+y)=(\lambda_n (a_n+b_n))=((\lambda_n\;a_n)+(\lambda_n\;b_n))=T(x)+T(y)
+\end{eqnarray*}
+dan untuk suatu  bilangan kompleks $k$ didapat
+\begin{eqnarray*}
+T(k\;x)=(\lambda_n(k\;a_n))=k(\lambda_n\;a_n)=k\;T((a_n))=k\;T(x).
+\end{eqnarray*}
+\noindent Dari persamaan (\ref{normell2}) didapat
+\begin{eqnarray*}
+\|T(x)\|&=& \sqrt{\sum_{n=1}^{\infty} \lambda_n^2 |a_n|^2}\\
+& \leq & \sqrt{\lambda^2 \sum_{n=1}^{\infty}|a_n|^2}\\
+&\leq & \lambda\sqrt{\sum_{n=1}^{\infty}|a_n|^2}\\
+&\leq & \lambda\|x\|,
+\end{eqnarray*}
+sehingga $T$ terbatas. Dari persamaan (\ref{2.4}) didapat
+\begin{eqnarray*}
+\langle T(x),y \rangle &=& \sum_{n=1}^{\infty} \lambda_n\;a_n\;\overline{b_n}\\
+ &=& \sum_{n=1}^{\infty} a_n \; \overline{\lambda_n\;b_n}\\
+  &=& \langle x,T(y) \rangle ,\;
+\end{eqnarray*}
+sehingga $T$ \textit{self adjoint}. Jadi dapat disimpulkan bahwa $T$ adalah operator linear \textit{self adjoint} terbatas.}
+\end{example}
+
+\begin{example}\label{contoh:selfadjoint}
+\emph{Misal $T:L^{2}[0,1] \longrightarrow L^{2}[0,1]$ dengan $(T(x))(t)=tx(t)$ untuk \\$t\in [0,1]$.
+      Untuk setiap $x,y \in L^2[0,1]$ dan $a \in \mathbb{C}$ didapat
+      \begin{eqnarray*}
+      (T(x+y))(t)=t(x+y)(t)=t(x(t)+y(t))=tx(t)+ty(t)=(T(x))(t)+(T(y))(t)
+      \end{eqnarray*}
+      dan
+      \begin{eqnarray*}
+      (T(a\;x))(t)=t\;a\;x(t)=a\;t\;x(t)=a(T(x))(t),
+      \end{eqnarray*} sehingga $T$ adalah operator linear. Dari persamaan (\ref{normL2})
+      \begin{eqnarray*}
+      \|T(x)\| &=& \sqrt{\int_{0}^{1} |t\;x(t)|^2  dt}\\
+      &\leq& \|x\| \mbox{ karena } t \leq 1 \in \mathbb{R},
+      \end{eqnarray*}
+      sehingga $T$ terbatas. Dari persamaan (\ref{2.5})
+      \begin{eqnarray*}
+        \langle T(x),y\rangle &=& \int_{0}^{1} t\;x(t)\; \overline{y(t)} dt\\
+                       &=& \int_{0}^{1} x(t) \;\overline{t\;y(t)} dt \\
+                       &=& \langle x,T(y)\rangle ,
+      \end{eqnarray*}
+      sehingga $T$ \textit{self adjoint}. Jadi $T$ adalah operator linear \textit{self adjoint} terbatas.}
+\end{example}
+
+\subsection{\normalsize Operator linear tertutup}
+Pada skripsi ini digunakan beberapa sifat dari operator linear tertutup. Oleh karena itu, pada bagian ini diperkenalkan mengenai operator linear tertutup. Berikut ini adalah pengertian dari operator linear tertutup.
+\begin{definition}\label{definisioperatorterutup}
+Misal $X$ dan $Y$ adalah ruang ber-norm dan $T:D(T)\longrightarrow Y$ adalah operator linear dengan domain $D(T) \subset X$. $T$ disebut \textbf{operator linear tertutup} jika grafik
+\begin{equation}\label{graftertutup}
+    G(T)=\{(x,y)|x\in D(T), \, y=T(x)\}
+\end{equation}
+tertutup pada ruang ber-norm $X \times Y$, dengan dua operasi aljabar pada ruang vektor di $X \times Y$ didefinisikan sebagai
+\begin{eqnarray*}
+  (x_1,y_1)+(x_2,y_2) &=& (x_1+x_2,y_1+y_2)\\
+  a(x,y) &=& (a\,x,a\,y)
+\end{eqnarray*}
+(suatu skalar $a$) dan \textit{norm} di $X\times Y$ didefinisikan sebagai
+\begin{equation}\label{normxxy}
+\|(x,y)\|=\|x\|+\|y\|.
+\end{equation}
+%\emph{(Kreyzig, 1989, hal. 292)}
+\end{definition}
+
+Grafik $G(T)$ pada Definisi \ref{definisioperatorterutup} merupakan suatu himpunan dan merupakan subhimpunan dari ruang ber-\textit{norm} $X\times Y$, sehingga grafik tertutup pada Definisi \ref{definisioperatorterutup} mengikuti pengertian himpunan tertutup. Selain dari grafik, suatu operator linear dapat dikatakan tertutup dengan memperhatikan barisan pada domain dan \textit{range}-nya, hal ini diterangkan pada teorema berikut.
+
+\begin{theorem}\label{operatorlineartertutupteorema}
+Misal $X$ dan $Y$ adalah ruang ber-norm dan $T:D(T)\longrightarrow Y$ adalah operator linear dengan domain $D(T) \subset X$. $T$ tertutup jika dan hanya jika memenuhi syarat; jika $x_n \longrightarrow x$, dengan $x_n \in D(T)$, dan $T(x_n) \longrightarrow y$, maka $x \in D(T)$ dan $T(x)=y$.
+%\emph{(Kreyzig, 1989, hal. 293)}
+\end{theorem}
+
+Berikut ini adalah sifat dari inversi operator linear tertutup.
+\begin{theorem}\label{inversoperatortertutup}
+Jika operator linear tertutup $T$ memiliki inversi, maka $T^{-1}$ merupakan operator linear tertutup.
+\end{theorem}
+\begin{proof}
+Misalkan $P:X\times Y\longrightarrow Y \times X$ adalah suatu operator dengan $(x,y)\mapsto (y,x)$. Berdasarkan persamaan (\ref{normxxy}) maka $\|(x,y)\|=\|(y,x)\|$. Berdasarkan persamaan (\ref{metrikdarinorm}) dapat dibentuk suatu metrik dari \textit{norm}. Metrik $d$ di $X \times Y$ adalah
+\begin{eqnarray}
+d((x_1,y_1),(x_2,y_2))&=&\|(x_1,y_1)-(x_2,y_2)\|\nonumber\\
+&=&\|x_1-x_2\|+\|y_1-y_2\|\label{xtimey},
+\end{eqnarray}
+dan metrik $\widetilde{d}$ di $Y\times X$ adalah
+\begin{eqnarray}
+\widetilde{d}(P(x_1,y_1),(x_2,y_2))&=&\widetilde{d}((y_1,x_1)-(y_2,x_2))\nonumber\\
+                                   &=&\|(y_1,x_1)-(y_2,x_2)\|\nonumber\\
+                                   &=&\|y_1-y_2\|+\|x_1-x_2\| \label{ytimex},
+\end{eqnarray}
+dengan $(x_1,y_1),(x_2,y_2) \in X \times Y$. Dari persamaan (\ref{xtimey}) dan (\ref{ytimex}) didapat
+\begin{eqnarray*}
+  \widetilde{d}(P(x_1,y_1),(x_2,y_2))=d((x_1,y_1),(x_2,y_2)),
+\end{eqnarray*}
+yang mengakibatkan $P$ adalah isometrik.\\
+Berdasarkan Teorema \ref{inversilinear} didapat $T^{-1}$ merupakan suatu operator linear. Grafik dari $T^{-1}$ dapat ditulis sebagai
+\begin{eqnarray*}
+G(T^{-1})=\{(T(x),x)|x\in D(T)\}
+\end{eqnarray*}
+yang merupakan subhimpunan dari $Y\times X$. Karena $G(T)\subset X \times Y$ tertutup (disebabkan oleh $T$ tertutup) dan ada operator $P$ yang isometrik, maka $G(T^{-1})$ tertutup. Jadi didapat $T^{-1}$ merupakan operator linear tertutup.
+\end{proof}
+
+Untuk operator linear terbatas, terdapat hubungan antara himpunan yang tertutup dengan operator tertutup. Hubungan tersebut terdapat pada teorema berikut.
+\begin{lemma}\label{operatortutup}
+Misal $T: D(T) \longrightarrow Y$ adalah operator linear terbatas dengan domain $D(T) \subset X$, serta $X$ dan $Y$ adalah ruang ber-\textit{norm}. Maka:\vspace*{-0.25cm}
+\begin{enumerate}
+  \item Jika $D(T)$ subhimpunan tertutup di $X$, maka $T$ tertutup.\vspace*{-0.25cm}
+  \item Jika $T$ tertutup dan $Y$ lengkap, maka $D(T)$ subhimpunan tertutup di $X$.\vspace*{-0.25cm}
+\end{enumerate}
+%\emph{(Kreyzig, 1989, hal. 295)}
+\end{lemma}
+
+\subsection{\normalsize Pemetaan buka}
+Pada bagian ini diperkenalkan mengenai pemetaan buka. Berikut ini adalah pengertian dari pemetaan buka.
+\begin{definition}
+Misal $X,Y$ adalah ruang metrik. Suatu operator $T:D(T) \longrightarrow Y$ disebut sebagai \textbf{pemetaan buka} jika setiap himpunan buka di $D(T) \subset X$ dipetakan ke himpunan buka di $Y$.
+%\emph{(Kreyzig, 1989, hal. 286)}
+\end{definition}
+
+Operator linear terbatas di ruang Banach adalah pemetaan buka, hal ini terdapat pada teorema berikut.
+\begin{theorem}\label{openmaping}
+Operator linear terbatas $T$ yang memetakan ruang Banach $X$ pada ruang Banach $Y$ adalah pemetaan buka. Jika $T$ bijektif, maka $T^{-1}$ kontinu dan terbatas.
+%\emph{(Kreyzig, 1989, hal.286)}
+\end{theorem}
+
+
+\section{\normalsize Teori spektral di ruang ber-\textit{norm} berdimensi hingga}
+Pada bagian ini diperkenalkan mengenai teori spektral di ruang ber-\textit{norm} berdimensi hingga. Berikut ini diperkenalkan spektrum dan himpunan \textit{resolvent} dari matriks.
+\begin{definition}\label{spektralhingga}
+\textbf{Nilai eigen} dari matriks persegi $A=(a_{ij})$ adalah bilangan kompleks $\lambda$ yang sedemikian sehingga persamaan $Ax=\lambda x$ memiliki solusi $x \neq 0$. Vektor $x$ ini disebut sebagai \textbf{vektor eigen} dari $A$ yang bersesuaian dengan nilai eigen $\lambda$. Vektor-vektor eigen yang bersesuaian dengan nilai eigen $\lambda$ dan vektor nol membentuk subruang vektor dari $X$ yang disebut \textbf{ruang eigen} dari $A$ yang bersesuaian dengan nilai eigen $\lambda$. Himpunan $\sigma (A)$ yang memuat semua nilai eigen dari $A$ disebut \textbf{spektrum} dari $A$. Komplemennya $\rho (A)= \mathbb{C} -\sigma (A)$ di bidang kompleks disebut himpunan \textit{resolvent} dari $A$.
+%\emph{(Kreyzig, 1989, hal.364)}
+\end{definition}
+
+Apabila $\lambda$ adalah nilai eigen dari matriks persegi $A$, $\lambda$ adalah solusi dari persamaan karakteristik dari $A$, yaitu $\det(A-\lambda I)=0$. Setiap operator linear di ruang berdimensi hingga pasti terdapat matriks representasi. Merujuk dari Jacob (1990), berikut ini adalah pengertian dari matriks representasi.
+
+\begin{definition}\label{matrix repr}
+Misal $T:V \longrightarrow W$ suatu operator linear, dengan $B=\{v_1,v_2, \cdots, v_n\}$ adalah basis terurut dari ruang vektor $V$ dan $C=\{w_1,w_2,\cdots,w_m\}$ adalah basis terurut dari ruang vektor $W$. Didefinisikan $T_{BC}=(a_{ij})$ suatu matriks $m \times n$ dengan konstanta $a_{ij}$ dapat ditentukan secara unik dari persamaan
+\begin{eqnarray*}
+T(v_j)=a_{1j}w_1+a_{2j}w_2+\cdots+a_{mj}w_m
+\end{eqnarray*}
+untuk setiap $j$. Matriks $T_{BC}$ disebut \textbf{matriks representasi} dari operator linear $T$.
+%\emph{(Jacob, 1990, hal. 194)}
+\end{definition}
+
+Apabila operator linear $T:X \longrightarrow X$ di ruang ber-\textit{norm} $X$ berdimensi hingga, maka matriks representasinya adalah matriks persegi. Nilai eigen dari matriks representasi dari $T$ memiliki sifat berikut ini.
+
+\begin{theorem}\label{nilaieigensamaa}
+Setiap matriks yang merepresentasikan operator linear $T:X \longrightarrow X$ di ruang ber-\textit{norm} berdimensi hingga $X$  relatif terhadap berbagai basis dari $X$ mempunyai nilai eigen yang sama.
+%(Kreyzig, 1989, hal. 366)
+\end{theorem}
+
+Nilai eigen matriks representasi dari $T$ juga merupakan nilai eigen dari $T$, hal ini berlaku juga untuk spektrum dan himpunan \textit{resolvent} dari $T$. Untuk memudahkan dalam memahami, diberikan contoh berikut ini.
+
+\begin{example}
+\emph{Misalkan $T: \mathbb{R}^2 \longrightarrow \mathbb{R}^2$ dengan $T(v)=2v$ dan $v=(x,y)\in \mathbb{R}^2$. Misal $B=\{(1,0),(0,1)\}$ dan $C=\{(1,0),(1,1)\}$ merupakan basis dari $\mathbb{R}^2$.\\
+Apabila $T$ memetakan dari ruang yang berbasis $B$ ke ruang yang berbasis $C$. Sebelum mencari matriks representasi $T_{BC}$ harus dihitung dahulu peta dari anggota basis $B$, yaitu
+\begin{eqnarray*}
+T(1,0)&=&(2,0)=2(1,0)+0(1,1)\\
+T(0,1)&=&(0,2)=-2(1,0)+2(1,1).
+\end{eqnarray*}
+Jadi didapat $a_{11}=2$, $a_{12}=-2$, $a_{21}=0$, dan $a_{22}=2$ sehingga
+\begin{equation*}
+T_{BC}= \left(
+              \begin{array}{cc}
+                2 & -2 \\
+                0 & 2 \\
+              \end{array}
+            \right).
+\end{equation*}
+Persamaan karakteristik dari $T_{BC}$ adalah
+\begin{equation}\label{contohperskarakaterisik}
+  det(T_{BC}-\lambda I)=\left|
+              \begin{array}{cc}
+                2-\lambda & -2 \\
+                0 & 2-\lambda \\
+              \end{array}
+            \right|=\lambda^2-4\lambda+4=0.
+\end{equation}
+Solusi dari persamaan (\ref{contohperskarakaterisik}) ini tunggal yaitu $\lambda_1=2$ .
+Untuk $\lambda_1$ demikian dapat dipilih $v_1=(1,0)$ sebagai vektor eigen yang bersesuaian dengan $\lambda_1$. Dapat dilihat juga bahwa $T(v_1)=\lambda_1 v_1$. Jadi spektrum dari $T_{BC}$ adalah $\sigma(T_{BC})=\{2\}$.\\
+Apabila $T$ memetakan dari ruang yang berbasis $C$ ke ruang yang berbasis $B$. Sebelum mencari matriks representasi $T_{CB}$ harus dihitung dahulu peta dari anggota basis $C$, yaitu
+\begin{eqnarray*}
+T(1,0)&=&(2,0)=2(1,0)+0(0,1)\\
+T(1,1)&=&(2,2)=2(1,0)+2(0,1).
+\end{eqnarray*}
+Jadi didapat $a_{11}=2$, $a_{12}=2$, $a_{21}=0$, dan $a_{22}=2$ sehingga
+\begin{equation*}
+T_{CB}= \left(
+              \begin{array}{cc}
+                2 & 2 \\
+                0 & 2 \\
+              \end{array}
+            \right).
+\end{equation*}
+Persamaan karakteristik dari $T_{CB}$ adalah
+\begin{equation}\label{contohperskarakaterisik2}
+  det(T_{CB}-\lambda I)=\left|
+              \begin{array}{cc}
+                2-\lambda & 2 \\
+                0 & 2-\lambda \\
+              \end{array}
+            \right|=\lambda^2-4\lambda+4=0.
+\end{equation}
+Solusi dari persamaan (\ref{contohperskarakaterisik2}) ini tunggal yaitu $\lambda_2=2$ .
+Untuk $\lambda$ demikian dapat dipilih $v_2=(0,1)$ sebagai vektor eigen yang bersesuaian dengan $\lambda$. Dapat dilihat juga bahwa $T(v_2)=\lambda_2 v_2$. Jadi spektrum dari $T_{CB}$ adalah $\sigma(T_{CB})=\{2\}$.
+Dapat dilihat $\sigma(T_{BC})=\sigma(T_{CB})$ dan juga merupakan spektrum dari $T$, $\sigma(T)=\{2\}$.}
+\end{example} 

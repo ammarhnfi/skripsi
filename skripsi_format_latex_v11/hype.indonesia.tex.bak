@@ -1,0 +1,92 @@
+%
+% Hyphenation untuk Indonesia
+%
+% @author  Andreas Febrian
+% @version 1.00
+%
+% Tambahkan cara pemenggalan kata-kata yang salah dipenggal secara otomatis
+% oleh LaTeX. Jika kata tersebut dapat dipenggal dengan benar, maka tidak
+% perlu ditambahkan dalam berkas ini. Tanda pemenggalan kata menggunakan
+% tanda '-'; contoh:
+% menarik
+%   --> pemenggalan: me-na-rik
+%
+
+\hyphenation{
+    % alphabhet A
+    adjoint apabila
+    % alphabhet B
+    bersesuaian beranggotakan bertentangan bilangan berarti berdimensi berada
+    % alphabhet C
+    % alphabhet D
+    dapat definisi diferensial dengan diperhatikan diperkenalkan
+    dilambangkan disebut didefinisikan ditunjukkan disimpulkan
+    % alphabhet E
+    % alphabhet F
+    % alphabhet G
+    % alphabhet H
+    himpunan
+    % alphabhet I
+    inversi
+    % alphabhet J
+    jelas
+    % alphabhet K
+    kompak
+    kondisi
+    ketidaksempurnaan
+    kuliah
+    kumpulan
+    konvergen
+    kontinu
+    % alphabhet L
+    linear
+    % alphabhet M
+    memiliki menjadi merupakan mengakibatkan maksimum mengingat membentuk
+    % alphabhet N
+    non-eksklusif
+    % alphabhet O
+    operator
+    % alphabhet P
+    pengertian
+    penyelesaian
+    pertidaksamaan
+    penjumlahan
+    persamaan
+    polinomialnya
+	% alphabhet Q
+    % alphabhet R
+    representasi resolvent ruang
+    % alphabhet S
+    spektrum
+    subhimpunan
+    sistem
+    selalu
+    suatu
+    sebagai
+    spektral
+    secara
+    sehingga
+    selama
+    subbab
+    semua
+    sebelum
+    seluruh subruang
+    % alphabhet T
+    terlihat
+    tertutup
+    termuat
+    terdapat
+    terdefinisi
+    tentang
+    terbatas
+    teorema
+    % alphabhet U
+    universitas untuk
+    % alphabhet V
+    vektor
+    % alphabhet W
+    % alphabhet X
+    % alphabhet Y
+    % alphabhet Z
+    % special
+} 

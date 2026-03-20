@@ -1,0 +1,675 @@
+
+\chapter{\normalsize SPEKTRUM DAN HIMPUNAN \textit{RESOLVENT} DARI OPERATOR LINEAR TERBATAS DAN OPERATOR LINEAR \textit{SELF ADJOINT} TERBATAS}
+
+Bab ini terdiri dari konsep dasar di subbab 3.1, spektrum dan himpunan \textit{resolvent}  dari operator linear terbatas ada di subbab 3.2, serta spektrum dan himpunan \textit{resolvent} dari operator linear terbatas ada di subbab 3.3.
+
+\section{\normalsize Konsep dasar}
+Misalkan $X$ adalah ruang ber-\textit{norm} kompleks dan $T:D(T) \longrightarrow X$ adalah operator linear dengan $D(T) \subset X$. Dibentuk operator
+\begin{equation}
+T_{\lambda}=T-\lambda I
+\end{equation}
+dengan $\lambda$ adalah bilangan kompleks dan $I$ adalah operator identitas di $D(T)$. Karena $T$ adalah operator linear, maka operator $T_\lambda$ juga merupakan operator linear. Hal ini dapat ditunjukkan dengan$\\$
+$ T_\lambda (x+y)=T(x+y)-\lambda (x+y)=T(x)-\lambda x +T(y)- \lambda y=T_\lambda (x) +T_\lambda(y),$ dan \\
+$ T_\lambda (kx)=T(kx)-\lambda (kx)=k(T(x)-\lambda x)=kT_\lambda (x).\\$
+berlaku untuk setiap $x,y \in D(T)$ dan skalar $k \in \mathbb{C}$.\\
+\textbf{Operator \textit{resolvent}} dari $T$ adalah operator $R_{\lambda}$ dengan $R_{\lambda}=(T_{\lambda})^{-1}$. Operator \textit{resolvent} belum tentu ada, karena $T_{\lambda}$ belum tentu memiliki inversi. Apabila $R_\lambda (T)$ ada, maka $R_\lambda (T)$ merupakan operator linear (dengan Teorema \ref{inversilinear}). Penulisan $R_{\lambda}(T)$ disederhanakan menjadi $R_{\lambda}$ apabila operator $T$ yang dibahas sudah jelas.
+
+\begin{definition}\label{definisi:nilairegular}
+Misal $X \neq \{0\}$ adalah ruang ber-norm kompleks dan $T:D(T) \longrightarrow X$ adalah operator linear dengan $D(T) \subset X$.  \textbf{Nilai biasa} (\textit{regular value}) $\lambda$ dari $T$ adalah bilangan kompleks sedemikian sehingga\vspace*{-0.25cm}
+\begin{description}
+  \item[(R1)] $R_{\lambda}(T)$ ada\vspace*{-0.25cm}
+  \item[(R2)] $R_{\lambda}(T)$ terbatas\vspace*{-0.25cm}
+  \item[(R3)] $R_{\lambda}(T)$ terdefinisi pada himpunan yang padat terhadap $X$.\vspace*{-0.25cm}
+\end{description}
+\textbf{Himpunan \textit{resolvent}} $\rho (T)$ dari $T$ adalah kumpulan semua nilai biasa $\lambda$ dari $T$.
+Komplemennya $\sigma (T)=\mathbb{C}-\rho (T)$ di bidang kompleks $\mathbb{C}$ disebut \textbf{spektrum} dari $T$, dan $\lambda \in \sigma (T)$ disebut \textbf{nilai spektral} dari $T$. Lebih lanjut, spektrum $\sigma (T)$ dipartisi menjadi tiga himpunan yang saling bebas, yaitu:
+\begin{enumerate}\vspace*{-0.25cm}
+  \item \textbf{Spektrum titik} atau spektrum diskrit $\sigma_p (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ tidak ada. Nilai $\lambda \in \sigma_p (T)$ disebut \textbf{nilai eigen} dari $T$.\vspace*{-0.25cm}
+  \item \textbf{Spektrum kontinu} $\sigma_c (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ ada dan memenuhi (R3) tapi tidak memenuhi (R2), yaitu $R_\lambda (T)$ tidak terbatas.\vspace*{-0.25cm}
+  \item \textbf{Spektrum \textit{residual}} $\sigma_r (T)$ adalah himpunan dari $\lambda$ yang sedemikian sehingga $R_\lambda (T)$ ada (bisa sebagai operator linear terbatas atau tidak) namun tidak memenuhi (R3), yaitu domain dari $R_\lambda (T)$ tidak padat di $X$.\vspace*{-0.25cm}
+\end{enumerate}
+\emph{(Kreyzig, 1989, hal. 371)}
+\end{definition}
+
+Teorema \ref{inversilinear} butir (a) berbunyi, $R_\lambda (T)$ ada jika dan hanya jika $T_\lambda (x)=0$ mengakibatkan vektor $x=0$. Oleh karenanya, jika $T_\lambda (x)=0$ untuk suatu $x \neq 0$, maka $R_\lambda (T)$ tidak ada atau dengan kata lain $\lambda$ adalah nilai eigen dari $T$. Vektor $x$ ini disebut sebagai vektor eigen dari $T$ yang bersesuaian dengan nilai eigen $\lambda$. Kumpulan semua vektor eigen dari $T$ yang bersesuaian dengan nilai eigen $\lambda$ dan vektor $0$ membentuk subruang di $D(T)$ yang disebut ruang eigen dari $T$ yang bersesuaian dengan nilai eigen $\lambda$.
+
+Sampai di sini, terlihat bahwa pengertian nilai eigen pada Definisi \ref{definisi:nilairegular} harmonis dengan Definisi \ref{spektralhingga}. Terlihat juga bahwa spektrum kontinu dan spektrum \textit{residual} dari operator linear di ruang berdimensi hingga adalah himpunan kosong. Dengan kata lain setiap nilai spektralnya adalah nilai eigen.
+
+Berikut contoh-contoh operator linear dengan spektrumnya,
+\begin{example}\label{contohellellell}
+\emph{  Misal operator linear $T:\ell^2 \longrightarrow \ell^2$ didefinisikan
+        \begin{eqnarray*}
+        (a_1,a_2, \cdots) \longmapsto (\lambda_1 a_1,\lambda_2 a_2, \cdots),
+        \end{eqnarray*}
+        dengan $(\lambda_j)$ adalah barisan terbatas di $\mathbb{R}$ dan konvergen ke suatu $k \notin (\lambda_j)$.\\
+        $T-\lambda I$ didefinisikan dengan
+        \begin{eqnarray*}
+        (a_1,a_2, \cdots) \longmapsto ((\lambda_1-\lambda)a_1,(\lambda_2-\lambda)a_2, \cdots).
+        \end{eqnarray*}
+        $R_\lambda$ terdefinisi sebagai
+        \begin{eqnarray*}
+        (a_1,a_2, \cdots) \longmapsto (\frac{1}{\lambda_1-\lambda}a_1,\frac{1}{\lambda_2-\lambda}a_2, \cdots).
+        \end{eqnarray*}
+        $R_\lambda$ ada untuk setiap $\lambda \neq \lambda_j$. $R_\lambda$ yang ada selalu terbatas kecuali untuk $\lambda = k$. Jadi $\rho (T)=\mathbb{C}-(\{\lambda_j|\forall \, j\}\cup \{k\})$ dan $\sigma (T)=\{\lambda_j| \forall \,j\}\cup\{k\}$, dengan $\lambda_j$ merupakan anggota spektrum titik dari $T$, dan $k$ merupakan anggota spektrum kontinu dari $T$. Berdasarkan Contoh \ref{ell2}, $T$ adalah operator linear \textit{self adjoint} terbatas. Hal ini mengakibatkan operator $T$ tidak memiliki spektrum residual, karena operator linear \textit{self adjoint} terbatas tidak memiliki spektrum residual (hal ini ditunjukkan di Teorema \ref{last}).
+}\end{example}
+
+\begin{example}\label{contohL2L2L2L2}\emph{
+        Misal operator linear $T:L^2[0,1] \longrightarrow L^2[0,1]$ didefinisikan sebagai
+        \begin{eqnarray*}
+        T(x)(t)=tx(t).
+        \end{eqnarray*}
+        $T_\lambda$ didefinisikan dengan
+        \begin{eqnarray*}
+        T_{\lambda}(x)(t)=(t-\lambda)x(t).
+        \end{eqnarray*}
+        $R_\lambda $ terdefinisi sebagi
+        \begin{eqnarray*}
+        R_{\lambda}(x)(t)=\frac{1}{t-\lambda}x(t).
+        \end{eqnarray*}
+        $R_\lambda (x)$ terdefinisi dengan baik kecuali ketika $\lambda$ berada di interval tutup $[0,1]$, sehingga untuk setiap $\lambda \in [0,1]$ bukanlah anggota dari $\rho (T)$. Jadi $\rho (T)=\mathbb{C}-[0,1]$ dan $\sigma (T)=[0,1]$, dengan $[0,1]$ adalah spektrum kontinu dari $T$.
+        Operator $T$ tidak memiliki nilai eigen, hal ini ditunjukkan pada Contoh \ref{contoh:noeigenvalue}.
+        Operator $T$ juga tidak memiliki spektrum residual, karena $T$ merupakan operator linear \textit{self adjoint} terbatas (dengan Contoh \ref{contoh:selfadjoint}).}
+\end{example}
+\begin{example}\label{geserkananlho}\emph{
+        (Operator geser ke kanan) Misal operator linear $T:\ell^2 \longrightarrow \ell^2$ didefinisikan
+        \begin{eqnarray*}
+        (a_1,a_2, \cdots) \longmapsto (0,a_1,a_2, \cdots).
+        \end{eqnarray*}
+        $T-\lambda I$ didefinisikan dengan
+        \begin{eqnarray*}
+        (a_1,a_2, \cdots) \longmapsto (-\lambda a_1,a_1 -\lambda a_2, a_2 - \lambda a_3, \cdots).
+        \end{eqnarray*}
+        Untuk $\lambda \neq 0$, $R_{\lambda}$ didefinisikan sebagai
+        \begin{eqnarray*}
+        (b_1,b_2, \cdots) \longmapsto (-\frac{b_1}{\lambda},-\frac{b_1}{\lambda^2}-\frac{b_2}{\lambda},-\frac{b_1}{\lambda^3}-\frac{b_2}{\lambda^2}-\frac{b_3}{\lambda},\cdots)
+        \end{eqnarray*}
+        Operator $R_0$ ada sebagai operator geser ke kiri.
+        Untuk $|\lambda|>1$, dapat ditunjukkan bahwa $R_{\lambda}$ terbatas, namun tidak untuk $0<|\lambda|\leq 1$.
+        Jadi $\rho(T)=\mathbb{C}-\{\lambda \; |\; |\lambda| \leq 1\}$ dan $\sigma (T) =\{\lambda\; |\; |\lambda| \leq 1\}$. Operator $T$ tidak memiliki nilai eigen, karena operator $R_{\lambda}(T)$ ada untuk setiap $\lambda$. Serta $0<|\lambda|\leq 1$ adalah anggota spektrum kontinu dari $T$. Dari definisi $T$, $T_0(\ell^2)$ tidak padat di $\ell^2$ maka $\lambda=0$ adalah anggota spektrum residual.}
+\end{example}
+
+\begin{lemma}\label{wholex}
+Misal $X$ adalah ruang Banach kompleks,$T:X \longrightarrow X$ adalah suatu operator linear, dan $\lambda \in \rho(T)$. Dengan asumsi (a) $T$ tertutup atau (b) $T$ terbatas. Maka $R_{\lambda} (T)$ terdefinisi di seluruh ruang $X$ dan terbatas.\\
+\emph{(Kreyzig, 1989, hal. 373)}
+\end{lemma}
+
+\begin{proof}
+(a) Karena $T$ tertutup, dengan menggunakan Teorema \ref{operatorlineartertutupteorema} dapat ditunjukan bahwa $T_{\lambda}$ tertutup. Akibatnya $R_{\lambda}=(T_{\lambda})^{-1}$ juga tertutup dengan berdasarkan Teorema \ref{inversoperatortertutup}. Karena $X$ adalah ruang yang lengkap maka Teorema \ref{operatortutup} butir ke 2 mengakibatkan $D(R_{\lambda})$ tertutup. Berdasarkan Definisi \ref{definisi:nilairegular} butir (R3), $\overline{D(R_{\lambda})}=X$, sehingga dapat disimpulkan bahwa $R_{\lambda} (T)$ terdefinisi di seluruh ruang $X$. $R_{\lambda}$ terbatas berdasarkan Definisi \ref{definisi:nilairegular} butir (R2).$\\$
+(b) Karena $D(T)=X$ tertutup, maka $T$ tertutup (dengan Teorema \ref{operatortutup} butir 1). Selanjutnya pembuktian dapat dilanjutkan seperti bagian (a).
+\end{proof}
+
+\section{\normalsize Spektrum dan himpunan \textit{resolvent} dari operator linear terbatas}
+Misal $X$ adalah ruang Banach kompleks. $B(X,X)$ adalah ruang Banach yang beranggotakan semua operator linear terbatas $T$ pada ruang $X$.
+
+\begin{theorem}\label{teoremainversttt}
+Misal $T \in B(X,X)$, dengan $X$ adalah ruang Banach kompleks. Jika $\|T\| < 1$, maka $(I-T)^{-1}$ ada sebagai operator linear terbatas yang terdefinisi diseluruh $X$ dan
+\begin{equation}\label{inversttt}
+    (I-T)^{-1}=\sum_{j=0}^{\infty}T^j=I+T+T^2+\cdots
+\end{equation}
+dengan deret di kanan konvergen di $B(X,X)$.\\
+\emph{(Kreyzig, 1989, hal. 375)}
+\end{theorem}
+
+Sebelum membuktikan Teorema \ref{teoremainversttt}, ditunjukkan terlebih dahulu untuk setiap operator linear terbatas $T$ berlaku pertidaksamaan berikut ini \begin{equation}\label{pertidaksamanpentingnihhaha}
+\|T^n\|\leq \|T\|^n,
+\end{equation}
+dengan suatu $n$ bilangan asli.
+
+Dengan persamaan (\ref{terbatas nih yeeee}), untuk setiap $x$ di $D(T)$ berlaku
+\begin{eqnarray*}
+\|T^n (x)\| =\|T(T^{n-1}(x))\|\leq \|T\| \|T^{n-1}(x)\|.
+\end{eqnarray*}
+Lalu diteruskan hingga didapat
+\begin{eqnarray*}
+\|T^n(x)\|\leq \|T\|^n\|x\|,
+\end{eqnarray*}
+atau apabila $x \neq 0$ dapat ditulis dengan
+\begin{eqnarray}\label{nahmawdapet}
+\frac{\|T^n(x)\|}{\|x\|}\leq \|T\|^n.
+\end{eqnarray}
+Berdasarkan persamaan (\ref{normsebenarnyat}), \textit{norm} dari $T^n$ adalah
+\begin{eqnarray}\label{okedapet}
+\|T^n\|= \sup_{\substack{x \in D(T) \\ x \neq 0}} {\frac{\|T^n(x)\|}{\|x\|}}.
+\end{eqnarray}
+Dari pertidaksamaan (\ref{nahmawdapet}) dan persamaan (\ref{okedapet}) maka didapat pertidaksamaan (\ref{pertidaksamanpentingnihhaha}).
+
+Berikut ini adalah bukti dari Teorema \ref{teoremainversttt}
+\begin{proof}
+Dengan pertidaksamaan (\ref{pertidaksamanpentingnihhaha}) dan pernyataan $\|T\| < 1$, maka deret geometri
+ \begin{equation*}
+ \sum_{j=0}^{\infty}\|T^j\|
+ \end{equation*}
+konvergen. Jadi didapat deret pada (\ref{inversttt}) konvergen mutlak untuk $\|T\| < 1$. Dikarenakan $B(X,X)$ lengkap, deret pada (\ref{inversttt}) juga konvergen.
+
+Operator $I-T^{n+1}$ dapat dibentuk menjadi
+\begin{eqnarray*}
+I-T^{n+1}=(I-T)(I+T+T^2+\cdots+T^n)=(I+T+T^2+\cdots+T^n)(I-T).
+\end{eqnarray*}
+Ketika $n\rightarrow \infty$, dengan menggunakan pertidaksamaan (\ref{pertidaksamanpentingnihhaha}) didapat $T^{n+1} \rightarrow 0$. Jadi didapat
+\begin{eqnarray*}
+I=(I-T)(I+T+T^2+\cdots)=(I+T+T^2+\cdots)(I-T),
+\end{eqnarray*}
+yang berarti $(I-T)^{-1}$ ada sebagai $I+T+T^2+\cdots$. Mengingat $T$ terdefinisi di seluruh $X$, maka $(I-T)^{-1}$ juga terdefinisi di seluruh $X$. Lalu, kekonvergenan deret (\ref{inversttt}) ini menyebabkan operator $(I-T)^{-1}$ terbatas.
+\end{proof}
+
+%Teorema \ref{teoremainversttt} memiliki kontribusi dalam menunjukkan bahwa spektrum dari operator linear terbatas adalah himpunan tertutup.
+\begin{theorem}\label{resolvent buka}
+Misal $T$ adalah operator linear terbatas di ruang Banach kompleks $X$. Himpunan \textit{resolvent} $\rho (T)$ dari $T$ adalah buka, yang juga berarti spektrum $\sigma (T)$ dari $T$ tertutup.\\
+\emph{(Kreyzig, 1989, hal. 376)}
+\end{theorem}
+
+\begin{proof}
+Untuk $\rho (T)=\emptyset$, himpunan \textit{resolvent} buka (sebenarnya $\rho (T)$ tidak kosong, hal ini ditunjukkan pada Teorema \ref{spektrumkompakloh}). Untuk $\rho (T) \neq \emptyset$, ambil sembarang $\lambda_0 \in \rho (T)$ yang tetap dan sembarang $\lambda \in \mathbb{C}$ sehingga
+\begin{eqnarray*}
+T-\lambda I &=& T-\lambda_0 I -(\lambda-\lambda_0)I\\
+&=&T-\lambda_0 I (I-(\lambda-\lambda_0)(T-\lambda_0 I)^{-1})
+\end{eqnarray*}
+Misalkan $V=(I-(\lambda-\lambda_0)(T-\lambda_0 I)^{-1})$, sehingga dapat ditulis $T_{\lambda}=T_{\lambda_0}V$. Karena $T$ terbatas, maka $R_{\lambda_0}$ terdefinisi di seluruh $X$ dan juga terbatas dengan Lema \ref{wholex} butir (b). Dengan demikian, operator $T_{\lambda}=T_{\lambda_0}V$ terdefinisi dengan baik. Untuk $\lambda$ yang memenuhi
+\begin{eqnarray}
+\|(\lambda-\lambda_0)(R_{\lambda_0 })^{-1}\|<1 \nonumber \\
+|\lambda-\lambda_0| < \frac{1}{\|R_{\lambda_0}\|},\label{syaratttt}
+\end{eqnarray} maka berdasarkan Teorema \ref{teoremainversttt} $V$ mempunyai inversi yang terdefinisi di seluruh $X$ dan terbatas, dengan
+\begin{eqnarray}\label{vinvers}
+V^{-1}=\sum_{j=0}^{\infty}(\lambda-\lambda_0)^j (R_{\lambda_0})^j.
+\end{eqnarray}
+Jadi inversi dari $T_{\lambda}$ terdefinisi sebagai $R_{\lambda}=V^{-1} R_{\lambda_0}$, dengan syarat $\lambda$ pada pertidaksamaan (\ref{syaratttt}). Jadi setiap $\lambda \in B(\lambda_0;\frac{1}{\|R_{\lambda_0}\|})$ adalah nilai biasa dari $T$. Karena $\lambda_0$ diambil sembarang, dapat disimpulkan bahwa himpunan \textit{resolvent} dari $T$ buka dan komplemennya terhadap bidang kompleks $\sigma (T)$ adalah himpunan tertutup.
+\end{proof}
+
+%Dapat dilihat bahwa spektrum dan himpunan \textit{resolvent} dari operator linear di contoh \ref{contohellellell}, contoh \ref{contohL2L2L2L2}, dan contoh \ref{geserkananlho} memenuhi Teorema \ref{resolvent buka}. 
+\begin{theorem}
+Misal $T$ adalah operator linear terbatas di ruang Banach kompleks $X$ dan suatu $\lambda_0 \in \rho(T)$. Representasi dari fungsi \textit{resolvent} $R_{\lambda} (T)$ adalah
+\begin{eqnarray}\label{representasir}
+R_{\lambda}= \sum_{j=0}^{\infty}(\lambda-\lambda_0)^j (R_{\lambda_0})^{j+1}.
+\end{eqnarray}
+Deret ini konvergen mutlak untuk setiap $\lambda$ di cakram buka
+\begin{eqnarray}\label{syarattt2}
+|\lambda-\lambda_0| < \frac{1}{\|R_{\lambda_0}\|}
+ \end{eqnarray}
+ di bidang kompleks. Cakram tersebut adalah sub himpunan dari $\rho (T)$.\\
+\emph{ (Kreyzig, 1989, hal. 377)}
+\end{theorem}
+
+
+\begin{proof}
+Dari bukti Teorema \ref{resolvent buka}, didapat $R_{\lambda}=V^{-1} R_{\lambda_0}$ dengan $V^{-1}$ pada persamaan (\ref{vinvers}) dan $\lambda$ di cakram (\ref{syarattt2}). Ketika $V^{-1}$ disubtitusikan ke $R_{\lambda}$ maka didapat persamaan (\ref{representasir}).
+Dengan menggunakan pertidaksamaan (\ref{pertidaksamanpentingnihhaha}), dapat ditunjukkan deret geometri
+\begin{eqnarray*}
+\sum_{j=0}^{\infty}\|(\lambda-\lambda_0)^j (R_{\lambda_0}(T))^{j+1}\|
+\end{eqnarray*}
+konvergen dengan $\lambda$ di cakram (\ref{syarattt2}), sehingga deret (\ref{representasir}) konvergen mutlak untuk $\lambda$ di cakram (\ref{syarattt2}).
+Karena setiap $\lambda$ di cakram (\ref{syarattt2}) merupakan nilai biasa dari $T$, maka cakram (\ref{syarattt2}) merupakan sub himpunan dari $\rho (T)$.
+\end{proof}
+
+%Teorema \ref{teoremainversttt} juga memiliki kontribusi dalam menunjukkan bahwa spektrum dari operator linear terbatas adalah himpunan terbatas di bidang kompleks.
+
+\begin{theorem}\label{spektrumkompakloh}
+Spektrum $\sigma (T)$ dari operator linear terbatas $T: X \longrightarrow X$ di ruang Banach kompleks $X$ merupakan himpunan kompak dan berada di cakram
+\begin{eqnarray}\label{piringanspektrummmm}
+|\lambda| \leq \|T\|.
+\end{eqnarray}
+Himpunan \textit{resolvent} $\rho (T)$ dari $T$ tidak kosong.\\
+\emph{(Kreyzig, 1989, hal. 377)}
+\end{theorem}
+
+\begin{proof}
+Misal $\lambda \neq 0$. Operator linear $T_\lambda$ dapat ditulis sebagai
+\begin{eqnarray*}
+T_\lambda=T-\lambda I=-{\lambda}(I-\frac{1}{\lambda} T).
+\end{eqnarray*}
+Berdasarkan Teorema \ref{teoremainversttt}, $T_\lambda$ memiliki inversi yang terbatas dan terdefinisi diseluruh $X$ apabila memenuhi
+\begin{eqnarray*}
+\| \frac{1}{\lambda} T\| < 1 \; \mbox{atau dengan kata lain}\; |\lambda| > \|T\|.
+\end{eqnarray*}
+Akibatnya $\lambda$ yang memenuhi $|\lambda| > \|T\|$ berada di himpunan \textit{resolvent} dari $T$. Jadi $\rho(T)$ tidak kosong dan spektrum dari $T$ harus berada di cakram (\ref{piringanspektrummmm}). Dengan demikian spektrum dari $T$ terbatas. Spektrum dari $T$ tertutup berdasarkan Teorema \ref{resolvent buka}. Berdasarkan Teorema \ref{kompak} dapat disimpulkan $\sigma (T)$ kompak.
+\end{proof}
+
+Dapat ditunjukkan bahwa $\|T\|$ dari operator linear di contoh \ref{contohellellell} adalah maksimum dari $\{\{|\lambda_j||\forall \, j\}\cup \{|k|\}\}$. Dapat ditunjukkan juga bahwa $\|T\|$ dari operator linear di contoh \ref{contohL2L2L2L2} dan contoh \ref{geserkananlho} adalah 1. Dengan demikian terlihat bahwa, spektrum dan himpunan \textit{resolvent} dari operator linear di contoh \ref{contohellellell}, contoh \ref{contohL2L2L2L2}, dan contoh \ref{geserkananlho} memenuhi Teorema \ref{spektrumkompakloh}.
+%\begin{definition}
+%Radius spektral $r_{\sigma} (T)$ dari operator $T \in B(X,X)$ di ruang Banach kompleks $X$ adalah radius
+%\begin{eqnarray*}
+%r_{\sigma} (T)= \sup_{\lambda \in \sigma (T)} |\lambda|
+%\end{eqnarray*}
+%dari cakram tutup terkecil yang berpusat di titik asal pada bidang $\lambda$ kompleks dan memuat $\sigma (T)$.
+%\end{definition}
+%\subsection{\normalsize Sifat spektral lebih lanjut dari operator linear terbatas}
+
+%\begin{example}
+%\emph{  Misal operator linear $T:\ell^2 \longrightarrow \ell^2$ didefinisikan
+        %\begin{eqnarray*}
+       % (a_1,a_2, \cdots) \longmapsto (\lambda_1 a_1,\lambda_2 a_2, \cdots),
+        %\end{eqnarray*}
+       % dengan $(\lambda_j)$ adalah barisan terbatas di $\mathbb{R}$ dan konvergen ke suatu $k \notin (\lambda_j)$.\\
+       % Dapat ditunjukkkan $\|T\|=\max\{\{|\lambda_j||\forall \, j\}\cup \{|k|\}\}$. Dengan Teorema \ref{spektrumkompakloh}, untuk setiap $\lambda \in \sigma (T)$ berlaku $|\lambda| \leq \|T\|$ dan $\rho(T)$ tidak kosong. Hal ini bersesuaian dengan Contoh \ref{contohellellell}. Dengan Teorema \ref{resolvent buka} didapatkan bahwa $\sigma(T)$ tertutup, bersesuaian dengan Contoh \ref{contohellellell}.
+%}\end{example}
+
+%\begin{example}\emph{
+      %  Misal operator linear $T:L^2[0,1] \longrightarrow L^2[0,1]$ didefinisikan sebagai
+     %   \begin{eqnarray*}
+     %   T(x)(t)=tx(t).
+    %    \end{eqnarray*}
+    %    Dapat ditunjukkan $\|T\|$=1. Dari Contoh \ref{contohL2L2L2L2} didapatkan $\rho(T)$ tidak kosong, $\sigma(T)$ tertutup, dan setiap $\lambda \in \sigma(T)$ berlaku $|\lambda|\leq \|T\|$, sehingga bersesuaian dengan Teorema \ref{resolvent buka} dan Teorema \ref{spektrumkompakloh}.}
+%\end{example}
+%\begin{example}\emph{
+      %  (Operator geser ke kanan) Misal operator linear $T:\ell^2 \longrightarrow \ell^2$ didefinisikan
+       % \begin{eqnarray*}
+       % (a_1,a_2, \cdots) \longmapsto (0,a_1,a_2, \cdots).
+      %  \end{eqnarray*}
+     %   Dapat ditunjukkan $\|T\|=1$. Dengan Teorema \ref{resolvent buka} diketahui bahwa $\sigma (T)$ tertutup, bersesuaian dengan himpunan spektrum dari $T$ yaitu $\sigma (T)=\{\lambda | |\lambda| \leq 1\}$ (dari Contoh \ref{geserkananlho}). Hal ini juga mengakibatkan $\rho(T)$ tidak kosong dan juga memenuhi Teorema \ref{spektrumkompakloh}.   }
+%\end{example}
+
+%Berikut ini adalah beberapa sifat dari operator \textit{resolvent}.
+\begin{theorem}\label{komutatifr}
+Misal $X$ adalah ruang Banach kompleks, $T\in B(X,X)$ dan $\lambda, \mu \in \rho (T)$. Maka:\vspace*{-0.25cm}
+\begin{description}
+\item[a.] Operator \textit{resolvent} $R_{\lambda}$ dari $T$ memenuhi relasi Hilbert atau persamaan \textit{resolvent}
+\begin{equation}\label{relasi hilbert}
+    R_{\mu}-R_{\lambda}=(\mu-\lambda) R_{\mu} R_{\lambda}.
+\end{equation}
+\item[b.] $R_{\lambda}$ komutatif dengan setiap $S \in B(X,X)$ yang komutatif dengan $T$.\vspace*{-0.25cm}
+\item[c.] $R_{\lambda} R_{\mu}=R_{\mu} R_{\lambda}$.\vspace*{-0.25cm}
+\end{description}
+\emph{(Kreyzig, 1989, hal. 379)}
+\end{theorem}
+
+\begin{proof} Dengan Lema \ref{wholex}, untuk setiap $\lambda \in \rho(T)$ terdapat $I=T_\lambda R_\lambda=R_\lambda T_\lambda$ suatu operator identitas di $X$.\vspace*{-0.25cm}
+\begin{description}
+\item[(a)] Karena $T_\lambda - T_\mu = T-\lambda I - (T-\mu I)=(\mu-\lambda)I$, konsekuensinya
+\begin{eqnarray*}
+  R_\mu - R_\lambda &=& R_\mu (T_\lambda R_\lambda) - (R_\mu T_\mu)R_\lambda\\
+  &=& R_\mu (T_\lambda - T_\mu) R_\lambda\\
+  &=& (\mu-\lambda)R_\mu R_\lambda.
+\end{eqnarray*}
+
+\item[(b)] Misal $S \in B(X,X)$ sedemikian sehingga $TS = ST$. Karena $\lambda IS = S \lambda I$, maka didapat $T_\lambda S = S T_\lambda$. Didapat $R_\lambda$ komutatif dengan $S$ dikarenakan
+\begin{eqnarray*}
+R_\lambda S=R_\lambda S T_\lambda R_\lambda =R_\lambda T_\lambda S R_\lambda = S R_\lambda.
+\end{eqnarray*}
+
+\item[(c)] Karena $R_\mu \in B(X,X)$ komutatif dengan $T$, berdasarkan (b) didapat $R_\lambda$ komutatif dengan $R_\mu$.\vspace*{-0.25cm}
+\end{description}
+\end{proof}
+
+Nilai $\lambda$ adalah nilai eigen dari operator linear $T$, apabila $(T-\lambda I) (x)=0$ (atau $T(x)=\lambda x$) untuk suatu $x$ bukan nol. Karena $T$ adalah operator linear, didapat
+\begin{eqnarray*}
+  T^2(x)=T(\lambda x)=\lambda T(x)=\lambda ^2 x.
+\end{eqnarray*}
+Dengan menggunakan induksi, didapat
+\begin{eqnarray*}
+  T^n (x)=\lambda ^n (x)\;, \forall n \in \mathbb{N}.
+\end{eqnarray*}
+Jadi $\lambda ^n$ adalah nilai eigen dari $T^n$. Dengan ini, dapat disimpulkan juga
+\begin{eqnarray*}
+p(\lambda)=a_n\lambda ^n+a_{n-1}\lambda ^{n-1}+\cdots+a_0
+\end{eqnarray*}
+adalah nilai eigen dari
+\begin{eqnarray*}
+  p(T)=a_n T^n+a_{n-1}T^{n-1}+\cdots+a_0 I
+\end{eqnarray*}
+
+Sebelum masuk pada Teorema \ref{mappingspektrum}, didefinisikan himpunan $p(\sigma(T))$ sebagai
+\begin{eqnarray*}
+p(\sigma(T))=\{\mu \in \mathbb{C} | \mu = p(\lambda), \lambda \in \sigma (T)\}.
+\end{eqnarray*}
+
+\begin{theorem} \label{mappingspektrum}
+Misal $X$ adalah ruang Banach kompleks, $T \in B(X,X)$ dan
+\begin{eqnarray*}
+p(\lambda)=a_n\lambda ^n+a_{n-1}\lambda ^{n-1}+\cdots+a_0 \; (a_n \neq 0),
+\end{eqnarray*}
+maka
+\begin{equation*}
+\sigma(p(T))=p(\sigma(T));
+\end{equation*}
+dengan kata lain spektrum $\sigma(p(T))$ dari operator
+\begin{eqnarray*}
+  p(T)=a_n T^n+a_{n-1}T^{n-1}+\cdots+a_0 \,I
+\end{eqnarray*}
+adalah semua nilai dari polinomial p di spektrum $\sigma (T)$ dari $T$.\\
+\emph{(Kreyzig, 1989, hal. 381)}
+\end{theorem}
+
+\begin{proof}
+Asumsikan $\sigma(T)\neq \emptyset$. Karena $T\in B(X,X)$, maka $p(T)\in B(X,X)$ dan faktor-faktor dari $p(T)$ juga termuat di $B(X,X)$. \\
+Untuk polinomial $p$ berderajat $n=0$. Nilai $p(\lambda)=a_0$ untuk setiap $\lambda \in \mathbb{C}$ sehingga $p(\sigma (T))=\{a_0\}$. Operator $p(T)=a_0 \,I$, sehingga $\sigma (p(T))=\{a_0\}$. Jadi dapat disimpulkan $\sigma(p(T))=p(\sigma(T))$.\\
+Untuk polinomial $p$ berderajat $n>0$,
+\begin{description}\vspace*{-0.25cm}
+\item[(A)] Ditunjukkan bahwa $\sigma(p(T)) \subset p(\sigma(T))$.\\
+Untuk menyederhanakan penulisan, misal $Q=p(T)$ dan $Q_\mu=p(T)-\mu\,I$ untuk $\mu \in \mathbb{C}$. Dimisalkan juga $q_\mu (\lambda)=p(\lambda)-\mu$ dengan $\mu$ yang tetap. Karena bermain di lapangan kompleks, maka polinomial $q_\mu(\lambda)$ dapat difaktorkan menjadi
+\begin{eqnarray}\label{faktorisasiq}
+  q_\mu (\lambda)=p(\lambda)-\mu=a_n(\lambda-b_1)(\lambda-b_2)\cdots(\lambda-b_n).
+\end{eqnarray}
+Dari pemfaktoran $q_\mu (\lambda)$ di persamaan (\ref{faktorisasiq}), didapat
+\begin{eqnarray*}
+  Q_\mu=p(T)-\mu\,I=a_n(T-b_1\,I)(T-b_2\,I)\cdots(T-b_n\,I).
+\end{eqnarray*}
+Apabila $Q_\mu$ mempunyai inversi, $Q_\mu ^{-1}$ adalah operator \textit{resolvent} dari $p(T)$. \\
+Jika setiap $b_j$ adalah nilai biasa dari $T$, maka setiap $T-b_j\,I$ mempunyai inveri yang terbatas dan  terdefinisi di seluruh $X$ (dengan Lema \ref{wholex}). Hal ini menyebabkan
+\begin{eqnarray}\label{inversiq}
+Q_\mu ^{-1}=\frac{1}{a_n}(T-b_nI)^{-1}\cdots(T-b_2I)^{-1}(T-b_1I)^{-1}
+\end{eqnarray}
+terbatas dan terdefinisi di seluruh $X$. Jadi didapat $\mu \in \rho (p(T))$. \\
+Misal $\xi \in \sigma (p(T))$. Seperti pada persamaan \ref{faktorisasiq}, $q_\xi (\lambda)$ dapat difaktorisasi menjadi
+\begin{eqnarray}\label{faktorisasiqxi}
+  q_\xi (\lambda)=p(\lambda)-\xi=a_n(\lambda-c_1)(\lambda-c_2)\cdots(\lambda-c_n).
+\end{eqnarray}
+Karena bila $c_j$ adalah nilai biasa dari $T$ mengakibatkan $\xi \in \rho(p(T))$, maka haruslah paling tidak terdapat suatu $k$ yang sedemikian sehingga $c_k \in \sigma (T)$. Dengan persamaan (\ref{faktorisasiqxi}) didapat
+\begin{eqnarray*}
+q_\xi(c_k)=p(c_k)-\xi=0,
+\end{eqnarray*}
+sehingga $\xi=p(c_k)$ merupakan anggota $p(\sigma (T))$. \\
+Jadi didapat $\sigma(p(T)) \subset p(\sigma(T))$.\vspace*{-0.25cm}
+\item[(B)] Ditunjukkan bahwa $p(\sigma(T)) \subset \sigma(p(T))$.\\
+Misal $\mu \in p(\sigma(T))$, yang berarti $\mu =p(b)$ untuk suatu $b \in \sigma(T)$. Ketika $b$ adalah nilai spektral dari $T$ berarti terdapat dua kemungkinan, yaitu\vspace*{-0.25cm}
+\begin{description}
+\item[(a)]$T-b\;I$ tidak memiliki inversi.\\
+Karena $\mu=p(b)$ atau $p(b)-\mu=0$ maka $b$ adalah pembuat nol dari polinomial $q_\mu(\lambda)=p(\lambda)-\mu$. Jadi dapat ditulis
+\begin{eqnarray}\label{pecahb}
+  q_\mu(\lambda)=(\lambda-b)g(\lambda),
+\end{eqnarray}
+dengan $g(\lambda)$ adalah perkalian dari $n-1$ faktor linear lainnya dan $a_n$. Berhubungan dengan persamaan (\ref{pecahb}), didapat
+\begin{eqnarray}\label{pakedib}
+Q_\mu=p(T)-\mu\,I=(T-b\,I)g(T).
+\end{eqnarray}
+Semua faktor linear dari $g(T)$ komutatif dengan $T-b\,I$ sehingga didapat
+\begin{eqnarray}\label{nunjukkinsalahhaha}
+Q_\mu=g(T)(T-bI).
+\end{eqnarray}
+Andaikan $Q_\mu$ mempunyai inversi. Dengan persamaan (\ref{pakedib}) dan (\ref{nunjukkinsalahhaha}) didapat
+\begin{eqnarray}
+  I=Q_\mu Q_\mu^{-1}&=&Q_\mu^{-1}Q_\mu \nonumber\\
+  I=(T-b\,I)g(T)Q_\mu^{-1}&=&Q_\mu^{-1}g(T)(T-b\,I).\label{t-ibjadiadainvers}
+\end{eqnarray}
+Dengan persamaan (\ref{inversiq}), dapat ditulis juga 
+\begin{eqnarray*}
+Q_\mu^{-1}=\frac{1}{a_n} R_{b_n}\cdots R_{b_2}R_{b_1}
+\end{eqnarray*}. 
+Berdasarkan Teorema \ref{komutatifr} butir (b) setiap $R_{b_j}$ komutatif dengan $g(T)$, sehingga $Q_\mu^{-1}$ komutatif dengan $g(T)$. Akibatnya persamaan (\ref{t-ibjadiadainvers}) menjadi
+\begin{eqnarray*}
+I=(T-b\,I)g(T)Q_\mu^{-1}=g(T)Q_\mu^{-1}(T-b\,I),
+\end{eqnarray*}
+yang berarti $T-bI$ memiliki inversi. Hal ini bertentangan dengan kondisi $T-bI$ tidak memiliki inversi, sehingga operator \textit{resolvent} $Q_\mu^{-1}$ dari $p(T)$ haruslah tidak ada. Berdasarkan Definisi \ref{definisi:nilairegular} didapat $\mu \in \sigma (p(T))$. Jadi $p(\sigma(T)) \subset \sigma(p(T))$.
+\item[(b)]$T-bI$ memiliki inversi.\\
+Apabila \textit{range} dari $T-bI$ adalah $X$, maka berdasarkan Teorema \ref{openmaping} $(T-bI)^{-1}$ terbatas. Hal ini mengakibatkan $b \in \rho(T)$ yang bertentangan dengan pernyataan $b \in \sigma (T)$. Jadi haruslah $\mathfrak{R}(T-bI) \neq X$. Dengan persamaan (\ref{pakedib}) didapat $\mathfrak{R}(Q_\mu)\neq X$. Dengan kontraposisi dari Lema \ref{wholex} didapat $\mu \in \sigma(p(T))$, sehingga $p(\sigma(T)) \subset \sigma(p(T))$ di kasus $T-b\,I$ mempunyai inversi.\vspace*{-0.25cm}
+\end{description}
+
+Jadi untuk kemungkinan (a) maupun (b) didapat $p(\sigma(T)) \subset \sigma(p(T))$.\vspace*{-0.25cm}
+\end{description}
+Jadi dengan (A) dan (B) didapat $\sigma(p(T))=p(\sigma(T))$.
+
+\end{proof}
+
+
+
+\section{\normalsize Teori spektral dari operator linear \textit{self adjoint} terbatas}
+Seperti yang diketahui dari landasan teori, bahwa ruang Hilbert juga merupakan ruang ber-\textit{norm} yang lengkap (ruang Banach). Selain itu, operator linear \textit{self adjoint} terbatas juga merupakan operator linear terbatas. Konsekuensinya sifat-sifat spektral pada operator linear terbatas yang telah dibahas sebelumnya juga berlaku di pembahasan pada subbab ini. Pada subbab ini digunakan ruang Hilbert kompleks yang dinotasikan dengan $\mathcal{H}$.
+
+\begin{theorem}\label{teorema:nilaieigen}
+Misal $T:\mathcal{H} \longrightarrow \mathcal{H}$ adalah operator linear \textit{self adjoint} terbatas maka\vspace*{-0.25cm}
+\begin{description}
+  \item[(a)] semua nilai eigen dari $T$(jika ada) bernilai real.\vspace*{-0.25cm}
+  \item[(b)] vektor-vektor eigen yang bersesuaian dengan nilai eigen yang berbeda saling tegak lurus dari $T$.\vspace*{-0.25cm}
+\end{description}
+(Kreyzig, 1989, hal. 461)
+\end{theorem}
+
+\begin{proof}
+
+(a). Diketahui bahwa $T$ \textit{self adjoint} terbatas, sehingga berdasarkan Teorema \ref{teorema:selfadjoint}, $\langle T(x),x \rangle$ bernilai real.
+   Misal $\lambda$ adalah nilai eigen dari $T$ dengan $x$ adalah vektor eigen yang bersesuaian dengan $\lambda$, didapat
+   \begin{eqnarray*}
+   \langle T(x),x\rangle =\langle \lambda x,x\rangle =\lambda \langle x,x\rangle.
+   \end{eqnarray*}
+   Karena $\langle x,x \rangle =\|x\|^2$ bernilai real, maka $\lambda$ bernilai real
+
+(b). Misal $\lambda_1 \neq \lambda_2$ adalah nilai eigen dari $T$ dengan masing-masing vektor eigennya $x_1$ dan $x_2$.
+   Karena $T$ \textit{self adjoint} dan berdasarkan butir (a), maka
+   \begin{eqnarray*}
+     \langle T(x_1),x_2\rangle &=& \langle x_1,T(x_2)\rangle \\
+     \lambda_1 \langle x_{1},x_2 \rangle &=& \overline{\lambda_2}\langle x_1 ,x_2 \rangle \\
+     \lambda_1 \langle x_{1},x_2 \rangle &=& \lambda_2 \langle x_{1},x_2 \rangle
+   \end{eqnarray*}
+   Karena  $\lambda_1 \neq \lambda_2$, maka haruslah $\langle x_1 ,x_2\rangle = 0$. Jadi vektor-vektor eigen yang bersesuaian dengan nilai eigen yang berbeda dari $T$ saling tegak lurus.
+\end{proof}
+
+Suatu operator linear \textit{self adjoint} mungkin tidak memiliki nilai eigen, berikut ini salah satu contohnya.
+\begin{example}\emph{\label{contoh:noeigenvalue}
+$T:L^{2}[0,1] \longrightarrow L^{2}[0,1]$ dengan $T(x)(t)=tx(t)$ untuk $t\in [0,1]$.
+Berdasarkan Contoh \ref{contoh:selfadjoint} maka $T$ adalah operator linear self adjoint terbatas.$\\$
+Misalkan ada nilai eigen $\lambda$ sedemikian sehingga terdapat fungsi $x \neq 0$ yang memenuhi persamaan $T(x)=\lambda \; x$. Ketika fungsi $T(x)$ memetakan $t$, didapat $T(x)(t)=\lambda \; x(t)$. Mengingat bahwa $T(x)(t)=tx(t)$, didapat $t=\lambda $. Hal ini bertentangan dengan $\lambda$ yang haruslah konstanta. Jadi $T$ tidak memiliki nilai eigen.}
+\end{example}
+
+Berikut ini adalah karakteristik dari himpunan \textit{resolvent} dari operator linear \textit{self adjoint} terbatas.
+\begin{theorem} \label{teorema:resolventdanoperatorlinear}
+Misal $T:\mathcal{H} \longrightarrow \mathcal{H}$ adalah operator linear \textit{self adjoint} terbatas. Suatu konstanta $\lambda$ merupakan nilai biasa dari $T$ jika dan hanya jika terdapat bilangan real positif $c$ sedemikian sehingga
+\begin{eqnarray}\label{pertidaksamaannilaibiasahohoho}
+\|T_{\lambda}(x)\|\geq c\|x\| , \; \forall x \in \mathcal{H}.
+\end{eqnarray}
+dengan $T_{\lambda}=T-\lambda I$.\\
+(Kreyzig, 1989, hal. 461)
+\end{theorem}
+
+\begin{proof}
+1. $(\rightarrow)$ \\
+Diketahui bahwa $\lambda$ adalah nilai biasa, sehingga dari Definisi \ref{definisi:nilairegular} $R_{\lambda}$ terdefinisi dan terbatas. Berdasarkan Lema \ref{wholex} $R_{\lambda}$ terdefinisi di seluruh $\mathcal{H}$, sehingga $I=R_{\lambda}T_{\lambda}$ adalah operator identitas di $\mathcal{H}$. Untuk sembarang $x$ di $\mathcal{H}$,
+\begin{eqnarray*}
+  \|x\|=\|I(x)\|=\|(R_{\lambda})(T_{\lambda})(x)\|\leq\|R_{\lambda}\|\|T_{\lambda}(x)\|,
+\end{eqnarray*}
+sehingga didapat pertidaksamaan (\ref{pertidaksamaannilaibiasahohoho}) dengan $c=\frac{1}{\|R_{\lambda}\|}$ \\
+2. $(\leftarrow)$ \\
+Diketahui bahwa terdapat bilangan real $c>0$ sedemikian sehingga pertidaksamaan (\ref{pertidaksamaannilaibiasahohoho}) berlaku. Untuk menunjukkan $\lambda \in \rho (T)$ perlu ditunjukkan ditunjukkan bahwa $R_{\lambda}$ ada, terbatas, dan terdefinisi pada domain yang padat terhadap $\mathcal{H}$.\vspace*{-0.25cm}
+\begin{itemize}
+  \item $R_{\lambda}$ ada. \\
+        Perlu ditunjukkan bahwa $T_{\lambda} : \mathcal{H} \longrightarrow T_{\lambda}(\mathcal{H})$ adalah fungsi bijektif. Dari pemetaannya dapat terlihat bahwa $T_{\lambda}$ surjektif. Selanjutnya tinggal perlu ditunjukkan bahwa $T_\lambda$ injektif untuk mendapatkan $T_\lambda$ bijektif. \\
+        Misal $T_{\lambda}(x_1)=T_{\lambda}(x_2)$. Kemudian didapat $0=T_{\lambda}(x_1 -x_2)$ dikarenakan $T$ adalah operator linear. Berdasarkan aksioma (N2) dari Definisi \ref{definisinorm} maka,
+        \begin{eqnarray}\label{aduh2haha}
+          0=\|T_{\lambda}(x_1 - x_2)\|\geq c\|x_1 -x_2\|
+        \end{eqnarray}
+        Karena $c>0$, maka hanya $\|x_1 -x_2\|=0$ atau dengan kata lain $x_1=x_2$ yang memenuhi pertidaksamaan (\ref{aduh2haha}). Jadi $T_{\lambda}$ injektif, sehingga $T_\lambda$ bijektif. Karena $T_\lambda$ bijektif maka dapat disimpulkan $R_\lambda$ ada.\vspace*{-0.25cm}
+  \item $R_{\lambda}$ terdefinisi pada domain yang padat terhadap $\mathcal{H}$.\\
+        Mengingat $R_{\lambda}=(T_{\lambda})^{-1}$, sehingga $D(R_{\lambda})$ adalah $T_{\lambda}(\mathcal{H})$. Perlu ditunjukkan bahwa $\overline{T_{\lambda}(\mathcal{H})}=\mathcal{H}$.
+        Misalkan suatu $x_0 \perp \overline{T_{\lambda}(\mathcal{H})}$, sehingga $\forall x \in \mathcal{H}$
+        \begin{eqnarray*}
+           \langle T_{\lambda}(x),x_0\rangle &=& 0\\
+           \langle T(x),x_0\rangle -\lambda\langle x,x_0\rangle &=& 0\\
+           \langle x,T(x_0)\rangle &=& \langle x,\overline{\lambda}x_0\rangle.
+        \end{eqnarray*}
+        Berdasarkan Teorema \ref{v1v2itusama} didapat $T(x_0)=\overline{\lambda}\; x_0$. Andaikan $x_0 \neq 0$, berarti $\overline{\lambda}$ adalah nilai eigen. Didapat $\overline{\lambda}=\lambda$ berdasarkan Teorema \ref{teorema:nilaieigen} butir (a), sehingga $T(x_0)-\lambda x_0 =0$ atau $T_{\lambda} (x_0)=0$. Mengingat pernyataan bahwa berlaku pertidaksamaan (\ref{pertidaksamaannilaibiasahohoho}), maka didapat
+        \begin{eqnarray}\label{wax}
+           0 = \|T_{\lambda}(x_0)\|\geq c\|x_0\|.
+        \end{eqnarray}
+        Karena $c>0$, maka hanyalah $\|x_0\|=0$ yang memenuhi pertidaksamaan (\ref{wax}). Hal ini bertentangan dengan pengandaian $x_0 \neq 0$. Jadi solusi dari $T(x_0)=\overline{\lambda}\; x_0$ hanyalah solusi \textit{trivial}, yaitu $x_0=0$. Dapat disimpulkan $\overline{T_{\lambda}(\mathcal{H})} ^{\perp} =\{0\}$, yang lalu dengan Teorema \ref{directsumhahaa} didapatkan $\overline{T_{\lambda}(\mathcal{H})}=\mathcal{H}$.\vspace*{-0.25cm}
+  \item $R_{\lambda}$ terbatas.\\
+        Dalam menunjukkan $R_{\lambda}$ terbatas, digunakan Teorema \ref{openmaping}.
+        Untuk itu, akan dibuktikan $T_{\lambda}(\mathcal{H})$ tertutup sehingga $T_{\lambda}(\mathcal{H})=\mathcal{H}$.
+        Misal $y \in \overline{T_{\lambda}(\mathcal{H})}$, sehingga terdapat barisan $(y_n)=(T_{\lambda}(x_n))$ (dengan $x_n \in \mathcal{H}$) di $T_{\lambda}(\mathcal{H})$ yang konvergen ke $y$. Didapat $(x_n)$ adalah suatu barisan Cauchy, karena
+        \begin{eqnarray*}
+            \|y_n-y_m\| = \|T_{\lambda}(x_n-x_m)\| \geq c\|x_n-x_m\| .
+        \end{eqnarray*}
+         Mengingat $\mathcal{H}$ lengkap, maka $(x_n)$ konvergen ke suatu $x \in \mathcal{H}$. Mengingat $T$ terbatas, maka $T_{\lambda}$ juga terbatas. Berdasarkan Teorema \ref{kontinuterbatas} didapat $T_{\lambda}$ kontinu, sehingga $y_n=T_{\lambda}(x_n)$ konvergen ke $T_{\lambda}(x)$. Konsekuensinya $T_{\lambda}(x_n) = y$ yang berarti $y \in T_{\lambda}(\mathcal{H})$. Jadi $T_{\lambda}(\mathcal{H})$ tertutup, yang membawa pada kesimpulan $R_{\lambda}$ terbatas.\vspace*{-0.25cm}
+\end{itemize}
+Jadi dapat disimpulkan, $\lambda \in \rho(T)$.
+\end{proof}
+
+Melanjutkan Teorema \ref{teorema:nilaieigen} yang berbunyi bahwa semua nilai eigen adalah bilangan real, ternyata seluruh spektrum berada di himpunan bilangan real. Hal ini didapat dari karakteristik himpunan
+\textit{resolvent} pada Teorema \ref{teorema:resolventdanoperatorlinear}.
+\begin{theorem}\label{spektrumreal}
+Spektrum $\sigma (T)$ dari suatu operator linear \textit{self adjoint} terbatas $T:\mathcal{H} \longrightarrow \mathcal{H}$ adalah himpunan bilangan real.\\
+(Kreyzig, 1989, hal. 463)
+\end{theorem}
+\begin{proof}
+Misal $\lambda = a+ib$ dengan $a,b \in \mathbb{R}$.
+Untuk $x \neq 0 \in \mathcal{H}$,
+\begin{eqnarray}
+  \langle T_{\lambda}(x),x\rangle &=& \langle T(x),x\rangle -\lambda \langle x,x\rangle \label{yangpositif}\\
+  \overline{\langle T_{\lambda}(x),x\rangle} &=& \langle T(x),x\rangle -\overline{\lambda} \langle x,x\rangle. \label{yangnegatif}
+\end{eqnarray}
+Dengan pengurangan persamaan (3.18) dengan persamaan (3.19) didapat
+\begin{eqnarray*}
+ 2i\,Im\langle T_{\lambda}(x),x\rangle=\langle T_{\lambda}(x),x\rangle-\overline{\langle T_{\lambda}(x),x\rangle }=(\overline{\lambda}-\lambda)\langle x,x\rangle=-2ib\langle x,x\rangle.
+\end{eqnarray*}
+Dengan membagi dua dan mencari modulus kedua ruas, maka didapat
+\begin{eqnarray*}
+|Im(\langle T_{\lambda}(x),x\rangle )| = |b|\|x\|^2.
+\end{eqnarray*}
+Mengingat bahwa $|\langle T_{\lambda}(x),x\rangle | \geq |Im(\langle T_{\lambda}(x),x\rangle )|$ serta dengan pertidaksamaan Schwarz(Lema \ref{schwarzz}), maka didapat
+\begin{eqnarray*}
+ \| T_{\lambda}(x)\| \geq |b|\|x\|
+\end{eqnarray*}
+Apabila $b \neq 0$, maka dengan Teorema \ref{teorema:resolventdanoperatorlinear} bilangan $\lambda$ adalah nilai biasa dari $T$. Jadi bila $\lambda$ adalah nilai spektral dari $T$,  haruslah $b=0$ atau dengan kata lain $\lambda$ bernilai real.
+\end{proof}
+
+Melanjutkan Teorema \ref{spektrumreal}, spektrum dari operator linear \textit{self adjoint} terbatas ternyata terdapat dalam suatu interval tutup.
+\begin{theorem}\label{intervalspektrum}
+Spektrum $\sigma(T)$ dari operator linear self adjoint terbatas $\\ T:\mathcal{H}\longrightarrow\mathcal{H}$ berada di interval tertutup bilangan real $[m,M]$ dengan
+\begin{eqnarray*}
+m=\inf_{\|x\|=1}\langle T(x),x \rangle , \, \, \, \, \, \, \, M=\sup_{\|x\|=1} \langle T(x),x \rangle
+\end{eqnarray*}
+(Kreyzig, 1989, hal. 465)
+\end{theorem}
+
+\begin{proof}
+Spektrum $\sigma(T)$ berada di himpunan bilangan real telah dibuktikan di Teorema \ref{spektrumreal}. Untuk membuktikan Teorema \ref{intervalspektrum}, perlu ditunjukkan $\lambda_1=M+c$ dan $\lambda_2=m-c$ (dengan $c>0$) berada di himpunan \textit{resolvent} $\rho(T)$.
+
+Untuk setiap $x \neq 0 \in \mathcal{H}$, dapat dibentuk $v=\|x\|^{-1}x$ sehingga $\|v\|=1$. Dengan demikian didapatkan
+\begin{eqnarray*}
+\langle T(x), x\rangle =\|x\|^2\langle T(v),v\rangle \leq \|x\|^2 \sup_{\|\widetilde{v}\|=1} \langle T(\widetilde{v}),\widetilde{v} \rangle = \|x\|^2 M
+\end{eqnarray*}
+dan
+\begin{eqnarray*}
+\langle T(x), x \rangle=\|x\|^2 \langle T(v),v \rangle \geq \|x\|^2 \inf_{\|\widetilde{v}\|=1} \langle T(\widetilde{v}),\widetilde{v} \rangle = \|x\|^2 m.
+\end{eqnarray*}
+Dapat juga ditulis dengan $-\langle T(x),x \rangle \geq -\|x\|^2M$ dan $\langle T(x),x \rangle \geq \|x\|^2 m$. Lalu, dengan pertidaksamaan Schwarz(Lema \ref{schwarzz}) didapatkan
+\begin{eqnarray*}
+\|T_{\lambda_1}(x)\|\|x\| & \geq & -\langle T_{\lambda_1}(x),x \rangle\\
+                        & = & - \langle T(x),x \rangle +\lambda_1 \langle x,x\rangle\\
+                        & \geq & -M\|x\|^2+\lambda_1 \|x\|^2 = c\|x\|^2,\\
+\end{eqnarray*}
+serta
+\begin{eqnarray*}
+\|T_{\lambda_2}(x)\|\|x\| & \geq & \langle T_{\lambda_2}(x),x \rangle\\
+                        & = &  \langle T(x),x \rangle -\lambda_2 \langle x,x\rangle\\
+                        & \geq & m\|x\|^2-\lambda_2 \|x\|^2 = c\|x\|^2\\
+\end{eqnarray*}
+
+Berdasarkan Teorema \ref{teorema:resolventdanoperatorlinear} bilangan $\lambda_1$ dan $\lambda_2$ berada di himpunan resolvent $\rho(T)$.
+\end{proof}
+
+Dari Teorema \ref{spektrumkompakloh} pada operator linear terbatas $T$, spektrum merupakan himpunan yang kompak dan terdapat pada cakram dengan jari-jari $\|T\|$. Pada operator linear \textit{self adjoint} terbatas, hal tersebut berlaku dan didukung oleh Teorema berikut ini.
+
+\begin{theorem}\label{normt}
+Untuk setiap operator linear \textit{self adjoint} terbatas $T$ di $\mathcal{H}$
+\begin{eqnarray}\label{normtnih}
+\|T\|=\max(|m|,|M|)=\sup_{\|x\|=1}|\langle T(x),x \rangle|
+\end{eqnarray}
+dengan m,M seperti yang terdapat dalam Teorema \ref{intervalspektrum}.\\
+(Kreyzig, 1989, hal. 466)
+\end{theorem}
+\begin{proof}
+Jika $T(x)=0$ untuk setiap $x$ dengan $\|x\|= 1$, maka $T=0$. Untuk kasus seperti ini, sudah jelas memenuhi persamaan (\ref{normtnih}). \\
+Untuk kasus yang terdapat suatu $x$ dengan $\|x\|= 1$ sehingga membuat $T(x) \neq 0$, dari pertidaksamaan Schwarz didapat
+\begin{eqnarray}
+\sup_{\|x\|=1}|\langle T(x),x \rangle| \leq \sup_{\|x\|=1}\|T(x)\|\|x\| =\|T\|. \label{*}
+\end{eqnarray}
+Lalu perlu ditunjukkan
+\begin{eqnarray}
+\|T\| \leq \sup_{\|x\|=1}|\langle T(x),x \rangle|. \label{**}
+\end{eqnarray}
+
+Bentuk $y_1=v+w$ dan $y_2=v-w$ dengan $v=\|T(x)\|^{1/2}x$ dan $w=\|T(x)\|^{-1/2}T(x)$, sehingga $\|v\|^2=\|w\|^2=\|T(x)\|$. \textit{Norm} kuadrat dari $y_1$ dan $y_2$ adalah
+\begin{eqnarray*}
+\|y_1\|^2 &=& \|v\|^2+\|w\|^2+2\langle T(x), x\rangle \; \mbox{dan}\\
+\|y_2\|^2 &=& \|v\|^2+\|w\|^2-2\langle T(x), x\rangle.
+\end{eqnarray*}
+Dengan mengetahui $T$ adalah operator linear \textit{self adjoint} terbatas maka didapatkan
+\begin{eqnarray}
+\langle T(y_1),y_1 \rangle -\langle T(y_2),y_2 \rangle &=&  2(\langle T(v),w \rangle+\langle T(w),v \rangle) \nonumber\\
+                                                       &=&  2(\langle T(x),T(x) \rangle +\langle T^2(x),x\rangle \nonumber \\
+\langle T(y_1),y_1 \rangle -\langle T(y_2),y_2 \rangle &=&  4\|T(x)\|^2. \label{1}
+\end{eqnarray}
+Untuk setiap $y \neq 0$ dan $z=\|y\|^{-1}y$, didapat
+\begin{eqnarray}\label{yang ini lho}
+|\langle T(y),y\rangle|=\|y\|^2|\langle T(z),z\rangle| \leq \|y\|^2 \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle|.
+\end{eqnarray}
+Dengan pertidaksamaan (\ref{yang ini lho}) dan pertidaksamaan segitiga didapat
+\begin{eqnarray}
+|\langle T(y_1),y_1 \rangle -\langle T(y_2),y_2 \rangle| &\leq& |\langle T(y_1),y_1 \rangle| + |\langle T(y_2),y_2 \rangle| \nonumber \\
+                                                         &\leq& (\|y_1\|^2+\|y_2\|^2) \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle| \nonumber \\
+                                                         &=& 2(\|v\|^2+\|w\|^2) \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle| \nonumber \\
+                                                         &=& 4\|T(x)\| \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle|. \label{yang itu lho}
+\end{eqnarray}
+
+Dari pertidaksamaan (\ref{yang itu lho}) dan \ref{1} didapat
+\begin{eqnarray*}
+4\|T(x)\|^2 &\leq& 4\|T(x)\| \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle|\\
+\|T(x)\| &\leq& \sup_{\|\widetilde{x}\|=1}|\langle T(\widetilde{x}),\widetilde{x} \rangle|.
+\end{eqnarray*}
+
+Dengan mengambil supremum dari semua $x$ ber-\textit{norm} 1, berdasarkan persamaan (\ref{normt2}) didapatkan pertidaksamaan (\ref{**}). Bersamaan dengan pertidaksamaan (\ref{*}) didapatkan persamaan (\ref{normtnih}).
+\end{proof}
+
+Teorema \ref{normt} ini berperan dalam menunjukkan bahwa nilai $m$ dan $M$ yang terdefinisi di Teorema \ref{intervalspektrum} adalah nilai spektral.
+
+\begin{theorem}\label{ujungjugaspektral}
+Misal suatu operator \textit{self adjoint} terbatas $T:\mathcal{H}\longrightarrow\mathcal{H}$ dan $\mathcal{H} \neq \{0\}$. Nilai $m$ dan $M$ adalah nilai spektral dari T.\\
+(Kreyzig, 1989, hal. 467)
+\end{theorem}
+
+\begin{proof}$\\$
+(1). Menunjukkan bahwa $M$ adalah nilai spektral. $\\$
+Berdasarkan Teorema \ref{mappingspektrum} didapat
+\begin{eqnarray*}
+\lambda \in \sigma (T) \Leftrightarrow \lambda+k \in \sigma (T+kI).
+\end{eqnarray*}
+Jadi dapat diasumsikan $0 \leq m \leq M$. Berdasarkan Teorema \ref{normt}, didapat
+\begin{eqnarray*}
+\|T\|=\sup_{\|x\|=1} \langle T(x),x \rangle=M.
+\end{eqnarray*}
+Hal ini mengakibatkan $\|Tx\| \leq \|T\|\|x\|=M$ untuk $\|x\|=1$. Lalu, buat barisan $(x_n)$ yang memenuhi
+\begin{eqnarray*}
+\|x_n\|=1, \;\;
+\langle T(x_n),x_n \rangle = M-\delta_n, \;\;
+\delta_n \geq 0, \; \;
+\delta_n \rightarrow 0.
+\end{eqnarray*}
+
+\noindent Karena $T$ adalah operator linear \textit{self adjoint}, maka didapat
+\begin{eqnarray*}
+\|T(x_n)-Mx_n\|^2 &=& \langle T(x_n)-Mx_n,T(x_n)-Mx_n \rangle\\
+                  &=& \|T(x_n)\|^2-2M\langle T(x_n),x_n \rangle +M^2 \|x_n\|^2\\
+                  &\leq& M^2-2M(M-\delta_n)+M^2\\
+                  &=& 2M\delta_n.
+\end{eqnarray*}
+Untuk $n$ yang besar $\|T_M(x_n)\| \rightarrow 0$. Jadi tidak terdapat bilangan positif $c$ yang memenuhi $\|T_M(x_n)\| \geq c\|x_n\|$, atau dengan kata lain $M \in \sigma(T)$ (Teorema \ref{teorema:resolventdanoperatorlinear} ).\\
+
+\noindent (2). Menunjukkan bahwa $m$ adalah nilai spektral. \\
+Juga dari Teorema \ref{mappingspektrum}, dapat diasumsikan $m \leq M \leq 0$. Jadi $\|T\|=|m|$, dan  $\|T(x)\|\leq\|T\|\|x\|=|m|$ untuk $\|x\|=1$. Lalu, buat barisan $(x_n)$ yang memenuhi
+\begin{eqnarray*}
+\|x_n\|=1, \;\;
+\langle T(x_n),x_n \rangle=m+\epsilon_n, \;\;
+\epsilon_n \geq 0, \;\;
+\epsilon_n \rightarrow 0.
+\end{eqnarray*}
+
+\noindent Karena $T$ adalah operator linear \textit{self adjoint}, maka didapat
+\begin{eqnarray*}
+\|T(x_n)-m\;x_n\|^2 &=& \langle T(x_n)-m\;x_n,T(x_n)-m\;x_n \rangle\\
+                  &=& \|T(x_n)\|^2-2m\langle T(x_n),x_n \rangle +m^2 \|x_n\|^2\\
+                  &\leq& m^2-2m(m+\epsilon_n)+m^2\\
+                  &=& 2\;m\;\epsilon_n.
+\end{eqnarray*}
+Dengan cara yang sama seperti pembuktian untuk $M$, maka didapatkan $m$ adalah nilai spektral.
+\end{proof}
+
+\begin{theorem}\label{last}
+Spektrum residual $\sigma_r (T)$ dari operator \textit{self adjoint} terbatas $T:\mathcal{H}\longrightarrow\mathcal{H}$ kosong.\\
+(Kreyzig, 1989, hal. 468)
+\end{theorem}
+
+\begin{proof}
+Misalkan ada $\lambda \in \sigma_r (T)$. Berdasarkan Definisi \ref{definisi:nilairegular}, $T_{\lambda}^{-1}$ ada dan domainnya tidak padat terhadap $\mathcal{H}$. Hal ini menyebabkan ada suatu $y \neq 0 \in \mathcal{H}$ yang tegak lurus terhadap $T_{\lambda}(\mathcal{H})$, sehingga untuk setiap $x \in \mathcal{H}$ didapat
+\begin{eqnarray*}
+\langle T_{\lambda}(x), y \rangle=0.
+\end{eqnarray*}
+
+Karena $T$ \textit{self adjoint} dan $\lambda$ bernilai real (Teorema \ref{spektrumreal}), maka $\langle x, T_{\lambda}(y)=0$ untuk setiap $x \in \mathcal{H}$. Dengan memilih $x=T_{\lambda}(y)$, maka $\|T_{\lambda}(y)\|^2=0$ atau dengan kata lain $T_{\lambda}(y)=0$. Hal ini berarti $\lambda$ adalah nilai eigen dari $T$. Terjadi kontradiksi terhadap $\lambda \in \sigma_r (T)$. Jadi dapat disimpulkan bahwa $\sigma_r (T) = \emptyset$.
+\end{proof} 
