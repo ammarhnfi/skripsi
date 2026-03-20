@@ -7,6 +7,83 @@ import './App.css';
 // Initialize PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+/* UTILITY: Renders LaTeX Table string as Visual HTML Table */
+function LatexTable({ tex }) {
+  if (!tex) return null;
+
+  // Regex to find content between \begin{tabular/longtable} and \end{...}
+  const tableRegex = /\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{(.*?)\}(.*?)\\end\{(?:tabular|longtable)\}/s;
+  const match = tex.match(tableRegex);
+
+  if (!match) {
+    return (
+      <div style={{ background: '#0f172a', color: '#38bdf8', padding: '20px', borderRadius: '8px', fontFamily: 'monospace', fontSize: '0.85rem', whiteSpace: 'pre-wrap' }}>
+        <pre>{tex}</pre>
+      </div>
+    );
+  }
+
+  const body = match[2];
+  // Pre-process to handle breaks inside \makecell so they don't split rows
+  const bodyProcessed = body.replace(/\\makecell\{(.*?)\}/sg, (m, p1) => {
+    return p1.replace(/\\\\/g, '<br/>');
+  });
+
+  const rowsRaw = bodyProcessed.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
+  
+  const rows = rowsRaw.map(rowStr => {
+    let cleanRow = rowStr.replace(/\\hline/g, '').replace(/\\rule{.*?}{.*?}/g, '').trim();
+    if (!cleanRow) return null;
+
+    return cleanRow.split('&').map(cell => {
+      let content = cell.trim();
+      // Remove LaTeX formatting tags
+      content = content
+        .replace(/\\textbf\{(.*?)\}/g, '$1')
+        .replace(/\\bfseries/g, '')
+        .replace(/\\scriptsize/g, '')
+        .replace(/\\small/g, '')
+        .replace(/\\%/g, '%')
+        .replace(/\\&/g, '&')
+        .replace(/\\\$/g, '$')
+        .replace(/\\_/g, '_')
+        .replace(/\\rightarrow/g, '→')
+        .replace(/\\left/g, '').replace(/\\right/g, '')
+        .replace(/\(/g, '').replace(/\)/g, '')
+        .replace(/\{/g, '').replace(/\}/g, '');
+      
+      return content;
+    });
+  }).filter(r => r !== null);
+
+  return (
+    <div style={{ overflowX: 'auto', width: '100%', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
+      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
+        <tbody>
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: rowIndex === 0 ? 'rgba(59, 130, 246, 0.1)' : 'transparent' }}>
+              {row.map((cell, cellIndex) => (
+                <td 
+                  key={cellIndex} 
+                  style={{ 
+                    padding: '12px 14px', 
+                    borderRight: '1px solid rgba(255,255,255,0.05)',
+                    fontWeight: rowIndex === 0 ? '700' : '400',
+                    color: rowIndex === 0 ? '#60a5fa' : '#e2e8f0',
+                    textAlign: cellIndex === 0 ? 'left' : 'center',
+                    minWidth: cellIndex === 0 ? '180px' : 'auto'
+                  }}
+                  dangerouslySetInnerHTML={{ __html: cell }}
+                />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [password, setPassword] = useState('');
@@ -448,26 +525,16 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect" style={{ maxWidth: '800px', width: '90vw' }}>
+        <div className="modal-content glass-effect" style={{ maxWidth: '900px', width: '95vw' }}>
           <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
-          <h2>Preview Tabel LaTeX</h2>
-          <div className="modal-body">
-            <div style={{ 
-              background: '#0f172a', 
-              color: '#38bdf8', 
-              padding: '20px', 
-              borderRadius: '8px', 
-              fontFamily: 'monospace', 
-              fontSize: '0.85rem',
-              overflowX: 'auto',
-              maxHeight: '60vh',
-              overflowY: 'auto',
-              border: '1px solid rgba(255,255,255,0.1)'
-            }}>
-              <pre>{texContent}</pre>
-            </div>
+          <h2>Visualisasi Tabel Hasil</h2>
+          <div className="modal-body" style={{ marginTop: '1rem' }}>
+            <p style={{ marginBottom: '1.5rem', color: '#94a3b8', fontSize: '0.9rem' }}>
+              Konversi otomatis dari format LaTeX ke Tabel Visual.
+            </p>
+            <LatexTable tex={texContent} />
           </div>
         </div>
       </div>
