@@ -11,11 +11,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 function LatexTable({ tex }) {
   if (!tex) return null;
 
-  // Regex to find content between \begin{tabular/longtable} and \end{...}
-  const tableRegex = /\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{(.*?)\}(.*?)\\end\{(?:tabular|longtable)\}/s;
-  const match = tex.match(tableRegex);
-
-  if (!match) {
+  // 1. IMPROVED EXTRACTION: Handle nested braces in column spec
+  // Find \begin{tabular}{ or \begin{longtable}{
+  const beginMatch = tex.match(/\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{/);
+  if (!beginMatch) {
     return (
       <div style={{ background: '#0f172a', color: '#38bdf8', padding: '20px', borderRadius: '8px', fontFamily: 'monospace', fontSize: '0.85rem', whiteSpace: 'pre-wrap' }}>
         <pre>{tex}</pre>
@@ -23,38 +22,67 @@ function LatexTable({ tex }) {
     );
   }
 
-  const body = match[2];
-  // Pre-process to handle breaks inside \makecell so they don't split rows
+  // Find the matching closing brace for the tabular specification
+  const specStart = beginMatch.index + beginMatch[0].length;
+  let specEnd = specStart;
+  let counter = 1;
+  while (counter > 0 && specEnd < tex.length) {
+    if (tex[specEnd] === '{') counter++;
+    else if (tex[specEnd] === '}') counter--;
+    specEnd++;
+  }
+
+  // Content after spec is the body
+  const bodyWithEnd = tex.substring(specEnd);
+  const endTagMatch = bodyWithEnd.match(/(.*?)\\end\{(?:tabular|longtable)\}/s);
+  if (!endTagMatch) return <pre style={{ whiteSpace: 'pre-wrap' }}>{tex}</pre>;
+  
+  const body = endTagMatch[1];
+
+  // 2. ROBUST CLEANING
+  // Handle breaks inside \makecell so they don't split rows
   const bodyProcessed = body.replace(/\\makecell\{(.*?)\}/sg, (m, p1) => {
     return p1.replace(/\\\\/g, '<br/>');
   });
 
+  // Split rows by \\ (ignoring escaped ones inside commands done above)
   const rowsRaw = bodyProcessed.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
   
   const rows = rowsRaw.map(rowStr => {
-    let cleanRow = rowStr.replace(/\\hline/g, '').replace(/\\rule{.*?}{.*?}/g, '').trim();
-    if (!cleanRow) return null;
+    // Remove technical artifacts leaking from LaTeX preamble/spec
+    let cleanRow = rowStr
+      .replace(/\\hline/g, '')
+      .replace(/\\rule{.*?}{.*?}/g, '')
+      .replace(/\\arraybackslash/g, '')
+      .replace(/\\raggedright/g, '')
+      .replace(/\\centering/g, '')
+      .replace(/\\toprule/g, '').replace(/\\midrule/g, '').replace(/\\bottomrule/g, '')
+      .trim();
+    
+    if (!cleanRow || cleanRow === '}') return null;
 
     return cleanRow.split('&').map(cell => {
       let content = cell.trim();
-      // Remove LaTeX formatting tags
+      // Unescape characters and remove LaTeX macros
       content = content
         .replace(/\\textbf\{(.*?)\}/g, '$1')
         .replace(/\\bfseries/g, '')
+        .replace(/\\textit\{(.*?)\}/g, '<i>$1</i>')
         .replace(/\\scriptsize/g, '')
         .replace(/\\small/g, '')
         .replace(/\\%/g, '%')
         .replace(/\\&/g, '&')
         .replace(/\\\$/g, '$')
         .replace(/\\_/g, '_')
-        .replace(/\\rightarrow/g, '→')
-        .replace(/\\left/g, '').replace(/\\right/g, '')
-        .replace(/\(/g, '').replace(/\)/g, '')
-        .replace(/\{/g, '').replace(/\}/g, '');
+        .replace(/\\rightarrow/g, ' → ')
+        .replace(/\\textrightarrow/g, ' → ')
+        .replace(/\\\(|\\\)/g, '') // remove math mode parens \(\)
+        .replace(/\\text\{(.*?)\}/g, '$1')
+        .replace(/\{/g, '').replace(/\}/g, ''); // remove any remaining braces
       
       return content;
     });
-  }).filter(r => r !== null);
+  }).filter(r => r !== null && r.length > 0);
 
   return (
     <div style={{ overflowX: 'auto', width: '100%', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
@@ -71,7 +99,7 @@ function LatexTable({ tex }) {
                     fontWeight: rowIndex === 0 ? '700' : '400',
                     color: rowIndex === 0 ? '#60a5fa' : '#e2e8f0',
                     textAlign: cellIndex === 0 ? 'left' : 'center',
-                    minWidth: cellIndex === 0 ? '180px' : 'auto'
+                    minWidth: cellIndex === 0 ? '160px' : 'auto'
                   }}
                   dangerouslySetInnerHTML={{ __html: cell }}
                 />
