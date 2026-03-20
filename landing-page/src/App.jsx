@@ -23,6 +23,7 @@ function App() {
   const [allResults, setAllResults] = useState([]);
   const [selectedGroup, setSelectedGroup] = useState('Hasil Utama STATIS');
   const [texContent, setTexContent] = useState(null);
+  const [lightboxImage, setLightboxImage] = useState(null);
 
   useEffect(() => {
     fetch('/output_app_manifest.json')
