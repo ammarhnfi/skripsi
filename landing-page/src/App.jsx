@@ -131,23 +131,14 @@ function App() {
   const getFilteredDocs = () => (allResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup);
 
   useEffect(() => {
-    // Current Time Update (WIB)
-    const updateTime = () => {
-      const options = { 
-        timeZone: 'Asia/Jakarta',
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-      };
-      const formatter = new Intl.DateTimeFormat('id-ID', options);
-      setCurrentTime(formatter.format(new Date()) + " WIB");
-    };
-    updateTime();
-    const timer = setInterval(updateTime, 1000);
+    // Fetch Last Update (from deployment)
+    fetch('/last_update.json')
+      .then(res => res.json())
+      .then(data => setCurrentTime(data.lastUpdate))
+      .catch(() => {
+          // Fallback if file not found
+          setCurrentTime("Sedang diproses...");
+      });
     
     // Fetch Gallery
     fetch('/output_app_manifest.json')
@@ -177,7 +168,6 @@ function App() {
       .then(data => setEquations(data))
       .catch(err => console.error("Failed to load equations:", err));
 
-    return () => clearInterval(timer);
   }, []);
 
   // Re-run MathJax typesetting when a modal is opened, just in case MathJax missed it initially

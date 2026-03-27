@@ -44,7 +44,24 @@ for f in files:
 # Sort manifest by group then caption
 manifest.sort(key=lambda x: (x['group'], x['caption']))
 
-with open(manifest_path, "w", encoding="utf-8") as j:
-    json.dump(manifest, j, indent=2)
+from datetime import datetime
+import locale
 
-print(f"Copied {len(manifest)} files to public/output_app and generated manifest.")
+# Set locale for Indonesian day names if possible (safe fallback provided)
+try:
+    locale.setlocale(locale.LC_TIME, 'id_ID.utf8')
+except:
+    try:
+        locale.setlocale(locale.LC_TIME, 'Indonesian_Indonesia.1252')
+    except:
+        pass
+
+# Generate Last Update timestamp
+now = datetime.now()
+timestamp_str = now.strftime("%A, %d %B %Y %H:%M:%S") + " WIB"
+update_info_path = r"d:\Skripsi\my\landing-page\public\last_update.json"
+
+with open(update_info_path, "w", encoding="utf-8") as f:
+    json.dump({"lastUpdate": timestamp_str}, f, indent=2)
+
+print(f"Copied {len(manifest)} files and generated manifest + last_update.json.")
