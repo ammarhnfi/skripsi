@@ -11,18 +11,36 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/b
 function LatexTable({ tex }) {
   if (!tex) return null;
 
-  // 1. IMPROVED EXTRACTION: Handle nested braces in column spec
-  const beginMatch = tex.match(/\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{/);
+  // 1. IMPROVED MACRO EXTRACTION (e.g. \newcommand{\Name}{Value})
+  if (!tex.includes('\\begin{')) {
+    const macros = [...tex.matchAll(/\\newcommand\{\\(.*?)\}\{(.*?)\}/g)];
+    if (macros.length > 0) {
+      return (
+        <div style={{ display: 'grid', gap: '8px', padding: '1rem', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+          {macros.map((m, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '8px 0' }}>
+              <span style={{ color: '#60a5fa', fontWeight: 'bold' }}>{m[1].replace('Macro', '')}:</span>
+              <span style={{ color: '#e2e8f0' }}>{m[2]}</span>
+            </div>
+          ))}
+        </div>
+      );
+    }
+  }
+
+  // 2. IMPROVED TABULAR EXTRACTION: Strip environments around tabular/longtable
+  const beginMatch = tex.match(/\\begin\{(?:tabular|longtable)\}/);
   if (!beginMatch) {
     return (
-      <div style={{ background: '#0f172a', color: '#38bdf8', padding: '20px', borderRadius: '8px', fontFamily: 'monospace', fontSize: '0.85rem', whiteSpace: 'pre-wrap' }}>
+      <div style={{ background: '#0f172a', color: '#60a5fa', padding: '20px', borderRadius: '8px', fontFamily: 'monospace', fontSize: '0.85rem', whiteSpace: 'pre-wrap', border: '1px solid rgba(255,255,255,0.1)' }}>
         <pre>{tex}</pre>
       </div>
     );
   }
 
-  // Find the matching closing brace for the tabular specification
-  const specStart = beginMatch.index + beginMatch[0].length;
+  // Find actual tabular start (including col spec)
+  const realStartMatch = tex.match(/\\begin\{(?:tabular|longtable)\}(?:\[.*?\])?\{/);
+  const specStart = realStartMatch.index + realStartMatch[0].length;
   let specEnd = specStart;
   let counter = 1;
   while (counter > 0 && specEnd < tex.length) {
@@ -32,85 +50,54 @@ function LatexTable({ tex }) {
   }
 
   const colSpec = tex.substring(specStart, specEnd - 1);
-  // Detect expected column count from spec (count chars like l, c, r, p, m, X)
   const expectedCols = colSpec.replace(/[| ]|{[^{}]*}/g, '').length || 2;
-
   const bodyWithEnd = tex.substring(specEnd);
   const endTagMatch = bodyWithEnd.match(/(.*?)\\end\{(?:tabular|longtable)\}/s);
   if (!endTagMatch) return <pre style={{ whiteSpace: 'pre-wrap' }}>{tex}</pre>;
   
   const body = endTagMatch[1];
 
-  // 2. ROBUST CLEANING
-  const bodyProcessed = body.replace(/\\makecell\{(.*?)\}/sg, (m, p1) => {
-    return p1.replace(/\\\\/g, '<br/>');
-  });
-
-  const rowsRaw = bodyProcessed.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
-  
+  // 3. ROBUST CLEANING
+  const rowsRaw = body.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
   const rows = rowsRaw.map(rowStr => {
     let cleanRow = rowStr
-      .replace(/\\hline/g, '')
-      .replace(/\\rule{.*?}{.*?}/g, '')
-      .replace(/\\arraybackslash/g, '')
-      .replace(/\\raggedright/g, '')
-      .replace(/\\centering/g, '')
+      .replace(/\\rowcolor\{.*?\}/g, '')
+      .replace(/\\multicolumn\{.*?\}/g, (m) => m.match(/\{(?:[^}]*)\}\{(?:[^}]*)\}\{(.*)\}/)?.[1] || '')
+      .replace(/\\hline/g, '').replace(/\\arraybackslash/g, '').replace(/\\raggedright/g, '').replace(/\\centering/g, '')
       .replace(/\\toprule/g, '').replace(/\\midrule/g, '').replace(/\\bottomrule/g, '')
+      .replace(/\\makecell\[?.*?\]?\{(.*?)\}/sg, '$1')
       .trim();
     
     if (!cleanRow || cleanRow === '}') return null;
 
     let cells = cleanRow.split('&').map(cell => {
-      let content = cell.trim();
-      content = content
-        .replace(/\\textbf\{(.*?)\}/g, '$1')
-        .replace(/\\bfseries/g, '')
-        .replace(/\\textit\{(.*?)\}/g, '<i>$1</i>')
-        .replace(/\\scriptsize/g, '')
-        .replace(/\\small/g, '')
-        .replace(/\\%/g, '%')
-        .replace(/\\&/g, '&')
-        .replace(/\\\$/g, '$')
-        .replace(/\\_/g, '_')
-        .replace(/\\rightarrow/g, ' → ')
-        .replace(/\\textrightarrow/g, ' → ')
-        .replace(/\\\(|\\\)/g, '')
-        .replace(/\\text\{(.*?)\}/g, '$1')
+      let content = cell.trim()
+        .replace(/\\textbf\{(.*?)\}/g, '$1').replace(/\\textit\{(.*?)\}/g, '<i>$1</i>')
+        .replace(/\\bfseries/g, '').replace(/\\small/g, '').replace(/\\scriptsize/g, '')
+        .replace(/\\%/g, '%').replace(/\\&/g, '&').replace(/\\\$/g, '$').replace(/\\_/g, '_')
+        .replace(/\\rightarrow/g, '→').replace(/\\textrightarrow/g, '→')
+        .replace(/\\\(|\\\)/g, '').replace(/\\text\{(.*?)\}/g, '$1')
         .replace(/\{/g, '').replace(/\}/g, '');
-      
       return content;
     });
 
-    // AUTO-MERGE: If there are more & than expected columns, merge the excess into the last column
     if (cells.length > expectedCols) {
       const fixedCells = cells.slice(0, expectedCols - 1);
       const mergedExtra = cells.slice(expectedCols - 1).join(': ');
       fixedCells.push(mergedExtra);
       cells = fixedCells;
     }
-
     return cells;
   }).filter(r => r !== null && r.length > 0);
 
   return (
-    <div style={{ overflowX: 'auto', width: '100%', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)', background: 'rgba(0,0,0,0.3)' }}>
+    <div style={{ overflowX: 'auto', width: '100%', borderRadius: '12px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem' }}>
         <tbody>
-          {rows.map((row, rowIndex) => (
-            <tr key={rowIndex} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: rowIndex === 0 ? 'rgba(59, 130, 246, 0.1)' : 'transparent' }}>
-              {row.map((cell, cellIndex) => (
-                <td 
-                  key={cellIndex} 
-                  style={{ 
-                    padding: '12px 14px', 
-                    borderRight: '1px solid rgba(255,255,255,0.05)',
-                    fontWeight: rowIndex === 0 ? '700' : '400',
-                    color: rowIndex === 0 ? '#60a5fa' : '#e2e8f0',
-                    textAlign: cellIndex === 0 ? 'left' : 'center',
-                    minWidth: cellIndex === 0 ? '160px' : 'auto'
-                  }}
-                  dangerouslySetInnerHTML={{ __html: cell }}
-                />
+          {rows.map((row, rI) => (
+            <tr key={rI} style={{ borderBottom: '1px solid rgba(255,255,255,0.05)', background: rI === 0 ? 'rgba(59, 130, 246, 0.1)' : 'transparent' }}>
+              {row.map((cell, cI) => (
+                <td key={cI} style={{ padding: '12px 14px', borderRight: '1px solid rgba(255,255,255,0.05)', color: rI === 0 ? '#60a5fa' : '#e2e8f0', fontWeight: rI === 0 ? '700' : '400', textAlign: cI === 0 ? 'left' : 'center' }} dangerouslySetInnerHTML={{ __html: cell }} />
               ))}
             </tr>
           ))}
@@ -132,17 +119,40 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [pdfScale, setPdfScale] = useState(1.2);
 
-  // Gallery Data
   const [allResults, setAllResults] = useState([]);
+  const [equations, setEquations] = useState([]);
+  const [currentTime, setCurrentTime] = useState("");
   const [selectedGroup, setSelectedGroup] = useState('Hasil Utama STATIS');
   const [texContent, setTexContent] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(-1);
+
+  // Helper: Get filtered documentation list based on active group
+  const getFilteredDocs = () => (allResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup);
 
   useEffect(() => {
+    // Current Time Update (WIB)
+    const updateTime = () => {
+      const options = { 
+        timeZone: 'Asia/Jakarta',
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      };
+      const formatter = new Intl.DateTimeFormat('id-ID', options);
+      setCurrentTime(formatter.format(new Date()) + " WIB");
+    };
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    
+    // Fetch Gallery
     fetch('/output_app_manifest.json')
       .then(res => res.json())
       .then(data => {
-        // Pre-pend existing static gallery items to the relevant groups or a new 'Highlights' group
         const staticItems = [
           {
             src: "/images/pca_biplot_animation.gif",
@@ -160,6 +170,14 @@ function App() {
         setAllResults([...staticItems, ...data]);
       })
       .catch(err => console.error("Failed to load results manifest:", err));
+
+    // Fetch Equations
+    fetch('/equations.json')
+      .then(res => res.json())
+      .then(data => setEquations(data))
+      .catch(err => console.error("Failed to load equations:", err));
+
+    return () => clearInterval(timer);
   }, []);
 
   // Re-run MathJax typesetting when a modal is opened, just in case MathJax missed it initially
@@ -190,14 +208,33 @@ function App() {
     setTexContent(null);
   };
 
-  const openTexPreview = async (src) => {
+  const openTexPreview = async (src, index = -1) => {
     try {
       const response = await fetch(src);
       const text = await response.text();
       setTexContent(text);
+      setCurrentGalleryIndex(index);
       setActiveModal('tex-preview');
     } catch (err) {
       console.error("Failed to load .tex file:", err);
+    }
+  };
+
+  const navigateGallery = (direction) => {
+    const filtered = getFilteredDocs();
+    if (filtered.length === 0) return;
+
+    let nextIndex = (currentGalleryIndex + direction + filtered.length) % filtered.length;
+    const nextItem = filtered[nextIndex];
+
+    if (nextItem.type === 'image') {
+      setLightboxImage(nextItem);
+      setTexContent(null);
+      setActiveModal(null); // Lightbox is handled separately by lightboxImage state
+      setCurrentGalleryIndex(nextIndex);
+    } else {
+      setLightboxImage(null);
+      openTexPreview(nextItem.src, nextIndex);
     }
   };
 
@@ -295,6 +332,13 @@ function App() {
             </p>
           </div>
         </div>
+
+        <footer>
+          <div className="update-note">
+            🚀 Terakhir Diperbarui: <span className="timestamp">{currentTime}</span>
+          </div>
+          <p className="copyright">&copy; 2026 Universitas Indonesia</p>
+        </footer>
       </div>
 
       {/* MODALS */}
@@ -521,7 +565,7 @@ function App() {
                 <div
                   key={index}
                   className="thumbnail-container"
-                  onClick={() => item && item.type === 'image' ? setLightboxImage(item) : openTexPreview(item.src)}
+                  onClick={() => item && item.type === 'image' ? (setLightboxImage(item), setCurrentGalleryIndex(index)) : openTexPreview(item.src, index)}
                   style={{ transition: 'transform 0.2s', cursor: 'pointer' }}
                 >
                   {item && item.type === 'image' ? (
@@ -558,18 +602,25 @@ function App() {
       <div
         className={`modal ${activeModal === 'tex-preview' ? 'active' : ''}`}
         onClick={(e) => {
-          if (e.target.classList.contains('modal')) closeModal();
+          if (e.target.classList.contains('modal')) setActiveModal('docs');
         }}
       >
-        <div className="modal-content glass-effect" style={{ maxWidth: '900px', width: '95vw' }}>
-          <button className="close-btn" onClick={closeModal} title="Tutup">
-            &times;
-          </button>
-          <h2>Visualisasi Tabel Hasil</h2>
-          <div className="modal-body" style={{ marginTop: '1rem' }}>
-            <p style={{ marginBottom: '1.5rem', color: '#94a3b8', fontSize: '0.9rem' }}>
-              Konversi otomatis dari format LaTeX ke Tabel Visual.
-            </p>
+        <div className="modal-content glass-effect" style={{ maxWidth: '1000px', width: '95vw', height: '90vh', display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
+            <button 
+              className="back-lib-btn" 
+              onClick={() => { setActiveModal('docs'); setTexContent(null); }}
+              style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#60a5fa', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 'bold' }}
+            >
+              ⬅ Kembali ke Galeri
+            </button>
+            <h2 style={{ margin: 0, border: 'none', padding: 0 }}>Visualisasi Tabel Hasil</h2>
+            <div className="nav-controls" style={{ display: 'flex', gap: '8px' }}>
+              <button className="pdf-btn" onClick={() => navigateGallery(-1)}>Sebelumnya</button>
+              <button className="pdf-btn" onClick={() => navigateGallery(1)}>Selanjutnya</button>
+            </div>
+          </div>
+          <div className="modal-body" style={{ flex: 1, overflowY: 'auto' }}>
             <LatexTable tex={texContent} />
           </div>
         </div>
@@ -578,15 +629,28 @@ function App() {
       {/* LIGHTBOX OVERLAY */}
       <div
         className={`lightbox ${lightboxImage ? 'active' : ''}`}
-        onClick={() => setLightboxImage(null)}
+        onClick={() => { setLightboxImage(null); if (currentGalleryIndex !== -1) setActiveModal('docs'); }}
       >
         {lightboxImage && (
           <>
-            <button className="close-btn" onClick={() => setLightboxImage(null)} style={{ top: '2rem', right: '2rem' }}>
+            <button className="close-btn" onClick={() => { setLightboxImage(null); setActiveModal('docs'); }} style={{ top: '2rem', right: '2rem' }}>
               &times;
             </button>
-            <img src={lightboxImage.src} alt={lightboxImage.caption} />
+            
+            <div className="lightbox-nav-top" style={{ position: 'fixed', top: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '20px', z_index: 2001 }}>
+               <button className="pdf-btn" onClick={(e) => { e.stopPropagation(); navigateGallery(-1); }}>⬅ Sebelumnya</button>
+               <button className="pdf-btn" onClick={(e) => { e.stopPropagation(); navigateGallery(1); }}>Selanjutnya ➡</button>
+            </div>
+
+            <img src={lightboxImage.src} alt={lightboxImage.caption} onClick={(e) => e.stopPropagation()} />
             <div className="lightbox-caption">{lightboxImage.caption}</div>
+            
+            <button 
+              onClick={(e) => { e.stopPropagation(); setLightboxImage(null); setActiveModal('docs'); }}
+              style={{ position: 'fixed', bottom: '2rem', background: 'rgba(59, 130, 246, 0.5)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '30px', cursor: 'pointer', backdropFilter: 'blur(5px)' }}
+            >
+              Kembali ke Galeri
+            </button>
           </>
         )}
       </div>
@@ -602,55 +666,30 @@ function App() {
             &times;
           </button>
           <h2>Rumus Utama dan Referensi</h2>
-          <div className="modal-body">
-            <h3>1. Standardisasi Data (Z-Score)</h3>
-            <p>
-              Digunakan untuk menyamakan skala unit antar variabel yang beragam
-              sehingga tidak mendominasi komputasi multivariat:
+          <div className="modal-body" style={{ maxHeight: '70vh', overflowY: 'auto' }}>
+            <p style={{ marginBottom: '1.5rem', color: '#94a3b8' }}>
+              Formula matematika yang digunakan dalam landasan teori (@bab2.tex).
             </p>
-            <div className="math-formula">
-              {`\\[ z_{ijt} = \\frac{x_{ijt} - \\bar{x}_{jt}}{s_{jt}} \\]`}
-            </div>
+            {equations.length > 0 ? (
+              <div className="equation-grid">
+                {equations.map((eq, i) => (
+                  <div key={i} className="eq-item" style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '1rem' }}>
+                    <div className="eq-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
+                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#60a5fa', fontWeight: 'bold' }}>{eq.section}</span>
+                      <span style={{ fontSize: '0.6rem', color: '#64748b' }}>#{i + 1}</span>
+                    </div>
+                    <div className="math-formula" style={{ background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '8px', overflow: 'hidden' }}>
+                      {eq.latex}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p>Sedang mengekstrak rumus dari dokumen...</p>
+            )}
 
-            <h3>2. Tahap Intra-struktur (Pembentukan Matriks Posisi)</h3>
-            <p>
-              Mendapatkan peta kemiripan antar Kabupaten/Kota pada masing-masing
-              tahun waktu (\( t \)):
-            </p>
-            <div className="math-formula">
-              {`\\[ \\mathbf{W}_t = \\mathbf{Z}_t \\mathbf{Z}_t^T \\quad (t=2020, \\dots, 2024) \\]`}
-            </div>
-
-            <h3>3. Tahap Inter-struktur (Korelasi RV)</h3>
-            <p>
-              Menghitung derajat kemiripan global (<i>similarity</i>) secara
-              keseluruhan dari matriks posisi antara satu tahun dengan tahun
-              yang lain:
-            </p>
-            <div className="math-formula">
-              {`\\[ RV(\\mathbf{W}_{2020}, \\mathbf{W}_{2021}) = \\frac{\\text{tr}(\\mathbf{W}_{2020} \\mathbf{W}_{2021})}{\\sqrt{\\text{tr}(\\mathbf{W}_{2020}^2) \\text{tr}(\\mathbf{W}_{2021}^2)}} \\]`}
-            </div>
-
-            <h3>4. Matriks Kompromi</h3>
-            <p>
-              Matriks stabil (representasi general) dari seluruh pengamatan waktu
-              yang diberi beban optimal (\( \\alpha_t \)):
-            </p>
-            <div className="math-formula">
-              {`\\[ \\mathbf{W}_c = \\alpha_{2020}\\mathbf{W}_{2020} + \\dots + \\alpha_{2024}\\mathbf{W}_{2024} \\]`}
-            </div>
-
-            <h3>5. Clustering Trajektori</h3>
-            <p>
-              Model K-Means mendeteksi kelenturan kelompok objek berdasarkan
-              lintasan dinamikanya sepanjang tahun pengamatan:
-            </p>
-            <div className="math-formula">
-              {`\\[ J = \\sum_{j=1}^{k} \\sum_{i \\in C_j} ||\\mathbf{x}_i^{(traj)} - \\boldsymbol{\\mu}_j||^2 \\]`}
-            </div>
-
-            <hr />
-            <h3>Referensi Pilihan</h3>
+            <hr style={{ borderColor: 'rgba(255,255,255,0.1)', margin: '2rem 0' }} />
+            <h3>Referensi Pilihan (Ekonometrika & Multivariat)</h3>
             <ul className="reference-list">
               <li>
                 <strong>Egido & Galindo (2015)</strong> - Dynamic Biplot.

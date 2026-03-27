@@ -1,0 +1,232 @@
+[
+  {
+    "section": "Standardisasi Data",
+    "latex": "\\[ z_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_j}, \\quad i = 1, 2, \\ldots, n, \\quad j = 1, 2, \\ldots, p \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Pemusatan",
+    "latex": "\\[ \\bar{x} = \\frac{1}{n} \\sum_{i=1}^{n} x_i \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Pemusatan",
+    "latex": "\\[ Q_2 = \\begin{cases}\n      x_{\\left(\\frac{n+1}{2}\\right)} & \\text{jika } n \\text{ ganjil} \\\\\n      \\dfrac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & \\text{jika } n \\text{ genap}\n    \\end{cases} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Penyebaran",
+    "latex": "\\[ s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Penyebaran",
+    "latex": "\\[ x_{\\min} = \\min(x_1, \\ldots, x_n), \\qquad x_{\\max} = \\max(x_1, \\ldots, x_n) \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Penyebaran",
+    "latex": "\\[ IQR = Q_3 - Q_1 \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Penyebaran",
+    "latex": "\\[ CV = \\frac{s}{\\bar{x}} \\times 100\\% \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Bentuk Distribusi",
+    "latex": "\\[ g_1 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^3}{s^3} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Ukuran Bentuk Distribusi",
+    "latex": "\\[ g_2 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^4}{s^4} - 3 \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Kaiser-Meyer-Olkin (KMO)",
+    "latex": "\\[ r_{jk.\\text{parsial}} = -\\frac{q_{jk}}{\\sqrt{q_{jj} \\cdot q_{kk}}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Kaiser-Meyer-Olkin (KMO)",
+    "latex": "\\[ KMO = \\frac{\\displaystyle\\sum_{j \\neq k} r_{jk}^2}{\\displaystyle\\sum_{j \\neq k} r_{jk}^2 + \\displaystyle\\sum_{j \\neq k} r_{jk.\\text{parsial}}^2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Kaiser-Meyer-Olkin (KMO)",
+    "latex": "\\[ MSA_j = \\frac{\\displaystyle\\sum_{k \\neq j} r_{jk}^2}{\\displaystyle\\sum_{k \\neq j} r_{jk}^2 + \\displaystyle\\sum_{k \\neq j} r_{jk.\\text{parsial}}^2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "latex": "\\[ \\chi^2 = -\\left[ n - 1 - \\frac{2p + 5}{6} \\right] \\ln |\\mathbf{R}| \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "latex": "\\[ df = \\frac{p(p-1)}{2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
+    "latex": "\\[ \\mathbf{A} \\mathbf{v} = \\lambda \\mathbf{v} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
+    "latex": "\\[ \\mathbf{A} = \\mathbf{V} \\mathbf{\\Lambda} \\mathbf{V}^T = \\sum_{j=1}^{p} \\lambda_j \\mathbf{v}_j \\mathbf{v}_j^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
+    "latex": "\\[ tr(\\mathbf{A}) = \\sum_{i=1}^{n} a_{ii} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
+    "latex": "\\[ \\mathbf{A} = \\mathbf{U} \\mathbf{S} \\mathbf{V}^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
+    "latex": "\\[ \\mathbf{F}_c = \\mathbf{U} \\sqrt{\\mathbf{S}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Korelasi Pearson",
+    "latex": "\\[ r_{xy} = \\frac{\\displaystyle\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\displaystyle\\sum_{i=1}^{n}(x_i - \\bar{x})^2} \\cdot \\sqrt{\\displaystyle\\sum_{i=1}^{n}(y_i - \\bar{y})^2}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Korelasi Pearson",
+    "latex": "\\[ g_{j\\ell} = r(\\bar{x}_j, \\mathbf{F}_c^{(\\ell)}) \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Analisis Komponen Utama (PCA) dan Biplot",
+    "latex": "\\[ \\mathbf{F} = \\mathbf{X} \\mathbf{V} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Analisis Komponen Utama (PCA) dan Biplot",
+    "latex": "\\[ \\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 1: Intra-struktur",
+    "latex": "\\[ \\mathbf{W}_t = \\mathbf{Z}_t \\mathbf{Z}_t^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 2: Inter-struktur",
+    "latex": "\\[ RV(\\mathbf{W}_i, \\mathbf{W}_j) = \\frac{tr(\\mathbf{W}_i \\mathbf{W}_j)}{\\sqrt{tr(\\mathbf{W}_i^2) \\, tr(\\mathbf{W}_j^2)}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 2: Inter-struktur",
+    "latex": "\\[ \\mathbf{R} \\mathbf{u} = \\theta \\mathbf{u} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 2: Inter-struktur",
+    "latex": "\\[ \\alpha_t = \\frac{u_{1t}}{\\sqrt{\\sum_{t=1}^{T} u_{1t}^2}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{W}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{W}_t \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{W}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c \\mathbf{V}_c^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{W}_c = \\mathbf{V}_c (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{\\Lambda}_c^{1/2}) \\mathbf{V}_c^T \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{W}_c = (\\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}) (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{V}_c^T) \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{F}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Uji Signifikansi Stabilitas Struktur (Permutasi)",
+    "latex": "\\[ p\\text{-value} = \\frac{\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{obs}) + 1}{B + 1} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Proyeksi Lintasan (\\textitTrajectory",
+    "latex": "\\[ \\mathbf{F}_t = \\mathbf{Z}_t \\mathbf{V}_c \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Proyeksi Lintasan (\\textitTrajectory",
+    "latex": "\\[ \\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,T} \\} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Jarak Euclidean antar Trajektori",
+    "latex": "\\[ d(i, j) = \\sqrt{\\sum_{t=1}^{T} \\left\\| \\mathbf{f}_{i,t} - \\mathbf{f}_{j,t} \\right\\|^2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Rotasi Baseline",
+    "latex": "\\[ \\theta = -\\operatorname{atan2}(v_2, v_1) \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Rotasi Baseline",
+    "latex": "\\[ \\mathbf{Q}(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Rotasi Baseline",
+    "latex": "\\[ \\mathbf{F}^* = \\mathbf{F} \\, \\mathbf{Q}(\\theta) \\]",
+    "type": "equation"
+  },
+  {
+    "section": "K-Means Clustering",
+    "latex": "\\[ SSE = \\sum_{j=1}^{k} \\sum_{\\mathbf{x}_i \\in C_j} \\| \\mathbf{x}_i - \\boldsymbol{\\mu}_j \\|^2 \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Agglomerative Hierarchical Clustering (Dendrogram)",
+    "latex": "\\[ \\Delta(A, B) = \\frac{n_A n_B}{n_A + n_B} \\| \\boldsymbol{\\mu}_A - \\boldsymbol{\\mu}_B \\|^2 \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Matriks Transisi Temporal",
+    "latex": "\\[ \\mathbf{T} = \n    \\begin{pmatrix}\n    T_{1,1} & T_{1,2} & \\cdots & T_{1,k} \\\\\n    T_{2,1} & T_{2,2} & \\cdots & T_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    T_{k,1} & T_{k,2} & \\cdots & T_{k,k}\n    \\end{pmatrix} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Matriks Pembobot Spasial",
+    "latex": "\\[ w_{ij} = \\begin{cases} 1 & \\text{jika wilayah } i \\text{ dan } j \\text{ bertetangga} \\\\ 0 & \\text{selainnya} \\end{cases}, \\quad w_{ii} = 0 \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Matriks Pembobot Spasial",
+    "latex": "\\[ w_{ij}^* = \\frac{w_{ij}}{\\displaystyle\\sum_{k=1}^{N} w_{ik}} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Statistik Global Moran's~\\texorpdfstring$I$",
+    "latex": "\\[ I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2} \\]",
+    "type": "equation"
+  },
+  {
+    "section": "Visualisasi Interaktif dengan Plotly dan Dash",
+    "latex": "\\[ Input \\xrightarrow{\\text{Callback}} \\{ \\text{Komputasi} \\to \\text{Analisis} \\to \\text{Visualisasi} \\} \\xrightarrow{\\text{Update}} Dashboard \\]",
+    "type": "equation"
+  }
+]
