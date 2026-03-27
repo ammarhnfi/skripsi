@@ -275,6 +275,20 @@ Uji Bartlett tentang Spherisitas, dikembangkan oleh \citet{bartlett1954}, bertuj
 
 Jika $p\text{-value} < \alpha$, maka $H_0$ ditolak, yang berarti terdapat struktur korelasi yang signifikan. Kondisi ini merupakan prasyarat yang diperlukan agar analisis reduksi dimensi dapat mengekstraksi informasi yang bermakna.
 
+\begin{definition}[Determinan Matriks]
+  Determinan dari matriks bujur sangkar $\mathbf{A}$ berukuran $p \times p$, dinotasikan sebagai $|\mathbf{A}|$ atau $\det(\mathbf{A})$, adalah sebuah nilai skalar yang merangkum properti-properti penting dari matriks tersebut, termasuk keterbalikannya (\textit{invertibility}) dan sifat singular. Secara formal, determinan didefinisikan sebagai \citet{anton2013}:
+  \begin{equation}
+    |\mathbf{A}| = \sum_{\sigma \in S_p} \text{sgn}(\sigma) \prod_{i=1}^{p} a_{i,\sigma(i)}
+  \end{equation}
+  di mana:
+  \begin{itemize}
+      \item $S_p$ adalah himpunan seluruh permutasi dari indeks $\{1, 2, \ldots, p\}$.
+      \item $\text{sgn}(\sigma)$ adalah tanda (paritas) dari permutasi $\sigma$ (bernilai $+1$ untuk permutasi genap, dan $-1$ untuk permutasi ganjil).
+      \item $a_{i,\sigma(i)}$ mewakili elemen matriks pada baris ke-$i$ dan kolom ke-$\sigma(i)$.
+  \end{itemize}
+  Untuk matriks korelasi populasi $\mathbf{R}$, nilai determinan memberikan ukuran global atas keberadaan multikolinieritas antar variabel. Apabila variabel-variabel saling bebas linier (matriks korelasi membentuk matriks identitas), maka determinan bernilai maksimum, yaitu $|\mathbf{R}| = 1$. Sebaliknya, semakin tinggi korelasi linier antar variabel, nilai determinan akan semakin mengecil mendekati 0. Jika determinan bernilai mutlak 0, matriks saling berkorelasi sempurna sehingga tidak dapat diinvers \citet{johnson2007}.
+\end{definition}
+
 %-----------------------------------------------------------------------------%
 % --- 2.8 ---
 \section{\normalsize Dasar Aljabar Linier dan Dekomposisi Matriks}
@@ -597,7 +611,7 @@ Jarak vertikal cabang dendrogram secara visual mengindikasikan ketidaksamaan ant
 
 \subsection{\normalsize Matriks Transisi Temporal}
 
-Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-klaster. Matriks transisi $\mathbf{T}$ berdimensi $k \times k$ disusun untuk memetakan kondisi dari situasi $t_1$ ke situasi $t_2$. Elemen $T_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $t_1$ namun berpindah ke klaster $y$ di situasi $t_2$:
+Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-klaster. Matriks transisi $\mathbf{T}$ berdimensi $k \times k$ (dengan k adalah jumlah klaster) disusun untuk memetakan kondisi dari situasi $t_1$ ke situasi $t_2$. Elemen $T_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $t_1$ namun berpindah ke klaster $y$ di situasi $t_2$:
 \begin{equation}
     \mathbf{T} = 
     \begin{pmatrix}

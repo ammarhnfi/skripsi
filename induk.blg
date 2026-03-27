@@ -39,44 +39,44 @@ A level-1 auxiliary file: lampiran1.aux
 Reallocating 'name_of_file' (item size: 1) to 14 items.
 A level-1 auxiliary file: lampiran2.aux
 Database file #1: pustaka.bib
-You've used 30 entries,
+You've used 31 entries,
             1975 wiz_defined-function locations,
-            711 strings with 9542 characters,
-and the built_in function-call counts, 11061 in all, are:
-= -- 1135
-> -- 336
-< -- 27
-+ -- 117
-- -- 106
-* -- 877
-:= -- 1922
-add.period$ -- 92
-call.type$ -- 30
-change.case$ -- 198
-chr.to.int$ -- 29
-cite$ -- 30
-duplicate$ -- 449
-empty$ -- 794
-format.name$ -- 146
-if$ -- 2223
+            717 strings with 9645 characters,
+and the built_in function-call counts, 11382 in all, are:
+= -- 1165
+> -- 349
+< -- 28
++ -- 121
+- -- 110
+* -- 904
+:= -- 1977
+add.period$ -- 95
+call.type$ -- 31
+change.case$ -- 205
+chr.to.int$ -- 30
+cite$ -- 31
+duplicate$ -- 461
+empty$ -- 815
+format.name$ -- 153
+if$ -- 2288
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 82
-newline$ -- 181
-num.names$ -- 90
-pop$ -- 146
+missing$ -- 88
+newline$ -- 186
+num.names$ -- 93
+pop$ -- 153
 preamble$ -- 1
-purify$ -- 203
+purify$ -- 210
 quote$ -- 0
-skip$ -- 351
+skip$ -- 361
 stack$ -- 0
-substring$ -- 729
-swap$ -- 63
+substring$ -- 741
+swap$ -- 64
 text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 168
+type$ -- 172
 warning$ -- 0
-while$ -- 90
+while$ -- 92
 width$ -- 0
-write$ -- 441
+write$ -- 453

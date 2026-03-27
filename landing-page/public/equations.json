@@ -70,6 +70,11 @@
     "type": "equation"
   },
   {
+    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "latex": "\\[ |\\mathbf{A}| = \\sum_{\\sigma \\in S_p} \\text{sgn}(\\sigma) \\prod_{i=1}^{p} a_{i,\\sigma(i)} \\]",
+    "type": "equation"
+  },
+  {
     "section": "Dasar Aljabar Linier dan Dekomposisi Matriks",
     "latex": "\\[ \\mathbf{A} \\mathbf{v} = \\lambda \\mathbf{v} \\]",
     "type": "equation"
