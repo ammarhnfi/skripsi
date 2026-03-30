@@ -250,9 +250,42 @@ dengan $w_{ij}$ adalah matriks pembobot spasial berbasis \textit{Queen Contiguit
     Z(I) = \frac{I - E(I)}{\sqrt{Var(I)}}, \quad E(I) = \frac{-1}{n-1}
 \end{equation}
 
-\subsection{\normalsize Pengembangan Visualisasi Interaktif}
-Algoritma di atas dibungkus dalam sistem \textit{dashboard} menggunakan Python (Dash/Plotly) yang memungkinkan:
-\begin{itemize}
-    \item Proyeksi dinamis (\textit{trajectory}) posisi wilayah setiap tahun ke ruang kompromi.
-    \item Rotasi sumbu (\textit{Baseline Rotation}) untuk mempermudah interpretasi ekonomi.
-\end{itemize}
+\subsection{\normalsize Pemetaan Trajektori 3 Dimensi (\textit{3D Spatio-Temporal Biplot})}
+
+Berdasarkan Persamaan (2.21) pada Bab 2 mengenai proyeksi lintasan objek, matriks data pada situasi ke-$t$ ($\mathbf{Z}_t$) diproyeksikan ke dalam ruang kompromi yang stabil menggunakan matriks \textit{loadings} kompromi ($\mathbf{V}_c$). Untuk memvisualisasikan pergerakan wilayah secara interaktif tanpa kehilangan struktur temporalnya, ruang proyeksi ini diperluas menjadi tiga dimensi. Pada desain interaktif, Sumbu X dan Y mewakili koordinat spasial (PC1 dan PC2) dari dekomposisi STATIS, sedangkan Sumbu Z secara matematis digantikan seketika dengan dimensi waktu ($t$, yaitu tahun observasi) agar trajektori pergerakan wilayah terlihat progresif terhadap waktu.
+
+Titik koordinat 3D untuk wilayah ke-$i$ pada waktu $t$ didefinisikan sebagai:
+\begin{equation}
+    \mathbf{p}_{i,t} = \begin{bmatrix} F_{t, i}^{(PC1)} \\ F_{t, i}^{(PC2)} \\ t \end{bmatrix} = \begin{bmatrix} (\mathbf{Z}_t \mathbf{V}_c)_{i,1} \\ (\mathbf{Z}_t \mathbf{V}_c)_{i,2} \\ t \end{bmatrix}
+\end{equation}
+
+Sebagai ilustrasi langkah-demi-langkah (melanjutkan perhitungan data sampel wilayah Jakarta Pusat pada tahun 2020 di sub-bab 3.6.1):
+
+\textbf{Langkah 1: Matriks Data dan Vektor Kompromi} \\
+Berdasarkan data sampel pada sub-bab sebelumnya, hasil standardisasi matriks Jakarta Pusat (baris ke-1) dari $\mathbf{Z}_{2020}$ untuk tiga variabel percobaan (PPM, RLS, TPT) berbentuk vektor baris:
+\[
+\mathbf{z}_{1, 2020} = \begin{bmatrix} -0,87 & 1,47 & 0,00 \end{bmatrix}
+\]
+Misalkan matriks vektor eigen $\mathbf{V}_c$ (berukuran $3 \times 2$) yang diperoleh dari dekomposisi matriks kompromi menghasilkan nilai pembobot variabel sebagai berikut:
+\[
+\mathbf{V}_c = \begin{pmatrix} 0,81 & -0,12 \\ -0,48 & -0,58 \\ 0,33 & -0,80 \end{pmatrix}
+\]
+
+\textbf{Langkah 2: Proyeksi Koordinat Spasial (Bidang X-Y)} \\
+Titik koordinat posisi wilayah Jakarta Pusat pada tahun 2020 dihitung melalui perkalian titik (\textit{dot product}) antara vektor observasi dengan vektor eigen utama:
+\begin{align*}
+F_{2020, \text{JakPus}}^{(PC1)} &= \mathbf{z}_{1, 2020} \cdot \mathbf{v}_1 \\
+&= (-0,87)(0,81) + (1,47)(-0,48) + (0,00)(0,33) \\
+&= -0,7047 - 0,7056 + 0 = -1,41 \\[8pt]
+F_{2020, \text{JakPus}}^{(PC2)} &= \mathbf{z}_{1, 2020} \cdot \mathbf{v}_2 \\
+&= (-0,87)(-0,12) + (1,47)(-0,58) + (0,00)(-0,80) \\
+&= 0,1044 - 0,8526 + 0 = -0,75
+\end{align*}
+
+\textbf{Langkah 3: Pembentukan Titik 3 Dimensi Lintas Waktu} \\
+Karena perhitungan dimensi ketiga secara eksplisit menggunakan tahun sebagai \textit{altitude} informasi trajektori, maka nilai kronologis ($t = 2020$) dirangkai menjadi dimensi Z. Vektor posisi spasio-temporal akhir untuk visualisasi 3D menjadi:
+\begin{equation}
+    \mathbf{p}_{\text{JakPus}, 2020} = \begin{bmatrix} -1,41 \\ -0,75 \\ 2020 \end{bmatrix}
+\end{equation}
+
+Langkah perkalian matriks ini diulang untuk setiap tahun observasi berikutnya ($t \in \{2020, 2021, 2022, 2023, 2024\}$) pada wilayah observasi yang sama. Seluruh algoritma dan hasil matriks di atas dibungkus dalam sistem \textit{dashboard} menggunakan bahasa Python dengan *library* Plotly Express \textit{Scatter-3D}, yang akhirnya menghubungkan titik-titik koordinat kronologis ($\mathbf{p}_{i,2020} \rightarrow \mathbf{p}_{i,2021} \rightarrow \dots$) sehingga lintasan pergerakan karakter kesejahteraan rakyat terpetakan dengan jelas melintasi ruang dimensi ganda dan waktu. Selain itu, visualisasi interaktif ini juga dilengkapi dengan rotasi sumbu (\textit{Baseline Rotation}) untuk mempermudah interpretasi sudut ekonomi dari sumbu utama PC.

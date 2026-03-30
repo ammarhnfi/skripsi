@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  27 MAR 2026 22:47
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  30 MAR 2026 10:22
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1131,305 +1131,300 @@ Overfull \vbox (21.59203pt too high) has occurred while \output is active []
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 153.
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-) [39] [40]
-Underfull \hbox (badness 1616) in paragraph at lines 254--255
-[]\OT1/ptm/m/n/12 (+20) Algoritma di atas di-bungkus dalam sis-tem \OT1/ptm/m/it/12 (+20) dash-board \OT1/ptm/m/n/12 (+20) meng-gu-nakan Python
- []
-
-) [41]
+) [39] [40] [41]) [42] [43]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
 \normalsize BAB 4.
-(output_app/output_macros.tex) (output_app/output_table_deskriptif_2020.tex) (output_app/output_table_deskriptif_2021.tex) [42
+(output_app/output_macros.tex) (output_app/output_table_deskriptif_2020.tex) (output_app/output_table_deskriptif_2021.tex) [44
 
 
 
 
-] (output_app/output_table_deskriptif_2022.tex) (output_app/output_table_deskriptif_2023.tex) (output_app/output_table_deskriptif_2024.tex) [43]
-<output_app/boxplot_ipm_2020.png, id=1538, 1003.75pt x 803.0pt>
+] (output_app/output_table_deskriptif_2022.tex) (output_app/output_table_deskriptif_2023.tex) (output_app/output_table_deskriptif_2024.tex) [45]
+<output_app/boxplot_ipm_2020.png, id=1549, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ipm_2020.png Graphic file (type png)
 <use output_app/boxplot_ipm_2020.png>
 Package pdftex.def Info: output_app/boxplot_ipm_2020.png  used on input line 64.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_ipm_2022.png, id=1540, 1003.75pt x 803.0pt>
+<output_app/boxplot_ipm_2022.png, id=1551, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ipm_2022.png Graphic file (type png)
 <use output_app/boxplot_ipm_2022.png>
 Package pdftex.def Info: output_app/boxplot_ipm_2022.png  used on input line 65.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_ipm_2024.png, id=1541, 1003.75pt x 803.0pt>
+<output_app/boxplot_ipm_2024.png, id=1552, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ipm_2024.png Graphic file (type png)
 <use output_app/boxplot_ipm_2024.png>
 Package pdftex.def Info: output_app/boxplot_ipm_2024.png  used on input line 66.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_ppm_2020.png, id=1542, 1003.75pt x 803.0pt>
+<output_app/boxplot_ppm_2020.png, id=1553, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ppm_2020.png Graphic file (type png)
 <use output_app/boxplot_ppm_2020.png>
 Package pdftex.def Info: output_app/boxplot_ppm_2020.png  used on input line 73.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_ppm_2022.png, id=1543, 1003.75pt x 803.0pt>
+<output_app/boxplot_ppm_2022.png, id=1554, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ppm_2022.png Graphic file (type png)
 <use output_app/boxplot_ppm_2022.png>
 Package pdftex.def Info: output_app/boxplot_ppm_2022.png  used on input line 74.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_ppm_2024.png, id=1544, 1003.75pt x 803.0pt>
+<output_app/boxplot_ppm_2024.png, id=1555, 1003.75pt x 803.0pt>
 File: output_app/boxplot_ppm_2024.png Graphic file (type png)
 <use output_app/boxplot_ppm_2024.png>
 Package pdftex.def Info: output_app/boxplot_ppm_2024.png  used on input line 75.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_pdrb_adhk_2020.png, id=1545, 1003.75pt x 803.0pt>
+<output_app/boxplot_pdrb_adhk_2020.png, id=1556, 1003.75pt x 803.0pt>
 File: output_app/boxplot_pdrb_adhk_2020.png Graphic file (type png)
 <use output_app/boxplot_pdrb_adhk_2020.png>
 Package pdftex.def Info: output_app/boxplot_pdrb_adhk_2020.png  used on input line 82.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_pdrb_adhk_2022.png, id=1546, 1003.75pt x 803.0pt>
+<output_app/boxplot_pdrb_adhk_2022.png, id=1557, 1003.75pt x 803.0pt>
 File: output_app/boxplot_pdrb_adhk_2022.png Graphic file (type png)
 <use output_app/boxplot_pdrb_adhk_2022.png>
 Package pdftex.def Info: output_app/boxplot_pdrb_adhk_2022.png  used on input line 83.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_pdrb_adhk_2024.png, id=1547, 1003.75pt x 803.0pt>
+<output_app/boxplot_pdrb_adhk_2024.png, id=1558, 1003.75pt x 803.0pt>
 File: output_app/boxplot_pdrb_adhk_2024.png Graphic file (type png)
 <use output_app/boxplot_pdrb_adhk_2024.png>
 Package pdftex.def Info: output_app/boxplot_pdrb_adhk_2024.png  used on input line 84.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
- [44 <./output_app/boxplot_ipm_2020.png> <./output_app/boxplot_ipm_2022.png> <./output_app/boxplot_ipm_2024.png> <./output_app/boxplot_ppm_2020.png> <./output_app/boxplot_ppm_2022.png> <./output_app/boxplot_ppm_2024.png>]
-<output_app/boxplot_tpt_2020.png, id=1558, 1003.75pt x 803.0pt>
+ [46 <./output_app/boxplot_ipm_2020.png> <./output_app/boxplot_ipm_2022.png> <./output_app/boxplot_ipm_2024.png> <./output_app/boxplot_ppm_2020.png> <./output_app/boxplot_ppm_2022.png> <./output_app/boxplot_ppm_2024.png>]
+<output_app/boxplot_tpt_2020.png, id=1569, 1003.75pt x 803.0pt>
 File: output_app/boxplot_tpt_2020.png Graphic file (type png)
 <use output_app/boxplot_tpt_2020.png>
 Package pdftex.def Info: output_app/boxplot_tpt_2020.png  used on input line 91.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_tpt_2022.png, id=1559, 1003.75pt x 803.0pt>
+<output_app/boxplot_tpt_2022.png, id=1570, 1003.75pt x 803.0pt>
 File: output_app/boxplot_tpt_2022.png Graphic file (type png)
 <use output_app/boxplot_tpt_2022.png>
 Package pdftex.def Info: output_app/boxplot_tpt_2022.png  used on input line 92.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_tpt_2024.png, id=1560, 1003.75pt x 803.0pt>
+<output_app/boxplot_tpt_2024.png, id=1571, 1003.75pt x 803.0pt>
 File: output_app/boxplot_tpt_2024.png Graphic file (type png)
 <use output_app/boxplot_tpt_2024.png>
 Package pdftex.def Info: output_app/boxplot_tpt_2024.png  used on input line 93.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_rls_2020.png, id=1561, 1003.75pt x 803.0pt>
+<output_app/boxplot_rls_2020.png, id=1572, 1003.75pt x 803.0pt>
 File: output_app/boxplot_rls_2020.png Graphic file (type png)
 <use output_app/boxplot_rls_2020.png>
 Package pdftex.def Info: output_app/boxplot_rls_2020.png  used on input line 100.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_rls_2022.png, id=1562, 1003.75pt x 803.0pt>
+<output_app/boxplot_rls_2022.png, id=1573, 1003.75pt x 803.0pt>
 File: output_app/boxplot_rls_2022.png Graphic file (type png)
 <use output_app/boxplot_rls_2022.png>
 Package pdftex.def Info: output_app/boxplot_rls_2022.png  used on input line 101.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_app/boxplot_rls_2024.png, id=1563, 1003.75pt x 803.0pt>
+<output_app/boxplot_rls_2024.png, id=1574, 1003.75pt x 803.0pt>
 File: output_app/boxplot_rls_2024.png Graphic file (type png)
 <use output_app/boxplot_rls_2024.png>
 Package pdftex.def Info: output_app/boxplot_rls_2024.png  used on input line 102.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
- [45 <./output_app/boxplot_pdrb_adhk_2020.png> <./output_app/boxplot_pdrb_adhk_2022.png> <./output_app/boxplot_pdrb_adhk_2024.png> <./output_app/boxplot_tpt_2020.png> <./output_app/boxplot_tpt_2022.png> <./output_app/boxplot_tpt_2024.png> <./output_app/boxplot_rls_2020.png> <./output_app/boxplot_rls_2022.png> <./output_app/boxplot_rls_2024.png>] (output_app/output_table_rv.tex) [46]
-<output_app/rv_heatmap.png, id=1588, 1405.25pt x 1204.5pt>
+ [47 <./output_app/boxplot_pdrb_adhk_2020.png> <./output_app/boxplot_pdrb_adhk_2022.png> <./output_app/boxplot_pdrb_adhk_2024.png> <./output_app/boxplot_tpt_2020.png> <./output_app/boxplot_tpt_2022.png> <./output_app/boxplot_tpt_2024.png> <./output_app/boxplot_rls_2020.png> <./output_app/boxplot_rls_2022.png> <./output_app/boxplot_rls_2024.png>] (output_app/output_table_rv.tex) [48]
+<output_app/rv_heatmap.png, id=1598, 1405.25pt x 1204.5pt>
 File: output_app/rv_heatmap.png Graphic file (type png)
 <use output_app/rv_heatmap.png>
 Package pdftex.def Info: output_app/rv_heatmap.png  used on input line 155.
 (pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
- (output_app/output_table_alpha.tex [47 <./output_app/rv_heatmap.png>])
-<output_app/scree_plot.png, id=1599, 1806.75pt x 1204.5pt>
+ (output_app/output_table_alpha.tex [49 <./output_app/rv_heatmap.png>])
+<output_app/scree_plot.png, id=1609, 1806.75pt x 1204.5pt>
 File: output_app/scree_plot.png Graphic file (type png)
 <use output_app/scree_plot.png>
 Package pdftex.def Info: output_app/scree_plot.png  used on input line 186.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [48] (output_app/output_table_eigen.tex) [49 <./output_app/scree_plot.png>] [50]
-<output_app/compromise_map.png, id=1616, 1606.0pt x 1606.0pt>
+ [50] (output_app/output_table_eigen.tex) [51 <./output_app/scree_plot.png>] [52]
+<output_app/compromise_map.png, id=1627, 1606.0pt x 1606.0pt>
 File: output_app/compromise_map.png Graphic file (type png)
 <use output_app/compromise_map.png>
 Package pdftex.def Info: output_app/compromise_map.png  used on input line 204.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [51 <./output_app/compromise_map.png>]
-<output_app/cluster_compromise_biplot.png, id=1625, 1606.0pt x 1606.0pt>
+ [53 <./output_app/compromise_map.png>]
+<output_app/cluster_compromise_biplot.png, id=1635, 1606.0pt x 1606.0pt>
 File: output_app/cluster_compromise_biplot.png Graphic file (type png)
 <use output_app/cluster_compromise_biplot.png>
 Package pdftex.def Info: output_app/cluster_compromise_biplot.png  used on input line 217.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [52 <./output_app/cluster_compromise_biplot.png>] (output_app/output_table_loadings.tex)
-<output_app/loading_plot.png, id=1634, 1405.25pt x 1405.25pt>
+ [54 <./output_app/cluster_compromise_biplot.png>] (output_app/output_table_loadings.tex)
+<output_app/loading_plot.png, id=1644, 1405.25pt x 1405.25pt>
 File: output_app/loading_plot.png Graphic file (type png)
 <use output_app/loading_plot.png>
 Package pdftex.def Info: output_app/loading_plot.png  used on input line 240.
 (pdftex.def)             Requested size: 277.41176pt x 277.39983pt.
- [53]
-<output_app/variable_contribution.png, id=1642, 1806.75pt x 1204.5pt>
+ [55]
+<output_app/variable_contribution.png, id=1652, 1806.75pt x 1204.5pt>
 File: output_app/variable_contribution.png Graphic file (type png)
 <use output_app/variable_contribution.png>
 Package pdftex.def Info: output_app/variable_contribution.png  used on input line 251.
 (pdftex.def)             Requested size: 320.0935pt x 213.38211pt.
-<output_app/variable_cos2.png, id=1643, 1806.75pt x 1204.5pt>
+<output_app/variable_cos2.png, id=1653, 1806.75pt x 1204.5pt>
 File: output_app/variable_cos2.png Graphic file (type png)
 <use output_app/variable_cos2.png>
 Package pdftex.def Info: output_app/variable_cos2.png  used on input line 258.
 (pdftex.def)             Requested size: 320.0935pt x 213.38211pt.
- [54 <./output_app/loading_plot.png> <./output_app/variable_contribution.png>] [55 <./output_app/variable_cos2.png>] (output_app/output_table_scores.tex) [56
+ [56 <./output_app/loading_plot.png> <./output_app/variable_contribution.png>] [57 <./output_app/variable_cos2.png>] (output_app/output_table_scores.tex) [58
 
 ]
-<output_app/permutation_histogram.png, id=1662, 1806.75pt x 1204.5pt>
+<output_app/permutation_histogram.png, id=1673, 1806.75pt x 1204.5pt>
 File: output_app/permutation_histogram.png Graphic file (type png)
 <use output_app/permutation_histogram.png>
 Package pdftex.def Info: output_app/permutation_histogram.png  used on input line 286.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [57 <./output_app/permutation_histogram.png>]
-<output_app/statis_trajectories.png, id=1672, 1806.75pt x 1606.0pt>
+ [59 <./output_app/permutation_histogram.png>]
+<output_app/statis_trajectories.png, id=1682, 1806.75pt x 1606.0pt>
 File: output_app/statis_trajectories.png Graphic file (type png)
 <use output_app/statis_trajectories.png>
 Package pdftex.def Info: output_app/statis_trajectories.png  used on input line 326.
 (pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
- [58]
-<output_app/biplot_tahun_2020.png, id=1680, 1606.0pt x 1606.0pt>
+ [60]
+<output_app/biplot_tahun_2020.png, id=1690, 1606.0pt x 1606.0pt>
 File: output_app/biplot_tahun_2020.png Graphic file (type png)
 <use output_app/biplot_tahun_2020.png>
 Package pdftex.def Info: output_app/biplot_tahun_2020.png  used on input line 344.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [59 <./output_app/statis_trajectories.png>]
-<output_app/biplot_tahun_2021.png, id=1689, 1606.0pt x 1606.0pt>
+ [61 <./output_app/statis_trajectories.png>]
+<output_app/biplot_tahun_2021.png, id=1699, 1606.0pt x 1606.0pt>
 File: output_app/biplot_tahun_2021.png Graphic file (type png)
 <use output_app/biplot_tahun_2021.png>
 Package pdftex.def Info: output_app/biplot_tahun_2021.png  used on input line 351.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [60 <./output_app/biplot_tahun_2020.png>]
-<output_app/biplot_tahun_2022.png, id=1695, 1606.0pt x 1606.0pt>
+ [62 <./output_app/biplot_tahun_2020.png>]
+<output_app/biplot_tahun_2022.png, id=1705, 1606.0pt x 1606.0pt>
 File: output_app/biplot_tahun_2022.png Graphic file (type png)
 <use output_app/biplot_tahun_2022.png>
 Package pdftex.def Info: output_app/biplot_tahun_2022.png  used on input line 358.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [61 <./output_app/biplot_tahun_2021.png>]
-<output_app/biplot_tahun_2023.png, id=1701, 1606.0pt x 1606.0pt>
+ [63 <./output_app/biplot_tahun_2021.png>]
+<output_app/biplot_tahun_2023.png, id=1712, 1606.0pt x 1606.0pt>
 File: output_app/biplot_tahun_2023.png Graphic file (type png)
 <use output_app/biplot_tahun_2023.png>
 Package pdftex.def Info: output_app/biplot_tahun_2023.png  used on input line 365.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [62 <./output_app/biplot_tahun_2022.png>]
-<output_app/biplot_tahun_2024.png, id=1707, 1606.0pt x 1606.0pt>
+ [64 <./output_app/biplot_tahun_2022.png>]
+<output_app/biplot_tahun_2024.png, id=1718, 1606.0pt x 1606.0pt>
 File: output_app/biplot_tahun_2024.png Graphic file (type png)
 <use output_app/biplot_tahun_2024.png>
 Package pdftex.def Info: output_app/biplot_tahun_2024.png  used on input line 372.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [63 <./output_app/biplot_tahun_2023.png>]
-<output_app/elbow_plot_2020.png, id=1716, 1405.25pt x 903.375pt>
+ [65 <./output_app/biplot_tahun_2023.png>]
+<output_app/elbow_plot_2020.png, id=1726, 1405.25pt x 903.375pt>
 File: output_app/elbow_plot_2020.png Graphic file (type png)
 <use output_app/elbow_plot_2020.png>
 Package pdftex.def Info: output_app/elbow_plot_2020.png  used on input line 392.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_app/dendrogram_2020.png, id=1717, 1606.0pt x 1104.125pt>
+<output_app/dendrogram_2020.png, id=1727, 1606.0pt x 1104.125pt>
 File: output_app/dendrogram_2020.png Graphic file (type png)
 <use output_app/dendrogram_2020.png>
 Package pdftex.def Info: output_app/dendrogram_2020.png  used on input line 393.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [64 <./output_app/biplot_tahun_2024.png>]
-<output_app/elbow_plot_2021.png, id=1723, 1405.25pt x 903.375pt>
+ [66 <./output_app/biplot_tahun_2024.png>]
+<output_app/elbow_plot_2021.png, id=1733, 1405.25pt x 903.375pt>
 File: output_app/elbow_plot_2021.png Graphic file (type png)
 <use output_app/elbow_plot_2021.png>
 Package pdftex.def Info: output_app/elbow_plot_2021.png  used on input line 400.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_app/dendrogram_2021.png, id=1724, 1606.0pt x 1104.125pt>
+<output_app/dendrogram_2021.png, id=1734, 1606.0pt x 1104.125pt>
 File: output_app/dendrogram_2021.png Graphic file (type png)
 <use output_app/dendrogram_2021.png>
 Package pdftex.def Info: output_app/dendrogram_2021.png  used on input line 401.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_app/elbow_plot_2022.png, id=1725, 1405.25pt x 903.375pt>
+<output_app/elbow_plot_2022.png, id=1735, 1405.25pt x 903.375pt>
 File: output_app/elbow_plot_2022.png Graphic file (type png)
 <use output_app/elbow_plot_2022.png>
 Package pdftex.def Info: output_app/elbow_plot_2022.png  used on input line 408.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_app/dendrogram_2022.png, id=1726, 1606.0pt x 1104.125pt>
+<output_app/dendrogram_2022.png, id=1736, 1606.0pt x 1104.125pt>
 File: output_app/dendrogram_2022.png Graphic file (type png)
 <use output_app/dendrogram_2022.png>
 Package pdftex.def Info: output_app/dendrogram_2022.png  used on input line 409.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_app/elbow_plot_2023.png, id=1727, 1405.25pt x 903.375pt>
+<output_app/elbow_plot_2023.png, id=1737, 1405.25pt x 903.375pt>
 File: output_app/elbow_plot_2023.png Graphic file (type png)
 <use output_app/elbow_plot_2023.png>
 Package pdftex.def Info: output_app/elbow_plot_2023.png  used on input line 416.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_app/dendrogram_2023.png, id=1728, 1606.0pt x 1104.125pt>
+<output_app/dendrogram_2023.png, id=1738, 1606.0pt x 1104.125pt>
 File: output_app/dendrogram_2023.png Graphic file (type png)
 <use output_app/dendrogram_2023.png>
 Package pdftex.def Info: output_app/dendrogram_2023.png  used on input line 417.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [65 <./output_app/elbow_plot_2020.png> <./output_app/dendrogram_2020.png> <./output_app/elbow_plot_2021.png> <./output_app/dendrogram_2021.png> <./output_app/elbow_plot_2022.png> <./output_app/dendrogram_2022.png>]
-<output_app/elbow_plot_2024.png, id=1739, 1405.25pt x 903.375pt>
+ [67 <./output_app/elbow_plot_2020.png> <./output_app/dendrogram_2020.png> <./output_app/elbow_plot_2021.png> <./output_app/dendrogram_2021.png> <./output_app/elbow_plot_2022.png> <./output_app/dendrogram_2022.png>]
+<output_app/elbow_plot_2024.png, id=1749, 1405.25pt x 903.375pt>
 File: output_app/elbow_plot_2024.png Graphic file (type png)
 <use output_app/elbow_plot_2024.png>
 Package pdftex.def Info: output_app/elbow_plot_2024.png  used on input line 424.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_app/dendrogram_2024.png, id=1740, 1606.0pt x 1104.125pt>
+<output_app/dendrogram_2024.png, id=1750, 1606.0pt x 1104.125pt>
 File: output_app/dendrogram_2024.png Graphic file (type png)
 <use output_app/dendrogram_2024.png>
 Package pdftex.def Info: output_app/dendrogram_2024.png  used on input line 425.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_app/cluster_biplot_2020.png, id=1745, 1606.0pt x 1606.0pt>
+<output_app/cluster_biplot_2020.png, id=1755, 1606.0pt x 1606.0pt>
 File: output_app/cluster_biplot_2020.png Graphic file (type png)
 <use output_app/cluster_biplot_2020.png>
 Package pdftex.def Info: output_app/cluster_biplot_2020.png  used on input line 440.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_app/cluster_map_2020.png, id=1746, 939.51pt x 658.74104pt>
+<output_app/cluster_map_2020.png, id=1756, 939.51pt x 658.74104pt>
 File: output_app/cluster_map_2020.png Graphic file (type png)
 <use output_app/cluster_map_2020.png>
 Package pdftex.def Info: output_app/cluster_map_2020.png  used on input line 444.
 (pdftex.def)             Requested size: 204.85802pt x 143.63687pt.
- [66 <./output_app/elbow_plot_2023.png> <./output_app/dendrogram_2023.png> <./output_app/elbow_plot_2024.png> <./output_app/dendrogram_2024.png>]
-<output_app/cluster_biplot_2021.png, id=1755, 1606.0pt x 1606.0pt>
+ [68 <./output_app/elbow_plot_2023.png> <./output_app/dendrogram_2023.png> <./output_app/elbow_plot_2024.png> <./output_app/dendrogram_2024.png>]
+<output_app/cluster_biplot_2021.png, id=1765, 1606.0pt x 1606.0pt>
 File: output_app/cluster_biplot_2021.png Graphic file (type png)
 <use output_app/cluster_biplot_2021.png>
 Package pdftex.def Info: output_app/cluster_biplot_2021.png  used on input line 454.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_app/cluster_map_2021.png, id=1756, 939.51pt x 658.74104pt>
+<output_app/cluster_map_2021.png, id=1766, 939.51pt x 658.74104pt>
 File: output_app/cluster_map_2021.png Graphic file (type png)
 <use output_app/cluster_map_2021.png>
 Package pdftex.def Info: output_app/cluster_map_2021.png  used on input line 458.
 (pdftex.def)             Requested size: 204.85802pt x 143.63687pt.
-<output_app/cluster_biplot_2022.png, id=1757, 1606.0pt x 1606.0pt>
+<output_app/cluster_biplot_2022.png, id=1767, 1606.0pt x 1606.0pt>
 File: output_app/cluster_biplot_2022.png Graphic file (type png)
 <use output_app/cluster_biplot_2022.png>
 Package pdftex.def Info: output_app/cluster_biplot_2022.png  used on input line 468.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_app/cluster_map_2022.png, id=1758, 938.0646pt x 658.74104pt>
+<output_app/cluster_map_2022.png, id=1768, 938.0646pt x 658.74104pt>
 File: output_app/cluster_map_2022.png Graphic file (type png)
 <use output_app/cluster_map_2022.png>
 Package pdftex.def Info: output_app/cluster_map_2022.png  used on input line 472.
 (pdftex.def)             Requested size: 204.85802pt x 143.858pt.
- [67 <./output_app/cluster_biplot_2020.png> <./output_app/cluster_map_2020.png> <./output_app/cluster_biplot_2021.png> <./output_app/cluster_map_2021.png>]
-<output_app/cluster_biplot_2023.png, id=1767, 1606.0pt x 1606.0pt>
+ [69 <./output_app/cluster_biplot_2020.png> <./output_app/cluster_map_2020.png> <./output_app/cluster_biplot_2021.png> <./output_app/cluster_map_2021.png>]
+<output_app/cluster_biplot_2023.png, id=1778, 1606.0pt x 1606.0pt>
 File: output_app/cluster_biplot_2023.png Graphic file (type png)
 <use output_app/cluster_biplot_2023.png>
 Package pdftex.def Info: output_app/cluster_biplot_2023.png  used on input line 482.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_app/cluster_map_2023.png, id=1768, 939.14865pt x 658.74104pt>
+<output_app/cluster_map_2023.png, id=1779, 939.14865pt x 658.74104pt>
 File: output_app/cluster_map_2023.png Graphic file (type png)
 <use output_app/cluster_map_2023.png>
 Package pdftex.def Info: output_app/cluster_map_2023.png  used on input line 486.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_app/cluster_biplot_2024.png, id=1769, 1606.0pt x 1606.0pt>
+<output_app/cluster_biplot_2024.png, id=1780, 1606.0pt x 1606.0pt>
 File: output_app/cluster_biplot_2024.png Graphic file (type png)
 <use output_app/cluster_biplot_2024.png>
 Package pdftex.def Info: output_app/cluster_biplot_2024.png  used on input line 496.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_app/cluster_map_2024.png, id=1770, 939.14865pt x 658.74104pt>
+<output_app/cluster_map_2024.png, id=1781, 939.14865pt x 658.74104pt>
 File: output_app/cluster_map_2024.png Graphic file (type png)
 <use output_app/cluster_map_2024.png>
 Package pdftex.def Info: output_app/cluster_map_2024.png  used on input line 500.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [68 <./output_app/cluster_biplot_2022.png> <./output_app/cluster_map_2022.png> <./output_app/cluster_biplot_2023.png> <./output_app/cluster_map_2023.png>]
+ [70 <./output_app/cluster_biplot_2022.png> <./output_app/cluster_map_2022.png> <./output_app/cluster_biplot_2023.png> <./output_app/cluster_map_2023.png>]
 Underfull \hbox (badness 1648) in paragraph at lines 509--510
 []\OT1/ptm/b/n/12 (+20) Klaster 2 --- [Nama La-bel, cth: Wilayah Berkem-bang]: \OT1/ptm/m/n/12 (+20) Ter-diri dari
  []
 
-(output_app/output_table_transition_matrix_sum_2020x2021.tex) (output_app/output_table_transition_matrix_name_2020x2021.tex [69 <./output_app/cluster_biplot_2024.png> <./output_app/cluster_map_2024.png>]) (output_app/output_table_transition_matrix_sum_2021x2022.tex) (output_app/output_table_transition_matrix_name_2021x2022.tex) [70] (output_app/output_table_transition_matrix_sum_2022x2023.tex) (output_app/output_table_transition_matrix_name_2022x2023.tex) (output_app/output_table_transition_matrix_sum_2023x2024.tex) (output_app/output_table_transition_matrix_name_2023x2024.tex [71])
-<output_app/dendrogram_compromise.png, id=1796, 1606.0pt x 1204.5pt>
+(output_app/output_table_transition_matrix_sum_2020x2021.tex) (output_app/output_table_transition_matrix_name_2020x2021.tex [71 <./output_app/cluster_biplot_2024.png> <./output_app/cluster_map_2024.png>]) (output_app/output_table_transition_matrix_sum_2021x2022.tex) (output_app/output_table_transition_matrix_name_2021x2022.tex) [72] (output_app/output_table_transition_matrix_sum_2022x2023.tex) (output_app/output_table_transition_matrix_name_2022x2023.tex) (output_app/output_table_transition_matrix_sum_2023x2024.tex) (output_app/output_table_transition_matrix_name_2023x2024.tex [73])
+<output_app/dendrogram_compromise.png, id=1806, 1606.0pt x 1204.5pt>
 File: output_app/dendrogram_compromise.png Graphic file (type png)
 <use output_app/dendrogram_compromise.png>
 Package pdftex.def Info: output_app/dendrogram_compromise.png  used on input line 550.
 (pdftex.def)             Requested size: 362.77525pt x 272.08517pt.
- [72]
+ [74]
 File: output_app/cluster_compromise_biplot.png Graphic file (type png)
 <use output_app/cluster_compromise_biplot.png>
 Package pdftex.def Info: output_app/cluster_compromise_biplot.png  used on input line 557.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [73 <./output_app/dendrogram_compromise.png>] (output_app/output_table_cluster_members.tex) [74] [75] (output_app/output_table_ipm_matrix_sum_2020x2021.tex
+ [75 <./output_app/dendrogram_compromise.png>] (output_app/output_table_cluster_members.tex) [76] [77] (output_app/output_table_ipm_matrix_sum_2020x2021.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1449,7 +1444,7 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_ipm_matrix_name_2021x2022.tex [76]) (output_app/output_table_ipm_matrix_sum_2022x2023.tex
+) (output_app/output_table_ipm_matrix_name_2021x2022.tex [78]) (output_app/output_table_ipm_matrix_sum_2022x2023.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1459,7 +1454,7 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_ipm_matrix_name_2022x2023.tex) [77] (output_app/output_table_ipm_matrix_sum_2023x2024.tex
+) (output_app/output_table_ipm_matrix_name_2022x2023.tex) [79] (output_app/output_table_ipm_matrix_sum_2023x2024.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1469,7 +1464,7 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_ipm_matrix_name_2023x2024.tex) [78] (output_app/output_table_cross_matrix_sum_2020.tex
+) (output_app/output_table_ipm_matrix_name_2023x2024.tex) [80] (output_app/output_table_cross_matrix_sum_2020.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1489,7 +1484,7 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_cross_matrix_name_2021.tex [79]) (output_app/output_table_cross_matrix_sum_2022.tex
+) (output_app/output_table_cross_matrix_name_2021.tex [81]) (output_app/output_table_cross_matrix_sum_2022.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1499,7 +1494,7 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_cross_matrix_name_2022.tex) [80] (output_app/output_table_cross_matrix_sum_2023.tex
+) (output_app/output_table_cross_matrix_name_2022.tex) [82] (output_app/output_table_cross_matrix_sum_2023.tex
 Underfull \hbox (badness 10000) in paragraph at lines 7--7
 |[]
  []
@@ -1519,52 +1514,58 @@ Overfull \hbox (7.45538pt too wide) in paragraph at lines 7--7
 []
  []
 
-) (output_app/output_table_cross_matrix_name_2024.tex [81]) [82] (output_app/output_moran.tex) [83] [84]) [85]
+) (output_app/output_table_cross_matrix_name_2024.tex [83]) [84] (output_app/output_moran.tex) [85] [86]) [87]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 \normalsize BAB 5.
-[86
-
-
-
-
-]) [87] (induk.bbl
-Underfull \hbox (badness 2293) in paragraph at lines 30--35
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20) In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--42
-\OT1/ptm/m/n/12 (+20) table / 3 / WkdVMWRYVnBkMnBvVEhKSVkyWXhNblZtTjJSbmR6MDkjMw = = /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 37--42
-\OT1/ptm/m/n/12 (+17) produk -[] domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
- []
-
 [88
 
 
 
-] [89]) [90]
+
+]) [89] (induk.bbl
+Underfull \hbox (badness 2293) in paragraph at lines 33--38
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20) In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--45
+\OT1/ptm/m/n/12 (+20) table / 3 / WkdVMWRYVnBkMnBvVEhKSVkyWXhNblZtTjJSbmR6MDkjMw = = /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 40--45
+\OT1/ptm/m/n/12 (+17) produk -[] domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
+ []
+
+[90
+
+
+
+] [91]
+Underfull \hbox (badness 10000) in paragraph at lines 153--160
+\OT1/ptm/m/n/12 (+20) on -[] mathematical -[] statistics -[] and -[] probability / volume -[] 1 / issue -[] 1 / Some -[] methods -[] for -[]
+ []
+
+[92]) [93]
 \openout2 = `lampiran1.aux'.
 
- (lampiran1.tex [91
+ (lampiran1.tex [94
 
 
-] [92] [93] [94] [95] [96] [97] [98] [99] [100] [101]) [102]
+] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104]) [105] [106
+
+
+
+
+]
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
 (Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 36.
- [103
-
-
-
-
+ [107
 
 
 ]
@@ -1576,12 +1577,12 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `pcr' (encoding: TS1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [104] [105] [106] [107] [108] [109] [110] [111] [112] [113] [114]
+ [108] [109] [110] [111] [112] [113] [114] [115] [116] [117] [118]
 Overfull \hbox (79.2136pt too wide) in paragraph at lines 590--591
 [][][][][][][][][][][][][][][][][][][][]  
  []
 
-[115]
+[119]
 Overfull \hbox (107.21408pt too wide) in paragraph at lines 664--666
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1591,12 +1592,12 @@ Overfull \hbox (11.2131pt too wide) in paragraph at lines 672--674
 [][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[116] [117] [118] [119]
+[120] [121] [122] [123]
 Overfull \hbox (37.21317pt too wide) in paragraph at lines 831--833
 [][][][][][][][][][][][][][][][][] 
  []
 
-[120] [121] [122] [123] [124] [125] [126] [127] [128]
+[124] [125] [126] [127] [128] [129] [130] [131] [132]
 Overfull \hbox (205.21487pt too wide) in paragraph at lines 1250--1251
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1606,7 +1607,7 @@ Overfull \hbox (49.21329pt too wide) in paragraph at lines 1250--1251
 [][][][][][][][][][][][][][][][][][][][][][][]  
  []
 
-[129] [130] [131]
+[133] [134] [135]
 Overfull \hbox (5.21304pt too wide) in paragraph at lines 1342--1343
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1631,17 +1632,17 @@ Overfull \hbox (5.21304pt too wide) in paragraph at lines 1366--1367
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[132]
+[136]
 Overfull \hbox (11.2131pt too wide) in paragraph at lines 1383--1384
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[133]
+[137]
 Overfull \hbox (23.21323pt too wide) in paragraph at lines 1431--1432
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[134]
+[138]
 Overfull \hbox (23.21323pt too wide) in paragraph at lines 1460--1461
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1651,12 +1652,12 @@ Overfull \hbox (23.21323pt too wide) in paragraph at lines 1464--1465
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[135]
+[139]
 Overfull \hbox (17.21317pt too wide) in paragraph at lines 1494--1495
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[136]
+[140]
 Overfull \hbox (35.21335pt too wide) in paragraph at lines 1499--1500
 [][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1666,17 +1667,17 @@ Overfull \hbox (5.21304pt too wide) in paragraph at lines 1512--1513
 [][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[137] [138] [139]
+[141] [142] [143]
 Overfull \hbox (25.21304pt too wide) in paragraph at lines 1637--1638
 [][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[140] [141] [142] [143] [144]
+[144] [145] [146] [147] [148]
 Overfull \hbox (1.2128pt too wide) in paragraph at lines 1835--1837
 [][][][][][][][][][][][][][]  
  []
 
-[145] [146] [147] [148] [149] [150] [151] [152] [153]
+[149] [150] [151] [152] [153] [154] [155] [156] [157]
 Overfull \hbox (1.2128pt too wide) in paragraph at lines 2199--2200
 [][][][][][][] 
  []
@@ -1691,17 +1692,17 @@ Overfull \hbox (19.21298pt too wide) in paragraph at lines 2207--2208
 [][][][][][] 
  []
 
-[154] [155] [156]
+[158] [159] [160]
 Overfull \hbox (19.21298pt too wide) in paragraph at lines 2368--2369
 [][][][][][][][][][][][][][][][][]  
  []
 
-[157]
+[161]
 Overfull \hbox (49.21329pt too wide) in paragraph at lines 2378--2379
 [][][][][][][][][][][][][][][][][]  
  []
 
-[158]
+[162]
 Overfull \hbox (61.21341pt too wide) in paragraph at lines 2435--2436
 [][][][][][][][][][][][][][][][][]  
  []
@@ -1711,7 +1712,7 @@ Overfull \hbox (61.21341pt too wide) in paragraph at lines 2437--2438
 [][][][][][][][][][][][][][][][][]  
  []
 
-[159]
+[163]
 Overfull \hbox (43.21323pt too wide) in paragraph at lines 2486--2487
 [][][][][][][][][][][][][][][][][]  
  []
@@ -1721,7 +1722,7 @@ Overfull \hbox (43.21323pt too wide) in paragraph at lines 2488--2489
 [][][][][][][][][][][][][][][][][]  
  []
 
-[160]
+[164]
 Overfull \hbox (139.2142pt too wide) in paragraph at lines 2524--2525
 [][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1731,22 +1732,22 @@ Overfull \hbox (145.21426pt too wide) in paragraph at lines 2525--2526
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[161]
+[165]
 Overfull \hbox (43.21323pt too wide) in paragraph at lines 2584--2585
 [][][][][][][][][][][][][][]  
  []
 
-[162]
+[166]
 Overfull \hbox (37.21317pt too wide) in paragraph at lines 2619--2620
 [][][][][][][][][][][][][][]  
  []
 
-[163] [164]
+[167] [168]
 Overfull \hbox (25.21304pt too wide) in paragraph at lines 2697--2698
 [][][][][][][][][][][][][][]  
  []
 
-[165] [166]
+[169] [170]
 Overfull \hbox (97.21378pt too wide) in paragraph at lines 2818--2819
 [][][][][][][][][][][][][][][][][][][][] 
  []
@@ -1756,7 +1757,7 @@ Overfull \hbox (103.21384pt too wide) in paragraph at lines 2819--2820
 [][][][][][][][][][][][][][][][][][][][] 
  []
 
-[167] [168]
+[171] [172]
 Overfull \hbox (55.21335pt too wide) in paragraph at lines 2905--2906
 [][][][][][][][][][][][][][][][] 
  []
@@ -1766,26 +1767,26 @@ Overfull \hbox (61.21341pt too wide) in paragraph at lines 2906--2907
 [][][][][][][][][][][][][][][][] 
  []
 
-[169]) [170] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (lampiran1.aux) (lampiran2.aux))
+[173]) [174] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (lampiran1.aux) (lampiran2.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `induk.out' has not changed.
-(rerunfilecheck)             Checksum: D8CE64F606E9AA5BE8CB5C44FEE5C918;23859.
+(rerunfilecheck)             Checksum: FD824A8A318AD81FE10895D253F5060C;23987.
  ) 
 Here is how much of TeX's memory you used:
- 37103 strings out of 467871
- 676354 string characters out of 5418376
- 1250157 words of memory out of 5000000
- 61140 multiletter control sequences out of 15000+600000
+ 37113 strings out of 467871
+ 676525 string characters out of 5418376
+ 1252157 words of memory out of 5000000
+ 61144 multiletter control sequences out of 15000+600000
  682464 words of font info for 390 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
  84i,18n,104p,1507b,2330s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrro8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (186 pages, 6341406 bytes).
+Output written on induk.pdf (190 pages, 6354360 bytes).
 PDF statistics:
- 6002 PDF objects out of 6186 (max. 8388607)
- 3491 named destinations out of 3580 (max. 500000)
+ 6033 PDF objects out of 6186 (max. 8388607)
+ 3497 named destinations out of 3580 (max. 500000)
  71348 words of extra memory for PDF output out of 74296 (max. 10000000)
 

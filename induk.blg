@@ -41,28 +41,28 @@ A level-1 auxiliary file: lampiran2.aux
 Database file #1: pustaka.bib
 You've used 31 entries,
             1975 wiz_defined-function locations,
-            717 strings with 9645 characters,
-and the built_in function-call counts, 11382 in all, are:
-= -- 1165
+            722 strings with 10216 characters,
+and the built_in function-call counts, 11477 in all, are:
+= -- 1180
 > -- 349
 < -- 28
 + -- 121
 - -- 110
-* -- 904
-:= -- 1977
+* -- 914
+:= -- 1992
 add.period$ -- 95
 call.type$ -- 31
 change.case$ -- 205
 chr.to.int$ -- 30
 cite$ -- 31
-duplicate$ -- 461
-empty$ -- 815
+duplicate$ -- 466
+empty$ -- 825
 format.name$ -- 153
-if$ -- 2288
+if$ -- 2313
 int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 88
-newline$ -- 186
+newline$ -- 191
 num.names$ -- 93
 pop$ -- 153
 preamble$ -- 1
@@ -79,4 +79,4 @@ type$ -- 172
 warning$ -- 0
 while$ -- 92
 width$ -- 0
-write$ -- 453
+write$ -- 463
