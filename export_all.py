@@ -375,17 +375,32 @@ p1 = vecs_R_sorted[:, 0]
 if p1.sum() < 0: p1 = -p1
 alphas = p1 / p1.sum()
 
-# Matriks Kompromi Wc
-Wc = np.zeros_like(Ws[0])
-for a, W in zip(alphas, Ws):
-    Wc += a * W
+# Matriks Kompromi Wc (Objek) dan Sc (Variabel)
+Wc = np.zeros((len(obs_labels), len(obs_labels)))
+Sc = np.zeros((len(selected_vars), len(selected_vars)))
 
-# Dekomposisi
-U, S_vals, Vt = np.linalg.svd(Wc)
-eig_vals_c = S_vals
-eig_vecs_c = U
-idxc = np.argsort(eig_vals_c)[::-1]
-eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]
+for a, arr_std in zip(alphas, X_matrices):
+    Wc += a * (arr_std @ arr_std.T)
+    Sc += a * (arr_std.T @ arr_std)
+
+# Dekomposisi Wc (Objek Space)
+U_w, S_w, Vt_w = np.linalg.svd(Wc)
+eig_vals_c = S_w
+eig_vecs_c = U_w
+idxc_w = np.argsort(eig_vals_c)[::-1]
+eig_vals_c, eig_vecs_c = eig_vals_c[idxc_w], eig_vecs_c[:, idxc_w]
+
+# Dekomposisi Sc (Variable Space) - Menghasilkan Vc
+U_s, S_s, Vt_s = np.linalg.svd(Sc)
+# Vc adalah matriks vektor eigen (U_s)
+# Gunakan 2 komponen pertama untuk ilustrasi di Bab 3
+Vc = U_s[:, :2]
+
+# Pastikan tanda (sign) konsisten atau sesuai dengan yang diinginkan user
+# User meminta: [-0.568, 0.600], [-0.680, 0.043], [-0.464, -0.799]
+# Jika hasil SVD terbalik, kita balikkan tandanya
+if Vc[0, 0] > 0: Vc[:, 0] = -Vc[:, 0]
+if Vc[0, 1] < 0: Vc[:, 1] = -Vc[:, 1]
 
 sq2 = np.sqrt(np.clip(eig_vals_c[:2], 0, None))
 scores_raw = eig_vecs_c[:, :2] * sq2
@@ -468,6 +483,12 @@ df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1', 'PC2'])
 df_fc.index.name = 'Kabupaten/Kota'
 df_fc = df_fc.reset_index()
 save_tex_table(df_fc, "output_table_scores.tex", "Koordinat Skor Kompromi (Fc)", "scores", longtable=False, float_fmt="{:.4f}")
+
+# Vc (Eigenvectors Variable) - Untuk BAB 3
+df_vc = pd.DataFrame(Vc, index=selected_vars, columns=['Comp 1', 'Comp 2'])
+df_vc.index.name = 'Variabel'
+df_vc = df_vc.reset_index()
+save_tex_table(df_vc, "output_table_vc.tex", "Matriks Vektor Eigen Kompromi (Vc)", "vc", float_fmt="{:.4f}")
 
 # Statistika Deskriptif per tahun
 print("\n=== 3b. Tabel Statistika Deskriptif ===")

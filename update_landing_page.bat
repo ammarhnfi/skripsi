@@ -7,6 +7,25 @@ echo        OTO-UPDATE TOTAL LANDING PAGE KE VERCEL (AMMAR HANAFI)
 echo ========================================================================
 echo.
 
+echo [LANGKAH 0] Memproses Data Terkini (export_all.py)...
+python "d:\Skripsi\my\export_all.py"
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Gagal memproses data dengan export_all.py.
+    pause
+    exit /b %ERRORLEVEL%
+)
+echo -- Data Berhasil diproses! --
+echo.
+
+echo [LANGKAH 0.5] Sinkronisasi Data Web (generate_exports.py)...
+pushd "d:\Skripsi\my\web\skripsi"
+python generate_exports.py
+popd
+if %ERRORLEVEL% NEQ 0 (
+    echo [WARNING] Gagal menjalankan generate_exports.py. Melanjutkan...
+)
+echo.
+
 echo [LANGKAH 1] Sinkronisasi PDF Skripsi...
 copy /Y "d:\Skripsi\my\induk.pdf" "d:\Skripsi\my\landing-page\public\skrp_doc_vault_9x.dat"
 if %ERRORLEVEL% NEQ 0 (

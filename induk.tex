@@ -27,7 +27,8 @@
 \usepackage{tocloft}
 %\usepackage{multirow} % Membuat banyak baris dalam 1 baris di tabel
 %\usepackage{colortbl} % Membuat tabel berwarna-warni.
-\usepackage{caption}
+\usepackage[justification=centering]{caption}
+\usepackage{diagbox}
 \usepackage{times}
 \usepackage{multirow}
 \usepackage{subfig}
@@ -319,11 +320,11 @@
 \bibliography{pustaka} % Tambahkan pustaka yang digunakan mahasiswa dalam file pustaka.bib. Perhatikan format penulisan pustakanya!
 
 % Lampiran (jika ada)
-\appendix
-\include{lampiran1}
-\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal lampiran II berhalaman ganjil
+%\appendix
+%\include{lampiran1}
+%\clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal lampiran II berhalaman ganjil
 
-\include{lampiran2}
-\clearpage{\thispagestyle{empty}\cleardoublepage} % agar akhir lampiran berhalaman ganjil
+%\include{lampiran2}
+%\clearpage{\thispagestyle{empty}\cleardoublepage} % agar akhir lampiran berhalaman ganjil
 
 \end{document}

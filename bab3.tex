@@ -4,12 +4,24 @@ Bab ini berisi uraian mengenai tahapan-tahapan yang ditempuh dalam pelaksanaan p
 
 %-----------------------------------------------------------------------------%
 % --- 3.1 ---
-\section{\normalsize Jenis Penelitian}
+\section{\normalsize Statistika Deskriptif}
 %-----------------------------------------------------------------------------%
-Penelitian ini menggunakan pendekatan \textbf{kuantitatif} dengan jenis penelitian \textbf{dekriptif-eksplanatori}. Secara khusus, penelitian ini memanfaatkan teknik analisis multivariat lanjut (analisis tiga-arah) untuk mengeksplorasi struktur data panel indikator pembangunan manusia di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pendekatan ini dipilih karena data yang diolah berupa angka-angka statistik yang diperoleh secara sekunder dan akan dianalisis secara objektif menggunakan algoritma statistika untuk menarik kesimpulan mengenai stabilitas dan dinamika wilayah.
+Analisis diawali dengan ringkasan statistik untuk memberikan gambaran umum mengenai distribusi data 12 indikator kesejahteraan rakyat di 41 kabupaten/kota selama periode 2020--2024. Prosedur ini melibatkan penghitungan ukuran pemusatan dan penyebaran sebagaimana didefinisikan pada Bab 2, meliputi:
+\begin{enumerate}
+    \item \textbf{Rata-rata ($\bar{x}$):} Digunakan untuk melihat level umum pencapaian indikator (merujuk Persamaan \ref{eq:mean}).
+    \item \textbf{Simpangan Baku ($s$):} Untuk mengukur tingkat kesenjangan atau variabilitas data antar wilayah (merujuk Persamaan \ref{eq:std_dev}).
+    \item \textbf{Nilai Minimum dan Maksimum:} Untuk mengidentifikasi rentang sebaran data dan wilayah dengan performa ekstrim (merujuk Persamaan \ref{eq:minmax}).
+    \item \textbf{Koefisien Variasi ($CV$):} Digunakan untuk membandingkan tingkat keragaman antar-indikator yang memiliki skala berbeda (merujuk Persamaan \ref{eq:cv}).
+\end{enumerate}
 
 %-----------------------------------------------------------------------------%
 % --- 3.2 ---
+\section{\normalsize Jenis Penelitian}
+%-----------------------------------------------------------------------------%
+Penelitian ini menggunakan pendekatan \textbf{kuantitatif} dengan jenis penelitian \textbf{dekriptif-eksplanatori}. Secara khusus, penelitian ini memanfaatkan teknik analisis multivariat lanjut (analisis tiga-arah) untuk mengeksplorasi struktur data panel indikator pembangunan manusia di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pendekatan ini dipilih karena data yang diolah berupa angka-angka statistik yang diperoleh secara sekunder dan akan dianalisis secara objektif menggunakan algoritma \textit{STATIS}, \textit{K-Means clustering}, dan analisis autokorelasi spasial untuk menarik kesimpulan mengenai stabilitas dan dinamika wilayah.
+
+%-----------------------------------------------------------------------------%
+% --- 3.3 ---
 \section{\normalsize Desain Penelitian}
 %-----------------------------------------------------------------------------%
 Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data spasio-temporal. Tahapan penelitian dimulai dari input data, pra-pemrosesan, hingga pembentukan hasil akhir berupa visualisasi interaktif. Rancangan jalannya penelitian secara sistematis ditunjukkan pada Gambar \ref{fig:flowchart-penelitian} berikut.
@@ -80,7 +92,7 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 \end{figure}
 
 %-----------------------------------------------------------------------------%
-% --- 3.3 ---
+% --- 3.4 ---
 \section{\normalsize Populasi dan Sampel}
 %-----------------------------------------------------------------------------%
 Populasi dalam penelitian ini adalah seluruh wilayah administratif setingkat kabupaten dan kota di Pulau Jawa. Namun, mengingat ketersediaan data dan fokus analisis pada wilayah metropolitan yang terintegrasi, sampel yang digunakan adalah:
@@ -91,14 +103,14 @@ Populasi dalam penelitian ini adalah seluruh wilayah administratif setingkat kab
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
-% --- 3.4 ---
+% --- 3.5 ---
 \section{\normalsize Teknik Pengumpulan Data}
 %-----------------------------------------------------------------------------%
 Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi dokumentasi pada publikasi resmi Badan Pusat Statistik (BPS).
 \begin{enumerate}
     \item \textbf{Sumber Data:} Website resmi BPS Pusat dan BPS Provinsi (Banten, DKI Jakarta, Jawa Barat) melalui portal Open Data atau publikasi "Provinsi Dalam Angka".
     \item \textbf{Metode Pengumpulan:} Melalui pengunduhan berkas metadata dan tabel statistik dalam format \textit{spreadsheet} (.xlsx dan .csv).
-    \item \textbf{Definisi Operasional Variabel:} Agar setiap indikator dapat diinterpretasikan secara konsisten, berikut adalah 11 variabel utama yang digunakan:
+    \item \textbf{Definisi Operasional Variabel:} Agar setiap indikator dapat diinterpretasikan secara konsisten, berikut adalah 12 variabel utama yang dikumpulkan:
     \begin{itemize}
         \item \textbf{IPM:} Indeks Pembangunan Manusia (0--100).
         \item \textbf{PDRB:} Produk Domestik Regional Bruto ADHK 2010 (Juta Rupiah).
@@ -108,88 +120,70 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
         \item \textbf{TPT:} Tingkat Pengangguran Terbuka (\%).
         \item \textbf{TPAK:} Tingkat Partisipasi Angkatan Kerja (\%).
         \item \textbf{RLS:} Rata-rata Lama Sekolah (Tahun).
-        \item \textbf{AHH L/P:} Angka Harapan Hidup (Tahun).
+        \item \textbf{AHH L:} Angka Harapan Hidup Laki-laki (Tahun).
+        \item \textbf{AHH P:} Angka Harapan Hidup Perempuan (Tahun).
         \item \textbf{IPG:} Indeks Pembangunan Gender (0--100).
         \item \textbf{Gini Ratio:} Indeks ketimpangan pengeluaran (0--1).
     \end{itemize}
-\end{enumerate}
-
-%-----------------------------------------------------------------------------%
-% --- 3.5 ---
-\section{\normalsize Validasi Instrumen}
-%-----------------------------------------------------------------------------%
-Karena data yang digunakan berasal dari lembaga resmi negara (BPS) yang telah memiliki protokol sensus dan survei (seperti Susenas dan Sakernas) yang terstandardisasi, validitas dan reliabilitas instrumen pengumpulan data primer dianggap sudah terpenuhi. Namun, pada tahap penelitian ini dilakukan \textbf{validasi data sekunder} melalui:
-\begin{enumerate}
-    \item \textbf{Penyelarasan Metadata:} Memastikan definisi operasional variabel tetap konsisten di seluruh provinsi dan tahun.
-    \item \textbf{Pembersihan Data (\textit{Data Cleaning}):} Melakukan pemeriksaan terhadap anomali atau nilai yang hilang (\textit{missing values}). Wilayah atau variabel yang memiliki data tidak lengkap dikeluarkan untuk menjaga integritas matriks tiga-arah.
-    \item \textbf{Standardisasi $Z$-score:} Untuk memvalidasi bahwa setiap variabel dapat diperbandingkan tanpa dipengaruhi oleh perbedaan satuan (skala), diterapkan transformasi:
-    \begin{equation}
-        z_{ijt} = \frac{x_{ijt} - \bar{x}_{jt}}{s_{jt}}
-    \end{equation}
-\end{enumerate}
-
-Untuk memastikan data layak dianalisis secara multivariat, dilakukan pengujian berikut:
-\begin{enumerate}
-    \item \textbf{Indeks Kaiser-Meyer-Olkin (KMO):} Mengukur tingkat kecukupan sampel dengan rumus:
-    \begin{equation}
-        KMO = \frac{\sum \sum_{j \neq k} r_{jk}^2}{\sum \sum_{j \neq k} r_{jk}^2 + \sum \sum_{j \neq k} a_{jk}^2}
-    \end{equation}
-    dengan $r_{jk}$ adalah koefisien korelasi sederhana dan $a_{jk}$ adalah koefisien korelasi parsial. Nilai $KMO > 0,5$ menunjukkan data layak dianalisis.
-    
-    \item \textbf{Uji Bartlett’s Test of Sphericity:} Menguji apakah matriks korelasi merupakan matriks identitas melalui statistik uji:
-    \begin{equation}
-        \chi^2 = -\left( n - 1 - \frac{2p + 5}{6} \right) \ln |R|
-    \end{equation}
-    dengan $n$ adalah jumlah sampel, $p$ jumlah variabel, dan $|R|$ adalah determinan matriks korelasi. Jika $p\text{-value} < 0,05$, maka terdapat korelasi antar variabel yang signifikan.
+    Sebagai catatan khusus, dalam proses pembentukan klaster melalui algoritma STATIS dan K-Means, variabel \textbf{IPM tidak dilibatkan sebagai input}. Hal ini dilakukan agar klaster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 indikator fundamental lainnya, sehingga status IPM nantinya dapat digunakan sebagai pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi klaster tersebut terhadap standar UNDP.
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
 % --- 3.6 ---
+\section{\normalsize Validasi Instrumen}
+%-----------------------------------------------------------------------------%
+Karena data yang digunakan berasal dari lembaga resmi negara (BPS) yang telah memiliki protokol sensus dan survei (seperti Susenas dan Sakernas) yang terstandardisasi, validitas dan reliabilitas instrumen pengumpulan data primer dianggap sudah terpenuhi. Namun, pada tahap penelitian ini dilakukan \textbf{validasi data sekunder} melalui:
+\begin{enumerate}
+    \item \textbf{Penyelarasan Metadata:} Memastikan definisi operasional variabel tetap konsisten di seluruh provinsi dan tahun pengamatan.
+    \item \textbf{Pembersihan Data (\textit{Data Cleaning}):} Melakukan pemeriksaan terhadap anomali atau nilai yang hilang (\textit{missing values}). Wilayah atau variabel yang memiliki data tidak lengkap dikeluarkan untuk menjaga integritas matriks tiga-arah.
+    \item \textbf{Standardisasi $Z$-score:} Mengingat indikator yang digunakan memiliki satuan yang beragam (persen, rupiah, tahun), dilakukan transformasi $Z$-score agar setiap variabel dapat diperbandingkan secara adil. Prosedur ini mengikuti Persamaan \ref{eq:standardization} yang diterapkan pada setiap tabel situasi $t$, sehingga setiap variabel pada setiap tahun memiliki rata-rata nol dan simpangan baku satu.
+\end{enumerate}
+
+Untuk memastikan data layak dianalisis secara multivariat, dilakukan serangkaian pengujian kecukupan sampling dan korelasi pada setiap periode pengamatan:
+\begin{enumerate}
+    \item \textbf{Indeks Kaiser-Meyer-Olkin (KMO):} Pengujian ini dilakukan untuk menilai kecukupan sampel (\textit{sampling adequacy}) dari 11 indikator pembangunan yang digunakan. Perhitungan KMO merujuk pada rasio korelasi sederhana dan korelasi parsial sesuai Persamaan \ref{eq:kmo}. Dalam penelitian ini, nilai KMO di atas 0,50 menjadi syarat mutlak agar himpunan variabel tersebut dianggap memiliki informasi bersama yang cukup untuk diringkas melalui analisis dimensi tiga-arah.
+    
+    \item \textbf{Uji Bartlett’s Test of Sphericity:} Uji ini digunakan untuk memverifikasi adanya struktur korelasi yang signifikan antar variabel (menguji hipotesis bahwa matriks korelasi bukan matriks identitas). Statistik uji $\chi^2$ dihitung berdasarkan determinan matriks korelasi sebagaimana didefinisikan pada Persamaan \ref{eq:bartlett}. Jika $p\text{-value} < 0,05$, maka indikator-indikator tersebut dikonfirmasi memiliki hubungan interdependensi yang kuat, sehingga valid untuk diproses lebih lanjut menggunakan metode STATIS guna mengekstraksi struktur kompromi lintas waktu.
+\end{enumerate}
+
+%-----------------------------------------------------------------------------%
+% --- 3.7 ---
 \section{\normalsize Teknik Analisis Data}
 %-----------------------------------------------------------------------------%
-Teknik analisis data mengacu pada algoritma STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk mengolah data panel serta analisis autokorelasi spasial. 
+Teknik analisis data mengacu pada algoritma STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk mengelola kompleksitas data tiga-arah serta analisis autokorelasi spasial. Agar tidak terjadi kerancuan persepsi, penelitian ini membedakan dua konsep "tiga-arah" yang saling berkaitan:
+\begin{itemize}
+    \item \textbf{Struktur Data Tiga-Arah (\textit{Input Cube}):} Merupakan struktur data mentah yang dianalisis, yang terdiri dari 41 Kabupaten/Kota sebagai objek ($N$), 11 Indikator Pembangunan sebagai variabel ($P$), dan 5 tahun pengamatan sebagai situasi waktu ($T$). Seluruh pengujian awal (KMO dan Bartlett) dilakukan pada dimensi variabel ($P$) ini.
+    \item \textbf{Visualisasi Dinamis (\textit{Output Trajectory}):} Merupakan hasil reduksi dimensi oleh STATIS, di mana 11 indikator asli diringkas menjadi 2 Komponen Utama (PC1 dan PC2), sementara dimensi tahun ($T$) direpresentasikan melalui pergerakan atau lintasan wilayah di dalam ruang PC1 dan PC2 tersebut. 
+\end{itemize}
+Dengan demikian, algoritma STATIS bekerja untuk menyatukan struktur data tiga-arah tersebut menjadi satu representasi kompromi yang kemudian divisualisasikan secara dinamis lintas waktu menggunakan \textit{Dynamic Biplot}. \subsection{\normalsize Ilustrasi Berbasis Data Sampel} \label{subsec:ilustrasi_statis}
+Sebelum menguraikan seluruh langkah algoritma secara teoritis, berikut disajikan ilustrasi perhitungan menggunakan data sampel dari dataset sebenarnya yang mencakup 4 wilayah dan 3 variabel pada rentang tahun 2020--2022. Ilustrasi ini bertujuan untuk memperjelas jalannya rumus-rumus statistika yang digunakan.
 
-\subsection{\normalsize Ilustrasi Berbasis Data Sampel}
-Sebelum menguraikan seluruh langkah algoritma secara teoritis, berikut disajikan ilustrasi perhitungan menggunakan data sampel dari file \texttt{data2\_sample.xlsx} yang mencakup 4 wilayah dan 3 variabel pada tahun 2020. Ilustrasi ini bertujuan untuk memperjelas jalannya rumus-rumus statistika yang digunakan.
-
-\textbf{1. Data Mentah (Tahun 2020):}
-Misalkan kita memiliki 4 wilayah: (A) Jakarta Pusat, (B) Bandung Barat, (C) Tasikmalaya, dan (D) Cilegon dengan 3 indikator (PPM, RLS, TPT).
+\textbf{1. Data Mentah ($\mathbf{X}_t$):}
+Berdasarkan sampel data, terdapat 4 wilayah: (A) Jakarta Pusat, (B) Bandung Barat, (C) Tasikmalaya, dan (D) Cilegon dengan 3 indikator (PPM, RLS, TPT) pada rentang 2020--2022:
+{\small
 \[
-\mathbf{X}_{2020} = 
-\begin{pmatrix}
-4,51 & 11,38 & 10,97 \\
-10,49 & 8,19 & 12,25 \\
-12,97 & 9,33 & 7,99 \\
-3,69 & 9,87 & 12,69
-\end{pmatrix}
+\begin{gathered}
+\mathbf{X}_{2020} = \begin{pmatrix} 4,51 & 11,38 & 10,97 \\ 10,49 & 8,19 & 12,25 \\ 12,97 & 9,33 & 7,99 \\ 3,69 & 9,87 & 12,69 \end{pmatrix}, \quad
+\mathbf{X}_{2021} = \begin{pmatrix} 4,94 & 11,39 & 7,75 \\ 11,30 & 8,20 & 11,65 \\ 13,13 & 9,52 & 7,66 \\ 4,24 & 10,08 & 10,13 \end{pmatrix}, \\
+\mathbf{X}_{2022} = \begin{pmatrix} 4,90 & 11,53 & 5,88 \\ 10,82 & 8,22 & 9,63 \\ 12,72 & 9,53 & 6,62 \\ 3,64 & 10,34 & 8,10 \end{pmatrix}
+\end{gathered}
 \]
+}
 
-\textbf{2. Standardisasi $Z$-score:}
-Setelah dihitung rata-rata dan simpangan bakunya, diperoleh matriks standar $\mathbf{Z}_{2020}$ sebagai berikut:
+\textbf{2. Standardisasi $Z$-score ($\mathbf{Z}_t$):}
+Berdasarkan rumus rata-rata (Persamaan \ref{eq:mean}) dan simpangan baku (Persamaan \ref{eq:std_dev}), setiap matriks $\mathbf{X}_t$ disalin menjadi matriks standar $\mathbf{Z}_t$ untuk menghilangkan perbedaan satuan:
+{\small
 \[
-\mathbf{Z}_{2020} = 
-\begin{pmatrix}
--0.87 & 1.47 & 0.00 \\
-0.66 & -1.31 & 0.69 \\
-1.29 & -0.32 & -1.63 \\
--1.08 & 0.15 & 0.93
-\end{pmatrix}
+\begin{gathered}
+\mathbf{Z}_{2020} = \begin{pmatrix} -0,75 & 1,28 & -0,00 \\ 0,57 & -1,14 & 0,60 \\ 1,12 & -0,28 & -1,40 \\ -0,94 & 0,14 & 0,80 \end{pmatrix}, \quad
+\mathbf{Z}_{2021} = \begin{pmatrix} -0,78 & 1,21 & -0,75 \\ 0,60 & -1,23 & 1,06 \\ 1,01 & -0,22 & -0,79 \\ -0,83 & 0,24 & 0,48 \end{pmatrix}, \\
+\mathbf{Z}_{2022} = \begin{pmatrix} -0,74 & 1,17 & -1,06 \\ 0,61 & -1,15 & 1,18 \\ 1,04 & -0,21 & -0,61 \\ -0,92 & 0,18 & 0,49 \end{pmatrix}
+\end{gathered}
 \]
+}
 
-\textbf{3. Matriks Intra-struktur ($\mathbf{W}_t$):}
-Matriks kemiripan diperoleh dari $\mathbf{W} = \mathbf{Z}\mathbf{Z}^T$ yang menunjukkan kaitan antar-wilayah:
-\[
-\mathbf{W}_{2020} = 
-\begin{pmatrix}
-2,91 & -2,50 & -1,58 & 1,16 \\
--2,50 & 2,63 & 0,13 & -0,26 \\
--1,58 & 0,13 & 4,40 & -2,95 \\
-1,16 & -0,26 & -2,95 & 2,06
-\end{pmatrix}
-\]
-
-\textbf{4. Matriks Inter-struktur ($R$) dan Bobot ($\alpha$):}
-Dengan membandingkan matriks $\mathbf{W}$ untuk tahun 2020, 2021, dan 2022 menggunakan koefisien RV, diperoleh matriks korelasi vektoriel:
+\textbf{3. Matriks Inter-struktur ($\mathbf{R}$) dan Vektor Bobot ($\alpha$):}
+Hubungan antar-tahun dihitung menggunakan koefisien RV (Persamaan \ref{eq:rv}). Berdasarkan dekomposisi nilai eigen pada matriks $\mathbf{R}$ di atas sesuai \ref{eq:r_alpha} pada Bab 2, diperoleh vektor eigen utama yang kemudian dinormalisasi menjadi bobot $\alpha$ bagi masing-masing tahun. Bobot $\alpha$ terbesar menunjukkan tahun yang paling representatif terhadap struktur rata-rata (kompromi):
 \[
 \mathbf{R} = 
 \begin{pmatrix}
@@ -197,16 +191,28 @@ Dengan membandingkan matriks $\mathbf{W}$ untuk tahun 2020, 2021, dan 2022 mengg
 0,894 & 1,000 & 0,993 \\
 0,872 & 0,993 & 1,000
 \end{pmatrix}
-\quad \to \quad
-\alpha = 
+\implies \alpha = 
 \begin{pmatrix}
 0,561 \\ 0,587 \\ 0,583
 \end{pmatrix}
 \]
-Bobot $\alpha$ terbesar menunjukkan tahun yang paling representatif terhadap struktur rata-rata (kompromi).
 
-\textbf{5. Matriks Skor Kompromi ($\mathbf{F}_c$):}
-Melalui dekomposisi nilai singular (SVD) pada matriks kompromi $\mathbf{W}_c = \sum \alpha_t \mathbf{W}_t$, diperoleh koordinat wilayah pada ruang dua dimensi:
+\textbf{4. Matriks Kompromi dan Perspektif Ganda ($W_c$ vs $S_c$):}
+Langkah krusial dalam STATIS adalah pembentukan struktur kompromi. Terdapat dua cara pandang (\textit{Dual Perspective}) yang menghasilkan informasi berbeda namun matematis konsisten:
+\begin{itemize}
+    \item \textbf{Ruang Objek/Wilayah ($\mathbf{W}_c$):} Dibentuk dari rata-rata tertimbang matriks kaitan antar-wilayah $\mathbf{W}_t = \mathbf{Z}_t \mathbf{Z}_t^T$ (Persamaan \ref{eq:wc}). Digunakan untuk mengekstraksi skor wilayah.
+    \item \textbf{Ruang Variabel/Indikator ($\mathbf{S}_c$):} Dibentuk dari rata-rata tertimbang matriks kaitan antar-variabel $\mathbf{S}_t = \mathbf{Z}_t^T \mathbf{Z}_t$ (Persamaan \ref{eq:sc}). Digunakan untuk mengekstraksi bobot variabel ($\mathbf{V}_c$).
+\end{itemize}
+
+\textbf{5. Matriks Pembobot Variabel ($\mathbf{V}_c$):}
+Berdasarkan dekomposisi nilai singular (SVD) atau dekomposisi spektral pada matriks $\mathbf{S}_c$ yang merupakan akumulasi kaitan variabel di seluruh tahun, diperoleh matriks vektor eigen $\mathbf{V}_c$:
+\[
+\mathbf{V}_c = \begin{pmatrix} -0,568 & 0,600 \\ -0,680 & 0,043 \\ -0,464 & -0,799 \end{pmatrix}
+\]
+Matriks ini menunjukkan kontribusi relatif setiap indikator terhadap pembentukan dimensi kompromi. Sebagai contoh, nilai $-0,680$ pada baris kedua PC1 menunjukkan bahwa indikator RLS memberikan kontribusi negatif yang kuat pada dimensi pertama.
+
+\textbf{6. Matriks Skor Kompromi ($\mathbf{F}_c$):}
+Melalui dekomposisi nilai singular (SVD) pada matriks kompromi objek $\mathbf{W}_c$ (atau proyeksi $\mathbf{W}_c \mathbf{V}_c$), diperoleh koordinat wilayah pada ruang dua dimensi (PC1 dan PC2):
 \[
 \mathbf{F}_c = 
 \begin{pmatrix}
@@ -219,73 +225,81 @@ Melalui dekomposisi nilai singular (SVD) pada matriks kompromi $\mathbf{W}_c = \
 Koordinat inilah yang dipetakan sebagai titik-titik fundamental dalam biplot.
 
 \subsection{\normalsize Algoritma STATIS Lengkap}
-Setelah memahami ilustrasi di atas, prosedur sistematis yang diterapkan pada dataset utama adalah:
+Setelah memahami ilustrasi di atas, prosedur sistematis yang diterapkan pada dataset utama (41 Kabupaten/Kota, 11 Indikator, 5 Tahun) adalah sebagai berikut:
+
 \begin{enumerate}
-    \item \textbf{Analisis Inter-struktur (Koefisien RV):} Mengukur kemiripan struktur antar-tahun $t$ dan $t'$ menggunakan rumus:
-    \begin{equation}
-        RV(\mathbf{W}_t, \mathbf{W}_{t'}) = \frac{\text{tr}(\mathbf{W}_t^T \mathbf{W}_{t'})}{\sqrt{\text{tr}(\mathbf{W}_t^T \mathbf{W}_t) \text{tr}(\mathbf{W}_{t'}^T \mathbf{W}_{t'})}}
-    \end{equation}
-    Keanggotaan matriks RV membentuk matriks korelasi $\mathbf{R}$ yang kemudian dicari nilai eigen utamanya ($\lambda$) melalui persamaan:
-    \begin{equation}
-        \mathbf{R}\boldsymbol{\alpha} = \lambda \boldsymbol{\alpha}
-    \end{equation}
-    dengan $\boldsymbol{\alpha} = (\alpha_1, \dots, \alpha_T)^T$ adalah vektor bobot optimal yang dinormalisasi ($\sum \alpha_t^2 = 1$).
+    \item \textbf{Pra-pemrosesan:} Melakukan standardisasi $Z$-score (Persamaan \ref{eq:standardization}) dan uji kelayakan (KMO dan Bartlett) merujuk pada Tabel \ref{tab:kmo-interpretation} dan Persamaan \ref{eq:kmo} serta \ref{eq:bartlett}.
+    
+    \item \textbf{Analisis Inter-struktur:} Mengukur kemiripan antar tabel situasi menggunakan koefisien RV (Persamaan \ref{eq:rv}). Elemen koefisien ini membentuk matriks korelasi inter-struktur $\mathbf{R}$ yang kemudian didekomposisi atau diturunkan nilai eigen dan vektornya (Persamaan \ref{eq:r_alpha}) untuk mendapatkan vektor bobot optimal $\boldsymbol{\alpha}$. Langkah ini memastikan tahun yang memiliki pola data menyimpang diberikan bobot yang lebih kecil dalam pembentukan kompromi.
 
-    \item \textbf{Dekomposisi Struktur Kompromi (SVD):} Matriks kompromi $\mathbf{W}_c = \sum \alpha_t \mathbf{W}_t$ didekomposisi secara spektral:
-    \begin{equation}
-        \mathbf{W}_c = \mathbf{V} \mathbf{\Lambda} \mathbf{V}^T
-    \end{equation}
-    Skor koordinat wilayah (skor kompromi) diperoleh melalui $\mathbf{F}_c = \mathbf{V} \mathbf{\Lambda}^{1/2}$.
+    \item \textbf{Sintesis Kompromi (Perspektif Ganda):}
+    \begin{itemize}
+        \item Menghitung matriks kompromi objek $\mathbf{W}_c = \sum_{t=1}^T \alpha_t \mathbf{W}_t$ (Persamaan \ref{eq:wc}).
+        \item Menghitung matriks kompromi variabel $\mathbf{S}_c = \sum_{t=1}^T \alpha_t \mathbf{S}_t$ (Persamaan \ref{eq:sc}).
+    \end{itemize}
+    Dualitas ini menjamin bahwa struktur yang diperoleh dari sisi wilayah konsisten dengan struktur dari sisi indikator.
 
-    \item \textbf{Uji Stabilitas (Permutasi):} Kekuatan struktur kompromi divalidasi dengan membandingkan nilai $\lambda$ asli terhadap distribusi $\lambda$ hasil pengacakan (\textit{permutation test}) sebanyak 1000 kali.
+    \item \textbf{Dekomposisi Nilai Singular (SVD):}
+    \begin{itemize}
+        \item Melakukan dekomposisi pada $\mathbf{W}_c$ untuk mendapatkan matriks skor kompromi $\mathbf{F}_c$ (Persamaan \ref{eq:fc}) yang berfungsi sebagai koordinat fundamental (ruang dasar) bagi seluruh objek penelitian.
+        \item Melakukan dekomposisi pada $\mathbf{S}_c$ untuk mendapatkan matriks pembobot variabel $\mathbf{V}_c$ (Persamaan \ref{eq:vc}).
+    \end{itemize}
+
+    \item \textbf{Uji Stabilitas (Permutasi):} Validasi signifikansi struktur kompromi dilakukan dengan membandingkan nilai $\lambda$ matriks asli terhadap distribusi empiris $\lambda$ hasil pengacakan uji permutasi (\textit{permutation test}) sebanyak 1000 iterasi (Persamaan \ref{eq:permutation}) untuk memastikan pola yang ditemukan bukan merupakan kebetulan statistik.
 \end{enumerate}
 
 \subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
-Sejalan dengan hasil pengelompokan (klastering K-Means) pada skor kompromi, dilakukan pengujian untuk mendeteksi apakah terdapat ketergantungan spasial menggunakan rumus:
+Sejalan dengan hasil pengelompokan pada skor kompromi, dilakukan pengujian untuk mendeteksi apakah terdapat ketergantungan spasial secara keseluruhan. Pengujian ini merujuk pada koefisien Global Moran's $I$ sebagaimana didefinisikan pada Persamaan \ref{eq:moran_i} di Bab 2.
+
+Signifikansi statistik $I$ kemudian dievaluasi menggunakan pendekatan parametrik (skor-$Z$) dengan bantuan nilai harapan $E(I)$ dan varians $Var(I)$ untuk menguji hipotesis keberadaan autokorelasi:
 \begin{equation}
-    I = \frac{N}{\sum_i \sum_j w_{ij}} \frac{\sum_i \sum_j w_{ij} (x_i - \bar{x})(x_j - \bar{x})}{\sum_i (x_i - \bar{x})^2}
-\end{equation}
-dengan $w_{ij}$ adalah matriks pembobot spasial berbasis \textit{Queen Contiguity}. Signifikansi statistik $I$ diuji menggunakan skor-$Z$ dengan bantuan nilai harapan $E(I)$ dan varians $Var(I)$:
-\begin{equation}
-    Z(I) = \frac{I - E(I)}{\sqrt{Var(I)}}, \quad E(I) = \frac{-1}{n-1}
+    Z(I) = \frac{I - E(I)}{\sqrt{Var(I)}}, \quad E(I) = \frac{-1}{N-1}
 \end{equation}
 
 \subsection{\normalsize Pemetaan Trajektori 3 Dimensi (\textit{3D Spatio-Temporal Biplot})}
 
-Berdasarkan Persamaan (2.21) pada Bab 2 mengenai proyeksi lintasan objek, matriks data pada situasi ke-$t$ ($\mathbf{Z}_t$) diproyeksikan ke dalam ruang kompromi yang stabil menggunakan matriks \textit{loadings} kompromi ($\mathbf{V}_c$). Untuk memvisualisasikan pergerakan wilayah secara interaktif tanpa kehilangan struktur temporalnya, ruang proyeksi ini diperluas menjadi tiga dimensi. Pada desain interaktif, Sumbu X dan Y mewakili koordinat spasial (PC1 dan PC2) dari dekomposisi STATIS, sedangkan Sumbu Z secara matematis digantikan seketika dengan dimensi waktu ($t$, yaitu tahun observasi) agar trajektori pergerakan wilayah terlihat progresif terhadap waktu.
+Berbasis pada Persamaan \ref{eq:lintasan} pada Bab 2 mengenai proyeksi lintasan objek, matriks data pada situasi ke-$t$ ($\mathbf{Z}_t$) diproyeksikan ke dalam ruang kompromi yang stabil menggunakan matriks \textit{loadings} kompromi ($\mathbf{V}_c$). Untuk memvisualisasikan pergerakan wilayah secara interaktif tanpa kehilangan struktur temporalnya, ruang proyeksi ini diperluas menjadi tiga dimensi. Pada desain interaktif, Sumbu X dan Y mewakili koordinat spasial (PC1 dan PC2) dari dekomposisi STATIS, sedangkan Sumbu Z secara matematis digantikan seketika dengan dimensi waktu ($t$, yaitu tahun observasi) agar trajektori pergerakan wilayah terlihat progresif terhadap waktu.
 
 Titik koordinat 3D untuk wilayah ke-$i$ pada waktu $t$ didefinisikan sebagai:
 \begin{equation}
     \mathbf{p}_{i,t} = \begin{bmatrix} F_{t, i}^{(PC1)} \\ F_{t, i}^{(PC2)} \\ t \end{bmatrix} = \begin{bmatrix} (\mathbf{Z}_t \mathbf{V}_c)_{i,1} \\ (\mathbf{Z}_t \mathbf{V}_c)_{i,2} \\ t \end{bmatrix}
 \end{equation}
 
-Sebagai ilustrasi langkah-demi-langkah (melanjutkan perhitungan data sampel wilayah Jakarta Pusat pada tahun 2020 di sub-bab 3.6.1):
+Sebagai ilustrasi langkah-demi-langkah (melanjutkan perhitungan data sampel wilayah Jakarta Pusat pada tahun 2020 di sub-bab \ref{subsec:ilustrasi_statis}):
 
 \textbf{Langkah 1: Matriks Data dan Vektor Kompromi} \\
-Berdasarkan data sampel pada sub-bab sebelumnya, hasil standardisasi matriks Jakarta Pusat (baris ke-1) dari $\mathbf{Z}_{2020}$ untuk tiga variabel percobaan (PPM, RLS, TPT) berbentuk vektor baris:
+Berdasarkan data sampel pada sub-bab sebelumnya, hasil standardisasi wilayah Jakarta Pusat (baris ke-1) dari matriks $\mathbf{Z}_{2020}$ untuk tiga variabel percobaan (PPM, RLS, TPT) adalah:
 \[
-\mathbf{z}_{1, 2020} = \begin{bmatrix} -0,87 & 1,47 & 0,00 \end{bmatrix}
+\mathbf{z}_{1, 2020} = \begin{bmatrix} -0,75 & 1,28 & 0,00 \end{bmatrix}
 \]
-Misalkan matriks vektor eigen $\mathbf{V}_c$ (berukuran $3 \times 2$) yang diperoleh dari dekomposisi matriks kompromi menghasilkan nilai pembobot variabel sebagai berikut:
+
+Selanjutnya, untuk mendapatkan pembobot variabel ($\mathbf{V}_c$), dilakukan pembentukan matriks kompromi variabel $\mathbf{S}_c$ yang merupakan rerata tertimbang dari matriks produk skalar tiap tahun $\mathbf{S}_t = \mathbf{Z}_t^\top \mathbf{Z}_t$ menggunakan bobot $\alpha$ yang telah diperoleh (0,561; 0,587; 0,583):
+{\small
+\begin{align*}
+    \mathbf{S}_{2020} &= \begin{pmatrix} 3,00 & -2,03 & -1,98 \\ -2,03 & 3,00 & -0,19 \\ -1,98 & -0,19 & 3,00 \end{pmatrix}, \text{ } 
+    \mathbf{S}_{2021} = \begin{pmatrix} 3,00 & -2,13 & 0,11 \\ -2,13 & 3,00 & -2,15 \\ 0,11 & -2,15 & 3,00 \end{pmatrix}, \text{ }
+    \mathbf{S}_{2022} = \begin{pmatrix} 3,00 & -2,18 & 0,58 \\ -2,18 & 3,00 & -2,43 \\ 0,58 & -2,43 & 3,00 \end{pmatrix} \\[8pt]
+    \mathbf{S}_{c} &= 0,561 \mathbf{S}_{2020} + 0,587 \mathbf{S}_{2021} + 0,583 \mathbf{S}_{2022} = \begin{pmatrix} 5,19 & -3,66 & -0,71 \\ -3,66 & 5,19 & -2,79 \\ -0,71 & -2,79 & 5,19 \end{pmatrix}
+\end{align*}
+}
+Berdasarkan dekomposisi eigen pada matriks $\mathbf{S}_c$ di atas sesuai Persamaan (\ref{eq:vc}) pada Bab 2, diperoleh matriks vektor eigen $\mathbf{V}_c$ (dua komponen utama pertama) sebagai berikut:
 \[
-\mathbf{V}_c = \begin{pmatrix} 0,81 & -0,12 \\ -0,48 & -0,58 \\ 0,33 & -0,80 \end{pmatrix}
+\mathbf{V}_c = \begin{pmatrix} -0,568 & 0,600 \\ -0,680 & 0,043 \\ -0,464 & -0,799 \end{pmatrix}
 \]
 
 \textbf{Langkah 2: Proyeksi Koordinat Spasial (Bidang X-Y)} \\
-Titik koordinat posisi wilayah Jakarta Pusat pada tahun 2020 dihitung melalui perkalian titik (\textit{dot product}) antara vektor observasi dengan vektor eigen utama:
+Titik koordinat posisi wilayah Jakarta Pusat pada tahun 2020 dihitung melalui perkalian matriks antara vektor observasi dengan vektor eigen utama (Persamaan \ref{eq:lintasan}):
 \begin{align*}
 F_{2020, \text{JakPus}}^{(PC1)} &= \mathbf{z}_{1, 2020} \cdot \mathbf{v}_1 \\
-&= (-0,87)(0,81) + (1,47)(-0,48) + (0,00)(0,33) \\
-&= -0,7047 - 0,7056 + 0 = -1,41 \\[8pt]
+&= (-0,75)(-0,568) + (1,28)(-0,680) + (0,00)(-0,464) = -0,44 \\[8pt]
 F_{2020, \text{JakPus}}^{(PC2)} &= \mathbf{z}_{1, 2020} \cdot \mathbf{v}_2 \\
-&= (-0,87)(-0,12) + (1,47)(-0,58) + (0,00)(-0,80) \\
-&= 0,1044 - 0,8526 + 0 = -0,75
+&= (-0,75)(0,600) + (1,28)(0,043) + (0,00)(-0,799) = -0,40
 \end{align*}
 
 \textbf{Langkah 3: Pembentukan Titik 3 Dimensi Lintas Waktu} \\
 Karena perhitungan dimensi ketiga secara eksplisit menggunakan tahun sebagai \textit{altitude} informasi trajektori, maka nilai kronologis ($t = 2020$) dirangkai menjadi dimensi Z. Vektor posisi spasio-temporal akhir untuk visualisasi 3D menjadi:
 \begin{equation}
-    \mathbf{p}_{\text{JakPus}, 2020} = \begin{bmatrix} -1,41 \\ -0,75 \\ 2020 \end{bmatrix}
+    \mathbf{p}_{\text{JakPus}, 2020} = \begin{bmatrix} -0,44 \\ -0,40 \\ 2020 \end{bmatrix}
 \end{equation}
 
-Langkah perkalian matriks ini diulang untuk setiap tahun observasi berikutnya ($t \in \{2020, 2021, 2022, 2023, 2024\}$) pada wilayah observasi yang sama. Seluruh algoritma dan hasil matriks di atas dibungkus dalam sistem \textit{dashboard} menggunakan bahasa Python dengan *library* Plotly Express \textit{Scatter-3D}, yang akhirnya menghubungkan titik-titik koordinat kronologis ($\mathbf{p}_{i,2020} \rightarrow \mathbf{p}_{i,2021} \rightarrow \dots$) sehingga lintasan pergerakan karakter kesejahteraan rakyat terpetakan dengan jelas melintasi ruang dimensi ganda dan waktu. Selain itu, visualisasi interaktif ini juga dilengkapi dengan rotasi sumbu (\textit{Baseline Rotation}) untuk mempermudah interpretasi sudut ekonomi dari sumbu utama PC.
+Langkah perkalian matriks ini diulang secara konsisten untuk seluruh tahun observasi dalam periode penelitian ($t \in \{2020, 2021, 2022\}$). Keseluruhan algoritma dan hasil matriks di atas diintegrasikan ke dalam sistem \textit{dashboard} menggunakan bahasa Python dengan bantuan pustaka Plotly Express \textit{Scatter-3D}. Sistem ini secara cerdas menghubungkan titik-titik koordinat kronologis ($\mathbf{p}_{i,2020} \rightarrow \mathbf{p}_{i,2021} \rightarrow \mathbf{p}_{i,2022}$) untuk membentuk lintasan (trajektori) pergerakan wilayah yang dinamis. Fitur rotasi sumbu (\textit{Baseline Rotation}) juga disertakan untuk memberikan fleksibilitas dalam interpretasi arah variabel pembangunan. Melalui integrasi dimensi spasial dan temporal yang mendalam, pengembangan aplikasi ini diharapkan dapat menjadi alat bantu visual yang efektif bagi peneliti maupun pemangku kebijakan dalam memantau resiliensi dan pemerataan pembangunan daerah pasca-pandemi secara komprehensif.

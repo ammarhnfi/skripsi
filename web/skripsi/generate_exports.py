@@ -19,15 +19,16 @@ from final import (
 def main():
     print("Reading data...")
     try:
-        with open('FINAL DATA.xlsx', 'rb') as f:
+        data_path = os.path.join('..', '..', 'data', 'FINAL DATA.xlsx')
+        with open(data_path, 'rb') as f:
             content = base64.b64encode(f.read()).decode('utf-8')
         content_str = f"data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{content}"
     except Exception as e:
-        print(f"Error reading DATA.xlsx: {e}")
+        print(f"Error reading {data_path}: {e}")
         return
     
     print("Running STATIS Core to generate base results...")
-    vars_list = ['IPM', 'PDRB ADHK', 'PPM', 'GK', 'PKKP', 'TPT', 'TPAK', 'RLS', 'AHH L', 'AHH P', 'IPG', 'Gini Ratio']
+    vars_list = ['IPM', 'IPG', 'PPM', 'PDRB_ADHK', 'RLS', 'AHH_L', 'AHH_P', 'GK', 'PKKP', 'TPT', 'TPAK', 'GR']
     sheets = ['2020', '2021', '2022', '2023', '2024']
     
     res = run_statis_core(content_str, vars_list, sheets)
@@ -54,7 +55,8 @@ def main():
     
     # Kumpulkan global_data_store secara pseudo-manual untuk callback IPM & CrossTab
     print("Recreating global data store...")
-    all_sheets = pd.read_excel('FINAL DATA.xlsx', sheet_name=None)
+    data_path = os.path.join('..', '..', 'data', 'FINAL DATA.xlsx')
+    all_sheets = pd.read_excel(data_path, sheet_name=None)
     all_data = []
     for name, df in all_sheets.items():
         try:

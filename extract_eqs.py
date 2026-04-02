@@ -3,51 +3,45 @@ import json
 import os
 
 def extract_equations(file_path):
+    if not os.path.exists(file_path):
+        return []
+        
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # Find all sections/subsections to give context
-    sections = re.split(r'\\(section|subsection)\{.*?\}', content)
-    section_names = re.findall(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?(.*?)\}', content)
+    # Find all math environments
+    # 1. \begin{equation} ... \end{equation}
+    # 2. \begin{align} ... \end{align}
+    # 3. \begin{gather} ... \end{gather}
+    # 4. \[ ... \]
     
-    # Simple extraction of equations
-    # We look for \begin{equation} ... \end{equation}
-    # and also \begin{definition} ... \end{definition} since they often contain math
+    environments = [
+        (r'\\begin\{equation\}(.*?)\\end\{equation\}', 'equation'),
+        (r'\\begin\{align\}(.*?)\\end\{align\}', 'align'),
+        (r'\\begin\{gather\}(.*?)\\end\{gather\}', 'gather'),
+        (r'\\\[(.*?)\\\]', 'displaymath')
+    ]
     
-    equations = []
-    
-    # Pattern for equations
-    eq_pattern = re.compile(r'\\begin\{equation\}(.*?)\\end\{equation\}', re.DOTALL)
-    
-    # Pattern for definitions/theorems (optional, but good for context)
-    def_pattern = re.compile(r'\\begin\{(definition|theorem|remark)\}(.*?)\\end\{\1\}', re.DOTALL)
-
-    # Let's just find everything between \section to keep it organized
-    current_section = "General"
-    
-    # Iterate through lines to find equations and track section
-    lines = content.split('\n')
-    for line in lines:
-        sec_match = re.match(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?(.*?)\}', line)
-        if sec_match:
-            current_section = sec_match.group(1).replace('{', '').replace('}', '')
-            
-    # Actually, a better way is to regex find all matches and their positions
     all_eqs = []
     
-    # Find equations
-    for match in eq_pattern.finditer(content):
-        # find what section this is in
-        preceding_text = content[:match.start()]
-        secs = re.findall(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?(.*?)\}', preceding_text)
-        section = secs[-1] if secs else "General"
-        section = section.replace('{', '').replace('}', '')
-        
-        all_eqs.append({
-            'section': section,
-            'latex': f"\\[ {match.group(1).strip()} \\]",
-            'type': 'equation'
-        })
+    for pattern, eq_type in environments:
+        for match in re.finditer(pattern, content, re.DOTALL):
+            # find what section this is in
+            preceding_text = content[:match.start()]
+            secs = re.findall(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?(.*?)\}', preceding_text)
+            section = secs[-1] if secs else "General"
+            section = section.replace('{', '').replace('}', '').strip()
+            
+            eq_content = match.group(1).strip()
+            # Clean up labels from the content for display
+            display_content = re.sub(r'\\label\{.*?\}', '', eq_content).strip()
+            
+            all_eqs.append({
+                'section': section,
+                'latex': f"\\[ {display_content} \\]",
+                'type': eq_type,
+                'raw': eq_content
+            })
 
     return all_eqs
 
@@ -59,6 +53,6 @@ if __name__ == "__main__":
         eqs = extract_equations(bab2_path)
         with open(output_path, "w", encoding="utf-8") as f:
             json.dump(eqs, f, indent=2)
-        print(f"Extracted {len(eqs)} equations to {output_path}")
+        print(f"Extracted {len(eqs)} equations from {bab2_path} to {output_path}")
     else:
         print(f"File not found: {bab2_path}")

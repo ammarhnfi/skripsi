@@ -56,9 +56,9 @@ Penelitian mengenai analisis statistik terhadap data regional di Pulau Jawa tela
 \centering
 \small
 \caption{Ringkasan Penelitian Terdahulu}\label{tab:penelitian-terdahulu}
-\begin{tabular}{|m{2.5cm}|m{1.5cm}|m{4cm}|>{\raggedright\arraybackslash}m{5cm}|}
+\begin{tabular}{|m{2cm}|m{2cm}|m{3cm}|>{\raggedright\arraybackslash}m{6cm}|}
 \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{2.5cm}|}{\textbf{Peneliti (Tahun)}} & \multicolumn{1}{>{\centering\arraybackslash}m{1.5cm}|}{\textbf{Wilayah}} & \multicolumn{1}{>{\centering\arraybackslash}m{4cm}|}{\textbf{Metode}} & \multicolumn{1}{>{\centering\arraybackslash}m{5cm}|}{\textbf{Hasil Utama}} \\ \hline
+\multicolumn{1}{|>{\centering\arraybackslash}m{2cm}|}{\textbf{Peneliti (Tahun)}} & \multicolumn{1}{>{\centering\arraybackslash}m{2cm}|}{\textbf{Wilayah}} & \multicolumn{1}{>{\centering\arraybackslash}m{3cm}|}{\textbf{Metode}} & \multicolumn{1}{>{\centering\arraybackslash}m{6cm}|}{\textbf{Hasil Utama}} \\ \hline
 \citet{nuswantari2021} & Pulau Jawa (2012-2018) & \textit{Dynamic Spatial Panel} (Model Durbin Spasial) & Model terbaik menggunakan pembobot dua tetangga terdekat. Angka melek huruf dan fasilitas kesehatan berpengaruh signifikan terhadap kemiskinan. \tabularnewline \hline
 \citet{ahmad2024} & Pulau Jawa (2017-2021) & \textit{Dynamic Spatial Durbin Model} (DSDM) & Menemukan adanya pengaruh lag temporal dan spasiotemporal yang signifikan terhadap prevalensi kusta. \tabularnewline \hline
 \citet{alfia2024} & Pulau Jawa (2022) & \textit{Biclustering Plaid Model} vs \textit{Cluster-Biplot} & \textit{Plaid model} menghasilkan kelompok wilayah yang lebih homogen dibandingkan metode biplot konvensional dalam mengelompokkan indikator kesejahteraan. \tabularnewline \hline
@@ -108,7 +108,7 @@ Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (mi
 
 \begin{definition}[Standardisasi $Z$-Score]
   Misalkan $x_{ij}$ adalah nilai pengamatan ke-$i$ pada variabel ke-$j$, dengan $\bar{x}_j$ sebagai rata-rata dan $s_j$ sebagai simpangan baku variabel ke-$j$. Nilai standar (\textit{standardized value}) dihitung sebagai:
-  \begin{equation}
+  \begin{equation} \label{eq:standardization}
     z_{ij} = \frac{x_{ij} - \bar{x}_j}{s_j}, \quad i = 1, 2, \ldots, n, \quad j = 1, 2, \ldots, p
   \end{equation}
   dengan $\bar{x}_j = \frac{1}{n}\sum_{i=1}^{n} x_{ij}$ dan $s_j = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)^2}$.
@@ -129,7 +129,7 @@ Ukuran pemusatan mendeskripsikan nilai ``tengah'' dari kumpulan data.
 
 \begin{definition}[Rata-Rata (Mean)]
   Rata-rata dari $n$ pengamatan $x_1, x_2, \ldots, x_n$ suatu variabel adalah:
-  \begin{equation}
+  \begin{equation} \label{eq:mean}
     \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
   \end{equation}
   Rata-rata bersifat sensitif terhadap pencilan (\textit{outlier}).
@@ -152,7 +152,7 @@ Ukuran penyebaran mendeskripsikan seberapa jauh data bervariasi di sekitar pusat
 
 \begin{definition}[Simpangan Baku (Standar Deviasi)]
   Simpangan baku sampel dari $n$ pengamatan adalah:
-  \begin{equation}
+  \begin{equation} \label{eq:std_dev}
     s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
   \end{equation}
   Simpangan baku merepresentasikan akar kuadrat dari ragam (\textit{variance}) sampel $s^2$.
@@ -160,7 +160,7 @@ Ukuran penyebaran mendeskripsikan seberapa jauh data bervariasi di sekitar pusat
 
 \begin{definition}[Nilai Minimum, Maksimum, dan Rentang Antarkuartil (IQR)]
   Nilai minimum dan maksimum adalah:
-  \begin{equation}
+  \begin{equation} \label{eq:minmax}
     x_{\min} = \min(x_1, \ldots, x_n), \qquad x_{\max} = \max(x_1, \ldots, x_n)
   \end{equation}
   Kuartil pertama ($Q_1$) dan ketiga ($Q_3$) membagi distribusi menjadi empat bagian masing-masing 25\%. Rentang Antarkuartil (\textit{Interquartile Range}, IQR) adalah:
@@ -172,7 +172,7 @@ Ukuran penyebaran mendeskripsikan seberapa jauh data bervariasi di sekitar pusat
 
 \begin{definition}[Koefisien Variasi (CV)]
   Koefisien Variasi (\textit{Coefficient of Variation}, CV) mengukur variabilitas relatif terhadap rata-rata:
-  \begin{equation}
+  \begin{equation} \label{eq:cv}
     CV = \frac{s}{\bar{x}} \times 100\%
   \end{equation}
   CV berguna untuk membandingkan tingkat keragaman antar-variabel yang memiliki satuan atau skala yang berbeda-beda.
@@ -217,7 +217,7 @@ Statistik Kaiser-Meyer-Olkin (KMO) dikembangkan oleh \citet{kaiser1970, kaiser19
     r_{jk.\text{parsial}} = -\frac{q_{jk}}{\sqrt{q_{jj} \cdot q_{kk}}}
   \end{equation}
   Statistik KMO keseluruhan (\textit{overall KMO}) didefinisikan sebagai:
-  \begin{equation}
+  \begin{equation} \label{eq:kmo}
     KMO = \frac{\displaystyle\sum_{j \neq k} r_{jk}^2}{\displaystyle\sum_{j \neq k} r_{jk}^2 + \displaystyle\sum_{j \neq k} r_{jk.\text{parsial}}^2}
   \end{equation}
   Nilai KMO berkisar antara 0 dan 1. Semakin besar nilai KMO, semakin kecil jumlah kuadrat korelasi parsial (penyebut) relatif terhadap jumlah kuadrat korelasi bivariate (pembilang). Hal ini mengindikasikan bahwa variabel-variabel saling berbagi faktor laten yang kuat.
@@ -233,7 +233,7 @@ Interpretasi nilai KMO dan $MSA_j$ menurut \citet{kaiser1974} dan \citet{hair201
 \begin{table}[H]
 \centering
 \caption{Kriteria Interpretasi Nilai KMO}\label{tab:kmo-interpretation}
-\begin{tabular}{cc}
+\begin{tabular}{|c|c|}
 \hline
 \textbf{Nilai KMO} & \textbf{Interpretasi} \\
 \hline
@@ -260,7 +260,7 @@ Uji Bartlett tentang Spherisitas, dikembangkan oleh \citet{bartlett1954}, bertuj
     \item $H_1$: $\boldsymbol{\Sigma} \neq \sigma^2 \mathbf{I}$ \quad (terdapat korelasi yang signifikan antar-variabel)
   \end{itemize}
   Statistik uji $\chi^2$ dihitung dengan aproksimasi \citet{bartlett1954}:
-  \begin{equation}
+  \begin{equation} \label{eq:bartlett}
     \chi^2 = -\left[ n - 1 - \frac{2p + 5}{6} \right] \ln |\mathbf{R}|
   \end{equation}
   dengan $|\mathbf{R}|$ adalah determinan matriks korelasi. Statistik ini berdistribusi $\chi^2$ dengan derajat bebas:
@@ -440,14 +440,14 @@ Setelah representasi $\mathbf{W}_t$ diperoleh untuk setiap situasi, langkah sela
 
 \begin{definition}[Koefisien RV]
   Koefisien RV antara dua matriks konfigurasi $\mathbf{W}_i$ dan $\mathbf{W}_j$ didefinisikan sebagai:
-  \begin{equation}
+  \begin{equation}\label{eq:rv}
     RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) \, tr(\mathbf{W}_j^2)}}
   \end{equation}
   Nilai $RV$ berkisar antara 0 dan 1. Nilai mendekati 1 mengindikasikan bahwa konfigurasi antar-objek pada situasi ke-$i$ sangat mirip dengan situasi ke-$j$.
 \end{definition}
 
 Koefisien RV dihitung untuk setiap pasangan situasi, membentuk matriks inter-struktur $\mathbf{R}$ berukuran $T \times T$ dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap situasi, dilakukan dekomposisi spektral pada $\mathbf{R}$:
-\begin{equation}
+\begin{equation}\label{eq:r_alpha}
   \mathbf{R} \mathbf{u} = \theta \mathbf{u}
 \end{equation}
 Vektor eigen pertama $\mathbf{u}_1$ (berkorespondensi dengan nilai eigen terbesar $\theta_1$) digunakan untuk menghitung bobot $\alpha_t$:
@@ -462,7 +462,7 @@ Vektor eigen pertama $\mathbf{u}_1$ (berkorespondensi dengan nilai eigen terbesa
 \subsection{\normalsize Tahap 3: Analisis Kompromi}
 
 Tahap ini membentuk struktur ``rata-rata'' yang disebut Kompromi. Matriks kompromi $\mathbf{W}_c$ dihitung sebagai kombinasi linier terbobot (menggunakan bobot $\alpha_t$) dari matriks intra-struktur $\mathbf{W}_t$:
-\begin{equation}
+\begin{equation}\label{eq:wc}
   \mathbf{W}_c = \sum_{t=1}^{T} \alpha_t \mathbf{W}_t
 \end{equation}
 
@@ -480,20 +480,41 @@ Matriks $\mathbf{W}_c$ (berukuran $n \times n$) merepresentasikan pola hubungan 
         \mathbf{W}_c = \mathbf{V}_c (\mathbf{\Lambda}_c^{1/2} \mathbf{\Lambda}_c^{1/2}) \mathbf{V}_c^T
     \end{equation}
     
-    \item \textbf{Pengelompokan Term:} Dengan sifat asosiatif perkalian matriks, dapat dikelompokkan persamaan tersebut:
-    \begin{equation}
-        \mathbf{W}_c = (\mathbf{V}_c \mathbf{\Lambda}_c^{1/2}) (\mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T)
-    \end{equation}
-    Perhatikan bahwa $(\mathbf{V}_c \mathbf{\Lambda}_c^{1/2})^T = (\mathbf{\Lambda}_c^{1/2})^T \mathbf{V}_c^T = \mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T$.
-    
-    \item \textbf{Definisi Skor Kompromi:} Matriks skor kompromi $\mathbf{F}_c$ didefinisikan sebagai hasil proyeksi data ke dalam ruang eigen:
-    \begin{equation}
+    \item \textbf{Ekstraksi Skor Objek:} Koordinat objek (skor) pada ruang kompromi diperoleh sebagai:
+    \begin{equation}\label{eq:fc}
         \mathbf{F}_c = \mathbf{V}_c \mathbf{\Lambda}_c^{1/2}
     \end{equation}
-    Sehingga terbukti bahwa $\mathbf{W}_c = \mathbf{F}_c \mathbf{F}_c^T$. Hal ini konsisten dengan definisi awal bahwa matriks intra-struktur adalah produk skalar dari koordinat objek.
 \end{enumerate}
 
+Dengan sifat asosiatif perkalian matriks, dapat dikelompokkan persamaan tersebut:
+\begin{equation}
+    \mathbf{W}_c = (\mathbf{V}_c \mathbf{\Lambda}_c^{1/2}) (\mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T)
+\end{equation}
+Perhatikan bahwa $(\mathbf{V}_c \mathbf{\Lambda}_c^{1/2})^T = (\mathbf{\Lambda}_c^{1/2})^T \mathbf{V}_c^T = \mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T$. Hal ini konsisten dengan definisi awal bahwa matriks intra-struktur adalah produk skalar dari koordinat objek.
+
 Matriks $\mathbf{F}_c$ berukuran $n \times r$ (dengan $r$ adalah \textit{rank} matriks). Untuk visualisasi, umumnya hanya diambil dua kolom pertama (dua komponen utama) dari $\mathbf{F}_c$ yang berkorespondensi dengan dua nilai eigen terbesar.
+
+\subsection{\normalsize Tahap 4: Analisis Variabel (Loadings)}
+
+Selain memetakan objek, STATIS juga memungkinkan pemetaan variabel ke dalam ruang kompromi untuk melihat hubungan antar-indikator. Prosedur ini dilakukan melalui analisis pada ruang variabel (\textit{dual space}).
+
+\begin{enumerate}
+    \item \textbf{Matriks Produk Skalar Variabel:} Untuk setiap situasi $t$, dibentuk matriks produk skalar variabel $\mathbf{S}_t$ berukuran $p \times p$:
+    \begin{equation}
+        \mathbf{S}_t = \mathbf{Z}_t^T \mathbf{Z}_t
+    \end{equation}
+    
+    \item \textbf{Kompromi Variabel:} Serupa dengan kompromi objek, kompromi variabel $\mathbf{S}_c$ dibentuk sebagai kombinasi linier terbobot menggunakan $\alpha_t$:
+    \begin{equation}\label{eq:sc}
+        \mathbf{S}_c = \sum_{t=1}^{T} \alpha_t \mathbf{S}_t
+    \end{equation}
+    
+    \item \textbf{Ekstraksi Loadings:} Matriks pembobot variabel $\mathbf{V}_c$ (yang berisi koordinat ujung panah variabel dalam biplot) diperoleh dari dekomposisi eigen pada $\mathbf{S}_c$:
+    \begin{equation}\label{eq:vc}
+        \mathbf{S}_c = \mathbf{V}_c \mathbf{\Lambda}_{\text{var}} \mathbf{V}_c^T
+    \end{equation}
+    Kolom-kolom dalam $\mathbf{V}_c$ merupakan vektor eigen yang merepresentasikan arah dan kontribusi setiap variabel terhadap komponen utama kompromi.
+\end{enumerate}
 
 \subsection{\normalsize Uji Signifikansi Stabilitas Struktur (Permutasi)}
 
@@ -524,7 +545,7 @@ Untuk memvalidasi hal ini, digunakan uji permutasi non-parametrik yang diadopsi 
     Berbeda dengan uji statistik parametrik konvensional yang mengandalkan tabel distribusi teoritis (seperti tabel Normal atau F), distribusi sampling dari nilai eigen pertama ($\theta_1$) dalam konteks STATIS tidak diketahui bentuk pastinya secara analitis. Oleh karena itu, pengujian ini bersifat \textbf{non-parametrik} (\textit{distribution-free}), di mana distribusi null dibangun secara empiris dari data itu sendiri melalui proses permutasi \citet{kazi1995}.
     
     Nilai $p$-value dihitung sebagai proporsi dari statistik uji hasil permutasi ($\theta_1^*$) yang nilainya lebih besar atau sama dengan statistik observasi ($\theta_1^{obs}$):
-    \begin{equation}
+    \begin{equation}\label{eq:permutation}
         p\text{-value} = \frac{\sum_{b=1}^{B} I(\theta_1^{*(b)} \ge \theta_1^{obs}) + 1}{B + 1}
     \end{equation}
     Penambahan angka 1 pada pembilang dan penyebut merupakan koreksi standar untuk uji permutasi agar $p$-value tidak bernilai nol \citet{phipson2010}.
@@ -544,7 +565,7 @@ Konsep dasar dari visualisasi ini adalah memproyeksikan data tabel parsial (situ
 \subsection{\normalsize Proyeksi Lintasan (\textit{Trajectory})}
 
 Misalkan $\mathbf{Z}_t$ adalah matriks data terstandardisasi pada situasi ke-$t$ ($n \times p$) dan $\mathbf{V}_c$ adalah matriks \textit{loadings} (vektor eigen) dari solusi kompromi ($p \times 2$). Koordinat objek pada situasi ke-$t$, dinotasikan $\mathbf{F}_t$, dihitung melalui proyeksi linier:
-\begin{equation}
+\begin{equation}\label{eq:lintasan}
   \mathbf{F}_t = \mathbf{Z}_t \mathbf{V}_c
 \end{equation}
 
@@ -646,7 +667,7 @@ Bentuk matriks pembobot terstandardisasi-baris adalah $\mathbf{W}^* = (w_{ij}^*)
 
 \begin{definition}[Global Moran's $I$]
   Misalkan $x_i$ adalah nilai suatu atribut pada wilayah ke-$i$. Global Moran's~$I$ menggunakan matriks pembobot awal (belum terstandardisasi baris) $\mathbf{W}$ dengan elemen $w_{ij}$, dan didefinisikan sebagai:
-  \begin{equation}
+  \begin{equation}\label{eq:moran_i}
     I = \frac{N}{\displaystyle\sum_i \sum_j w_{ij}} \cdot \frac{\displaystyle\sum_i \sum_j w_{ij}(x_i - \bar{x})(x_j - \bar{x})}{\displaystyle\sum_i (x_i - \bar{x})^2}
   \end{equation}
   dengan $N$ adalah jumlah wilayah dan $\bar{x}$ adalah rata-rata atribut. Ekspektasi di bawah hipotesis nol (tidak ada autokorelasi spasial) adalah $E[I] = -1/(N-1)$.
@@ -666,10 +687,50 @@ Signifikansi statistik diuji menggunakan pendekatan permutasi (\textit{condition
 
 Kompleksitas informasi yang dihasilkan oleh metode-metode di atas menuntut media penyajian yang lebih adaptif dibandingkan grafik statis. Untuk menjawab kebutuhan ini, tersedia pustaka grafis \textbf{Plotly} \citet{plotly2015} dalam kerangka kerja aplikasi web \textbf{Dash} \citet{dash_docs}.
 
-Plotly adalah pustaka visualisasi data deklaratif yang memungkinkan pembuatan grafik interaktif berkualitas publikasi, termasuk grafik tiga dimensi (3D) yang dapat diputar dan diperbesar secara langsung. Sementara itu, Dash menerapkan paradigma pemrograman reaktif (\textit{reactive programming}), memungkinkan grafik Plotly merespons secara dinamis terhadap masukan (\textit{input}) pengguna. Secara konseptual, integrasi keduanya membentuk alur kerja analitik interaktif:
-\begin{equation}
-  Input \xrightarrow{\text{Callback}} \{ \text{Komputasi} \to \text{Analisis} \to \text{Visualisasi} \} \xrightarrow{\text{Update}} Dashboard
-\end{equation}
+Plotly adalah pustaka visualisasi data deklaratif yang memungkinkan pembuatan grafik interaktif berkualitas publikasi, termasuk grafik tiga dimensi (3D) yang dapat diputar dan diperbesar secara langsung. Sementara itu, Dash menerapkan paradigma pemrograman reaktif (\textit{reactive programming}), memungkinkan grafik Plotly merespons secara dinamis terhadap masukan (\textit{input}) pengguna. Secara konseptual, integrasi keduanya membentuk alur kerja analitik interaktif yang digambarkan melalui \textit{flowchart} pada Gambar \ref{fig:flowchart-dash} berikut.
+
+\begin{figure}[H]
+\centering
+\scalebox{0.82}{%
+\begin{tikzpicture}[
+    node distance = 0.50cm and 1.6cm,
+    startstop/.style  = {ellipse, draw, minimum width=3.2cm, minimum height=0.8cm,
+                          align=center, fill=gray!10, font=\small},
+    io/.style         = {trapezium, trapezium left angle=75, trapezium right angle=105,
+                          draw, fill=blue!8, align=center, text width=5.5cm, font=\small},
+    process/.style    = {rectangle, draw, fill=blue!12, text width=6.2cm,
+                          align=center, minimum height=0.9cm, font=\small, rounded corners=2pt},
+    arrow/.style      = {-Stealth, thick, color=black!80}
+]
+
+% Nodes
+\node (start)  [startstop]                             {Mulai};
+\node (input)  [io, below=of start]                    {Input Pengguna \\ (Filter, Parameter \& Dropdown)};
+\node (call)   [process, below=of input]               {Trigger Callback \\ (Dash Reactive Mechanism)};
+\node (comp)   [process, below=of call]                {Komputasi \& Pemrosesan Data \\ (Z-Score, STATIS Core Calculation)};
+\node (anal)   [process, below=of comp]                {Analisis Statistik Lanjut \\ (Clustering, Moran's $I$, Permutation)};
+\node (vis)    [process, below=of anal]                {Generasi Objek Visualisasi \\ (Plotly Graph Objects)};
+\node (update) [io, below=of vis]                      {Update Dashboard \\ (Output Rendering)};
+\node (finish) [startstop, below=of update]            {Dashboard Teraktualisasi};
+
+% Arrows
+\draw [arrow] (start)   -- (input);
+\draw [arrow] (input)   -- (call);
+\draw [arrow] (call)    -- (comp);
+\draw [arrow] (comp)    -- (anal);
+\draw [arrow] (anal)    -- (vis);
+\draw [arrow] (vis)     -- (update);
+\draw [arrow] (update)  -- (finish);
+
+% Loopback to illustrate interaction cycle
+\draw [arrow] (finish.east) -- ++(1.5,0) |- (input.east) 
+      node[pos=0.25, right, font=\scriptsize, align=left] {Interaksi\\Berlanjut};
+
+\end{tikzpicture}%
+}
+\caption{Flowchart Mekanisme Interaktivitas Dash-Plotly}
+\label{fig:flowchart-dash}
+\end{figure}
 Pendekatan ini memfasilitasi Analisis Data Eksploratori (\textit{Exploratory Data Analysis}/EDA) yang mendalam dan interaktif, memungkinkan peneliti melakukan eksplorasi data secara \textit{real-time}.
 
 %-----------------------------------------------------------------------------%
@@ -677,7 +738,7 @@ Pendekatan ini memfasilitasi Analisis Data Eksploratori (\textit{Exploratory Dat
 \section{\normalsize Kerangka Pemikiran}
 %-----------------------------------------------------------------------------%
 
-Kerangka pemikiran dalam penelitian ini disusun untuk mengintegrasikan berbagai metode analisis multivariat dan spasial dalam memahami dinamika kesejahteraan rakyat di Pulau Jawa. Alur logika tersebut dimulai dari identifikasi fenomena ketimpangan spasio-temporal pada indikator sosial-ekonomi, yang kemudian diproses melalui tahapan-tahapan sistematis sebagai berikut:
+Kerangka pemikiran dalam penelitian ini disusun untuk mengintegrasikan berbagai metode analisis multivariat dan spasial dalam memahami dinamika kesejahteraan rakyat di sebagian Pulau Jawa. Alur logika tersebut dimulai dari identifikasi fenomena ketimpangan spasio-temporal pada indikator sosial-ekonomi, yang kemudian diproses melalui tahapan-tahapan sistematis sebagai berikut:
 
 \begin{enumerate}
     \item \textbf{Input Data:} Pengumpulan data indikator kesejahteraan rakyat dari 119 kabupaten/kota di Pulau Jawa dalam rentang waktu tertentu, membentuk sebuah struktur data tiga-arah (\textit{cube data}).
