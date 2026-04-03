@@ -117,24 +117,9 @@ Sebelum data diproses lebih lanjut menggunakan metode STATIS, dilakukan dua peng
 
 Mengacu pada formula yang disajikan pada Persamaan~(3.2) dan~(3.3) di Bab~3, hasil pengujian dirangkum sebagai berikut.
 
-\begin{table}[H]
-\centering
-\caption{Hasil Uji KMO dan Bartlett per Tahun Pengamatan}
-\label{tab:kmo_bartlett}
-\begin{tabular}{|c|c|c|c|c|}
-\hline
-\textbf{Tahun} & \textbf{Nilai KMO} & \textbf{Interpretasi KMO} & \textbf{P-value Bartlett} & \textbf{Keputusan} \\ \hline
-2020 & [XX] & [XX] & [XX] & Layak \\ \hline
-2021 & [XX] & [XX] & [XX] & Layak \\ \hline
-2022 & [XX] & [XX] & [XX] & Layak \\ \hline
-2023 & [XX] & [XX] & [XX] & Layak \\ \hline
-2024 & [XX] & [XX] & [XX] & Layak \\ \hline
-\end{tabular}
-\end{table}
+\input{output_app/output_table_kmo_bartlett.tex}
 
-\textit{[Isikan nilai KMO dan p-value dari dashboard tab ``Data Diagnostics''.]}
-
-Hasil uji KMO pada Tabel~\ref{tab:kmo_bartlett} menunjukkan bahwa nilai KMO rata-rata berada pada kategori ``[XX]'' ($KMO > 0{,}5$), yang mengindikasikan bahwa data cukup memadai untuk dianalisis secara multivariat. Selanjutnya, hasil Uji Bartlett dengan $p\text{-value} < 0{,}05$ pada seluruh tahun memberikan cukup bukti untuk menolak hipotesis nol bahwa matriks korelasi adalah matriks identitas. Hal ini berarti terdapat interkorelasi signifikan antar-variabel, sehingga analisis dengan metode multivariat (seperti STATIS) secara statistik telah terjustifikasi.
+Hasil uji KMO pada Tabel~\ref{tab:kmo_bartlett} menunjukkan bahwa nilai KMO berada pada rentang $\MacroKMOMin{}$--$\MacroKMOMax{}$ dengan rata-rata $\MacroKMOAvg{}$ (kategori ``$\MacroKMOInterpret{}$''), yang mengindikasikan bahwa data cukup memadai untuk dianalisis secara multivariat. Selanjutnya, hasil Uji Bartlett dengan $p\text{-value} < 0{,}05$ pada seluruh tahun memberikan cukup bukti untuk menolak hipotesis nol bahwa matriks korelasi adalah matriks identitas. Hal ini berarti terdapat interkorelasi signifikan antar-variabel, sehingga analisis dengan metode multivariat (seperti STATIS) secara statistik telah terjustifikasi.
 
 %-----------------------------------------------------------------------------%
 % --- 4.3 ---
@@ -230,6 +215,11 @@ Tabel~\ref{tab:loadings} menyajikan nilai loading ($\mathbf{G}_c$) masing-masing
 
 \input{output_app/output_table_loadings.tex}
 % Label: \label{tab:loadings}
+
+Sebagai pelengkap, Tabel~\ref{tab:vc} menyajikan matriks vektor eigen kompromi $\mathbf{V}_c$ yang merupakan hasil dekomposisi spektral pada matriks kompromi variabel $\mathbf{S}_c$. Berbeda dengan \textit{loadings} pada Tabel~\ref{tab:loadings} yang dinyatakan sebagai korelasi Pearson (berkisar $-1$ hingga $1$), nilai-nilai dalam $\mathbf{V}_c$ adalah bobot linear murni yang digunakan untuk memproyeksikan setiap observasi ke dalam ruang kompromi melalui persamaan $\mathbf{F}_t = \mathbf{Z}_t \mathbf{V}_c$.
+
+\input{output_app/output_table_vc.tex}
+% Label: \label{tab:vc}
 
 \subsection{\normalsize Loading Plot (Correlation Circle)}
 

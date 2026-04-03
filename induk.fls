@@ -733,6 +733,9 @@ INPUT .\output_app\boxplot_rls_2024.png
 INPUT .\output_app\boxplot_rls_2024.png
 INPUT .\output_app\boxplot_rls_2024.png
 INPUT .\output_app\boxplot_rls_2024.png
+INPUT .\output_app\output_table_kmo_bartlett.tex
+INPUT .\output_app\output_table_kmo_bartlett.tex
+INPUT output_app\output_table_kmo_bartlett.tex
 INPUT .\output_app\output_table_rv.tex
 INPUT .\output_app\output_table_rv.tex
 INPUT output_app\output_table_rv.tex
@@ -773,6 +776,9 @@ INPUT .\output_app\cluster_compromise_biplot.png
 INPUT .\output_app\output_table_loadings.tex
 INPUT .\output_app\output_table_loadings.tex
 INPUT output_app\output_table_loadings.tex
+INPUT .\output_app\output_table_vc.tex
+INPUT .\output_app\output_table_vc.tex
+INPUT output_app\output_table_vc.tex
 INPUT .\output_app\loading_plot.png
 INPUT .\output_app\loading_plot.png
 INPUT .\output_app\loading_plot.png

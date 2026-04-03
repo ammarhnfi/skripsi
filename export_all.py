@@ -77,13 +77,8 @@ def escape_tex(val):
 def save_tex_table(df, filename, caption, label, longtable=False, float_fmt="{:.4f}", header_makecell=False):
     path = os.path.join(OUT_DIR, filename)
     cols = df.columns.tolist()
-    # Jika kolom banyak (seperti matriks), gunakan p{} untuk semua kolom agar rata
-    if len(cols) > 3:
-        # Distribusikan sisa lebar (0.60\textwidth) ke n-1 kolom untuk sisa margin
-        w_sub = round(0.60 / (len(cols) - 1), 2)
-        col_defs = [r"m{0.25\textwidth}|"] + [f"m{{{w_sub}\\textwidth}}|" for _ in range(len(cols)-1)]
-    else:
-        col_defs = [r"m{0.25\textwidth}|"] + ["c|" for _ in range(len(cols)-1)]
+    # All columns use 'c' so the table is always consistent and adjustbox scales it properly
+    col_defs = ["c|"] * len(cols)
     col_str = "".join(col_defs)
 
     lines = []

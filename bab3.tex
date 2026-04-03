@@ -275,13 +275,17 @@ Berdasarkan data sampel pada sub-bab sebelumnya, hasil standardisasi wilayah Jak
 
 Selanjutnya, untuk mendapatkan pembobot variabel ($\mathbf{V}_c$), dilakukan pembentukan matriks kompromi variabel $\mathbf{S}_c$ yang merupakan rerata tertimbang dari matriks produk skalar tiap tahun $\mathbf{S}_t = \mathbf{Z}_t^\top \mathbf{Z}_t$ menggunakan bobot $\alpha$ yang telah diperoleh (0,561; 0,587; 0,583):
 {\small
-\begin{align*}
-    \mathbf{S}_{2020} &= \begin{pmatrix} 3,00 & -2,03 & -1,98 \\ -2,03 & 3,00 & -0,19 \\ -1,98 & -0,19 & 3,00 \end{pmatrix}, \text{ } 
-    \mathbf{S}_{2021} = \begin{pmatrix} 3,00 & -2,13 & 0,11 \\ -2,13 & 3,00 & -2,15 \\ 0,11 & -2,15 & 3,00 \end{pmatrix}, \text{ }
-    \mathbf{S}_{2022} = \begin{pmatrix} 3,00 & -2,18 & 0,58 \\ -2,18 & 3,00 & -2,43 \\ 0,58 & -2,43 & 3,00 \end{pmatrix} \\[8pt]
-    \mathbf{S}_{c} &= 0,561 \mathbf{S}_{2020} + 0,587 \mathbf{S}_{2021} + 0,583 \mathbf{S}_{2022} = \begin{pmatrix} 5,19 & -3,66 & -0,71 \\ -3,66 & 5,19 & -2,79 \\ -0,71 & -2,79 & 5,19 \end{pmatrix}
-\end{align*}
+\[
+\begin{gathered}
+    \mathbf{S}_{2020} = \begin{pmatrix} 3,00 & -2,03 & -1,98 \\ -2,03 & 3,00 & -0,19 \\ -1,98 & -0,19 & 3,00 \end{pmatrix}, \quad
+    \mathbf{S}_{2021} = \begin{pmatrix} 3,00 & -2,13 & 0,11 \\ -2,13 & 3,00 & -2,15 \\ 0,11 & -2,15 & 3,00 \end{pmatrix}, \\
+    \mathbf{S}_{2022} = \begin{pmatrix} 3,00 & -2,18 & 0,58 \\ -2,18 & 3,00 & -2,43 \\ 0,58 & -2,43 & 3,00 \end{pmatrix}, \\
+    \mathbf{S}_{c} = 0,561 \mathbf{S}_{2020} + 0,587 \mathbf{S}_{2021} + 0,583 \mathbf{S}_{2022}, \\
+    = \begin{pmatrix} 5,19 & -3,66 & -0,71 \\ -3,66 & 5,19 & -2,79 \\ -0,71 & -2,79 & 5,19 \end{pmatrix}
+\end{gathered}
+\]
 }
+
 Berdasarkan dekomposisi eigen pada matriks $\mathbf{S}_c$ di atas sesuai Persamaan (\ref{eq:vc}) pada Bab 2, diperoleh matriks vektor eigen $\mathbf{V}_c$ (dua komponen utama pertama) sebagai berikut:
 \[
 \mathbf{V}_c = \begin{pmatrix} -0,568 & 0,600 \\ -0,680 & 0,043 \\ -0,464 & -0,799 \end{pmatrix}
