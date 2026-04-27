@@ -9,21 +9,25 @@ Bab ini menyimpulkan hasil temuan utama dari analisis STATIS dan Dynamic Biplot 
 Berdasarkan hasil analisis dan pembahasan yang telah dilakukan, dapat ditarik beberapa kesimpulan sebagai berikut:
 
 \begin{enumerate}
-    \item \textbf{Stabilitas Struktur Ekonomi Regional:} 
-    Berdasarkan analisis inter-struktur (STATIS) dan uji validasi permutasi ($p < 0.05$), ditemukan bahwa konfigurasi spasial ekonomi antar-kabupaten/kota bersifat \textbf{stabil} selama periode 2020--2024. Hal ini mengindikasikan bahwa peristiwa pandemi COVID-19, meskipun menurunkan kinerja makroekonomi secara absolut, tidak mengubah hierarki ketimpangan antarwilayah secara fundamental. Wilayah metropolitan (Jabodetabek) tetap mendominasi struktur kesejahteraan dibandingkan wilayah penyangga.
+    \item \textbf{Stabilitas Struktur Regional yang Terbukti Signifikan:} 
+    Melalui analisis inter-struktur STATIS, seluruh koefisien RV antar-tahun berada di atas $0{,}90$, yang membuktikan bahwa konfigurasi spasial sosio-ekonomi antar 41 kabupaten/kota bersifat sangat stabil selama 2020--2024. Uji permutasi ($B = 1000$) memberikan $p < 0{,}05$, sehingga struktur kompromi yang ditemukan dinyatakan \textbf{signifikan secara statistik} dan bukan artefak acak.
 
     \item \textbf{Dimensi Utama Pembangunan:} 
-    Dekomposisi struktur kompromi menghasilkan dua dimensi utama yang menjelaskan keragaman data. Dimensi pertama merepresentasikan "Taraf Ekonomi dan Infrastruktur" (berkorelasi positif dengan PDRB, IPM), sedangkan dimensi kedua merepresentasikan "Kerentanan Sosial" (berkorelasi dengan Kemiskinan dan TPT).
+    Dekomposisi struktur kompromi menghasilkan dua dimensi utama. Dimensi~1 merepresentasikan ``Taraf Ekonomi dan Kualitas Sumber Daya Manusia'' (berkorelasi positif dengan PDRB, IPM, RLS, IPG) dan menjelaskan bagian terbesar variansi total. Dimensi~2 merepresentasikan ``Kesehatan dan Ketahanan Sosial'' yang menangkap perbedaan kualitas hidup non-ekonomi seperti Angka Harapan Hidup.
 
-    \item \textbf{Dinamika Trajektori Pemulihan:}
-    Visualisasi \textit{Dynamic Biplot} berhasil memetakan pola lintasan pemulihan yang berbeda:
+    \item \textbf{Dinamika Trajektori Pemulihan yang Terpola:}
+    Visualisasi \textit{Dynamic Biplot} berhasil memetakan tiga pola lintasan yang berbeda:
     \begin{itemize}
-        \item Kota-kota berbasis jasa (Jakarta Pusat, Bandung, Tangerang Selatan) menunjukkan pola pemulihan berbentuk \textit{V-shape} atau \textit{rebound} yang kuat pasca-2021.
-        \item Kabupaten di wilayah selatan (Lebak, Pandeglang, Sukabumi) cenderung memiliki lintasan yang stagnan, menandakan lambatnya respons pemulihan ekonomi di wilayah pedesaan.
+        \item Kota-kota berbasis jasa (Jakarta Pusat, Bandung, Tangerang Selatan) menunjukkan pola pemulihan berbentuk \textit{V-shape} yang kuat pasca-2021.
+        \item Kabupaten di wilayah selatan (Lebak, Pandeglang, Garut) cenderung menunjukkan lintasan stagnan, menandakan lambatnya respons pemulihan ekonomi.
+        \item Sejumlah wilayah penyangga menunjukkan pertumbuhan progresif yang linear tanpa fluktuasi.
     \end{itemize}
     
-    \item \textbf{Evolusi dan Migrasi Klaster Spasio-Temporal:}
-    Melalui penerapan metode Elbow dan \textit{Agglomerative Clustering} sebagai pedoman partisi, analisis K-Means tahunan memperlihatkan klasterisasi wilayah yang cukup persisten. Namun, matriks transisi lintas tahun mengonfirmasi keberadaan sejumlah kabupaten/kota anomali yang berhasil bermigrasi menuju klaster dengan agregat sosio-ekonomi yang lebih baik selama proses \textit{recovery} pasca-pandemi, menyoroti efektivitas kebijakan pemulihan asimetris di tingkat lokal.
+    \item \textbf{Ekologi Klaster yang Persisten dengan Mobilitas Selektif:}
+    Pengelompokan K-Means ($k=3$) mengidentifikasi tiga klaster yang stabil: Maju (wilayah metropolitan), Berkembang (wilayah penyangga), dan Tertinggal (wilayah pedesaan). Matriks transisi lintas tahun mengkonfirmasi dominasi diagonal --- artinya sebagian besar wilayah bertahan di klasternya --- namun sejumlah kabupaten seperti Kepulauan Seribu berhasil bermigrasi positif ke klaster yang lebih baik selama masa pemulihan 2022--2024.
+
+    \item \textbf{Validitas Eksternal melalui Kesesuaian IPM UNDP:}
+    Tabulasi silang antara klaster \textit{data-driven} K-Means dan kategori IPM UNDP mengungkap kesesuaian struktural yang tinggi: Klaster~3 (Maju) didominasi wilayah berkategori IPM ``Sangat Tinggi'', sedangkan Klaster~1 (Tertinggal) sebagian besar berstatus IPM ``Sedang''. Hal ini membuktikan bahwa metode STATIS mampu menangkap struktur laten pembangunan manusia secara valid, bahkan tanpa menggunakan IPM sebagai variabel input analisis. Seluruh hasil ini diintegrasikan dalam \textit{dashboard} web interaktif berbasis Dash/Plotly yang memungkinkan pemantauan dinamika pembangunan secara mandiri dan real-time.
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
@@ -33,13 +37,17 @@ Berdasarkan hasil analisis dan pembahasan yang telah dilakukan, dapat ditarik be
 Berdasarkan kesimpulan di atas, diajukan beberapa saran sebagai berikut:
 
 \begin{enumerate}
-    \item \textbf{Implikasi Kebijakan:}
-    Mengingat struktur ketimpangan yang persisten (stabil), kebijakan pemerataan pembangunan tidak cukup hanya mengandalkan pertumbuhan ekonomi (bantuan stimulus). Diperlukan intervensi struktural khusus untuk wilayah "Stagnan" (seperti Lebak dan Pandeglang) fokus pada peningkatan kapabilitas dasar (IPM) agar dapat mengejar ketertinggalan dari wilayah metropolitan.
+    \item \textbf{Implikasi Kebijakan \textit{Targeted}:}
+    Mengingat struktur ketimpangan yang persisten dan terpola secara spasial, kebijakan pemerataan pembangunan tidak cukup hanya mengandalkan pertumbuhan ekonomi nasional. Diperlukan intervensi struktural yang \textit{targeted} pada wilayah Klaster~1 (Tertinggal) --- khususnya Kabupaten Lebak, Pandeglang, dan Garut --- dengan fokus pada peningkatan kapabilitas dasar (RLS, AHH) serta pengurangan kemiskinan melalui strategi \textit{regional spillover} dari pusat pertumbuhan DKI Jakarta.
     
     \item \textbf{Pengembangan Penelitian Lanjutan:}
-    Penelitian ini dibatasi pada indikator makroekonomi tahunan. Penelitian selanjutnya disarankan untuk:
+    Penelitian ini dibatasi pada indikator makroekonomi tahunan dari 3 provinsi. Penelitian selanjutnya disarankan untuk:
     \begin{itemize}
-        \item Menggunakan data dengan resolusi waktu yang lebih tinggi (triwulanan) jika tersedia, untuk menangkap dinamika perubahan jangka pendek lebih detail.
-        \item Menerapkan metode \textit{Dual STATIS} atau \textit{STATIS-Dual} jika ingin fokus pada analisis hubungan antar-variabel secara lebih spesifik dibandingkan hubungan antar-objek.
+        \item Menggunakan data dengan resolusi waktu yang lebih tinggi (triwulanan) apabila tersedia, untuk menangkap dinamika perubahan jangka pendek secara lebih detail.
+        \item Memperluas cakupan wilayah ke seluruh Pulau Jawa atau Indonesia dengan mengintegrasikan metode \textit{Dual STATIS} untuk analisis hubungan antar-variabel yang lebih spesifik.
+        \item Menambahkan variabel sosial lain seperti akses infrastruktur, distribusi fasilitas kesehatan, dan indikator kemiskinan multidimensi untuk memperkaya dimensi analisis.
     \end{itemize}
+
+    \item \textbf{Pengembangan Platform \textit{Dashboard} Interaktif:}
+    Dashboard berbasis web (Dash/Plotly) yang dikembangkan dalam penelitian ini dapat dikembangkan lebih lanjut dengan menambahkan fitur pembaruan data secara otomatis dari API BPS Open Data, sehingga pemantauan dinamika pembangunan regional dapat dilakukan secara \textit{near real-time} oleh pemangku kepentingan kebijakan.
 \end{enumerate}

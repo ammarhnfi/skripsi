@@ -1,9 +1,21 @@
 [
   {
     "section": "Standardisasi Data",
-    "latex": "\\[ z_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_j}, \\quad i = 1, 2, \\ldots, n, \\quad j = 1, 2, \\ldots, p \\]",
+    "latex": "\\[ m_i = \\frac{\\overline{\\mathrm{JP}}_i}{\\displaystyle\\sum_{i'=1}^{n} \\overline{\\mathrm{JP}}_{i'}}, \\quad i = 1, 2, \\ldots, n \\]",
     "type": "equation",
-    "raw": "\\label{eq:standardization}\n    z_{ij} = \\frac{x_{ij} - \\bar{x}_j}{s_j}, \\quad i = 1, 2, \\ldots, n, \\quad j = 1, 2, \\ldots, p"
+    "raw": "\\label{eq:bobot}\n    m_i = \\frac{\\overline{\\mathrm{JP}}_i}{\\displaystyle\\sum_{i'=1}^{n} \\overline{\\mathrm{JP}}_{i'}}, \\quad i = 1, 2, \\ldots, n"
+  },
+  {
+    "section": "Standardisasi Data",
+    "latex": "\\[ \\mathbf{D} = \\operatorname{diag}(m_1, m_2, \\ldots, m_n) \\]",
+    "type": "equation",
+    "raw": "\\label{eq:matriks_D}\n    \\mathbf{D} = \\operatorname{diag}(m_1, m_2, \\ldots, m_n)"
+  },
+  {
+    "section": "Standardisasi Data",
+    "latex": "\\[ z_{ijk} = \\frac{x_{ijk} - \\mu_{jk}}{\\sigma_{jk}}, \\quad i = 1, \\ldots, n;\\; j = 1, \\ldots, p;\\; k = 1, \\ldots, K \\]",
+    "type": "equation",
+    "raw": "\\label{eq:standardization}\n    z_{ijk} = \\frac{x_{ijk} - \\mu_{jk}}{\\sigma_{jk}}, \\quad i = 1, \\ldots, n;\\; j = 1, \\ldots, p;\\; k = 1, \\ldots, K"
   },
   {
     "section": "Ukuran Pemusatan",
@@ -145,99 +157,99 @@
   },
   {
     "section": "Tahap 1: Intra-struktur",
-    "latex": "\\[ \\mathbf{W}_t = \\mathbf{Z}_t \\mathbf{Z}_t^T \\]",
+    "latex": "\\[ \\mathbf{W}_k = (\\mathbf{D}^{1/2}\\mathbf{Z}_k)(\\mathbf{D}^{1/2}\\mathbf{Z}_k)^T \\]",
     "type": "equation",
-    "raw": "\\mathbf{W}_t = \\mathbf{Z}_t \\mathbf{Z}_t^T"
+    "raw": "\\label{eq:intra}\n  \\mathbf{W}_k = (\\mathbf{D}^{1/2}\\mathbf{Z}_k)(\\mathbf{D}^{1/2}\\mathbf{Z}_k)^T"
   },
   {
     "section": "Tahap 2: Inter-struktur",
-    "latex": "\\[ RV(\\mathbf{W}_i, \\mathbf{W}_j) = \\frac{tr(\\mathbf{W}_i \\mathbf{W}_j)}{\\sqrt{tr(\\mathbf{W}_i^2) \\, tr(\\mathbf{W}_j^2)}} \\]",
+    "latex": "\\[ H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'}), \\qquad k,k' = 1,\\ldots,K. \\]",
     "type": "equation",
-    "raw": "\\label{eq:rv}\n    RV(\\mathbf{W}_i, \\mathbf{W}_j) = \\frac{tr(\\mathbf{W}_i \\mathbf{W}_j)}{\\sqrt{tr(\\mathbf{W}_i^2) \\, tr(\\mathbf{W}_j^2)}}"
+    "raw": "\\label{eq:interstructure_H}\n  H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'}), \\qquad k,k' = 1,\\ldots,K."
   },
   {
     "section": "Tahap 2: Inter-struktur",
-    "latex": "\\[ \\mathbf{R} \\mathbf{u} = \\theta \\mathbf{u} \\]",
+    "latex": "\\[ RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'})}{\\sqrt{\\mathrm{tr}(\\mathbf{W}_k^2) \\, \\mathrm{tr}(\\mathbf{W}_{k'}^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}. \\]",
     "type": "equation",
-    "raw": "\\label{eq:r_alpha}\n  \\mathbf{R} \\mathbf{u} = \\theta \\mathbf{u}"
+    "raw": "\\label{eq:rv}\n    RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'})}{\\sqrt{\\mathrm{tr}(\\mathbf{W}_k^2) \\, \\mathrm{tr}(\\mathbf{W}_{k'}^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}."
   },
   {
     "section": "Tahap 2: Inter-struktur",
-    "latex": "\\[ \\alpha_t = \\frac{u_{1t}}{\\sqrt{\\sum_{t=1}^{T} u_{1t}^2}} \\]",
+    "latex": "\\[ \\mathbf{H} \\mathbf{u} = \\theta \\mathbf{u}, \\]",
     "type": "equation",
-    "raw": "\\alpha_t = \\frac{u_{1t}}{\\sqrt{\\sum_{t=1}^{T} u_{1t}^2}}"
+    "raw": "\\label{eq:h_eigen}\n  \\mathbf{H} \\mathbf{u} = \\theta \\mathbf{u},"
+  },
+  {
+    "section": "Tahap 2: Inter-struktur",
+    "latex": "\\[ \\alpha_k = \\frac{u_{1k}}{\\displaystyle\\sum_{k'=1}^{K} u_{1k'}}. \\]",
+    "type": "equation",
+    "raw": "\\label{eq:alpha_weights}\n  \\alpha_k = \\frac{u_{1k}}{\\displaystyle\\sum_{k'=1}^{K} u_{1k'}}."
   },
   {
     "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{W}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{W}_t \\]",
+    "latex": "\\[ \\mathbf{W}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{W}_k \\]",
     "type": "equation",
-    "raw": "\\label{eq:wc}\n  \\mathbf{W}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{W}_t"
+    "raw": "\\label{eq:wc}\n  \\mathbf{W}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{W}_k"
   },
   {
     "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{W}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c \\mathbf{V}_c^T \\]",
+    "latex": "\\[ \\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T \\]",
     "type": "equation",
-    "raw": "\\mathbf{W}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c \\mathbf{V}_c^T"
+    "raw": "\\label{eq:decomp_W}\n    \\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T"
   },
   {
     "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{W}_c = \\mathbf{V}_c (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{\\Lambda}_c^{1/2}) \\mathbf{V}_c^T \\]",
+    "latex": "\\[ \\mathbf{F}_c = \\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}^{1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{W}_c = \\mathbf{V}_c (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{\\Lambda}_c^{1/2}) \\mathbf{V}_c^T"
-  },
-  {
-    "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{F}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2} \\]",
-    "type": "equation",
-    "raw": "\\label{eq:fc}\n        \\mathbf{F}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}"
-  },
-  {
-    "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{W}_c = (\\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}) (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{V}_c^T) \\]",
-    "type": "equation",
-    "raw": "\\mathbf{W}_c = (\\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}) (\\mathbf{\\Lambda}_c^{1/2} \\mathbf{V}_c^T)"
+    "raw": "\\label{eq:fc}\n    \\mathbf{F}_c = \\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}^{1/2}"
   },
   {
     "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_t = \\mathbf{Z}_t^T \\mathbf{Z}_t \\]",
+    "latex": "\\[ \\mathbf{S}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{Z}_k \\]",
     "type": "equation",
-    "raw": "\\mathbf{S}_t = \\mathbf{Z}_t^T \\mathbf{Z}_t"
+    "raw": "\\mathbf{S}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{Z}_k"
   },
   {
     "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{S}_t \\]",
+    "latex": "\\[ \\mathbf{S}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{S}_k \\]",
     "type": "equation",
-    "raw": "\\label{eq:sc}\n        \\mathbf{S}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{S}_t"
+    "raw": "\\label{eq:sc}\n        \\mathbf{S}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{S}_k"
   },
   {
     "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_{\\text{var}} \\mathbf{V}_c^T \\]",
+    "latex": "\\[ \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s \\mathbf{V}_c^T \\]",
     "type": "equation",
-    "raw": "\\label{eq:vc}\n        \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_{\\text{var}} \\mathbf{V}_c^T"
+    "raw": "\\label{eq:vc}\n        \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s \\mathbf{V}_c^T"
+  },
+  {
+    "section": "Tahap 4: Analisis Variabel (Loadings)",
+    "latex": "\\[ \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2} \\]",
+    "type": "equation",
+    "raw": "\\label{eq:gc}\n        \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
   },
   {
     "section": "Uji Signifikansi Stabilitas Struktur (Permutasi)",
-    "latex": "\\[ p\\text{-value} = \\frac{\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{obs}) + 1}{B + 1} \\]",
+    "latex": "\\[ p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{\\text{obs}}) + 1}{B + 1} \\]",
     "type": "equation",
-    "raw": "\\label{eq:permutation}\n        p\\text{-value} = \\frac{\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{obs}) + 1}{B + 1}"
+    "raw": "\\label{eq:permutation}\n        p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{\\text{obs}}) + 1}{B + 1}"
   },
   {
     "section": "Proyeksi Lintasan (\\textitTrajectory",
-    "latex": "\\[ \\mathbf{F}_t = \\mathbf{Z}_t \\mathbf{V}_c \\]",
+    "latex": "\\[ \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c \\]",
     "type": "equation",
-    "raw": "\\label{eq:lintasan}\n  \\mathbf{F}_t = \\mathbf{Z}_t \\mathbf{V}_c"
+    "raw": "\\label{eq:lintasan}\n  \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c"
   },
   {
     "section": "Proyeksi Lintasan (\\textitTrajectory",
-    "latex": "\\[ \\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,T} \\} \\]",
+    "latex": "\\[ \\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,K} \\} \\]",
     "type": "equation",
-    "raw": "\\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,T} \\}"
+    "raw": "\\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,K} \\}"
   },
   {
     "section": "Jarak Euclidean antar Trajektori",
-    "latex": "\\[ d(i, j) = \\sqrt{\\sum_{t=1}^{T} \\left\\| \\mathbf{f}_{i,t} - \\mathbf{f}_{j,t} \\right\\|^2} \\]",
+    "latex": "\\[ d(i, j) = \\sqrt{\\sum_{k=1}^{K} \\left\\| \\mathbf{f}_{i,k} - \\mathbf{f}_{j,k} \\right\\|^2} \\]",
     "type": "equation",
-    "raw": "d(i, j) = \\sqrt{\\sum_{t=1}^{T} \\left\\| \\mathbf{f}_{i,t} - \\mathbf{f}_{j,t} \\right\\|^2}"
+    "raw": "d(i, j) = \\sqrt{\\sum_{k=1}^{K} \\left\\| \\mathbf{f}_{i,k} - \\mathbf{f}_{j,k} \\right\\|^2}"
   },
   {
     "section": "Rotasi Baseline",
@@ -271,9 +283,21 @@
   },
   {
     "section": "Matriks Transisi Temporal",
-    "latex": "\\[ \\mathbf{T} = \n    \\begin{pmatrix}\n    T_{1,1} & T_{1,2} & \\cdots & T_{1,k} \\\\\n    T_{2,1} & T_{2,2} & \\cdots & T_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    T_{k,1} & T_{k,2} & \\cdots & T_{k,k}\n    \\end{pmatrix} \\]",
+    "latex": "\\[ \\mathbf{T} = \n    \\begin{pmatrix}\n    M_{1,1} & M_{1,2} & \\cdots & M_{1,k} \\\\\n    M_{2,1} & M_{2,2} & \\cdots & M_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    M_{k,1} & M_{k,2} & \\cdots & M_{k,k}\n    \\end{pmatrix} \\]",
     "type": "equation",
-    "raw": "\\mathbf{T} = \n    \\begin{pmatrix}\n    T_{1,1} & T_{1,2} & \\cdots & T_{1,k} \\\\\n    T_{2,1} & T_{2,2} & \\cdots & T_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    T_{k,1} & T_{k,2} & \\cdots & T_{k,k}\n    \\end{pmatrix}"
+    "raw": "\\mathbf{T} = \n    \\begin{pmatrix}\n    M_{1,1} & M_{1,2} & \\cdots & M_{1,k} \\\\\n    M_{2,1} & M_{2,2} & \\cdots & M_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    M_{k,1} & M_{k,2} & \\cdots & M_{k,k}\n    \\end{pmatrix}"
+  },
+  {
+    "section": "Penyelarasan Klaster Lintas Waktu (\\textitCluster Correspondence",
+    "latex": "\\[ D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2} \\]",
+    "type": "equation",
+    "raw": "\\label{eq:dist_centroid}\n    D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}"
+  },
+  {
+    "section": "Penyelarasan Klaster Lintas Waktu (\\textitCluster Correspondence",
+    "latex": "\\[ \\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij} \\]",
+    "type": "equation",
+    "raw": "\\label{eq:hungarian_min}\n    \\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}"
   },
   {
     "section": "Matriks Pembobot Spasial",
@@ -292,5 +316,11 @@
     "latex": "\\[ I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2} \\]",
     "type": "equation",
     "raw": "\\label{eq:moran_i}\n    I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2}"
+  },
+  {
+    "section": "Standardisasi Data",
+    "latex": "\\[ \\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk}  \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\]",
+    "type": "align",
+    "raw": "\\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk} \\label{eq:weighted_mean} \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\label{eq:weighted_std}"
   }
 ]

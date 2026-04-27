@@ -1,8 +1,0 @@
-dash
-pandas
-plotly
-scikit-learn
-openpyxl
-geopandas
-gunicorn
-scipy

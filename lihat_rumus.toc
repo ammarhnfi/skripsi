@@ -1,6 +1,0 @@
-\babel@toc {indonesian}{}\relax 
-\contentsline {section}{\numberline {1}Analisis Statistika Deskriptif}{3}{section.1}%
-\contentsline {section}{\numberline {2}Uji Kelayakan Data}{7}{section.2}%
-\contentsline {section}{\numberline {3}Korelasi dan Analisis Komponen Utama (PCA)}{9}{section.3}%
-\contentsline {section}{\numberline {4}Tahapan Metode STATIS}{11}{section.4}%
-\contentsline {section}{\numberline {5}Analisis Klaster dan Spasial}{14}{section.5}%

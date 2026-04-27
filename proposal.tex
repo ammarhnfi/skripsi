@@ -111,7 +111,7 @@ Proposal Skripsi ini telah disetujui oleh Pembimbing I Proposal Skripsi untuk di
 
 Dinamika pembangunan di wilayah strategis Provinsi Banten, DKI Jakarta, dan Jawa Barat menunjukkan kompleksitas yang tinggi selama periode 2020--2024. Sebagai pusat aglomerasi ekonomi nasional, ketiga provinsi ini mengalami perubahan simultan akibat pandemi COVID-19 yang diikuti oleh fase pemulihan yang tidak seragam antar-kabupaten/kota. Perubahan ini tidak hanya terjadi pada indikator makroekonomi, tetapi juga merambat pada dimensi kesejahteraan sosial dan kualitas modal manusia. Untuk memahami evolusi struktur hubungan antar-indikator tersebut secara menyeluruh, diperlukan pendekatan analisis data tiga-arah (\textit{three-way data}) yang mampu memahami pola interaksi spasio-temporal.
 
-Penelitian ini menerapkan metode STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk menganalisis dinamika 12 indikator pembangunan strategis---meliputi aspek ekonomi (PDRB), kesejahteraan (Kemiskinan, Garis Kemiskinan, Pangan), pembangunan manusia (IPM, Pendidikan, Kesehatan), ketenagakerjaan, serta kesetaraan (Gender, Gini Ratio)---di seluruh kabupaten/kota pada ketiga provinsi tersebut. Analisis berpusat pada pembentukan struktur kompromi (\textit{compromise structure}). Merujuk pada definisi \citet{lavit94}, struktur kompromi ($\mathbf{W}$) dikonstruksi sebagai jumlah tertimbang (\textit{weighted sum}) dari matriks intra-struktur tahunan, di mana bobot ($\alpha_k$) ditentukan berdasarkan dekomposisi spektral untuk memaksimumkan kesamaan antar-tahun. Struktur ini merepresentasikan pola hubungan antar-wilayah yang paling dominan dan stabil selama periode pengamatan. Selanjutnya, penelitian ini menguji signifikansi stabilitas struktur tersebut menggunakan uji permutasi dan mengintegrasikan konsep \textit{Dynamic Biplot} untuk memvisualisasikan lintasan (\textit{trajectory}) pergerakan kabupaten/kota dari masa krisis hingga pemulihan dalam ruang berdimensi rendah.
+Penelitian ini menerapkan metode STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk menganalisis dinamika 12 indikator pembangunan strategis---meliputi aspek ekonomi (PDRB), kesejahteraan (Kemiskinan, Garis Kemiskinan, Pangan), pembangunan manusia (IPM, Pendidikan, Kesehatan), ketenagakerjaan, serta kesetaraan (Gender, Gini Ratio)---di seluruh kabupaten/kota pada ketiga provinsi tersebut. Analisis berpusat pada pembentukan struktur kompromi (\textit{compromise structure}). Merujuk pada definisi \citet{lavit94}, struktur kompromi ($\mathbf{W}_c$) dikonstruksi sebagai jumlah tertimbang (\textit{weighted sum}) dari matriks intra-struktur tahunan, di mana bobot ($\alpha_k$) ditentukan berdasarkan dekomposisi spektral untuk memaksimumkan kesamaan antar-tahun. Struktur ini merepresentasikan pola hubungan antar-wilayah yang paling dominan dan stabil selama periode pengamatan. Selanjutnya, penelitian ini menguji signifikansi stabilitas struktur tersebut menggunakan uji permutasi dan mengintegrasikan konsep \textit{Dynamic Biplot} untuk memvisualisasikan lintasan (\textit{trajectory}) pergerakan kabupaten/kota dari masa krisis hingga pemulihan dalam ruang berdimensi rendah.
 
 Seluruh prosedur analisis, mulai dari pra-pemrosesan data hingga visualisasi, diimplementasikan menggunakan bahasa pemrograman Python. Hasil akhir dari penelitian ini disajikan dalam bentuk aplikasi \textit{dashboard} web interaktif berbasis \textit{framework} Dash dan Plotly. Aplikasi ini memungkinkan pengguna untuk melakukan eksplorasi mandiri melalui fitur rotasi \textit{baseline} dan filter lintasan, sehingga diharapkan dapat menjadi alat bantu visual yang efektif bagi peneliti maupun pemangku kebijakan dalam memantau resiliensi dan pemerataan pembangunan daerah pasca-pandemi.
 
@@ -291,7 +291,7 @@ Misalkan $\mathbf{X}$ adalah matriks data berukuran $n \times p$ yang telah dipu
 Komponen hasil PCA terdiri dari dua elemen utama:
 \begin{enumerate}
     \item \textbf{Loadings ($\mathbf{V}$):} Matriks vektor eigen yang berisi bobot kontribusi setiap variabel asli terhadap komponen utama.
-    \item \textbf{Scores ($\mathbf{F}$):} Proyeksi data asli ke dalam ruang komponen utama, dihitung sebagai:
+    \item \textbf{Scores ($\mathbf{F}_c$):} Proyeksi data asli ke dalam ruang komponen utama, dihitung sebagai:
     \begin{equation}
         \mathbf{F} = \mathbf{X} \mathbf{V}
     \end{equation}
@@ -306,7 +306,7 @@ Untuk memvisualisasikan hasil reduksi dimensi ini secara simultan, digunakan tek
     \end{equation}
     Dalam visualisasi ini:
     \begin{itemize}
-        \item Objek ke-$i$ digambarkan sebagai titik koordinat berdasarkan baris ke-$i$ dari matriks Skor $\mathbf{F}$. Jarak Euclidean antar titik merepresentasikan kemiripan antar objek.
+        \item Objek ke-$i$ digambarkan sebagai titik koordinat berdasarkan baris ke-$i$ dari matriks Skor $\mathbf{F}_c$. Jarak Euclidean antar titik merepresentasikan kemiripan antar objek.
         \item Variabel ke-$j$ digambarkan sebagai vektor (panah) berdasarkan baris ke-$j$ dari matriks Loadings $\mathbf{V}$. Sudut antar vektor merepresentasikan korelasi antar variabel (sudut lancip berart korelasi positif, tumpul berarti negatif).
     \end{itemize}
 \end{definition}

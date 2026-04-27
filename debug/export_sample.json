@@ -1,0 +1,23 @@
+{
+    "excel_path": "D:\\Skripsi\\my\\data\\Data Sampel Final.xlsx",
+    "variables": ["PPM", "RLS", "TPT"],
+    "sheets": ["2020", "2021", "2022"],
+    "output_dir": "D:\\Skripsi\\my\\output_sample",
+    "shapefile_path": "D:\\Skripsi\\my\\web\\gadm41_IDN_2.shp",
+    "n_permutations": 1000,
+    "k_clusters": 3,
+    "image_format": "png",
+    "image_scale": 3,
+    "image_width": 1200,
+    "image_height": 800,
+    "label_prefix": "sample",
+    "rotation": {
+        "type": "loading",
+        "name": "TPT"
+    },
+    "mirror_years": [],
+    "scale_load": true,
+    "norm_score": false,
+    "highlight_objects": ["KOTA BEKASI", "KAB. BOGOR", "KOTA BANDUNG"],
+    "highlight_vars": ["TPT", "PPM"]
+}

@@ -1,0 +1,775 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[indonesian]{babel}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{natbib}
+\bibliographystyle{apalike}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{parskip}
+\usepackage{adjustbox}
+
+\geometry{margin=2.5cm, headheight=14pt, top=3cm}
+
+\definecolor{primary}{HTML}{1E3A5F}
+\definecolor{accent}{HTML}{EBF5FB}
+\definecolor{gold}{HTML}{D4AC0D}
+
+\tcbset{
+  formula_box/.style={
+    colback=accent, colframe=primary,
+    fonttitle=\bfseries\color{white},
+    coltitle=white, attach boxed title to top left={yshift=-2mm,xshift=6mm},
+    boxed title style={colback=primary, rounded corners},
+    boxrule=0.8pt, arc=6pt,
+    left=8pt, right=8pt, top=16pt, bottom=8pt,
+    after skip=14pt
+  }
+}
+
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\bfseries Ammar Hanafi (2206051582)}
+\rhead{\small\textit{Analisis STATIS -- Jawa Barat, Banten, DKI Jakarta}}
+\cfoot{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=4pt}
+\setlist[itemize]{leftmargin=*, itemsep=2pt, topsep=4pt}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{3cm}
+  {\Huge\bfseries Penjabaran Langkah demi Langkah\\[0.5em]
+  Seluruh Formula Matematis\\[1em]}
+  {\Large\textit{Analisis STATIS Panel Sosio-Ekonomi\\
+  41 Kabupaten/Kota, 5 Tahun (2020--2024)}}\\[3em]
+  \rule{0.6\textwidth}{0.5pt}\\[1.5em]
+  {\large Ammar Hanafi\\NPM: 2206051582\\[0.5em]
+  Program Studi Statistika\\
+  Fakultas Matematika dan Ilmu Pengetahuan Alam\\
+  Universitas Indonesia\\[1.5em]
+  \textbf{Terakhir Diperbarui: \today}}
+  \vspace*{3cm}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section*{Pendahuluan} \label{sec:method}
+Dokumen ini menjabarkan \textbf{setiap formula matematis} yang digunakan dalam penelitian skripsi secara lengkap. Seluruh formulasi statistika dasar maupun multivariat dalam dokumen ini telah diselaraskan dengan kerangka aljabar linear dari metode STATIS berdasarkan \textbf{Lavit et al. (1994)} dan pengembangannya oleh \textbf{Oliveira et al. (2024)}.
+
+Karena 41 Kabupaten/Kota yang diamati merupakan populasi utuh (bukan sampel estimasi) dan analisis STATIS bekerja pada ruang metrik spesifik $\mathbf{D}$, maka seluruh pengukuran variabilitas secara konsisten menggunakan parameter populasi terbobot ($\mu$ dan $\sigma$).
+\begin{enumerate}
+  \item \textbf{Formula Asal} --- Notasi simbolik baku
+  \item \textbf{Keterangan Variabel} --- Definisi setiap simbol
+  \item \textbf{Substitusi Langkah demi Langkah} --- Nilai \emph{nyata} dari \texttt{data2.xlsx} dimasukkan
+  \item \textbf{Hasil Akhir} --- Nilai komputasi sesungguhnya
+\end{enumerate}
+
+\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{12 variabel sosio-ekonomi}, periode \textbf{2020--2024} ($T = 5$ tahun).
+
+\subsection*{Daftar Singkatan dan Variabel}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lll}
+\toprule
+\textbf{Singkatan} & \textbf{Kepanjangan} & \textbf{Satuan} \\
+\midrule
+IPM   & Indeks Pembangunan Manusia & Indeks \\
+IPG   & Indeks Pembangunan Gender  & Indeks \\
+PPM   & Persentase Penduduk Miskin & Persen (\%) \\
+PDRB\_ADHK & Produk Domestik Regional Bruto Atas Dasar Harga Konstan & Juta Rupiah \\
+RLS   & Rata-rata Lama Sekolah    & Tahun \\
+AHH\_L & Angka Harapan Hidup Laki-Laki & Tahun \\
+AHH\_P & Angka Harapan Hidup Perempuan & Tahun \\
+GK    & Garis Kemiskinan          & Rupiah/Kapita/Bulan \\
+PKKP  & Pengeluaran per Kapita yang Disesuaikan & Ribu Rupiah/Orang/Tahun \\
+TPT   & Tingkat Pengangguran Terbuka & Persen (\%) \\
+TPAK  & Tingkat Partisipasi Angkatan Kerja & Persen (\%) \\
+GR    & Gini Ratio (Rasio Ketimpangan) & Indeks [0,1] \\
+JP    & Jumlah Penduduk           & Orang \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{13 variabel sosio-ekonomi}, periode \textbf{2020--2024} ($K = 5$ studi/tahun).
+
+\subsection*{Notasi Umum dan Matriks Metrik}
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{ll}
+\toprule
+\textbf{Notasi} & \textbf{Arti} \\
+\midrule
+$n$ & Jumlah wilayah observasi populasi target ($n = 41$) \\
+$p$ & Jumlah variabel ($p = 12$) \\
+$K$ & Jumlah pengamatan/studi ($K = 5$: tahun 2020--2024) \\
+$i$ & Indeks wilayah ($i = 1, 2, \ldots, n$) \\
+$j$ & Indeks variabel ($j = 1, 2, \ldots, p$) \\
+$k$ & Indeks studi/tahun ($k = 1, 2, \ldots, K$) \\
+$m_i$ & Bobot observasi wilayah ke-$i$ (proporsi populasi) \\
+$\mathbf{D}$ & Matriks diagonal pembobot spasial berukuran $n \times n$ (elemen diagonal $m_i$) \\
+$\mathbf{X}_k$ & Matriks data mentah ($n \times p$) tahun ke-$k$ \\
+$\mathbf{Z}_k$ & Matriks data terstandarisasi terbobot ($n \times p$) tahun ke-$k$ \\
+$\mathbf{W}_k$ & Matriks skalar produk / kedekatan antar-wilayah ($n \times n$) tahun ke-$k$ \\
+$\mathbf{W}_c$ & Matriks kompromi STATIS ($n \times n$) \\
+$\mathbf{F}_c$ & Matriks koordinat skor kompromi akhir ($n \times 2$) \\
+KMO & Kaiser-Meyer-Olkin Measure of Sampling Adequacy \\
+MSA & Measure of Sampling Adequacy (per variabel) \\
+RV & Koefisien kemiripan antar-matriks (Escoufier) \\
+PCA & Principal Component Analysis (Analisis Komponen Utama) \\
+SVD & Singular Value Decomposition (Dekomposisi Nilai Singular) \\
+SSE & Sum of Squared Errors (Jumlah Kuadrat Galat) \\
+STATIS & Structuration des Tableaux \`A Trois Indices de la Statistique \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+
+\newpage
+
+\section{Analisis Statistika Deskriptif (Dalam Ruang Metrik \texorpdfstring{$\mathbf{D}$}{D})}
+Berdasarkan \citet{lavit94}, sebelum mengekstraksi jarak Euclidean, setiap variabel harus disentralkan terhadap titik pusat gravitasi (rata-rata populasi terbobot, $\mu$) dan diskalakan dengan varians populasi terbobot ($\sigma^2$) agar matriks metrik $\mathbf{D}$ dapat beroperasi secara valid.
+\begin{tcolorbox}[formula_box, title={Bobot}] \label{kotak:bobot}
+\textbf{Formula:}
+\[
+m_i = \frac{\overline{\text{JP}}_i}{\sum_{i=1}^{n} \overline{\text{JP}}_i} \quad \text{dimana} \quad \overline{\text{JP}}_i = \frac{1}{K}\sum_{k=1}^{K} \text{JP}_{ik}
+\]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+    \item $m_i$ = Bobot demografis (proporsi) untuk wilayah ke-$i$.
+    \item $\overline{\text{JP}}_i$ = Rata-rata jumlah penduduk wilayah ke-$i$ selama periode observasi.
+    \item $\text{JP}_{ik}$ = Jumlah penduduk wilayah ke-$i$ pada periode/tahun ke-$k$.
+    \item $n$ = Total jumlah wilayah observasi.
+    \item $K$ = Total periode waktu (tahun) observasi.
+    \item $i$ = Indeks wilayah ($1, 2, \dots, n$).
+    \item $k$ = Indeks periode waktu ($1, 2, \dots, K$).
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+    \item Hitung rata-rata penduduk untuk setiap wilayah: $\overline{\text{JP}}_i = \frac{\text{JP}_{i1} + \text{JP}_{i2} + \dots + \text{JP}_{iK}}{K}$.
+    \item Jumlahkan seluruh rata-rata penduduk dari semua $n$ wilayah: $\text{Total} = \sum_{i=1}^{n} \overline{\text{JP}}_i$.
+    \item Bagi rata-rata wilayah ke-$i$ dengan total: $m_i = \frac{\overline{\text{JP}}_i}{\text{Total}}$.
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[
+m_i \in (0, 1) \quad \text{dengan syarat} \quad \sum_{i=1}^{n} m_i = 1
+\]
+
+\textbf{Penjelasan:} Nilai ini ditetapkan berdasarkan proporsi rata-rata jumlah penduduk wilayah ke-$i$ terhadap total rata-rata penduduk seluruh wilayah observasi. Penggunaan bobot demografis ini memastikan bahwa representasi jarak ekonomi antar-wilayah tidak terdistorsi oleh daerah berpenduduk kecil, serta memenuhi pembatas ruang metrik $\sum m_i = 1$ \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Rata-Rata Populasi Terbobot (Weighted Mean)}] \label{kotak:mean}
+\textbf{Formula:}
+\[ \mu_{jk} = \sum_{i=1}^{n} m_i x_{ijk} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mu_{jk}$: Rata-rata populasi terbobot untuk variabel $j$ pada tahun $k$
+  \item $n$: Jumlah total wilayah populasi target (41 Kabupaten/Kota)
+  \item $m_i$: Bobot observasi wilayah ke-$i$ (dengan syarat $\sum m_i = 1$) (lihat \ref{kotak:bobot})
+  \item $x_{ijk}$: Nilai variabel $j$ untuk wilayah ke-$i$ tahun $k$
+  \item \textit{Catatan:} Notasi $\mu$ digunakan karena 41 wilayah tersebut merupakan populasi utuh target penelitian. Formula ini sejalan dengan syarat pemusatan matriks dari \citet{lavit94}.
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Variabel: IPM, Tahun 2020, $n = 41$ wilayah
+  \item Asumsi awal menggunakan bobot spasial seragam ($m_i = \frac{1}{41}$) untuk perhitungan dasar:
+  \item $\mu_{\text{IPM},2020} = \sum_{i=1}^{41} \left(\frac{1}{41}\right) x_{i,\text{IPM},2020} = \frac{1}{41} \sum_{i=1}^{41} x_{i,\text{IPM},2020}$
+  \item $\mu_{\text{IPM},2020} = \frac{71.63 + 84.72 + 82.66 + \cdots}{41}$
+  \item $\mu_{\text{IPM},2020} = \frac{2988.78}{41}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \mu_{\text{IPM},2020} = 72.89707317 \]
+Namun apabila menggunakan bobot demografis, maka:
+\[ \mu_{\text{IPM},2020} = \sum_{i=1}^{41} m_i x_{i,\text{IPM},2020} = 73.36908851 \]
+
+\textbf{Penjelasan:} Nilai rata-rata yang memperhitungkan bobot observasi spasial ($m_i$). Nilai ini digunakan sebagai titik pusat gravitasi (\textit{centroid}) populasi untuk menyentralkan data (\textit{centering}) sebelum dikonversi menjadi matriks jarak sesuai kerangka pada analisis STATIS \citet{lavit94}, sentralisasi data mengharuskan $\sum m_i (x_{ijk} - \mu_{jk}) = 0$.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Simpangan Baku Populasi Terbobot ($\sigma$)}] \label{kotak:simpangan_baku}
+\textbf{Formula:}
+\[ \sigma_{jk} = \sqrt{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^2} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\sigma_{jk}$: Simpangan baku populasi terbobot (akar dari varians metrik $\mathbf{D}$) variabel $j$ tahun $k$
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Variabel IPM, 2020: $\mu_{\text{IPM}} = 72.89707317$, bobot seragam $m_i = 1/41$
+  \item $\sigma_{\text{IPM},2020}^2 = \frac{1}{41} \sum_{i=1}^{41} (x_{i,\text{IPM}} - 72.89707317)^2 = \frac{1341.0352}{41} = 32.7081$
+  \item $\sigma_{\text{IPM},2020} = \sqrt{32.7081}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \sigma_{\text{IPM}} = 5.719106294 \]
+Namun apabila menggunakan bobot demografis, maka:
+\[ \sigma_{\text{IPM}} = \sqrt{\sum_{i=1}^{41} m_i (x_{i,\text{IPM}} - \mu_{\text{IPM}})^2} = 6.128349781 \]
+
+\textbf{Penjelasan:} Ukuran persebaran data yang menunjukkan seberapa jauh nilai-nilai observasi wilayah dalam suatu tahun menyimpang dari rata-ratanya. Semakin besar nilainya, semakin tinggi disparitas antar-wilayah. Karena 41 wilayah tersebut merupakan populasi target utuh, pembagi yang digunakan adalah ukuran matriks penuh (ekuivalen dengan $n$, bukan $n-1$), sesuai dengan operasi inersia pada STATIS dan PCA.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Standardisasi Data Terbobot (Weighted Z-Score)}] \label{kotak:standardisasi}
+\textbf{Formula:}
+\[ z_{ijk} = \frac{x_{ijk} - \mu_{jk}}{\sigma_{jk}} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $z_{ijk}$: Standardisasi terbobot (Weighted Z-Score) variabel $j$ pada wilayah ke-$i$ tahun $k$
+  \item $x_{ijk}$: Nilai mentah variabel $j$ pada wilayah ke-$i$ tahun $k$
+  \item $m_i$: Bobot observasi spasial untuk wilayah ke-$i$ (lihat \ref{kotak:bobot})
+  \item $\mu_{jk}$: Rata-rata terbobot variabel $j$ (lihat \ref{kotak:mean})
+  \item $\sigma_{jk}$: Simpangan baku terbobot variabel $j$ ($\sqrt{\sum_{i}^{n} m_i (x_{ijk} - \mu_{jk})^2}$)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Ambil contoh: $i = 4$ (Kota Jakarta Pusat), $j = $ IPM, $k = 2020$
+  \item $x_{4,\text(IPM),2020} = 81.39$
+  \item $\mu_{\text{IPM}} = 73.36908851$ (lihat \ref{kotak:mean})
+  \item $\sigma_{\text{IPM}} = 6.128349781$ (lihat \ref{kotak:simpangan_baku})
+  \item $z_{4,\text{IPM}} = \frac{81.39 - 73.36908851}{6.128349781} = \frac{8.020911486}{6.128349781}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ z_{4,\text{IPM},2020} = 1.308820771 \]
+\textit{(Nilai positif: IPM Kota Jakarta Pusat di atas rata-rata)}
+
+\textbf{Penjelasan:} Transformasi ini digunakan untuk menghilangkan perbedaan satuan ukur antar-variabel sehingga data dapat diperbandingkan secara proporsional. Berbeda dengan Z-Score konvensional, metode ini menginkorporasikan bobot observasi spasial ($m_i$) dalam menghitung rata-rata ($\mu_{jk}$) dan simpangan baku ($\sigma_{jk}$). Penggunaan bobot ini memastikan bahwa wilayah dengan populasi lebih besar memberikan pengaruh yang proporsional terhadap ukuran pemusatan dan penyebaran data. Melalui standardisasi ini, matriks data akan terpusat pada nilai nol dengan varians unit, yang mana memenuhi prasyarat ruang metrik $\mathbf{D}$ \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Median (Kuartil Kedua, $Q_2$)} \label{kotak:median}]
+\textbf{Formula:}
+\[ Q_2 = \begin{cases} x_{\left(\frac{n+1}{2}\right)} & n \text{ ganjil} \\ \frac{x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}}{2} & n \text{ genap} \end{cases} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $n = 41$ (ganjil), sehingga $Q_2 = x_{(21)}$
+  \item $x_{(k)}$: Nilai ke-$k$ setelah data diurutkan naik
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Data IPM 2020 diurutkan: $\{63.91, 65.00, \ldots, 84.72\}$
+  \item $n = 41$ (ganjil) $\Rightarrow$ posisi median $= \frac{41+1}{2} = 21$
+  \item $Q_2 = x_{(21)} = 71.7000$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ Q_2 = 71.7000 \]
+
+\textbf{Penjelasan:} Nilai tengah data yang memberikan gambaran nilai tipikal wilayah yang tidak mudah terdistorsi oleh nilai ekstrem (pencilan) dalam distribusi variabel ekonomi.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Nilai Minimum dan Maksimum}] \label{kotak:minmax}
+\textbf{Formula:}
+\[ x_{\min} = \min(x_1,\ldots,x_n),\quad x_{\max} = \max(x_1,\ldots,x_n) \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $x_{\min}$ dan $x_{\max}$: Nilai ekstrem dalam distribusi variabel
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Variabel IPM, 2020 (41 wilayah)
+  \item Survey seluruh nilai: IPM terendah $= 63.91$, tertinggi $= 84.72$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ x_{\min,IPM} = 63.91 \quad x_{\max,IPM} = 84.72 \]
+
+\textbf{Penjelasan:} Rentang nilai ekstrem (terendah dan tertinggi) yang mendefinisikan batas-batas sebaran data dalam wilayah studi, mengidentifikasi wilayah dengan kinerja sosio-ekonmi terendah dan tertinggi.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Jangkauan Interkuartil (IQR)}] \label{kotak:iqr}
+\textbf{Formula:}
+\[ IQR = Q_3 - Q_1 \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $Q_1$: Kuartil pertama (persentil ke-25)
+  \item $Q_3$: Kuartil ketiga (persentil ke-75)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Variabel IPM, 2020
+  \item $Q_1 = 68.0800$ (persentil ke-25)
+  \item $Q_3 = 77.8300$ (persentil ke-75)
+  \item $IQR = 77.8300 - 68.0800$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ IQR_{IPM} = 9.7500 \]
+
+\textbf{Penjelasan:} Ukuran penyebaran data yang robust (tahan terhadap pencilan) karena hanya menghitung rentang 50\% data bagian tengah.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Koefisien Variasi / \textit{Coefficient of Variation} (CV)}] \label{kotak:cv}
+\textbf{Formula:}
+\[ CV_j = \frac{\sigma_j}{\mu_j} \times 100\% \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $CV_j$ (\textit{Coefficient of Variation}): Ukuran variabilitas relatif (bebas satuan) berbasis populasi
+  \item $\sigma_j$: Simpangan baku variabel $j$
+  \item $\mu_j$: Rata-rata variabel $j$
+  \item Klasifikasi menurut \citet{deptan2003}: $CV \leq 10\%$ = rendah; $10\% < CV \leq 20\%$ = sedang; $CV > 20\%$ = tinggi
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Variabel IPM, 2020: $\sigma_{\text{IPM}} = 6.128349781$, $\mu_{\text{IPM}} = 73.36908851$
+  \item $CV_{\text{IPM}} = \frac{6.128349781}{73.36908851} \times 100\%$
+  \item $CV_{\text{IPM}} = 0.083527681 \times 100\%$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ CV_{\text{IPM}} = 8.3527681\% \quad \text{(rendah ($\leq 10\%$))} \]
+
+\textbf{Penjelasan:} Rasio simpangan baku terhadap rata-rata populasi yang menunjukkan tingkat variasi relatif suatu variabel. Berdasarkan klasifikasi \citet{deptan2003}, nilai $CV \leq 10\%$ menunjukkan variabilitas rendah, yang berarti capaian indikator antar-wilayah cenderung homogen.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Koefisien Kemiringan (\textit{Skewness}) Populasi ($\gamma_1$)}] \label{kotak:skewness}
+\textbf{Formula:}
+\[ \gamma_1 = \frac{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^3}{\sigma_{jk}^3} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\gamma_1$: Koefisien kemiringan (momen ketiga ternormalisasi)
+  \item Klasifikasi menurut \citet{bulmer1979}: $|\gamma_1| < 0.5$: simetri; $0.5 \leq |g_1| < 1$: menceng moderat; $|g_1| \geq 1$: sangat menceng
+  \item $\gamma_1 > 0$: Distribusi menceng kanan (\textit{right-skewed})
+  \item $\gamma_1 < 0$: Distribusi menceng kiri (\textit{left-skewed})
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Momen ketiga pusat: $\sum_{i=1}^{n} m_i (x_{i,\text{IPM},2020} - \mu_{\text{IPM},2020})^3 = 105.4297049$
+  \item $\sigma^3 = 6.128349781^3 = 230.1604168$
+  \item $\gamma_1 = \frac{105.4297049}{230.1604168}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \gamma_{1,\text{IPM}} = 0.458070534 \quad \text{(menceng kanan)} \]
+
+\textbf{Penjelasan:} Mengukur ketidaksimetrisan distribusi data. Sesuai klasifikasi \citet{bulmer1979}, nilai $|\gamma_1| < 0.5$ menunjukkan distribusi yang cenderung simetris.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Koefisien Keruncingan (\textit{Excess Kurtosis}) Populasi ($\gamma_2$)}]
+\textbf{Formula:}
+\[ \gamma_2 = \frac{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^4}{\sigma_{jk}^4} - 3 \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\gamma_2$: Koefisien keruncingan (momen keempat ternormalisasi minus 3)
+  \item Pengurangan $-3$ disebut \textit{excess kurtosis} \citet{mathworld}: kurtosis distribusi normal $= 3$, sehingga dikurangi 3 agar baseline $= 0$
+  \item $\gamma_2 > 0$: Leptokurtik (lebih runcing, ekor lebih tebal dari normal)
+  \item $\gamma_2 < 0$: Platikurtik (lebih datar, ekor lebih tipis dari normal)
+  \item $\gamma_2 = 0$: Mesokurtik (distribusi normal)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Momen keempat pusat: $\sum_{i=1}^{n} m_i (x_{i,\text{IPM},2020} - \mu_{\text{IPM},2020})^4 = 2447.798341$
+  \item $\sigma^4 = 6.128349781^4 = 1410.50354$
+  \item $\gamma_2 = \frac{2447.798341}{1410.50354} - 3 = 1.735407443 - 3$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \gamma_{2,\text{IPM}} = -1.264592557 \quad \text{(platikurtik)} \]
+
+\textbf{Penjelasan:} Mengukur keruncingan distribusi dibandingkan distribusi normal. Nilai negatif menunjukkan distribusi platikurtik, yakni distribusi yang lebih landai dengan ekor yang lebih tipis dibandingkan distribusi normal.
+\end{tcolorbox}
+
+
+\section{Uji Kelayakan Data}
+
+\begin{tcolorbox}[formula_box, title={10. Kaiser-Meyer-Olkin (KMO) dan Korelasi Parsial}] \label{kotak:kmo}
+\textbf{Formula:}
+\[ KMO = \frac{\sum_{j \neq k} r_{jk}^2}{\sum_{j \neq k} r_{jk}^2 + \sum_{j \neq k} r_{jk.p}^2} \]
+\[ r_{jk.p} = \frac{-v_{jk}}{\sqrt{v_{jj} \times v_{kk}}} \quad \text{dimana} \quad \mathbf{V} = \mathbf{R}^{-1} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $r_{jk}$: Korelasi Pearson antara variabel $j$ dan $k$ (elemen matriks korelasi $\mathbf{R}$)
+  \item $r_{jk.p}$: Korelasi Parsial antara $j$ dan $k$ (elemen matriks \textit{Anti-Image})
+  \item $\mathbf{V}$: Matriks invers dari matriks korelasi ($\mathbf{R}^{-1}$), dengan elemen $v_{jk}$
+  \item $v_{jj}, v_{kk}$: Elemen diagonal utama matriks invers $\mathbf{V}$ untuk variabel $j$ dan $k$
+  \item Klasifikasi KMO (\citet{kaiser1970}): $<0.5$ = \textit{Unacceptable}; $0.5$--$0.6$ = \textit{Miserable}; $0.6$--$0.7$ = \textit{Mediocre}; $0.7$--$0.8$ = \textit{Middling}; $0.8$--$0.9$ = \textit{Meritorious}; $>0.9$ = \textit{Marvelous}
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Hitung matriks korelasi $\mathbf{R}$ ($12 \times 12$) dan matriks inversnya $\mathbf{V} = \mathbf{R}^{-1}$.
+  \item Hitung korelasi parsial ($r_{jk.p}$) tiap pasangan variabel menggunakan elemen matriks $\mathbf{V}$.
+  \item Hitung jumlah kuadrat elemen luar diagonal matriks korelasi $\mathbf{R}$: $\sum_{j\neq k} r_{jk}^2 = 32.2239$.
+  \item Hitung jumlah kuadrat elemen luar diagonal matriks parsial: $\sum_{j\neq k} r_{jk.p}^2 = 8.7302$.
+  \item $KMO = \frac{32.2239}{32.2239 + 8.7302} = \frac{32.2239}{40.9542}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ KMO = 0.7868 \quad \text{(\textit{Middling}, \citet{kaiser1970})} \]
+
+\textbf{Penjelasan:} Indeks kelayakan sampling untuk melihat kecukupan korelasi antar-variabel. Nilai korelasi parsial ($r_{jk.p}$) yang didapat dari invers matriks korelasi berfungsi untuk mengukur korelasi murni dua variabel tanpa pengaruh variabel lain. Nilai KMO $0.7868$ mengindikasikan bahwa data layak dianalisis lebih lanjut menggunakan reduksi dimensi multivariat seperti STATIS.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Derajat Kebebasan Uji Bartlett ($df$)}] \label{kotak:df}
+\textbf{Formula:}
+\[ df = \frac{p(p-1)}{2} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $p$: Jumlah variabel ($p=12$)
+  \item $df$: Derajat kebebasan (\textit{degrees of freedom}), merepresentasikan jumlah pasangan korelasi unik antar-variabel.
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item $p = 12$ variabel sosio-ekonomi
+  \item $df = \frac{12 \times (12-1)}{2} = \frac{132}{2}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ df = 66 \]
+
+\textbf{Penjelasan:} Memberikan informasi mengenai parameter bebas atau jumlah perbandingan korelasi unik antar variabel yang dievaluasi dalam uji sferisitas Bartlett.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={12. Uji Sferisitas Bartlett (\textit{Bartlett's Test of Sphericity})}] \label{kotak:bartlett}
+\textbf{Formula:}
+\[ \chi^2 = -\left[n - 1 - \frac{2p+5}{6}\right] \ln|\mathbf{R}| \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\chi^2$: Nilai statistik uji berdistribusi Chi-Square
+  \item $\mathbf{R}$: Matriks korelasi berukuran $p \times p$. Dalam kerangka spasial terbobot, matriks ini dihitung dari matriks kovarians data terstandarisasi terbobot ($\mathbf{R} = \mathbf{Z}' \mathbf{S} \mathbf{Z}$), sehingga korelasi antar-variabel telah memperhitungkan proporsi populasi wilayah ($m_i$).
+  \item $|\mathbf{R}|$: Determinan matriks korelasi. Jika $|\mathbf{R}| = 1$, maka variabel saling independen ortogonal (tidak berkorelasi). Semakin mendekati $0$, multikolinieritas makin tinggi.
+  \item $H_0$: $\mathbf{R} = \mathbf{I}$ (Matriks korelasi adalah matriks identitas)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item $n = 41$, $p = 12$
+  \item Faktor koreksi asimtotik Bartlett: $41 - 1 - \frac{2(12)+5}{6} = 40 - 4.8333 = 35.1667$
+  \item $|\mathbf{R}| = 1.78 \times 10^{-8}$ (determinan dari matriks korelasi $12\times12$ data tahun 2020)
+  \item $\ln|\mathbf{R}| = \ln(1.78 \times 10^{-8}) = -17.8424$
+  \item $\chi^2 = -(35.1667) \times (-17.8424)$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \chi^2 = 627.4563, \quad df = 66, \quad p < 0.001 \]
+\textit{(Tolak $H_0$: Terdapat korelasi antar-variabel yang sangat signifikan)}
+
+\textbf{Penjelasan:} Uji inferensial \citet{bartlett1954} untuk memastikan apakah matriks korelasi data berbeda secara signifikan dengan matriks identitas. Hasil signifikansi $p < 0.05$ menunjukkan adanya interkorelasi antar variabel penyusun, sehingga penyederhanaan dimensi multivariat seperti metode STATIS \citep{lavit94} secara matematis sah dan valid untuk dilakukan.
+\end{tcolorbox}
+
+\section{Korelasi dan Analisis Komponen Utama (PCA)}
+\begin{tcolorbox}[formula_box, title={Korelasi Pearson ($r_{xy}$)}]
+\textbf{Formula:}
+\[ r_{xy} = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum(x_i-\bar{x})^2}\cdot\sqrt{\sum(y_i-\bar{y})^2}} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $r_{xy}\in[-1,1]$: Ukuran hubungan linier
+  \item $|r|>0.7$: Korelasi kuat
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item IPM vs RLS, 2020: $\bar{x}=72.8971$, $\bar{y}=8.9244$
+  \item Pembilang: $368.3503$
+  \item Penyebut: $382.6320$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ r_{IPM,RLS} = 0.9627 \]
+
+\textbf{Penjelasan:} Mengukur kekuatan dan arah hubungan linier antar dua variabel sosio-ekonomi. Nilai $0.9627$ menunjukkan hubungan positif yang sangat kuat antara IPM dan Rata-rata Lama Sekolah.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Determinan Matriks ($|\mathbf{A}|$)}]
+\textbf{Formula:}
+\[ |\mathbf{A}| = \sum_{\sigma \in S_p} \text{sgn}(\sigma) \prod_{i=1}^{p} a_{i,\sigma(i)} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $|\mathbf{A}|$: Determinan dari matriks bujur sangkar $\mathbf{A}$
+  \item $S_p$: Himpunan seluruh permutasi indeks $\{1, \dots, p\}$
+  \item $\text{sgn}(\sigma)$: Tanda (paritas) permutasi ($+1$ genap, $-1$ ganjil)
+  \item $a_{i,\sigma(i)}$: Elemen matriks pada baris ke-$i$ dan kolom ke-$\sigma(i)$
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Matriks Korelasi $\mathbf{R}$ berukuran $12\times12$ (data 2020)
+  \item Dihitung produk permutasi elemen $\mathbf{R}$ lewat dekomposisi LU
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ |\mathbf{R}| = 1.78e-08 \]
+
+\textbf{Penjelasan:} Determinan matriks korelasi digunakan untuk mendeteksi multikolinieritas. Semakin mendekati nol, semakin tinggi tingkat ketergantungan antar-variabel, yang memvalidasi perlunya reduksi dimensi.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={PCA ($\mathbf{F}=\mathbf{Z}\mathbf{V}$)}]
+\textbf{Formula:}
+\[ \mathbf{F} = \mathbf{Z}\mathbf{V} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{Z}$: Matriks terstandarisasi ($n\times p$)
+  \item $\mathbf{V}$: Matriks eigenvector dari matriks korelasi $\mathbf{R}$
+  \item $\mathbf{F}$: Skor komponen utama ($n\times k$)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Dari dekomposisi matriks korelasi $\mathbf{R}$ (data 2020), diperoleh eigenvalue $\lambda_1=6.1267$, $\lambda_2=1.7915$
+  \item Varians yang dijelaskan PC1 $= \lambda_1 / p \times 100\% = 51.1\%$
+  \item Varians yang dijelaskan PC2 $= \lambda_2 / p \times 100\% = 14.9\%$
+  \item Misal untuk Kep. Seribu (baris 1): $\mathbf{F}_{[1,:]} = \mathbf{Z}_{[1,:]} \cdot \mathbf{V}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \begin{pmatrix} F_1 \\ F_2 \end{pmatrix}_{\text{Kep.Seribu}} = \begin{pmatrix} -1.1919 \\ -1.4198 \end{pmatrix} \quad \text{(Kumulatif: 66.0\%)} \]
+
+\textbf{Penjelasan:} Teknik reduksi dimensi yang memproyeksikan data ke sumbu baru (PC) yang menangkap varians maksimum. Digunakan dalam STATIS untuk visualisasi struktur data pada setiap tahun.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Dekomposisi Eigen}]
+\textbf{Formula:}
+\[ \mathbf{R}\mathbf{v}=\lambda\mathbf{v} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{R}$: Matriks korelasi data
+  \item $\lambda$: Eigenvalue (besaran varians di sepanjang sumbu utama)
+  \item $\mathbf{v}$: Eigenvector (arah komponen utama)
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Selesaikan persamaan karakteristik: $|\mathbf{R} - \lambda\mathbf{I}| = 0$ ($p=12$)
+  \item Diperoleh 12 eigenvalue (diurutkan mengecil):
+  \item $\lambda_1=6.1267, \lambda_2=1.7915, \lambda_3=1.4876$
+  \item Total varians = $\sum\lambda_j = \text{tr}(\mathbf{R}) = 12$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \lambda = [6.127, 1.791, 1.488, 0.696, 0.538, \ldots] \]
+
+\textbf{Penjelasan:} Proses matematis untuk menemukan arah varians utama (eigenvector) dan besaran varians tersebut (eigenvalue) dalam matriks korelasi, yang menentukan kepentingan setiap dimensi baru.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={Rotasi Baseline}]
+\textbf{Formula:}
+\[ \theta=-\operatorname{atan2}(v_2,v_1),\; \mathbf{Q}=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix},\; \mathbf{F}^*=\mathbf{F}\mathbf{Q} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\theta$: Sudut rotasi referensi (Contoh: untuk membuat Kep. Seribu sejajar sumbu X)
+  \item $\mathbf{Q}$: Matriks rotasi ortogonal $2\times2$
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Koordinat Kompromi Kep. Seribu: $v_1=-0.4150$, $v_2=0.4857$
+  \item $\theta = -\text{atan2}(0.4857, -0.4150) = -130.51^\circ$
+  \item $\mathbf{Q} = \begin{pmatrix} -0.6496 & 0.7602 \\ -0.7602 & -0.6496 \end{pmatrix}$
+  \item $\mathbf{F}^* = [-0.4150, 0.4857] \times \mathbf{Q}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \mathbf{F}^*_{\text{Kep.Seribu}} = [-0.0996, -0.6310] \]
+
+\textbf{Penjelasan:} Transformasi geometri untuk mensejajarkan salah satu observasi referensi (Kep. Seribu) dengan sumbu utama, sehingga memudahkan interpretasi perbandingan posisi relatif antar-wilayah secara visual.
+\end{tcolorbox}
+
+
+\section{Tahapan Metode STATIS}
+\begin{tcolorbox}[formula_box, title={13. Intra-struktur: Matriks Skalar Produk ($\mathbf{W}_k$)}]
+\textbf{Formula:}
+\[ \mathbf{W}_k = (\mathbf{D}^{1/2}\mathbf{Z}_k) (\mathbf{D}^{1/2}\mathbf{Z}_k)^T \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{Z}_k$: Matriks z-score terbobot ($n \times p$) tahun ke-$k$
+  \item $\mathbf{D}^{1/2} = \operatorname{diag}(\sqrt{m_1}, \ldots, \sqrt{m_n})$: Matriks diagonal akar bobot demografis (metrik spasial)
+  \item $\mathbf{W}_k$: Matriks simetri semidefinit positif ($n \times n$) yang merepresentasikan kedekatan antar wilayah dalam ruang metrik $\mathbf{D}$ \citet{lavit94}
+  \item \textbf{Catatan:} Karena $\mathbf{D}$ telah terinkorporasi dalam $\mathbf{W}_k$, perhitungan RV pada Box 14 cukup menggunakan $\mathrm{Tr}(\mathbf{W}_k \mathbf{W}_{k'})$ tanpa perlu mengalikan $\mathbf{D}$ lagi.
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Tahun 2020: $\mathbf{Z}_{2020}$ adalah matriks weighted Z-score ($41 \times 12$)
+  \item Hitung $\mathbf{D}^{1/2}\mathbf{Z}_{2020}$: kalikan setiap baris ke-$i$ dengan $\sqrt{m_i}$
+  \item $\mathbf{W}_{2020} = (\mathbf{D}^{1/2}\mathbf{Z}_{2020}) \cdot (\mathbf{D}^{1/2}\mathbf{Z}_{2020})^T$
+  \item Dimensi hasil: $(41 \times 12)(12 \times 41) = 41 \times 41$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \mathbf{W}_{2020} \in \mathbb{R}^{41 \times 41} \quad \text{(Matriks Kedekatan Semi-Definit Positif)} \]
+
+\textbf{Penjelasan:} Menghitung matriks produk skalar yang merepresentasikan konfigurasi relatif antar-wilayah pada setiap periode $k$ dengan mempertimbangkan matriks metrik $\mathbf{D}$. Bobot $\mathbf{D}^{1/2}$ memastikan bahwa wilayah berpenduduk besar memberikan kontribusi yang proporsional. Langkah ini merupakan awal dari analisis struktur tahunan \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={14. Koefisien RV (Matriks Inter-Struktur)}]
+\textbf{Formula:}
+\[ RV(\mathbf{W}_k,\mathbf{W}_{k'}) = \frac{\mathrm{Tr}(\mathbf{W}_k \mathbf{W}_{k'})}{\sqrt{\mathrm{Tr}(\mathbf{W}_k^2)} \sqrt{\mathrm{Tr}(\mathbf{W}_{k'}^2)}} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $RV \in [0,1]$: Koefisien kemiripan Hilbert-Schmidt yang dinormalkan antar dua matriks konfigurasi \citet{oliveira2024}
+  \item \textbf{Alasan tidak ada $\mathbf{D}$ di Trace:} Karena $\mathbf{D}$ sudah terinkorporasi dalam $\mathbf{W}_k = (\mathbf{D}^{1/2}\mathbf{Z}_k)(\mathbf{D}^{1/2}\mathbf{Z}_k)^T$, mengalikan $\mathbf{D}$ lagi di dalam Trace akan menghasilkan \textit{double-weighting} yang salah \citet{lavit94}
+  \item Matriks RV berisi tingkat kesamaan ``struktur peta ekonomi'' antar-tahun
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Contoh: Tahun 2020 vs 2021
+  \item Pembilang: $\mathrm{Tr}(\mathbf{W}_{2020} \mathbf{W}_{2021}) = 471.5136$
+  \item Penyebut: $\sqrt{\mathrm{Tr}(\mathbf{W}_{2020}^2) \times \mathrm{Tr}(\mathbf{W}_{2021}^2)} = \sqrt{516.2532 \times 473.9093} = 494.6283$
+  \item $RV = \frac{471.5136}{494.6283}$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ RV(\mathbf{W}_{2020}, \mathbf{W}_{2021}) = 0.9533 \quad \text{(Struktur sangat stabil)} \]
+
+\textbf{Penjelasan:} Mengukur kemiripan ``struktur peta'' antar-tahun. Nilai RV yang tinggi ($0.9533$) menunjukkan bahwa pola hubungan sosio-ekonomi antar-wilayah relatif sangat stabil sepanjang waktu \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={15. Bobot Optimal Kompromi ($\alpha_k$)}]
+\textbf{Formula:}
+\[ \alpha_k = \frac{p_{1k}}{\sum_{k=1}^{K} p_{1k}} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{p}_1$: Eigenvector pertama dari dekomposisi matriks Inter-struktur (RV)
+  \item $p_{1k}$: Komponen ke-$k$ dari eigenvector $\mathbf{p}_1$
+  \item Sesuai batasan \citet{lavit94}, jumlah seluruh bobot harus disetarakan menjadi 1 ($\sum \alpha_k = 1$).
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Ekstraksi eigenvektor $\mathbf{p}_1$ dari matriks RV ($K=5$ tahun):
+  \item $\mathbf{p}_1 = [0.4480,\ 0.4451,\ 0.4432,\ 0.4508,\ 0.4489]$
+  \item Total jumlahan (L1-norm) = $0.4480 + 0.4451 + \dots = 2.2360$
+  \item $\alpha_{2020} = 0.4480 / 2.2360 = 0.2003$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \boldsymbol{\alpha} = [0.2003,\ 0.1990,\ 0.1982,\ 0.2016,\ 0.2007] \quad \text{(Total = 1)} \]
+
+\textbf{Penjelasan:} Menentukan kontribusi setiap tahun terhadap struktur rata-rata (kompromi). Tahun yang paling konsisten dengan struktur global (tahun lainnya) akan mendapatkan bobot $\alpha_k$ yang lebih besar dalam pembentukan konsensus \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={16. Matriks Kompromi ($\mathbf{W}_c$)}]
+\textbf{Formula:}
+\[ \mathbf{W}_c = \sum_{k=1}^{K} \alpha_k \mathbf{W}_k \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{W}_c$: Matriks konsensus rata-rata tertimbang dari seluruh waktu
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item $\mathbf{W}_c = 0.2003\mathbf{W}_{2020} + 0.1990\mathbf{W}_{2021} + \dots + 0.2007\mathbf{W}_{2024}$
+  \item Dekomposisi SVD $\mathbf{W}_c$ menghasilkan nilai eigen dominan: $\lambda_1 = 45.0231$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \mathbf{W}_c \text{ berukuran } 41\times41 \text{ (Matriks Konsensus/Rata-rata)} \]
+
+\textbf{Penjelasan:} Matriks konsensus yang merupakan rata-rata tertimbang dari seluruh matriks intra-struktur, merepresentasikan struktur "tipikal" wilayah sepanjang 2020--2024 \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={17. Koordinat Skor Kompromi ($\mathbf{F}_c$)}]
+\textbf{Formula:}
+\[ \mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{P}$: Matriks vektor eigen (eigenvector) dari $\mathbf{W}_c$, dengan $\mathbf{P}^T\mathbf{P} = \mathbf{I}$
+  \item $\mathbf{\Lambda}_c^{1/2}$: Matriks diagonal akar dari nilai eigen kompromi
+  \item $\mathbf{D}^{-1/2} = \operatorname{diag}(1/\sqrt{m_1}, \ldots, 1/\sqrt{m_n})$: Invers akar matriks metrik, mengembalikan koordinat dari ruang metrik $\mathbf{D}$ ke ruang asli observasi \citet{lavit94}
+  \item Berlaku hubungan: $\mathbf{D}^{1/2}\mathbf{F}_c\mathbf{F}_c^T\mathbf{D}^{1/2} = \mathbf{W}_c$
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Dekomposisi eigen $\mathbf{W}_c$: Sumbu 1: $\sqrt{\lambda_1} = 6.7099$, Sumbu 2: $\sqrt{\lambda_2} = 3.8442$
+  \item Kalikan eigenvector $\mathbf{P}$ dengan akar eigen $\mathbf{\Lambda}_c^{1/2}$
+  \item Kalikan dengan $\mathbf{D}^{-1/2}$ (bagi setiap baris ke-$i$ dengan $\sqrt{m_i}$) untuk mendapatkan koordinat asli
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ \mathbf{F}_c \text{ berukuran } 41\times2 \text{ (Koordinat akhir peta Biplot)} \]
+
+\textbf{Penjelasan:} Koordinat akhir wilayah pada ruang kompromi. Penggunaan $\mathbf{D}^{-1/2}$ sangat penting untuk mengembalikan hasil dekomposisi ke ruang metrik asli, sehingga jarak antar titik di peta Biplot merepresentasikan kedekatan sesungguhnya antar wilayah \citet{lavit94}.
+\end{tcolorbox}
+
+\begin{tcolorbox}[formula_box, title={29. Uji Permutasi Stabilitas (Signifikansi)}]
+\textbf{Formula:}
+\[p\text{-value}=\frac{\sum_{b=1}^B\mathbb{I}(\lambda_1^{(perm)} \geq \lambda_1^{(obs)})+1}{B+1}\]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\lambda_1^{(obs)}$: Eigenvalue dominan matriks $\mathbf{R}_{RV}$ asli
+  \item $\lambda_1^{(perm)}$: Eigenvalue dominan dari matriks RV yang diacak barisnya
+  \item $B=999$: Jumlah permutasi
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item $\lambda_1^{(obs)}=4.7825$
+  \item $0$ dari $999$ permutasi menghasilkan $\lambda_1^{(perm)} \geq 4.7825$
+  \item $p = (0+1)/(999+1)$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ p=0.001 \quad \text{(Tolak $H_0$: Terdapat struktur ekonomi yang stabil)} \]
+
+\textbf{Penjelasan:} Prosedur statistik untuk memvalidasi apakah struktur kompromi (Inter-struktur) yang ditemukan signifikan. Nilai $p=0.001$ menunjukkan bahwa struktur stabilitas tahunan yang ditemukan bukan merupakan hasil kebetulan.
+\end{tcolorbox}
+
+\section{Analisis Klaster dan Trajektori Spasial}
+\begin{tcolorbox}[formula_box, title={18. Jarak Euclidean antar Trajektori}]
+\textbf{Formula:}
+\[ d(i,j) = \sqrt{\sum_{k=1}^{K} \|\mathbf{f}_{i,k} - \mathbf{f}_{j,k}\|^2} \]
+
+\textbf{Keterangan Variabel:}
+\begin{itemize}
+  \item $\mathbf{f}_{i,k}$: Koordinat Principal Component wilayah $i$ pada tahun $k$
+  \item $d(i,j)$: Jarak lintasan spasio-temporal antar dua wilayah
+\end{itemize}
+
+\textbf{Substitusi (Langkah demi Langkah):}
+\begin{enumerate}
+  \item Contoh: Kabupaten Bogor (i=6) vs Kota Bogor (i=25)
+  \item Selisih koordinat per tahun dihitung, dikuadratkan, lalu dijumlahkan
+  \item $d = \sqrt{\sum_{k=2020}^{2024} \|\mathbf{f}_{Kab,k} - \mathbf{f}_{Kota,k}\|^2} = 2.1643$
+\end{enumerate}
+
+\textbf{Hasil Akhir:}
+\[ d(\text{Kab.\ Bogor},\text{Kota Bogor}) = 2.1643 \]
+
+\textbf{Penjelasan:} Mengukur kemiripan profil temporal antar dua wilayah. Semakin kecil jarak Euclidean ini, semakin mirip lintasan perkembangan (trajektori) kedua wilayah tersebut selama periode studi.
+\end{tcolorbox}
+
+\bibliography{pustaka}
+\end{document}

@@ -53,6 +53,31 @@ d:/Skripsi/my/
     ```
 4.  **Access:** Buka browser di `http://127.0.0.1:8050/`.
 
+## 🤖 Automasi LaTeX (export_all.py)
+Skrip `export_all.py` digunakan untuk menghasilkan seluruh aset visual (PNG) dan tabel (TEX) secara otomatis agar dapat langsung di-include oleh file LaTeX (`induk.tex`).
+
+### Cara Penggunaan:
+1.  **Run Default (Interactive):**
+    ```bash
+    python export_all.py
+    ```
+    *Anda akan diminta memilih tipe rotasi biplot, tahun dasar, dan wilayah yang di-highlight via terminal.*
+
+2.  **Run Headless (Automated - Rekomendasi):**
+    ```bash
+    python export_all.py --headless
+    ```
+    *Gunakan flag ini untuk melewati semua input manual. Skrip akan menggunakan pengaturan default (PC1-ranking, no highlight) dan langsung menyimpan semua aset (150+ file) ke folder `output_app/`.*
+
+3.  **Kustomisasi Data & Output:**
+    ```bash
+    python export_all.py path/ke/data_anda.xlsx folder_output_kustom
+    ```
+    *Secara default, data diambil dari `data/data2.xlsx` dan hasil disimpan di `output_app/`. Tersedia juga `data/data2_sample.xlsx` untuk uji coba cepat.*
+
+### Apa yang dihasilkan?
+Seluruh file di `output_app/` dirancang agar nama filenya sinkron dengan perintah `\input{...}` atau `\includegraphics{...}` di dalam `bab3.tex` dan `bab4.tex`. Pastikan folder ini selalu terupdate sebelum melakukan kompilasi PDF akhir.
+
 ## 📊 SWOT Analysis (Self-Evaluation)
 Analisis kekuatan, kelemahan, peluang, dan ancaman dari penelitian skripsi ini.
 

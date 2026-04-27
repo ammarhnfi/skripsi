@@ -1,0 +1,109 @@
+Tentu! Berdasarkan kedua sumber dokumen yang diberikan, berikut adalah kumpulan seluruh persamaan matematis metodologi STATIS, yang dituliskan dalam format LaTeX dan dikelompokkan berdasarkan makalahnya:
+
+### 1. Persamaan dari Makalah 2024 ("STATIS methodology: An overview")
+
+Makalah ini berfokus pada pengembangan kemampuan inferensi, sehingga banyak memaparkan pemodelan matriks antar studi dan vektor struktur:
+
+*   **Matriks Data (Tipe 1 dan 2):**
+    Untuk studi dengan objek yang sama (Tipe 1):
+    $$A_i = X_i D_{pi} X_i^t D_n, \quad i = 1, \dots, k$$
+    Untuk studi dengan variabel yang sama (Tipe 2):
+    $$B_i = X_i^t D_{ni} X_i D_p, \quad i = 1, \dots, k$$
+
+*   **Matriks Interstruktur (Interstructure Matrix):**
+    $$S_{ij} = \text{tr}(A_i A_j^t), \quad i=1,\dots,k, \quad j=1,\dots,k$$
+    Produk skalar Hilbert-Schmidt untuk masing-masing tipe:
+    $$(A_i|A_j) = \text{tr}(A_i A_j^t), \quad i=1,\dots,k$$
+    $$(B_i|B_j) = \text{tr}(B_i B_j^t), \quad i=1,\dots,k$$
+
+*   **Dekomposisi Spektral Matriks Interstruktur ($S$):**
+    $$S = \sum_{j=1}^k \lambda_j \alpha_j \alpha_j^t$$
+
+*   **Pemodelan Vektor Struktur (Pengembangan Baru):**
+    Persamaan model dasar struktur umum dengan estimasi residu/galat ($E$):
+    $$\beta_i \alpha_i^t + E$$
+    Di mana vektor struktur $\beta_i$ diestimasi sebagai:
+    $$\beta_i = \lambda_i \alpha_i, \quad i = 1, \dots, h$$
+
+---
+
+### 2. Persamaan dari Makalah 1994 ("The ACT (STATIS method)")
+
+Makalah ini berisi pondasi teknis yang mendalam mengenai jarak Euclidean, produk skalar, dan aljabar multivariat.
+
+*   **Pemusatan (Centering) dan Pembobotan Observasi:**
+    Syarat bobot matriks diagonal:
+    $$\sum m_i = 1$$
+    Kendala pemusatan pada matriks:
+    $$\sum_i m_i X_{ij} = 0$$
+    Matriks kovarians pada tahap $k$:
+    $$V_k = X_k' D_k X_k$$
+
+*   **Produk Skalar Antar Observasi dan Variabel:**
+    $$W = X X'$$
+    $$W = X Q X'$$
+    $$(x_i|x_{i'}) = \sum_j X_{ij} X_{i'j}$$
+    $$(x_j|x_{j'}) = \sum_i m_i X_{ij} X_{ij'}$$
+    $$(x_i|x_{i'}) = \sum_j \sum_{j'} Q_{jj'} X_{ij} X_{i'j'}$$
+    $$(e_j|e_{j'}) = Q_{jj'}$$ dan $$||e_i||^2 = m_i$$
+    Posisi variabel pada basis ortogonal:
+    $$x_j = \sum_i X_{ij} e_i$$
+
+*   **Jarak Euclidean (Euclidean Distances):**
+    Hubungan jarak dan produk skalar:
+    $$d^2(i, i') = \sum_j (X_{ij} - X_{i'j})^2$$
+    $$d^2(i, i') = ||x_i - x_{i'}||^2$$
+    $$W_{ii'} = \overrightarrow{OM_i} \cdot \overrightarrow{OM_{i'}}$$
+    $$||\overrightarrow{M_i M_{i'}}|| = d(i, i')$$
+    $$d^2(i, i') = W_{ii} + W_{i'i'} - 2W_{ii'}$$
+    $$W_{ii'} = \frac{1}{2} [d^2(0, i) + d^2(0, i') - d^2(i, i')]$$
+
+*   **Jarak Antar Matriks Skalar Produk ($W_k$):**
+    $$||W_1 - W_2||^2 = \sum_i \sum_{i'} [(W_1 - W_2)_{ii'}]^2 = \text{Tr}[(W_1 - W_2)^2]$$
+    Versi terbobot:
+    $$||W_1 - W_2||^2 = \sum_i \sum_{i'} S_{ii} S_{i'i'} [(W_1 - W_2)_{ii'}]^2$$
+    Rumus umum jarak matriks:
+    $$||W_1 - W_2||^2 = \text{Tr}[(W_1 S - W_2 S)^2]$$
+    Jarak interstruktur $W_k$ ke $W_{k'}$:
+    $$d^2(W_k, W_{k'}) = \sum_i \sum_{i'} [(W_k - W_{k'})_{ii'}]^2$$
+    $$d^2(W_k, W_{k'}) = \sum_i \sum_{i'} S_{ii} S_{i'i'} [(W_k - W_{k'})_{ii'}]^2$$
+    $$d^2(W_k, W_{k'}) = \text{Tr}[(W_k S - W_{k'} S)^2]$$
+
+*   **Koefisien RV & Skalar Produk Matriks:**
+    Bentuk murni dan normanya:
+    $$\text{Tr}(W_k D W_{k'} D)$$ atau $$\frac{\text{Tr}(W_k D W_{k'} D)}{\sqrt{\text{Tr}(W_k D)^2} \sqrt{\text{Tr}(W_{k'} D)^2}}$$
+    $$(W_k|W_{k'}) = \text{Tr}(W_k W_{k'}) = \text{Tr}(W_k S W_{k'} S)$$
+    Versi dinormalkan:
+    $$\frac{W_k}{||W_k||} = \frac{W_k}{\sqrt{\text{Tr}(W_k S)^2}}$$
+    $$\left( \frac{W_k}{||W_k||} \Big| \frac{W_{k'}}{||W_{k'}||} \right) = \frac{\text{Tr}(W_k S W_{k'} S)}{\sqrt{\text{Tr}(W_k S)^2} \sqrt{\text{Tr}(W_{k'} S)^2}}$$
+
+*   **Matriks Kompromi & Dekomposisi:**
+    Rumus dasar Matriks Kompromi:
+    $$W = \sum_{k=1}^K \alpha_k W_k$$
+    Optimasi kuosien Rayleigh:
+    $$\frac{x' W W^* x}{||x||^2}$$
+    Persamaan residu (*loss function*):
+    $$||W - W_h||^2 = \sum_k \sum_{k'} [(W - W_h)_{kk'}]^2 = \sum_{l=h+1}^r \sigma_l^2$$
+    $$||W - W_h||^2 = \text{Tr}[(W S - W_h S)^2] = \sum_{l=h+1}^r \sigma_l^2$$
+    Dekomposisi matriks kompromi (SVD):
+    $$W = \sigma_1 p_1 p_1' + \dots + \sigma_r p_r p_r' = P \Sigma P'$$
+    Syarat ortogonal:
+    $$P'P = I$$
+    Hubungan sudut koordinat:
+    $$\overrightarrow{OM_k} \cdot \overrightarrow{OM_{k'}} = (W_h)_{kk'}$$
+
+*   **Lampiran: Properti Ruang Vektor & Operator Adjoin:**
+    $$(\mathscr{S}(x))(y) = (x|y)_s$$
+    $$(u|v)_{s^*} = v(\mathscr{S}^{-1}(u))$$
+    $$(\mathscr{A}'(v))(x) = v(\mathscr{A}(x))$$
+    $$(x|\mathscr{A}^*(y))_{s_J} = (\mathscr{A}(x)|y)_{s_I}$$
+    $$\mathscr{A}^* = \mathscr{S}_J^{-1} \mathscr{A}' \mathscr{S}_I$$
+    Kondisi definit positif:
+    $$(\mathscr{A}^*\mathscr{A}(x)|x)_{s_J} \geq 0$$
+    Singular Value Decomposition (SVD) pemetaan linier:
+    $$A = \sigma_1 p_1 q_1' S_J + \dots + \sigma_r p_r q_r' S_J$$
+    $$A = P \Sigma Q' S_J$$ dengan $$P' S_I P = I$$ dan $$Q' S_J Q = I$$
+    Jarak antar pemetaan linier:
+    $$(\mathscr{A}|\mathscr{B}) = \text{Tr}(\mathscr{A}\mathscr{B}^*) = \text{Tr}(\mathscr{A}\mathscr{S}_I^{-1}\mathscr{B}'\mathscr{S}_I)$$
+    $$\text{d}^2(\mathscr{A}, \mathscr{B}) = ||\mathscr{A} - \mathscr{B}||^2 = \text{Tr}((\mathscr{A}-\mathscr{B})\mathscr{S}_I^{-1}(\mathscr{A}-\mathscr{B})'\mathscr{S}_I)$$
+    $$\min_{\mathscr{B} \in L(E,F), \text{rank of } \mathscr{B} \leq h} ||\mathscr{A} - \mathscr{B}||^2 = ||\mathscr{A} - \mathscr{A}_h||^2 = \sum_{l=h+1}^r \sigma_l^2$$

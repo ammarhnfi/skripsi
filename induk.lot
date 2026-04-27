@@ -1,47 +1,58 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Ringkasan Penelitian Terdahulu}}{12}{table.caption.23}%
-\contentsline {table}{\numberline {2.2}{\ignorespaces Kriteria Interpretasi Nilai KMO}}{18}{table.caption.24}%
+\contentsline {table}{\numberline {2.1}{\ignorespaces Ringkasan Penelitian Terdahulu}}{11}{table.caption.22}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces Kriteria Interpretasi Nilai KMO}}{17}{table.caption.23}%
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Matriks Koefisien RV Antar-Tahun}}{50}{table.caption.26}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Nilai Bobot (Alpha) Tiap Tahun}}{51}{table.caption.28}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2022)}}{53}{table.caption.32}%
+\contentsline {table}{\numberline {3.4}{\ignorespaces Matriks Transisi Klaster 2021 \(\rightarrow \) 2022}}{53}{table.caption.33}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2020}}{47}{table.caption.27}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2021}}{48}{table.caption.28}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2022}}{48}{table.caption.29}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2023}}{48}{table.caption.30}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2024}}{48}{table.caption.31}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Hasil Uji KMO dan Bartlett per Tahun}}{51}{table.caption.37}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Matriks Koefisien RV Antar-Tahun}}{51}{table.caption.38}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Nilai Bobot (Alpha) Tiap Tahun}}{53}{table.caption.40}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Dekomposisi Nilai Eigen Matriks Kompromi}}{55}{table.caption.42}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Loadings Kompromi (Korelasi Variabel vs Skor)}}{58}{table.caption.45}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Matriks Vektor Eigen Kompromi (Vc)}}{58}{table.caption.46}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Koordinat Skor Kompromi (Fc)}}{62}{table.caption.50}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces Rangkuman Hasil Uji Permutasi}}{64}{table.caption.52}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces Matriks Transisi Klaster 2020 \(\rightarrow \) 2021}}{76}{table.caption.69}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces Nama Daerah Perpindahan Klaster 2020 \(\rightarrow \) 2021}}{76}{table.caption.70}%
-\contentsline {table}{\numberline {4.16}{\ignorespaces Matriks Transisi Klaster 2021 \(\rightarrow \) 2022}}{76}{table.caption.71}%
-\contentsline {table}{\numberline {4.17}{\ignorespaces Nama Daerah Perpindahan Klaster 2021 \(\rightarrow \) 2022}}{77}{table.caption.72}%
-\contentsline {table}{\numberline {4.18}{\ignorespaces Matriks Transisi Klaster 2022 \(\rightarrow \) 2023}}{77}{table.caption.73}%
-\contentsline {table}{\numberline {4.19}{\ignorespaces Nama Daerah Perpindahan Klaster 2022 \(\rightarrow \) 2023}}{77}{table.caption.74}%
-\contentsline {table}{\numberline {4.20}{\ignorespaces Matriks Transisi Klaster 2023 \(\rightarrow \) 2024}}{78}{table.caption.75}%
-\contentsline {table}{\numberline {4.21}{\ignorespaces Nama Daerah Perpindahan Klaster 2023 \(\rightarrow \) 2024}}{78}{table.caption.76}%
-\contentsline {table}{\numberline {4.22}{\ignorespaces Anggota Klaster Trajektori Keseluruhan}}{81}{table.caption.79}%
-\contentsline {table}{\numberline {4.23}{\ignorespaces Matriks Transisi IPM 2020 \(\rightarrow \) 2021}}{82}{table.caption.80}%
-\contentsline {table}{\numberline {4.24}{\ignorespaces Nama Daerah Transisi IPM 2020 \(\rightarrow \) 2021}}{82}{table.caption.81}%
-\contentsline {table}{\numberline {4.25}{\ignorespaces Matriks Transisi IPM 2021 \(\rightarrow \) 2022}}{83}{table.caption.82}%
-\contentsline {table}{\numberline {4.26}{\ignorespaces Nama Daerah Transisi IPM 2021 \(\rightarrow \) 2022}}{83}{table.caption.83}%
-\contentsline {table}{\numberline {4.27}{\ignorespaces Matriks Transisi IPM 2022 \(\rightarrow \) 2023}}{83}{table.caption.84}%
-\contentsline {table}{\numberline {4.28}{\ignorespaces Nama Daerah Transisi IPM 2022 \(\rightarrow \) 2023}}{84}{table.caption.85}%
-\contentsline {table}{\numberline {4.29}{\ignorespaces Matriks Transisi IPM 2023 \(\rightarrow \) 2024}}{84}{table.caption.86}%
-\contentsline {table}{\numberline {4.30}{\ignorespaces Nama Daerah Transisi IPM 2023 \(\rightarrow \) 2024}}{84}{table.caption.87}%
-\contentsline {table}{\numberline {4.31}{\ignorespaces Tabulasi Silang K-Means vs Kategori IPM (2020)}}{85}{table.caption.88}%
-\contentsline {table}{\numberline {4.32}{\ignorespaces Nama Daerah per Sel Cross-tab (2020)}}{85}{table.caption.89}%
-\contentsline {table}{\numberline {4.33}{\ignorespaces Tabulasi Silang K-Means vs Kategori IPM (2021)}}{85}{table.caption.90}%
-\contentsline {table}{\numberline {4.34}{\ignorespaces Nama Daerah per Sel Cross-tab (2021)}}{86}{table.caption.91}%
-\contentsline {table}{\numberline {4.35}{\ignorespaces Tabulasi Silang K-Means vs Kategori IPM (2022)}}{86}{table.caption.92}%
-\contentsline {table}{\numberline {4.36}{\ignorespaces Nama Daerah per Sel Cross-tab (2022)}}{86}{table.caption.93}%
-\contentsline {table}{\numberline {4.37}{\ignorespaces Tabulasi Silang K-Means vs Kategori IPM (2023)}}{87}{table.caption.94}%
-\contentsline {table}{\numberline {4.38}{\ignorespaces Nama Daerah per Sel Cross-tab (2023)}}{87}{table.caption.95}%
-\contentsline {table}{\numberline {4.39}{\ignorespaces Tabulasi Silang K-Means vs Kategori IPM (2024)}}{87}{table.caption.96}%
-\contentsline {table}{\numberline {4.40}{\ignorespaces Nama Daerah per Sel Cross-tab (2024)}}{88}{table.caption.97}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2020}}{56}{table.caption.34}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2021}}{56}{table.caption.35}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2022}}{56}{table.caption.36}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2023}}{56}{table.caption.37}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2024}}{57}{table.caption.38}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Hasil Uji KMO dan Bartlett per Tahun}}{59}{table.caption.44}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Matriks Koefisien RV Antar-Tahun}}{60}{table.caption.45}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Nilai Bobot (Alpha) Tiap Tahun}}{61}{table.caption.47}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Dekomposisi Nilai Eigen Matriks Kompromi}}{63}{table.caption.49}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Loadings Kompromi (Korelasi Variabel vs Skor)}}{66}{table.caption.52}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Matriks Vektor Eigen Kompromi (Vc)}}{66}{table.caption.53}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Koordinat Skor Kompromi (Fc)}}{70}{table.caption.57}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Rangkuman Hasil Uji Permutasi}}{72}{table.caption.59}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Loading Intra-Struktur Variabel Tahun 2020--2022}}{79}{table.caption.66}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Loading Intra Tahun 2020 ($\mathbf {G}_{2020}$)}}{79}{table.caption.67}%
+\contentsline {table}{\numberline {4.16}{\ignorespaces Loading Intra Tahun 2021 ($\mathbf {G}_{2021}$)}}{79}{table.caption.68}%
+\contentsline {table}{\numberline {4.17}{\ignorespaces Loading Intra Tahun 2022 ($\mathbf {G}_{2022}$)}}{79}{table.caption.69}%
+\contentsline {table}{\numberline {4.18}{\ignorespaces Loading Intra-Struktur Variabel Tahun 2023--2024}}{79}{table.caption.70}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Loading Intra Tahun 2023 ($\mathbf {G}_{2023}$)}}{79}{table.caption.71}%
+\contentsline {table}{\numberline {4.20}{\ignorespaces Loading Intra Tahun 2024 ($\mathbf {G}_{2024}$)}}{79}{table.caption.72}%
+\contentsline {table}{\numberline {4.21}{\ignorespaces Matriks Transisi Klaster 2020 \(\rightarrow \) 2021}}{85}{table.caption.83}%
+\contentsline {table}{\numberline {4.22}{\ignorespaces Nama Daerah Perpindahan Klaster 2020 \(\rightarrow \) 2021}}{85}{table.caption.84}%
+\contentsline {table}{\numberline {4.23}{\ignorespaces Matriks Transisi Klaster 2021 \(\rightarrow \) 2022}}{86}{table.caption.85}%
+\contentsline {table}{\numberline {4.24}{\ignorespaces Nama Daerah Perpindahan Klaster 2021 \(\rightarrow \) 2022}}{86}{table.caption.86}%
+\contentsline {table}{\numberline {4.25}{\ignorespaces Matriks Transisi Klaster 2022 \(\rightarrow \) 2023}}{86}{table.caption.87}%
+\contentsline {table}{\numberline {4.26}{\ignorespaces Nama Daerah Perpindahan Klaster 2022 \(\rightarrow \) 2023}}{87}{table.caption.88}%
+\contentsline {table}{\numberline {4.27}{\ignorespaces Matriks Transisi Klaster 2023 \(\rightarrow \) 2024}}{87}{table.caption.89}%
+\contentsline {table}{\numberline {4.28}{\ignorespaces Nama Daerah Perpindahan Klaster 2023 \(\rightarrow \) 2024}}{88}{table.caption.90}%
+\contentsline {table}{\numberline {4.29}{\ignorespaces Anggota Klaster Trajektori Keseluruhan}}{91}{table.caption.93}%
+\contentsline {table}{\numberline {4.30}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2020 ke 2021}}{92}{table.caption.94}%
+\contentsline {table}{\numberline {4.31}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2020 \(\rightarrow \) 2021}}{93}{table.caption.95}%
+\contentsline {table}{\numberline {4.32}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2021 ke 2022}}{94}{table.caption.96}%
+\contentsline {table}{\numberline {4.33}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2021 \(\rightarrow \) 2022}}{95}{table.caption.97}%
+\contentsline {table}{\numberline {4.34}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2022 ke 2023}}{96}{table.caption.98}%
+\contentsline {table}{\numberline {4.35}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2022 \(\rightarrow \) 2023}}{97}{table.caption.99}%
+\contentsline {table}{\numberline {4.36}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2023 ke 2024}}{98}{table.caption.100}%
+\contentsline {table}{\numberline {4.37}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2023 \(\rightarrow \) 2024}}{99}{table.caption.101}%
+\contentsline {table}{\numberline {4.38}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2020)}}{100}{table.caption.102}%
+\contentsline {table}{\numberline {4.39}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2020)}}{100}{table.caption.103}%
+\contentsline {table}{\numberline {4.40}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2021)}}{101}{table.caption.104}%
+\contentsline {table}{\numberline {4.41}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2021)}}{101}{table.caption.105}%
+\contentsline {table}{\numberline {4.42}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2022)}}{101}{table.caption.106}%
+\contentsline {table}{\numberline {4.43}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2022)}}{102}{table.caption.107}%
+\contentsline {table}{\numberline {4.44}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2023)}}{102}{table.caption.108}%
+\contentsline {table}{\numberline {4.45}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2023)}}{103}{table.caption.109}%
+\contentsline {table}{\numberline {4.46}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{103}{table.caption.110}%
+\contentsline {table}{\numberline {4.47}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{104}{table.caption.111}%
 \addvspace {10\p@ }

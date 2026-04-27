@@ -8,7 +8,7 @@ echo ========================================================================
 echo.
 
 echo [LANGKAH 0] Memproses Data Terkini (export_all.py)...
-python "d:\Skripsi\my\export_all.py"
+echo python "d:\Skripsi\my\debug\export_all.py" --real
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Gagal memproses data dengan export_all.py.
     pause
@@ -18,7 +18,7 @@ echo -- Data Berhasil diproses! --
 echo.
 
 echo [LANGKAH 0.5] Sinkronisasi Data Web (generate_exports.py)...
-pushd "d:\Skripsi\my\web\skripsi"
+pushd "d:\Skripsi\my\web"
 python generate_exports.py
 popd
 if %ERRORLEVEL% NEQ 0 (
@@ -36,7 +36,7 @@ if %ERRORLEVEL% NEQ 0 (
 echo.
 
 echo [LANGKAH 2] Ekstraksi Rumus Terbaru dari Landasan Teori...
-python "d:\Skripsi\my\extract_eqs.py"
+python "d:\Skripsi\my\debug\extract_eqs.py"
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Gagal mengekstrak rumus.
 ) else (
@@ -45,7 +45,7 @@ if %ERRORLEVEL% NEQ 0 (
 echo.
 
 echo [LANGKAH 3] Sinkronisasi Gambar ^& Tabel Hasil Analisis...
-python "d:\Skripsi\my\prepare_landing_assets.py"
+python "d:\Skripsi\my\debug\prepare_landing_assets.py"
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Gagal sinkronisasi aset galeri.
 ) else (

@@ -45,6 +45,9 @@ Indeks Pembangunan Gender (IPG) adalah rasio capaian IPM perempuan terhadap IPM 
 \subsection{\normalsize Gini Ratio (GR)}
 Gini Ratio adalah ukuran tingkat ketimpangan distribusi pengeluaran atau pendapatan penduduk. Nilai Gini Ratio berkisar antara 0 dan 1: nilai 0 berarti pemerataan sempurna (setiap orang memiliki pengeluaran yang sama), sedangkan nilai 1 berarti ketimpangan sempurna (satu orang menguasai seluruh pengeluaran). Gini Ratio yang tinggi menandakan tingginya kesenjangan ekonomi antar kelompok penduduk dalam suatu wilayah \citet{bpsikr2025}.
 
+\subsection{\normalsize Jumlah Penduduk (JP)}
+Jumlah Penduduk (JP) merupakan banyaknya jiwa yang mendiami suatu wilayah administratif pada suatu titik waktu tertentu, sebagaimana dicatat melalui Sensus Penduduk maupun estimasi antarsensus yang diselenggarakan oleh Badan Pusat Statistik \citet{bpsikr2025}. Dalam penelitian ini, JP \textbf{tidak digunakan sebagai variabel analisis} dalam metode STATIS, melainkan berperan sebagai \textbf{basis pembentukan bobot demografis} ($m_i$). Bobot ini mengintegrasikan ukuran populasi setiap wilayah ke dalam ruang metrik analisis multivariat sehingga wilayah dengan penduduk lebih besar memberikan kontribusi yang proporsional terhadap struktur rata-rata (kompromi), dan wilayah berpenduduk kecil tidak mendistorsi hasil analisis secara berlebihan \citet{lavit94}.
+
 %-----------------------------------------------------------------------------%
 % --- 2.2 ---
 \section{\normalsize Tinjauan Penelitian Terdahulu}
@@ -56,9 +59,9 @@ Penelitian mengenai analisis statistik terhadap data regional di Pulau Jawa tela
 \centering
 \small
 \caption{Ringkasan Penelitian Terdahulu}\label{tab:penelitian-terdahulu}
-\begin{tabular}{|m{2cm}|m{2cm}|m{3cm}|>{\raggedright\arraybackslash}m{6cm}|}
+\begin{tabular}{|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{3cm}|>{\raggedright\arraybackslash}m{6cm}|}
 \hline
-\multicolumn{1}{|>{\centering\arraybackslash}m{2cm}|}{\textbf{Peneliti (Tahun)}} & \multicolumn{1}{>{\centering\arraybackslash}m{2cm}|}{\textbf{Wilayah}} & \multicolumn{1}{>{\centering\arraybackslash}m{3cm}|}{\textbf{Metode}} & \multicolumn{1}{>{\centering\arraybackslash}m{6cm}|}{\textbf{Hasil Utama}} \\ \hline
+\textbf{Peneliti (Tahun)} & \textbf{Wilayah} & \textbf{Metode} & \textbf{Hasil Utama} \\ \hline
 \citet{nuswantari2021} & Pulau Jawa (2012-2018) & \textit{Dynamic Spatial Panel} (Model Durbin Spasial) & Model terbaik menggunakan pembobot dua tetangga terdekat. Angka melek huruf dan fasilitas kesehatan berpengaruh signifikan terhadap kemiskinan. \tabularnewline \hline
 \citet{ahmad2024} & Pulau Jawa (2017-2021) & \textit{Dynamic Spatial Durbin Model} (DSDM) & Menemukan adanya pengaruh lag temporal dan spasiotemporal yang signifikan terhadap prevalensi kusta. \tabularnewline \hline
 \citet{alfia2024} & Pulau Jawa (2022) & \textit{Biclustering Plaid Model} vs \textit{Cluster-Biplot} & \textit{Plaid model} menghasilkan kelompok wilayah yang lebih homogen dibandingkan metode biplot konvensional dalam mengelompokkan indikator kesejahteraan. \tabularnewline \hline
@@ -77,12 +80,12 @@ Dalam statistika multivariat klasik, data umumnya direpresentasikan dalam strukt
 Struktur data seperti ini dikenal sebagai data tiga-arah (\textit{three-way data}) atau data panel multivariat. Secara formal, data tiga-arah dapat didefinisikan sebagai berikut:
 
 \begin{definition}[Data Tiga-Arah]
-  Misalkan terdapat $n$ objek penelitian, $p$ variabel, dan $T$ situasi (waktu). Data tiga-arah adalah sekumpulan $T$ buah matriks data $\{\mathbf{X}_1, \mathbf{X}_2, \dots, \mathbf{X}_T\}$, di mana setiap matriks $\mathbf{X}_t$ (untuk $t = 1, \dots, T$) berukuran $n \times p$.
+  Misalkan terdapat $n$ objek penelitian, $p$ variabel, dan $K$ situasi (waktu). Data tiga-arah adalah sekumpulan $K$ buah matriks data $\{\mathbf{X}_1, \mathbf{X}_2, \dots, \mathbf{X}_K\}$, di mana setiap matriks $\mathbf{X}_k$ (untuk $k = 1, \dots, K$) berukuran $n \times p$.
 
-  Elemen skalar dari data ini dinotasikan sebagai $x_{ijt}$, yang merepresentasikan nilai dari variabel ke-$j$ pada objek ke-$i$ pada situasi ke-$t$. Keseluruhan himpunan matriks ini sering diilustrasikan sebagai sebuah balok data (\textit{data cube}) dengan dimensi $n \times p \times T$.
+  Elemen skalar dari data ini dinotasikan sebagai $x_{ijk}$, yang merepresentasikan nilai dari variabel ke-$j$ pada objek ke-$i$ pada situasi ke-$k$. Keseluruhan himpunan matriks ini sering diilustrasikan sebagai sebuah balok data (\textit{data cube}) dengan dimensi $n \times p \times K$.
 \end{definition}
 
-Relevansi pendekatan tiga-arah ini semakin menguat dalam analisis data regional, di mana interaksi kompleks antara wilayah, waktu, dan indikator sosial-ekonomi sangat krusial untuk dipahami \citet{biegert2023household}. Metode STATIS, yang akan dibahas selanjutnya, dirancang secara spesifik untuk mendapatkan informasi dari struktur tiga-arah $\{\mathbf{X}_t\}$ ini tanpa harus merata-ratakan data terlebih dahulu ke dalam satu matriks tunggal yang menghilangkan karakteristik temporal \citet{lavit94}.
+Relevansi pendekatan tiga-arah ini semakin menguat dalam analisis data regional, di mana interaksi kompleks antara wilayah, waktu, dan indikator sosial-ekonomi sangat krusial untuk dipahami \citet{biegert2023household}. Metode STATIS, yang akan dibahas selanjutnya, dirancang secara spesifik untuk mendapatkan informasi dari struktur tiga-arah $\{\mathbf{X}_k\}$ ini tanpa harus merata-ratakan data terlebih dahulu ke dalam satu matriks tunggal yang menghilangkan karakteristik temporal \citet{lavit94}.
 
 %-----------------------------------------------------------------------------%
 % --- 2.3 ---
@@ -94,27 +97,48 @@ Analisis spasio-temporal bertujuan untuk mendeskripsikan atau memodelkan variabi
 Pendekatan konvensional dalam ekonometrika biasanya melakukan pendekatan terhadap masalah ini dengan menggunakan regresi data panel atau model dinamis spasial (\textit{Spatial Dynamic Panel Data}) untuk mengetahui pengaruh antar-lokasi, dengan struktur hubungan antar-lokasi didefinisikan menggunakan matriks pembobot spasial (\textit{spatial weight matrix}, $\mathbf{W}_{spasial}$) berbasis ketetanggaan geografis yang memiliki asumsi bahwa interaksi antar-wilayah hanya terjadi melalui batas geografis fisik yang bersifat konstan sepanjang waktu \citet{baltagi2021}. Dalam pendekatan multivariat eksploratif seperti STATIS, definisi ``spasial'' dipandang dari perspektif yang berbeda.
 
 \begin{remark}[Konsep Spasial dalam STATIS]
-  Dalam kerangka STATIS, aspek spasial direpresentasikan melalui konfigurasi kemiripan antar-objek dalam ruang multivariat, bukan melalui matriks kontiguitas geografis. Struktur ``spasial'' pada waktu $t$ didefinisikan oleh matriks produk skalar $\mathbf{W}_t = \mathbf{X}_t \mathbf{X}_t^T$ (berukuran $n \times n$) yang merangkum ``peta'' kemiripan antar-objek berdasarkan profil variabelnya.
+  Dalam kerangka STATIS, aspek spasial direpresentasikan melalui konfigurasi kemiripan antar-objek dalam ruang multivariat, bukan melalui matriks kontiguitas geografis. Struktur ``spasial'' pada situasi ke-$k$ didefinisikan oleh matriks produk skalar $\mathbf{W}_k = \mathbf{X}_k \mathbf{X}_k^T$ (berukuran $n \times n$) yang merangkum ``peta'' kemiripan antar-objek berdasarkan profil variabelnya.
 \end{remark}
 
-Evolusi spasio-temporal dalam pendekatan ini difokuskan pada pengamatan perubahan konfigurasi matriks $\mathbf{W}_t$ dari waktu ke waktu, untuk menjawab pertanyaan apakah pola kemiripan antar-objek berubah selama periode pengamatan.
+Evolusi spasio-temporal dalam pendekatan ini difokuskan pada pengamatan perubahan konfigurasi matriks $\mathbf{W}_k$ dari waktu ke waktu, untuk menjawab pertanyaan apakah pola kemiripan antar-objek berubah selama periode pengamatan.
 
 %-----------------------------------------------------------------------------%
 % --- 2.4 ---
 \section{\normalsize Standardisasi Data}
 %-----------------------------------------------------------------------------%
 
-Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (misalnya rupiah, persen, dan tahun) dapat menyebabkan bias dalam analisis multivariat sehingga perlu menyamakan skala variabilitasnya. Standardisasi $Z$-\textit{score} adalah teknik mengubah nilai pengamatan sehingga setiap variabel memiliki rata-rata nol dan simpangan baku satu \citet{johnson2007}.
+Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (misalnya rupiah, persen, dan tahun) dapat menyebabkan bias dalam analisis multivariat sehingga perlu menyamakan skala variabilitasnya. Karena 41 wilayah yang diamati merupakan populasi utuh dengan ukuran penduduk yang sangat bervariasi, standardisasi dalam kerangka STATIS dilakukan menggunakan rata-rata dan simpangan baku \textit{terbobot} ($\mu$ dan $\sigma$) agar pusat gravitasi data konsisten dengan ruang metrik $\mathbf{D}$ \citet{lavit94}. Untuk itu, terlebih dahulu didefinisikan bobot demografis dan matriks metrik berikut.
 
-\begin{definition}[Standardisasi $Z$-Score]
-  Misalkan $x_{ij}$ adalah nilai pengamatan ke-$i$ pada variabel ke-$j$, dengan $\bar{x}_j$ sebagai rata-rata dan $s_j$ sebagai simpangan baku variabel ke-$j$. Nilai standar (\textit{standardized value}) dihitung sebagai:
-  \begin{equation} \label{eq:standardization}
-    z_{ij} = \frac{x_{ij} - \bar{x}_j}{s_j}, \quad i = 1, 2, \ldots, n, \quad j = 1, 2, \ldots, p
+\begin{definition}[Bobot Demografis ($m_i$)] \label{def:bobot}
+  Misalkan $\overline{\mathrm{JP}}_i = \frac{1}{K}\sum_{k=1}^{K} \mathrm{JP}_{ik}$ adalah rata-rata jumlah penduduk wilayah ke-$i$ selama $K$ tahun pengamatan. Bobot demografis $m_i$ didefinisikan sebagai proporsi penduduk wilayah ke-$i$ terhadap total penduduk seluruh wilayah:
+  \begin{equation} \label{eq:bobot}
+    m_i = \frac{\overline{\mathrm{JP}}_i}{\displaystyle\sum_{i'=1}^{n} \overline{\mathrm{JP}}_{i'}}, \quad i = 1, 2, \ldots, n
   \end{equation}
-  dengan $\bar{x}_j = \frac{1}{n}\sum_{i=1}^{n} x_{ij}$ dan $s_j = \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_{ij} - \bar{x}_j)^2}$.
+  dengan syarat $\sum_{i=1}^{n} m_i = 1$ dan $m_i > 0$. Penggunaan rata-rata lintas tahun memastikan bahwa ruang metrik bersifat konstan di semua situasi, sehingga jarak antar-konfigurasi dapat dibandingkan secara valid \citet{lavit94}.
 \end{definition}
 
-Hasil standardisasi menghasilkan matriks data standar $\mathbf{Z}$ dengan setiap kolom memiliki rata-rata 0 dan simpangan baku 1. Prosedur ini memastikan bahwa tidak ada variabel yang mendominasi analisis hanya karena memiliki skala atau satuan pengukuran yang lebih besar.
+\begin{definition}[Matriks Metrik $\mathbf{D}$] \label{def:matriks_D}
+  Matriks metrik $\mathbf{D}$ adalah matriks diagonal berukuran $n \times n$ dengan elemen diagonal ke-$i$ adalah bobot demografis $m_i$:
+  \begin{equation} \label{eq:matriks_D}
+    \mathbf{D} = \operatorname{diag}(m_1, m_2, \ldots, m_n)
+  \end{equation}
+  Matriks $\mathbf{D}$ mendefinisikan suatu \textit{inner product} terbobot pada ruang objek: $\langle \mathbf{x}, \mathbf{y} \rangle_{\mathbf{D}} = \mathbf{x}^T \mathbf{D} \mathbf{y}$. Seluruh perhitungan jarak dan produk skalar dalam STATIS beroperasi dalam ruang metrik ini. Akar dan invers akarnya dinotasikan sebagai $\mathbf{D}^{1/2} = \operatorname{diag}(\sqrt{m_1}, \ldots, \sqrt{m_n})$ dan $\mathbf{D}^{-1/2} = \operatorname{diag}(1/\sqrt{m_1}, \ldots, 1/\sqrt{m_n})$ \citet{lavit94}.
+\end{definition}
+
+\begin{definition}[Standardisasi $Z$-Score Terbobot] \label{def:weighted_zscore}
+  Misalkan $x_{ijk}$ adalah nilai variabel ke-$j$ pada wilayah ke-$i$ tahun ke-$k$. Rata-rata populasi terbobot dan simpangan baku populasi terbobot didefinisikan sebagai:
+  \begin{align}
+    \mu_{jk} &= \sum_{i=1}^{n} m_i\, x_{ijk} \label{eq:weighted_mean} \\
+    \sigma_{jk} &= \sqrt{\sum_{i=1}^{n} m_i\, (x_{ijk} - \mu_{jk})^2} \label{eq:weighted_std}
+  \end{align}
+  Nilai terstandarisasi terbobot (\textit{weighted standardized value}) dihitung sebagai:
+  \begin{equation} \label{eq:standardization}
+    z_{ijk} = \frac{x_{ijk} - \mu_{jk}}{\sigma_{jk}}, \quad i = 1, \ldots, n;\; j = 1, \ldots, p;\; k = 1, \ldots, K
+  \end{equation}
+  Formula ini memastikan bahwa $\sum_{i=1}^{n} m_i\, z_{ijk} = 0$ (pusat terbobot nol) dan $\sum_{i=1}^{n} m_i\, z_{ijk}^2 = 1$ (varians terbobot satu) \citet{lavit94}.
+\end{definition}
+
+Hasil standardisasi menghasilkan matriks data standar terbobot $\mathbf{Z}_k$ (berukuran $n \times p$) untuk setiap situasi ke-$k$. Prosedur ini memastikan bahwa tidak ada variabel yang mendominasi analisis hanya karena skala pengukurannya lebih besar, sekaligus mempertahankan konsistensi ruang metrik $\mathbf{D}$ di seluruh situasi waktu.
 
 %-----------------------------------------------------------------------------%
 % --- 2.5 ---
@@ -304,9 +328,7 @@ Metode reduksi dimensi seperti PCA dan STATIS sangat bergantung pada operasi alj
   Vektor eigen menentukan ``arah'' dominan dari transformasi linier matriks $\mathbf{A}$, sedangkan nilai eigen menentukan besaran ``kekuatan'' atau variansi pada arah tersebut.
 \end{definition}
 
-\begin{definition}[Determinan Matriks]
-  Determinan dari matriks persegi $\mathbf{A}$, dinotasikan sebagai $\det(\mathbf{A})$ atau $|\mathbf{A}|$, adalah sebuah nilai skalar yang merangkum sifat-sifat geometris dari matriks tersebut. Dalam analisis multivariat, determinan matriks korelasi $|\mathbf{R}|$ menunjukkan sejauh mana variabel-variabel saling berkorelasi atau bersifat ortogonal. Jika $|\mathbf{R}| \approx 0$, maka terdapat korelasi antar-variabel yang kuat (multikolinieritas), sedangkan jika $|\mathbf{R}| = 1$, maka variabel bersifat ortogonal sempurna.
-\end{definition}
+
 
 \begin{definition}[Invers Matriks]
   Sebuah matriks persegi $\mathbf{A}$ memiliki invers $\mathbf{A}^{-1}$ jika $\det(\mathbf{A}) \neq 0$, sedemikian sehingga berlaku $\mathbf{A} \mathbf{A}^{-1} = \mathbf{A}^{-1} \mathbf{A} = \mathbf{I}$, dengan $\mathbf{I}$ adalah matriks identitas. Invers dari matriks korelasi digunakan dalam perhitungan statistik KMO untuk mendapatkan korelasi parsial melalui matriks anti-citra.
@@ -412,108 +434,108 @@ Untuk memvisualisasikan hasil reduksi dimensi secara simultan antara objek dan v
   \end{itemize}
 \end{definition}
 
-PCA dan Biplot bekerja dengan baik untuk satu tabel data pada satu titik waktu. Namun, ketika data tersebar dalam $T$ matriks yang berbeda-beda seiring waktu, PCA konvensional tidak mampu menangkap dinamika evolusi struktural tersebut. Keterbatasan inilah yang mendorong pengembangan metode STATIS.
+PCA dan Biplot bekerja dengan baik untuk satu tabel data pada satu titik waktu. Namun, ketika data tersebar dalam $K$ matriks yang berbeda-beda seiring waktu, PCA konvensional tidak mampu menangkap dinamika evolusi struktural tersebut. Keterbatasan inilah yang mendorong pengembangan metode STATIS.
 
 %-----------------------------------------------------------------------------%
 % --- 2.11 ---
 \section{\normalsize Metode STATIS}
 %-----------------------------------------------------------------------------%
 
-STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) adalah metode analisis data eksploratif yang dirancang untuk menganalisis sekumpulan $T$ tabel data dengan membandingkan struktur internal antar-objek pada setiap situasi waktu \citet{lavit94}. Berbeda dengan metode yang menggabungkan data secara naif (seperti \textit{Pooled} PCA), STATIS mempertahankan integritas struktur masing-masing situasi melalui tiga tahapan analisis yang sistematis: intra-struktur, inter-struktur, dan kompromi. Konsep inti STATIS dilandasi oleh teori operator Escoufier \citet{escoufier1973} yang memperkenalkan cara mengukur ``jarak'' antara dua konfigurasi data multivariat.
+STATIS merupakan singkatan dari \textit{Structuration des Tableaux à Trois Indices de la Statistique} atau jika diartikan ke dalam bahasa Indonesia berbunyi "Strukturisasi Tabel dengan Tiga Indeks dalam Statistik". STATIS adalah metode analisis data eksploratif yang dirancang untuk menganalisis sekumpulan $K$ tabel data dengan membandingkan struktur internal antar-objek pada setiap situasi waktu \citet{lavit94}. Berbeda dengan metode yang menggabungkan data secara naif (seperti \textit{Pooled} PCA), STATIS mempertahankan integritas struktur masing-masing situasi melalui tiga tahapan analisis yang sistematis: intra-struktur, inter-struktur, dan kompromi. Konsep inti STATIS dilandasi oleh teori operator Escoufier \citet{escoufier1973} yang memperkenalkan cara mengukur ``jarak'' antara dua konfigurasi data multivariat.
 
 \subsection{\normalsize Tahap 1: Intra-struktur}
 
-Tahap pertama bertujuan mentransformasi tabel data asli setiap situasi menjadi representasi geometri yang dapat diperbandingkan. Misalkan setiap matriks data $\mathbf{X}_t$ telah distandardisasi menjadi $\mathbf{Z}_t$. Alih-alih membandingkan nilai mentah variabel, STATIS mendefinisikan operator Escoufier $\mathbf{W}_t$ untuk setiap $t = 1, \dots, T$ sebagai matriks produk skalar berukuran $n \times n$:
-\begin{equation}
-  \mathbf{W}_t = \mathbf{Z}_t \mathbf{Z}_t^T
+Tahap pertama bertujuan mentransformasi tabel data terstandarisasi terbobot setiap situasi menjadi representasi geometri yang dapat diperbandingkan dalam ruang metrik $\mathbf{D}$ yang sama. Misalkan $\mathbf{Z}_k$ adalah matriks data terstandarisasi terbobot pada situasi ke-$k$ (Persamaan~\ref{eq:standardization}). STATIS mendefinisikan \textbf{operator Escoufier terbobot} $\mathbf{W}_k$ untuk setiap $k = 1, \dots, K$ sebagai matriks produk skalar terbobot berukuran $n \times n$ \citet{lavit94}:
+\begin{equation}\label{eq:intra}
+  \mathbf{W}_k = (\mathbf{D}^{1/2}\mathbf{Z}_k)(\mathbf{D}^{1/2}\mathbf{Z}_k)^T
 \end{equation}
+di mana $\mathbf{D}^{1/2} = \operatorname{diag}(\sqrt{m_1}, \ldots, \sqrt{m_n})$ adalah matriks diagonal akar bobot demografis (Persamaan~\ref{eq:matriks_D}). Perkalian $\mathbf{D}^{1/2}\mathbf{Z}_k \in \mathbb{R}^{n \times p}$ menghasilkan matriks simetris semidefinit positif berukuran $n \times n$.
 
-Elemen-elemen dalam $\mathbf{W}_t$ merepresentasikan kemiripan (korelasi) geometris antar-objek pada situasi ke-$t$. Matriks ini merangkum ``peta'' konfigurasi antar-objek pada situasi tersebut tanpa bergantung pada jumlah variabel $p$.
+Elemen-elemen dalam $\mathbf{W}_k$ merepresentasikan kemiripan (produk skalar terbobot) antar-objek pada situasi ke-$k$. Penggunaan $\mathbf{D}^{1/2}$ memastikan bahwa kontribusi setiap wilayah terhadap konfigurasi keseluruhan proporsional dengan ukuran populasinya. Karena $\mathbf{D}$ telah terinkorporasi di dalam $\mathbf{W}_k$, maka perhitungan produk Hilbert--Schmidt dan koefisien RV pada tahap berikutnya cukup menggunakan $\mathrm{tr}(\mathbf{W}_k \mathbf{W}_{k'})$ tanpa mengalikan $\mathbf{D}$ kembali \citet{lavit94}.
 
-\begin{remark}[Interpretasi $\mathbf{W}_t$]
-  Elemen $\mathbf{W}_t[i,j]$ yang bernilai besar menunjukkan bahwa objek ke-$i$ dan objek ke-$j$ memiliki profil variabel yang sangat mirip pada situasi ke-$t$, sedangkan nilai yang kecil menunjukkan perbedaan karakteristik yang mencolok.
+\begin{remark}[Interpretasi $\mathbf{W}_k$]
+  Elemen $\mathbf{W}_k[i,j]$ yang bernilai besar menunjukkan bahwa objek ke-$i$ dan objek ke-$j$ memiliki profil variabel yang sangat mirip pada situasi ke-$k$, sedangkan nilai yang kecil menunjukkan perbedaan karakteristik yang mencolok.
 \end{remark}
 
 \subsection{\normalsize Tahap 2: Inter-struktur}
 
-Setelah representasi $\mathbf{W}_t$ diperoleh untuk setiap situasi, langkah selanjutnya adalah mengukur seberapa mirip konfigurasi antar-satu situasi dengan situasi lainnya. Ukuran kemiripan yang digunakan adalah Koefisien RV (\textit{Rho Vectoriel}), yang merupakan generalisasi dari koefisien korelasi Pearson untuk matriks \citet{escoufier1973}.
+Setelah representasi $\mathbf{W}_k$ diperoleh untuk setiap situasi, langkah selanjutnya adalah mengukur seberapa mirip konfigurasi antar-situasi. Secara aljabar, matriks simetris $\mathbf{W}_k$ dan $\mathbf{W}_{k'}$ dapat dilengkapi dengan produk skalar Hilbert--Schmidt $(\mathbf{W}_k\,|\,\mathbf{W}_{k'}) = \mathrm{tr}(\mathbf{W}_k \mathbf{W}_{k'})$ \citet{lavit94,oliveira2024}. Produk ini membentuk \textbf{matriks interstruktur} berukuran $K \times K$:
+\begin{equation}\label{eq:interstructure_H}
+  H_{kk'} = \mathrm{tr}(\mathbf{W}_k \mathbf{W}_{k'}), \qquad k,k' = 1,\ldots,K.
+\end{equation}
+Matriks $\mathbf{H}=(H_{kk'})$ merepresentasikan kemiripan geometris antar-situasi dalam ruang matriks; dekomposisi spektralnya memberi gambaran grafis interstruktur (titik-titik situasi di $\mathbb{R}^h$) sebagaimana dijelaskan oleh \citet{lavit94}.
 
+Untuk interpretasi yang ternormalisasi (nilai diagonal menjadi 1), digunakan \textbf{koefisien RV} \citet{escoufier1973}:
 \begin{definition}[Koefisien RV]
-  Koefisien RV antara dua matriks konfigurasi $\mathbf{W}_i$ dan $\mathbf{W}_j$ didefinisikan sebagai:
+  Koefisien RV antara dua matriks konfigurasi $\mathbf{W}_k$ dan $\mathbf{W}_{k'}$ didefinisikan sebagai:
   \begin{equation}\label{eq:rv}
-    RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) \, tr(\mathbf{W}_j^2)}}
+    RV(\mathbf{W}_k, \mathbf{W}_{k'}) = \frac{\mathrm{tr}(\mathbf{W}_k \mathbf{W}_{k'})}{\sqrt{\mathrm{tr}(\mathbf{W}_k^2) \, \mathrm{tr}(\mathbf{W}_{k'}^2)}}
+    = \frac{H_{kk'}}{\sqrt{H_{kk}\,H_{k'k'}}}.
   \end{equation}
-  Nilai $RV$ berkisar antara 0 dan 1. Nilai mendekati 1 mengindikasikan bahwa konfigurasi antar-objek pada situasi ke-$i$ sangat mirip dengan situasi ke-$j$.
+  Nilai $RV$ berkisar antara 0 dan 1. Nilai mendekati 1 mengindikasikan bahwa konfigurasi antar-objek pada situasi ke-$k$ sangat mirip dengan situasi ke-$k'$.
 \end{definition}
 
-Koefisien RV dihitung untuk setiap pasangan situasi, membentuk matriks inter-struktur $\mathbf{R}$ berukuran $T \times T$ dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap situasi, dilakukan dekomposisi spektral pada $\mathbf{R}$:
-\begin{equation}\label{eq:r_alpha}
-  \mathbf{R} \mathbf{u} = \theta \mathbf{u}
+Matriks $\mathbf{R}_{\mathrm{RV}}=(RV(\mathbf{W}_k,\mathbf{W}_{k'}))$ berguna untuk heatmap dan jarak $d^2(k,k')=2(1-RV)$ antar-situasi \citet{lavit94}, namun \textbf{pembobotan kompromi} mengacu pada $\mathbf{H}$: menurut \citet{lavit94}, koefisien $\alpha_k$ diambil sebagai komponen vektor eigen utama yang terkait dengan nilai eigen dominan dari dekomposisi spektral matriks interstruktur. Secara eksplisit,
+\begin{equation}\label{eq:h_eigen}
+  \mathbf{H} \mathbf{u} = \theta \mathbf{u},
 \end{equation}
-Vektor eigen pertama $\mathbf{u}_1$ (berkorespondensi dengan nilai eigen terbesar $\theta_1$) digunakan untuk menghitung bobot $\alpha_t$:
-\begin{equation}
-  \alpha_t = \frac{u_{1t}}{\sqrt{\sum_{t=1}^{T} u_{1t}^2}}
+dan vektor eigen pertama $\mathbf{u}_1$ (berkorespondensi dengan $\theta_1$ terbesar) dipilih dengan elemen non-negatif lalu dinormalisasi:
+\begin{equation}\label{eq:alpha_weights}
+  \alpha_k = \frac{u_{1k}}{\displaystyle\sum_{k'=1}^{K} u_{1k'}}.
 \end{equation}
+Kendala $\sum_{k=1}^{K} \alpha_k = 1$ memastikan matriks kompromi sebanding dengan skala $\mathbf{W}_k$ \citet{lavit94}. Catatan: $\mathbf{R}_{\mathrm{RV}}$ dan $\mathbf{H}$ memiliki nilai eigen berbeda; implementasi yang selaras dengan ACT/STATIS menggunakan Persamaan~\eqref{eq:h_eigen}--\eqref{eq:alpha_weights} untuk $\boldsymbol{\alpha}$.
 
 \begin{example}[Logika Bobot]
-  Apabila suatu situasi memiliki profil yang sangat anomali dibandingkan situasi lainnya (misalnya akibat krisis), metode STATIS akan secara otomatis memberikan bobot $\alpha_t$ yang lebih kecil pada situasi tersebut. Hal ini memastikan bahwa struktur kompromi tidak ``terdistorsi'' oleh situasi yang tidak representatif.
+  Apabila suatu situasi memiliki profil yang sangat anomali dibandingkan situasi lainnya (misalnya akibat krisis), metode STATIS akan secara otomatis memberikan bobot $\alpha_k$ yang lebih kecil pada situasi tersebut. Hal ini memastikan bahwa struktur kompromi tidak ``terdistorsi'' oleh situasi yang tidak representatif.
 \end{example}
 
 \subsection{\normalsize Tahap 3: Analisis Kompromi}
 
-Tahap ini membentuk struktur ``rata-rata'' yang disebut Kompromi. Matriks kompromi $\mathbf{W}_c$ dihitung sebagai kombinasi linier terbobot (menggunakan bobot $\alpha_t$) dari matriks intra-struktur $\mathbf{W}_t$:
+Tahap ini membentuk struktur ``rata-rata'' yang disebut Kompromi. Matriks kompromi $\mathbf{W}_c$ dihitung sebagai kombinasi linier terbobot (menggunakan bobot $\alpha_k$) dari matriks intra-struktur $\mathbf{W}_k$ \citet{lavit94}:
 \begin{equation}\label{eq:wc}
-  \mathbf{W}_c = \sum_{t=1}^{T} \alpha_t \mathbf{W}_t
+  \mathbf{W}_c = \sum_{k=1}^{K} \alpha_k \mathbf{W}_k
 \end{equation}
 
-Matriks $\mathbf{W}_c$ (berukuran $n \times n$) merepresentasikan pola hubungan antar-objek yang paling stabil selama periode pengamatan. Untuk memperoleh koordinat objek dalam grafik dua dimensi, dilakukan faktorisasi spektral pada $\mathbf{W}_c$:
-
-\begin{enumerate}
-    \item \textbf{Dekomposisi Spektral:} Karena $\mathbf{W}_c$ adalah kombinasi linier dari matriks simetris ($\mathbf{W}_t$), maka $\mathbf{W}_c$ juga merupakan matriks simetris positif semi-definit. Berdasarkan teorema spektral, $\mathbf{W}_c$ dapat didekomposisi menjadi:
-    \begin{equation}
-        \mathbf{W}_c = \mathbf{V}_c \mathbf{\Lambda}_c \mathbf{V}_c^T
-    \end{equation}
-    dengan $\mathbf{V}_c$ adalah matriks vektor eigen yang ortogonal, dan $\mathbf{\Lambda}_c$ adalah matriks diagonal berisi nilai eigen ($\lambda_1 \ge \lambda_2 \ge \dots \ge 0$).
-    
-    \item \textbf{Akar Kuadrat Matriks:} Matriks diagonal $\mathbf{\Lambda}_c$ dapat difaktorkan menjadi $\mathbf{\Lambda}_c^{1/2} \mathbf{\Lambda}_c^{1/2}$. Persamaan di atas dapat ditulis ulang sebagai:
-    \begin{equation}
-        \mathbf{W}_c = \mathbf{V}_c (\mathbf{\Lambda}_c^{1/2} \mathbf{\Lambda}_c^{1/2}) \mathbf{V}_c^T
-    \end{equation}
-    
-    \item \textbf{Ekstraksi Skor Objek:} Koordinat objek (skor) pada ruang kompromi diperoleh sebagai:
-    \begin{equation}\label{eq:fc}
-        \mathbf{F}_c = \mathbf{V}_c \mathbf{\Lambda}_c^{1/2}
-    \end{equation}
-\end{enumerate}
-
-Dengan sifat asosiatif perkalian matriks, dapat dikelompokkan persamaan tersebut:
-\begin{equation}
-    \mathbf{W}_c = (\mathbf{V}_c \mathbf{\Lambda}_c^{1/2}) (\mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T)
+Matriks $\mathbf{W}_c$ (berukuran $n \times n$) merepresentasikan pola hubungan antar-objek yang paling stabil selama periode pengamatan. Untuk memperoleh koordinat objek dalam grafik dua dimensi, dilakukan dekomposisi spektral pada $\mathbf{W}_c$. Karena $\mathbf{W}_c$ adalah kombinasi linier dari matriks simetris positif semi-definit, maka $\mathbf{W}_c$ juga bersifat simetris positif semi-definit. Berdasarkan teorema spektral, $\mathbf{W}_c$ dapat didekomposisi menjadi:
+\begin{equation}\label{eq:decomp_W}
+    \mathbf{W}_c = \mathbf{P} \mathbf{\Lambda} \mathbf{P}^T
 \end{equation}
-Perhatikan bahwa $(\mathbf{V}_c \mathbf{\Lambda}_c^{1/2})^T = (\mathbf{\Lambda}_c^{1/2})^T \mathbf{V}_c^T = \mathbf{\Lambda}_c^{1/2} \mathbf{V}_c^T$. Hal ini konsisten dengan definisi awal bahwa matriks intra-struktur adalah produk skalar dari koordinat objek.
+dengan $\mathbf{P}$ adalah matriks vektor eigen yang ortogonal ($\mathbf{P}^T\mathbf{P} = \mathbf{I}$) dan $\mathbf{\Lambda}$ adalah matriks diagonal berisi nilai eigen terurut $\lambda_1 \ge \lambda_2 \ge \dots \ge 0$.
 
-Matriks $\mathbf{F}_c$ berukuran $n \times r$ (dengan $r$ adalah \textit{rank} matriks). Untuk visualisasi, umumnya hanya diambil dua kolom pertama (dua komponen utama) dari $\mathbf{F}_c$ yang berkorespondensi dengan dua nilai eigen terbesar.
+Koordinat objek ke-$i$ pada ruang kompromi (skor kompromi) diperoleh dari baris ke-$i$ matriks $\mathbf{F}_c$ \citet{lavit94}. Karena matriks $\mathbf{W}_c$ beroperasi dalam ruang metrik $\mathbf{D}$, koordinat akhir perlu dikembalikan ke ruang asli observasi melalui transformasi invers akar bobot:
+\begin{equation}\label{eq:fc}
+    \mathbf{F}_c = \mathbf{D}^{-1/2}\mathbf{P}\mathbf{\Lambda}^{1/2}
+\end{equation}
+di mana $\mathbf{D}^{-1/2} = \operatorname{diag}(1/\sqrt{m_1}, \ldots, 1/\sqrt{m_n})$, $\mathbf{P}$ adalah matriks vektor eigen dari $\mathbf{W}_c$ ($\mathbf{P}^T\mathbf{P} = \mathbf{I}$), dan $\mathbf{\Lambda}^{1/2}$ adalah matriks diagonal akar nilai eigen. Transformasi $\mathbf{D}^{-1/2}$ memastikan bahwa koordinat kompromi merepresentasikan posisi objek dalam ruang asli, bukan dalam ruang metrik terbobot \citet{lavit94}.
+
+Dalam ruang metrik $\mathbf{D}$, berlaku hubungan $\mathbf{D}^{1/2}\mathbf{F}_c\mathbf{F}_c^T\mathbf{D}^{1/2} = \mathbf{W}_c$, yang konsisten dengan interpretasi bahwa produk skalar terbobot antara koordinat objek ke-$i$ dan ke-$i'$ merepresentasikan kemiripan mereka dalam ruang kompromi. Untuk visualisasi, umumnya hanya diambil dua kolom pertama dari $\mathbf{F}_c$ yang berkorespondensi dengan dua nilai eigen terbesar.
 
 \subsection{\normalsize Tahap 4: Analisis Variabel (Loadings)}
 
-Selain memetakan objek, STATIS juga memungkinkan pemetaan variabel ke dalam ruang kompromi untuk melihat hubungan antar-indikator. Prosedur ini dilakukan melalui analisis pada ruang variabel (\textit{dual space}).
+Selain memetakan objek, STATIS juga memungkinkan pemetaan variabel ke dalam ruang kompromi untuk melihat hubungan antar-indikator. Prosedur ini dilakukan melalui analisis pada ruang variabel (\textit{dual space}) \citet{lavit94}.
 
 \begin{enumerate}
-    \item \textbf{Matriks Produk Skalar Variabel:} Untuk setiap situasi $t$, dibentuk matriks produk skalar variabel $\mathbf{S}_t$ berukuran $p \times p$:
+    \item \textbf{Matriks Produk Skalar Variabel Terbobot:} Untuk setiap situasi $k$, dibentuk matriks produk skalar antar-variabel terbobot $\mathbf{S}_k$ berukuran $p \times p$, yang merepresentasikan kovarians terbobot antar-indikator dalam ruang metrik $\mathbf{D}$:
     \begin{equation}
-        \mathbf{S}_t = \mathbf{Z}_t^T \mathbf{Z}_t
+        \mathbf{S}_k = \mathbf{Z}_k^T \mathbf{D} \mathbf{Z}_k
     \end{equation}
     
-    \item \textbf{Kompromi Variabel:} Serupa dengan kompromi objek, kompromi variabel $\mathbf{S}_c$ dibentuk sebagai kombinasi linier terbobot menggunakan $\alpha_t$:
+    \item \textbf{Kompromi Variabel:} Serupa dengan kompromi objek, kompromi variabel $\mathbf{S}_c$ dibentuk sebagai kombinasi linier terbobot menggunakan $\alpha_k$:
     \begin{equation}\label{eq:sc}
-        \mathbf{S}_c = \sum_{t=1}^{T} \alpha_t \mathbf{S}_t
+        \mathbf{S}_c = \sum_{k=1}^{K} \alpha_k \mathbf{S}_k
     \end{equation}
     
-    \item \textbf{Ekstraksi Loadings:} Matriks pembobot variabel $\mathbf{V}_c$ (yang berisi koordinat ujung panah variabel dalam biplot) diperoleh dari dekomposisi eigen pada $\mathbf{S}_c$:
+    \item \textbf{Dekomposisi Spektral $\mathbf{S}_c$:} Matriks $\mathbf{S}_c$ (simetris positif semi-definit) didekomposisi menjadi:
     \begin{equation}\label{eq:vc}
-        \mathbf{S}_c = \mathbf{V}_c \mathbf{\Lambda}_{\text{var}} \mathbf{V}_c^T
+        \mathbf{S}_c = \mathbf{V}_c \mathbf{\Lambda}_s \mathbf{V}_c^T
     \end{equation}
-    Kolom-kolom dalam $\mathbf{V}_c$ merupakan vektor eigen yang merepresentasikan arah dan kontribusi setiap variabel terhadap komponen utama kompromi.
+    dengan $\mathbf{V}_c$ (berukuran $p \times p$) adalah matriks vektor eigen ortogonal dari $\mathbf{S}_c$ dan $\mathbf{\Lambda}_s$ adalah matriks diagonal nilai eigen.
+    
+    \item \textbf{Koordinat Variabel (Loading Kompromi):} Koordinat variabel dalam ruang kompromi, disebut matriks loading $\mathbf{G}_c$ (berukuran $p \times 2$), diperoleh dari:
+    \begin{equation}\label{eq:gc}
+        \mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}
+    \end{equation}
+    Kolom-kolom $\mathbf{G}_c$ digunakan sebagai koordinat ujung panah variabel dalam biplot kompromi. Sudut antar vektor kolom mengaproksimasi korelasi antar variabel.
 \end{enumerate}
 
 \subsection{\normalsize Uji Signifikansi Stabilitas Struktur (Permutasi)}
@@ -530,27 +552,27 @@ Untuk memvalidasi hal ini, digunakan uji permutasi non-parametrik yang diadopsi 
     \end{itemize}
     
     \item \textbf{Statistik Uji:}
-    Statistik yang digunakan adalah nilai eigen pertama ($\theta_1$) dari matriks inter-struktur $\mathbf{R}$. Nilai $\theta_1$ merepresentasikan proporsi variabilitas struktur yang dapat dijelaskan oleh dimensi utama (kompromi). Semakin besar nilai $\theta_1$, semakin kuat indikasi adanya struktur bersama yang stabil.
+    Statistik yang digunakan adalah nilai eigen terbesar $\theta_1$ dari matriks interstruktur $\mathbf{H}$ pada Persamaan~\eqref{eq:interstructure_H} (informasi dominan satu dimensi pada ruang situasi; bandingkan pembentukan matriks interstruktur dalam \citet{oliveira2024}). Semakin besar $\theta_1$, semakin kuat indikasi adanya struktur bersama yang stabil antar-situasi.
     
     \item \textbf{Prosedur Permutasi:}
     Karena distribusi sampling dari $\theta_1$ tidak diketahui secara eksak, distribusi ini dibangun secara empiris melalui langkah-langkah berikut:
     \begin{itemize}
-        \item[a.] Menghitung nilai eigen pertama dari matriks inter-struktur $\mathbf{R}$ berdasarkan data asli, yang dinotasikan sebagai $\theta_1^{obs}$.
-        \item[b.] Melakukan pengacakan (permutasi) posisi label tahun/situasi pada himpunan tabel data awal. Hal ini mensimulasikan kondisi tanpa struktur temporal, yaitu kondisi di mana tidak ada hubungan urutan waktu atau struktur yang konsisten.
-        \item[c.] Menghitung ulang matriks inter-struktur $\mathbf{R}^*$ dari data yang telah diacak, dan dapatkan nilai eigen pertamanya $\theta_1^*$.
-        \item[d.] Mengulangi langkah (b) dan (c) sebanyak $B$ kali (misalnya $B=1000$ kali) untuk membentuk distribusi null empiris.
+        \item[a.] Menghitung $\theta_1^{\text{obs}}$ sebagai nilai eigen terbesar dari $\mathbf{H}$ berdasarkan data asli.
+        \item[b.] Melakukan pengacakan (permutasi) baris pada tiap matriks situasi (atau mengacak asosiasi yang memutus struktur bersama) sehingga diperoleh versi data yang tidak mempertahankan pola antar-situasi.
+        \item[c.] Menghitung ulang matriks interstruktur $\mathbf{H}^*$ dan nilai eigen terbesarnya $\theta_1^*$.
+        \item[d.] Mengulangi langkah (b) dan (c) sebanyak $B$ kali (misalnya $B = 1000$ kali) untuk membentuk distribusi null empiris.
     \end{itemize}
 
     \item \textbf{Pengambilan Keputusan:}
-    Berbeda dengan uji statistik parametrik konvensional yang mengandalkan tabel distribusi teoritis (seperti tabel Normal atau F), distribusi sampling dari nilai eigen pertama ($\theta_1$) dalam konteks STATIS tidak diketahui bentuk pastinya secara analitis. Oleh karena itu, pengujian ini bersifat \textbf{non-parametrik} (\textit{distribution-free}), di mana distribusi null dibangun secara empiris dari data itu sendiri melalui proses permutasi \citet{kazi1995}.
+    Berbeda dengan uji statistik parametrik konvensional yang mengandalkan tabel distribusi teoritis, distribusi sampling dari $\theta_1$ dalam konteks STATIS tidak diketahui bentuk pastinya secara analitis. Oleh karena itu, pengujian ini bersifat \textbf{non-parametrik} (\textit{distribution-free}), di mana distribusi null dibangun secara empiris dari data itu sendiri melalui proses permutasi \citet{kazi1995}.
     
-    Nilai $p$-value dihitung sebagai proporsi dari statistik uji hasil permutasi ($\theta_1^*$) yang nilainya lebih besar atau sama dengan statistik observasi ($\theta_1^{obs}$):
+    Nilai $p$-\textit{value} dihitung sebagai proporsi statistik uji hasil permutasi ($\theta_1^*$) yang nilainya lebih besar atau sama dengan statistik observasi ($\theta_1^{\text{obs}}$):
     \begin{equation}\label{eq:permutation}
-        p\text{-value} = \frac{\sum_{b=1}^{B} I(\theta_1^{*(b)} \ge \theta_1^{obs}) + 1}{B + 1}
+        p\text{-value} = \frac{\displaystyle\sum_{b=1}^{B} I(\theta_1^{*(b)} \ge \theta_1^{\text{obs}}) + 1}{B + 1}
     \end{equation}
-    Penambahan angka 1 pada pembilang dan penyebut merupakan koreksi standar untuk uji permutasi agar $p$-value tidak bernilai nol \citet{phipson2010}.
+    Penambahan angka 1 pada pembilang dan penyebut merupakan koreksi standar untuk uji permutasi agar $p$-\textit{value} tidak bernilai nol \citet{phipson2010}.
     
-    Jika $p\text{-value} < \alpha$ (misalnya 0.05), maka $H_0$ ditolak. Hal ini mengindikasikan bahwa nilai eigen observasi berada di ekor kanan distribusi (area ekstrem), yang berarti struktur kompromi yang dihasilkan oleh STATIS bukanlah kebetulan, melainkan mencerminkan pola hubungan spasio-temporal yang nyata dan stabil (bukan artefak matematis dari data acak) \citet{kazi1995}.
+    Jika $p\text{-value} < \alpha$ (misalnya 0{,}05), maka $H_0$ ditolak. Hal ini mengindikasikan bahwa nilai eigen observasi berada di ekor kanan distribusi (area ekstrem), yang berarti struktur kompromi yang dihasilkan oleh STATIS bukanlah kebetulan, melainkan mencerminkan pola hubungan spasio-temporal yang nyata dan stabil (bukan artefak matematis dari data acak) \citet{kazi1995}.
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
@@ -564,25 +586,25 @@ Konsep dasar dari visualisasi ini adalah memproyeksikan data tabel parsial (situ
 
 \subsection{\normalsize Proyeksi Lintasan (\textit{Trajectory})}
 
-Misalkan $\mathbf{Z}_t$ adalah matriks data terstandardisasi pada situasi ke-$t$ ($n \times p$) dan $\mathbf{V}_c$ adalah matriks \textit{loadings} (vektor eigen) dari solusi kompromi ($p \times 2$). Koordinat objek pada situasi ke-$t$, dinotasikan $\mathbf{F}_t$, dihitung melalui proyeksi linier:
+Misalkan $\mathbf{Z}_k$ adalah matriks data terstandardisasi pada situasi ke-$k$ ($n \times p$) dan $\mathbf{V}_c$ (berukuran $p \times 2$) adalah matriks vektor eigen dari matriks kompromi variabel $\mathbf{S}_c$. Koordinat objek pada situasi ke-$k$, dinotasikan $\mathbf{F}_k$, dihitung melalui proyeksi linier \citet{lavit94}:
 \begin{equation}\label{eq:lintasan}
-  \mathbf{F}_t = \mathbf{Z}_t \mathbf{V}_c
+  \mathbf{F}_k = \mathbf{Z}_k \mathbf{V}_c
 \end{equation}
 
 Persamaan ini memetakan kondisi setiap situasi ke dalam sistem koordinat global yang sama. \textbf{Trajektori} atau lintasan objek ke-$i$ didefinisikan sebagai urutan vektor koordinat dari waktu ke waktu:
 \begin{equation}
-  \mathcal{T}_i = \{ \mathbf{f}_{i,1}, \mathbf{f}_{i,2}, \dots, \mathbf{f}_{i,T} \}
+  \mathcal{T}_i = \{ \mathbf{f}_{i,1}, \mathbf{f}_{i,2}, \dots, \mathbf{f}_{i,K} \}
 \end{equation}
 
 Visualisasi trajektori menghubungkan titik-titik koordinat ini dengan garis berarah, sehingga pergeseran karakteristik objek---misalnya perpindahan dari kuadran dengan nilai variabel tertentu yang rendah menuju kuadran dengan nilai yang tinggi---dapat teramati secara visual.
 
 \subsection{\normalsize Jarak Euclidean antar Trajektori}
 
-Untuk mengelompokkan objek berdasarkan dinamika lintasannya (bukan hanya posisi rata-ratanya), digunakan ukuran jarak yang memperhitungkan pergerakan lintas seluruh situasi waktu. Jarak Euclidean antar-trajektori objek ke-$i$ dan objek ke-$j$ (masing-masing memiliki $T$ titik koordinat) didefinisikan sebagai:
+Untuk mengelompokkan objek berdasarkan dinamika lintasannya (bukan hanya posisi rata-ratanya), digunakan ukuran jarak yang memperhitungkan pergerakan lintas seluruh situasi waktu. Jarak Euclidean antar-trajektori objek ke-$i$ dan objek ke-$j$ (masing-masing memiliki $K$ titik koordinat) didefinisikan sebagai:
 \begin{equation}
-  d(i, j) = \sqrt{\sum_{t=1}^{T} \left\| \mathbf{f}_{i,t} - \mathbf{f}_{j,t} \right\|^2}
+  d(i, j) = \sqrt{\sum_{k=1}^{K} \left\| \mathbf{f}_{i,k} - \mathbf{f}_{j,k} \right\|^2}
 \end{equation}
-di mana $\mathbf{f}_{i,t} \in \mathbb{R}^2$ adalah koordinat proyeksi objek ke-$i$ pada situasi ke-$t$. Matriks jarak ini kemudian digunakan sebagai masukan pada algoritma K-Means berbasis trajektori, sehingga objek-objek yang memiliki pola pergerakan serupa sepanjang waktu akan dikelompokkan bersama \citet{egido2015}.
+di mana $\mathbf{f}_{i,k} \in \mathbb{R}^2$ adalah koordinat proyeksi objek ke-$i$ pada situasi ke-$k$. Matriks jarak ini kemudian digunakan sebagai masukan pada algoritma K-Means berbasis trajektori, sehingga objek-objek yang memiliki pola pergerakan serupa sepanjang waktu akan dikelompokkan bersama \citet{egido2015}.
 
 \subsection{\normalsize Rotasi Baseline}
 
@@ -632,17 +654,32 @@ Jarak vertikal cabang dendrogram secara visual mengindikasikan ketidaksamaan ant
 
 \subsection{\normalsize Matriks Transisi Temporal}
 
-Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-klaster. Matriks transisi $\mathbf{T}$ berdimensi $k \times k$ (dengan k adalah jumlah klaster) disusun untuk memetakan kondisi dari situasi $t_1$ ke situasi $t_2$. Elemen $T_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $t_1$ namun berpindah ke klaster $y$ di situasi $t_2$:
+Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-klaster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah klaster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $k_1$ namun berpindah ke klaster $y$ di situasi $k_2$:
 \begin{equation}
     \mathbf{T} = 
     \begin{pmatrix}
-    T_{1,1} & T_{1,2} & \cdots & T_{1,k} \\
-    T_{2,1} & T_{2,2} & \cdots & T_{2,k} \\
+    M_{1,1} & M_{1,2} & \cdots & M_{1,k} \\
+    M_{2,1} & M_{2,2} & \cdots & M_{2,k} \\
     \vdots & \vdots & \ddots & \vdots \\
-    T_{k,1} & T_{k,2} & \cdots & T_{k,k}
+    M_{k,1} & M_{k,2} & \cdots & M_{k,k}
     \end{pmatrix}
 \end{equation}
-Diagonal utama ($T_{j,j}$) merepresentasikan objek yang tidak berpindah klaster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan klaster antar-situasi.
+Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah klaster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan klaster antar-situasi.
+
+\subsection{\normalsize Penyelarasan Klaster Lintas Waktu (\textit{Cluster Correspondence})}
+
+Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan klaster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas klaster 1 pada tahun 2020 bergeser menjadi klaster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Cluster Correspondence} \citet{kuhn1955}.
+
+Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} klaster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} klaster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
+\begin{equation} \label{eq:dist_centroid}
+    D(c_{1i}, c_{2j}) = \sqrt{\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}
+\end{equation}
+
+Matriks jarak ini kemudian diselesaikan menggunakan \textit{Hungarian Algorithm} \citet{kuhn1955} untuk menemukan kombinasi pemetaan (\textit{minimum weight bipartite matching}) sedemikian sehingga total biaya jarak atau fungsi objektif terminimisasi:
+\begin{equation} \label{eq:hungarian_min}
+    \min \sum_{i=1}^{k} \sum_{j=1}^{k} D(c_{1i}, c_{2j}) \cdot x_{ij}
+\end{equation}
+di mana variabel biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan klaster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
 
 %-----------------------------------------------------------------------------%
 % --- 2.14 ---
@@ -653,7 +690,7 @@ Autokorelasi spasial mengacu pada korelasi antara nilai suatu atribut di satu lo
 
 \subsection{\normalsize Matriks Pembobot Spasial}
 
-Matriks Pembobot Spasial (\textit{Spatial Weight Matrix}) $\mathbf{W}$ berukuran $N \times N$ merepresentasikan struktur ketetanggaan antar-wilayah. Elemen $w_{ij}$ mendefinisikan seberapa besar pengaruh wilayah $j$ terhadap wilayah $i$ \citet{anselin1988}. Salah satu definisi ketetanggaan yang umum digunakan adalah \textit{Queen Contiguity}: wilayah $i$ dan $j$ dianggap bertetangga jika mereka berbagi setidaknya satu titik batas (sisi atau sudut):
+Matriks Pembobot Spasial (\textit{Spatial Weight Matrix}) $\mathbf{W}_c$ berukuran $N \times N$ merepresentasikan struktur ketetanggaan antar-wilayah. Elemen $w_{ij}$ mendefinisikan seberapa besar pengaruh wilayah $j$ terhadap wilayah $i$ \citet{anselin1988}. Salah satu definisi ketetanggaan yang umum digunakan adalah \textit{Queen Contiguity}: wilayah $i$ dan $j$ dianggap bertetangga jika mereka berbagi setidaknya satu titik batas (sisi atau sudut):
 \begin{equation}
   w_{ij} = \begin{cases} 1 & \text{jika wilayah } i \text{ dan } j \text{ bertetangga} \\ 0 & \text{selainnya} \end{cases}, \quad w_{ii} = 0
 \end{equation}
@@ -666,7 +703,7 @@ Bentuk matriks pembobot terstandardisasi-baris adalah $\mathbf{W}^* = (w_{ij}^*)
 \subsection{\normalsize Statistik Global Moran's~\texorpdfstring{$I$}{I}}
 
 \begin{definition}[Global Moran's $I$]
-  Misalkan $x_i$ adalah nilai suatu atribut pada wilayah ke-$i$. Global Moran's~$I$ menggunakan matriks pembobot awal (belum terstandardisasi baris) $\mathbf{W}$ dengan elemen $w_{ij}$, dan didefinisikan sebagai:
+  Misalkan $x_i$ adalah nilai suatu atribut pada wilayah ke-$i$. Global Moran's~$I$ menggunakan matriks pembobot awal (belum terstandardisasi baris) $\mathbf{W}_c$ dengan elemen $w_{ij}$, dan didefinisikan sebagai:
   \begin{equation}\label{eq:moran_i}
     I = \frac{N}{\displaystyle\sum_i \sum_j w_{ij}} \cdot \frac{\displaystyle\sum_i \sum_j w_{ij}(x_i - \bar{x})(x_j - \bar{x})}{\displaystyle\sum_i (x_i - \bar{x})^2}
   \end{equation}
