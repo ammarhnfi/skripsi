@@ -1,3 +1,4 @@
+% !TeX root = induk.tex
 \chapter{\normalsize METODOLOGI PENELITIAN}
 
 Bab ini berisi uraian mengenai tahapan-tahapan yang ditempuh dalam pelaksanaan penelitian, mulai dari penentuan jenis penelitian, penyusunan rancangan (desain), identifikasi populasi dan sampel, prosedur pengumpulan data, hingga teknik pengumpulan dan analisis data secara komputasional menggunakan algoritma STATIS dan analisis spasial.
@@ -180,20 +181,20 @@ Berdasarkan sampel data, terdapat 4 wilayah: (A) Jakarta Pusat, (B) Bandung Bara
 \textbf{0. Bobot Demografis ($m_i$) dan Matriks Metrik $\mathbf{D}$:}
 Sebelum standardisasi, dihitung bobot demografis dari data JP hipotetis wilayah sampel (data JP rata-rata selama 2020--2022):
 \[
-\text{JP}_A = 900.000,\; \text{JP}_B = 1.700.000,\; \text{JP}_C = 750.000,\; \text{JP}_D = 400.000
+\text{JP}_1 = 900.000,\; \text{JP}_2 = 1.700.000,\; \text{JP}_3 = 750.000,\; \text{JP}_4 = 400.000
 \]
 \[
-m_A = \frac{900.000}{3.750.000} = 0{,}240, \quad m_B = \frac{1.700.000}{3.750.000} = 0{,}453,
-\quad m_C = \frac{750.000}{3.750.000} = 0{,}200, \quad m_D = \frac{400.000}{3.750.000} = 0{,}107
+m_1 = \frac{900.000}{3.750.000} = 0{,}240, \quad m_2 = \frac{1.700.000}{3.750.000} = 0{,}453,
+\quad m_3 = \frac{750.000}{3.750.000} = 0{,}200, \quad m_4 = \frac{400.000}{3.750.000} = 0{,}107
 \]
-dengan $\sum_{i=A}^{D} m_i = 1{,}000$. Matriks metrik $\mathbf{D} = \operatorname{diag}(0{,}240;\; 0{,}453;\; 0{,}200;\; 0{,}107)$ (Persamaan~\ref{eq:matriks_D}).
+dengan $\sum_{i=1}^{4} m_i = 1{,}000$. Matriks metrik $\mathbf{D} = \operatorname{diag}(0{,}240;\; 0{,}453;\; 0{,}200;\; 0{,}107)$ (Persamaan~\ref{eq:matriks_D}).
 
 \textbf{2. Standardisasi $Z$-score Terbobot ($\mathbf{Z}_k$):}
 Berdasarkan rumus rata-rata populasi terbobot (Persamaan~\ref{eq:weighted_mean}) dan simpangan baku populasi terbobot (Persamaan~\ref{eq:weighted_std}), setiap matriks $\mathbf{X}_k$ distandardisasi. Sebagai contoh perhitungan untuk kolom pertama (PPM) pada tahun 2020:
 \begin{enumerate}
     \item Rata-rata populasi terbobot PPM 2020: $\mu_{1,1} = \sum_i m_i x_{i,1,1} = 0{,}240(4{,}51) + 0{,}453(10{,}49) + 0{,}200(12{,}97) + 0{,}107(3{,}69) = 8{,}915$.
     \item Simpangan baku populasi terbobot: $\sigma_{1,1} = \sqrt{\sum_i m_i(x_{i,1,1} - 8{,}915)^2} = \sqrt{0{,}240(4{,}51-8{,}915)^2 + \cdots} = 3{,}302$.
-    \item Weighted Z-score Wilayah A: $z_{A,1,1} = \frac{4{,}51 - 8{,}915}{3{,}302} = -1{,}334$.
+    \item Weighted Z-score Wilayah 1: $z_{1,1,1} = \frac{4{,}51 - 8{,}915}{3{,}302} = -1{,}334$.
 \end{enumerate}
 Dengan menerapkan langkah serupa (menggunakan $m_i$ terbobot) pada seluruh elemen, diperoleh matriks $\mathbf{Z}_k$. \textit{Catatan: nilai di bawah bersifat ilustratif berdasarkan bobot seragam untuk konsistensi numerik pedagojis; implementasi sesungguhnya menggunakan bobot $m_i$ di atas.}
 
@@ -276,7 +277,7 @@ Dengan prosedur dekomposisi eigen pada sisi kompromi objek \citet{lavit94}:
 \begin{enumerate}
     \item Matriks $\mathbf{W}_c = \mathbf{P} \mathbf{\Lambda} \mathbf{P}^T$ didekomposisi, dengan nilai eigen $\lambda_{c,1} = 5{,}26$, $\lambda_{c,2} = 1{,}33$.
     \item Skor kompromi dihitung dengan mentransformasi kembali ke ruang asli: $\mathbf{F}_c = \mathbf{D}^{-1/2}\mathbf{P}\,\mathbf{\Lambda}^{1/2}$ (Persamaan~\ref{eq:fc}).
-    \item Hasil eksekusi memetakan koordinat setiap wilayah (A, B, C, D) di ruang kompromi:
+    \item Hasil eksekusi memetakan koordinat setiap wilayah (1, 2, 3, 4) di ruang kompromi:
     \[
     \mathbf{F}_c = \input{output_sample/matrix_F_c.tex}
     \]
@@ -304,7 +305,7 @@ Setelah memahami ilustrasi di atas, prosedur sistematis yang diterapkan pada dat
         \item Melakukan dekomposisi spektral pada $\mathbf{S}_c = \mathbf{V}_c \mathbf{\Lambda}_s \mathbf{V}_c^T$ (Persamaan~\ref{eq:vc}) untuk mendapatkan vektor eigen variabel $\mathbf{V}_c$, kemudian menghitung loading kompromi $\mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}$ (Persamaan~\ref{eq:gc}).
     \end{itemize}
 
-    \item \textbf{Uji Stabilitas (Permutasi):} Validasi signifikansi struktur kompromi dilakukan dengan membandingkan nilai eigen terbesar $\theta_1$ dari $\mathbf{H}$ pada data asli terhadap distribusi empiris hasil permutasi (Persamaan~\ref{eq:permutation}) untuk memastikan pola yang ditemukan bukan merupakan kebetulan statistik.
+    \item \textbf{Uji Stabilitas (Permutasi Monte Carlo):} Validasi signifikansi struktur kompromi dilakukan dengan membandingkan statistik uji dominan $\theta_1$ dari matriks $\mathbf{H}$ (observasi empiris) terhadap distribusi \textit{null} empiris $\theta_1^{\pi}$ hasil simulasi Monte Carlo (Persamaan~\ref{eq:permutation}). Hal ini memastikan bahwa pola yang ditemukan bersifat sistematis dan signifikan secara statistik.
 \end{enumerate}
 
 \subsection{\normalsize Penyelarasan Label Klaster Lintas Waktu}
@@ -328,7 +329,7 @@ Signifikansi statistik $I$ kemudian dievaluasi menggunakan pendekatan parametrik
 Untuk memberikan gambaran yang transparan mengenai mekanisme kerja sistem, bagian ini menyajikan ilustrasi perhitungan manual (\textit{step-by-step}) menggunakan dataset sampel yang terdiri dari 4 wilayah ($n=4$) selama 3 tahun ($K=3$) dengan 3 variabel utama ($p=3$). Dataset ini juga disinkronkan dengan data riil Indeks Pembangunan Manusia (IPM) sebagai variabel pembanding (\textit{benchmark}).
 
 Wilayah sampel yang digunakan adalah: (1) Kota Jakarta Pusat, (2) Kabupaten Bandung Barat, (3) Kota Tasikmalaya, dan (4) Kota Cilegon. Variabel yang digunakan adalah Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Tingkat Pengangguran Terbuka (TPT).\textbf{Tahap 1: Pembentukan Matriks Intra-struktur ($\mathbf{W}_k$)} \\
-Berdasarkan data terstandarisasi $\mathbf{Z}_{2020}$ dan bobot demografis $\mathbf{D} = \operatorname{diag}(m_A, m_B, m_C, m_D)$, dihitung operator Escoufier terbobot. Matriks $\mathbf{D}^{1/2}\mathbf{Z}_{2020}$ diperoleh dengan mengalikan setiap baris ke-$i$ dari $\mathbf{Z}_{2020}$ dengan $\sqrt{m_i}$:
+Berdasarkan data terstandarisasi $\mathbf{Z}_{2020}$ dan bobot demografis $\mathbf{D} = \operatorname{diag}(m_1, m_2, m_3, m_4)$, dihitung operator Escoufier terbobot. Matriks $\mathbf{D}^{1/2}\mathbf{Z}_{2020}$ diperoleh dengan mengalikan setiap baris ke-$i$ dari $\mathbf{Z}_{2020}$ dengan $\sqrt{m_i}$:
 \begin{equation} \label{eq:z_sample_final}
     \mathbf{Z}_{2020} = \begin{bmatrix}
         -0{,}8675 & 1{,}4704 & 0{,}2784 \\

@@ -1,3 +1,4 @@
+% !TeX root = induk.tex
 \chapter{\normalsize LANDASAN TEORI}
 
 Bab ini menguraikan teori-teori dasar yang menjadi fondasi metodologi penelitian. Pembahasan dimulai dari konsep indikator kesejahteraan rakyat sebagai latar belakang substansi variabel penelitian, kemudian dilanjutkan dengan struktur data tiga arah dan konsep spasio-temporal, statistika deskriptif, standardisasi data, pemilihan variabel (Uji KMO dan Bartlett), fondasi aljabar linier beserta dekomposisi matriks (nilai eigen, dekomposisi spektral, dan Singular Value Decomposition), korelasi Pearson, Analisis Komponen Utama (PCA) beserta Biplot, algoritma metode STATIS beserta uji permutasi, Dynamic Biplot dan visualisasi trajektori, metode pengelompokan (clustering), uji autokorelasi spasial Global Moran's~$I$, dan terakhir media visualisasi interaktif Plotly dan Dash.
@@ -538,41 +539,43 @@ Selain memetakan objek, STATIS juga memungkinkan pemetaan variabel ke dalam ruan
     Kolom-kolom $\mathbf{G}_c$ digunakan sebagai koordinat ujung panah variabel dalam biplot kompromi. Sudut antar vektor kolom mengaproksimasi korelasi antar variabel.
 \end{enumerate}
 
-\subsection{\normalsize Uji Signifikansi Stabilitas Struktur (Permutasi)}
+\subsection{\normalsize Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)}
 
 Metode STATIS secara deskriptif menghasilkan struktur kompromi, namun tidak secara otomatis menjamin bahwa struktur tersebut signifikan secara statistik. Dapat terjadi struktur kompromi yang terbentuk hanya merupakan artefak matematika dari data yang sebenarnya acak dan tidak memiliki pola hubungan yang stabil antar-situasi.
 
-Untuk memvalidasi hal ini, digunakan uji permutasi non-parametrik yang diadopsi dari \cite{kazi1995}. Uji ini tidak mensyaratkan asumsi distribusi normal pada data.
+Untuk memvalidasi hal ini, digunakan pengujian berbasis resampling, yaitu uji permutasi non-parametrik yang diadopsi dari berbagai literatur analisis multivariat \citep{kazi1995, abdi2012, legendre2012}. Uji ini tidak mensyaratkan asumsi distribusi normal pada data. Mengingat jumlah seluruh kemungkinan permutasi baris dari himpunan matriks sangat masif ($(n!)^K$), menghitung permutasi eksak secara menyeluruh sangat tidak efisien secara komputasional. Oleh karena itu, pengujian dieksekusi menggunakan pendekatan \textbf{Simulasi Monte Carlo}, di mana sampel permutasi acak dalam jumlah besar ($B$ kali iterasi) ditarik untuk membangun aproksimasi numerik dari distribusi eksak.
 
 \begin{enumerate}
-    \item \textbf{Hipotesis:}
+    \item \textbf{Hipotesis Uji:}
     \begin{itemize}
-        \item $H_0$: Tidak terdapat struktur kompromi yang signifikan (data antar-situasi bersifat acak/tidak homogen).
-        \item $H_1$: Terdapat struktur kompromi yang signifikan dan stabil antar-situasi.
+        \item $H_0$: $\theta_1 = \mathrm{E}\left[\theta_1^{\pi}\right]$ (Konfigurasi objek antar situasi waktu saling independen secara linier, sehingga data bersifat acak dan tidak ada struktur bersama yang stabil).
+        \item $H_1$: $\theta_1 > \mathrm{E}\left[\theta_1^{\pi}\right]$ (Konfigurasi objek antar situasi waktu memiliki ketergantungan linier parsial atau total yang signifikan, membentuk struktur kompromi yang bermakna).
     \end{itemize}
     
-    \item \textbf{Statistik Uji:}
-    Statistik yang digunakan adalah nilai eigen terbesar $\theta_1$ dari matriks interstruktur $\mathbf{H}$ pada Persamaan~\eqref{eq:interstructure_H} (informasi dominan satu dimensi pada ruang situasi; bandingkan pembentukan matriks interstruktur dalam \citet{oliveira2024}). Semakin besar $\theta_1$, semakin kuat indikasi adanya struktur bersama yang stabil antar-situasi.
+    \item \textbf{Statistik Uji dan Distribusi:}
+    Statistik yang digunakan adalah $\theta_1$, yaitu nilai eigen dominan (terbesar) dari matriks interstruktur $\mathbf{H}$ pada Persamaan~\eqref{eq:interstructure_H}. Nilai $\theta_1$ mengkuantifikasi proporsi informasi (variansi) matriks produk skalar yang dapat diringkas secara konsisten dalam satu dimensi interstruktur. Semakin besar $\theta_1$, semakin kuat bukti empiris adanya struktur spasio-temporal bersama yang stabil \citep{abdi2012}.
     
-    \item \textbf{Prosedur Permutasi:}
-    Karena distribusi sampling dari $\theta_1$ tidak diketahui secara eksak, distribusi ini dibangun secara empiris melalui langkah-langkah berikut:
+    Distribusi teoretis (parametrik) dari $\theta_1$ dalam analisis multivariat kompleks sangat sulit didefinisikan. Sebagai solusinya, distribusi probabilitas pada saat $H_0$ diasumsikan benar (\textit{null distribution}) dibangun secara empiris melalui simulasi Monte Carlo terhadap data yang dipermutasi, menghasilkan sekumpulan statistik uji sintetis yang dinotasikan sebagai $\theta_1^{\pi}$.
+    
+    \item \textbf{Prosedur Simulasi Monte Carlo:}
     \begin{itemize}
-        \item[a.] Menghitung $\theta_1^{\text{obs}}$ sebagai nilai eigen terbesar dari $\mathbf{H}$ berdasarkan data asli.
-        \item[b.] Melakukan pengacakan (permutasi) baris pada tiap matriks situasi (atau mengacak asosiasi yang memutus struktur bersama) sehingga diperoleh versi data yang tidak mempertahankan pola antar-situasi.
-        \item[c.] Menghitung ulang matriks interstruktur $\mathbf{H}^*$ dan nilai eigen terbesarnya $\theta_1^*$.
-        \item[d.] Mengulangi langkah (b) dan (c) sebanyak $B$ kali (misalnya $B = 1000$ kali) untuk membentuk distribusi null empiris.
+        \item[a.] Menghitung nilai uji empiris $\theta_1^{\text{obs}}$ (observasi asli) dari matriks interstruktur $\mathbf{H}$ berdasar kumpulan matriks $\mathbf{Z}_k$.
+        \item[b.] Melakukan pengacakan baris (permutasi label objek) secara independen pada setiap matriks situasi, menghasilkan sekumpulan matriks artifisial acak $\mathbf{Z}_k^{\pi}$. Pengacakan ini mendistorsi struktur keterkaitan asli antar-situasi, mensimulasikan kondisi di mana $H_0$ berlaku.
+        \item[c.] Menghitung operator Escoufier terbobot untuk himpunan data tersimulasi: $\mathbf{W}_k^{\pi} = (\mathbf{D}^{1/2}\mathbf{Z}_k^{\pi})(\mathbf{D}^{1/2}\mathbf{Z}_k^{\pi})^T$. Notasi eksponen $\pi$ mensyaratkan pembedaan dari \textit{conjugate transpose} atau rotasi matriks asli $\mathbf{W}_k$ maupun matriks kompromi $\mathbf{W}_c$.
+        \item[d.] Membentuk matriks interstruktur baru $\mathbf{H}^{\pi}$ yang elemennya bernilai $H_{kk'}^{\pi} = \mathrm{tr}(\mathbf{W}_k^{\pi} \mathbf{W}_{k'}^{\pi})$. Selanjutnya, mengekstraksi nilai eigen terbesarnya yang ditetapkan sebagai $\theta_1^{\pi}$.
+        \item[e.] Mengulangi iterasi pengacakan matriks pada langkah (b) hingga (d) secara terus-menerus sebanyak $B$ kali (dalam penelitian ini $B = 1000$) untuk menghasilkan histogram distribusi frekuensi null dari $\theta_1^{\pi}$.
     \end{itemize}
 
     \item \textbf{Pengambilan Keputusan:}
     Berbeda dengan uji statistik parametrik konvensional yang mengandalkan tabel distribusi teoritis, distribusi sampling dari $\theta_1$ dalam konteks STATIS tidak diketahui bentuk pastinya secara analitis. Oleh karena itu, pengujian ini bersifat \textbf{non-parametrik} (\textit{distribution-free}), di mana distribusi null dibangun secara empiris dari data itu sendiri melalui proses permutasi \citet{kazi1995}.
     
-    Nilai $p$-\textit{value} dihitung sebagai proporsi statistik uji hasil permutasi ($\theta_1^*$) yang nilainya lebih besar atau sama dengan statistik observasi ($\theta_1^{\text{obs}}$):
+    Nilai $p$-\textit{value} dihitung sebagai proporsi statistik uji hasil permutasi ($\theta_1^{\pi}$) yang nilainya lebih besar atau sama dengan statistik observasi ($\theta_1^{\text{obs}}$):
     \begin{equation}\label{eq:permutation}
-        p\text{-value} = \frac{\displaystyle\sum_{b=1}^{B} I(\theta_1^{*(b)} \ge \theta_1^{\text{obs}}) + 1}{B + 1}
+        p\text{-value} = \frac{\displaystyle\sum_{b=1}^{B} I\left(\theta_1^{\pi(b)} \ge \theta_1^{\text{obs}}\right) + 1}{B + 1}
     \end{equation}
-    Penambahan angka 1 pada pembilang dan penyebut merupakan koreksi standar untuk uji permutasi agar $p$-\textit{value} tidak bernilai nol \citet{phipson2010}.
+    dengan $I(\cdot)$ sebagai fungsi indikator Bernoulli yang bernilai 1 jika argumen perbandingan benar dan 0 jika sebaliknya. Elemen penambah $+1$ pada pembilang dan penyebut merupakan operasi \textit{pseudo-count correction} yang lazim digunakan dalam algoritma Monte Carlo untuk mereduksi bias penaksir titik, sehingga $p$-value eksak tidak bernilai nol absolut ($0\%$) \citet{phipson2010}.
     
-    Jika $p\text{-value} < \alpha$ (misalnya 0{,}05), maka $H_0$ ditolak. Hal ini mengindikasikan bahwa nilai eigen observasi berada di ekor kanan distribusi (area ekstrem), yang berarti struktur kompromi yang dihasilkan oleh STATIS bukanlah kebetulan, melainkan mencerminkan pola hubungan spasio-temporal yang nyata dan stabil (bukan artefak matematis dari data acak) \citet{kazi1995}.
+    Apabila $p\text{-value} < \alpha$ (misalnya 0{,}05), maka $H_0$ ditolak. Hal ini membuktikan bahwa kompromi STATIS mencerminkan konstelasi evolusi sistem sosial-ekonomi yang signifikan, bukan produk distorsi stokastik \citep{legendre2012}.
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%

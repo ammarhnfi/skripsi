@@ -228,10 +228,10 @@
     "raw": "\\label{eq:gc}\n        \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
   },
   {
-    "section": "Uji Signifikansi Stabilitas Struktur (Permutasi)",
-    "latex": "\\[ p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{\\text{obs}}) + 1}{B + 1} \\]",
+    "section": "Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)",
+    "latex": "\\[ p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1} \\]",
     "type": "equation",
-    "raw": "\\label{eq:permutation}\n        p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I(\\theta_1^{*(b)} \\ge \\theta_1^{\\text{obs}}) + 1}{B + 1}"
+    "raw": "\\label{eq:permutation}\n        p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1}"
   },
   {
     "section": "Proyeksi Lintasan (\\textitTrajectory",

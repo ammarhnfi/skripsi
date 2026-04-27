@@ -1,5 +1,13 @@
 \begin{thebibliography}{}
 
+\bibitem[Abdi et~al., 2012]{abdi2012}
+Abdi, H., Williams, L.~J., Valentin, D., \& Bennani-Dosse, M. (2012).
+\newblock Statis and distatis: optimum multitable principal component analysis
+  and three way metric multidimensional scaling.
+\newblock {\em Wiley Interdisciplinary Reviews: Computational Statistics},
+  4(2), 124--167.
+\newblock \url{https://doi.org/10.1002/wics.198}
+
 \bibitem[Ahmad, 2024]{ahmad2024}
 Ahmad, A. (2024).
 \newblock Analisis regresi panel spasiotemporal menggunakan model spasial
@@ -244,6 +252,13 @@ Lavit, C., Escoufier, Y., Sabatier, R., \& Traissac, P. (1994).
 \newblock The act (statis method).
 \newblock {\em Computational Statistics \& Data Analysis}, 18(1), 97--119.
 \newblock \url{https://doi.org/10.1016/0167-9473(94)90134-1}
+
+\bibitem[Legendre \& Legendre, 2012]{legendre2012}
+Legendre, P. \& Legendre, L. (2012).
+\newblock {\em Numerical ecology}.
+\newblock Elsevier.
+\newblock
+  \url{https://www.sciencedirect.com/book/9780444538680/numerical-ecology}
 
 \bibitem[MacQueen, 1967]{macqueen1967}
 MacQueen, J. (1967).
