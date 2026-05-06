@@ -2276,6 +2276,29 @@ for yr in sheet_names:
     if 'gdf_map' in locals():
         draw_cluster_map(lbl_biplot_yr, obs_labels, gdf_map,
                          f"Peta Klaster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png")
+                         
+    # Draw Scatter for Biplot
+    palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
+    fig_sc_bp = go.Figure()
+    for cl in range(K_CLUSTERS):
+        mask = lbl_biplot_yr == cl
+        klaster_name = f"Klaster {cl+1}"
+        if K_CLUSTERS == 3: klaster_name = ["Rendah", "Sedang", "Tinggi"][cl]
+        elif K_CLUSTERS == 2: klaster_name = ["Rendah", "Tinggi"][cl]
+        
+        fig_sc_bp.add_trace(go.Scatter(
+            x=coords_biplot[mask, 0], y=coords_biplot[mask, 1],
+            mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
+            textposition='top center', textfont=dict(size=9, color='black'),
+            marker=dict(size=9, color=palette[cl]),
+            name=f'Klaster {cl+1} ({klaster_name})'
+        ))
+    fig_sc_bp.add_hline(y=0, line_dash='dot', line_color='gray')
+    fig_sc_bp.add_vline(x=0, line_dash='dot', line_color='gray')
+    fig_sc_bp.update_layout(title=f"Biplot Klaster K-Means (Unweighted) — Tahun {yr}",
+                         xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
+                         xaxis=dict(scaleanchor='y', scaleratio=1))
+    save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", width=800, height=800)
 
 # ============================================================
 # 8.A PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS
@@ -2404,6 +2427,78 @@ for yr in sheet_names:
             fname = "jp"
         save_png(fig_box, f"boxplot_{fname}_{yr}.png", width=500, height=400)
 
+
+# ============================================================
+# 10. MENGGABUNGKAN GAMBAR PERBANDINGAN BERSANDINGAN (SIDE-BY-SIDE)
+# ============================================================
+print("\n=== 10. Menggabungkan Gambar Perbandingan (Side-by-Side) ===")
+try:
+    from PIL import Image
+
+    def combine_images_side_by_side(img_left_path, img_right_path, out_path):
+        if not os.path.exists(img_left_path) or not os.path.exists(img_right_path):
+            return
+        try:
+            img1 = Image.open(img_left_path)
+            img2 = Image.open(img_right_path)
+            
+            # Resize right image to match left image's height if needed
+            if img1.height != img2.height:
+                new_width = int(img2.width * (img1.height / img2.height))
+                img2 = img2.resize((new_width, img1.height), Image.Resampling.LANCZOS)
+                
+            total_width = img1.width + img2.width
+            max_height = img1.height
+            
+            new_im = Image.new('RGB', (total_width, max_height), (255, 255, 255))
+            new_im.paste(img1, (0, 0))
+            new_im.paste(img2, (img1.width, 0))
+            new_im.save(out_path)
+        except Exception as e:
+            print(f"  [WARN] Gagal menggabungkan gambar {os.path.basename(out_path)}: {e}")
+
+    # A. Transisi Antar Tahun (t vs t+1)
+    for i in range(len(sheet_names)-1):
+        y1, y2 = sheet_names[i], sheet_names[i+1]
+        
+        # 1. Transisi Biplot (Unweighted) Map & Scatter
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_map_biplot_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_biplot_{y2}.png"),
+            os.path.join(OUT_DIR, f"compare_map_trans_biplot_{y1}x{y2}.png")
+        )
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_scatter_biplot_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_scatter_biplot_{y2}.png"),
+            os.path.join(OUT_DIR, f"compare_scatter_trans_biplot_{y1}x{y2}.png")
+        )
+        
+        # 2. Transisi STATIS (Weighted) Map & Scatter
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_map_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_{y2}.png"),
+            os.path.join(OUT_DIR, f"compare_map_trans_statis_{y1}x{y2}.png")
+        )
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_biplot_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_biplot_{y2}.png"),
+            os.path.join(OUT_DIR, f"compare_scatter_trans_statis_{y1}x{y2}.png")
+        )
+
+    # B. Perbandingan Biplot vs STATIS (Tahun Sama)
+    for yr in sheet_names:
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_map_biplot_{yr}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_{yr}.png"),
+            os.path.join(OUT_DIR, f"compare_map_biplot_vs_statis_{yr}.png")
+        )
+        combine_images_side_by_side(
+            os.path.join(OUT_DIR, f"cluster_scatter_biplot_{yr}.png"),
+            os.path.join(OUT_DIR, f"cluster_biplot_{yr}.png"),
+            os.path.join(OUT_DIR, f"compare_scatter_biplot_vs_statis_{yr}.png")
+        )
+except ImportError:
+    print("  [WARN] Modul Pillow (PIL) tidak ditemukan. Lewati penggabungan gambar.")
 
 # ============================================================
 # SELESAI

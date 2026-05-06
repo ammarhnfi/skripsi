@@ -119,7 +119,8 @@ function App() {
   const [pageNumber, setPageNumber] = useState(1);
   const [pdfScale, setPdfScale] = useState(1.2);
 
-  const [allResults, setAllResults] = useState([]);
+  const [allResultsReal, setAllResultsReal] = useState([]);
+  const [allResultsSample, setAllResultsSample] = useState([]);
   const [equations, setEquations] = useState([]);
   const [currentTime, setCurrentTime] = useState("");
   const [selectedGroup, setSelectedGroup] = useState('Hasil Utama STATIS');
@@ -128,7 +129,10 @@ function App() {
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(-1);
 
   // Helper: Get filtered documentation list based on active group
-  const getFilteredDocs = () => (allResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup);
+  const getFilteredDocs = () => {
+    const currentResults = activeModal === 'docs-real' ? allResultsReal : allResultsSample;
+    return (currentResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup);
+  };
 
   useEffect(() => {
     // Fetch Last Update (from deployment)
@@ -140,8 +144,8 @@ function App() {
           setCurrentTime("Sedang diproses...");
       });
     
-    // Fetch Gallery
-    fetch('/output_app_manifest.json')
+    // Fetch Real Gallery
+    fetch('/output_real_manifest.json')
       .then(res => res.json())
       .then(data => {
         const staticItems = [
@@ -158,9 +162,17 @@ function App() {
             group: 'Highlights'
           }
         ];
-        setAllResults([...staticItems, ...data]);
+        setAllResultsReal([...staticItems, ...data]);
       })
-      .catch(err => console.error("Failed to load results manifest:", err));
+      .catch(err => console.error("Failed to load real manifest:", err));
+
+    // Fetch Sample Gallery
+    fetch('/output_sample_manifest.json')
+      .then(res => res.json())
+      .then(data => {
+        setAllResultsSample(data);
+      })
+      .catch(err => console.error("Failed to load sample manifest:", err));
 
     // Fetch Equations
     fetch('/equations.json')
@@ -283,16 +295,27 @@ function App() {
             </p>
           </div>
 
-          {/* Documentation Card */}
+          {/* Documentation Real Card */}
           <div
             className="card glass-effect"
-            onClick={() => openModal('docs')}
+            onClick={() => openModal('docs-real')}
           >
             <div className="card-icon">📊</div>
-            <h2>Dokumentasi & Hasil</h2>
+            <h2>Dokumentasi & Hasil (Real, N=41)</h2>
             <p>
-              Kumpulan hasil perhitungan STATIS, matriks kompromi, animasi GIF
-              perubahan struktur.
+              Kumpulan lengkap hasil perhitungan STATIS, matriks kompromi, animasi GIF, dan peta spasio-temporal untuk seluruh populasi.
+            </p>
+          </div>
+
+          {/* Documentation Sample Card */}
+          <div
+            className="card glass-effect"
+            onClick={() => openModal('docs-sample')}
+          >
+            <div className="card-icon">📈</div>
+            <h2>Dokumentasi & Hasil (Sample, N=4)</h2>
+            <p>
+              Data uji coba (sample 4 wilayah) untuk validasi penurunan rumus matriks secara matematis yang dilampirkan pada Bab 3.
             </p>
           </div>
 
@@ -505,7 +528,7 @@ function App() {
       </div>
 
       <div
-        className={`modal ${activeModal === 'docs' ? 'active' : ''}`}
+        className={`modal ${activeModal === 'docs-real' || activeModal === 'docs-sample' ? 'active' : ''}`}
         onClick={(e) => {
           if (e.target.classList.contains('modal')) closeModal();
         }}
@@ -514,7 +537,7 @@ function App() {
           <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
-          <h2>Dokumentasi & Hasil Analisis</h2>
+          <h2>Dokumentasi & Hasil Analisis {activeModal === 'docs-sample' ? '(Sample N=4)' : '(Real N=41)'}</h2>
           <div className="modal-body">
             <p>
               Hasil pengolahan data STATIS, K-Means Clustering, dan Uji Spasial
@@ -523,7 +546,7 @@ function App() {
 
             {/* Group Selector Tags */}
             <div className="group-selector" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px', padding: '10px 0' }}>
-              {[...new Set(allResults.map(r => String(r.group || 'Lain-lain')))].sort().map(group => (
+              {[...new Set((activeModal === 'docs-sample' ? allResultsSample : allResultsReal).map(r => String(r.group || 'Lain-lain')))].sort().map(group => (
                 <button
                   key={group}
                   onClick={() => setSelectedGroup(group)}
@@ -551,7 +574,7 @@ function App() {
               overflowY: 'auto',
               paddingRight: '10px'
             }}>
-              {(allResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup).map((item, index) => (
+              {(activeModal === 'docs-sample' ? allResultsSample : allResultsReal).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup).map((item, index) => (
                 <div
                   key={index}
                   className="thumbnail-container"
@@ -588,21 +611,24 @@ function App() {
         </div>
       </div>
 
-      {/* TEX PREVIEW MODAL */}
       <div
         className={`modal ${activeModal === 'tex-preview' ? 'active' : ''}`}
         onClick={(e) => {
-          if (e.target.classList.contains('modal')) setActiveModal('docs');
+          // It was opening 'docs', but now we need to track WHICH docs modal was open
+          // Since activeModal is 'tex-preview', we can't easily know if it came from real or sample
+          // unless we add a state. Let's just default to docs-real, or we could add a state `previousModal`.
+          // For simplicity, we just check if it was sample. Let's just always close the modal entirely on background click for safety.
+          if (e.target.classList.contains('modal')) closeModal();
         }}
       >
         <div className="modal-content glass-effect" style={{ maxWidth: '1000px', width: '95vw', height: '90vh', display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '1rem' }}>
             <button 
               className="back-lib-btn" 
-              onClick={() => { setActiveModal('docs'); setTexContent(null); }}
+              onClick={() => { closeModal(); }}
               style={{ background: 'rgba(255,255,255,0.1)', border: 'none', color: '#60a5fa', padding: '6px 12px', borderRadius: '6px', cursor: 'pointer', fontSize: '0.8rem', fontWeight: 'bold' }}
             >
-              ⬅ Kembali ke Galeri
+              ⬅ Tutup Visualisasi
             </button>
             <h2 style={{ margin: 0, border: 'none', padding: 0 }}>Visualisasi Tabel Hasil</h2>
             <div className="nav-controls" style={{ display: 'flex', gap: '8px' }}>
@@ -616,18 +642,17 @@ function App() {
         </div>
       </div>
 
-      {/* LIGHTBOX OVERLAY */}
       <div
         className={`lightbox ${lightboxImage ? 'active' : ''}`}
-        onClick={() => { setLightboxImage(null); if (currentGalleryIndex !== -1) setActiveModal('docs'); }}
+        onClick={() => { setLightboxImage(null); }}
       >
         {lightboxImage && (
           <>
-            <button className="close-btn" onClick={() => { setLightboxImage(null); setActiveModal('docs'); }} style={{ top: '2rem', right: '2rem' }}>
+            <button className="close-btn" onClick={() => { setLightboxImage(null); }} style={{ top: '2rem', right: '2rem' }}>
               &times;
             </button>
             
-            <div className="lightbox-nav-top" style={{ position: 'fixed', top: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '20px', z_index: 2001 }}>
+            <div className="lightbox-nav-top" style={{ position: 'fixed', top: '2rem', left: '50%', transform: 'translateX(-50%)', display: 'flex', gap: '20px', zIndex: 2001 }}>
                <button className="pdf-btn" onClick={(e) => { e.stopPropagation(); navigateGallery(-1); }}>⬅ Sebelumnya</button>
                <button className="pdf-btn" onClick={(e) => { e.stopPropagation(); navigateGallery(1); }}>Selanjutnya ➡</button>
             </div>
@@ -636,10 +661,10 @@ function App() {
             <div className="lightbox-caption">{lightboxImage.caption}</div>
             
             <button 
-              onClick={(e) => { e.stopPropagation(); setLightboxImage(null); setActiveModal('docs'); }}
+              onClick={(e) => { e.stopPropagation(); setLightboxImage(null); }}
               style={{ position: 'fixed', bottom: '2rem', background: 'rgba(59, 130, 246, 0.5)', color: 'white', border: 'none', padding: '10px 20px', borderRadius: '30px', cursor: 'pointer', backdropFilter: 'blur(5px)' }}
             >
-              Kembali ke Galeri
+              Tutup Gambar
             </button>
           </>
         )}
