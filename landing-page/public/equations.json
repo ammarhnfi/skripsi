@@ -25,9 +25,9 @@
   },
   {
     "section": "Ukuran Pemusatan",
-    "latex": "\\[ Q_2 = \\begin{cases}\n      x_{\\left(\\frac{n+1}{2}\\right)} & \\text{jika } n \\text{ ganjil} \\\\\n      \\dfrac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & \\text{jika } n \\text{ genap}\n    \\end{cases} \\]",
+    "latex": "\\[ Q_2 = \\begin{cases}\n      x_{\\left(\\frac{n+1}{2}\\right)} & \\text{, jika } n \\text{ ganjil} \\\\\n      \\dfrac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & \\text{, jika } n \\text{ genap}\n    \\end{cases} \\]",
     "type": "equation",
-    "raw": "Q_2 = \\begin{cases}\n      x_{\\left(\\frac{n+1}{2}\\right)} & \\text{jika } n \\text{ ganjil} \\\\\n      \\dfrac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & \\text{jika } n \\text{ genap}\n    \\end{cases}"
+    "raw": "\\label{eq:median}\n    Q_2 = \\begin{cases}\n      x_{\\left(\\frac{n+1}{2}\\right)} & \\text{, jika } n \\text{ ganjil} \\\\\n      \\dfrac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & \\text{, jika } n \\text{ genap}\n    \\end{cases}"
   },
   {
     "section": "Ukuran Penyebaran",
@@ -57,13 +57,13 @@
     "section": "Ukuran Bentuk Distribusi",
     "latex": "\\[ g_1 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^3}{s^3} \\]",
     "type": "equation",
-    "raw": "g_1 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^3}{s^3}"
+    "raw": "\\label{eq:skewness}\n    g_1 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^3}{s^3}"
   },
   {
     "section": "Ukuran Bentuk Distribusi",
     "latex": "\\[ g_2 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^4}{s^4} - 3 \\]",
     "type": "equation",
-    "raw": "g_2 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^4}{s^4} - 3"
+    "raw": "\\label{eq:kurtosis}\n    g_2 = \\frac{\\frac{1}{n}\\sum_{i=1}^{n}(x_i - \\bar{x})^4}{s^4} - 3"
   },
   {
     "section": "Uji Kaiser-Meyer-Olkin (KMO)",
@@ -144,34 +144,34 @@
     "raw": "g_{j\\ell} = r(\\bar{x}_j, \\mathbf{F}_c^{(\\ell)})"
   },
   {
-    "section": "Analisis Komponen Utama (PCA) dan Biplot",
+    "section": "\\textitPrincipal Component Analysis",
     "latex": "\\[ \\mathbf{F} = \\mathbf{X} \\mathbf{V} \\]",
     "type": "equation",
     "raw": "\\mathbf{F} = \\mathbf{X} \\mathbf{V}"
   },
   {
-    "section": "Analisis Komponen Utama (PCA) dan Biplot",
+    "section": "\\textitPrincipal Component Analysis",
     "latex": "\\[ \\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T \\]",
     "type": "equation",
     "raw": "\\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T"
   },
   {
     "section": "Tahap 1: Intra-struktur",
-    "latex": "\\[ \\mathbf{W}_k = (\\mathbf{D}^{1/2}\\mathbf{Z}_k)(\\mathbf{D}^{1/2}\\mathbf{Z}_k)^T \\]",
+    "latex": "\\[ \\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T \\]",
     "type": "equation",
-    "raw": "\\label{eq:intra}\n  \\mathbf{W}_k = (\\mathbf{D}^{1/2}\\mathbf{Z}_k)(\\mathbf{D}^{1/2}\\mathbf{Z}_k)^T"
+    "raw": "\\label{eq:intra}\n  \\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T"
   },
   {
     "section": "Tahap 2: Inter-struktur",
-    "latex": "\\[ H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'}), \\qquad k,k' = 1,\\ldots,K. \\]",
+    "latex": "\\[ H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D}), \\qquad k,k' = 1,\\ldots,K. \\]",
     "type": "equation",
-    "raw": "\\label{eq:interstructure_H}\n  H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'}), \\qquad k,k' = 1,\\ldots,K."
+    "raw": "\\label{eq:interstructure_H}\n  H_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D}), \\qquad k,k' = 1,\\ldots,K."
   },
   {
     "section": "Tahap 2: Inter-struktur",
-    "latex": "\\[ RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'})}{\\sqrt{\\mathrm{tr}(\\mathbf{W}_k^2) \\, \\mathrm{tr}(\\mathbf{W}_{k'}^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}. \\]",
+    "latex": "\\[ RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D})}{\\sqrt{\\mathrm{tr}((\\mathbf{W}_k \\mathbf{D})^2) \\, \\mathrm{tr}((\\mathbf{W}_{k'} \\mathbf{D})^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}. \\]",
     "type": "equation",
-    "raw": "\\label{eq:rv}\n    RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{W}_{k'})}{\\sqrt{\\mathrm{tr}(\\mathbf{W}_k^2) \\, \\mathrm{tr}(\\mathbf{W}_{k'}^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}."
+    "raw": "\\label{eq:rv}\n    RV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D})}{\\sqrt{\\mathrm{tr}((\\mathbf{W}_k \\mathbf{D})^2) \\, \\mathrm{tr}((\\mathbf{W}_{k'} \\mathbf{D})^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}."
   },
   {
     "section": "Tahap 2: Inter-struktur",
@@ -190,6 +190,12 @@
     "latex": "\\[ \\mathbf{W}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{W}_k \\]",
     "type": "equation",
     "raw": "\\label{eq:wc}\n  \\mathbf{W}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{W}_k"
+  },
+  {
+    "section": "Tahap 3: Analisis Kompromi",
+    "latex": "\\[ \\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} = \\mathbf{v}^T \\left( \\sum_{k=1}^K \\alpha_k \\mathbf{W}_k \\right) \\mathbf{v} = \\sum_{k=1}^K \\alpha_k (\\mathbf{v}^T \\mathbf{W}_k \\mathbf{v}) \\ge 0 \\]",
+    "type": "equation",
+    "raw": "\\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} = \\mathbf{v}^T \\left( \\sum_{k=1}^K \\alpha_k \\mathbf{W}_k \\right) \\mathbf{v} = \\sum_{k=1}^K \\alpha_k (\\mathbf{v}^T \\mathbf{W}_k \\mathbf{v}) \\ge 0"
   },
   {
     "section": "Tahap 3: Analisis Kompromi",
@@ -232,6 +238,36 @@
     "latex": "\\[ p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1} \\]",
     "type": "equation",
     "raw": "\\label{eq:permutation}\n        p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1}"
+  },
+  {
+    "section": "Model Vektor Struktur dan Kerangka Inferensial STATIS",
+    "latex": "\\[ \\mathbf{H} = \\lambda \\boldsymbol{\\alpha} \\boldsymbol{\\alpha}^T + \\bar{\\mathbf{E}}, \\qquad \\bar{\\mathbf{E}} = \\frac{1}{2}\\left(\\mathbf{E} + \\mathbf{E}^T\\right), \\]",
+    "type": "equation",
+    "raw": "\\label{eq:model_struktur}\n  \\mathbf{H} = \\lambda \\boldsymbol{\\alpha} \\boldsymbol{\\alpha}^T + \\bar{\\mathbf{E}}, \\qquad \\bar{\\mathbf{E}} = \\frac{1}{2}\\left(\\mathbf{E} + \\mathbf{E}^T\\right),"
+  },
+  {
+    "section": "Model Vektor Struktur dan Kerangka Inferensial STATIS",
+    "latex": "\\[ \\tilde{\\boldsymbol{\\beta}} = \\lambda_1 \\boldsymbol{\\alpha}_1, \\]",
+    "type": "equation",
+    "raw": "\\label{eq:beta_vec}\n  \\tilde{\\boldsymbol{\\beta}} = \\lambda_1 \\boldsymbol{\\alpha}_1,"
+  },
+  {
+    "section": "Model Vektor Struktur dan Kerangka Inferensial STATIS",
+    "latex": "\\[ V = \\|\\mathbf{H}\\|_F^2 - \\|\\tilde{\\boldsymbol{\\beta}}\\|^2 = \\sum_{k=1}^{K}\\sum_{k'=1}^{K} H_{kk'}^2 - \\lambda_1^2, \\]",
+    "type": "equation",
+    "raw": "\\label{eq:ss_residual}\n  V = \\|\\mathbf{H}\\|_F^2 - \\|\\tilde{\\boldsymbol{\\beta}}\\|^2 = \\sum_{k=1}^{K}\\sum_{k'=1}^{K} H_{kk'}^2 - \\lambda_1^2,"
+  },
+  {
+    "section": "Model Vektor Struktur dan Kerangka Inferensial STATIS",
+    "latex": "\\[ \\tau = \\frac{\\lambda^2}{\\sigma^2}, \\]",
+    "type": "equation",
+    "raw": "\\label{eq:tau}\n  \\tau = \\frac{\\lambda^2}{\\sigma^2},"
+  },
+  {
+    "section": "Model Vektor Struktur dan Kerangka Inferensial STATIS",
+    "latex": "\\[ \\mathrm{Inertia}_1 = \\frac{\\lambda_1}{\\displaystyle\\sum_{j=1}^{K} \\lambda_j}, \\]",
+    "type": "equation",
+    "raw": "\\label{eq:prop_inertia}\n  \\mathrm{Inertia}_1 = \\frac{\\lambda_1}{\\displaystyle\\sum_{j=1}^{K} \\lambda_j},"
   },
   {
     "section": "Proyeksi Lintasan (\\textitTrajectory",

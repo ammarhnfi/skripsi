@@ -4,7 +4,7 @@ export_all.py
 Script standalone untuk menghasilkan SEMUA gambar (PNG) dan tabel (.tex)
 dari analisis STATIS + K-Means + Moran's I.
 
-Semua output disimpan ke folder: output_app/
+Semua output disimpan ke folder: output_real/
 
 Cara pakai:
     cd d:/Skripsi/my
@@ -43,7 +43,7 @@ import json
 
 # Default paths
 DATA_PATH = r"d:\Skripsi\my\data\Data Final.xlsx"
-OUT_DIR = r"d:\Skripsi\my\output_app"
+OUT_DIR = r"d:\Skripsi\my\output_real"
 SHP_PATH = r"d:\Skripsi\my\web\gadm41_IDN_2.shp"
 
 # Handle flags
@@ -55,10 +55,13 @@ config_path = None
 if is_sample:
     config_path = r"d:\Skripsi\my\debug\export_sample.json"
 elif is_real:
-    config_path = r"d:\Skripsi\my\debug\export_app.json"
+    config_path = r"d:\Skripsi\my\debug\export_real.json"
 elif is_headless:
-    # Default ke export_app.json jika cuma --headless tanpa flag spesifik
-    config_path = r"d:\Skripsi\my\debug\export_app.json"
+    # Default ke export_real.json jika cuma --headless tanpa flag spesifik
+    config_path = r"d:\Skripsi\my\debug\export_real.json"
+
+# Default prefix
+LABEL_PREFIX = "App"
 
 cfg = {}
 if config_path and os.path.exists(config_path):
@@ -68,6 +71,9 @@ if config_path and os.path.exists(config_path):
         DATA_PATH = cfg.get("excel_path", DATA_PATH)
         OUT_DIR = cfg.get("output_dir", OUT_DIR)
         SHP_PATH = cfg.get("shapefile_path", SHP_PATH)
+        # Load prefix from config if available
+        if "label_prefix" in cfg:
+            LABEL_PREFIX = cfg["label_prefix"]
         print(f"  [CONFIG] Loaded configuration from: {config_path}")
     except Exception as e:
         print(f"  [WARN] Gagal baca config {config_path}: {e}")
@@ -77,11 +83,11 @@ pos_args = [a for a in sys.argv[1:] if not a.startswith("--")]
 if len(pos_args) > 0: DATA_PATH = pos_args[0]
 if len(pos_args) > 1: OUT_DIR = pos_args[1]
 
-# Handle prefix flag
-LABEL_PREFIX = ""
+# Handle prefix flag (override)
 for arg in sys.argv:
     if arg.startswith("--prefix="):
         LABEL_PREFIX = arg.split("=")[1]
+
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -311,11 +317,11 @@ def save_moran_tex(results, filename):
     else:
         interp = "Tidak Signifikan (Pola Spasial Acak)"
     lines = [
-        r"\newcommand{\MacroMoranI}{" + f"{mi:.4f}" + r"}",
-        r"\newcommand{\MacroMoranExp}{" + f"{ei:.4f}" + r"}",
-        r"\newcommand{\MacroMoranZ}{" + f"{zi:.4f}" + r"}",
-        r"\newcommand{\MacroMoranP}{" + f"{pi:.4f}" + r"}",
-        r"\newcommand{\MacroMoranInterp}{" + interp + r"}"
+        fr"\newcommand{{\{get_macro_name('MoranI')}}}{{{mi:.4f}}}",
+        fr"\newcommand{{\{get_macro_name('MoranExp')}}}{{{ei:.4f}}}",
+        fr"\newcommand{{\{get_macro_name('MoranZ')}}}{{{zi:.4f}}}",
+        fr"\newcommand{{\{get_macro_name('MoranP')}}}{{{pi:.4f}}}",
+        fr"\newcommand{{\{get_macro_name('MoranInterp')}}}{{{interp}}}"
     ]
     with open(path, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
@@ -688,29 +694,36 @@ for s in sheet_names:
     Z_k   = centered / sigma                              # weighted Z-score  shape (n, p)
     tables_std.append(pd.DataFrame(Z_k, index=obs_labels, columns=selected_vars))
     X_matrices.append(Z_k)
-    DsqrtZ = D_sqrt @ Z_k                                 # D^{1/2} Z_k
-    Ws.append(DsqrtZ @ DsqrtZ.T)                          # W_k = (D^{1/2}Z_k)(D^{1/2}Z_k)^T
+    Ws.append(Z_k @ Z_k.T)                                # W_k = Z_k Z_k^T
 
 # Inter-struktur: H (Hilbert–Schmidt) dan matriks RV untuk tampilan
-def calc_H_matrix(Ws_list, k):
+def calc_H_matrix(Ws_list, k, D=None):
     H = np.zeros((k, k))
     for i in range(k):
         for j in range(k):
-            H[i, j] = np.trace(Ws_list[i] @ Ws_list[j])
+            if D is not None:
+                H[i, j] = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
+            else:
+                H[i, j] = np.trace(Ws_list[i] @ Ws_list[j])
     return H
 
 
-def calc_rv_matrix(Ws_list, k):
+def calc_rv_matrix(Ws_list, k, D=None):
     R = np.zeros((k, k))
     for i in range(k):
         for j in range(k):
-            num = np.trace(Ws_list[i].T @ Ws_list[j])
-            den = np.sqrt(np.trace(Ws_list[i].T @ Ws_list[i]) * np.trace(Ws_list[j].T @ Ws_list[j]))
+            if D is not None:
+                num = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
+                den = np.sqrt(np.trace(Ws_list[i] @ D @ Ws_list[i] @ D) * np.trace(Ws_list[j] @ D @ Ws_list[j] @ D))
+            else:
+                num = np.trace(Ws_list[i].T @ Ws_list[j])
+                den = np.sqrt(np.trace(Ws_list[i].T @ Ws_list[i]) * np.trace(Ws_list[j].T @ Ws_list[j]))
             R[i, j] = 0.0 if den == 0 else num / den
     return R
 
-H_mat = calc_H_matrix(Ws, k_time)
-R = calc_rv_matrix(Ws, k_time)
+D_diag_mat = np.diag(m_weights)
+H_mat = calc_H_matrix(Ws, k_time, D=D_diag_mat)
+R = calc_rv_matrix(Ws, k_time, D=D_diag_mat)
 vals_H, vecs_H = np.linalg.eig(H_mat)
 vals_H, vecs_H = np.real(vals_H), np.real(vecs_H)
 idx_H = np.argsort(vals_H)[::-1]
@@ -733,13 +746,13 @@ alphas = p1 / p1.sum()
 Wc = np.zeros((len(obs_labels), len(obs_labels)))
 Sc = np.zeros((len(selected_vars), len(selected_vars)))
 
-for a, arr_std in zip(alphas, X_matrices):
-    DsqrtZ = D_sqrt @ arr_std
-    Wc += a * (DsqrtZ @ DsqrtZ.T)                # W_k terbobot
+for a, arr_std, W in zip(alphas, X_matrices, Ws):
+    Wc += a * W
     Sc += a * (arr_std.T @ np.diag(m_weights) @ arr_std)  # S_k = Z_k^T D Z_k
 
 # Dekomposisi Wc (Objek Space)
-U_w, S_w, Vt_w = np.linalg.svd(Wc)
+Wc_weighted = D_sqrt @ Wc @ D_sqrt
+U_w, S_w, Vt_w = np.linalg.svd(Wc_weighted)
 eig_vals_c = S_w
 eig_vecs_c = U_w
 idxc_w = np.argsort(eig_vals_c)[::-1]
@@ -865,18 +878,18 @@ print(f"  EigenVal[0] = {eig_vals_c[0]:.4f} ({var_pct[0]:.2f}%)")
 print("\n=== 3. Ekspor Tabel STATIS ===")
 
 # Alpha
-df_alpha = pd.DataFrame({'Tahun': sheet_names, 'Alpha': [round(a, 4) for a in alphas]})
+df_alpha = pd.DataFrame({'Tahun ($k$)': sheet_names, 'Bobot ($\\alpha$)': [round(a, 4) for a in alphas]})
 save_tex_table(df_alpha, "output_table_alpha.tex", "Nilai Bobot (Alpha) Tiap Tahun", "alpha", label_prefix=LABEL_PREFIX)
 
 # Eigen
 sq_full = np.sqrt(np.clip(eig_vals_c, 0, None))
 var_exp = eig_vals_c / eig_vals_c.sum() * 100
 df_eigen = pd.DataFrame({
-    'Dim': [f'Dim {i+1}' for i in range(len(eig_vals_c))],
-    'Eigenvalue': [round(v, 4) for v in eig_vals_c],
-    'Akar Ciri': [round(v, 4) for v in sq_full],
-    'Var (%)': [round(v, 2) for v in var_exp],
-    'Kum (%)': [round(v, 2) for v in np.cumsum(var_exp)]
+    'Dimensi': [f'Dim {i+1}' for i in range(len(eig_vals_c))],
+    'Eigenvalue ($\\lambda$)': [round(v, 4) for v in eig_vals_c],
+    'Akar Ciri ($\\sqrt{\\lambda}$)': [round(v, 4) for v in sq_full],
+    'Varians (%)': [round(v, 2) for v in var_exp],
+    'Kumulatif (%)': [round(v, 2) for v in np.cumsum(var_exp)]
 })
 save_tex_table(df_eigen, "output_table_eigen.tex", "Dekomposisi Nilai Eigen Matriks Kompromi", "eigen", label_prefix=LABEL_PREFIX)
 
@@ -888,12 +901,20 @@ save_tex_table(df_rv, "output_table_rv.tex", "Matriks Koefisien RV Antar-Tahun",
 
 # Loadings
 df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1', 'PC2'])
+if ROT_ANGLE != 0.0 or NORM_SCORE or SCALE_LOAD:
+    df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_gc['PC1 (Disesuaikan)'] = plot_loadings[:, 0]
+    df_gc['PC2 (Disesuaikan)'] = plot_loadings[:, 1]
 df_gc.index.name = 'Variabel'
 df_gc = df_gc.reset_index()
 save_tex_table(df_gc, "output_table_loadings.tex", "Loadings Kompromi (Korelasi Variabel vs Skor)", "loadings", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
 
 # Skor Kompromi (Fit to one page using adjustbox instead of longtable)
 df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1', 'PC2'])
+if ROT_ANGLE != 0.0 or NORM_SCORE or SCALE_LOAD:
+    df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_fc['PC1 (Disesuaikan)'] = plot_scores[:, 0]
+    df_fc['PC2 (Disesuaikan)'] = plot_scores[:, 1]
 df_fc.index.name = 'Kabupaten/Kota'
 df_fc = df_fc.reset_index()
 save_tex_table(df_fc, "output_table_scores.tex", "Koordinat Skor Kompromi (Fc)", "scores", longtable=False, float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
@@ -904,11 +925,109 @@ df_vc.index.name = 'Variabel'
 df_vc = df_vc.reset_index()
 save_tex_table(df_vc, "output_table_vc.tex", "Matriks Vektor Eigen Kompromi (Vc)", "vc", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
 
-# 3b. Intra-Structure Tables (G_k dan S_k per tahun)
-print("\n=== 3b. Ekspor Tabel Intra-Struktur (G_k & S_k) ===")
+# ============================================================
+# 3b. PERBANDINGAN JARAK PCA UNWEIGHTED VS STATIS WEIGHTED & TABEL INTRA
+# ============================================================
+print("\n=== 3b. Tabel Jarak PCA vs STATIS & Tabel Intra ===")
+
+pca_scores_dict = {}
+pca_loadings_dict = {}
+from sklearn.decomposition import PCA
 for i, yr in enumerate(sheet_names):
+    X = tables[yr][selected_vars].values
+    X_std = StandardScaler().fit_transform(X)
+    pca = PCA(n_components=2)
+    scores_pca = pca.fit_transform(X_std)
+    loadings_pca = pca.components_.T
+    pca_scores_dict[yr] = scores_pca
+    pca_loadings_dict[yr] = loadings_pca
+
+def apply_global_adjustments(pc_concat, load_concat, norm=False, scale=True):
+    ps, pl = pc_concat.copy(), load_concat.copy()
+    if norm:
+        for col in range(ps.shape[1]):
+            m_val = np.abs(ps[:, col]).max() if np.abs(ps[:, col]).max() > 0 else 1
+            ps[:, col] = ps[:, col] / m_val
+    if scale:
+        ms = np.max(np.abs(ps))
+        ml = np.max(np.abs(pl))
+        if ml > 0:
+            pl = pl * (ms / ml) * 0.8
+    return ps, pl
+
+pca_pc_list, pca_load_list = [], []
+statis_pc_list, statis_load_list = [], []
+for yr in sheet_names:
+    spca = pca_scores_dict[yr].copy()
+    lpca = pca_loadings_dict[yr].copy()
+    angle_pca = compute_baseline_angle(spca, lpca, obs_labels, selected_vars, BASELINE_TYPE, BASELINE_NAME) if BASELINE_NAME else 0
+    if angle_pca != 0:
+        spca = spca @ _rotation_matrix(angle_pca).T
+        lpca = lpca @ _rotation_matrix(angle_pca).T
+    if yr in MIRROR_YEARS:
+        spca[:, 1] *= -1
+        lpca[:, 1] *= -1
+    pca_pc_list.append(spca)
+    pca_load_list.append(lpca)
+    
+    sstatis = per_year_coords[yr][:,:2].copy()
+    lstatis = per_year_loadings[yr][:,:2].copy()
+    angle_stat = compute_baseline_angle(sstatis, lstatis, obs_labels, selected_vars, BASELINE_TYPE, BASELINE_NAME) if BASELINE_NAME else 0
+    if angle_stat != 0:
+        sstatis = sstatis @ _rotation_matrix(angle_stat).T
+        lstatis = lstatis @ _rotation_matrix(angle_stat).T
+    if yr in MIRROR_YEARS:
+        sstatis[:, 1] *= -1
+        lstatis[:, 1] *= -1
+    statis_pc_list.append(sstatis)
+    statis_load_list.append(lstatis)
+
+pca_pc_adj, pca_load_adj = apply_global_adjustments(np.vstack(pca_pc_list), np.vstack(pca_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
+statis_pc_adj, statis_load_adj = apply_global_adjustments(np.vstack(statis_pc_list), np.vstack(statis_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
+
+n_obs = len(obs_labels)
+n_vars = len(selected_vars)
+for i, yr in enumerate(sheet_names):
+    sp_adj = pca_pc_adj[i*n_obs:(i+1)*n_obs]
+    ss_adj = statis_pc_adj[i*n_obs:(i+1)*n_obs]
+    dist_scores = np.sqrt(np.sum((sp_adj - ss_adj)**2, axis=1))
+    
+    df_dist_scores = pd.DataFrame({
+        'Kabupaten/Kota': obs_labels,
+        'PC1 (PCA)': sp_adj[:, 0], 'PC2 (PCA)': sp_adj[:, 1],
+        'PC1 (STATIS)': ss_adj[:, 0], 'PC2 (STATIS)': ss_adj[:, 1],
+        'Jarak Euclidean ($d$)': dist_scores
+    })
+    save_tex_table(df_dist_scores, f"output_table_jarak_skor_{yr}.tex", f"Perbandingan Jarak Skor Objek (PCA vs STATIS) Tahun {yr}", f"jarak_skor_{yr}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+    
+    lp_adj = pca_load_adj[i*n_vars:(i+1)*n_vars]
+    ls_adj = statis_load_adj[i*n_vars:(i+1)*n_vars]
+    dist_loads = np.sqrt(np.sum((lp_adj - ls_adj)**2, axis=1))
+    
+    df_dist_loads = pd.DataFrame({
+        'Variabel': selected_vars,
+        'PC1 (PCA)': lp_adj[:, 0], 'PC2 (PCA)': lp_adj[:, 1],
+        'PC1 (STATIS)': ls_adj[:, 0], 'PC2 (STATIS)': ls_adj[:, 1],
+        'Jarak Euclidean ($d$)': dist_loads
+    })
+    save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", f"Perbandingan Jarak Loading Variabel (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+
+    # Tabel Skor Intra (F_k)
+    df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
+    if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
+        df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+        df_fk['PC1 (Disesuaikan)'] = ss_adj[:, 0]
+        df_fk['PC2 (Disesuaikan)'] = ss_adj[:, 1]
+    df_fk.index.name = 'Kabupaten/Kota'
+    df_fk = df_fk.reset_index()
+    save_tex_table(df_fk, f"output_table_skor_intra_{yr}.tex", fr"Skor Intra Tahun {yr} ($\mathbf{{F}}_{{{yr}}}$)", f"skor_intra_{yr}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+
     # Tabel Loading Intra (G_k) - Koordinat variabel tahun t di ruang kompromi
-    df_gk = pd.DataFrame(per_year_loadings[yr], index=selected_vars, columns=['PC1', 'PC2'])
+    df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1', 'PC2'])
+    if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
+        df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+        df_gk['PC1 (Disesuaikan)'] = ls_adj[:, 0]
+        df_gk['PC2 (Disesuaikan)'] = ls_adj[:, 1]
     df_gk.index.name = 'Variabel'
     df_gk = df_gk.reset_index()
     save_tex_table(df_gk, f"output_table_loading_intra_{yr}.tex", fr"Loading Intra Tahun {yr} ($\mathbf{{G}}_{{{yr}}}$)", f"loading_intra_{yr}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
@@ -931,15 +1050,15 @@ for yr in sheet_names:
         rows.append({
             'Variabel': col,
             'N': len(vals),
-            'Mean': round(float(np.mean(vals)), 4),
-            'Std': round(float(np.std(vals, ddof=1)), 4),
+            'Mean ($\\mu$)': round(float(np.mean(vals)), 4),
+            'Std Dev ($\\sigma$)': round(float(np.std(vals, ddof=1)), 4),
             'Min': round(float(np.min(vals)), 4),
             'Q1': round(float(np.percentile(vals, 25)), 4),
             'Median': round(float(np.median(vals)), 4),
             'Q3': round(float(np.percentile(vals, 75)), 4),
             'Max': round(float(np.max(vals)), 4),
-            'Skewness': round(float(skew(vals)), 4),
-            'Kurtosis': round(float(kurt(vals, fisher=True)), 4),
+            'Skewness ($\\gamma_1$)': round(float(skew(vals)), 4),
+            'Kurtosis ($\\gamma_2$)': round(float(kurt(vals, fisher=True)), 4),
             'CV (%)': round(float(np.std(vals, ddof=1) / np.mean(vals) * 100), 2) if np.mean(vals) != 0 else 0,
         })
     df_stats = pd.DataFrame(rows)
@@ -1097,6 +1216,160 @@ print("  [TEX] output_macros.tex")
 
 
 # ============================================================
+# 3e. ANALISIS VEKTOR STRUKTUR (Areia et al. 2008; Oliveira et al. 2024)
+# ============================================================
+print("\n=== 3e. Analisis Vektor Struktur (Inferensial STATIS) ===")
+
+# Bangun province_map secara otomatis dari data Excel (kolom 'Provinsi')
+# Jika kolom 'Provinsi' tidak tersedia, analisis transversal dilewati
+_province_map = None
+try:
+    _first_sheet_raw = pd.read_excel(DATA_PATH, sheet_name=sheet_names[0])
+    if 'Kabupaten/Kota' in _first_sheet_raw.columns and 'Provinsi' in _first_sheet_raw.columns:
+        _first_sheet_raw = _first_sheet_raw.set_index('Kabupaten/Kota')
+        # Hanya wilayah yang ada di obs_labels
+        _prov_series = _first_sheet_raw.loc[
+            [idx for idx in obs_labels if idx in _first_sheet_raw.index], 'Provinsi'
+        ]
+        _province_map = {}
+        for wilayah, prov in _prov_series.items():
+            prov_str = str(prov).strip()
+            _province_map.setdefault(prov_str, []).append(wilayah)
+        print(f"  [INFO] Province map: { {p: len(v) for p,v in _province_map.items()} }")
+    else:
+        print("  [INFO] Kolom 'Provinsi' tidak ditemukan — analisis transversal dilewati.")
+except Exception as _e:
+    print(f"  [WARN] Gagal membaca province_map: {_e}")
+
+# Import fungsi dari app.py (pastikan path web/app.py dapat diakses)
+import importlib.util as _ilu
+_app_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'web', 'app.py')
+_sv_compute = None
+_sv_export   = None
+try:
+    _spec = _ilu.spec_from_file_location("app_statis", _app_path)
+    _app_mod = _ilu.module_from_spec(_spec)
+    _spec.loader.exec_module(_app_mod)
+    _sv_compute = _app_mod.compute_structure_vector
+    _sv_export  = _app_mod.export_structure_vector_latex
+    print("  [OK] Fungsi compute_structure_vector & export_structure_vector_latex dimuat dari app.py.")
+except Exception as _e_load:
+    print(f"  [WARN] Gagal memuat dari app.py: {_e_load}. Komputasi inline...")
+
+    # Fallback: definisi inline ringkas agar export_all.py tetap mandiri
+    def _sv_compute(H, alphas, sheet_names, X_matrices, m_weights, obs_labels, province_map=None):
+        K = len(sheet_names)
+        H = np.array(H)
+        vals, vecs = np.linalg.eigh(H)
+        idx_s = np.argsort(vals)[::-1]
+        vals, vecs = vals[idx_s], vecs[:, idx_s]
+        l1, u1 = vals[0], vecs[:, 0]
+        if u1.sum() < 0: u1 = -u1
+        beta = l1 * u1
+        H2 = np.trace(H @ H)
+        V  = H2 - l1**2
+        sum_l = np.sum(np.clip(vals, 0, None))
+        inertia1 = l1 / sum_l if sum_l > 0 else np.nan
+        dom_r = l1 / vals[1] if K > 1 and vals[1] > 1e-12 else np.inf
+        beta_prov = {}
+        if province_map:
+            for pname, pwilayah in province_map.items():
+                pidx = [i for i, lb in enumerate(obs_labels) if lb in pwilayah]
+                if len(pidx) < 2: continue
+                ms = m_weights[pidx]; ms = ms / ms.sum()
+                Dss = np.diag(np.sqrt(ms))
+                Ws_sub = [Dss @ Xk[pidx, :] for Xk in X_matrices]
+                Ws_sub = [W @ W.T for W in Ws_sub]
+                Hs = np.array([[np.trace(Ws_sub[i] @ Ws_sub[j]) for j in range(K)] for i in range(K)])
+                vs_h, ve_h = np.linalg.eigh(Hs)
+                i_s = np.argsort(vs_h)[::-1]
+                l1s, u1s = vs_h[i_s[0]], ve_h[:, i_s[0]]
+                if u1s.sum() < 0: u1s = -u1s
+                beta_prov[pname] = l1s * u1s
+        return {'lambda1': l1, 'u1': u1, 'beta_tilde': beta, 'H_frobenius_sq': H2,
+                'V': V, 'inertia1': inertia1, 'dominance_ratio': dom_r,
+                'vals_H': vals, 'sheet_names': sheet_names, 'beta_provinsi': beta_prov}
+
+    def _sv_export(sv_res, output_dir=OUT_DIR, label_prefix=""):
+        # Ekspor versi minimal (tabel saja, tanpa plot warna)
+        sn = sv_res['sheet_names']; bt = sv_res['beta_tilde']
+        def _w(rows, cols, caption, label, fname):
+            lines = [r"\begin{table}[H]", r"\centering", r"\small",
+                     fr"\caption{{{caption}}} \label{{tab:{label_prefix}{label}}}",
+                     r"\begin{tabular}{|" + "c|"*len(cols) + "}",
+                     r"\hline",
+                     " & ".join([fr"\textbf{{{c}}}" for c in cols]) + r" \\",
+                     r"\hline"]
+            for row in rows: lines.append(" & ".join(str(v) for v in row) + r" \\")
+            lines += [r"\hline", r"\end{tabular}", r"\end{table}"]
+            with open(os.path.join(output_dir, fname), "w", encoding="utf-8") as f:
+                f.write("\n".join(lines))
+            print(f"  [TEX] {fname}")
+        _w([[yr, f"{b:.4f}"] for yr, b in zip(sn, bt)],
+           ["Tahun ($k$)", r"$\tilde{\beta}_k$"],
+           r"Komponen Vektor Struktur $\tilde{\boldsymbol{\beta}}$", "beta_vec",
+           "output_table_beta_vec.tex")
+        l1, Hf, V, i1, dr = (sv_res['lambda1'], sv_res['H_frobenius_sq'],
+                              sv_res['V'], sv_res['inertia1'], sv_res['dominance_ratio'])
+        Vr = V/Hf if Hf > 0 else float('nan')
+        _w([[r"$\lambda_1$", f"{l1:.4f}"], [r"$\|\mathbf{H}\|_F^2$", f"{Hf:.4f}"],
+            ["$V$", f"{V:.4f}"], [r"Rasio $V/\|\mathbf{H}\|_F^2$", f"{Vr:.4f}"],
+            [r"Inertia$_1$", f"{i1*100:.2f}\\%"],
+            [r"$\lambda_1/\lambda_2$", f"{dr:.4f}" if np.isfinite(dr) else r"$\infty$"]],
+           ["Kuantitas", "Nilai"],
+           r"Diagnostik Dominansi Model Rank-1 (Areia et al., 2008)", "struktur_diagnostik",
+           "output_table_struktur_diagnostik.tex")
+        bp = sv_res.get('beta_provinsi', {})
+        if bp:
+            pns = list(bp.keys()); K = len(sn)
+            _w([[yr] + [f"{bp[p][ki]:.4f}" if ki < len(bp[p]) else "-"
+                        for p in pns] for ki, yr in enumerate(sn)],
+               ["Tahun ($k$)"] + pns,
+               r"Komponen $\tilde{\beta}_{gk}$ per Provinsi (Analisis Transversal)",
+               "beta_provinsi", "output_table_beta_provinsi.tex")
+        # Plot
+        try:
+            fig2, ax2 = plt.subplots(figsize=(7, 4))
+            ax2.plot(range(len(sn)), bt, 'o-', color='#1976D2', lw=2, ms=8,
+                     label=r'$\tilde{\beta}_k$ (Gabungan)')
+            colors_p = ['#D81B60', '#43A047', '#FB8C00']
+            for (pn, bts), col in zip(bp.items(), colors_p):
+                if len(bts) == len(sn):
+                    ax2.plot(range(len(sn)), bts, 's--', color=col, lw=1.5, ms=6,
+                             label=fr'$\tilde{{\beta}}_{{gk}}$ {pn}', alpha=0.85)
+            ax2.set_xticks(range(len(sn))); ax2.set_xticklabels(sn, fontsize=10)
+            ax2.set_xlabel("Tahun ($k$)"); ax2.set_ylabel(r"$\tilde{\beta}_k$")
+            ax2.set_title(r"Lintasan Temporal Komponen Vektor Struktur $\tilde{\boldsymbol{\beta}}$",
+                          fontweight='bold')
+            ax2.legend(fontsize=9); ax2.grid(True, ls='--', alpha=0.5)
+            ax2.spines['top'].set_visible(False); ax2.spines['right'].set_visible(False)
+            fig2.tight_layout()
+            fig2.savefig(os.path.join(output_dir, "beta_trajectory.png"), dpi=150, bbox_inches='tight')
+            plt.close(fig2)
+            print("  [PNG] beta_trajectory.png")
+        except Exception as _ep:
+            print(f"  [WARN] Gagal simpan beta_trajectory.png: {_ep}")
+
+# Jalankan komputasi dan ekspor vektor struktur
+try:
+    sv_result = _sv_compute(
+        H=H_mat.tolist(),
+        alphas=alphas.tolist(),
+        sheet_names=sheet_names,
+        X_matrices=X_matrices,
+        m_weights=m_weights,
+        obs_labels=obs_labels,
+        province_map=_province_map
+    )
+    _sv_export(sv_result, output_dir=OUT_DIR, label_prefix=LABEL_PREFIX)
+    print(f"  [OK] lambda1={sv_result['lambda1']:.4f}, "
+          f"Inertia1={sv_result['inertia1']*100:.2f}%, "
+          f"V={sv_result['V']:.4f}")
+except Exception as _e_sv:
+    print(f"  [ERR] Analisis vektor struktur gagal: {_e_sv}")
+
+
+# ============================================================
 print("\n=== 4. Ekspor Gambar STATIS ===")
 
 # --- Scree Plot ---
@@ -1129,6 +1402,7 @@ fig_comp = go.Figure()
 fig_comp.add_trace(go.Scatter(
     x=plot_scores[:, 0], y=plot_scores[:, 1],
     mode='markers+text', text=obs_labels, textposition='top center',
+    textfont=dict(size=9, color='black'),
     marker=dict(size=8, color='#1E88E5', opacity=0.8)
 ))
 fig_comp.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -1142,12 +1416,14 @@ fig_bi = go.Figure()
 fig_bi.add_trace(go.Scatter(
     x=plot_scores[:, 0], y=plot_scores[:, 1],
     mode='markers+text', text=obs_labels, textposition='top center',
+    textfont=dict(size=9, color='black'),
     marker=dict(size=7, color='#1E88E5'), name='Objek'
 ))
 for i, var in enumerate(selected_vars):
     fig_bi.add_trace(go.Scatter(
         x=[0, plot_loadings[i, 0]], y=[0, plot_loadings[i, 1]],
-        mode='lines+text', text=[None, var], textposition='top center',
+        mode='lines+markers+text', text=['', var], textposition='top center',
+        textfont=dict(size=10, color='black'),
         line=dict(color='#D81B60', width=2), showlegend=False
     ))
 fig_bi.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -1235,7 +1511,8 @@ fig_load_only = go.Figure()
 for i, var in enumerate(selected_vars):
     fig_load_only.add_trace(go.Scatter(
         x=[0, loadings[i, 0]], y=[0, loadings[i, 1]],
-        mode='lines+text', text=[None, var], textposition='top center',
+        mode='lines+markers+text', text=['', var], textposition='top center',
+        textfont=dict(size=11, color='black'),
         line=dict(width=2), showlegend=False
     ))
 theta = np.linspace(0, 2 * np.pi, 200)
@@ -1284,14 +1561,10 @@ for kab in obs_labels:
     
     fig_traj.add_trace(go.Scatter(
         x=d_kab['PC1'], y=d_kab['PC2'],
-        mode='lines+markers+text' if is_hl else 'lines+markers',
-        # User wants number for EVERY traj end point? 
-        # Or only highlight? "angka yang mengindikasikan dia adalah kabupaten/kota nomor berapa"
-        # I'll add text for the last point for everyone, but only shows on hover/mode 'text'
-        # Actually, adding 'text' mode for ALL might be messy. 
-        # I'll stick to text=number for everyone but position it at the end.
-        text=[None] * (len(d_kab) - 1) + [str(kab_idx+1)],
+        mode='lines+markers+text',
+        text=[f"{kab} {yr}" for yr in d_kab['Tahun']],
         textposition="top center",
+        textfont=dict(size=8, color='black'),
         name=f"[{kab_idx+1}] {kab}",
         line=dict(width=3.5 if is_hl else 1.2, color=palette_cluster[cl_idx]),
         marker=dict(
@@ -1491,13 +1764,15 @@ for yr in sheet_names:
     fig_yr.add_trace(go.Scatter(
         x=ps_y[:, 0], y=ps_y[:, 1],
         mode='markers+text', text=obs_labels, textposition='top center',
+        textfont=dict(size=9, color='black'),
         marker=dict(size=7, color='#1E88E5'), name='Objek'
     ))
     for i, var in enumerate(selected_vars):
         is_hl_var = var in HIGHLIGHT_VARS
         fig_yr.add_trace(go.Scatter(
             x=[0, pl_y[i, 0]], y=[0, pl_y[i, 1]],
-            mode='lines+text', text=[None, var], textposition='top center',
+            mode='lines+markers+text', text=['', var], textposition='top center',
+            textfont=dict(size=10, color='black'),
             line=dict(color='#D81B60' if is_hl_var else '#F06292',
                       width=3 if is_hl_var else 1.5),
             showlegend=False
@@ -1547,9 +1822,9 @@ save_png(fig_perm, "permutation_histogram.png")
 # Export LaTeX macro
 perm_lines = [
     r"% Generated by export_all.py (Permutation)",
-    fr"\newcommand{{\statisPValue}}{{{p_value:.4f}}}",
-    fr"\newcommand{{\statisKet}}{{{interp_perm}}}",
-    r"\newcommand{\MacroLambdaObs}{" + f"{lambda_obs:.4f}" + r"}",
+    fr"\newcommand{{\{get_macro_name('PValuePerm')}}}{{{p_value:.4f}}}",
+    fr"\newcommand{{\{get_macro_name('PermInterp')}}}{{{interp_perm}}}",
+    fr"\newcommand{{\{get_macro_name('LambdaObs')}}}{{{lambda_obs:.4f}}}",
 ]
 with open(os.path.join(OUT_DIR, "output_perm_statis.tex"), "w", encoding="utf-8") as f:
     f.write("\n".join(perm_lines))
@@ -1650,7 +1925,8 @@ for yr in sheet_names:
         fig_sc.add_trace(go.Scatter(
             x=ps_y[mask, 0], y=ps_y[mask, 1],
             mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
-            textposition='top center', marker=dict(size=9, color=palette[cl]),
+            textposition='top center', textfont=dict(size=9, color='black'),
+            marker=dict(size=9, color=palette[cl]),
             name=f'Klaster {cl+1} ({klaster_name})'
         ))
     fig_sc.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -1789,7 +2065,8 @@ for cl in range(K_CLUSTERS):
         x=plot_scores[mask, 0], y=plot_scores[mask, 1],
         mode='markers+text',
         text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
-        textposition='top center', marker=dict(size=9, color=palette[cl]),
+        textposition='top center', textfont=dict(size=9, color='black'),
+        marker=dict(size=9, color=palette[cl]),
         name=f'Klaster {cl+1} ({klaster_name})'
     ))
 fig_traj_cl.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -1941,6 +2218,66 @@ except Exception as e:
     print(f"  [WARN] Uji Moran gagal: {e}")
 
 # ============================================================
+# 8.A-1 PERBANDINGAN CLUSTER BIPLOT (UNWEIGHTED) VS STATIS (WEIGHTED) TAHUNAN
+# ============================================================
+print("\n=== 8.A-1 Perbandingan Cluster Biplot (Unweighted) vs Statis (Weighted) Tahunan ===")
+for yr in sheet_names:
+    coords_biplot = pca_scores_dict[yr][:, :2]
+    # STATIS coordinates are already in per_year_coords[yr]
+    # STATIS clusters are already in cluster_per_year[yr], ranked by PC1
+    lbl_statis_yr = cluster_per_year[yr]
+    
+    # K-Means for Biplot
+    km_biplot = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
+    lbls_biplot_raw = km_biplot.fit_predict(coords_biplot)
+    curr_centroids_bp = km_biplot.cluster_centers_
+    
+    # Align to base_centroids (from STATIS base year)
+    from scipy.spatial.distance import cdist
+    from scipy.optimize import linear_sum_assignment
+    dist_matrix = cdist(base_centroids, curr_centroids_bp, metric='euclidean')
+    row_ind, col_ind = linear_sum_assignment(dist_matrix)
+    mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
+    aligned_lbls_bp = np.array([mapping[l] for l in lbls_biplot_raw])
+    
+    # Rank by PC1
+    cluster_means_bp = []
+    unique_lbls_bp = sorted(list(set(aligned_lbls_bp)))
+    for cl in unique_lbls_bp:
+        cluster_means_bp.append(np.mean(coords_biplot[aligned_lbls_bp == cl, 0]))
+        
+    sorted_indices_bp = np.argsort(cluster_means_bp)
+    rank_map_bp = {old: new for new, old in enumerate(sorted_indices_bp)}
+    lbl_biplot_yr = np.array([rank_map_bp[l] for l in aligned_lbls_bp])
+    
+    # Cross-tabulation (Row: Biplot, Col: STATIS)
+    cross_mat_bs_yr = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
+    for b_l, s_l in zip(lbl_biplot_yr, lbl_statis_yr):
+        cross_mat_bs_yr[b_l, s_l] += 1
+        
+    df_cross_bs_yr = pd.DataFrame(cross_mat_bs_yr,
+                                  index=[f"Biplot {i+1} ({yr})" for i in range(K_CLUSTERS)],
+                                  columns=[f"Statis {j+1} ({yr})" for j in range(K_CLUSTERS)])
+    df_cross_bs_yr.index.name = "Biplot (Unweighted)"
+    df_cross_bs_yr = df_cross_bs_yr.reset_index()
+    save_tex_table(df_cross_bs_yr, f"output_table_biplot_vs_statis_compare_sum_{yr}.tex",
+                   f"Matriks Perbandingan Cluster Biplot vs STATIS ({yr})", f"biplot_statis_comp_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=LABEL_PREFIX)
+
+    rows_bs_nm_yr = {}
+    for b_l in range(K_CLUSTERS):
+        for s_l in range(K_CLUSTERS):
+            names = [obs_labels[i] for i in range(len(obs_labels))
+                     if lbl_biplot_yr[i] == b_l and lbl_statis_yr[i] == s_l]
+            rows_bs_nm_yr[f"Biplot {b_l+1} & Statis {s_l+1}"] = ", ".join(names) if names else "-"
+    save_tex_name_table(rows_bs_nm_yr, f"output_table_biplot_vs_statis_compare_name_{yr}.tex",
+                        f"Nama Daerah Perbandingan Cluster Biplot vs STATIS ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=LABEL_PREFIX)
+                        
+    # Draw Map for Biplot
+    if 'gdf_map' in locals():
+        draw_cluster_map(lbl_biplot_yr, obs_labels, gdf_map,
+                         f"Peta Klaster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png")
+
+# ============================================================
 # 8.A PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS
 # ============================================================
 print("\n=== 8.A Perbandingan Cluster Biplot vs Cluster Statis ===")
@@ -2034,16 +2371,16 @@ for yr in sheet_names:
         rows_desc.append({
             'Variabel': col,
             'N': n,
-            'Mean (\\mu)': mu,
-            'Std Dev (\\sigma)': sigma,
+            'Mean ($\\mu$)': mu,
+            'Std Dev ($\\sigma$)': sigma,
             'Min': np.min(vals),
             'Q1': np.percentile(vals, 25),
             'Median': np.median(vals),
             'Q3': np.percentile(vals, 75),
             'Max': np.max(vals),
-            'Skewness (\\gamma_1)': skew_v,
-            'Kurtosis (\\gamma_2)': kurt_v,
-            'CV (\\%)': cv_v if cv_v is not None else 0
+            'Skewness ($\\gamma_1$)': skew_v,
+            'Kurtosis ($\\gamma_2$)': kurt_v,
+            'CV (%)': cv_v if cv_v is not None else 0
         })
         
     df_desc = pd.DataFrame(rows_desc)

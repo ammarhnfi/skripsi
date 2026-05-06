@@ -1,3 +1,0 @@
-with open(r'd:\Skripsi\my\pustaka.bib', 'a', encoding='utf-8') as f:
-    f.write('\n@article{abdi2012,\n  title={STATIS and DISTATIS: optimum multitable principal component analysis and three way metric multidimensional scaling},\n  author={Abdi, Herve and Williams, Lynne J and Valentin, Dominique and Bennani-Dosse, Mohammed},\n  journal={Wiley Interdisciplinary Reviews: Computational Statistics},\n  volume={4},\n  number={2},\n  pages={124--167},\n  year={2012},\n  publisher={Wiley}\n}\n')
-    f.write('\n@book{legendre2012,\n  title={Numerical ecology},\n  author={Legendre, Pierre and Legendre, Louis},\n  year={2012},\n  publisher={Elsevier}\n}\n')

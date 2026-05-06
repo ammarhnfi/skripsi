@@ -12,8 +12,8 @@
     "image_height": 800,
     "label_prefix": "sample",
     "rotation": {
-        "type": "loading",
-        "name": "TPT"
+        "type": "",
+        "name": ""
     },
     "mirror_years": [],
     "scale_load": true,

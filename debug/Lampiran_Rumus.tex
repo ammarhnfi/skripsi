@@ -135,7 +135,7 @@ STATIS & Structuration des Tableaux \`A Trois Indices de la Statistique \\
 \newpage
 
 \section{Analisis Statistika Deskriptif (Dalam Ruang Metrik \texorpdfstring{$\mathbf{D}$}{D})}
-Berdasarkan \citet{lavit94}, sebelum mengekstraksi jarak Euclidean, setiap variabel harus disentralkan terhadap titik pusat gravitasi (rata-rata populasi terbobot, $\mu$) dan diskalakan dengan varians populasi terbobot ($\sigma^2$) agar matriks metrik $\mathbf{D}$ dapat beroperasi secara valid.
+Berdasarkan \citet{lavit94}, sebelum mengekstraksi jarak Euclidean, setiap variabel harus disentralkan terhadap titik pusat (rata-rata populasi terbobot, $\mu$) dan diskalakan dengan varians populasi terbobot ($\sigma^2$) agar matriks metrik $\mathbf{D}$ dapat digunakan secara valid.
 \begin{tcolorbox}[formula_box, title={Bobot}] \label{kotak:bobot}
 \textbf{Formula:}
 \[
@@ -195,7 +195,7 @@ m_i \in (0, 1) \quad \text{dengan syarat} \quad \sum_{i=1}^{n} m_i = 1
 Namun apabila menggunakan bobot demografis, maka:
 \[ \mu_{\text{IPM},2020} = \sum_{i=1}^{41} m_i x_{i,\text{IPM},2020} = 73.36908851 \]
 
-\textbf{Penjelasan:} Nilai rata-rata yang memperhitungkan bobot observasi spasial ($m_i$). Nilai ini digunakan sebagai titik pusat gravitasi (\textit{centroid}) populasi untuk menyentralkan data (\textit{centering}) sebelum dikonversi menjadi matriks jarak sesuai kerangka pada analisis STATIS \citet{lavit94}, sentralisasi data mengharuskan $\sum m_i (x_{ijk} - \mu_{jk}) = 0$.
+\textbf{Penjelasan:} Nilai rata-rata yang memperhitungkan bobot observasi spasial ($m_i$). Nilai ini digunakan sebagai titik pusat (\textit{centroid}) populasi untuk menyentralkan data (\textit{centering}) sebelum dikonversi menjadi matriks jarak sesuai kerangka pada analisis STATIS \citet{lavit94}, sentralisasi data mengharuskan $\sum m_i (x_{ijk} - \mu_{jk}) = 0$.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Simpangan Baku Populasi Terbobot ($\sigma$)}] \label{kotak:simpangan_baku}

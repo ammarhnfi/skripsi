@@ -11,13 +11,13 @@ Berdasarkan hasil analisis dan pembahasan yang telah dilakukan, dapat ditarik be
 
 \begin{enumerate}
     \item \textbf{Stabilitas Struktur Regional yang Terbukti Signifikan:} 
-    Melalui analisis inter-struktur STATIS, seluruh koefisien RV antar-tahun berada di atas $0{,}90$, yang membuktikan bahwa konfigurasi spasial sosio-ekonomi antar 41 kabupaten/kota bersifat sangat stabil selama 2020--2024. Uji permutasi ($B = 1000$) memberikan $p < 0{,}05$, sehingga struktur kompromi yang ditemukan dinyatakan \textbf{signifikan secara statistik} dan bukan artefak acak.
+    Melalui analisis inter-struktur STATIS, seluruh koefisien RV antar-tahun berada di atas $0{,}90$, yang membuktikan bahwa konfigurasi spasial sosio-ekonomi antar 41 kabupaten/kota bersifat sangat stabil selama 2020 hingga 2024. Uji permutasi ($B = 1000$) memberikan $p < 0{,}05$, sehingga struktur kompromi yang ditemukan dinyatakan \textbf{signifikan secara statistik} dan bukan artefak acak.
 
     \item \textbf{Dimensi Utama Pembangunan:} 
     Dekomposisi struktur kompromi menghasilkan dua dimensi utama. Dimensi~1 merepresentasikan ``Taraf Ekonomi dan Kualitas Sumber Daya Manusia'' (berkorelasi positif dengan PDRB, IPM, RLS, IPG) dan menjelaskan bagian terbesar variansi total. Dimensi~2 merepresentasikan ``Kesehatan dan Ketahanan Sosial'' yang menangkap perbedaan kualitas hidup non-ekonomi seperti Angka Harapan Hidup.
 
-    \item \textbf{Dinamika Trajektori Pemulihan yang Terpola:}
-    Visualisasi \textit{Dynamic Biplot} berhasil memetakan tiga pola lintasan yang berbeda:
+    \item \textbf{Dinamika Trajektori Pemulihan yang Terpola secara Longitudinal:}
+    Sesuai dengan kerangka analisis longitudinal \citep{oliveira2024}, visualisasi \textit{Dynamic Biplot} berhasil memetakan tiga pola lintasan yang berbeda:
     \begin{itemize}
         \item Kota-kota berbasis jasa (Jakarta Pusat, Bandung, Tangerang Selatan) menunjukkan pola pemulihan berbentuk \textit{V-shape} yang kuat pasca-2021.
         \item Kabupaten di wilayah selatan (Lebak, Pandeglang, Garut) cenderung menunjukkan lintasan stagnan, menandakan lambatnya respons pemulihan ekonomi.
@@ -25,7 +25,7 @@ Berdasarkan hasil analisis dan pembahasan yang telah dilakukan, dapat ditarik be
     \end{itemize}
     
     \item \textbf{Ekologi Klaster yang Persisten dengan Mobilitas Selektif:}
-    Pengelompokan K-Means ($k=3$) mengidentifikasi tiga klaster yang stabil: Maju (wilayah metropolitan), Berkembang (wilayah penyangga), dan Tertinggal (wilayah pedesaan). Matriks transisi lintas tahun mengkonfirmasi dominasi diagonal --- artinya sebagian besar wilayah bertahan di klasternya --- namun sejumlah kabupaten seperti Kepulauan Seribu berhasil bermigrasi positif ke klaster yang lebih baik selama masa pemulihan 2022--2024.
+    Pengelompokan K-Means ($k=3$) mengidentifikasi tiga klaster yang stabil: Maju (wilayah metropolitan), Berkembang (wilayah penyangga), dan Tertinggal (wilayah pedesaan). Matriks transisi lintas tahun mengkonfirmasi dominasi diagonal. Hal ini berarti sebagian besar wilayah bertahan di klasternya, namun sejumlah kabupaten seperti Kepulauan Seribu berhasil bermigrasi positif ke klaster yang lebih baik selama masa pemulihan 2022 hingga 2024.
 
     \item \textbf{Validitas Eksternal melalui Kesesuaian IPM UNDP:}
     Tabulasi silang antara klaster \textit{data-driven} K-Means dan kategori IPM UNDP mengungkap kesesuaian struktural yang tinggi: Klaster~3 (Maju) didominasi wilayah berkategori IPM ``Sangat Tinggi'', sedangkan Klaster~1 (Tertinggal) sebagian besar berstatus IPM ``Sedang''. Hal ini membuktikan bahwa metode STATIS mampu menangkap struktur laten pembangunan manusia secara valid, bahkan tanpa menggunakan IPM sebagai variabel input analisis. Seluruh hasil ini diintegrasikan dalam \textit{dashboard} web interaktif berbasis Dash/Plotly yang memungkinkan pemantauan dinamika pembangunan secara mandiri dan real-time.
@@ -39,7 +39,7 @@ Berdasarkan kesimpulan di atas, diajukan beberapa saran sebagai berikut:
 
 \begin{enumerate}
     \item \textbf{Implikasi Kebijakan \textit{Targeted}:}
-    Mengingat struktur ketimpangan yang persisten dan terpola secara spasial, kebijakan pemerataan pembangunan tidak cukup hanya mengandalkan pertumbuhan ekonomi nasional. Diperlukan intervensi struktural yang \textit{targeted} pada wilayah Klaster~1 (Tertinggal) --- khususnya Kabupaten Lebak, Pandeglang, dan Garut --- dengan fokus pada peningkatan kapabilitas dasar (RLS, AHH) serta pengurangan kemiskinan melalui strategi \textit{regional spillover} dari pusat pertumbuhan DKI Jakarta.
+    Mengingat struktur ketimpangan yang persisten dan terpola secara spasial, kebijakan pemerataan pembangunan tidak cukup hanya mengandalkan pertumbuhan ekonomi nasional. Diperlukan intervensi struktural yang \textit{targeted} pada wilayah Klaster~1 (Tertinggal), khususnya Kabupaten Lebak, Pandeglang, dan Garut, dengan fokus pada peningkatan kapabilitas dasar (RLS, AHH) serta pengurangan kemiskinan melalui strategi \textit{regional spillover} dari pusat pertumbuhan DKI Jakarta.
     
     \item \textbf{Pengembangan Penelitian Lanjutan:}
     Penelitian ini dibatasi pada indikator makroekonomi tahunan dari 3 provinsi. Penelitian selanjutnya disarankan untuk:

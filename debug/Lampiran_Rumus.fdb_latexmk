@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex Lampiran_Rumus"] 1775805196.2942 "Lampiran_Rumus.aux" "Lampiran_Rumus.bbl" "Lampiran_Rumus" 1775805199.36773 0
-  "./pustaka.bib" 1775792167 16779 1fb69d3c37507a92866d437ba8f53fae ""
+["bibtex Lampiran_Rumus"] 1775805196.2942 "Lampiran_Rumus.aux" "Lampiran_Rumus.bbl" "Lampiran_Rumus" 1777427641.5217 0
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/apalike.bst" 1291972791 24635 604dafcc79f521a11ea73e506e1fbd98 ""
   "Lampiran_Rumus.aux" 1775805198 3242 71aa4b722f4857382968a8f0883c663f "pdflatex"
+  "pustaka.bib" 0 -1 0 ""
   (generated)
   "Lampiran_Rumus.bbl"
   "Lampiran_Rumus.blg"
   (rewritten before read)
-["pdflatex"] 1775805196.6581 "d:/Skripsi/my/Lampiran_Rumus.tex" "Lampiran_Rumus.pdf" "Lampiran_Rumus" 1775805199.36845 0
-  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1775803225 83788 3e06ff692e1323f668f12ea28ca579e9 ""
+["pdflatex"] 1777427636.37673 "d:/Skripsi/my/debug/Lampiran_Rumus.tex" "Lampiran_Rumus.pdf" "Lampiran_Rumus" 1777427641.52347 0
+  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1776744540 83788 3e06ff692e1323f668f12ea28ca579e9 ""
   "C:/Users/ammar/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1774619219 12668 302b8514e30bab11f561fd7a0ad893a5 ""
   "C:/Users/ammar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1769175176 13333487 f903ec6d1e50474fb369260a691f839e ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1095.tfm" 993062508 1460 8005ce585ff351dff78998923504da5e ""
@@ -237,12 +237,12 @@
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1656236919 4937 4ce600ce9bd4ec84d0250eb6892fcf4f ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/xurl/xurl.sty" 1641733940 4675 e4b8c405820368c2dfb03526e16d725a ""
-  "Lampiran_Rumus.aux" 1775805198 3242 71aa4b722f4857382968a8f0883c663f "pdflatex"
-  "Lampiran_Rumus.bbl" 1775805196 1828 b9fa86dbb67dc15205e09f9d65e8a9f1 "bibtex Lampiran_Rumus"
-  "Lampiran_Rumus.out" 1775805198 1149 83d6d35cb69bc795c7077aea9f342083 "pdflatex"
-  "Lampiran_Rumus.tex" 1775803685 38434 3eff16078a2df8a674e1567962306930 ""
-  "Lampiran_Rumus.toc" 1775805198 502 492b05c6bc8e54cb643d4d0ecc634bf6 "pdflatex"
-  "d:/Skripsi/my/Lampiran_Rumus.tex" 1775803685 38434 3eff16078a2df8a674e1567962306930 ""
+  "Lampiran_Rumus.aux" 1777427639 2887 a07081ed01156631a4055fb18c9db400 "pdflatex"
+  "Lampiran_Rumus.bbl" 0 -1 0 "bibtex Lampiran_Rumus"
+  "Lampiran_Rumus.out" 1777427639 1149 54d61d528ca1df0c286a38739da1ed1f "pdflatex"
+  "Lampiran_Rumus.tex" 1777427628 39556 ed1ee1f6f818f142a69217b0be43898c ""
+  "Lampiran_Rumus.toc" 1777427640 502 23478ca6a3182bd914c9fc8955c73fc9 "pdflatex"
+  "d:/Skripsi/my/debug/Lampiran_Rumus.tex" 1777427628 39556 ed1ee1f6f818f142a69217b0be43898c ""
   (generated)
   "Lampiran_Rumus.aux"
   "Lampiran_Rumus.log"

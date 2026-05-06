@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  10 APR 2026 14:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  29 APR 2026 08:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Skripsi/my/Lampiran_Rumus.tex
-(d:/Skripsi/my/Lampiran_Rumus.tex
+**d:/Skripsi/my/debug/Lampiran_Rumus.tex
+(d:/Skripsi/my/debug/Lampiran_Rumus.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
@@ -783,26 +783,112 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 <to be read again> 
                    \relax 
 l.66 \newpage
-              [1] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] (Lampiran_Rumus.bbl [18]) [19] (Lampiran_Rumus.aux)
+              [1] [2] [3]
+
+Package natbib Warning: Citation `lavit94' on page 4 undefined on input line 138.
+
+
+Package natbib Warning: Citation `lavit94' on page 4 undefined on input line 168.
+
+
+Package natbib Warning: Citation `lavit94' on page 4 undefined on input line 181.
+
+
+Package natbib Warning: Citation `lavit94' on page 4 undefined on input line 198.
+
+[4] [5]
+
+Package natbib Warning: Citation `lavit94' on page 6 undefined on input line 251.
+
+[6] [7] [8]
+
+Package natbib Warning: Citation `deptan2003' on page 9 undefined on input line 331.
+
+
+Package natbib Warning: Citation `deptan2003' on page 9 undefined on input line 344.
+
+
+Package natbib Warning: Citation `bulmer1979' on page 9 undefined on input line 354.
+
+
+Package natbib Warning: Citation `bulmer1979' on page 9 undefined on input line 369.
+
+[9]
+
+Package natbib Warning: Citation `mathworld' on page 10 undefined on input line 379.
+
+
+Package natbib Warning: Citation `kaiser1970' on page 10 undefined on input line 412.
+
+
+Package natbib Warning: Citation `kaiser1970' on page 10 undefined on input line 425.
+
+[10] [11]
+
+Package natbib Warning: Citation `bartlett1954' on page 12 undefined on input line 477.
+
+
+Package natbib Warning: Citation `lavit94' on page 12 undefined on input line 477.
+
+[12] [13] [14]
+
+Package natbib Warning: Citation `lavit94' on page 15 undefined on input line 612.
+
+
+Package natbib Warning: Citation `lavit94' on page 15 undefined on input line 627.
+
+[15]
+
+Package natbib Warning: Citation `oliveira2024' on page 16 undefined on input line 636.
+
+
+Package natbib Warning: Citation `lavit94' on page 16 undefined on input line 637.
+
+
+Package natbib Warning: Citation `lavit94' on page 16 undefined on input line 652.
+
+[16]
+
+Package natbib Warning: Citation `lavit94' on page 17 undefined on input line 663.
+
+
+Package natbib Warning: Citation `lavit94' on page 17 undefined on input line 677.
+
+[17]
+
+Package natbib Warning: Citation `lavit94' on page 18 undefined on input line 698.
+
+
+Package natbib Warning: Citation `lavit94' on page 18 undefined on input line 709.
+
+
+Package natbib Warning: Citation `lavit94' on page 18 undefined on input line 723.
+
+[18] [19]
+No file Lampiran_Rumus.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+[20] (Lampiran_Rumus.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 Package rerunfilecheck Info: File `Lampiran_Rumus.out' has not changed.
-(rerunfilecheck)             Checksum: 83D6D35CB69BC795C7077AEA9F342083;1149.
+(rerunfilecheck)             Checksum: 54D61D528CA1DF0C286A38739DA1ED1F;1149.
  ) 
 Here is how much of TeX's memory you used:
- 30797 strings out of 467871
- 616413 string characters out of 5418376
- 1060575 words of memory out of 5000000
- 59030 multiletter control sequences out of 15000+600000
+ 30764 strings out of 467871
+ 615834 string characters out of 5418376
+ 1059348 words of memory out of 5000000
+ 59005 multiletter control sequences out of 15000+600000
  643436 words of font info for 97 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 116i,12n,121p,720b,1032s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 116i,12n,121p,726b,1032s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\ammar\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Lampiran_Rumus.pdf (20 pages, 346381 bytes).
+Output written on Lampiran_Rumus.pdf (21 pages, 334353 bytes).
 PDF statistics:
- 436 PDF objects out of 1000 (max. 8388607)
- 125 named destinations out of 1000 (max. 500000)
+ 377 PDF objects out of 1000 (max. 8388607)
+ 120 named destinations out of 1000 (max. 500000)
  197 words of extra memory for PDF output out of 10000 (max. 10000000)
 

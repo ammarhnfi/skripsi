@@ -30,12 +30,61 @@ server = app.server
 # --- GLOBAL MAP INITIALIZATION ---
 try:
     print("Sedang membaca Shapefile...")
-    # Load shapefile (ensure gadm41_IDN_2.shp exists in project root)
-    try:
-        gdf = gpd.read_file("D:\Skripsi\my\web\gadm41_IDN_2.shp", engine="pyogrio")
-    except Exception as geo_e:
-        print(f"Gagal memuat dengan pyogrio, mencoba default: {geo_e}")
-        gdf = gpd.read_file("D:\Skripsi\my\web\gadm41_IDN_2.shp")
+    # Dynamic shapefile paths to ensure perfect resolution across all local & server environments
+    shp_paths = [
+        "gadm41_IDN_2.shp",
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "gadm41_IDN_2.shp"),
+        "D:\\Skripsi\\my\\web\\gadm41_IDN_2.shp",
+        "/home/user/app/gadm41_IDN_2.shp"
+    ]
+    
+    gdf = None
+    last_error = ""
+    for p in shp_paths:
+        try:
+            # 1. Try loading with pyogrio (preferred engine for speed)
+            gdf = gpd.read_file(p, engine="pyogrio")
+            print(f"Berhasil memuat Shapefile dengan pyogrio dari: {p}")
+            break
+        except Exception as e:
+            last_error = str(e)
+            try:
+                # 2. Try loading with fiona (as default fallback)
+                gdf = gpd.read_file(p)
+                print(f"Berhasil memuat Shapefile dengan fiona dari: {p}")
+                break
+            except Exception as e2:
+                last_error = f"{last_error} | {str(e2)}"
+                
+    if gdf is None:
+        print("Mencoba mengunduh Shapefile dari Hugging Face...")
+        import urllib.request
+        base_url = "https://huggingface.co/spaces/ammarhnfi/skripsi/resolve/main"
+        exts = [".shp", ".shx", ".dbf", ".prj", ".cpg"]
+        download_dir = os.path.dirname(os.path.abspath(__file__))
+        if not os.access(download_dir, os.W_OK):
+            download_dir = "/tmp"
+            
+        for ext in exts:
+            file_url = f"{base_url}/gadm41_IDN_2{ext}"
+            local_file = os.path.join(download_dir, f"gadm41_IDN_2{ext}")
+            try:
+                print(f"Mengunduh {file_url} ke {local_file}")
+                urllib.request.urlretrieve(file_url, local_file)
+            except Exception as dl_err:
+                print(f"Gagal mengunduh {ext}: {dl_err}")
+                
+        try:
+            shp_p = os.path.join(download_dir, "gadm41_IDN_2.shp")
+            gdf = gpd.read_file(shp_p, engine="pyogrio")
+            print(f"Berhasil memuat Shapefile yang diunduh dengan pyogrio dari: {shp_p}")
+        except Exception as e3:
+            try:
+                shp_p = os.path.join(download_dir, "gadm41_IDN_2.shp")
+                gdf = gpd.read_file(shp_p)
+                print(f"Berhasil memuat Shapefile yang diunduh dengan fiona dari: {shp_p}")
+            except Exception as e4:
+                raise Exception(f"Semua jalur, engine, dan download fallback gagal. Error terakhir: {e4}")
     
     print("Mengoptimalkan/Menyederhanakan geometri peta...")
     gdf['geometry'] = gdf['geometry'].simplify(tolerance=0.005, preserve_topology=True)
@@ -241,11 +290,11 @@ $$
         html.Details([
             html.Summary(dcc.Markdown("2. Hubungan Antar-Tahun ($\\mathbf{H}$, RV, dan Bobot $\\alpha$)", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
             html.Div([
-                html.P("Matriks interstruktur $\\mathbf{H}$ memakai produk Hilbert–Schmidt $\\mathrm{tr}(\\mathbf{W}_i\\mathbf{W}_j)$; koefisien RV menormalisasi elemen tersebut; bobot $\\alpha$ diambil dari vektor eigen pertama $\\mathbf{H}$ (Lavit 1994).", style={'fontStyle': 'italic'}),
+                html.P("Matriks interstruktur $\\mathbf{H}$ memakai produk Hilbert–Schmidt $\\mathrm{tr}(\\mathbf{W}_i \\mathbf{D} \\mathbf{W}_j \\mathbf{D})$; koefisien RV menormalisasi elemen tersebut; bobot $\\alpha$ diambil dari vektor eigen pertama $\\mathbf{H}$ (Lavit 1994).", style={'fontStyle': 'italic'}),
                 render_step("1. Koefisien RV (tampilan)", rv_f1),
                 render_step("2. Matriks interstruktur", r"""
 $$
-H_{ij} = \mathrm{tr}(\mathbf{W}_i \mathbf{W}_j), \qquad \mathbf{H}\mathbf{u} = \theta \mathbf{u}, \quad \alpha_k = \frac{u_{1k}}{\sum_{k'} u_{1k'}}
+H_{ij} = \mathrm{tr}(\mathbf{W}_i \mathbf{D} \mathbf{W}_j \mathbf{D}), \qquad \mathbf{H}\mathbf{u} = \theta \mathbf{u}, \quad \alpha_k = \frac{u_{1k}}{\sum_{k'} u_{1k'}}
 $$
 """),
                 render_step(f"3. Substitution RV (Tahun {t_a} vs {t_b})", rv_f2),
@@ -264,17 +313,17 @@ $$
         ], style={'marginBottom': '10px'}),
         
         html.Details([
-            html.Summary(dcc.Markdown("4. Dekomposisi Singular (SVD) Kompromi", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
+            html.Summary(dcc.Markdown("4. Dekomposisi Spektral Kompromi", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
             html.Div([
                 html.P("Mendapatkan titik kordinat akhir untuk memetakan objek di grafik Biplot.", style={'fontStyle': 'italic'}),
-                render_step("1. General Formula (SVD)", r"""
+                render_step("1. General Formula", r"""
 $$
-\mathbf{W}_c = \mathbf{U} \mathbf{\Lambda}_c \mathbf{V}^T 
+\mathbf{W}_c = \mathbf{P} \mathbf{\Lambda}_c \mathbf{P}^T 
 $$
 """),
                 render_step("2. Final Coordinates", r"""
 $$
-\mathbf{F}_c = \mathbf{U} \sqrt{\mathbf{\Lambda}_c} 
+\mathbf{F}_c = \mathbf{P} \sqrt{\mathbf{\Lambda}_c} 
 $$
 """)
             ], style=math_style)
@@ -552,23 +601,30 @@ def rotate_dataframe(df, angle, cols=['PC1', 'PC2']):
     df_rot[cols] = vals.dot(R.T)
     return df_rot
 
-def _calculate_R_matrix(Ws_list, k):
+def _calculate_R_matrix(Ws_list, k, D=None):
     """Matriks koefisien RV (normalisasi); untuk heatmap dan interpretasi."""
     R = np.zeros((k, k))
     for i in range(k):
         for j in range(k):
-            num = np.trace(Ws_list[i].T @ Ws_list[j])
-            den = np.sqrt(np.trace(Ws_list[i].T @ Ws_list[i]) * np.trace(Ws_list[j].T @ Ws_list[j]))
+            if D is not None:
+                num = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
+                den = np.sqrt(np.trace(Ws_list[i] @ D @ Ws_list[i] @ D) * np.trace(Ws_list[j] @ D @ Ws_list[j] @ D))
+            else:
+                num = np.trace(Ws_list[i].T @ Ws_list[j])
+                den = np.sqrt(np.trace(Ws_list[i].T @ Ws_list[i]) * np.trace(Ws_list[j].T @ Ws_list[j]))
             R[i, j] = 0.0 if den == 0 else num / den
     return R
 
 
-def _calculate_H_matrix(Ws_list, k):
+def _calculate_H_matrix(Ws_list, k, D=None):
     """Matriks interstruktur: elemen (i,j) = tr(W_i W_j) (Lavit 1994; Oliveira et al. 2024)."""
     H = np.zeros((k, k))
     for i in range(k):
         for j in range(k):
-            H[i, j] = np.trace(Ws_list[i] @ Ws_list[j])
+            if D is not None:
+                H[i, j] = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
+            else:
+                H[i, j] = np.trace(Ws_list[i] @ Ws_list[j])
     return H
 
 
@@ -691,8 +747,8 @@ def export_core_latex(res):
             lines.append(fr"\newcommand{{\statisInertiaA}}{{{pct:.2f}}}")
             
         # Simpan di parent directory agar sejajar dengan file LaTeX utama
-        os.makedirs("../huggingface", exist_ok=True)
-        with open("../huggingface/output_core_statis.tex", "w") as f:
+        os.makedirs("../output_app", exist_ok=True)
+        with open("../output_app/output_core_statis.tex", "w") as f:
             f.write("\n".join(lines))
         print("LaTeX Core Exported to ../output_core_statis.tex!")
     except Exception as e:
@@ -766,8 +822,8 @@ def export_tables_latex(res):
                 lines.append(r"\end{table}")
 
             # Write to specific file
-            os.makedirs("../huggingface", exist_ok=True)
-            with open(f"../huggingface/output_table_{filename}.tex", "w") as f:
+            os.makedirs("../output_app", exist_ok=True)
+            with open(f"../output_app/output_table_{filename}.tex", "w") as f:
                 f.write("\n".join(lines))
             print(f"Exported ../output_table_{filename}.tex")
 
@@ -797,8 +853,8 @@ def export_perm_latex(p_val, desc):
         lines.append(fr"\newcommand{{\statisPValue}}{{{p_val:.4f}}}")
         lines.append(fr"\newcommand{{\statisKet}}{{{desc}}}")
         
-        os.makedirs("../huggingface", exist_ok=True)
-        with open("../huggingface/output_perm_statis.tex", "w") as f:
+        os.makedirs("../output_app", exist_ok=True)
+        with open("../output_app/output_perm_statis.tex", "w") as f:
             f.write("\n".join(lines))
         print("LaTeX Perm Exported to ../output_perm_statis.tex!")
     except Exception as e:
@@ -998,13 +1054,13 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
 
         tables_std.append(pd.DataFrame(Z_k, index=t.index, columns=t.columns))
         X_matrices.append(Z_k)
-        # W_k = (D^{1/2} Z_k)(D^{1/2} Z_k)^T  — D sudah terinkorporasi dalam W_k
-        DsqrtZ = D_sqrt @ Z_k                          # shape (n, p)
-        Ws.append(DsqrtZ @ DsqrtZ.T)                  # shape (n, n)
+        # W_k = Z_k Z_k^T  -- pure unweighted intra-structure matrix (Lavit 1994)
+        Ws.append(Z_k @ Z_k.T)                  # shape (n, n)
 
     # 4. Inter-struktur: H (produk Hilbert–Schmidt) dan matriks RV untuk tampilan
-    H = _calculate_H_matrix(Ws, k)
-    R = _calculate_R_matrix(Ws, k)
+    D_diag_mat = np.diag(m_weights)
+    H = _calculate_H_matrix(Ws, k, D=D_diag_mat)
+    R = _calculate_R_matrix(Ws, k, D=D_diag_mat)
     vals_H, vecs_H = np.linalg.eig(H)
     vals_H, vecs_H = np.real(vals_H), np.real(vecs_H)
     idx_H = np.argsort(vals_H)[::-1]
@@ -1026,11 +1082,13 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
     for a, W in zip(alphas, Ws): Wc += a * W
 
     # 6. Dekomposisi Wc (Mendapatkan Skor Fc) menggunakan SVD
-    U, S, Vt = np.linalg.svd(Wc)
-    eig_vals_c = S
-    eig_vecs_c = U
-    idxc = np.argsort(eig_vals_c)[::-1]
-    eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]
+    # Sesuai teori, SVD/EVD dari Wc * D ekuivalen dengan SVD dari D^{1/2} * Wc * D^{1/2}
+    Wc_weighted = D_sqrt @ Wc @ D_sqrt
+    P, Lambda_c, Pt = np.linalg.svd(Wc_weighted)  # Dekomposisi spektral: P = vektor eigen, Lambda_c = nilai eigen
+    eig_vals_c = Lambda_c                         # Nilai eigen kompromi (Lambda)
+    eig_vecs_c = P                                # Vektor eigen kompromi (P)
+    idxc = np.argsort(eig_vals_c)[::-1]           # Indeks pengurutan dari nilai terbesar ke terkecil
+    eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]  # Menyusun nilai & vektor eigen sesuai urutan dominan
     
     # Skor Kompromi: Fc = D^{-1/2} P Lambda^{1/2}  (Lavit 1994, Lampiran_Rumus Box 17)
     # D^{-1/2} mengembalikan koordinat dari ruang metrik D ke ruang asli observasi
@@ -1096,6 +1154,12 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
         df_wk = pd.DataFrame(np.round(Ws[i], 6), index=obs_labels, columns=obs_labels)
         df_wk.index.name = 'Kab/Kota'; df_wk = df_wk.reset_index()
         intra_score_dicts[fr"Matriks Intra-Skor \mathbf{{W}}_{{{yr}}}"] = df_wk.to_dict('records')
+
+        # Skor Intra F_k (Proyeksi objek tahun k ke ruang kompromi variabel - "Trajectory")
+        Fk_raw = np.array(per_year_coords[yr])
+        df_fk = pd.DataFrame(np.round(Fk_raw, 6), index=obs_labels, columns=['PC1', 'PC2'])
+        df_fk.index.name = 'Kab/Kota'; df_fk = df_fk.reset_index()
+        intra_score_dicts[fr"Skor Intra \mathbf{{F}}_{{{yr}}}"] = df_fk.to_dict('records')
         
         # Loading Intra G_k (Proyeksi variabel tahun k ke ruang kompromi)
         # Formula: G_k = Z_k^T * D^{1/2} * P (Lavit 1994)
@@ -1161,6 +1225,248 @@ def run_permutation_test(X_matrices, k, lambda_obs, n_permutations, m_weights=No
     p_value = (np.sum(dist_lambdas >= lambda_obs) + 1) / (n_permutations + 1)
     return dist_lambdas, p_value
 
+
+def compute_structure_vector(H, alphas, sheet_names, X_matrices, m_weights, obs_labels,
+                              province_map=None):
+    """
+    Mengimplementasikan model vektor struktur Areia, Oliveira & Mexia (2008),
+    sebagaimana dirangkum dalam Oliveira et al. (2024).
+
+    Model: H = lambda * alpha * alpha^T + E_bar
+    Estimator vektor struktur: beta_tilde = lambda_1 * u_1  (vektor eigen pertama H, sebelum normalisasi)
+
+    Parameter
+    ----------
+    H            : np.ndarray (K x K) — matriks interstruktur Hilbert-Schmidt
+    alphas       : np.ndarray (K,)   — bobot kompromi (u_1 ternormalisasi)
+    sheet_names  : list[str]         — nama situasi (tahun)
+    X_matrices   : list[np.ndarray]  — daftar matriks Z_k terstandarisasi (n x p)
+    m_weights    : np.ndarray (n,)   — bobot demografis m_i
+    obs_labels   : list[str]         — nama objek (kabupaten/kota)
+    province_map : dict[str, list[str]] — {"Banten": [...], "DKI Jakarta": [...], "Jawa Barat": [...]}
+                   Jika None, analisis transversal tidak dilakukan.
+
+    Returns
+    -------
+    dict berisi semua kuantitas inferensial
+    """
+    K = len(sheet_names)
+    H = np.array(H)
+
+    # ----------------------------------------------------------------
+    # 1. Eigendekomposisi H (sudah tersedia di run_statis_core, namun
+    #    dihitung ulang di sini agar fungsi ini berdiri sendiri)
+    # ----------------------------------------------------------------
+    vals_H, vecs_H = np.linalg.eig(H)
+    vals_H = np.real(vals_H)
+    vecs_H = np.real(vecs_H)
+    idx_sort = np.argsort(vals_H)[::-1]
+    vals_H = vals_H[idx_sort]
+    vecs_H = vecs_H[:, idx_sort]
+
+    lambda1 = vals_H[0]               # nilai eigen pertama (skalar kegentingan)
+    u1      = vecs_H[:, 0]            # vektor eigen pertama (sebelum normalisasi)
+
+    # Pastikan tanda u1 positif (konvensi: elemen terbesar positif)
+    if u1.sum() < 0:
+        u1 = -u1
+
+    # 2. Vektor struktur: beta_k = lambda1 * u1_k  (Persamaan eq:beta_vec)
+    beta_tilde = lambda1 * u1         # shape (K,)
+
+    # 3. Norm Frobenius H: ||H||_F^2 = tr(H^T H) = tr(H^2) (H simetris)
+    H_frobenius_sq = np.trace(H @ H)
+
+    # 4. SS Residual: V = ||H||_F^2 - lambda1^2  (Persamaan eq:ss_residual)
+    V = H_frobenius_sq - lambda1**2
+
+    # 5. Inertia dimensi pertama: Inertia_1 = lambda1 / sum(lambda_j)
+    #    Gunakan hanya eigenvalue positif untuk keabsahan numerik
+    sum_eigenvalues = np.sum(np.clip(vals_H, a_min=0, a_max=None))
+    inertia1 = lambda1 / sum_eigenvalues if sum_eigenvalues > 0 else np.nan
+
+    # 6. Rasio dominansi: lambda_1 / lambda_2 (indikator kegentingan)
+    dominance_ratio = lambda1 / vals_H[1] if (K > 1 and vals_H[1] > 1e-12) else np.inf
+
+    # ----------------------------------------------------------------
+    # 7. Analisis Transversal: Vektor struktur per provinsi
+    # ----------------------------------------------------------------
+    beta_provinsi = {}
+    if province_map is not None:
+        D_sqrt_full = np.diag(np.sqrt(m_weights))
+        obs_array = np.array(obs_labels)
+
+        for prov_name, prov_wilayah in province_map.items():
+            # Indeks wilayah pada provinsi ini
+            prov_idx = [i for i, lab in enumerate(obs_labels) if lab in prov_wilayah]
+            if len(prov_idx) < 2:
+                continue  # Lewati jika terlalu sedikit wilayah
+
+            # Hitung bobot untuk sub-populasi ini (ternormalisasi ulang)
+            m_sub = m_weights[prov_idx]
+            m_sub_norm = m_sub / m_sub.sum()
+            D_sqrt_sub = np.diag(np.sqrt(m_sub_norm))
+
+            # Hitung W_k dan H untuk sub-seri
+            Ws_sub = []
+            for X_k in X_matrices:
+                X_sub = X_k[prov_idx, :]
+                DsqZ = D_sqrt_sub @ X_sub
+                Ws_sub.append(DsqZ @ DsqZ.T)
+
+            H_sub = _calculate_H_matrix(Ws_sub, K)
+            vals_sub, vecs_sub = np.linalg.eig(H_sub)
+            vals_sub = np.real(vals_sub)
+            vecs_sub = np.real(vecs_sub)
+            idx_sub = np.argsort(vals_sub)[::-1]
+            lambda1_sub = vals_sub[idx_sub[0]]
+            u1_sub = vecs_sub[:, idx_sub[0]]
+            if u1_sub.sum() < 0:
+                u1_sub = -u1_sub
+            beta_provinsi[prov_name] = lambda1_sub * u1_sub  # shape (K,)
+
+    return {
+        'lambda1':         lambda1,
+        'u1':              u1,
+        'beta_tilde':      beta_tilde,
+        'H_frobenius_sq':  H_frobenius_sq,
+        'V':               V,
+        'inertia1':        inertia1,
+        'dominance_ratio': dominance_ratio,
+        'vals_H':          vals_H,
+        'sheet_names':     sheet_names,
+        'beta_provinsi':   beta_provinsi,   # dict {prov_name: array(K,)}
+    }
+
+
+def export_structure_vector_latex(sv_res, output_dir="../output_app", label_prefix=""):
+    """
+    Mengekspor hasil compute_structure_vector ke tabel LaTeX dan grafik PNG.
+    Menghasilkan:
+      - output_table_beta_vec.tex        : Tabel komponen beta_tilde per tahun
+      - output_table_struktur_diagnostik.tex : Tabel diagnostik dominansi
+      - output_table_beta_provinsi.tex   : Tabel beta_tilde per provinsi
+      - beta_trajectory.png              : Plot lintasan temporal beta_tilde_k
+    """
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+
+    os.makedirs(output_dir, exist_ok=True)
+    sheet_names  = sv_res['sheet_names']
+    beta_tilde   = sv_res['beta_tilde']
+    beta_provinsi = sv_res.get('beta_provinsi', {})
+    K = len(sheet_names)
+
+    def _tex_table(rows, col_headers, caption, label, filename):
+        """Helper: tulis tabel tabular standar ke file .tex."""
+        n_cols = len(col_headers)
+        lines = []
+        lines.append(r"\begin{table}[H]")
+        lines.append(r"\centering")
+        lines.append(r"\small")
+        lines.append(fr"\caption{{{caption}}} \label{{tab:{label_prefix}{label}}}")
+        lines.append(r"\begin{tabular}{|" + "c|" * n_cols + "}")
+        lines.append(r"\hline")
+        lines.append(" & ".join([fr"\textbf{{{h}}}" for h in col_headers]) + r" \\")
+        lines.append(r"\hline")
+        for row in rows:
+            lines.append(" & ".join([str(v) for v in row]) + r" \\")
+        lines.append(r"\hline")
+        lines.append(r"\end{tabular}")
+        lines.append(r"\end{table}")
+        path = os.path.join(output_dir, filename)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines))
+        print(f"[StrukturVektor] Exported: {path}")
+
+    # --- (A) Tabel komponen beta_tilde ---
+    rows_beta = [
+        [yr, f"{bt:.4f}"]
+        for yr, bt in zip(sheet_names, beta_tilde)
+    ]
+    _tex_table(
+        rows=rows_beta,
+        col_headers=["Tahun ($k$)", r"$\tilde{\beta}_k = \lambda_1 u_{1k}$"],
+        caption=r"Komponen Vektor Struktur $\tilde{\boldsymbol{\beta}}$ per Situasi Waktu",
+        label="beta_vec",
+        filename="output_table_beta_vec.tex"
+    )
+
+    # --- (B) Tabel diagnostik dominansi ---
+    lambda1        = sv_res['lambda1']
+    H_frob_sq      = sv_res['H_frobenius_sq']
+    V              = sv_res['V']
+    inertia1       = sv_res['inertia1']
+    dom_ratio      = sv_res['dominance_ratio']
+    V_ratio        = V / H_frob_sq if H_frob_sq > 0 else np.nan
+
+    rows_diag = [
+        [r"$\lambda_1$ (Nilai Eigen Dominan)",     f"{lambda1:.4f}"],
+        [r"$\|\mathbf{H}\|_F^2$ (Frobenius$^2$)",  f"{H_frob_sq:.4f}"],
+        [r"$V$ (SS Residual)",                      f"{V:.4f}"],
+        [r"$V / \|\mathbf{H}\|_F^2$ (Rasio Sisa)", f"{V_ratio:.4f}"],
+        [r"Inertia$_1$ (Dominansi \%)",             f"{inertia1*100:.2f}\\%"],
+        [r"$\lambda_1 / \lambda_2$ (Rasio Kegentingan)", f"{dom_ratio:.4f}" if np.isfinite(dom_ratio) else r"$\infty$"],
+    ]
+    _tex_table(
+        rows=rows_diag,
+        col_headers=["Kuantitas", "Nilai"],
+        caption=r"Diagnostik Dominansi Model Rank-1 (Areia et al., 2008)",
+        label="struktur_diagnostik",
+        filename="output_table_struktur_diagnostik.tex"
+    )
+
+    # --- (C) Tabel beta per provinsi ---
+    if beta_provinsi:
+        prov_names = list(beta_provinsi.keys())
+        col_headers_prov = ["Tahun ($k$)"] + prov_names
+        rows_prov = []
+        for ki, yr in enumerate(sheet_names):
+            row = [yr] + [f"{beta_provinsi[p][ki]:.4f}" if ki < len(beta_provinsi[p]) else "-"
+                          for p in prov_names]
+            rows_prov.append(row)
+        _tex_table(
+            rows=rows_prov,
+            col_headers=col_headers_prov,
+            caption=r"Komponen Vektor Struktur $\tilde{\beta}_{gk}$ per Provinsi (Analisis Transversal)",
+            label="beta_provinsi",
+            filename="output_table_beta_provinsi.tex"
+        )
+
+    # --- (D) Plot lintasan temporal beta_tilde_k ---
+    fig, ax = plt.subplots(figsize=(7, 4))
+    x_vals = list(range(K))
+
+    ax.plot(x_vals, beta_tilde, marker='o', linewidth=2.0, color='#1976D2',
+            markersize=8, label=r'$\tilde{\beta}_k$ (Gabungan)')
+
+    if beta_provinsi:
+        colors_prov = ['#D81B60', '#43A047', '#FB8C00']
+        for (prov, betas), color in zip(beta_provinsi.items(), colors_prov):
+            if len(betas) == K:
+                ax.plot(x_vals, betas, marker='s', linewidth=1.5,
+                        linestyle='--', color=color, markersize=6,
+                        label=fr'$\tilde{{\beta}}_{{gk}}$ {prov}', alpha=0.85)
+
+    ax.set_xticks(x_vals)
+    ax.set_xticklabels(sheet_names, fontsize=10)
+    ax.set_xlabel("Tahun ($k$)", fontsize=11)
+    ax.set_ylabel(r"$\tilde{\beta}_k = \lambda_1 u_{1k}$", fontsize=11)
+    ax.set_title(r"Lintasan Temporal Komponen Vektor Struktur $\tilde{\boldsymbol{\beta}}$",
+                 fontsize=12, fontweight='bold')
+    ax.legend(fontsize=9, loc='best')
+    ax.grid(True, linestyle='--', alpha=0.5)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    fig.tight_layout()
+    plot_path = os.path.join(output_dir, "beta_trajectory.png")
+    fig.savefig(plot_path, dpi=150, bbox_inches='tight')
+    plt.close(fig)
+    print(f"[StrukturVektor] Plot saved: {plot_path}")
+
+
+
 # -----------------------------
 pd.set_option('display.max_columns', None)
 scaler = StandardScaler()
@@ -1183,6 +1489,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
     dcc.Store(id='statis-core-store'), # Menyimpan hasil STATIS lengkap
     dcc.Store(id='descriptive-store'), # Menyimpan hasil statistika deskriptif
     dcc.Store(id='statis-trans-store'), # [NEW] Menyimpan hasil clustering transisi (k-means)
+    dcc.Store(id='weighted-trans-store'), # [NEW] Menyimpan hasil clustering transisi terbobot STATIS
+    dcc.Store(id='biplot-statis-compare-store'), # [NEW] Menyimpan hasil perbandingan biplot vs statis
     
     # --- HEADER ---
     html.Div(style=CARD_STYLE, children=[
@@ -1346,7 +1654,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
     # --- 4. CONTROLS (STATIS Panel) ---
     html.Div(style=CARD_STYLE, children=[
-        html.H4("Panel Kontrol Analisis STATIS", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+        html.H4("Panel Kontrol Analisis Dynamic Biplot dan STATIS", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
         html.Div(className='row', children=[
             html.Div(className='three columns', children=[
                 html.Label('Pilih Variabel Analisis:', style={'fontWeight':'bold'}),
@@ -1436,25 +1744,77 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
         ])
     ]),
 
+    # --- 3B. DYNAMIC BIPLOT STATIS (SKOR INTRA F) ---
+    html.Div(id='statis-biplot-3d-section-container', style={'display': 'none'}, children=[
+        html.H5("Visualisasi Dynamic Biplot (Skor Intra F dari STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+        dcc.Loading(type='cube', color='#2E7D32', children=[
+            dcc.Graph(id='statis-graph-3d-main', style={'height': '700px'})
+        ]),
+        html.Hr(),
+        html.Div(className='row', children=[
+            html.Div(className='six columns', children=[
+                html.H5("Snapshot 2D per Tahun (Skor Intra STATIS)", style={'textAlign': 'center', 'color': '#2E7D32'}),
+                dcc.Dropdown(id='statis-year-dropdown-2d-single', style={'width':'60%', 'margin':'0 auto', 'marginBottom':'10px'}),
+                dcc.Loading(children=[dcc.Graph(id='statis-graph-2d-year', style={'height': '600px'})])
+            ]),
+            html.Div(className='six columns', children=[
+                html.H5("Proyeksi Trajektori 2D (Skor Intra STATIS)", style={'textAlign': 'center', 'color': '#2E7D32'}),
+                html.P("Lintasan pergerakan objek dari tahun ke tahun", style={'textAlign':'center', 'color':'#90A4AE', 'fontSize':'12px'}),
+                dcc.Loading(children=[dcc.Graph(id='statis-graph-2d-traj', style={'height': '600px'})])
+            ])
+        ]),
+        html.Hr(),
+        html.H6("Data Trajektori STATIS Terpilih (Tabel)", style={'textAlign':'center', 'fontWeight':'bold', 'color': '#2E7D32'}),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='statis-trajectory-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=10
+            )
+        ])
+    ]),
+
+    # --- 3C. MATRIKS JARAK & PERBANDINGAN PCA VS STATIS ---
+    html.Div(id='distance-comparison-section-container', style={'display': 'none'}, children=[
+        html.H5("Analisis Jarak & Perbedaan (PCA vs STATIS Intra)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#0288D1'}),
+        html.P("Perbandingan posisi objek atau variabel antara ruang PCA Dynamic Biplot (Unweighted) dan Skor Intra STATIS (Weighted) untuk melihat pengaruh pembobotan.", style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+        html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+            html.Label("Pilih Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+            dcc.Dropdown(id='compare-year-dropdown', clearable=False, style={'width': '150px', 'marginRight': '20px'}),
+            html.Label("Pilih Jenis Data:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+            dcc.Dropdown(id='compare-data-type', options=[{'label': 'Skor (Objek)', 'value': 'scores'}, {'label': 'Loadings (Variabel)', 'value': 'loadings'}], value='scores', clearable=False, style={'width': '200px', 'marginRight': '20px'})
+        ]),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='compare-distance-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#0288D1', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=10
+            )
+        ])
+    ]),
+
     # --- 4. STATIS ANALYSIS ---
     html.Div(id='statis-section-container', style={'display': 'none'}, children=[
         html.H5("Analisis STATIS (Struktur Kompromi)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
         dcc.Loading(children=[html.Div(id='formula-statis-output', style={'marginBottom': '20px'})]),
-        # 4 Plot Grid -> Expanded to 8 Plot Grid
+        # 4 Plot Grid -> Expanded to 7 Plot Grid
         html.Div(className='row', style={'marginBottom':'30px'}, children=[
             html.Div(className='six columns', children=[
                 dcc.Loading(children=[dcc.Graph(id='statis-scree', style={'height': '400px'})])
             ]),
             html.Div(className='six columns', children=[
-                dcc.Loading(children=[dcc.Graph(id='statis-rv-heatmap', style={'height': '400px'})])
+                dcc.Loading(children=[dcc.Graph(id='statis-interstructure', style={'height': '400px'})])
             ])
         ]),
         html.Div(className='row', style={'marginBottom':'30px'}, children=[
-            html.Div(className='six columns', children=[
-                dcc.Loading(children=[dcc.Graph(id='statis-compromise', style={'height': '500px'})])
-            ]),
-            html.Div(className='six columns', children=[
-                dcc.Loading(children=[dcc.Graph(id='statis-biplot', style={'height': '500px'})])
+            html.Div(className='twelve columns', children=[
+                dcc.Loading(children=[dcc.Graph(id='statis-biplot', style={'height': '600px'})])
             ])
         ]),
         html.Div(className='row', style={'marginBottom':'30px'}, children=[
@@ -1467,10 +1827,10 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
         ]),
         html.Div(className='row', style={'marginTop':'30px'}, children=[
             html.Div(className='six columns', children=[
-                dcc.Loading(children=[dcc.Graph(id='statis-interstructure', style={'height': '500px'})])
+                dcc.Loading(children=[dcc.Graph(id='statis-trajectory', style={'height': '500px'})])
             ]),
             html.Div(className='six columns', children=[
-                dcc.Loading(children=[dcc.Graph(id='statis-trajectory', style={'height': '500px'})])
+                dcc.Loading(children=[dcc.Graph(id='statis-trajectory-loading', style={'height': '500px'})])
             ])
         ]),
         
@@ -1546,7 +1906,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- [TAMBAHAN BARU] SECTION 6: CLUSTERING TAHUNAN & MATRIKS TRANSISI ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Analisis Cluster Spasio-Temporal (Tahunan & Migrasi)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.H5("Analisis Cluster Spasio-Temporal Tahunan (Berdasarkan PCA 3D Tanpa Bobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Pasangan Tahun Transisi:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
@@ -1586,6 +1946,98 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-trans-tex")
+            ])
+        ]),
+
+        # --- [TAMBAHAN BARU] SECTION 6B: CLUSTERING TAHUNAN & MATRIKS TRANSISI TERBOBOT (STATIS) ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Analisis Cluster Spasio-Temporal Tahunan (Berdasarkan Trajektori STATIS Terbobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Pasangan Tahun Transisi:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='weighted-trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
+                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Input(id='weighted-trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
+                html.Button("RUN CLUSTERING TERBOBOT", id='btn-run-weighted-trans', n_clicks=0, 
+                            style={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t1', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t2', style={'height': '500px'})])
+                ])
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t1', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t2', style={'height': '500px'})])
+                ])
+            ]),
+            html.Hr(),
+            html.H6("Matriks Transisi Terbobot (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='weighted-trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            dcc.Loading(children=[
+                dash_table.DataTable(id='weighted-trans-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ]),
+            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-weighted-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                dcc.Download(id="download-weighted-trans-tex")
+            ])
+        ]),
+
+        # --- [TAMBAHAN BARU] SECTION 6C: PERBANDINGAN METODE CLUSTER (BIPLOT VS STATIS) PADA TAHUN TERTENTU ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Perbandingan Cluster: Biplot PCA (Unweighted) vs Trajektori STATIS (Weighted)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#D84315'}),
+            html.P("Membandingkan hasil pengelompokan wilayah antara metode Biplot PCA biasa dan trajektori STATIS untuk satu tahun tertentu.", style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+            
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Label("Pilih Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Dropdown(id='biplot-statis-compare-year', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
+                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                dcc.Input(id='biplot-statis-compare-k', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
+                html.Button("RUN PERBANDINGAN", id='btn-run-biplot-statis-compare', n_clicks=0, 
+                            style={'backgroundColor': '#D84315', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-map-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-biplot', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-statis', style={'height': '500px'})])
+                ])
+            ]),
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-scatter-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-biplot', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-scatter-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-statis', style={'height': '500px'})])
+                ])
+            ]),
+            html.Hr(),
+            html.H6("Matriks Tabulasi Silang (Biplot vs STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#D84315'}),
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='biplot-statis-compare-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            dcc.Loading(children=[
+                dash_table.DataTable(id='biplot-statis-compare-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ]),
+            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-biplot-statis-compare-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                dcc.Download(id="download-biplot-statis-compare-tex")
             ])
         ]),
 
@@ -1880,8 +2332,18 @@ def cb_upload(contents, filename):
         # --- [NEW] VALIDASI NAMA EKSAK DENGAN SHAPEFILE ---
         import difflib
         valid_peta = gdf['id_cocok'].unique().tolist() if gdf is not None else []
-        matches = [k for k in kab_kota if k in valid_peta]
-        mismatches = [k for k in kab_kota if k not in valid_peta]
+        norm_to_valid = {str(v).strip().lower(): v for v in valid_peta}
+        
+        matches = []
+        mismatches = []
+        for k in kab_kota:
+            k_clean = str(k).strip()
+            if k in valid_peta:
+                matches.append(k)
+            elif k_clean.lower() in norm_to_valid:
+                matches.append(k)
+            else:
+                mismatches.append(k)
         
         report_items = []
         
@@ -1901,7 +2363,12 @@ def cb_upload(contents, filename):
         if mismatches:
             mismatch_ui = []
             for m in mismatches:
-                suggestions = difflib.get_close_matches(m, valid_peta, n=1, cutoff=0.6)
+                m_clean = str(m).strip()
+                suggestions = difflib.get_close_matches(m_clean, valid_peta, n=1, cutoff=0.5)
+                if not suggestions:
+                    clean_valid = [v for v in valid_peta if m_clean.lower() in str(v).lower() or any(sub in str(v).lower() for sub in m_clean.lower().split())]
+                    if clean_valid:
+                        suggestions = [clean_valid[0]]
                 saran_txt = f" (Saran: '{suggestions[0]}')" if suggestions else " (Tidak ditemukan saran)"
                 mismatch_ui.append(html.Li([
                     html.Span(f"'{m}'", style={'fontWeight': 'bold', 'color': '#C62828'}),
@@ -1938,11 +2405,15 @@ def cb_upload(contents, filename):
     Output('baseline-name-final', 'options'), 
     Output('eval-year-dropdown', 'options'), Output('eval-year-dropdown', 'value'),
     Output('trans-year-dropdown', 'options'), Output('trans-year-dropdown', 'value'),
+    Output('weighted-trans-year-dropdown', 'options'), Output('weighted-trans-year-dropdown', 'value'),
     Output('ipm-trans-year-dropdown', 'options'), Output('ipm-trans-year-dropdown', 'value'),
     Output('cross-year-dropdown', 'options'), Output('cross-year-dropdown', 'value'),
     Output('desc-year-dropdown', 'options'), Output('desc-year-dropdown', 'value'),
     Output('desc-weight-var-dropdown', 'options'), Output('desc-weight-var-dropdown', 'value'),
     Output('biplot-vs-statis-year', 'options'), Output('biplot-vs-statis-year', 'value'),
+    Output('statis-year-dropdown-2d-single', 'options'), Output('statis-year-dropdown-2d-single', 'value'),
+    Output('compare-year-dropdown', 'options'), Output('compare-year-dropdown', 'value'),
+    Output('biplot-statis-compare-year', 'options'), Output('biplot-statis-compare-year', 'value'),
     Input('global-data-store', 'data'), Input('baseline-type-final', 'value')
 )
 def cb_controls(data, base_type):
@@ -1968,7 +2439,9 @@ def cb_controls(data, base_type):
         f_opts, feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts, 
         y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
         trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
-        y_opts, years[-1], y_opts, years[-1], f_opts, default_weight, y_opts, years[-1]
+        trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
+        y_opts, years[-1], y_opts, years[-1], f_opts, default_weight, y_opts, years[-1],
+        y_opts, years[0], y_opts, years[-1], y_opts, years[-1]
     )
 
 # 2b. Sync Vector Selector with Selected Vars
@@ -2043,18 +2516,19 @@ def cb_statis_calc(n_clicks, vars, contents, global_data):
 # 4c. SHOW/HIDE SECTIONS CALLBACK
 @app.callback(
     Output('biplot-section-container', 'style'),
+    Output('statis-biplot-3d-section-container', 'style'),
+    Output('distance-comparison-section-container', 'style'),
     Output('statis-section-container', 'style'),
     Input('btn-run-statis', 'n_clicks'),
     prevent_initial_call=True
 )
 def cb_show_sections(n_clicks):
     if n_clicks and n_clicks > 0:
-        # Kembalikan style KARTU yang cantik tapi dipaksa MUNCUL
         style = CARD_STYLE.copy()
         style['display'] = 'block'
         style['marginTop'] = '30px'
-        return style, style
-    return {'display': 'none'}, {'display': 'none'}
+        return style, style, style, style
+    return {'display': 'none'}, {'display': 'none'}, {'display': 'none'}, {'display': 'none'}
 
 # 4b. DIAGNOSTICS & MATH FORMULAS CALLBACK
 @app.callback(
@@ -2195,21 +2669,275 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
     
     return fig_3d, fig_2d_y, fig_2d_t, table_rows, [{"name": i, "id": i} for i in pd.DataFrame(table_rows).columns] if table_rows else []
 
+
+@app.callback(
+    Output('statis-graph-3d-main', 'figure'), Output('statis-graph-2d-year', 'figure'), Output('statis-graph-2d-traj', 'figure'),
+    Output('statis-trajectory-table', 'data'), Output('statis-trajectory-table', 'columns'),
+    Input('statis-core-store', 'data'), Input('year-checklist-final', 'value'), Input('mirror-year-checklist-final', 'value'),
+    Input('baseline-type-final', 'value'), Input('baseline-name-final', 'value'), Input('trajectory-dropdown-final', 'value'),
+    Input('statis-year-dropdown-2d-single', 'value'), Input('loading-vector-scope-final', 'value'),
+    Input('visual-scaling-opts', 'value'), Input('vector-selector-final', 'value'),
+    State('global-data-store', 'data')
+)
+def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, base_name, traj_sel, year_2d, load_scope, vis_opts, selected_vectors_to_show, global_data):
+    if not statis_data or not years_filter or not global_data: return {}, {}, {}, [], []
+    
+    norm_score = 'norm_score' in vis_opts if vis_opts else False
+    scale_load = 'scale_load' in vis_opts if vis_opts else False
+    
+    import pandas as pd
+    df_global = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
+    prov_map = df_global[['Kabupaten/Kota', 'Provinsi']].drop_duplicates().set_index('Kabupaten/Kota')['Provinsi'].to_dict()
+    
+    pc_list, load_list = [], []
+    obs_labels = statis_data['obs_labels']
+    for yr in statis_data['sheet_names']:
+        if str(yr) not in [str(y) for y in years_filter]: continue
+        # Skor Intra F_k
+        coords_yr = np.array(statis_data['per_year_coords'][str(yr)])
+        d_p = pd.DataFrame({'Kabupaten/Kota': obs_labels, 'Tahun': int(yr)})
+        d_p['Provinsi'] = d_p['Kabupaten/Kota'].map(prov_map).fillna('Unknown')
+        d_p['PC1'] = coords_yr[:,0]
+        d_p['PC2'] = coords_yr[:,1]
+        pc_list.append(d_p)
+        
+        # Loading Intra G_k
+        G_key = fr"Loading Intra \mathbf{{G}}_{{{yr}}}"
+        if G_key in statis_data:
+            df_gk = pd.DataFrame(statis_data[G_key])
+            df_gk['Tahun'] = int(yr)
+            df_gk = df_gk.rename(columns={'Variabel': 'features'})
+            load_list.append(df_gk)
+            
+    if not pc_list or not load_list: return {}, {}, {}, [], []
+    
+    df_pc = pd.concat(pc_list, ignore_index=True)
+    df_load = pd.concat(load_list, ignore_index=True)
+    
+    if selected_vectors_to_show and len(selected_vectors_to_show) > 0:
+         df_load = df_load[df_load['features'].isin(selected_vectors_to_show)]
+
+    df_pc_fin, df_load_fin = df_pc.copy(), df_load.copy()
+    for y in sorted(df_pc['Tahun'].unique()):
+        angle = get_rotation_angle(df_pc, df_load, base_type, base_name, y) if base_name else 0
+        mask_p, mask_l = df_pc_fin['Tahun'] == y, df_load_fin['Tahun'] == y
+        if angle != 0:
+            df_pc_fin.loc[mask_p, ['PC1', 'PC2']] = rotate_dataframe(df_pc.loc[mask_p], angle)
+            df_load_fin.loc[mask_l, ['PC1', 'PC2']] = rotate_dataframe(df_load.loc[mask_l], angle)
+        if mirror_years and str(y) in [str(my) for my in mirror_years]:
+            df_pc_fin.loc[mask_p, 'PC2'] *= -1
+            df_load_fin.loc[mask_l, 'PC2'] *= -1
+
+    # Visual Scaling
+    pc_plot, load_plot = apply_visual_adjustments(df_pc_fin[['PC1','PC2']].values, df_load_fin[['PC1','PC2']].values, norm_score, scale_load)
+    df_pc_plt = df_pc_fin.copy(); df_pc_plt[['PC1','PC2']] = pc_plot
+    df_load_plt = df_load_fin.copy(); df_load_plt[['PC1','PC2']] = load_plot
+
+    # 3D
+    fig_3d = px.scatter_3d(df_pc_plt, x='Tahun', y='PC1', z='PC2', color='Provinsi', hover_name='Kabupaten/Kota')
+    fig_3d.update_traces(marker=dict(size=4))
+    if load_scope in ['3d', 'both']:
+        for y in sorted(df_pc['Tahun'].unique()):
+            d_l = df_load_plt[df_load_plt['Tahun'] == y]
+            d_l_raw = df_load_fin[df_load_fin['Tahun'] == y]
+            for idx, row in d_l.iterrows():
+                if idx not in d_l_raw.index: continue
+                raw = d_l_raw.loc[idx]
+                fig_3d.add_trace(go.Scatter3d(
+                    x=[y, y], y=[0, row['PC1']], z=[0, row['PC2']],
+                    mode='lines+text', line=dict(color='red', width=1), opacity=0.5,
+                    text=[None, str(row['features'])], textposition='top center', showlegend=False,
+                    hoverinfo='text', hovertext=f"Loading: {row['features']}<br>Raw: ({raw['PC1']:.2f}, {raw['PC2']:.2f})"
+                ))
+    if traj_sel:
+        for sel in traj_sel:
+            if '_' not in sel: continue
+            t_type, t_name = sel.split('_', 1)
+            if t_type == 'skor':
+                d_t = df_pc_plt[df_pc_plt['Kabupaten/Kota'] == t_name].sort_values('Tahun')
+                fig_3d.add_trace(go.Scatter3d(x=d_t['Tahun'], y=d_t['PC1'], z=d_t['PC2'], mode='lines+markers', name=t_name))
+            elif t_type == 'loading':
+                d_t = df_load_plt[df_load_plt['features'] == t_name].sort_values('Tahun')
+                if not d_t.empty: fig_3d.add_trace(go.Scatter3d(x=d_t['Tahun'], y=d_t['PC1'], z=d_t['PC2'], mode='lines+markers', name=t_name))
+    fig_3d.update_layout(title='Visualisasi 3D STATIS (Rotated)', margin=dict(l=0, r=0, b=0, t=30), scene=dict(aspectmode='manual', aspectratio=dict(x=2, y=1, z=1)))
+
+    # 2D
+    fig_2d_y = go.Figure()
+    if year_2d:
+        d_p, d_l = df_pc_plt[df_pc_plt['Tahun']==int(year_2d)], df_load_plt[df_load_plt['Tahun']==int(year_2d)]
+        d_l_raw = df_load_fin[df_load_fin['Tahun']==int(year_2d)]
+        fig_2d_y.add_trace(go.Scatter(x=d_p['PC1'], y=d_p['PC2'], mode='markers+text', text=d_p['Kabupaten/Kota'], textposition='top center', name='Skor'))
+        if load_scope in ['2d', 'both']:
+            for idx, r in d_l.iterrows():
+                if idx not in d_l_raw.index: continue
+                raw = d_l_raw.loc[idx]
+                fig_2d_y.add_trace(go.Scatter(x=[0, r['PC1']], y=[0, r['PC2']], mode='lines+text', text=[None, r['features']], textposition='top center', line=dict(color='red'), showlegend=False, hoverinfo='text', hovertext=f"Var: {r['features']}<br>Raw: ({r['PC1']:.2f}, {r['PC2']:.2f})"))
+    fig_2d_y.update_layout(title=f"Snapshot 2D STATIS {year_2d}", xaxis=dict(scaleanchor='y', scaleratio=1), template='plotly_white')
+
+    # Traj 2D
+    fig_2d_t = go.Figure()
+    table_rows = []
+    if traj_sel:
+        for sel in traj_sel:
+            if '_' not in sel: continue
+            t_type, t_name = sel.split('_', 1)
+            if t_type == 'skor':
+                d_t = df_pc_plt[df_pc_plt['Kabupaten/Kota'] == t_name].sort_values('Tahun')
+                symbols = ['circle'] * (len(d_t)-1) + ['square']
+                fig_2d_t.add_trace(go.Scatter(
+                    x=d_t['PC1'], y=d_t['PC2'], 
+                    mode='lines+markers+text', 
+                    marker=dict(symbol=symbols, size=8),
+                    text=d_t['Tahun'], name=t_name
+                ))
+                for _, r in d_t.iterrows(): table_rows.append({'Nama':t_name, 'Tahun':r['Tahun'], 'PC1':round(r['PC1'],4), 'PC2':round(r['PC2'],4)})
+            elif t_type == 'loading':
+                d_t = df_load_plt[df_load_plt['features'] == t_name].sort_values('Tahun')
+                symbols = ['circle'] * (len(d_t)-1) + ['square']
+                fig_2d_t.add_trace(go.Scatter(
+                    x=d_t['PC1'], y=d_t['PC2'], 
+                    mode='lines+markers+text', 
+                    marker=dict(symbol=symbols, size=8),
+                    text=d_t['Tahun'], name=t_name
+                ))
+                for _, r in d_t.iterrows(): table_rows.append({'Nama':t_name, 'Tahun':r['Tahun'], 'PC1':round(r['PC1'],4), 'PC2':round(r['PC2'],4)})
+    fig_2d_t.update_layout(title="Trajektori 2D STATIS", xaxis=dict(scaleanchor='y', scaleratio=1), template='plotly_white')
+    
+    return fig_3d, fig_2d_y, fig_2d_t, table_rows, [{"name": i, "id": i} for i in pd.DataFrame(table_rows).columns] if table_rows else []
+
+
+@app.callback(
+    Output('compare-distance-table', 'data'), Output('compare-distance-table', 'columns'),
+    Input('compare-year-dropdown', 'value'), Input('compare-data-type', 'value'),
+    Input('pca-results-store', 'data'), Input('statis-core-store', 'data'),
+    State('year-checklist-final', 'value'), State('mirror-year-checklist-final', 'value'),
+    State('baseline-type-final', 'value'), State('baseline-name-final', 'value'),
+    State('visual-scaling-opts', 'value'), State('vector-selector-final', 'value')
+)
+def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filter, mirror_years, base_type, base_name, vis_opts, selected_vectors):
+    if not compare_year or not data_type or not pca_res or not statis_res: return [], []
+    
+    norm_score = 'norm_score' in vis_opts if vis_opts else False
+    scale_load = 'scale_load' in vis_opts if vis_opts else False
+    
+    import pandas as pd
+    import numpy as np
+    
+    # 1. Compute PCA unweighted
+    df_pc_u = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
+    df_load_u = pd.read_json(io.StringIO(pca_res['loadings']), orient='split')
+    
+    if selected_vectors and len(selected_vectors) > 0:
+         df_load_u = df_load_u[df_load_u['features'].isin(selected_vectors)]
+         
+    df_pc_plt, df_load_plt = df_pc_u.copy(), df_load_u.copy()
+    for y in sorted(df_pc_u['Tahun'].unique()):
+        angle = get_rotation_angle(df_pc_u, df_load_u, base_type, base_name, y) if base_name else 0
+        mask_p, mask_l = df_pc_plt['Tahun'] == y, df_load_plt['Tahun'] == y
+        if angle != 0:
+            df_pc_plt.loc[mask_p, ['PC1', 'PC2']] = rotate_dataframe(df_pc_u.loc[mask_p], angle)
+            df_load_plt.loc[mask_l, ['PC1', 'PC2']] = rotate_dataframe(df_load_u.loc[mask_l], angle)
+        if mirror_years and str(y) in [str(my) for my in mirror_years]:
+            df_pc_plt.loc[mask_p, 'PC2'] *= -1
+            df_load_plt.loc[mask_l, 'PC2'] *= -1
+            
+    pc_p, load_p = apply_visual_adjustments(df_pc_plt[['PC1','PC2']].values, df_load_plt[['PC1','PC2']].values, norm_score, scale_load)
+    df_pc_u_final = df_pc_plt.copy(); df_pc_u_final[['PC1','PC2']] = pc_p
+    df_load_u_final = df_load_plt.copy(); df_load_u_final[['PC1','PC2']] = load_p
+    
+    # 2. Compute STATIS weighted
+    pc_list, load_list = [], []
+    obs_labels = statis_res['obs_labels']
+    for yr in statis_res['sheet_names']:
+        coords_yr = np.array(statis_res['per_year_coords'][str(yr)])
+        d_p = pd.DataFrame({'Kabupaten/Kota': obs_labels, 'Tahun': int(yr)})
+        d_p['PC1'] = coords_yr[:,0]
+        d_p['PC2'] = coords_yr[:,1]
+        pc_list.append(d_p)
+        
+        G_key = fr"Loading Intra \mathbf{{G}}_{{{yr}}}"
+        if G_key in statis_res:
+            df_gk = pd.DataFrame(statis_res[G_key])
+            df_gk['Tahun'] = int(yr)
+            df_gk = df_gk.rename(columns={'Variabel': 'features'})
+            load_list.append(df_gk)
+            
+    df_pc_w = pd.concat(pc_list, ignore_index=True)
+    df_load_w = pd.concat(load_list, ignore_index=True)
+    
+    if selected_vectors and len(selected_vectors) > 0:
+         df_load_w = df_load_w[df_load_w['features'].isin(selected_vectors)]
+         
+    df_pc_w_plt, df_load_w_plt = df_pc_w.copy(), df_load_w.copy()
+    for y in sorted(df_pc_w['Tahun'].unique()):
+        angle = get_rotation_angle(df_pc_w, df_load_w, base_type, base_name, y) if base_name else 0
+        mask_p, mask_l = df_pc_w_plt['Tahun'] == y, df_load_w_plt['Tahun'] == y
+        if angle != 0:
+            df_pc_w_plt.loc[mask_p, ['PC1', 'PC2']] = rotate_dataframe(df_pc_w.loc[mask_p], angle)
+            df_load_w_plt.loc[mask_l, ['PC1', 'PC2']] = rotate_dataframe(df_load_w.loc[mask_l], angle)
+        if mirror_years and str(y) in [str(my) for my in mirror_years]:
+            df_pc_w_plt.loc[mask_p, 'PC2'] *= -1
+            df_load_w_plt.loc[mask_l, 'PC2'] *= -1
+            
+    pc_p_w, load_p_w = apply_visual_adjustments(df_pc_w_plt[['PC1','PC2']].values, df_load_w_plt[['PC1','PC2']].values, norm_score, scale_load)
+    df_pc_w_final = df_pc_w_plt.copy(); df_pc_w_final[['PC1','PC2']] = pc_p_w
+    df_load_w_final = df_load_w_plt.copy(); df_load_w_final[['PC1','PC2']] = load_p_w
+    
+    # 3. Filter for comparison
+    table_data = []
+    if data_type == 'scores':
+        df_u_sub = df_pc_u_final[df_pc_u_final['Tahun'] == int(compare_year)]
+        df_w_sub = df_pc_w_final[df_pc_w_final['Tahun'] == int(compare_year)]
+        
+        for _, r_u in df_u_sub.iterrows():
+            name = r_u['Kabupaten/Kota']
+            r_w = df_w_sub[df_w_sub['Kabupaten/Kota'] == name]
+            if not r_w.empty:
+                r_w = r_w.iloc[0]
+                dist = np.sqrt((r_u['PC1'] - r_w['PC1'])**2 + (r_u['PC2'] - r_w['PC2'])**2)
+                table_data.append({
+                    "Nama": name, "Tahun": compare_year,
+                    "PC1 (Unweighted)": round(r_u['PC1'], 4), "PC2 (Unweighted)": round(r_u['PC2'], 4),
+                    "PC1 (STATIS)": round(r_w['PC1'], 4), "PC2 (STATIS)": round(r_w['PC2'], 4),
+                    "Jarak Euclidean": round(dist, 4)
+                })
+    else:
+        df_u_sub = df_load_u_final[df_load_u_final['Tahun'] == int(compare_year)]
+        df_w_sub = df_load_w_final[df_load_w_final['Tahun'] == int(compare_year)]
+        
+        for _, r_u in df_u_sub.iterrows():
+            name = r_u['features']
+            r_w = df_w_sub[df_w_sub['features'] == name]
+            if not r_w.empty:
+                r_w = r_w.iloc[0]
+                dist = np.sqrt((r_u['PC1'] - r_w['PC1'])**2 + (r_u['PC2'] - r_w['PC2'])**2)
+                table_data.append({
+                    "Nama": name, "Tahun": compare_year,
+                    "PC1 (Unweighted)": round(r_u['PC1'], 4), "PC2 (Unweighted)": round(r_u['PC2'], 4),
+                    "PC1 (STATIS)": round(r_w['PC1'], 4), "PC2 (STATIS)": round(r_w['PC2'], 4),
+                    "Jarak Euclidean": round(dist, 4)
+                })
+                
+    cols = [{"name": i, "id": i} for i in pd.DataFrame(table_data).columns] if table_data else []
+    return table_data, cols
+
+
 # 6. STATIS PLOTS & TABLES
 @app.callback(
-    Output('statis-scree', 'figure'), Output('statis-rv-heatmap', 'figure'),
-    Output('statis-contribution', 'figure'), Output('statis-cos2', 'figure'),
-    Output('statis-compromise', 'figure'), Output('statis-biplot', 'figure'),
-    Output('statis-interstructure', 'figure'), Output('statis-trajectory', 'figure'),
-    Output('statis-table-selector', 'options'), Output('statis-detail-table', 'data'), Output('statis-detail-table', 'columns'),
-    Output('table-info-display', 'children'), Output('formula-statis-output', 'children'),
-    Input('statis-core-store', 'data'), Input('statis-table-selector', 'value'), Input('visual-scaling-opts', 'value'),
-    Input('table-page-size', 'value')
+    Output('statis-scree', 'figure'), Output('statis-interstructure', 'figure'),
+    Output('statis-biplot', 'figure'), Output('statis-contribution', 'figure'),
+    Output('statis-cos2', 'figure'), Output('statis-trajectory', 'figure'),
+    Output('statis-trajectory-loading', 'figure'),
+    Output('statis-table-selector', 'options'), Output('statis-detail-table', 'data'),
+    Output('statis-detail-table', 'columns'), Output('table-info-display', 'children'),
+    Output('formula-statis-output', 'children'),
+    Input('statis-core-store', 'data'), Input('statis-table-selector', 'value'),
+    Input('visual-scaling-opts', 'value'), Input('table-page-size', 'value')
 )
 def cb_statis_viz(res, table_key, vis_opts, page_size):
     # --- 1. SAFE EXIT: Jika data utama (res) belum ada ---
     if not res or not isinstance(res, dict):
-        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
+        return {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
     
     # --- 2. SAFE PREPARATION: Pastikan opsi dan data dasar tersedia ---
     vis_opts = vis_opts or []
@@ -2231,7 +2959,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         import traceback
         err_msg = f"Gagal memproses visualisasi: {str(e)} \n {traceback.format_exc()}"
         print(err_msg)
-        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
+        return {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
     
     def apply_visual_adjustments(s, l, norm, scale, ev=None):
         # 1. Normalisasi Independen (Penting!)
@@ -2264,53 +2992,39 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         global_max_val = np.max(np.abs(scores))
         if global_max_val == 0: global_max_val = 1.0
 
-    # PLOT 1: Compromise Loading (Ganti RV Heatmap di baris atas)
-    fig_load = create_biplot(np.zeros((len(res['selected_vars']), 2)), plot_loadings, [], res['selected_vars'],
-                             "Compromise Loading", show_points=False, show_arrows=False)
-    fig_load.update_layout(xaxis_title=ax_x, yaxis_title=ax_y)
-
-    # PLOT 1b: Interstructure Heatmap (Masih dikirim ke placeholder interstructure)
+    # PLOT 1: Interstructure Heatmap
     fig_inter = px.imshow(res['R'], text_auto=True, x=res['sheet_names'], y=res['sheet_names'], 
                        color_continuous_scale='Blues', title="RV Coefficient Matrix (Heatmap)")
     
-    # Placeholder fig_rv (Sesuai output callback lama)
-    fig_rv = fig_load
-    
-    # NEW PLOTS: Scree Plot, Contribution, Cos2
+    # PLOT 2: Scree Plot
     fig_scree = go.Figure()
     fig_scree.add_trace(go.Scatter(x=list(range(1, len(eig_vals)+1)), y=eig_vals, mode="lines+markers", marker=dict(color='#E91E63', size=10)))
     fig_scree.update_layout(title="Scree Plot (Eigenvalue Compromise Matrix)", xaxis_title="Component", yaxis_title="Eigenvalue", template="plotly_white")
     
+    # PLOT 3: Contribution
     contrib = (loadings**2) / np.sum(loadings**2, axis=0) # Normalization
     fig_contrib = px.bar(x=res['selected_vars'], y=contrib[:, 0], labels={'x': 'Variable', 'y': 'Contribution to PC1'}, title="Variable Contribution (PC1)")
     fig_contrib.update_layout(template="plotly_white")
 
+    # PLOT 4: Cos2
     cos2 = loadings**2
     fig_cos2 = px.bar(x=res['selected_vars'], y=cos2[:, 0], labels={'x': 'Variable', 'y': 'Cos² (PC1)'}, title="Cos² Variable Representation (PC1)")
     fig_cos2.update_layout(template="plotly_white")
-    # PLOT 2: Compromise Map
-    fig_comp = create_biplot(plot_scores, np.zeros_like(loadings), res['obs_labels'], [], 
-                             "Compromise Map", color='#1E88E5')
-    fig_comp.update_layout(xaxis_title=ax_x, yaxis_title=ax_y)
 
-    # PLOT 3: Biplot (Hapus Tanda Panah)
+    # PLOT 5: Biplot (Compromise Biplot)
     fig_bi = create_biplot(plot_scores, plot_loadings, res['obs_labels'], res['selected_vars'], 
                            "Compromise Biplot", show_loadings=True, show_arrows=False)
     fig_bi.update_layout(xaxis_title=ax_x, yaxis_title=ax_y)
     
-    # PLOT 4: Trajectory (Perbaikan Logika)
+    # PLOT 6: Object Trajectory
     coords_dict = res['per_year_coords']
     df_traj_list = []
     
     for yr, coords in coords_dict.items():
         c = np.array(coords)
-        
-        # Terapkan Normalisasi jika User Meminta
-        # Kita bagi dengan Max Value dari GLOBAL SCORES agar proporsional
         if norm_score:
             c = c / global_max_val
         
-        # Build DF untuk Plotly Express
         df_t = pd.DataFrame(c[:, :2], columns=['PC1', 'PC2'])
         df_t['Kab/Kota'] = res['obs_labels']
         df_t['Tahun'] = yr
@@ -2318,12 +3032,10 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         
     df_traj = pd.concat(df_traj_list)
     
-    # --- [UPGRADE VISUAL] Trajectory Plot (Manual Loop for symbols & Province colors) ---
     fig_traj = go.Figure()
     prov_map = res.get('prov_map', {})
     kab_idx_map = res.get('kab_index_map', {})
     
-    # Skema warna provinsi (Banten, DKI, Jabar)
     PROV_COLORS = {'DKI JAKARTA': '#1E88E5', 'JAWA BARAT': '#43A047', 'BANTEN': '#FB8C00'}
     
     for kab in res['obs_labels']:
@@ -2334,17 +3046,14 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         color = PROV_COLORS.get(prov, None)
         num = kab_idx_map.get(kab, '?')
         
-        # Label format: "1 : Kep. Seribu"
         display_label = f"{num} : {kab}"
-        
-        # Symbols: Square for the last point
         symbols = ['circle'] * (len(d_kab) - 1) + ['square']
         
         fig_traj.add_trace(go.Scatter(
             x=d_kab['PC1'], y=d_kab['PC2'],
             mode='lines+markers',
             name=display_label,
-            legendgroup=prov, # Group by province in legend
+            legendgroup=prov,
             legendgrouptitle_text=prov,
             line=dict(width=1.5, color=color),
             marker=dict(symbol=symbols, size=7, color=color),
@@ -2352,7 +3061,6 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
             text=[f"{kab} ({y})<br>PC1: {pc1:.3f}<br>PC2: {pc2:.3f}" for y, pc1, pc2 in zip(d_kab['Tahun'], d_kab['PC1'], d_kab['PC2'])]
         ))
     
-    # Pastikan layout konsisten
     fig_traj.update_layout(
         title='STATIS Trajectories (Warna per Provinsi, Akhir=Kotak)',
         template='plotly_white', 
@@ -2360,16 +3068,57 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         xaxis_title=ax_x, yaxis_title=ax_y,
         legend=dict(groupclick="toggleitem")
     )
+
+    # PLOT 7: Trajectory Loading (Variable Trajectories over years)
+    fig_traj_load = go.Figure()
+    import plotly.colors as pcolors
+    var_colors = pcolors.qualitative.Alphabet[:len(res['selected_vars'])]
+    
+    for vi, var in enumerate(res['selected_vars']):
+        x_pts, y_pts, text_pts = [], [], []
+        for yr in res['sheet_names']:
+            gk_recs = res.get(fr"Loading Intra \mathbf{{G}}_{{{yr}}}", [])
+            for rec in gk_recs:
+                if rec.get('Variabel') == var:
+                    px_v = rec.get('PC1', 0)
+                    py_v = rec.get('PC2', 0)
+                    if scale_load:
+                        max_s = np.max(np.abs(scores)) if scores.size > 0 else 1
+                        max_l = np.max(np.abs(loadings)) if loadings.size > 0 else 1
+                        vis_factor = (max_s / max_l) * 0.8 if max_l > 0 else 1
+                        px_v = px_v * vis_factor
+                        py_v = py_v * vis_factor
+                    
+                    x_pts.append(px_v)
+                    y_pts.append(py_v)
+                    text_pts.append(yr)
+                    break
+        
+        if x_pts:
+            symbols = ['circle'] * (len(x_pts) - 1) + ['square']
+            fig_traj_load.add_trace(go.Scatter(
+                x=x_pts, y=y_pts,
+                mode='lines+markers',
+                name=f"{var}",
+                line=dict(width=2, color=var_colors[vi % len(var_colors)]),
+                marker=dict(symbol=symbols, size=8, color=var_colors[vi % len(var_colors)]),
+                hoverinfo='text',
+                text=[f"Var: {var} ({y})<br>PC1: {px_v:.3f}<br>PC2: {py_v:.3f}" for y, px_v, py_v in zip(text_pts, x_pts, y_pts)]
+            ))
+            
+    fig_traj_load.update_layout(
+        title='Trajectory Loadings (Warna per Variabel, Akhir=Kotak)',
+        template='plotly_white',
+        xaxis=dict(scaleanchor='y', scaleratio=1),
+        xaxis_title=ax_x, yaxis_title=ax_y
+    )
     
     # 5. Tables Logic
-    # Filter key internal agar hanya tabel publik yang muncul di dropdown
     exclude_keys = ['R', 'H', 'alphas', 'eig_vals_c', 'scores', 'loadings', 'per_year_coords', 
                     'sheet_names', 'X_matrices', 'vals_R_sorted', 'vals_H_sorted', 'k', 'obs_labels', 
                     'selected_vars', 'perm_lambda_obs', 'perm_distribution', 'perm_p_value']
     
-    # --- [POLISH DROPDOWN LABELS] ---
     def polish_statis_label(text):
-        # Mapping untuk label di dashboard agar rapi
         LABEL_MAP = {
             'R': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐞𝐟𝐢𝐬𝐢𝐞𝐧 𝐑𝐕 (𝐑)",
             'H': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐞𝐫𝐬𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (𝐇)",
@@ -2395,19 +3144,17 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
             return LABEL_MAP[text]
             
         import re
-        # Mapping Subscript
         sub = {'0':'₀','1':'₁','2':'₂','3':'₃','4':'₄','5':'₅','6':'₆','7':'₇','8':'₈','9':'₉','c':'꜀'}
         t = text.replace(r'\mathbf', '').replace('\\', '').replace('{', '').replace('}', '').replace('_', '')
         
-        # Handle Tahun (e.g. Loading G2020 atau Matriks W2020)
         m = re.search(r'(\d{4})', t)
         if m:
             yr_sub = "".join([sub.get(c, c) for c in m.group(1)])
-            if "Loading" in t and "Matriks" not in t: return f"𝐋𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐫𝐚 (𝐆{yr_sub})"
             if "Matriks" in t and "W" in t: return f"𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐫𝐚-𝐒𝐤𝐨𝐫 (𝐖{yr_sub})"
             if "Matriks" in t and "S" in t: return f"𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐫𝐚-𝐋𝐨𝐚𝐝𝐢𝐧𝐠 (𝐒{yr_sub})"
+            if "Skor" in t and "Intra" in t: return f"𝐒𝐤𝐨𝐫 𝐈𝐧𝐭𝐫𝐚 (𝐅{yr_sub})"
+            if "Loading" in t and "Matriks" not in t: return f"𝐋𝐨𝐚𝐝𝐢𝐧𝐠 𝐈𝐧𝐭𝐫𝐚 (𝐆{yr_sub})"
         
-        # Clean extra characters
         t = t.replace('(', '').replace(')', '')
         return t
 
@@ -2415,14 +3162,34 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     for k in res.keys():
         if k not in exclude_keys:
             table_opts.append({'label': polish_statis_label(k), 'value': k})
+            
+    def sort_table_opts(item):
+        import re
+        val = item['value']
+        m = re.search(r'(\d{4})', val)
+        if m:
+            yr = int(m.group(1))
+            if 'W_' in val or '\\mathbf{W}' in val:
+                rank = 1
+            elif 'F_' in val or '\\mathbf{F}' in val:
+                rank = 2
+            elif 'S_' in val or '\\mathbf{S}' in val:
+                rank = 3
+            elif 'G_' in val or '\\mathbf{G}' in val:
+                rank = 4
+            else:
+                rank = 5
+            return (1, yr, rank, val)
+        else:
+            return (0, 0, 0, val)
+
+    table_opts.sort(key=sort_table_opts)
     
     tbl_data, tbl_cols, info_text = [], [], "Silakan pilih tabel hasil di atas."
     
-    # Pastikan kunci yang dipilih pengguna MASIH ADA di memori (mencegah ghost selections)
     if table_key and table_key in res:
         tbl_data = res.get(table_key, [])
         
-        # --- [FIX] Transform Metadata jika berupa Dict atau List flat ---
         if table_key == 'prov_map' and isinstance(tbl_data, dict):
             tbl_data = [{"Kabupaten/Kota": k, "Provinsi": v} for k, v in tbl_data.items()]
         elif table_key == 'kab_index_map' and isinstance(tbl_data, dict):
@@ -2431,7 +3198,6 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
             labels = res.get('obs_labels', [f"Wilayah {i+1}" for i in range(len(tbl_data))])
             tbl_data = [{"Kabupaten/Kota": kab, "Bobot (m_i)": v} for kab, v in zip(labels, tbl_data)]
         elif isinstance(tbl_data, list) and len(tbl_data) > 0 and not isinstance(tbl_data[0], dict):
-            # Fallback untuk list flat lainnya (misal eig_vals jika tidak di-exclude)
             tbl_data = [{"Index": i+1, "Value": v} for i, v in enumerate(tbl_data)]
 
         if tbl_data and len(tbl_data) > 0: 
@@ -2450,18 +3216,16 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     export_core_latex(res)
     export_tables_latex(res)
 
-    
     # Render Statis Formulas
     wc_data = res.get(r'Matriks Kompromi (\mathbf{W}_c)', [])
     w_slice = None
     if wc_data:
-        # ambil top 3x3 numeric part of it (skip index col)
         w_slice = [[float(v) for v in list(r.values())[1:4]] for r in wc_data[:3]]
         
-    r_matrix = np.array(res['R']) # Sesuai raw numeric
+    r_matrix = np.array(res['R'])
     form_statis_ui = render_statis_formulas(res['alphas'], res['sheet_names'], w_slice, r_matrix)
 
-    return fig_scree, fig_rv, fig_contrib, fig_cos2, fig_comp, fig_bi, fig_inter, fig_traj, table_opts, tbl_data, tbl_cols, info_text, form_statis_ui
+    return fig_scree, fig_inter, fig_bi, fig_contrib, fig_cos2, fig_traj, fig_traj_load, table_opts, tbl_data, tbl_cols, info_text, form_statis_ui
 
 
 # 7. Permutation Test
@@ -3212,8 +3976,8 @@ def cb_eval_cluster(eval_year, res):
     fig_elbow.add_trace(go.Scatter(x=list(k_range), y=sse, mode='lines+markers', line=dict(color=COLOR_ACCENT, width=3), marker=dict(size=8)))
     fig_elbow.update_layout(title=f"Metode Elbow (Tahun {eval_year})", xaxis_title="Jumlah Cluster (k)", yaxis_title="Sum of Squared Errors (SSE)", template='plotly_white')
     import os
-    os.makedirs("../huggingface", exist_ok=True)
-    try: fig_elbow.write_image(f"../huggingface/elbow_plot_{eval_year}.png")
+    os.makedirs("../output_app", exist_ok=True)
+    try: fig_elbow.write_image(f"../output_app/elbow_plot_{eval_year}.png")
     except: pass
 
     # 2. DENDROGRAM
@@ -3223,7 +3987,7 @@ def cb_eval_cluster(eval_year, res):
         Z = linkage(coords, method='ward')
         fig_dendro = ff.create_dendrogram(coords, labels=obs_labels, orientation='left', linkagefun=lambda x: Z, colorscale=px.colors.qualitative.Bold)
         fig_dendro.update_layout(title=f"Dendrogram Hierarchical (Tahun {eval_year})", template='plotly_white', margin=dict(l=150))
-        try: fig_dendro.write_image(f"../huggingface/dendrogram_{eval_year}.png")
+        try: fig_dendro.write_image(f"../output_app/dendrogram_{eval_year}.png")
         except: pass
     except Exception as e:
         fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
@@ -3237,9 +4001,82 @@ def cb_eval_cluster(eval_year, res):
     Input('btn-run-trans', 'n_clicks'),
     State('trans-year-dropdown', 'value'),
     State('trans-k-input', 'value'),
+    State('pca-results-store', 'data'),
+    State('global-data-store', 'data')
+)
+def cb_calc_trans(n_clicks, t2_year, k, pca_res, global_data):
+    if not n_clicks or not t2_year or not pca_res or not global_data: return dash.no_update
+    
+    years = sorted(list(global_data['years']))
+    try:
+        t2_idx = years.index(int(t2_year))
+        if t2_idx == 0: return dash.no_update
+        t1_year = years[t2_idx - 1]
+    except (ValueError, IndexError):
+        return dash.no_update
+        
+    import pandas as pd
+    df_scores = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
+    df_t1 = df_scores[df_scores['Tahun'] == int(t1_year)]
+    df_t2 = df_scores[df_scores['Tahun'] == int(t2_year)]
+    
+    if df_t1.empty or df_t2.empty: return dash.no_update
+    
+    coords_t1 = df_t1[['PC1', 'PC2']].to_numpy()
+    coords_t2 = df_t2[['PC1', 'PC2']].to_numpy()
+    obs_labels = df_t1['Kabupaten/Kota'].tolist()
+    
+    from scipy.optimize import linear_sum_assignment
+    from scipy.spatial.distance import cdist
+    
+    # Base centroids for alignment
+    km_base = KMeans(n_clusters=k, random_state=42, n_init=10)
+    km_base.fit(coords_t1)
+    base_centroids = km_base.cluster_centers_
+    
+    def get_aligned_labels(coords):
+        km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
+        lbls = km_curr.fit_predict(coords)
+        curr_centroids = km_curr.cluster_centers_
+        dist_matrix = cdist(base_centroids, curr_centroids, metric='euclidean')
+        row_ind, col_ind = linear_sum_assignment(dist_matrix)
+        mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
+        new_labels = [mapping[l] for l in lbls]
+        
+        cluster_means = []
+        unique_lbls = sorted(list(set(new_labels)))
+        for cl in unique_lbls:
+            cluster_means.append(np.mean(coords[[i for i, l in enumerate(new_labels) if l == cl], 0]))
+        
+        sorted_indices = np.argsort(cluster_means)
+        rank_map = {old: new for new, old in enumerate(sorted_indices)}
+        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        return [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in new_labels]
+        
+    str_labels_t1 = get_aligned_labels(coords_t1)
+    str_labels_t2 = get_aligned_labels(coords_t2)
+    
+    return {
+        't1_year': str(t1_year),
+        't2_year': str(t2_year),
+        'str_labels_t1': str_labels_t1,
+        'str_labels_t2': str_labels_t2,
+        'obs_labels': obs_labels,
+        'coords_t1': coords_t1.tolist(),
+        'coords_t2': coords_t2.tolist(),
+        'k': k
+    }
+
+
+# 10A-2. CALCULATION: CLUSTERING TAHUNAN TERBOBOT & MATRIKS TRANSISI
+@app.callback(
+    Output('weighted-trans-store', 'data'),
+    Input('btn-run-weighted-trans', 'n_clicks'),
+    State('weighted-trans-year-dropdown', 'value'),
+    State('weighted-trans-k-input', 'value'),
     State('statis-core-store', 'data')
 )
-def cb_calc_trans(n_clicks, t2_year, k, res):
+def cb_calc_weighted_trans(n_clicks, t2_year, k, res):
     if not n_clicks or not t2_year or not res: return dash.no_update
     
     years = sorted(list(res['per_year_coords'].keys()))
@@ -3285,13 +4122,83 @@ def cb_calc_trans(n_clicks, t2_year, k, res):
     str_labels_t2 = get_aligned_labels(coords_t2)
     
     return {
-        't1_year': t1_year,
-        't2_year': t2_year,
+        't1_year': str(t1_year),
+        't2_year': str(t2_year),
         'str_labels_t1': str_labels_t1,
         'str_labels_t2': str_labels_t2,
         'obs_labels': obs_labels,
         'coords_t1': coords_t1.tolist(),
         'coords_t2': coords_t2.tolist(),
+        'k': k
+    }
+
+# 10A-3. CALCULATION: PERBANDINGAN BIPLOT VS STATIS TAHUN TERTENTU
+@app.callback(
+    Output('biplot-statis-compare-store', 'data'),
+    Input('btn-run-biplot-statis-compare', 'n_clicks'),
+    State('biplot-statis-compare-year', 'value'),
+    State('biplot-statis-compare-k', 'value'),
+    State('pca-results-store', 'data'),
+    State('statis-core-store', 'data')
+)
+def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
+    if not n_clicks or not year or not pca_res or not statis_res: return dash.no_update
+    
+    import pandas as pd
+    
+    # Biplot Coordinates
+    df_scores = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
+    df_year = df_scores[df_scores['Tahun'] == int(year)]
+    if df_year.empty: return dash.no_update
+    coords_biplot = df_year[['PC1', 'PC2']].to_numpy()
+    
+    # STATIS Coordinates
+    try:
+        coords_statis = np.array(statis_res['per_year_coords'][str(year)])
+    except KeyError:
+        return dash.no_update
+        
+    obs_labels = df_year['Kabupaten/Kota'].tolist()
+    
+    from scipy.optimize import linear_sum_assignment
+    from scipy.spatial.distance import cdist
+    
+    # Base centroids for alignment (use biplot as base)
+    km_base = KMeans(n_clusters=k, random_state=42, n_init=10)
+    km_base.fit(coords_biplot)
+    base_centroids = km_base.cluster_centers_
+    
+    def get_aligned_labels(coords):
+        km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
+        lbls = km_curr.fit_predict(coords)
+        curr_centroids = km_curr.cluster_centers_
+        dist_matrix = cdist(base_centroids, curr_centroids, metric='euclidean')
+        row_ind, col_ind = linear_sum_assignment(dist_matrix)
+        mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
+        new_labels = [mapping[l] for l in lbls]
+        
+        cluster_means = []
+        unique_lbls = sorted(list(set(new_labels)))
+        for cl in unique_lbls:
+            cluster_means.append(np.mean(coords[[i for i, l in enumerate(new_labels) if l == cl], 0]))
+        
+        sorted_indices = np.argsort(cluster_means)
+        rank_map = {old: new for new, old in enumerate(sorted_indices)}
+        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        return [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in new_labels]
+        
+    str_labels_biplot = get_aligned_labels(coords_biplot)
+    str_labels_statis = get_aligned_labels(coords_statis)
+    
+    return {
+        't1_year': "Biplot",
+        't2_year': "STATIS",
+        'actual_year': str(year),
+        'str_labels_t1': str_labels_biplot,
+        'str_labels_t2': str_labels_statis,
+        'obs_labels': obs_labels,
+        'coords_t1': coords_biplot.tolist(),
+        'coords_t2': coords_statis.tolist(),
         'k': k
     }
 
@@ -3372,6 +4279,164 @@ def cb_render_trans_table(data, view_mode):
     return matrix_data, cols
 
 
+# 10B-2. RENDERING TERBOBOT: PLOTS (FIGS)
+@app.callback(
+    Output('title-weighted-trans-map-t1', 'children'),
+    Output('weighted-trans-map-t1', 'figure'),
+    Output('title-weighted-trans-map-t2', 'children'),
+    Output('weighted-trans-map-t2', 'figure'),
+    Output('title-weighted-trans-scatter-t1', 'children'),
+    Output('weighted-trans-scatter-t1', 'figure'),
+    Output('title-weighted-trans-scatter-t2', 'children'),
+    Output('weighted-trans-scatter-t2', 'figure'),
+    Input('weighted-trans-store', 'data')
+)
+def cb_render_weighted_trans_plots(data):
+    if not data: return "", {}, "", {}, "", {}, "", {}
+    
+    t1_year, t2_year = data['t1_year'], data['t2_year']
+    str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
+    obs_labels = data['obs_labels']
+    coords_t1, coords_t2 = np.array(data['coords_t1']), np.array(data['coords_t2'])
+
+    # Figures logic (Scatter & Map)
+    fig_scatter_t1 = px.scatter(x=coords_t1[:,0], y=coords_t1[:,1], color=str_labels_t1, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+    fig_scatter_t1.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t1.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    fig_scatter_t2 = px.scatter(x=coords_t2[:,0], y=coords_t2[:,1], color=str_labels_t2, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+    fig_scatter_t2.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t2.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    fig_map_t1, fig_map_t2 = go.Figure(), go.Figure()
+    if indonesia_geojson:
+        mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+        df_map_t1 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t1, 'match_key': obs_labels})
+        df_map_t2 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2, 'match_key': obs_labels})
+        
+        fig_map_t1 = px.choropleth_mapbox(df_map_t1, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t1.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        fig_map_t2 = px.choropleth_mapbox(df_map_t2, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        for f, df in [(fig_map_t1, df_map_t1), (fig_map_t2, df_map_t2)]:
+            lon_list, lat_list, text_list = [], [], []
+            for _, row in df.iterrows():
+                area = row['Kab/Kota']
+                geom = gdf[gdf['id_cocok'] == area]
+                if not geom.empty:
+                    lon_list.append(geom.geometry.centroid.x.values[0])
+                    lat_list.append(geom.geometry.centroid.y.values[0])
+                    text_list.append(area)
+            if text_list:
+                f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+
+    return (f"Peta Sebaran Cluster Terbobot ({t1_year})", fig_map_t1, f"Peta Sebaran Cluster Terbobot ({t2_year})", fig_map_t2, f"Biplot Cluster Terbobot ({t1_year})", fig_scatter_t1, f"Biplot Cluster Terbobot ({t2_year})", fig_scatter_t2)
+
+
+# 10C-2. RENDERING TERBOBOT: TABLE (INSTANT)
+@app.callback(
+    Output('weighted-trans-matrix-table', 'data'),
+    Output('weighted-trans-matrix-table', 'columns'),
+    Input('weighted-trans-store', 'data'),
+    Input('weighted-trans-view-mode', 'value')
+)
+def cb_render_weighted_trans_table(data, view_mode):
+    if not data: return [], []
+    t1_year, t2_year, str_labels_t1, str_labels_t2, obs_labels, k = data['t1_year'], data['t2_year'], data['str_labels_t1'], data['str_labels_t2'], data['obs_labels'], data['k']
+    unique_l1, unique_l2 = sorted(list(set(str_labels_t1))), sorted(list(set(str_labels_t2)))
+    matrix_data = []
+    for c1 in unique_l1:
+        row_dict = {f"Tahun {t1_year} \\ {t2_year}": c1} # Gunakan \\ untuk escape backslash di f-string
+        for c2 in unique_l2:
+            intersect_indices = [idx for idx, (l1, l2) in enumerate(zip(str_labels_t1, str_labels_t2)) if l1 == c1 and l2 == c2]
+            row_dict[c2] = str(len(intersect_indices)) if view_mode == 'count' else (", ".join([obs_labels[idx] for idx in intersect_indices]) if intersect_indices else "-")
+        matrix_data.append(row_dict)
+    cols = [{"name": str(c), "id": str(c)} for c in matrix_data[0].keys()] if matrix_data else []
+    return matrix_data, cols
+
+# 10C-3. RENDERING PERBANDINGAN: PLOTS (FIGS)
+@app.callback(
+    Output('title-biplot-statis-compare-map-biplot', 'children'),
+    Output('biplot-statis-compare-map-biplot', 'figure'),
+    Output('title-biplot-statis-compare-map-statis', 'children'),
+    Output('biplot-statis-compare-map-statis', 'figure'),
+    Output('title-biplot-statis-compare-scatter-biplot', 'children'),
+    Output('biplot-statis-compare-scatter-biplot', 'figure'),
+    Output('title-biplot-statis-compare-scatter-statis', 'children'),
+    Output('biplot-statis-compare-scatter-statis', 'figure'),
+    Input('biplot-statis-compare-store', 'data')
+)
+def cb_render_biplot_statis_compare_plots(data):
+    if not data: return "", {}, "", {}, "", {}, "", {}
+    
+    t1_year, t2_year = data['t1_year'], data['t2_year']
+    actual_year = data['actual_year']
+    str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
+    obs_labels = data['obs_labels']
+    coords_t1, coords_t2 = np.array(data['coords_t1']), np.array(data['coords_t2'])
+
+    # Figures logic (Scatter & Map)
+    fig_scatter_t1 = px.scatter(x=coords_t1[:,0], y=coords_t1[:,1], color=str_labels_t1, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+    fig_scatter_t1.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t1.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    fig_scatter_t2 = px.scatter(x=coords_t2[:,0], y=coords_t2[:,1], color=str_labels_t2, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+    fig_scatter_t2.update_traces(marker=dict(size=9), textposition='top center')
+    fig_scatter_t2.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+    
+    fig_map_t1, fig_map_t2 = go.Figure(), go.Figure()
+    if indonesia_geojson:
+        mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+        df_map_t1 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t1, 'match_key': obs_labels})
+        df_map_t2 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2, 'match_key': obs_labels})
+        
+        fig_map_t1 = px.choropleth_mapbox(df_map_t1, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t1.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        fig_map_t2 = px.choropleth_mapbox(df_map_t2, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        for f, df in [(fig_map_t1, df_map_t1), (fig_map_t2, df_map_t2)]:
+            lon_list, lat_list, text_list = [], [], []
+            for _, row in df.iterrows():
+                area = row['Kab/Kota']
+                geom = gdf[gdf['id_cocok'] == area]
+                if not geom.empty:
+                    lon_list.append(geom.geometry.centroid.x.values[0])
+                    lat_list.append(geom.geometry.centroid.y.values[0])
+                    text_list.append(area)
+            if text_list:
+                f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+
+    return (f"Peta Sebaran Cluster {t1_year} ({actual_year})", fig_map_t1, f"Peta Sebaran Cluster {t2_year} ({actual_year})", fig_map_t2, f"Cluster {t1_year} ({actual_year})", fig_scatter_t1, f"Cluster {t2_year} ({actual_year})", fig_scatter_t2)
+
+# 10C-4. RENDERING PERBANDINGAN: TABLE (INSTANT)
+@app.callback(
+    Output('biplot-statis-compare-matrix-table', 'data'),
+    Output('biplot-statis-compare-matrix-table', 'columns'),
+    Input('biplot-statis-compare-store', 'data'),
+    Input('biplot-statis-compare-view-mode', 'value')
+)
+def cb_render_biplot_statis_compare_table(data, view_mode):
+    if not data: return [], []
+    t1_year, t2_year = data['t1_year'], data['t2_year']
+    actual_year = data['actual_year']
+    str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
+    obs_labels, k = data['obs_labels'], data['k']
+    unique_l1, unique_l2 = sorted(list(set(str_labels_t1))), sorted(list(set(str_labels_t2)))
+    matrix_data = []
+    for c1 in unique_l1:
+        row_dict = {f"Tahun {actual_year} ({t1_year} \\ {t2_year})": c1}
+        for c2 in unique_l2:
+            intersect_indices = [idx for idx, (l1, l2) in enumerate(zip(str_labels_t1, str_labels_t2)) if l1 == c1 and l2 == c2]
+            row_dict[c2] = str(len(intersect_indices)) if view_mode == 'count' else (", ".join([obs_labels[idx] for idx in intersect_indices]) if intersect_indices else "-")
+        matrix_data.append(row_dict)
+    cols = [{"name": str(c), "id": str(c)} for c in matrix_data[0].keys()] if matrix_data else []
+    return matrix_data, cols
+
+
 # 11. CLUSTERING TRAJEKTORI CALLBACK (STATIS FULL)
 @app.callback(
     Output('cluster-scatter', 'figure'),
@@ -3433,8 +4498,8 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     fig_scatter.update_traces(marker=dict(size=8), textposition='top center')
     fig_scatter.update_layout(template='plotly_white', width=800, height=800)
     import os
-    os.makedirs("../huggingface", exist_ok=True)
-    try: fig_scatter.write_image("../huggingface/cluster_compromise_biplot.png")
+    os.makedirs("../output_app", exist_ok=True)
+    try: fig_scatter.write_image("../output_app/cluster_compromise_biplot.png")
     except: pass
 
     # --- 3. Dendrogram (Dengan Pewarnaan Sesuai K) ---
@@ -3468,8 +4533,8 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         
         fig_dendro.update_layout(title="Dendrogram Kemiripan Trajektori", template='plotly_white', margin=dict(l=150))
         import os
-        os.makedirs("../huggingface", exist_ok=True)
-        try: fig_dendro.write_image("../huggingface/dendrogram_compromise.png")
+        os.makedirs("../output_app", exist_ok=True)
+        try: fig_dendro.write_image("../output_app/dendrogram_compromise.png")
         except: pass
     except Exception as e:
         fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
@@ -3547,8 +4612,8 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         if text_list_c:
             fig_map.add_trace(go.Scattermapbox(lon=lon_list_c, lat=lat_list_c, mode='text', text=text_list_c, textfont=dict(size=9, color='black'), showlegend=False))
         import os
-        os.makedirs("../huggingface", exist_ok=True)
-        try: fig_map.write_image("../huggingface/cluster_compromise_map.png")
+        os.makedirs("../output_app", exist_ok=True)
+        try: fig_map.write_image("../output_app/cluster_compromise_map.png")
         except: pass
     else:
         fig_map.add_annotation(text="Gagal memuat data GeoJSON.", showarrow=False)
@@ -3689,10 +4754,10 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     data_names, tex_names = build_ipm_matrix('names')
     
     import os
-    os.makedirs("../huggingface", exist_ok=True)
+    os.makedirs("../output_app", exist_ok=True)
     try:
-        with open(f"../huggingface/output_table_ipm_matrix_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
-        with open(f"../huggingface/output_table_ipm_matrix_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
+        with open(f"../output_app/output_table_ipm_matrix_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../output_app/output_table_ipm_matrix_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
     except: pass
         
     req_data = data_count if view_mode == 'count' else data_names
@@ -3788,10 +4853,10 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
     data_names, tex_names = build_cross_matrix('names')
     
     import os
-    os.makedirs("../huggingface", exist_ok=True)
+    os.makedirs("../output_app", exist_ok=True)
     try:
-        with open(f"../huggingface/output_table_cross_matrix_sum_{sel_year}.tex", "w") as f: f.write("\n".join(tex_count))
-        with open(f"../huggingface/output_table_cross_matrix_name_{sel_year}.tex", "w") as f: f.write("\n".join(tex_names))
+        with open(f"../output_app/output_table_cross_matrix_sum_{sel_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../output_app/output_table_cross_matrix_name_{sel_year}.tex", "w") as f: f.write("\n".join(tex_names))
     except: pass
     
     req_data = data_count if view_mode == 'count' else data_names
@@ -3843,6 +4908,28 @@ def dl_trans_tex(n_clicks, data, columns):
     if not data: return dash.no_update
     tex_str = ui_table_to_latex(data, columns, "Matriks Transisi Cluster Tahunan", "tab:trans_tahunan")
     return dcc.send_string(tex_str, "output_transisi_cluster.tex")
+
+@app.callback(
+    Output("download-weighted-trans-tex", "data"),
+    Input("btn-dl-weighted-trans-tex", "n_clicks"),
+    State("weighted-trans-matrix-table", "data"), State("weighted-trans-matrix-table", "columns"),
+    prevent_initial_call=True
+)
+def dl_weighted_trans_tex(n_clicks, data, columns):
+    if not data: return dash.no_update
+    tex_str = ui_table_to_latex(data, columns, "Matriks Transisi Cluster Terbobot", "tab:weighted_trans_tahunan")
+    return dcc.send_string(tex_str, "output_transisi_cluster_terbobot.tex")
+
+@app.callback(
+    Output("download-biplot-statis-compare-tex", "data"),
+    Input("btn-dl-biplot-statis-compare-tex", "n_clicks"),
+    State("biplot-statis-compare-matrix-table", "data"), State("biplot-statis-compare-matrix-table", "columns"),
+    prevent_initial_call=True
+)
+def dl_biplot_statis_compare_tex(n_clicks, data, columns):
+    if not data: return dash.no_update
+    tex_str = ui_table_to_latex(data, columns, "Matriks Perbandingan Cluster Biplot vs STATIS", "tab:biplot_vs_statis_compare")
+    return dcc.send_string(tex_str, "output_biplot_statis_compare.tex")
 
 @app.callback(
     Output("download-ipm-trans-tex", "data"),

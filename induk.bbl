@@ -29,6 +29,12 @@ Anton, H. \& Rorres, C. (2013).
 \newblock
   \url{https://studylib.net/doc/27681515/linear-algebra-11th-edi-howard-anton}
 
+\bibitem[Areia et~al., 2008]{areia2008}
+Areia, A., Oliveira, M., \& Mexia, J.~T. (2008).
+\newblock Models for a series of studies based on geometrical representation.
+\newblock {\em Statistical Methodology}, 5(3), 277--288.
+\newblock \url{https://doi.org/10.1016/j.stamet.2007.09.001}
+
 \bibitem[{Badan Pusat Statistik}, 2024]{bpspkkp}
 {Badan Pusat Statistik} (2024).
 \newblock {\em Prevalensi ketidakcukupan konsumsi pangan (persen) per
@@ -168,6 +174,22 @@ Biegert, T., \"Ozcan, B., \& Rossetti-Youlton, M. (2023).
 \newblock {\em Socius: Sociological Research for a Dynamic World}, 9, 1--18.
 \newblock \url{https://doi.org/10.1177/23780231231158087}
 
+\bibitem[Bulmer, 1979]{bulmer1979}
+Bulmer, M.~G. (1979).
+\newblock {\em Principles of Statistics} (dover edition ed.).
+\newblock Dover Publications.
+\newblock Klasifikasi standar skewness: $|\gamma_1| < 0.5$ simetris; $0.5 \leq
+  |\gamma_1| < 1$ moderat; $|\gamma_1| \geq 1$ sangat menceng (hlm. 110-112).
+
+\bibitem[{Departemen Pertanian (Deptan)}, 2003]{deptan2003}
+{Departemen Pertanian (Deptan)} (2003).
+\newblock Analisis produktivitas dan stabilitas komoditas strategis pangan
+  propinsi di yogyakarta.
+\newblock Technical report, Departemen Pertanian RI.
+\newblock Metodologi standar klasifikasi CV untuk stabilitas pertanian.
+\newblock
+  \url{https://jiip.polbangtanyoma.ac.id/index.php/jiip/article/download/165/159/531}
+
 \bibitem[Dziuban \& Shirkey, 1974]{dziuban1974}
 Dziuban, C.~D. \& Shirkey, E.~C. (1974).
 \newblock When is a correlation matrix appropriate for factor analysis? some
@@ -268,13 +290,11 @@ MacQueen, J. (1967).
   statistics and probability}, volume~1, 281--297.
 \newblock \url{https://digicoll.lib.berkeley.edu/record/113015?v=pdf}
 
-\bibitem[Nisa, 2024]{alfia2024}
-Nisa, A.~C. (2024).
-\newblock Perbandingan antara hasil biclustering dan hasil cluster-biplot pada
-  data 119 kabupaten/kota di pulau jawa tahun 2022 berdasarkan indikator
-  kesejahteraan rakyat.
-\newblock Universitas Indonesia, Depok.
-\newblock \url{https://doi.org/10.30598/barekengvol19iss2pp1009-1022}
+\bibitem[Mexia \& Oliveira, 2007]{mexia2007}
+Mexia, J.~T. \& Oliveira, M. (2007).
+\newblock Non-observable regressors.
+\newblock {\em Biometrical Letters}, 44(2), 97--103.
+\newblock \url{https://bl.up.poznan.pl/full/BL%2044%202%202.pdf}
 
 \bibitem[Nuswantari, 2021]{nuswantari2021}
 Nuswantari, A. (2021).
@@ -290,6 +310,14 @@ Oliveira, M., Garção, E., Grilo, L.~M., Alexandre, A., \& Mexia, J.~T.
 \newblock Statis methodology: An overview.
 \newblock {\em AIP Conference Proceedings}, volume 3094, 450006.
 \newblock \url{https://doi.org/10.1063/5.0212208}
+
+\bibitem[Pearson, 1901]{pearson1901}
+Pearson, K. (1901).
+\newblock Liii. on lines and planes of closest fit to systems of points in
+  space.
+\newblock {\em The London, Edinburgh, and Dublin Philosophical Magazine and
+  Journal of Science}, 2(11), 559--572.
+\newblock \url{https://doi.org/10.1080/14786440109462720}
 
 \bibitem[Phipson \& Smyth, 2010]{phipson2010}
 Phipson, B. \& Smyth, G.~K. (2010).
@@ -326,5 +354,19 @@ Ward~Jr, J.~H. (1963).
 \newblock {\em Journal of the American statistical association}, 58(301),
   236--244.
 \newblock \url{https://doi.org/10.1080/01621459.1963.10500845}
+
+\bibitem[{Weisstein, Eric W.}, 2024]{mathworld}
+{Weisstein, Eric W.} (2024).
+\newblock {\em Kurtosis excess}.
+\newblock \url{https://mathworld.wolfram.com/KurtosisExcess.html}.
+\newblock Rumus lengkap gamma2 dan referensi historis.
+
+\bibitem[Widyaningsih, 2024]{alfia2024}
+Widyaningsih, Y. (2024).
+\newblock Perbandingan antara hasil biclustering dan hasil cluster-biplot pada
+  data 119 kabupaten/kota di pulau jawa tahun 2022 berdasarkan indikator
+  kesejahteraan rakyat.
+\newblock Universitas Indonesia, Depok.
+\newblock \url{https://doi.org/10.30598/barekengvol19iss2pp1009-1022}
 
 \end{thebibliography}
