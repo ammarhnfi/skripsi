@@ -32,6 +32,17 @@ from scipy.stats import skew, kurtosis as kurt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
+# Global Helper for Cluster Names
+def get_cluster_name(idx, prefix="Cluster", suffix=""):
+    if K_CLUSTERS == 3:
+        desc = ["Rendah", "Sedang", "Tinggi"][idx]
+    elif K_CLUSTERS == 2:
+        desc = ["Rendah", "Tinggi"][idx]
+    else:
+        desc = ""
+    desc_str = f" ({desc})" if desc else ""
+    return f"{prefix} {idx+1}{desc_str}{suffix}"
+
 def export_matrix_pmatrix(arr, filename, out_dir):
     with open(os.path.join(out_dir, filename), "w", encoding="utf-8") as f:
         f.write(r"\begin{pmatrix}" + "\n")
@@ -178,7 +189,7 @@ def save_tex_table(df, filename, caption, label, longtable=False, float_fmt="{:.
 
 
 def save_tex_name_table(mapping, filename, caption, label, label_prefix=""):
-    """Simpan tabel yang berisi daftar nama (untuk transisi klaster)."""
+    """Simpan tabel yang berisi daftar nama (untuk transisi cluster)."""
     path = os.path.join(OUT_DIR, filename)
     full_label = f"{label_prefix}{label}"
     lines = [
@@ -476,7 +487,7 @@ if not selected_vars:
     sys.exit(1)
 print(f"  => Variabel terpilih ({len(selected_vars)}): {selected_vars}")
 
-# --- 3. Jumlah Klaster ---
+# --- 3. Jumlah Cluster ---
 n_samples = len(tables_raw[sheet_names_all[0]])
 default_k = 3 if n_samples >= 5 else 2
 
@@ -487,7 +498,7 @@ if is_headless:
         K_CLUSTERS = default_k
     print(f"  [HEADLESS] k = {K_CLUSTERS}")
 else:
-    K_CLUSTERS = _ask_int("Jumlah Klaster K-Means (k)", default=default_k)
+    K_CLUSTERS = _ask_int("Jumlah Cluster K-Means (k)", default=default_k)
 print(f"  => k = {K_CLUSTERS}")
 
 # --- 4. Skala Visual Loadings ---
@@ -779,6 +790,32 @@ scores_raw = D_inv_sqrt @ eig_vecs_c[:, :2] * sq2
 # Vc (untuk tabel bab3) — tetap simpan alias
 Vc = Vc_vars
 
+# Pastikan PC1 kompromi searah dengan rata-rata variabel (performa tinggi)
+# Ini membantu ranking Cluster agar Cluster 3 selalu "Tinggi" (IPM tinggi)
+# Kita gunakan tables_std[0] sebagai proxy untuk rata-rata performa
+df_all_std = pd.concat(tables_std)
+mean_vars_all = df_all_std.mean(axis=1).values
+# scores_raw adalah rata-rata, kita butuh scores_raw per baris (N wilayah)
+# scores_raw sudah shape (N, 2). mean_vars_all shape (N*K,). 
+# Kita bandingkan scores_raw dengan rata-rata data kompromi (Zc)
+# Pastikan PC1 kompromi searah dengan performa rata-rata (IPM / Kesejahteraan)
+# Indikator negatif (semakin besar semakin buruk) dibalik nilainya
+negative_vars = ['PPM', 'TPT', 'GK', 'PKKP', 'GR', 'Gini Ratio', 'Persentase Penduduk Miskin', 'Tingkat Pengangguran Terbuka']
+Zc = np.zeros_like(X_matrices[0])
+for a, Zk in zip(alphas, X_matrices): Zc += a * Zk
+
+# Buat proxy performa: Balikkan variabel negatif
+Zc_proxy = Zc.copy()
+for i, var in enumerate(selected_vars):
+    if any(neg.lower() in var.lower() for neg in negative_vars):
+        Zc_proxy[:, i] *= -1
+
+mean_perf_c = Zc_proxy.mean(axis=1) # Rata-rata performa terstandarisasi per wilayah
+corr_orient = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
+if corr_orient < 0:
+    scores_raw[:, 0] *= -1
+    print("  [INFO] PC1 Kompromi di-flip agar searah dengan performa rata-rata (Kesejahteraan).")
+
 # Trajektori per tahun — proyeksi ke Vc (arah eigenvector, bukan Gc)
 # F_k = Z_k @ Vc  (konsisten dengan koordinat sistem kompromi variabel)
 per_year_coords = {}
@@ -786,11 +823,19 @@ per_year_loadings = {} # G_k per tahun
 for i, yr in enumerate(sheet_names):
     dfstd = tables_std[i]
     # Koordinat Objek (F_k)
-    per_year_coords[yr] = dfstd.values @ Vc_vars
+    coords_yr = dfstd.values @ Vc_vars
+    # Samakan orientasi PC1 dengan kompromi (scores_raw) agar ranking konsisten
+    corr_yr = np.corrcoef(coords_yr[:, 0], scores_raw[:, 0])[0, 1]
+    if corr_yr < 0:
+        coords_yr[:, 0] *= -1
+    per_year_coords[yr] = coords_yr
     
     # Koordinat Variabel (G_k) - Proyeksi ke ruang kompromi
     # Formula: G_k = Z_k^T * D^{1/2} * P
     Gk_raw = X_matrices[i].T @ D_sqrt @ eig_vecs_c[:, :2]
+    # Jika objek di-flip, variabel juga harus di-flip sumbu 0-nya
+    if corr_yr < 0:
+        Gk_raw[:, 0] *= -1
     per_year_loadings[yr] = Gk_raw
 
     export_matrix_pmatrix(tables_raw[yr][selected_vars].values, f"matrix_X_{yr}.tex", OUT_DIR)
@@ -1051,7 +1096,7 @@ for yr in sheet_names:
             'Variabel': col,
             'N': len(vals),
             'Mean ($\\mu$)': round(float(np.mean(vals)), 4),
-            'Std Dev ($\\sigma$)': round(float(np.std(vals, ddof=1)), 4),
+            'Std Dev ($\\sigma$)': round(float(np.std(vals, ddof=0)), 4),
             'Min': round(float(np.min(vals)), 4),
             'Q1': round(float(np.percentile(vals, 25)), 4),
             'Median': round(float(np.median(vals)), 4),
@@ -1059,7 +1104,7 @@ for yr in sheet_names:
             'Max': round(float(np.max(vals)), 4),
             'Skewness ($\\gamma_1$)': round(float(skew(vals)), 4),
             'Kurtosis ($\\gamma_2$)': round(float(kurt(vals, fisher=True)), 4),
-            'CV (%)': round(float(np.std(vals, ddof=1) / np.mean(vals) * 100), 2) if np.mean(vals) != 0 else 0,
+            'CV (%)': round(float(np.std(vals, ddof=0) / np.mean(vals) * 100), 2) if np.mean(vals) != 0 else 0,
         })
     df_stats = pd.DataFrame(rows)
     # Gunakan adjustbox agar tidak melampaui margin halaman
@@ -1428,9 +1473,9 @@ for i, var in enumerate(selected_vars):
     ))
 fig_bi.add_hline(y=0, line_dash='dot', line_color='gray')
 fig_bi.add_vline(x=0, line_dash='dot', line_color='gray')
-fig_bi.update_layout(title="Compromise Biplot (Fc + Gc)", xaxis_title=ax_x, yaxis_title=ax_y,
+fig_bi.update_layout(title="Compromise STATIS (Fc + Gc)", xaxis_title=ax_x, yaxis_title=ax_y,
                      template='plotly_white', xaxis=dict(scaleanchor='y', scaleratio=1))
-save_png(fig_bi, "cluster_compromise_biplot.png", width=800, height=800)
+save_png(fig_bi, "scatter_statis.png", width=800, height=800)
 
 # --- Biplot Kompromi (Versi Matplotlib Statik untuk LaTeX) ---
 def draw_biplot_matplotlib(plot_scores, plot_loadings, obs_labels, selected_vars, ax_x_label, ax_y_label, out_path):
@@ -1537,7 +1582,15 @@ for yr, coords in per_year_coords_plot.items():
 df_traj = pd.concat(df_traj_list)
 
 # --- Pre-calculate Trajectory Clusters for coloring (from Part 7) ---
-X_traj = np.hstack([per_year_coords[yr][:, :2] for yr in sheet_names])
+# Weighted Trajectory per Lavit (1994) - Matching app.py logic
+X_traj_list = []
+for i, yr in enumerate(sheet_names):
+    # Apply interstructure weights: dist^2 = sum( alpha_k * ||x_ik - x_jk||^2 )
+    # To handle this with standard KMeans, we multiply coordinates by sqrt(alpha)
+    w = np.sqrt(alphas[i])
+    X_traj_list.append(per_year_coords[yr][:, :2] * w)
+X_traj = np.hstack(X_traj_list)
+
 km_traj = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
 labels_traj_raw = km_traj.fit_predict(X_traj)
 
@@ -1550,7 +1603,7 @@ rank_map_t = {old_val: rank for rank, old_val in enumerate(sorted_idx_t)}
 cluster_traj = np.array([rank_map_t[l] for l in labels_traj_raw])
 
 _hl_set = set(HIGHLIGHT_OBJECTS)
-palette_cluster = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Matching app.py colors
+palette_cluster = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Matching app.py colors: Red, Orange, Green, Blue, Purple
 
 fig_traj = go.Figure()
 for kab in obs_labels:
@@ -1871,10 +1924,10 @@ km_base = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
 km_base.fit(base_coords)
 base_centroids = km_base.cluster_centers_
 
-def get_ranked_labels(coords, labels_awal, current_centroids, base_centroids_ref):
+def get_ranked_labels(coords_current, labels_awal, current_centroids, base_centroids_ref, compromise_scores):
     """
     Penyelarasan label menggunakan Hungarian Algorithm (Kuhn, 1955) 
-    untuk konsistensi antar-tahun, diikuti perankingan otomatis berdasarkan PC1 mean.
+    untuk konsistensi antar-tahun, diikuti perankingan otomatis berdasarkan mean PC1 Kompromi.
     """
     # 1. Hungarian Matching ke Base Year
     dist_matrix = cdist(base_centroids_ref, current_centroids, metric='euclidean')
@@ -1882,18 +1935,21 @@ def get_ranked_labels(coords, labels_awal, current_centroids, base_centroids_ref
     mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
     aligned_labels = np.array([mapping[l] for l in labels_awal])
     
-    # 2. Re-ranking berdasarkan PC1 (agar Klaster 1 selalu yang terendah performanya)
-    # Ini memastikan interpretasi "Rendah/Sedang/Tinggi" konsisten secara otomatis.
+    # 2. Re-ranking otomatis per tahun (berdasarkan rata-rata PC1 skor kompromi)
+    # Ini memastikan Cluster 3 (Tinggi) selalu merujuk pada performa tinggi secara global
     cluster_means = []
     unique_lbls = sorted(list(set(aligned_labels)))
     for cl in unique_lbls:
-        # Rata-rata PC1 untuk klaster ini
-        cluster_means.append(np.mean(coords[aligned_labels == cl, 0]))
+        # Gunakan skor kompromi sebagai referensi ranking (Sesuai app.py Section 11)
+        cluster_means.append(np.mean(compromise_scores[aligned_labels == cl, 0]))
     
     # Urutkan: mean terendah dapat indeks 0, tertinggi dapat indeks K-1
     sorted_indices = np.argsort(cluster_means)
     rank_map = {old_val: rank for rank, old_val in enumerate(sorted_indices)}
     
+    final_labels = np.array([rank_map[l] for l in aligned_labels])
+    return final_labels
+
     final_labels = np.array([rank_map[l] for l in aligned_labels])
     return final_labels
 
@@ -1905,10 +1961,10 @@ for yr in sheet_names:
     curr_centroids = km.cluster_centers_
     
     # Penyelarasan & Perankingan (Kuhn / Hungarian + PC1 Rank)
-    labels = get_ranked_labels(coords, labels_raw, curr_centroids, base_centroids)
+    labels = get_ranked_labels(coords, labels_raw, curr_centroids, base_centroids, scores_raw)
     cluster_per_year[yr] = labels
     
-    # Scatter biplot klaster per tahun
+    # Scatter biplot Cluster per tahun
     ps_y, pl_y = apply_visual_adjustments(coords, loadings, norm=NORM_SCORE, scale=SCALE_LOAD)
     # Gunakan warna dari app.py: Merah (Rendah), Jingga (Sedang), Hijau (Tinggi)
     palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
@@ -1916,25 +1972,25 @@ for yr in sheet_names:
     fig_sc = go.Figure()
     for cl in range(K_CLUSTERS):
         mask = labels == cl
-        klaster_name = f"Klaster {cl+1}"
+        cluster_name = f"Cluster {cl+1}"
         if K_CLUSTERS == 3:
-            klaster_name = ["Rendah", "Sedang", "Tinggi"][cl]
+            cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
         elif K_CLUSTERS == 2:
-            klaster_name = ["Rendah", "Tinggi"][cl]
+            cluster_name = ["Rendah", "Tinggi"][cl]
             
         fig_sc.add_trace(go.Scatter(
             x=ps_y[mask, 0], y=ps_y[mask, 1],
             mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
             textposition='top center', textfont=dict(size=9, color='black'),
             marker=dict(size=9, color=palette[cl]),
-            name=f'Klaster {cl+1} ({klaster_name})'
+            name=f'Cluster {cl+1} ({cluster_name})'
         ))
     fig_sc.add_hline(y=0, line_dash='dot', line_color='gray')
     fig_sc.add_vline(x=0, line_dash='dot', line_color='gray')
-    fig_sc.update_layout(title=f"Biplot Klaster K-Means (Diberi Peringkat) — Tahun {yr}",
+    fig_sc.update_layout(title=f"Biplot Cluster K-Means (Diberi Peringkat) — Tahun {yr}",
                          xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                          xaxis=dict(scaleanchor='y', scaleratio=1))
-    save_png(fig_sc, f"cluster_biplot_{yr}.png", width=800, height=800)
+    save_png(fig_sc, f"cluster_scatter_statis_{yr}.png", width=800, height=800)
 
     # Elbow (Gunakan Xc dari coords asli Z @ Vc)
     Xc = coords
@@ -1947,7 +2003,7 @@ for yr in sheet_names:
         inertias.append(km_e.inertia_)
     fig_elbow = px.line(x=list(k_range), y=inertias, markers=True,
                         title=f"Kurva Elbow — Tahun {yr}",
-                        labels={'x': 'Jumlah Klaster (k)', 'y': 'Inersia (SSE)'},
+                        labels={'x': 'Jumlah Cluster (k)', 'y': 'Inersia (SSE)'},
                         color_discrete_sequence=['#1976D2'])
     fig_elbow.update_layout(template='plotly_white')
     save_png(fig_elbow, f"elbow_plot_{yr}.png", width=700, height=450)
@@ -1962,32 +2018,31 @@ for yr in sheet_names:
     except Exception as e:
         print(f"  [WARN] Dendrogram {yr} gagal: {e}")
 
-# Matriks Transisi Klaster (jumlah & nama)
+# Matriks Transisi Cluster (jumlah & nama)
 year_pairs = [(sheet_names[i], sheet_names[i+1]) for i in range(len(sheet_names)-1)]
 for t1, t2 in year_pairs:
     lbl1 = cluster_per_year[t1]
     lbl2 = cluster_per_year[t2]
     pair = f"{t1}x{t2}"
-
     # Jumlah
     mat_count = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
     for a, b in zip(lbl1, lbl2):
         mat_count[a, b] += 1
-    df_trans = pd.DataFrame(mat_count, index=[f"Klaster {i+1} ({t1})" for i in range(K_CLUSTERS)],
-                            columns=[f"Klaster {j+1} ({t2})" for j in range(K_CLUSTERS)])
+    df_trans = pd.DataFrame(mat_count, index=[get_cluster_name(i, "Cluster", f" ({t1})") for i in range(K_CLUSTERS)],
+                            columns=[get_cluster_name(j, "Cluster", f" ({t2})") for j in range(K_CLUSTERS)])
     df_trans.index.name = f"{t1}/{t2}"
     df_trans = df_trans.reset_index()
     save_tex_table(df_trans, f"output_table_transition_matrix_sum_{pair}.tex",
-                   f"Matriks Transisi Klaster {t1} \\(\\rightarrow\\) {t2}", f"transsum{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=LABEL_PREFIX)
+                   f"Matriks Transisi Cluster {t1} \\(\\rightarrow\\) {t2}", f"transsum{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=LABEL_PREFIX)
 
     # Nama daerah
     rows_name = {}
     for a in range(K_CLUSTERS):
         for b in range(K_CLUSTERS):
             names = [obs_labels[i] for i in range(len(obs_labels)) if lbl1[i]==a and lbl2[i]==b]
-            rows_name[f"Kl.{a+1}({t1}) \\(\\rightarrow\\) Kl.{b+1}({t2})"] = ", ".join(names) if names else "-"
+            rows_name[f"{get_cluster_name(a, 'Cluster', f' ({t1})')} \\(\\rightarrow\\) {get_cluster_name(b, 'Cluster', f' ({t2})')}"] = ", ".join(names) if names else "-"
     save_tex_name_table(rows_name, f"output_table_transition_matrix_name_{pair}.tex",
-                        f"Nama Daerah Perpindahan Klaster {t1} \\(\\rightarrow\\) {t2}", f"transname{pair}", label_prefix=LABEL_PREFIX)
+                        f"Nama Daerah Perpindahan Cluster {t1} \\(\\rightarrow\\) {t2}", f"transname{pair}", label_prefix=LABEL_PREFIX)
 
     # IPM transition (jika ada)
     if ipm_col:
@@ -2029,9 +2084,9 @@ if ipm_col:
             if ip_l in ipm_cats:
                 cross_mat[km_l, ipm_cats.index(ip_l)] += 1
         df_cross = pd.DataFrame(cross_mat,
-                                index=[f"Klaster {i+1}" for i in range(K_CLUSTERS)],
+                                index=[get_cluster_name(i, "Cluster") for i in range(K_CLUSTERS)],
                                 columns=ipm_cats)
-        df_cross.index.name = "Klaster K-Means"
+        df_cross.index.name = "Cluster K-Means"
         df_cross = df_cross.reset_index()
         save_tex_table(df_cross, f"output_table_cross_matrix_sum_{yr}.tex",
                        f"Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({yr})", f"cross{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=LABEL_PREFIX)
@@ -2042,7 +2097,7 @@ if ipm_col:
             for ip_l in ipm_cats:
                 names = [obs_labels[i] for i in range(len(obs_labels))
                          if lbl_km[i] == km_l and ipm_yr[i] == ip_l]
-                rows_cross_nm[f"Kl.{km_l+1} & {ip_l}"] = ", ".join(names) if names else "-"
+                rows_cross_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
         save_tex_name_table(rows_cross_nm, f"output_table_cross_matrix_name_{yr}.tex",
                             f"Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({yr})", f"crossname{yr}", label_prefix=LABEL_PREFIX)
 
@@ -2057,9 +2112,9 @@ palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
 fig_traj_cl = go.Figure()
 for cl in range(K_CLUSTERS):
     mask = cluster_traj == cl
-    klaster_name = f"Klaster {cl+1}"
-    if K_CLUSTERS == 3: klaster_name = ["Rendah", "Sedang", "Tinggi"][cl]
-    elif K_CLUSTERS == 2: klaster_name = ["Rendah", "Tinggi"][cl]
+    cluster_name = f"Cluster {cl+1}"
+    if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
+    elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
     
     fig_traj_cl.add_trace(go.Scatter(
         x=plot_scores[mask, 0], y=plot_scores[mask, 1],
@@ -2067,63 +2122,66 @@ for cl in range(K_CLUSTERS):
         text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
         textposition='top center', textfont=dict(size=9, color='black'),
         marker=dict(size=9, color=palette[cl]),
-        name=f'Klaster {cl+1} ({klaster_name})'
+        name=f'Cluster {cl+1} ({cluster_name})'
     ))
 fig_traj_cl.add_hline(y=0, line_dash='dot', line_color='gray')
 fig_traj_cl.add_vline(x=0, line_dash='dot', line_color='gray')
-fig_traj_cl.update_layout(title="Scatter Plot Klaster Trajektori (Diberi Peringkat)",
+fig_traj_cl.update_layout(title="Scatter Plot Cluster Trajektori (Diberi Peringkat)",
                            xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                            xaxis=dict(scaleanchor='y', scaleratio=1))
-save_png(fig_traj_cl, "cluster_compromise_biplot.png", width=800, height=800)
+save_png(fig_traj_cl, "cluster_scatter_statis.png", width=800, height=800)
 
 # Dendrogram Kompromi
 try:
     fig_dendro_c = ff.create_dendrogram(X_traj, labels=obs_labels, orientation='left')
-    fig_dendro_c.update_layout(title="Dendrogram Klaster Trajektori Keseluruhan",
+    fig_dendro_c.update_layout(title="Dendrogram Cluster Trajektori Keseluruhan",
                                 template='plotly_white', margin=dict(l=150, r=20, t=40, b=20), height=600)
     save_png(fig_dendro_c, "dendrogram_compromise.png", width=800, height=600)
 except Exception as e:
     print(f"  [WARN] Dendrogram kompromi gagal: {e}")
 
-# Tabel anggota klaster trajektori
-df_members = pd.DataFrame({'Kabupaten/Kota': obs_labels, 'Klaster Trajektori': cluster_traj + 1})
+# Tabel anggota cluster trajektori
+df_members = pd.DataFrame({
+    'Kabupaten/Kota': obs_labels, 
+    'Cluster Trajektori': [get_cluster_name(c) for c in cluster_traj]
+})
 save_tex_table(df_members, "output_table_cluster_members.tex",
-               "Anggota Klaster Trajektori Keseluruhan", "clustermembers", float_fmt="{:.0f}", label_prefix=LABEL_PREFIX)
+               "Anggota Cluster Trajektori Keseluruhan", "clustermembers", label_prefix=LABEL_PREFIX)
 
 
 # ============================================================
-# 8.5 PETA CHOROPLETH KLASTER (geopandas + matplotlib)
+# 8.5 PETA CHOROPLETH CLUSTER (geopandas + matplotlib)
 # ============================================================
-print("\n=== 8.5. Peta Choropleth Klaster ===")
+print("\n=== 8.5. Peta Choropleth Cluster ===")
 
-CLUSTER_COLORS = ['#E53935', '#1E88E5', '#43A047', '#FB8C00', '#8E24AA']
+CLUSTER_COLORS = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Match app.py: Red, Orange, Green, Blue, Purple
 
 def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename):
     n_cl = K_CLUSTERS
     palette = CLUSTER_COLORS[:n_cl]
-    df_cl = pd.DataFrame({'name_raw': obs_labels_list, 'Klaster': labels_arr})
+    df_cl = pd.DataFrame({'name_raw': obs_labels_list, 'Cluster': labels_arr})
     gdf_plot = gdf_map.copy()
     gdf_plot = gdf_plot.merge(df_cl, left_on='id_cocok', right_on='name_raw', how='left')
 
     fig, ax = plt.subplots(1, 1, figsize=(13, 9))
     # Wilayah di luar sampel → abu muda
-    gdf_plot[gdf_plot['Klaster'].isna()].plot(
+    gdf_plot[gdf_plot['Cluster'].isna()].plot(
         ax=ax, color='#EFEFEF', edgecolor='#BBBBBB', linewidth=0.4)
-    # Tiap klaster diberi warna berbeda sesuai ranking
+    # Tiap cluster diberi warna berbeda sesuai ranking
     palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
     for cl_idx in range(n_cl):
-        subset = gdf_plot[gdf_plot['Klaster'] == cl_idx]
+        subset = gdf_plot[gdf_plot['Cluster'] == cl_idx]
         if not subset.empty:
-            klaster_name = f"Klaster {cl_idx + 1}"
-            if n_cl == 3: klaster_name = ["Rendah", "Sedang", "Tinggi"][cl_idx]
-            elif n_cl == 2: klaster_name = ["Rendah", "Tinggi"][cl_idx]
+            cluster_name = f"Cluster {cl_idx + 1}"
+            if n_cl == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl_idx]
+            elif n_cl == 2: cluster_name = ["Rendah", "Tinggi"][cl_idx]
             
             subset.plot(ax=ax, color=palette[cl_idx],
                         edgecolor='white', linewidth=0.6,
-                        label=f'Klaster {cl_idx + 1} ({klaster_name})')
+                        label=f'Cluster {cl_idx + 1} ({cluster_name})')
 
     # Nama daerah di tengah tiap poligon yang cocok
-    for _, row in gdf_plot.dropna(subset=['Klaster']).iterrows():
+    for _, row in gdf_plot.dropna(subset=['Cluster']).iterrows():
         try:
             pt = row.geometry.centroid
             # Potong nama panjang: ambil kata terakhir agar lebih ringkas
@@ -2151,7 +2209,7 @@ def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename):
     ax.set_axis_off()
 
     # Paksa axes limit ke extent poligon yang cocok (berwarna) saja
-    matched = gdf_plot.dropna(subset=['Klaster'])
+    matched = gdf_plot.dropna(subset=['Cluster'])
     if not matched.empty:
         minx, miny, maxx, maxy = matched.total_bounds
         pad_x = (maxx - minx) * 0.05
@@ -2160,7 +2218,7 @@ def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename):
         ax.set_ylim(miny - pad_y, min(maxy + pad_y, -5.2))
 
     # Legend DI DALAM peta (bukan di samping kanan)
-    patches = [mpatches.Patch(color=palette[i], label=f'Klaster {i + 1}')
+    patches = [mpatches.Patch(color=palette[i], label=get_cluster_name(i))
                for i in range(n_cl)]
     legend = ax.legend(
         handles=patches,
@@ -2168,7 +2226,7 @@ def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename):
         fontsize=11,
         framealpha=0.88,
         edgecolor='#AAAAAA',
-        title='Klaster',
+        title='Cluster',
         title_fontsize=11
     )
     legend.get_frame().set_linewidth(1.0)
@@ -2191,16 +2249,14 @@ try:
     print(f"  Shapefile OK. Wilayah dalam bbox: {len(gdf_map)}")
 
     # Peta per tahun
-    for yr, dfstd in zip(sheet_names, tables_std):
-        coords_yr = dfstd.values @ loadings
-        km_yr = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
-        labels_yr = km_yr.fit_predict(coords_yr[:, :2])
+    for yr in sheet_names:
+        labels_yr = cluster_per_year[yr]
         draw_cluster_map(labels_yr, obs_labels, gdf_map,
-                         f"Peta Klaster K-Means Tahun {yr}", f"cluster_map_{yr}.png")
+                         f"Peta Cluster STATIS Tahun {yr}", f"cluster_map_statis_{yr}.png")
 
     # Peta trajektori keseluruhan
     draw_cluster_map(cluster_traj, obs_labels, gdf_map,
-                     "Peta Klaster Trajektori 2020-2024", "cluster_compromise_map.png")
+                     "Peta Cluster STATIS 2020-2024", "cluster_map_statis.png")
 
 except Exception as e:
     print(f"  [WARN] Peta choropleth gagal: {e}")
@@ -2223,32 +2279,52 @@ except Exception as e:
 print("\n=== 8.A-1 Perbandingan Cluster Biplot (Unweighted) vs Statis (Weighted) Tahunan ===")
 for yr in sheet_names:
     coords_biplot = pca_scores_dict[yr][:, :2]
-    # STATIS coordinates are already in per_year_coords[yr]
-    # STATIS clusters are already in cluster_per_year[yr], ranked by PC1
-    lbl_statis_yr = cluster_per_year[yr]
+    coords_statis = per_year_coords[yr][:, :2]
     
-    # K-Means for Biplot
+    # 1. K-Means (Unweighted Biplot)
     km_biplot = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
     lbls_biplot_raw = km_biplot.fit_predict(coords_biplot)
     curr_centroids_bp = km_biplot.cluster_centers_
     
+    # 1. K-Means (Weighted STATIS)
+    km_statis = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
+    lbls_statis_raw = km_statis.fit_predict(coords_statis)
+    curr_centroids_st = km_statis.cluster_centers_
+
     # Align to base_centroids (from STATIS base year)
-    from scipy.spatial.distance import cdist
-    from scipy.optimize import linear_sum_assignment
-    dist_matrix = cdist(base_centroids, curr_centroids_bp, metric='euclidean')
-    row_ind, col_ind = linear_sum_assignment(dist_matrix)
-    mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
-    aligned_lbls_bp = np.array([mapping[l] for l in lbls_biplot_raw])
+    dist_matrix_bp = cdist(base_centroids, curr_centroids_bp, metric='euclidean')
+    _, col_ind_bp = linear_sum_assignment(dist_matrix_bp)
+    mapping_bp = {col_ind_bp[i]: i for i in range(K_CLUSTERS)}
+    aligned_lbls_bp = np.array([mapping_bp[l] for l in lbls_biplot_raw])
+
+    dist_matrix_st = cdist(base_centroids, curr_centroids_st, metric='euclidean')
+    _, col_ind_st = linear_sum_assignment(dist_matrix_st)
+    mapping_st = {col_ind_st[i]: i for i in range(K_CLUSTERS)}
+    aligned_lbls_st = np.array([mapping_st[l] for l in lbls_statis_raw])
     
-    # Rank by PC1
-    cluster_means_bp = []
-    unique_lbls_bp = sorted(list(set(aligned_lbls_bp)))
-    for cl in unique_lbls_bp:
-        cluster_means_bp.append(np.mean(coords_biplot[aligned_lbls_bp == cl, 0]))
+    # 2. Ranking by PC1 (Unweighted Biplot)
+    # Penyelarasan Orientasi: Pastikan searah dengan kompromi
+    if 'scores_raw' in locals():
+        corr_bp = np.corrcoef(coords_biplot[:, 0], scores_raw[:, 0])[0, 1]
+        if corr_bp < 0: coords_biplot[:, 0] *= -1
         
+        corr_st = np.corrcoef(coords_statis[:, 0], scores_raw[:, 0])[0, 1]
+        if corr_st < 0: coords_statis[:, 0] *= -1
+
+    cluster_means_bp = []
+    for cl in range(K_CLUSTERS):
+        cluster_means_bp.append(np.mean(coords_biplot[aligned_lbls_bp == cl, 0]))
     sorted_indices_bp = np.argsort(cluster_means_bp)
     rank_map_bp = {old: new for new, old in enumerate(sorted_indices_bp)}
     lbl_biplot_yr = np.array([rank_map_bp[l] for l in aligned_lbls_bp])
+    
+    # 3. Ranking by PC1 (Weighted STATIS)
+    cluster_means_st = []
+    for cl in range(K_CLUSTERS):
+        cluster_means_st.append(np.mean(coords_statis[aligned_lbls_st == cl, 0]))
+    sorted_indices_st = np.argsort(cluster_means_st)
+    rank_map_st = {old: new for new, old in enumerate(sorted_indices_st)}
+    lbl_statis_yr = np.array([rank_map_st[l] for l in aligned_lbls_st])
     
     # Cross-tabulation (Row: Biplot, Col: STATIS)
     cross_mat_bs_yr = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
@@ -2256,8 +2332,8 @@ for yr in sheet_names:
         cross_mat_bs_yr[b_l, s_l] += 1
         
     df_cross_bs_yr = pd.DataFrame(cross_mat_bs_yr,
-                                  index=[f"Biplot {i+1} ({yr})" for i in range(K_CLUSTERS)],
-                                  columns=[f"Statis {j+1} ({yr})" for j in range(K_CLUSTERS)])
+                                  index=[get_cluster_name(i, "Biplot", f" ({yr})") for i in range(K_CLUSTERS)],
+                                  columns=[get_cluster_name(j, "Statis", f" ({yr})") for j in range(K_CLUSTERS)])
     df_cross_bs_yr.index.name = "Biplot (Unweighted)"
     df_cross_bs_yr = df_cross_bs_yr.reset_index()
     save_tex_table(df_cross_bs_yr, f"output_table_biplot_vs_statis_compare_sum_{yr}.tex",
@@ -2268,34 +2344,34 @@ for yr in sheet_names:
         for s_l in range(K_CLUSTERS):
             names = [obs_labels[i] for i in range(len(obs_labels))
                      if lbl_biplot_yr[i] == b_l and lbl_statis_yr[i] == s_l]
-            rows_bs_nm_yr[f"Biplot {b_l+1} & Statis {s_l+1}"] = ", ".join(names) if names else "-"
+            rows_bs_nm_yr[f"{get_cluster_name(b_l, 'Biplot')} & {get_cluster_name(s_l, 'Statis')}"] = ", ".join(names) if names else "-"
     save_tex_name_table(rows_bs_nm_yr, f"output_table_biplot_vs_statis_compare_name_{yr}.tex",
                         f"Nama Daerah Perbandingan Cluster Biplot vs STATIS ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=LABEL_PREFIX)
                         
     # Draw Map for Biplot
     if 'gdf_map' in locals():
         draw_cluster_map(lbl_biplot_yr, obs_labels, gdf_map,
-                         f"Peta Klaster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png")
+                         f"Peta Cluster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png")
                          
     # Draw Scatter for Biplot
     palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
     fig_sc_bp = go.Figure()
     for cl in range(K_CLUSTERS):
         mask = lbl_biplot_yr == cl
-        klaster_name = f"Klaster {cl+1}"
-        if K_CLUSTERS == 3: klaster_name = ["Rendah", "Sedang", "Tinggi"][cl]
-        elif K_CLUSTERS == 2: klaster_name = ["Rendah", "Tinggi"][cl]
+        cluster_name = f"Cluster {cl+1}"
+        if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
+        elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
         
         fig_sc_bp.add_trace(go.Scatter(
             x=coords_biplot[mask, 0], y=coords_biplot[mask, 1],
             mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
             textposition='top center', textfont=dict(size=9, color='black'),
             marker=dict(size=9, color=palette[cl]),
-            name=f'Klaster {cl+1} ({klaster_name})'
+            name=f'Cluster {cl+1} ({cluster_name})'
         ))
     fig_sc_bp.add_hline(y=0, line_dash='dot', line_color='gray')
     fig_sc_bp.add_vline(x=0, line_dash='dot', line_color='gray')
-    fig_sc_bp.update_layout(title=f"Biplot Klaster K-Means (Unweighted) — Tahun {yr}",
+    fig_sc_bp.update_layout(title=f"Biplot Cluster K-Means (Unweighted) — Tahun {yr}",
                          xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                          xaxis=dict(scaleanchor='y', scaleratio=1))
     save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", width=800, height=800)
@@ -2305,17 +2381,17 @@ for yr in sheet_names:
 # ============================================================
 print("\n=== 8.A Perbandingan Cluster Biplot vs Cluster Statis ===")
 for yr in sheet_names:
-    lbl_static = cluster_per_year[yr]
-    lbl_biplot = cluster_traj
+    lbl_statis_comp = cluster_traj # Compromise (STATIS)
+    lbl_biplot_yr = cluster_per_year[yr] # Yearly Biplot
     
     cross_mat_bs = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
-    for s_l, b_l in zip(lbl_static, lbl_biplot):
+    for s_l, b_l in zip(lbl_statis_comp, lbl_biplot_yr):
         cross_mat_bs[s_l, b_l] += 1
         
     df_cross_bs = pd.DataFrame(cross_mat_bs,
-                               index=[f"Statis {i+1} ({yr})" for i in range(K_CLUSTERS)],
-                               columns=[f"Biplot {j+1}" for j in range(K_CLUSTERS)])
-    df_cross_bs.index.name = "Statis (Tahunan)"
+                               index=[get_cluster_name(i, "Statis") for i in range(K_CLUSTERS)],
+                               columns=[get_cluster_name(j, "Biplot", f" ({yr})") for j in range(K_CLUSTERS)])
+    df_cross_bs.index.name = "Statis (Compromise)"
     df_cross_bs = df_cross_bs.reset_index()
     save_tex_table(df_cross_bs, f"output_table_biplot_vs_statis_sum_{yr}.tex",
                    f"Perbandingan Cluster Biplot vs Cluster Statis ({yr})", f"biplot_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=LABEL_PREFIX)
@@ -2324,8 +2400,8 @@ for yr in sheet_names:
     for s_l in range(K_CLUSTERS):
         for b_l in range(K_CLUSTERS):
             names = [obs_labels[i] for i in range(len(obs_labels))
-                     if lbl_static[i] == s_l and lbl_biplot[i] == b_l]
-            rows_bs_nm[f"Statis {s_l+1} & Biplot {b_l+1}"] = ", ".join(names) if names else "-"
+                     if lbl_statis_comp[i] == s_l and lbl_biplot_yr[i] == b_l]
+            rows_bs_nm[f"{get_cluster_name(s_l, 'Statis')} & {get_cluster_name(b_l, 'Biplot')}"] = ", ".join(names) if names else "-"
     save_tex_name_table(rows_bs_nm, f"output_table_biplot_vs_statis_name_{yr}.tex",
                         f"Nama Daerah Perbandingan Cluster Biplot vs Statis ({yr})", f"biplot_statis_name_{yr}", label_prefix=LABEL_PREFIX)
 
@@ -2344,7 +2420,7 @@ if ipm_col:
             cross_mat_avg[km_l, ipm_cats.index(ip_l)] += 1
             
     df_cross_avg = pd.DataFrame(cross_mat_avg,
-                                index=[f"Klaster {i+1}" for i in range(K_CLUSTERS)],
+                                index=[get_cluster_name(i, "Cluster") for i in range(K_CLUSTERS)],
                                 columns=ipm_cats)
     df_cross_avg.index.name = "STATIS (Kompromi)"
     df_cross_avg = df_cross_avg.reset_index()
@@ -2356,7 +2432,7 @@ if ipm_col:
         for ip_l in ipm_cats:
             names = [obs_labels[i] for i in range(len(obs_labels))
                      if cluster_traj[i] == km_l and ipm_avg_cat[i] == ip_l]
-            rows_avg_nm[f"Kl.{km_l+1} & {ip_l}"] = ", ".join(names) if names else "-"
+            rows_avg_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
     save_tex_name_table(rows_avg_nm, "output_table_statis_vs_ipm_avg_name.tex",
                         "Nama Daerah Perbandingan Cluster Statis vs IPM Rata-rata (UNDP)", "statis_ipm_avg_name", label_prefix=LABEL_PREFIX)
 
@@ -2475,13 +2551,13 @@ try:
         
         # 2. Transisi STATIS (Weighted) Map & Scatter
         combine_images_side_by_side(
-            os.path.join(OUT_DIR, f"cluster_map_{y1}.png"),
-            os.path.join(OUT_DIR, f"cluster_map_{y2}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_statis_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_statis_{y2}.png"),
             os.path.join(OUT_DIR, f"compare_map_trans_statis_{y1}x{y2}.png")
         )
         combine_images_side_by_side(
-            os.path.join(OUT_DIR, f"cluster_biplot_{y1}.png"),
-            os.path.join(OUT_DIR, f"cluster_biplot_{y2}.png"),
+            os.path.join(OUT_DIR, f"cluster_scatter_statis_{y1}.png"),
+            os.path.join(OUT_DIR, f"cluster_scatter_statis_{y2}.png"),
             os.path.join(OUT_DIR, f"compare_scatter_trans_statis_{y1}x{y2}.png")
         )
 
@@ -2489,12 +2565,12 @@ try:
     for yr in sheet_names:
         combine_images_side_by_side(
             os.path.join(OUT_DIR, f"cluster_map_biplot_{yr}.png"),
-            os.path.join(OUT_DIR, f"cluster_map_{yr}.png"),
+            os.path.join(OUT_DIR, f"cluster_map_statis_{yr}.png"),
             os.path.join(OUT_DIR, f"compare_map_biplot_vs_statis_{yr}.png")
         )
         combine_images_side_by_side(
             os.path.join(OUT_DIR, f"cluster_scatter_biplot_{yr}.png"),
-            os.path.join(OUT_DIR, f"cluster_biplot_{yr}.png"),
+            os.path.join(OUT_DIR, f"cluster_scatter_statis_{yr}.png"),
             os.path.join(OUT_DIR, f"compare_scatter_biplot_vs_statis_{yr}.png")
         )
 except ImportError:

@@ -1,40 +1,5 @@
 [
   {
-    "name": "cluster_biplot_2020.png",
-    "caption": "Cluster Biplot 2020",
-    "type": "image",
-    "src": "/output_real/cluster_biplot_2020.png",
-    "group": "Biplot Klaster"
-  },
-  {
-    "name": "cluster_biplot_2021.png",
-    "caption": "Cluster Biplot 2021",
-    "type": "image",
-    "src": "/output_real/cluster_biplot_2021.png",
-    "group": "Biplot Klaster"
-  },
-  {
-    "name": "cluster_biplot_2022.png",
-    "caption": "Cluster Biplot 2022",
-    "type": "image",
-    "src": "/output_real/cluster_biplot_2022.png",
-    "group": "Biplot Klaster"
-  },
-  {
-    "name": "cluster_biplot_2023.png",
-    "caption": "Cluster Biplot 2023",
-    "type": "image",
-    "src": "/output_real/cluster_biplot_2023.png",
-    "group": "Biplot Klaster"
-  },
-  {
-    "name": "cluster_biplot_2024.png",
-    "caption": "Cluster Biplot 2024",
-    "type": "image",
-    "src": "/output_real/cluster_biplot_2024.png",
-    "group": "Biplot Klaster"
-  },
-  {
     "name": "cluster_scatter_biplot_2020.png",
     "caption": "Cluster Scatter Biplot 2020",
     "type": "image",
@@ -67,6 +32,48 @@
     "caption": "Cluster Scatter Biplot 2024",
     "type": "image",
     "src": "/output_real/cluster_scatter_biplot_2024.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis.png",
+    "caption": "Cluster Scatter Statis",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis_2020.png",
+    "caption": "Cluster Scatter Statis 2020",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis_2020.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis_2021.png",
+    "caption": "Cluster Scatter Statis 2021",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis_2021.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis_2022.png",
+    "caption": "Cluster Scatter Statis 2022",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis_2022.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis_2023.png",
+    "caption": "Cluster Scatter Statis 2023",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis_2023.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_statis_2024.png",
+    "caption": "Cluster Scatter Statis 2024",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_statis_2024.png",
     "group": "Biplot Klaster"
   },
   {
@@ -665,20 +672,6 @@
     "group": "Lain-lain"
   },
   {
-    "name": "cluster_compromise_biplot.png",
-    "caption": "Cluster Compromise Biplot",
-    "type": "image",
-    "src": "/output_real/cluster_compromise_biplot.png",
-    "group": "Lain-lain"
-  },
-  {
-    "name": "cluster_compromise_map.png",
-    "caption": "Cluster Compromise Map",
-    "type": "image",
-    "src": "/output_real/cluster_compromise_map.png",
-    "group": "Lain-lain"
-  },
-  {
     "name": "compromise_biplot_matplotlib.png",
     "caption": "Compromise Biplot Matplotlib",
     "type": "image",
@@ -802,6 +795,13 @@
     "caption": "Output Perm Statis",
     "type": "text",
     "src": "/output_real/output_perm_statis.tex",
+    "group": "Lain-lain"
+  },
+  {
+    "name": "scatter_statis.png",
+    "caption": "Scatter Statis",
+    "type": "image",
+    "src": "/output_real/scatter_statis.png",
     "group": "Lain-lain"
   },
   {
@@ -994,41 +994,6 @@
     "group": "Perbandingan Bersandingan"
   },
   {
-    "name": "cluster_map_2020.png",
-    "caption": "Cluster Map 2020",
-    "type": "image",
-    "src": "/output_real/cluster_map_2020.png",
-    "group": "Peta Klaster"
-  },
-  {
-    "name": "cluster_map_2021.png",
-    "caption": "Cluster Map 2021",
-    "type": "image",
-    "src": "/output_real/cluster_map_2021.png",
-    "group": "Peta Klaster"
-  },
-  {
-    "name": "cluster_map_2022.png",
-    "caption": "Cluster Map 2022",
-    "type": "image",
-    "src": "/output_real/cluster_map_2022.png",
-    "group": "Peta Klaster"
-  },
-  {
-    "name": "cluster_map_2023.png",
-    "caption": "Cluster Map 2023",
-    "type": "image",
-    "src": "/output_real/cluster_map_2023.png",
-    "group": "Peta Klaster"
-  },
-  {
-    "name": "cluster_map_2024.png",
-    "caption": "Cluster Map 2024",
-    "type": "image",
-    "src": "/output_real/cluster_map_2024.png",
-    "group": "Peta Klaster"
-  },
-  {
     "name": "cluster_map_biplot_2020.png",
     "caption": "Cluster Map Biplot 2020",
     "type": "image",
@@ -1061,6 +1026,48 @@
     "caption": "Cluster Map Biplot 2024",
     "type": "image",
     "src": "/output_real/cluster_map_biplot_2024.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis.png",
+    "caption": "Cluster Map Statis",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis_2020.png",
+    "caption": "Cluster Map Statis 2020",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2020.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis_2021.png",
+    "caption": "Cluster Map Statis 2021",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2021.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis_2022.png",
+    "caption": "Cluster Map Statis 2022",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2022.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis_2023.png",
+    "caption": "Cluster Map Statis 2023",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2023.png",
+    "group": "Peta Klaster"
+  },
+  {
+    "name": "cluster_map_statis_2024.png",
+    "caption": "Cluster Map Statis 2024",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2024.png",
     "group": "Peta Klaster"
   },
   {

@@ -31,9 +31,9 @@
   },
   {
     "section": "Ukuran Penyebaran",
-    "latex": "\\[ s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2} \\]",
+    "latex": "\\[ s = \\sqrt{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\bar{x})^2} \\]",
     "type": "equation",
-    "raw": "\\label{eq:std_dev}\n    s = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}"
+    "raw": "\\label{eq:std_dev}\n    s = \\sqrt{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\bar{x})^2}"
   },
   {
     "section": "Ukuran Penyebaran",
@@ -324,16 +324,22 @@
     "raw": "\\mathbf{T} = \n    \\begin{pmatrix}\n    M_{1,1} & M_{1,2} & \\cdots & M_{1,k} \\\\\n    M_{2,1} & M_{2,2} & \\cdots & M_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    M_{k,1} & M_{k,2} & \\cdots & M_{k,k}\n    \\end{pmatrix}"
   },
   {
-    "section": "Penyelarasan Klaster Lintas Waktu (\\textitCluster Correspondence",
+    "section": "Penyelarasan Label Cluster Lintas Waktu",
     "latex": "\\[ D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2} \\]",
     "type": "equation",
     "raw": "\\label{eq:dist_centroid}\n    D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}"
   },
   {
-    "section": "Penyelarasan Klaster Lintas Waktu (\\textitCluster Correspondence",
+    "section": "Penyelarasan Label Cluster Lintas Waktu",
     "latex": "\\[ \\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij} \\]",
     "type": "equation",
     "raw": "\\label{eq:hungarian_min}\n    \\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}"
+  },
+  {
+    "section": "Kategorisasi dan Perankingan Cluster",
+    "latex": "\\[ \\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1} \\]",
+    "type": "equation",
+    "raw": "\\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}"
   },
   {
     "section": "Matriks Pembobot Spasial",
@@ -348,7 +354,7 @@
     "raw": "w_{ij}^* = \\frac{w_{ij}}{\\displaystyle\\sum_{k=1}^{N} w_{ik}}"
   },
   {
-    "section": "Statistik Global Moran's~\\texorpdfstring$I$",
+    "section": "Analisis Autokorelasi Spasial (Global Moran's~\\texorpdfstring$I$",
     "latex": "\\[ I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2} \\]",
     "type": "equation",
     "raw": "\\label{eq:moran_i}\n    I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2}"

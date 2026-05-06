@@ -1116,7 +1116,29 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
     sqrt_Ss = np.sqrt(np.clip(S_s[:2], 0, None))
     Gc = Vc_vars * sqrt_Ss
     loadings = Gc
-
+#pentingbanget
+    # --- [OTOMATIS] Penyelarasan PC1 dengan Performa (Kesejahteraan) ---
+    negative_vars = ['PPM', 'TPT', 'GK', 'PKKP', 'GR', 'Gini Ratio', 'Persentase Penduduk Miskin', 'Tingkat Pengangguran Terbuka']
+    Zc = np.zeros_like(X_matrices[0])
+    for a, Zk in zip(alphas, X_matrices): Zc += a * Zk
+    Zc_proxy = Zc.copy()
+    for i, var in enumerate(selected_vars_final):
+        if any(neg.lower() in var.lower() for neg in negative_vars):
+            Zc_proxy[:, i] *= -1
+    mean_perf_c = Zc_proxy.mean(axis=1)
+    
+    # Samakan scores_raw (titik kompromi) dengan performa
+    corr_scores = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
+    if corr_scores < 0:
+        scores_raw[:, 0] *= -1
+        # Jika scores di-flip, maka ruang trajektori (Vc_vars) juga harus di-flip
+        # agar trajektori searah dengan titik kompromi
+        Vc_vars[:, 0] *= -1
+        # Gc (loadings) juga di-flip agar visualisasi biplot konsisten
+        Gc[:, 0] *= -1
+        loadings = Gc
+        print("  [DEBUG] PC1 di-flip agar searah dengan performa (Kesejahteraan).")
+#pentingbanget
     # 8. Trajectories (Projecting onto Variable Compromise Space)
     # This aligns with the "Dual" interpretation: city trajectories in variable space
     per_year_coords = {}

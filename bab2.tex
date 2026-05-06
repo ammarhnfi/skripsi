@@ -176,11 +176,11 @@ Ukuran pemusatan mendeskripsikan nilai ``tengah'' dari data.
 Ukuran penyebaran mendeskripsikan seberapa jauh data bervariasi di sekitar pusat distribusinya.
 
 \begin{definition}[Simpangan Baku (Standar Deviasi)]
-  Simpangan baku sampel dari $n$ pengamatan adalah:
+  Simpangan baku populasi dari $n$ pengamatan adalah:
   \begin{equation} \label{eq:std_dev}
-    s = \sqrt{\frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2}
+    s = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^2}
   \end{equation}
-  Simpangan baku merepresentasikan akar kuadrat dari ragam (\textit{variance}) sampel $s^2$.
+  Simpangan baku merepresentasikan akar kuadrat dari ragam (\textit{variance}) populasi $s^2$. Karena penelitian ini mencakup seluruh wilayah kabupaten/kota di Pulau Jawa (populasi utuh), maka pembagi yang digunakan adalah $n$ \citep{johnson2007}.
 \end{definition}
 
 \begin{definition}[Nilai Minimum, Maksimum, dan Rentang Antarkuartil (IQR)]
@@ -702,18 +702,18 @@ Analisis pengelompokan (\textit{clustering}) adalah metode statistik yang bertuj
 
 \subsection{\normalsize K-Means Clustering}
 
-K-Means adalah algoritma \textit{partitioning clustering} non-hierarkis yang mempartisi $n$ objek ke dalam $k$ klaster sedemikian rupa sehingga variansi dalam klaster (\textit{within-cluster variation}) menjadi sekecil mungkin \citep{macqueen1967}. Misalkan $\mathbf{x}_i \in \mathbb{R}^p$ adalah vektor observasi objek ke-$i$. Algoritma K-Means meminimumkan fungsi objektif \textit{Sum of Squared Errors} (SSE):
+K-Means adalah algoritma \textit{partitioning clustering} non-hierarkis yang mempartisi $n$ objek ke dalam $k$ cluster sedemikian rupa sehingga variansi dalam cluster (\textit{within-cluster variation}) menjadi sekecil mungkin \citep{macqueen1967}. Misalkan $\mathbf{x}_i \in \mathbb{R}^p$ adalah vektor observasi objek ke-$i$. Algoritma K-Means meminimumkan fungsi objektif \textit{Sum of Squared Errors} (SSE):
 \begin{equation}
   SSE = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \| \mathbf{x}_i - \boldsymbol{\mu}_j \|^2
 \end{equation}
-dengan $C_j$ adalah himpunan objek pada klaster ke-$j$ dan $\boldsymbol{\mu}_j$ adalah sentroid klaster ke-$j$. Algoritma ini bekerja secara iteratif dengan memindahkan objek ke klaster bersentriod terdekat hingga tidak ada objek yang berpindah tempat.
+dengan $C_j$ adalah himpunan objek pada cluster ke-$j$ dan $\boldsymbol{\mu}_j$ adalah sentroid cluster ke-$j$. Algoritma ini bekerja secara iteratif dengan memindahkan objek ke cluster bersentriod terdekat hingga tidak ada objek yang berpindah tempat.
 
-\subsection{\normalsize Penentuan Jumlah Klaster Optimal (Metode Elbow)}
+\subsection{\normalsize Penentuan Jumlah cluster Optimal (Metode Elbow)}
 
-Tantangan utama K-Means adalah penentuan jumlah klaster optimal $k$ yang bersifat apriori. Untuk menentukan $k$ optimal secara empiris, metode \textit{Elbow} digunakan sebagai panduan heuristik \citep{bholowalia2014}. Metode Elbow mengevaluasi efektivitas partisi dengan merencanakan kurva nilai inersia ($SSE$) pada sumbu Y terhadap nilai $k$ yang bervariasi (misalnya 1 hingga 10) pada sumbu X. Semakin banyak klaster, nilai SSE secara matematis akan selalu menurun karena jarak objek ke sentroidnya terdekat akan semakin memendek. Namun, pada suatu titik tertentu ($k$), penurunan drastis SSE akan mulai melandai sehingga membentuk sudut (patahan/siku). Titik patahan inilah yang menunjukkan \textit{diminishing returns} terhadap penambahan jumlah klaster yang direkomendasikan sebagai jumlah klaster optimal agar model tidak mengalami \textit{overfitting} \citep{syakur2018}.
+Tantangan utama K-Means adalah penentuan jumlah cluster optimal $k$ yang bersifat apriori. Untuk menentukan $k$ optimal secara empiris, metode \textit{Elbow} digunakan sebagai panduan heuristik \citep{bholowalia2014}. Metode Elbow mengevaluasi efektivitas partisi dengan merencanakan kurva nilai inersia ($SSE$) pada sumbu Y terhadap nilai $k$ yang bervariasi (misalnya 1 hingga 10) pada sumbu X. Semakin banyak cluster, nilai SSE secara matematis akan selalu menurun karena jarak objek ke sentroidnya terdekat akan semakin memendek. Namun, pada suatu titik tertentu ($k$), penurunan drastis SSE akan mulai melandai sehingga membentuk sudut (patahan/siku). Titik patahan inilah yang menunjukkan \textit{diminishing returns} terhadap penambahan jumlah cluster yang direkomendasikan sebagai jumlah cluster optimal agar model tidak mengalami \textit{overfitting} \citep{syakur2018}.
 \subsection{\normalsize Agglomerative Hierarchical Clustering (Dendrogram)}
 
-Sebagai alat bantu komplementer bagi metode Elbow, pendekatan hierarkis \textit{Agglomerative Clustering} dengan metode \textit{Ward's Linkage} digunakan untuk memvisualisasikan struktur pengelompokan secara hierarkis melalui Dendrogram \citep{ward1963}. Metode Ward menggunakan pendekatan \textit{Analysis of Variance} (ANOVA) untuk mengevaluasi jarak antar-klaster. Pada setiap tahap aglomerasi, metode ini menggabungkan sepasang klaster yang meminimalkan peningkatan \textit{Error Sum of Squares} (ESS) total. Peningkatan ESS agregat saat menggabungkan klaster $A$ dan $B$ untuk membentuk $A \cup B$ dihitung sebagai:
+Sebagai alat bantu komplementer bagi metode Elbow, pendekatan hierarkis \textit{Agglomerative Clustering} dengan metode \textit{Ward's Linkage} digunakan untuk memvisualisasikan struktur pengelompokan secara hierarkis melalui Dendrogram \citep{ward1963}. Metode Ward menggunakan pendekatan \textit{Analysis of Variance} (ANOVA) untuk mengevaluasi jarak antar-cluster. Pada setiap tahap aglomerasi, metode ini menggabungkan sepasang cluster yang meminimalkan peningkatan \textit{Error Sum of Squares} (ESS) total. Peningkatan ESS agregat saat menggabungkan cluster $A$ dan $B$ untuk membentuk $A \cup B$ dihitung sebagai:
 \begin{equation}
   \Delta(A, B) = \frac{n_A n_B}{n_A + n_B} \| \boldsymbol{\mu}_A - \boldsymbol{\mu}_B \|^2
 \end{equation}
@@ -721,7 +721,7 @@ Jarak vertikal cabang dendrogram secara visual mengindikasikan ketidaksamaan ant
 
 \subsection{\normalsize Matriks Transisi Temporal}
 
-Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-klaster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah klaster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $k_1$ namun berpindah ke klaster $y$ di situasi $k_2$:
+Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-cluster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah cluster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada cluster $x$ di situasi $k_1$ namun berpindah ke cluster $y$ di situasi $k_2$:
 \begin{equation}
     \mathbf{T} = 
     \begin{pmatrix}
@@ -731,13 +731,13 @@ Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk men
     M_{k,1} & M_{k,2} & \cdots & M_{k,k}
     \end{pmatrix}
 \end{equation}
-Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah klaster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan klaster antar-situasi.
+Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah cluster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan cluster antar-situasi.
 
-\subsection{\normalsize Penyelarasan Klaster Lintas Waktu (\textit{Cluster Correspondence})}
+\subsection{\normalsize Penyelarasan Label Cluster Lintas Waktu}
 
-Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan klaster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas klaster 1 pada tahun 2020 bergeser menjadi klaster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Cluster Correspondence} \citep{kuhn1955}.
+Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan cluster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas cluster 1 pada tahun 2020 bergeser menjadi cluster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Cluster Correspondence} \citep{kuhn1955}.
 
-Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} klaster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} klaster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
+Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} cluster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} cluster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
 \begin{equation} \label{eq:dist_centroid}
     D(c_{1i}, c_{2j}) = \sqrt{\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}
 \end{equation}
@@ -746,11 +746,21 @@ Matriks jarak ini kemudian diselesaikan menggunakan \textit{Hungarian Algorithm}
 \begin{equation} \label{eq:hungarian_min}
     \min \sum_{i=1}^{k} \sum_{j=1}^{k} D(c_{1i}, c_{2j}) \cdot x_{ij}
 \end{equation}
-di mana variabel biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan klaster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
+dengan variabel biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Cluster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
+
+\subsection{\normalsize Kategorisasi dan Perankingan Cluster}
+
+Setelah proses penyelarasan label selesai dilakukan, cluster-cluster tersebut masih memiliki label angka yang bersifat nominal (1, 2, \dots, $K$). Untuk memberikan interpretasi yang bermakna secara ekonomi (misalnya: Rendah, Sedang, Tinggi), diperlukan kriteria pengurutan yang objektif. Dalam penelitian ini, kriteria yang digunakan adalah nilai rata-rata skor komponen utama pertama ($\text{PC}_1$) pada ruang kompromi STATIS.
+
+Misalkan $\mathbf{f}_{i,1}$ adalah skor objek ke-$i$ pada komponen utama pertama dari matriks kompromi $\mathbf{F}_c$. Rata-rata skor untuk cluster ke-$k$ didefinisikan sebagai:
+\begin{equation}
+    \overline{\text{PC}}_{1,k} = \frac{1}{n_k} \sum_{i \in C_k} \mathbf{f}_{i,1}
+\end{equation}
+dengan $C_k$ adalah himpunan indeks objek dalam Cluster ke-$k$ dan $n_k$ adalah jumlah anggotanya. Label peringkat (1 untuk Rendah, hingga $K$ untuk Tinggi) diberikan berdasarkan urutan menaik dari nilai $\overline{\text{PC}}_{1,k}$. Hal ini didasari oleh sifat $\text{PC}_1$ dalam analisis ini yang merepresentasikan dimensi utama kesejahteraan rakyat, di mana nilai skor yang lebih besar berkorespondensi dengan capaian indikator yang lebih baik secara rata-rata.
 
 %-----------------------------------------------------------------------------%
 % --- 2.14 ---
-\section{\normalsize Uji Autokorelasi Spasial (\texorpdfstring{Global Moran's $I$}{Global Moran's I})}
+\section{\normalsize Uji Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
 %-----------------------------------------------------------------------------%
 
 Autokorelasi spasial mengacu pada korelasi antara nilai suatu atribut di satu lokasi dengan nilai atribut yang sama di lokasi lain yang berdekatan, suatu manifestasi dari Hukum Pertama Geografi Tobler yang menyatakan bahwa ``segalanya berhubungan dengan segalanya yang lain, tetapi hal-hal yang berdekatan lebih berhubungan daripada yang jauh'' \citep{johnson2007}.
@@ -767,7 +777,9 @@ Untuk menghilangkan pengaruh perbedaan jumlah tetangga antar-wilayah, dilakukan 
 \end{equation}
 Bentuk matriks pembobot terstandardisasi-baris adalah $\mathbf{W}^* = (w_{ij}^*)$ di mana setiap baris berjumlah 1. Bentuk ini memastikan bahwa rata-rata berbobot spasial merupakan rata-rata sederhana dari nilai-nilai tetangga.
 
-\subsection{\normalsize Statistik Global Moran's~\texorpdfstring{$I$}{I}}
+\subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
+
+Sejalan dengan hasil pengelompokan pada skor kompromi, dilakukan pengujian untuk mendeteksi apakah terdapat ketergantungan spasial secara keseluruhan. Pengujian ini merujuk pada koefisien Global Moran's $I$ yang divalidasi menggunakan pendekatan \textbf{non-parametrik (permutasi)} melalui simulasi Monte Carlo. Pendekatan ini dilakukan dengan mengacak posisi nilai atribut secara spasial berkali-kali untuk membangun distribusi null, sehingga $p$-value diperoleh secara empiris tanpa bergantung pada asumsi normalitas data. Hal ini menjamin validitas pengujian pada data regional yang memiliki keterbatasan jumlah amatan ($n=41$).
 
 \begin{definition}[Global Moran's $I$]
   Misalkan $x_i$ adalah nilai suatu atribut pada wilayah ke-$i$. Global Moran's~$I$ menggunakan matriks pembobot awal (belum terstandardisasi baris) $\mathbf{W}_c$ dengan elemen $w_{ij}$, dan didefinisikan sebagai:

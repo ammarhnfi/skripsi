@@ -134,7 +134,7 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
     \end{itemize}
     Selain itu, dikumpulkan pula data tambahan berikut yang tidak dimasukkan sebagai input analisis STATIS dan Dynamic Biplot:
     \begin{itemize}
-        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi klaster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar klaster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 variabel yang telah dijelaskan sebelumnya.
+        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi cluster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar cluster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 variabel yang telah dijelaskan sebelumnya.
         \item \textbf{JP (Jumlah Penduduk):} Banyaknya jiwa per wilayah (Orang), khusus untuk pembentukan bobot demografis ($m_i$) sesuai dengan Persamaan~\ref{eq:weighted_mean} dan Persamaan~\ref{eq:weighted_std}.
     \end{itemize}
 \end{enumerate}
@@ -377,15 +377,15 @@ Lintasan pergerakan wilayah dari 2020 hingga 2022 (Persamaan~\ref{eq:lintasan}: 
 \end{figure}
 
 \subsubsection{Tahap 7: Uji Signifikansi dan Clustering}
-Signifikansi divalidasi dengan uji permutasi Monte Carlo. Langkah terakhir adalah pemetaan wilayah ke dalam klaster menggunakan K-Means.
+Signifikansi divalidasi dengan uji permutasi Monte Carlo. Langkah terakhir adalah pemetaan wilayah ke dalam cluster menggunakan K-Means.
 \input{output_sample/output_table_cluster_members.tex}
 
 Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal (Tabel~\ref{tab:sampletranssum2020x2021} dan Tabel~\ref{tab:sampletranssum2021x2022}).
 \input{output_sample/output_table_transition_matrix_sum_2020x2021.tex}
 \input{output_sample/output_table_transition_matrix_sum_2021x2022.tex}
 
-\subsubsection{Tahap 8: Perbandingan Klaster Biplot vs STATIS}
-Untuk mengilustrasikan keunggulan STATIS yang mengakomodasi informasi temporal, kita dapat membandingkan klaster yang terbentuk dari matriks koordinat STATIS $\mathbf{F}_k$ dengan klaster yang dibentuk secara murni dari Principal Component Analysis (PCA) pada tahun individu (Biplot Unweighted). 
+\subsubsection{Tahap 8: Perbandingan Cluster Biplot vs STATIS}
+Untuk mengilustrasikan keunggulan STATIS yang mengakomodasi informasi temporal, kita dapat membandingkan cluster yang terbentuk dari matriks koordinat STATIS $\mathbf{F}_k$ dengan cluster yang dibentuk secara murni dari Principal Component Analysis (PCA) pada tahun individu (Biplot Unweighted). 
 
 Dalam PCA standar, koordinat objek pada tahun $k$ (misalnya tahun 2020) dihitung semata-mata dengan memproyeksikan data yang distandardisasi ($\mathbf{Z}_{2020}$) ke matriks vektor eigen $\mathbf{V}_{2020}$ hasil dekomposisi matriks kovariansi pada tahun tersebut, yang dirumuskan sebagai:
 \begin{equation}
@@ -397,7 +397,7 @@ Berbeda halnya dengan metode STATIS, di mana proyeksi data pada tahun 2020 ($\ma
     \mathbf{F}_{\text{STATIS}, 2020} = \mathbf{Z}_{2020} \mathbf{V}_c \label{eq:statis_scores_2020}
 \end{equation}
 
-Perbedaan proyeksi ini menyebabkan titik koordinat masing-masing wilayah berada pada posisi yang berbeda, sehingga saat algoritma K-Means ($k=3$) diterapkan, susunan keanggotaan klaster dapat berubah. Matriks tabulasi silang berikut membandingkan keanggotaan klaster dari PCA murni berhadapan dengan STATIS untuk tahun 2020 pada data sampel.
+Perbedaan proyeksi ini menyebabkan titik koordinat masing-masing wilayah berada pada posisi yang berbeda, sehingga saat algoritma K-Means ($k=3$) diterapkan, susunan keanggotaan cluster dapat berubah. Matriks tabulasi silang berikut membandingkan keanggotaan cluster dari PCA murni berhadapan dengan STATIS untuk tahun 2020 pada data sampel.
 
 \input{output_sample/output_table_biplot_vs_statis_compare_sum_2020.tex}
 \input{output_sample/output_table_biplot_vs_statis_compare_name_2020.tex}
@@ -409,38 +409,32 @@ Gambar~\ref{fig:map_biplot_statis_sample_2020} memvisualisasikan perbedaan hasil
     \begin{minipage}{0.48\textwidth}
         \centering
         \includegraphics[width=\textwidth]{output_sample/cluster_map_biplot_2020.png}
-        \caption*{Peta Klaster Biplot (Unweighted)}
+        \caption*{Peta Cluster Biplot (Unweighted)}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/cluster_map_2020.png}
-        \caption*{Peta Klaster STATIS}
+        \includegraphics[width=\textwidth]{output_sample/cluster_map_statis_2020.png}
+        \caption*{Peta Cluster STATIS}
     \end{minipage}
-    \caption{Perbandingan Spasial Klaster Biplot vs STATIS Data Sampel (2020)}
+    \caption{Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel (2020)}
     \label{fig:map_biplot_statis_sample_2020}
 \end{figure}
 
 \subsubsection{Tahap 9: Tabulasi Silang K-Means vs IPM UNDP}
-Sebagai bentuk validasi eksternal, hasil klasterisasi K-Means yang bersifat obyektif (\textit{data-driven}) dihadapkan dengan klasifikasi normatif IPM dari UNDP (Sangat Tinggi, Tinggi, Sedang, Rendah). Karena IPM merupakan indeks agregat yang telah mapan, tabulasi silang ini bertujuan memastikan bahwa klaster yang terbentuk sejalan dengan level pembangunan aktual.
+Sebagai bentuk validasi eksternal, hasil clustering K-Means yang bersifat obyektif (\textit{data-driven}) dihadapkan dengan klasifikasi normatif IPM dari UNDP (Sangat Tinggi, Tinggi, Sedang, Rendah). Karena IPM merupakan indeks agregat yang telah mapan, tabulasi silang ini bertujuan memastikan bahwa cluster yang terbentuk sejalan dengan level pembangunan aktual.
 
 \input{output_sample/output_table_cross_matrix_sum_2020.tex}
 \input{output_sample/output_table_cross_matrix_name_2020.tex}
 
+\subsection{\normalsize Penyelarasan Label Cluster Lintas Waktu}
+Untuk menjamin konsistensi identitas Cluster antar periode waktu (mencegah \textit{label switching}), diterapkan prosedur penyelarasan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955}. Prosedur ini bekerja dengan menghitung matriks biaya (\textit{cost matrix}) berdasarkan jarak Euclidean antar centroid cluster pada tahun dasar ($t$) dan tahun tujuan ($t+1$) merujuk pada Persamaan \ref{eq:dist_centroid}. Solusi optimal pemetaan label diperoleh melalui minimalisasi total jarak sesuai fungsi objektif pada Persamaan \ref{eq:hungarian_min}. Langkah ini krusial untuk memastikan bahwa "Cluster Rendah" pada tahun tertentu merujuk pada karakteristik yang sebanding dengan "Cluster Rendah" pada tahun lainnya.
 
-\subsection{\normalsize Penyelarasan Label Klaster Lintas Waktu}
-Untuk menjamin konsistensi identitas klaster antar periode waktu (mencegah \textit{label switching}), diterapkan prosedur penyelarasan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955}. Prosedur ini bekerja dengan menghitung matriks biaya (\textit{cost matrix}) berdasarkan jarak Euclidean antar centroid klaster pada tahun dasar ($t$) dan tahun tujuan ($t+1$) merujuk pada Persamaan \ref{eq:dist_centroid}. Solusi optimal pemetaan label diperoleh melalui minimalisasi total jarak sesuai fungsi objektif pada Persamaan \ref{eq:hungarian_min}. Langkah ini krusial untuk memastikan bahwa "Klaster Rendah" pada tahun tertentu merujuk pada karakteristik yang sebanding dengan "Klaster Rendah" pada tahun lainnya.
+\subsection{\normalsize Kategorisasi dan Perankingan Cluster}
+Interpretasi sosio-ekonomi terhadap cluster dilakukan melalui perankingan otomatis menggunakan nilai rata-rata skor komponen utama pertama (PC1) pada masing-masing cluster. PC1 mewakili variansi utama dari 11 variabel tersebut sehingga berperan sebagai indeks performa umum (\textit{general performance index}). Cluster dengan rata-rata PC1 terendah diberi label \textbf{Cluster 1 (Rendah)}, menengah sebagai \textbf{Cluster 2 (Sedang)}, dan tertinggi sebagai \textbf{Cluster 3 (Tinggi)}. Apabila digunakan 4 kelompok, label tertinggi menjadi \textbf{Cluster 4 (Sangat Tinggi)}.
 
-\subsection{\normalsize Kategorisasi dan Perankingan Klaster}
-Interpretasi sosio-ekonomi terhadap klaster dilakukan melalui perankingan otomatis menggunakan nilai rata-rata skor komponen utama pertama (PC1) pada masing-masing klaster. PC1 mewakili variansi utama dari 11 variabel tersebut sehingga berperan sebagai indeks performa umum (\textit{general performance index}). Klaster dengan rata-rata PC1 terendah diberi label \textbf{Klaster 1 (Rendah)}, menengah sebagai \textbf{Klaster 2 (Sedang)}, dan tertinggi sebagai \textbf{Klaster 3 (Tinggi)}. 
-
-Untuk mempermudah pemantauan visual, sistem visualisasi menetapkan skema warna tetap (\textit{fixed color scheme}): Merah (\textit{Red}) untuk Klaster 1, Jingga (\textit{Yellow/Amber}) untuk Klaster 2, dan Hijau (\textit{Green}) untuk Klaster 3. Hal ini menjamin konsistensi representasi visual di seluruh periode pengamatan (2020 hingga 2024), sehingga pembaca dapat langsung mengenali status wilayah berdasarkan warnanya tanpa fluktuasi visual antar-tahun.
+Untuk mempermudah pemantauan visual, sistem visualisasi menetapkan skema warna tetap (\textit{fixed color scheme}): Merah (\textit{Red}) untuk Cluster 1, Jingga (\textit{Yellow/Amber}) untuk Cluster 2, Hijau (\textit{Green}) untuk Cluster 3, dan Biru (\textit{Blue}) untuk Cluster 4. Hal ini menjamin konsistensi representasi visual di seluruh periode pengamatan (2020 hingga 2024), sehingga pembaca dapat langsung mengenali status wilayah berdasarkan warnanya tanpa fluktuasi visual antar-tahun.
 
 \subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
 Sejalan dengan hasil pengelompokan pada skor kompromi, dilakukan pengujian untuk mendeteksi apakah terdapat ketergantungan spasial secara keseluruhan. Pengujian ini merujuk pada koefisien Global Moran's $I$ sebagaimana didefinisikan pada Persamaan \ref{eq:moran_i} di Bab 2.
 
-Signifikansi statistik $I$ kemudian dievaluasi menggunakan pendekatan parametrik (skor-$Z$) dengan bantuan nilai harapan $E(I)$ dan varians $Var(I)$ untuk menguji hipotesis keberadaan autokorelasi:
-\begin{equation}
-    Z(I) = \frac{I - E(I)}{\sqrt{Var(I)}}, \quad E(I) = \frac{-1}{N-1}
-\end{equation}
-
-
+Signifikansi statistik $I$ kemudian dievaluasi menggunakan pendekatan \textbf{non-parametrik (permutasi)} melalui simulasi Monte Carlo. Pendekatan ini dilakukan dengan mengacak posisi nilai atribut secara spasial berkali-kali untuk membangun distribusi null, sehingga $p$-value diperoleh secara empiris tanpa bergantung pada asumsi normalitas data. Hal ini menjamin validitas pengujian pada data regional yang memiliki keterbatasan jumlah amatan ($n=41$).
