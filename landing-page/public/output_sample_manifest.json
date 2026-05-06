@@ -21,6 +21,27 @@
     "group": "Biplot Klaster"
   },
   {
+    "name": "cluster_scatter_biplot_2020.png",
+    "caption": "Cluster Scatter Biplot 2020",
+    "type": "image",
+    "src": "/output_sample/cluster_scatter_biplot_2020.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_biplot_2021.png",
+    "caption": "Cluster Scatter Biplot 2021",
+    "type": "image",
+    "src": "/output_sample/cluster_scatter_biplot_2021.png",
+    "group": "Biplot Klaster"
+  },
+  {
+    "name": "cluster_scatter_biplot_2022.png",
+    "caption": "Cluster Scatter Biplot 2022",
+    "type": "image",
+    "src": "/output_sample/cluster_scatter_biplot_2022.png",
+    "group": "Biplot Klaster"
+  },
+  {
     "name": "dendrogram_2020.png",
     "caption": "Dendrogram 2020",
     "type": "image",
@@ -348,6 +369,104 @@
     "type": "image",
     "src": "/output_sample/statis_trajectories_highlight.png",
     "group": "Lain-lain"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2020.png",
+    "caption": "Compare Map Biplot Vs Statis 2020",
+    "type": "image",
+    "src": "/output_sample/compare_map_biplot_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2021.png",
+    "caption": "Compare Map Biplot Vs Statis 2021",
+    "type": "image",
+    "src": "/output_sample/compare_map_biplot_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2022.png",
+    "caption": "Compare Map Biplot Vs Statis 2022",
+    "type": "image",
+    "src": "/output_sample/compare_map_biplot_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_trans_biplot_2020x2021.png",
+    "caption": "Compare Map Trans Biplot 2020X2021",
+    "type": "image",
+    "src": "/output_sample/compare_map_trans_biplot_2020x2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_trans_biplot_2021x2022.png",
+    "caption": "Compare Map Trans Biplot 2021X2022",
+    "type": "image",
+    "src": "/output_sample/compare_map_trans_biplot_2021x2022.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_trans_statis_2020x2021.png",
+    "caption": "Compare Map Trans Statis 2020X2021",
+    "type": "image",
+    "src": "/output_sample/compare_map_trans_statis_2020x2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_map_trans_statis_2021x2022.png",
+    "caption": "Compare Map Trans Statis 2021X2022",
+    "type": "image",
+    "src": "/output_sample/compare_map_trans_statis_2021x2022.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_biplot_vs_statis_2020.png",
+    "caption": "Compare Scatter Biplot Vs Statis 2020",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_biplot_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_biplot_vs_statis_2021.png",
+    "caption": "Compare Scatter Biplot Vs Statis 2021",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_biplot_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_biplot_vs_statis_2022.png",
+    "caption": "Compare Scatter Biplot Vs Statis 2022",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_biplot_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_trans_biplot_2020x2021.png",
+    "caption": "Compare Scatter Trans Biplot 2020X2021",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_trans_biplot_2020x2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_trans_biplot_2021x2022.png",
+    "caption": "Compare Scatter Trans Biplot 2021X2022",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_trans_biplot_2021x2022.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_trans_statis_2020x2021.png",
+    "caption": "Compare Scatter Trans Statis 2020X2021",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_trans_statis_2020x2021.png",
+    "group": "Perbandingan Bersandingan"
+  },
+  {
+    "name": "compare_scatter_trans_statis_2021x2022.png",
+    "caption": "Compare Scatter Trans Statis 2021X2022",
+    "type": "image",
+    "src": "/output_sample/compare_scatter_trans_statis_2021x2022.png",
+    "group": "Perbandingan Bersandingan"
   },
   {
     "name": "cluster_map_2020.png",
