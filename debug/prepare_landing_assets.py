@@ -23,32 +23,58 @@ def get_group(fname):
 
 total_copied = 0
 for folder in folders:
-    if not os.path.exists(folder['dest']):
-        os.makedirs(folder['dest'])
+    dest_root = folder['dest']
+    if not os.path.exists(dest_root):
+        os.makedirs(dest_root)
         
-    if not os.path.exists(folder['src']):
+    src_root = folder['src']
+    if not os.path.exists(src_root):
         continue
         
-    files = os.listdir(folder['src'])
     manifest = []
     
-    for f in files:
-        if f == 'OUTPUT_APP.md': continue
-        src_f = os.path.join(folder['src'], f)
-        if os.path.isfile(src_f):
+    for root, dirs, files in os.walk(src_root):
+        # Calculate relative path to src_root
+        rel_path = os.path.relpath(root, src_root)
+        
+        # Determine scenario
+        scenario = 'Shared'
+        if 'scenario1' in root.lower():
+            scenario = 'Scenario 1'
+        elif 'scenario2' in root.lower():
+            scenario = 'Scenario 2'
+            
+        for f in files:
+            if f == 'OUTPUT_APP.md': continue
+            src_f = os.path.join(root, f)
+            
+            # Create subfolder in dest if needed
+            dest_f_dir = os.path.join(dest_root, rel_path) if rel_path != '.' else dest_root
+            if not os.path.exists(dest_f_dir):
+                os.makedirs(dest_f_dir)
+            
+            dest_f = os.path.join(dest_f_dir, f)
+            
             ftype = 'image' if f.endswith('.png') else 'text' if f.endswith('.tex') else 'other'
-            folder_name = os.path.basename(folder['dest'])
+            folder_name = os.path.basename(dest_root)
+            
+            # URL path for the frontend
+            url_path = f'/{folder_name}/{f}'
+            if rel_path != '.':
+                url_path = f'/{folder_name}/{rel_path.replace("\\", "/")}/{f}'
+            
             manifest.append({
                 'name': f,
                 'caption': f.replace('_', ' ').replace('.png', '').replace('.tex', '').title(),
                 'type': ftype,
-                'src': f'/{folder_name}/{f}',
-                'group': get_group(f)
+                'src': url_path,
+                'group': get_group(f),
+                'scenario': scenario
             })
-            shutil.copy2(src_f, os.path.join(folder['dest'], f))
+            shutil.copy2(src_f, dest_f)
             total_copied += 1
             
-    manifest.sort(key=lambda x: (x['group'], x['caption']))
+    manifest.sort(key=lambda x: (x['scenario'], x['group'], x['caption']))
     with open(folder['manifest'], "w", encoding="utf-8") as mf:
         json.dump(manifest, mf, indent=2)
 

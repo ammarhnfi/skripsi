@@ -123,7 +123,7 @@ Mengacu pada formula yang disajikan pada Persamaan~(3.2) dan~(3.3) di Bab~3, has
 
 \input{output_real/output_table_kmo_bartlett.tex}
 
-Hasil uji KMO pada Tabel~\ref{tab:appkmo_bartlett} menunjukkan bahwa nilai KMO berada pada rentang $\AppKMOMin{}$--$\AppKMOMax{}$ dengan rata-rata $\AppKMOAvg{}$ (kategori ``$\AppKMOInterpret{}$''), yang mengindikasikan bahwa data cukup memadai untuk dianalisis secara multivariat. Selanjutnya, hasil Uji Bartlett dengan $p\text{-value} < 0{,}05$ pada seluruh tahun memberikan cukup bukti untuk menolak hipotesis nol bahwa matriks korelasi adalah matriks identitas. Hal ini berarti terdapat interkorelasi signifikan antar-variabel, sehingga analisis dengan metode multivariat (seperti STATIS) secara statistik telah terjustifikasi.
+Hasil uji KMO pada Tabel~\ref{tab:app1kmo_bartlett} menunjukkan bahwa nilai KMO berada pada rentang $\AppKMOMin{}$--$\AppKMOMax{}$ dengan rata-rata $\AppKMOAvg{}$ (kategori ``$\AppKMOInterpret{}$''), yang mengindikasikan bahwa data cukup memadai untuk dianalisis secara multivariat. Selanjutnya, hasil Uji Bartlett dengan $p\text{-value} < 0{,}05$ pada seluruh tahun memberikan cukup bukti untuk menolak hipotesis nol bahwa matriks korelasi adalah matriks identitas. Hal ini berarti terdapat interkorelasi signifikan antar-variabel, sehingga analisis dengan metode multivariat (seperti STATIS) secara statistik telah terjustifikasi.
 
 %-----------------------------------------------------------------------------%
 % --- 4.3 ---
@@ -134,10 +134,10 @@ Tahap pertama dalam algoritma STATIS adalah analisis interstruktur, yang bertuju
 
 \subsection{\normalsize Matriks Koefisien RV}
 
-Hasil perhitungan koefisien RV untuk seluruh pasangan tahun disajikan pada Tabel~\ref{tab:apprv} dan divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heatmap}.
+Hasil perhitungan koefisien RV untuk seluruh pasangan tahun disajikan pada Tabel~\ref{tab:apprv_w} dan divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heatmap}.
 
-\input{output_real/output_table_rv.tex}
-% Label otomatis: \label{tab:rv} (sudah di dalam file .tex)
+\input{output_real/output_table_rv_w.tex}
+% Label otomatis: \label{tab:rv_w} (sudah di dalam file .tex)
 
 \begin{figure}[H]
     \centering
@@ -146,26 +146,37 @@ Hasil perhitungan koefisien RV untuk seluruh pasangan tahun disajikan pada Tabel
     \label{fig:rv_heatmap}
 \end{figure}
 
-Berdasarkan Tabel~\ref{tab:apprv} dan Gambar~\ref{fig:rv_heatmap}, seluruh nilai koefisien RV berada di atas $\AppRVMin{}$, yang mengindikasikan bahwa konfigurasi relatif antar-wilayah sangat konsisten dari tahun ke tahun. Hal ini memiliki implikasi penting: meskipun terjadi perubahan akibat pandemi COVID-19 pada 2020 hingga 2021 yang mengubah \textit{level} absolut (seperti PDRB yang turun), \textbf{hierarki} atau \textbf{struktur kemiripan} antar-wilayah tidak berubah secara drastis. Wilayah yang secara relatif lebih maju tetap berada di posisi yang lebih baik dibandingkan wilayah yang tertinggal, dan demikian pula sebaliknya.
+Berdasarkan Tabel~\ref{tab:apprv_w} dan Gambar~\ref{fig:rv_heatmap}, seluruh nilai koefisien RV berada di atas $\AppRVMin{}$, yang mengindikasikan bahwa konfigurasi relatif antar-wilayah sangat konsisten dari tahun ke tahun. Hal ini memiliki implikasi penting: meskipun terjadi perubahan akibat pandemi COVID-19 pada 2020 hingga 2021 yang mengubah \textit{level} absolut (seperti PDRB yang turun), \textbf{hierarki} atau \textbf{struktur kemiripan} antar-wilayah tidak berubah secara drastis. Wilayah yang secara relatif lebih maju tetap berada di posisi yang lebih baik dibandingkan wilayah yang tertinggal, dan demikian pula sebaliknya.
 
 Nilai RV antara tahun 2020 hingga 2021 yang sedikit lebih rendah dibandingkan pasangan tahun lainnya mengindikasikan bahwa masa awal pandemi sempat menciptakan sedikit pergeseran struktur, yang kemudian pulih dan kembali konsisten pada 2022 hingga 2024.
 
 \subsection{\normalsize Vektor Bobot (Alpha) dan Representativitas Tahun}
 
-Berdasarkan nilai eigen dominan dari matriks interstruktur $\mathbf{H}$ (Persamaan~\ref{eq:h_eigen}--\ref{eq:alpha_weights}), diperoleh vektor bobot $\boldsymbol{\alpha}$ yang menunjukkan kontribusi dan representativitas setiap tahun terhadap struktur kompromi. Hasilnya disajikan pada Tabel~\ref{tab:appalpha}.
+Berdasarkan nilai eigen dominan dari matriks interstruktur $\mathbf{H}_W$ dan $\mathbf{H}_S$ (Persamaan~\ref{eq:h_eigen}--\ref{eq:alpha_weights}), diperoleh dua vektor bobot yang masing-masing merepresentasikan skenario analisis yang berbeda:
 
-\input{output_real/output_table_alpha.tex}
-% Label otomatis: \label{tab:alpha}
+\begin{itemize}
+    \item \textbf{$\boldsymbol{\alpha}_W$ (Skenario 1 -- Host Wilayah):} Bobot berdasarkan kemiripan intra-struktur antar-wilayah. Tabel~\ref{tab:appalpha_w} menyajikan hasilnya.
+    \item \textbf{$\boldsymbol{\alpha}_S$ (Skenario 2 -- Host Indikator):} Bobot berdasarkan kemiripan struktur korelasi antar-indikator. Tabel~\ref{tab:appalpha_s} menyajikan hasilnya.
+\end{itemize}
 
-Dari Tabel~\ref{tab:appalpha}, terlihat bahwa bobot $\alpha$ untuk kelima tahun relatif seimbang (berkisar antara $\AppAlphaMin{}$ hingga $\AppAlphaMax{}$). Hal ini menegaskan bahwa tidak ada satu tahun pun yang mendominasi atau mendistorsi gambaran rata-rata (kompromi). Tahun dengan bobot tertinggi, yaitu $\AppAlphaMaxYear{}$, dapat diinterpretasikan sebagai tahun yang paling representatif terhadap kondisi rata-rata selama 2020 hingga 2024.
+\input{output_real/output_table_alpha_w.tex}
+% Label otomatis: \label{tab:appalpha_w}
 
+\input{output_real/output_table_alpha_s.tex}
+% Label otomatis: \label{tab:appalpha_s}
+
+Dari kedua tabel di atas, terlihat bahwa bobot $\alpha$ untuk kelima tahun relatif seimbang (berkisar antara $\AppAlphaMin{}$ hingga $\AppAlphaMax{}$). Hal ini menegaskan bahwa tidak ada satu tahun pun yang mendominasi atau mendistorsi gambaran rata-rata (kompromi). Tahun dengan bobot tertinggi, yaitu $\AppAlphaMaxYear{}$, dapat diinterpretasikan sebagai tahun yang paling representatif terhadap kondisi rata-rata selama 2020 hingga 2024.
 
 %-----------------------------------------------------------------------------%
 % --- 4.4 ---
 \section{\normalsize Analisis Struktur Kompromi}
 %-----------------------------------------------------------------------------%
 
-Setelah diperoleh bobot $\boldsymbol{\alpha}$, matriks kompromi $\mathbf{W}_c = \sum_t \alpha_t \mathbf{W}_t$ dibentuk dan didekomposisi secara spektral sesuai Persamaan~\ref{eq:decomp_W}--\ref{eq:fc}. Hasil dekomposisi ini menghasilkan skor kompromi ($\mathbf{F}_c$), loadings kompromi ($\mathbf{G}_c$), dan eigenvalue yang menjadi dasar seluruh interpretasi berikutnya.
+Setelah diperoleh bobot $\boldsymbol{\alpha}$, matriks kompromi dibentuk dan didekomposisi secara spektral. Sesuai dengan dua skenario pembobotan, diperoleh dua representasi kompromi yang akan dianalisis secara paralel:
+\begin{itemize}
+    \item \textbf{Skenario 1 (ACT Klasik, Host = Wilayah):} $\mathbf{W}_c^{(1)} = \sum_t \alpha_{W,t}\mathbf{W}_t$ berukuran $n \times n$; hasil dekomposisi langsung memberikan koordinat skor wilayah.
+    \item \textbf{Skenario 2 (Dual STATIS, Host = Indikator):} $\mathbf{S}_c^{(2)} = \sum_t \alpha_{S,t}\mathbf{S}_t$ berukuran $p \times p$; hasil dekomposisi memberikan koordinat loading indikator secara langsung.
+\end{itemize}
 
 \subsection{\normalsize Dekomposisi Eigenvalue (Scree Plot)}
 
@@ -178,10 +189,10 @@ Gambar~\ref{fig:scree_plot} menyajikan \textit{scree plot}, yaitu grafik nilai e
     \label{fig:scree_plot}
 \end{figure}
 
-\input{output_real/output_table_eigen.tex}
+\input{output_real/scenario1/output_table_eigen.tex}
 % Label: \label{tab:eigen}
 
-Berdasarkan Gambar~\ref{fig:scree_plot} dan Tabel~\ref{tab:appeigen}, dua dimensi pertama mampu menjelaskan $\AppCumTwoPct{}$\% kumulatif variansi total. Secara spesifik, Dimensi~1 menjelaskan $\AppDimOnePct{}$\% dan Dimensi~2 menjelaskan $\AppDimTwoPct{}$\%. Nilai ini telah melampaui ambang batas $70\%$ yang lazim digunakan dalam analisis dimensi reduksi, sehingga representasi dua dimensi dianggap sudah cukup informatif.
+Berdasarkan Gambar~\ref{fig:scree_plot} dan Tabel~\ref{tab:app1eigen}, dua dimensi pertama mampu menjelaskan $\AppCumTwoPct{}$\% kumulatif variansi total. Secara spesifik, Dimensi~1 menjelaskan $\AppDimOnePct{}$\% dan Dimensi~2 menjelaskan $\AppDimTwoPct{}$\%. Nilai ini telah melampaui ambang batas $70\%$ yang lazim digunakan dalam analisis dimensi reduksi, sehingga representasi dua dimensi dianggap sudah cukup informatif.
 
 Tampak pada grafik bahwa terjadi ``patahan'' (\textit{elbow}) yang jelas setelah Dimensi~2, di mana peningkatan variansi yang dijelaskan oleh dimensi selanjutnya menjadi sangat kecil. Hal ini memvalidasi keputusan untuk fokus pada dua dimensi kompromi utama dalam seluruh analisis berikutnya.
 
@@ -191,7 +202,7 @@ Gambar~\ref{fig:compromise_map} menampilkan posisi 41 kabupaten/kota pada ruang 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{output_real/compromise_map.png}
+    \includegraphics[width=0.85\textwidth]{output_real/scenario1/compromise_map.png}
     \caption{Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}
     \label{fig:compromise_map}
 \end{figure}
@@ -200,13 +211,22 @@ Dari Gambar~\ref{fig:compromise_map}, terlihat adanya pola pengelompokan yang je
 
 \subsection{\normalsize Biplot Kompromi (Skor + Loading)}
 
-Untuk mendapatkan pemahaman yang lebih menyeluruh mengenai hubungan antara wilayah dan variabel, disajikan biplot kompromi pada Gambar~\ref{fig:compromise_biplot} yang mengintegrasikan skor objek ($\mathbf{F}_c$) dan loading variabel ($\mathbf{G}_c$) dalam satu bidang.
+Untuk mendapatkan pemahaman yang lebih menyeluruh mengenai hubungan antara wilayah dan variabel, disajikan biplot kompromi dari kedua skenario. Gambar~\ref{fig:compromise_biplot_s1} dan \ref{fig:compromise_biplot_s2} mengintegrasikan skor objek ($\mathbf{F}_c$) dan loading variabel ($\mathbf{G}_c$) dalam satu bidang.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{output_real/compromise_biplot_matplotlib.png}
-    \caption{Biplot Kompromi: Skor Objek dan Loading Variabel}
-    \label{fig:compromise_biplot}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/compromise_biplot_matplotlib.png}
+        \caption{Biplot Kompromi Skenario 1 (Host = Wilayah)}
+        \label{fig:compromise_biplot_s1}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario2/compromise_biplot_matplotlib.png}
+        \caption{Biplot Kompromi Skenario 2 (Host = Indikator)}
+        \label{fig:compromise_biplot_s2}
+    \end{minipage}
 \end{figure}
 
 \subsubsection*{Interpretasi Sumbu Utama}
@@ -217,54 +237,82 @@ Untuk mendapatkan pemahaman yang lebih menyeluruh mengenai hubungan antara wilay
 
 \end{enumerate}
 
-Tabel~\ref{tab:apploadings} menyajikan nilai loading ($\mathbf{G}_c$) masing-masing variabel secara numerik.
+Tabel~\ref{tab:app1loadings} dan Tabel~\ref{tab:app2loadings} menyajikan nilai loading ($\mathbf{G}_c$) masing-masing variabel secara numerik untuk setiap skenario.
 
-\input{output_real/output_table_loadings.tex}
-% Label: \label{tab:loadings}
+\input{output_real/scenario1/output_table_loadings.tex}
+% Label: \label{tab:apploadings_s1}
 
-Sebagai pelengkap, Tabel~\ref{tab:appvc} menyajikan matriks vektor eigen kompromi $\mathbf{V}_c$ yang merupakan hasil dekomposisi spektral pada matriks kompromi variabel $\mathbf{S}_c$. Berbeda dengan \textit{loadings} pada Tabel~\ref{tab:apploadings} yang dinyatakan sebagai korelasi Pearson (berkisar $-1$ hingga $1$), nilai-nilai dalam $\mathbf{V}_c$ adalah bobot linear murni yang digunakan untuk memproyeksikan setiap observasi ke dalam ruang kompromi melalui persamaan $\mathbf{F}_t = \mathbf{Z}_t \mathbf{V}_c$.
-
-\input{output_real/output_table_vc.tex}
-% Label: \label{tab:vc}
+\input{output_real/scenario2/output_table_loadings.tex}
+% Label: \label{tab:apploadings_s2}
 
 \subsection{\normalsize Loading Plot (Correlation Circle)}
 
-Gambar~\ref{fig:loading_plot} menyajikan \textit{correlation circle} yang memvisualisasikan korelasi antara setiap variabel dan kedua sumbu kompromi. Semakin dekat ujung vektor suatu variabel dengan lingkaran referensi (berjari-jari 1), semakin baik variabel tersebut direpresentasikan dalam ruang 2D.
+Gambar~\ref{fig:loading_plot_s1} dan \ref{fig:loading_plot_s2} menyajikan \textit{correlation circle} dari kedua skenario.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{output_real/loading_plot.png}
-    \caption{Loading Plot (Correlation Circle) pada Ruang Kompromi}
-    \label{fig:loading_plot}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/loading_plot.png}
+        \caption{Loading Plot Skenario 1 (Host = Wilayah)}
+        \label{fig:loading_plot_s1}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario2/loading_plot.png}
+        \caption{Loading Plot Skenario 2 (Host = Indikator)}
+        \label{fig:loading_plot_s2}
+    \end{minipage}
 \end{figure}
 
 \subsection{\normalsize Kontribusi dan Kualitas Representasi Variabel}
 
-Gambar~\ref{fig:contribution} dan~\ref{fig:cos2} secara berturut-turut menyajikan kontribusi relatif setiap variabel terhadap Dimensi~1 dan kualitas representasinya ($\cos^2$).
+Gambar~\ref{fig:contribution_s1}--\ref{fig:cos2_s2} secara berturut-turut menyajikan kontribusi relatif setiap variabel terhadap Dimensi~1 dan kualitas representasinya ($\cos^2$) untuk masing-masing skenario.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/variable_contribution.png}
-    \caption{Kontribusi Variabel terhadap Dimensi~1 Kompromi (\%)}
-    \label{fig:contribution}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/variable_contribution.png}
+        \caption{Kontribusi Variabel Dim~1 -- Skenario 1}
+        \label{fig:contribution_s1}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario2/variable_contribution.png}
+        \caption{Kontribusi Variabel Dim~1 -- Skenario 2}
+        \label{fig:contribution_s2}
+    \end{minipage}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/variable_cos2.png}
-    \caption{Kualitas Representasi Variabel pada Dimensi~1 ($\cos^2$)}
-    \label{fig:cos2}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/variable_cos2.png}
+        \caption{Kualitas Representasi ($\cos^2$) -- Skenario 1}
+        \label{fig:cos2_s1}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario2/variable_cos2.png}
+        \caption{Kualitas Representasi ($\cos^2$) -- Skenario 2}
+        \label{fig:cos2_s2}
+    \end{minipage}
 \end{figure}
 
-Dari Gambar~\ref{fig:contribution}, variabel yang paling berkontribusi terhadap terbentuknya Dimensi~1 adalah RLS, GK, dan IPG sesuai dengan bobot loading yang dominan. Adapun nilai $\cos^2$ yang mendekati 1,0 pada Gambar~\ref{fig:cos2} mengindikasikan bahwa variabel-variabel tersebut memang terwakili dengan sangat baik dalam ruang 2D ini, sehingga interpretasi biplot dapat dilakukan dengan keyakinan tinggi.
+Dari perbandingan kedua skenario, terlihat bahwa Skenario 1 lebih menekankan separasi wilayah (loading variabel ekonomi mendominasi Dimensi~1), sedangkan Skenario 2 lebih menonjolkan hubungan antar-indikator sosial. Kedua skenario menghasilkan informasi yang saling melengkapi.
 
 \subsection{\normalsize Skor Kompromi Kabupaten/Kota}
 
-Koordinat numerik seluruh 41 kabupaten/kota pada ruang kompromi disajikan pada Tabel~\ref{tab:appscores} berikut.
+Koordinat numerik seluruh 41 kabupaten/kota pada ruang kompromi disajikan pada Tabel~\ref{tab:app1scores} dan Tabel~\ref{tab:app2scores} berikut.
 
 \clearpage
-\input{output_real/output_table_scores.tex}
-% Label: \label{tab:scores}
+\input{output_real/scenario1/output_table_scores.tex}
+% Label: \label{tab:appscores_s1}
+
+\input{output_real/scenario2/output_table_scores.tex}
+% Label: \label{tab:appscores_s2}
 
 %-----------------------------------------------------------------------------%
 % --- 4.5 ---
@@ -319,7 +367,7 @@ dengan estimator vektor struktur $\tilde{\boldsymbol{\beta}} = \lambda_1 \boldsy
 
 \subsubsection*{Komponen Vektor Struktur $\tilde{\boldsymbol{\beta}}$}
 
-Komponen $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$ (di mana $u_{1k}$ adalah elemen ke-$k$ dari vektor eigen pertama $\mathbf{H}$ \emph{sebelum} normalisasi) merupakan estimator dari ``kontribusi terbobot'' setiap situasi waktu terhadap struktur bersama. Tabel~\ref{tab:appbeta_vec} menyajikan hasil komputasi ini.
+Komponen $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$ (di mana $u_{1k}$ adalah elemen ke-$k$ dari vektor eigen pertama $\mathbf{H}$ \emph{sebelum} normalisasi) merupakan estimator dari ``kontribusi terbobot'' setiap situasi waktu terhadap struktur bersama. Tabel~\ref{tab:app1beta_vec} menyajikan hasil komputasi ini.
 
 \input{output_real/output_table_beta_vec.tex}
 % Label: \label{tab:beta_vec}
@@ -338,7 +386,7 @@ Validitas pendekatan rank-1 dinilai melalui dua kuantitas (Persamaan~\ref{eq:pro
 \input{output_real/output_table_struktur_diagnostik.tex}
 % Label: \label{tab:struktur_diagnostik}
 
-Berdasarkan Tabel~\ref{tab:appstruktur_diagnostik}, nilai $\mathrm{Inertia}_1$ yang mendekati 1,00 mengkonfirmasi secara kuantitatif bahwa struktur bersama derajat-1 yang diasumsikan dalam model \citet{areia2008} terpenuhi dengan baik pada data penelitian ini. Dengan demikian, estimasi $\tilde{\boldsymbol{\beta}}$ dan $\boldsymbol{\alpha}$ yang diperoleh memiliki validitas statistik yang memadai.
+Berdasarkan Tabel~\ref{tab:app1struktur_diagnostik}, nilai $\mathrm{Inertia}_1$ yang mendekati 1,00 mengkonfirmasi secara kuantitatif bahwa struktur bersama derajat-1 yang diasumsikan dalam model \citet{areia2008} terpenuhi dengan baik pada data penelitian ini. Dengan demikian, estimasi $\tilde{\boldsymbol{\beta}}$ dan $\boldsymbol{\alpha}$ yang diperoleh memiliki validitas statistik yang memadai.
 
 \subsubsection*{Analisis Transversal: Perbandingan Vektor Struktur Antar-Provinsi}
 
@@ -347,7 +395,7 @@ Mengacu pada kerangka Analisis Transversal dalam \citet{oliveira2024}, data pene
 \input{output_real/output_table_beta_provinsi.tex}
 % Label: \label{tab:beta_provinsi}
 
-Tabel~\ref{tab:appbeta_provinsi} menyajikan komponen $\tilde{\beta}_{gk}$ untuk masing-masing provinsi $g$ dan tahun $k$. Perbedaan pola komponen antar-provinsi mencerminkan heterogenitas respons temporal terhadap perubahan (terutama pandemi COVID-19 2020 hingga 2021) dari masing-masing kelompok wilayah. DKI Jakarta, sebagai wilayah dengan struktur ekonomi yang sangat berbeda (berbasis jasa dan keuangan), diharapkan menghasilkan profil $\tilde{\boldsymbol{\beta}}$ yang kontrastif dibandingkan Banten (berbasis industri manufaktur) maupun Jawa Barat (campuran pertanian-industri).
+Tabel~\ref{tab:app1beta_provinsi} menyajikan komponen $\tilde{\beta}_{gk}$ untuk masing-masing provinsi $g$ dan tahun $k$. Perbedaan pola komponen antar-provinsi mencerminkan heterogenitas respons temporal terhadap perubahan (terutama pandemi COVID-19 2020 hingga 2021) dari masing-masing kelompok wilayah. DKI Jakarta, sebagai wilayah dengan struktur ekonomi yang sangat berbeda (berbasis jasa dan keuangan), diharapkan menghasilkan profil $\tilde{\boldsymbol{\beta}}$ yang kontrastif dibandingkan Banten (berbasis industri manufaktur) maupun Jawa Barat (campuran pertanian-industri).
 
 
 \subsubsection*{Analisis Longitudinal: Progresi Temporal Komponen Vektor Struktur}
@@ -377,7 +425,7 @@ Gambar~\ref{fig:traj_overview} menampilkan keseluruhan lintasan pergerakan 41 ka
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.90\textwidth]{output_real/statis_trajectories.png}
+    \includegraphics[width=0.90\textwidth]{output_real/scenario1/statis_trajectories.png}
     \caption{Trajektori Pergerakan 41 Kabupaten/Kota pada Ruang Kompromi (2020 hingga 2024)}
     \label{fig:traj_overview}
 \end{figure}
@@ -396,35 +444,35 @@ Untuk memahami posisi spesifik setiap wilayah dan variabel pada tiap tahun, Gamb
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/biplot_tahun_2020.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2020.png}
     \caption{Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}
     \label{fig:biplot_2020}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/biplot_tahun_2021.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2021.png}
     \caption{Biplot Tahunan Tahun 2021}
     \label{fig:biplot_2021}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/biplot_tahun_2022.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2022.png}
     \caption{Biplot Tahunan Tahun 2022 (Awal Masa Pemulihan)}
     \label{fig:biplot_2022}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/biplot_tahun_2023.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2023.png}
     \caption{Biplot Tahunan Tahun 2023}
     \label{fig:biplot_2023}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/biplot_tahun_2024.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2024.png}
     \caption{Biplot Tahunan Tahun 2024}
     \label{fig:biplot_2024}
 \end{figure}
@@ -433,7 +481,7 @@ Membandingkan biplot pada Gambar~\ref{fig:biplot_2020} dan~\ref{fig:biplot_2024}
 
 \subsection{\normalsize Dinamika Struktur Variabel Tahunan}
 
-Selain pergerakan wilayah, metode STATIS juga memungkinkan analisis terhadap perubahan hubungan antar-variabel itu sendiri pada setiap tahun melalui matriks intra-loading ($\mathbf{G}_k$) dan matriks korelasi terbobot ($\mathbf{S}_k$). Tabel~\ref{tab:apploading_intra_2020} hingga~\ref{tab:apploading_intra_2024} menyajikan koordinat variabel pada tiap situasi tahunan.
+Selain pergerakan wilayah, metode STATIS juga memungkinkan analisis terhadap perubahan hubungan antar-variabel itu sendiri pada setiap tahun melalui matriks intra-loading ($\mathbf{G}_k$) dan matriks korelasi terbobot ($\mathbf{S}_k$). Tabel~\ref{tab:app1loading_intra_2020} hingga~\ref{tab:app1loading_intra_2024} menyajikan koordinat variabel pada tiap situasi tahunan.
 
 \begin{table}[H]
 \centering
@@ -484,40 +532,40 @@ Dua metode digunakan secara komplementer untuk menentukan jumlah klaster $k$ yan
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{output_real/elbow_plot_2020.png}
-    \includegraphics[width=0.48\textwidth]{output_real/dendrogram_2020.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/elbow_plot_2020.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/dendrogram_2020.png}
     \caption{Kurva Elbow dan Dendrogram Tahun 2020}
     \label{fig:elbow_dendro_2020}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{output_real/elbow_plot_2021.png}
-    \includegraphics[width=0.48\textwidth]{output_real/dendrogram_2021.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/elbow_plot_2021.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/dendrogram_2021.png}
     \caption{Kurva Elbow dan Dendrogram Tahun 2021}
     \label{fig:elbow_dendro_2021}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{output_real/elbow_plot_2022.png}
-    \includegraphics[width=0.48\textwidth]{output_real/dendrogram_2022.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/elbow_plot_2022.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/dendrogram_2022.png}
     \caption{Kurva Elbow dan Dendrogram Tahun 2022}
     \label{fig:elbow_dendro_2022}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{output_real/elbow_plot_2023.png}
-    \includegraphics[width=0.48\textwidth]{output_real/dendrogram_2023.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/elbow_plot_2023.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/dendrogram_2023.png}
     \caption{Kurva Elbow dan Dendrogram Tahun 2023}
     \label{fig:elbow_dendro_2023}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.48\textwidth]{output_real/elbow_plot_2024.png}
-    \includegraphics[width=0.48\textwidth]{output_real/dendrogram_2024.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/elbow_plot_2024.png}
+    \includegraphics[width=0.48\textwidth]{output_real/scenario1/dendrogram_2024.png}
     \caption{Kurva Elbow dan Dendrogram Tahun 2024}
     \label{fig:elbow_dendro_2024}
 \end{figure}
@@ -532,11 +580,11 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_scatter_statis_2020.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_scatter_statis_2020.png}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2020.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2020.png}
     \end{minipage}
     \caption{Pengelompokan K-Means ($k=3$) Tahun 2020: Biplot (kiri) dan Peta (kanan)}
     \label{fig:cluster_2020}
@@ -546,11 +594,11 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_scatter_statis_2021.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_scatter_statis_2021.png}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2021.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2021.png}
     \end{minipage}
     \caption{Pengelompokan K-Means ($k=3$) Tahun 2021: Biplot (kiri) dan Peta (kanan)}
     \label{fig:cluster_2021}
@@ -560,11 +608,11 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_scatter_statis_2022.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_scatter_statis_2022.png}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2022.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2022.png}
     \end{minipage}
     \caption{Pengelompokan K-Means ($k=3$) Tahun 2022: Biplot (kiri) dan Peta (kanan)}
     \label{fig:cluster_2022}
@@ -574,11 +622,11 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_scatter_statis_2023.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_scatter_statis_2023.png}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2023.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2023.png}
     \end{minipage}
     \caption{Pengelompokan K-Means ($k=3$) Tahun 2023: Biplot (kiri) dan Peta (kanan)}
     \label{fig:cluster_2023}
@@ -588,11 +636,11 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_scatter_statis_2024.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_scatter_statis_2024.png}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2024.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2024.png}
     \end{minipage}
     \caption{Pengelompokan K-Means ($k=3$) Tahun 2024: Biplot (kiri) dan Peta (kanan)}
     \label{fig:cluster_2024}
@@ -611,23 +659,23 @@ Untuk menelusuri mobilitas wilayah antar-klaster dari satu tahun ke tahun beriku
 
 \subsubsection*{Periode 2020 hingga 2021}
 
-\input{output_real/output_table_transition_matrix_sum_2020x2021.tex}
-\input{output_real/output_table_transition_matrix_name_2020x2021.tex}
+\input{output_real/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
+\input{output_real/scenario1/output_table_transition_matrix_name_2020x2021.tex}
 
 \subsubsection*{Periode 2021 hingga 2022}
 
-\input{output_real/output_table_transition_matrix_sum_2021x2022.tex}
-\input{output_real/output_table_transition_matrix_name_2021x2022.tex}
+\input{output_real/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
+\input{output_real/scenario1/output_table_transition_matrix_name_2021x2022.tex}
 
 \subsubsection*{Periode 2022 hingga 2023}
 
-\input{output_real/output_table_transition_matrix_sum_2022x2023.tex}
-\input{output_real/output_table_transition_matrix_name_2022x2023.tex}
+\input{output_real/scenario1/output_table_transition_matrix_sum_2022x2023.tex}
+\input{output_real/scenario1/output_table_transition_matrix_name_2022x2023.tex}
 
 \subsubsection*{Periode 2023 hingga 2024}
 
-\input{output_real/output_table_transition_matrix_sum_2023x2024.tex}
-\input{output_real/output_table_transition_matrix_name_2023x2024.tex}
+\input{output_real/scenario1/output_table_transition_matrix_sum_2023x2024.tex}
+\input{output_real/scenario1/output_table_transition_matrix_name_2023x2024.tex}
 
 Dari serangkaian matriks transisi di atas, beberapa temuan utama dapat disimpulkan:
 \begin{enumerate}
@@ -642,46 +690,70 @@ Selain pengelompokan tahunan, dilakukan juga pengelompokan berbasis trajektori k
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{output_real/dendrogram_compromise.png}
+    \includegraphics[width=0.85\textwidth]{output_real/scenario1/dendrogram_compromise.png}
     \caption{Dendrogram Klaster Trajektori Keseluruhan (2020 hingga 2024)}
     \label{fig:dendro_compromise}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{output_real/cluster_scatter_statis.png}
+    \includegraphics[width=0.85\textwidth]{output_real/scenario1/cluster_scatter_statis.png}
     \caption{Scatter Plot Klaster Trajektori pada Ruang Kompromi}
     \label{fig:cluster_traj}
 \end{figure}
 
-Tabel~\ref{tab:appclustermembers} merinci nama-nama kabupaten/kota yang termasuk dalam setiap klaster trajektori.
+Tabel~\ref{tab:app1clustermembers} merinci nama-nama kabupaten/kota yang termasuk dalam setiap klaster trajektori.
 
-\input{output_real/output_table_cluster_members.tex}
+\input{output_real/scenario1/output_table_cluster_members.tex}
 % Label: \label{tab:clustermembers}
 
 \subsection{\normalsize Perbandingan Cluster Biplot (Unweighted) vs STATIS (Weighted) Tahunan}
 
-Untuk menguji keunggulan metode STATIS yang menggabungkan informasi spasio-temporal dibandingkan analisis statis murni per tahun, dilakukan perbandingan (tabulasi silang) antara hasil klaster K-Means pada koordinat Biplot PCA biasa (tanpa bobot temporal) dengan hasil klaster STATIS untuk setiap tahun.
+Untuk menguji keunggulan metode STATIS yang menggabungkan informasi spasio-temporal dibandingkan analisis statis murni per tahun, dilakukan perbandingan (tabulasi silang) antara hasil klaster K-Means pada koordinat Biplot PCA biasa (tanpa bobot temporal) dengan hasil klaster STATIS untuk setiap tahun. Perbandingan ini dipisah berdasarkan kedua skenario pembobotan.
 
-\subsubsection*{Tahun 2020}
-\input{output_real/output_table_biplot_vs_statis_compare_sum_2020.tex}
-\input{output_real/output_table_biplot_vs_statis_compare_name_2020.tex}
+\subsubsection*{Skenario 1: ACT Klasik (Host = Wilayah)}
 
-\subsubsection*{Tahun 2021}
-\input{output_real/output_table_biplot_vs_statis_compare_sum_2021.tex}
-\input{output_real/output_table_biplot_vs_statis_compare_name_2021.tex}
+\paragraph{Tahun 2020}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex}
 
-\subsubsection*{Tahun 2022}
-\input{output_real/output_table_biplot_vs_statis_compare_sum_2022.tex}
-\input{output_real/output_table_biplot_vs_statis_compare_name_2022.tex}
+\paragraph{Tahun 2021}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2021.tex}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_name_2021.tex}
 
-\subsubsection*{Tahun 2023}
-\input{output_real/output_table_biplot_vs_statis_compare_sum_2023.tex}
-\input{output_real/output_table_biplot_vs_statis_compare_name_2023.tex}
+\paragraph{Tahun 2022}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2022.tex}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_name_2022.tex}
 
-\subsubsection*{Tahun 2024}
-\input{output_real/output_table_biplot_vs_statis_compare_sum_2024.tex}
-\input{output_real/output_table_biplot_vs_statis_compare_name_2024.tex}
+\paragraph{Tahun 2023}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2023.tex}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_name_2023.tex}
+
+\paragraph{Tahun 2024}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex}
+\input{output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex}
+
+\subsubsection*{Skenario 2: Dual STATIS (Host = Indikator)}
+
+\paragraph{Tahun 2020}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex}
+
+\paragraph{Tahun 2021}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2021.tex}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_name_2021.tex}
+
+\paragraph{Tahun 2022}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2022.tex}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_name_2022.tex}
+
+\paragraph{Tahun 2023}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2023.tex}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_name_2023.tex}
+
+\paragraph{Tahun 2024}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex}
+\input{output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex}
 
 Berdasarkan matriks perbandingan di atas, terlihat adanya sejumlah wilayah yang diklasifikasikan berbeda oleh metode Biplot murni dan STATIS. Metode STATIS, yang telah mengintegrasikan bobot struktur bersama lintas tahun ($\mathbf{W}_c$), menghasilkan keanggotaan klaster yang lebih stabil dan tidak terlalu fluktuatif terhadap perubahan lokal pada satu tahun tertentu (misalnya anomali data di 2020 atau 2021 akibat pandemi). Sebaliknya, Biplot PCA yang tidak mempertimbangkan konteks temporal rentan memindahkan wilayah ke klaster yang berbeda hanya karena fluktuasi sementara.
 
@@ -691,12 +763,12 @@ Sebagai ilustrasi visual, Gambar~\ref{fig:cluster_biplot_vs_statis_map_2024} mem
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_biplot_2024.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_biplot_2024.png}
         \caption*{Peta Klaster Biplot (Unweighted)}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_real/cluster_map_statis_2024.png}
+        \includegraphics[width=\textwidth]{output_real/scenario1/cluster_map_statis_2024.png}
         \caption*{Peta Klaster STATIS}
     \end{minipage}
     \caption{Perbandingan Peta Klaster Biplot vs STATIS Tahun 2024}
@@ -716,20 +788,20 @@ Sebagai validasi eksternal, pengelompokan K-Means yang bersifat \textit{data-dri
 Berikut disajikan matriks transisi mobilitas wilayah berdasarkan kategori IPM UNDP untuk setiap pasangan tahun.
 
 \subsubsection*{Periode 2020 hingga 2021}
-\input{output_real/output_table_ipm_matrix_sum_2020x2021.tex}
-\input{output_real/output_table_ipm_matrix_name_2020x2021.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_sum_2020x2021.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_name_2020x2021.tex}
 
 \subsubsection*{Periode 2021 hingga 2022}
-\input{output_real/output_table_ipm_matrix_sum_2021x2022.tex}
-\input{output_real/output_table_ipm_matrix_name_2021x2022.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_sum_2021x2022.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_name_2021x2022.tex}
 
 \subsubsection*{Periode 2022 hingga 2023}
-\input{output_real/output_table_ipm_matrix_sum_2022x2023.tex}
-\input{output_real/output_table_ipm_matrix_name_2022x2023.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_sum_2022x2023.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_name_2022x2023.tex}
 
 \subsubsection*{Periode 2023 hingga 2024}
-\input{output_real/output_table_ipm_matrix_sum_2023x2024.tex}
-\input{output_real/output_table_ipm_matrix_name_2023x2024.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_sum_2023x2024.tex}
+\input{output_real/scenario1/output_table_ipm_matrix_name_2023x2024.tex}
 
 Matriks transisi IPM di atas menunjukkan bahwa selama 2020 hingga 2024 terdapat kecenderungan peningkatan kategori, yang berarti lebih banyak wilayah yang naik kategori IPM dibandingkan yang turun, terutama pada periode 2022 hingga 2024. Secara keseluruhan, tidak ada wilayah yang mengalami penurunan kategori IPM pada periode pasca-pandemi, yang mengindikasikan bahwa peningkatan kualitas hidup bersifat inklusif meskipun laju peningkatannya tidak merata antarwilayah.
 
@@ -738,24 +810,24 @@ Matriks transisi IPM di atas menunjukkan bahwa selama 2020 hingga 2024 terdapat 
 Untuk mengevaluasi seberapa erat kesesuaian antara klaster K-Means dengan kategori IPM UNDP, dilakukan tabulasi silang (\textit{cross-tabulation}) untuk setiap tahun pengamatan.
 
 \subsubsection*{Tahun 2020}
-\input{output_real/output_table_cross_matrix_sum_2020.tex}
-\input{output_real/output_table_cross_matrix_name_2020.tex}
+\input{output_real/scenario1/output_table_cross_matrix_sum_2020.tex}
+\input{output_real/scenario1/output_table_cross_matrix_name_2020.tex}
 
 \subsubsection*{Tahun 2021}
-\input{output_real/output_table_cross_matrix_sum_2021.tex}
-\input{output_real/output_table_cross_matrix_name_2021.tex}
+\input{output_real/scenario1/output_table_cross_matrix_sum_2021.tex}
+\input{output_real/scenario1/output_table_cross_matrix_name_2021.tex}
 
 \subsubsection*{Tahun 2022}
-\input{output_real/output_table_cross_matrix_sum_2022.tex}
-\input{output_real/output_table_cross_matrix_name_2022.tex}
+\input{output_real/scenario1/output_table_cross_matrix_sum_2022.tex}
+\input{output_real/scenario1/output_table_cross_matrix_name_2022.tex}
 
 \subsubsection*{Tahun 2023}
-\input{output_real/output_table_cross_matrix_sum_2023.tex}
-\input{output_real/output_table_cross_matrix_name_2023.tex}
+\input{output_real/scenario1/output_table_cross_matrix_sum_2023.tex}
+\input{output_real/scenario1/output_table_cross_matrix_name_2023.tex}
 
 \subsubsection*{Tahun 2024}
-\input{output_real/output_table_cross_matrix_sum_2024.tex}
-\input{output_real/output_table_cross_matrix_name_2024.tex}
+\input{output_real/scenario1/output_table_cross_matrix_sum_2024.tex}
+\input{output_real/scenario1/output_table_cross_matrix_name_2024.tex}
 
 Dari tabulasi silang di atas, terlihat bahwa:
 \begin{itemize}
@@ -773,11 +845,16 @@ Tingginya kesesuaian antara klaster \textit{data-driven} (K-Means) dengan standa
 
 Sebagai tahap lanjutan, dilakukan uji autokorelasi spasial global menggunakan statistik Moran's~$I$ untuk mendeteksi apakah terdapat pola pengelompokan geografis yang signifikan pada skor kompromi. Perhitungan mengacu pada Persamaan~(3.7) dan~(3.8) di Bab~3.
 
-\input{output_real/output_moran.tex}
+\subsubsection*{Skenario 1: ACT Klasik}
+\input{output_real/scenario1/output_moran.tex}
+
+\subsubsection*{Skenario 2: Dual STATIS}
+\input{output_real/scenario2/output_moran.tex}
 
 Hasil perhitungan menunjukkan:
 \begin{itemize}
-    \item \textbf{Interpretasi:} \textit{\AppMoranInterp{}}
+    \item \textbf{Skenario 1 (ACT Klasik):} Moran's $I = \AppOneMoranI{}$, $p\text{-value} = \AppOneMoranP{}$, \textit{\AppOneMoranInterp{}}
+    \item \textbf{Skenario 2 (Dual STATIS):} Moran's $I = \AppTwoMoranI{}$, $p\text{-value} = \AppTwoMoranP{}$, \textit{\AppTwoMoranInterp{}}
 \end{itemize}
 
 \section{\normalsize Analisis Hotspot (Local Moran's~\texorpdfstring{$I$}{I})}

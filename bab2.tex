@@ -435,6 +435,21 @@ Untuk memvisualisasikan hasil reduksi dimensi secara simultan antara objek dan v
   \end{itemize}
 \end{definition}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{gambarku/ilustrasi_biplot.png}
+    \caption{Ilustrasi Komponen Biplot (Skor dan Loading)}
+    \label{fig:ilustrasi_biplot}
+\end{figure}
+
+\begin{remark}[Skalasi Visual Biplot]
+  Dalam visualisasi biplot, seringkali terdapat perbedaan besaran (\textit{magnitude}) yang mencolok antara nilai skor objek dan loading variabel. Untuk menjamin keterbacaan grafik tanpa mengubah interpretasi statistik (sudut korelasi dan arah), dilakukan penyesuaian skala (\textit{visual scaling}) secara proporsional. Secara matematis, jika $\mathbf{F}$ adalah matriks skor dan $\mathbf{V}$ adalah matriks loading, maka koordinat visual $\mathbf{V}^*$ dihitung sebagai:
+  \begin{equation}\label{eq:scaling_biplot}
+      \mathbf{V}^* = \mathbf{V} \times \left( \frac{\max(|\mathbf{F}|)}{\max(|\mathbf{V}|)} \times c \right)
+  \end{equation}
+  dengan $c$ adalah konstanta penyesuaian (umumnya bernilai $0{,}8$). Prosedur ini memastikan bahwa panah variabel tidak menumpuk di pusat koordinat dan dapat diobservasi secara simultan bersama titik objek dalam satu ruang tampilan \citep{gabriel1971, kroonenberg2008}.
+\end{remark}
+
 PCA dan Biplot bekerja dengan baik untuk satu tabel data pada satu titik waktu. Namun, ketika data tersebar dalam $K$ matriks yang berbeda-beda seiring waktu, PCA konvensional tidak mampu menangkap dinamika evolusi struktural tersebut. Keterbatasan inilah yang mendorong pengembangan metode STATIS.
 
 %-----------------------------------------------------------------------------%
@@ -503,43 +518,87 @@ Hal ini menjamin bahwa dekomposisi spektral pada $\mathbf{W}_c$ akan selalu meng
 \begin{equation}\label{eq:decomp_W}
     \mathbf{W}_c = \mathbf{P} \mathbf{\Lambda} \mathbf{P}^T
 \end{equation}
-dengan $\mathbf{P}$ adalah matriks vektor eigen yang ortogonal ($\mathbf{P}^T\mathbf{P} = \mathbf{I}$) dan $\mathbf{\Lambda}$ adalah matriks diagonal berisi nilai eigen terurut $\lambda_1 \ge \lambda_2 \ge \dots \ge 0$.
+dengan $\mathbf{P}$ adalah matriks vektor eigen tergeneralisasi yang memenuhi syarat ortogonalitas terbobot $\mathbf{P}^T \mathbf{D} \mathbf{P} = \mathbf{I}$, dan $\mathbf{\Lambda}$ adalah matriks diagonal berisi nilai eigen terurut $\lambda_1 \ge \lambda_2 \ge \dots \ge 0$. Hal ini menunjukkan bahwa vektor eigen $\mathbf{P}$ dihitung dalam ruang metrik $\mathbf{D}$ untuk mengakomodasi heterogenitas objek \citep{lavit94}.
+\subsection{\normalsize Tahap 4: Ekstraksi Koordinat dan Relasi Transisi}
 
-Koordinat objek ke-$i$ pada ruang kompromi (skor kompromi) diperoleh dari baris ke-$i$ matriks $\mathbf{F}_c$ \citep{lavit94}. Karena matriks $\mathbf{W}_c$ digunakan dalam ruang bobot $\mathbf{D}$, koordinat akhir perlu dikembalikan ke ruang asli observasi melalui transformasi invers akar matriks bobot:
-\begin{equation}\label{eq:fc}
-    \mathbf{F}_c = \mathbf{D}^{-1/2}\mathbf{P}\mathbf{\Lambda}^{1/2}
-\end{equation}
-dengan $\mathbf{D}^{-1/2} = \operatorname{diag}(1/\sqrt{m_1}, \ldots, 1/\sqrt{m_n})$, $\mathbf{P}$ adalah matriks vektor eigen dari $\mathbf{W}_c$ ($\mathbf{P}^T\mathbf{P} = \mathbf{I}$), dan $\mathbf{\Lambda}^{1/2}$ adalah matriks diagonal akar nilai eigen. Transformasi $\mathbf{D}^{-1/2}$ memastikan bahwa koordinat kompromi merepresentasikan posisi objek dalam ruang asli, bukan dalam ruang terbobot \citep{lavit94}.
+Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan variabel dalam ruang bersama (biplot). Berdasarkan \citet{abdi2012}, terdapat dua skenario utama yang menentukan arah proyeksi koordinat (\textit{transition formulas}) berdasarkan fokus analisis (\textit{host space}):
 
-Dalam ruang bobot $\mathbf{D}$, berlaku hubungan $\mathbf{D}^{1/2}\mathbf{F}_c\mathbf{F}_c^T\mathbf{D}^{1/2} = \mathbf{W}_c$, yang konsisten dengan interpretasi bahwa produk skalar terbobot antara koordinat objek ke-$i$ dan ke-$i'$ merepresentasikan kemiripan objek ke-$i$ dan ke-$i'$ dalam ruang kompromi. Untuk visualisasi, umumnya hanya diambil dua kolom pertama dari $\mathbf{F}_c$ yang berkorespondensi dengan dua nilai eigen terbesar.
+\begin{enumerate}[label=\arabic*.]
+    \item \textbf{Skenario 1: STATIS Klasik (Host = Wilayah/Objek)} \\
+    Pada skenario ini, matriks produk skalar wilayah ($\mathbf{W}_c$) dijadikan fondasi utama. Karena bermula dari ruang observasi, skor kompromi wilayah ditarik langsung secara alami, sedangkan komponen lainnya diturunkan melalui proyeksi.
+    \begin{itemize}
+        \item \textbf{Skor Kompromi Wilayah ($\mathbf{F}_c$):} Diekstraksi langsung dari dekomposisi $\mathbf{W}_c$:
+        \begin{equation}
+            \mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2}
+        \end{equation}
+        \item \textbf{Skor Parsial Wilayah ($\mathbf{F}_k$):} Merujuk pada Persamaan (40) \citet{abdi2012}, skor parsial situasi $k$ dihitung dengan memproyeksikan matriks produk skalar situasi tersebut ke ruang kompromi:
+        \begin{equation}
+            \mathbf{F}_k = \mathbf{W}_k \mathbf{D} \mathbf{P} \mathbf{\Lambda}_c^{-1/2}
+        \end{equation}
+        \item \textbf{Loading Parsial Indikator ($\mathbf{G}_k$):} Merujuk pada Persamaan (39) \citet{abdi2012}, ini merupakan relasi transisi yang memproyeksikan data ke ruang observasi:
+        \begin{equation}
+            \mathbf{G}_k = \mathbf{Z}_k^T \mathbf{D} \mathbf{F}_c \mathbf{\Lambda}_c^{-1/2}
+        \end{equation}
+        \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Pada skenario ini, loading kompromi ditarik sebagai rata-rata barisentrik dari loading parsialnya \citep{lavit94}:
+        \begin{equation}
+            \mathbf{G}_c = \sum_{k=1}^K \alpha_k \mathbf{G}_k
+        \end{equation}
+    \end{itemize}
 
-\subsection{\normalsize Tahap 4: Analisis Variabel (Loadings)}
+    \item \textbf{Skenario 2: Dual STATIS / CovSTATIS (Host = Indikator/Variabel)} \\
+    Pada skenario ini, matriks korelasi indikator ($\mathbf{S}_c$) menjadi fondasi utama. Karena bermula dari ruang variabel, loading variabel ditarik secara alami, sedangkan posisi wilayah diturunkan melalui relasi transisi.
+    \begin{itemize}
+        \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Diekstraksi langsung dari dekomposisi $\mathbf{S}_c$:
+        \begin{equation}
+            \mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}
+        \end{equation}
+        \item \textbf{Loading Parsial Indikator ($\mathbf{G}_k$):} Melalui hukum dualitas, matriks kovarians parsial ($\mathbf{S}_k$) diproyeksikan ke sumbu variabel \citep{lavit94}:
+        \begin{equation}
+            \mathbf{G}_k = \mathbf{S}_k \mathbf{V}_c \mathbf{\Lambda}_s^{-1/2}
+        \end{equation}
+        \item \textbf{Skor Parsial Wilayah ($\mathbf{F}_k$):} Merujuk pada Persamaan (25) \citet{abdi2012}, ini memproyeksikan data situasi $k$ ke ruang variabel:
+        \begin{equation}
+            \mathbf{F}_k = \mathbf{Z}_k \mathbf{G}_c \mathbf{\Lambda}_s^{-1/2}
+        \end{equation}
+        \item \textbf{Skor Kompromi Wilayah ($\mathbf{F}_c$):} Berbeda dengan Skenario 1, pada skenario ini skor kompromi objek ditarik sebagai rata-rata barisentrik dari skor parsialnya \citep{lavit94}:
+        \begin{equation}
+            \mathbf{F}_c = \sum_{k=1}^K \alpha_k \mathbf{F}_k
+        \end{equation}
+    \end{itemize}
 
-Selain memetakan objek, STATIS juga dapat memetakan variabel ke dalam ruang kompromi untuk melihat hubungan antar-variabel. Prosedur ini dilakukan melalui analisis data pada ruang variabel (\textit{dual space}) \citep{lavit94}.
-
-\begin{enumerate}
-    \item \textbf{Matriks Produk Skalar Variabel Terbobot:} Untuk setiap situasi $k$, dibentuk matriks produk skalar antar-variabel terbobot $\mathbf{S}_k$ berukuran $p \times p$, yang merepresentasikan kovariansi terbobot antar-indikator dalam ruang bobot $\mathbf{D}$:
-    \begin{equation}
-        \mathbf{S}_k = \mathbf{Z}_k^T \mathbf{D} \mathbf{Z}_k
-    \end{equation}
+    \item \textbf{Transformasi Penyesuaian Visual Biplot:} Untuk kepentingan interpretasi praktis dan estetika grafik biplot, koordinat matematis hasil SVD murni ($\mathbf{F}_{svd}, \mathbf{G}_{svd}$) seringkali memerlukan transformasi tambahan tanpa mengubah hubungan korelasi antar-objek maupun variabel. Transformasi ini digunakan untuk menghasilkan kolom koordinat visual pada sistem:
     
-    \item \textbf{Variabel Kompromi:} Serupa dengan objek kompromi, variabel kompromi $\mathbf{S}_c$ dibentuk sebagai kombinasi linier terbobot menggunakan $\alpha_k$:
-    \begin{equation}\label{eq:sc}
-        \mathbf{S}_c = \sum_{k=1}^{K} \alpha_k \mathbf{S}_k
-    \end{equation}
-    
-    \item \textbf{Dekomposisi Spektral $\mathbf{S}_c$:} Matriks $\mathbf{S}_c$ (simetris positif semi-definit) didekomposisi menjadi:
-    \begin{equation}\label{eq:vc}
-        \mathbf{S}_c = \mathbf{V}_c \mathbf{\Lambda}_s \mathbf{V}_c^T
-    \end{equation}
-    dengan $\mathbf{V}_c$ (berukuran $p \times p$) adalah matriks vektor eigen ortogonal dari $\mathbf{S}_c$ dan $\mathbf{\Lambda}_s$ adalah matriks diagonal nilai eigen.
-    
-    \item \textbf{Koordinat Variabel (Loading Kompromi):} Koordinat variabel dalam ruang kompromi, disebut matriks loading $\mathbf{G}_c$ (berukuran $p \times 2$), diperoleh dari:
-    \begin{equation}\label{eq:gc}
-        \mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}
-    \end{equation}
-    Kolom-kolom $\mathbf{G}_c$ digunakan sebagai koordinat ujung panah variabel dalam biplot kompromi. Sudut antar vektor kolom mengaproksimasi korelasi antar variabel.
+    \begin{enumerate}[label=\alph*.]
+        \item \textbf{Penyelarasan PC1 (\textit{Mirroring}):} Agar dimensi pertama (PC1) memiliki makna ekonomi yang konsisten (misalnya: nilai positif berarti wilayah lebih sejahtera), dilakukan operasi pembalikan tanda jika ditemukan korelasi negatif antara PC1 dengan indikator performa utama:
+        \begin{equation}
+            \mathbf{X}_{vis} = \mathbf{X}_{svd} \times \text{sign}(\rho(PC1, \text{Indikator\_Utama}))
+        \end{equation}
+        di mana $\mathbf{X}$ merepresentasikan matriks $\mathbf{F}$ atau $\mathbf{G}$.
+        
+        \item \textbf{Skalasi Proporsional (\textit{Scaling}):} Untuk menjaga agar panah variabel dan titik wilayah berada dalam rentang tampilan yang seimbang pada biplot, dilakukan penskalaan pada koordinat loading ($\mathbf{G}$) relatif terhadap sebaran skor ($\mathbf{F}$):
+        \begin{equation}
+            \mathbf{G}_{vis} = \mathbf{G}_{svd} \times \left( \frac{\max(|\mathbf{F}_{svd}|)}{\max(|\mathbf{G}_{svd}|)} \times 0,8 \right)
+        \end{equation}
+        Faktor 0,8 digunakan untuk memastikan panah variabel tetap berada di dalam bingkai utama tanpa menutupi label wilayah.
+    \end{enumerate}
 \end{enumerate}
+
+\noindent \textbf{Rangkuman Dualitas Relasi Transisi:} Sebagai ringkasan teoretis, tabel berikut menyajikan simetri aljabar antara kedua skenario STATIS yang menjamin sifat barisentrik dalam visualisasi biplot:
+
+\begin{table}[H]
+    \centering
+    \caption{Rangkuman Dualitas Relasi Transisi STATIS}
+    \label{tab:dualitas_statis}
+    \small
+    \begin{tabular}{|l|c|c|}
+    \hline
+    \textbf{Elemen yang Dicari} & \textbf{Skenario 1 (Host Objek)} & \textbf{Skenario 2 (Host Variabel)} \\ \hline
+    Ekstraksi Utama & $\mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2}$ & $\mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}$ \\ \hline
+    Relasi Proyeksi Sejenis & $\mathbf{F}_k = \mathbf{W}_k \mathbf{D} (\mathbf{P} \mathbf{\Lambda}_c^{-1/2})$ & $\mathbf{G}_k = \mathbf{S}_k (\mathbf{V}_c \mathbf{\Lambda}_s^{-1/2})$ \\ \hline
+    Relasi Transisi Menyilang & $\mathbf{G}_k = \mathbf{Z}_k^T \mathbf{D} (\mathbf{F}_c \mathbf{\Lambda}_c^{-1/2})$ & $\mathbf{F}_k = \mathbf{Z}_k (\mathbf{G}_c \mathbf{\Lambda}_s^{-1/2})$ \\ \hline
+    \end{tabular}
+\end{table}
+
 
 \subsection{\normalsize Klasifikasi Struktur: Analisis Transversal dan Longitudinal}
 

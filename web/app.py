@@ -276,7 +276,7 @@ $$
     
     return html.Div([
         html.Details([
-            html.Summary(dcc.Markdown("1. Peta Kemiripan Tahunan (Intra-struktur $\mathbf{W}_t$)", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
+            html.Summary(dcc.Markdown(r"1. Peta Kemiripan Tahunan (Intra-struktur $\mathbf{W}_t$)", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
             html.Div([
                 html.P("Mengubah data z-score mentah menjadi konfigurasi jarak spasial antar wilayah.", style={'fontStyle': 'italic'}),
                 render_step("1. General Formula", r"""
@@ -303,7 +303,7 @@ $$
         ], style={'marginBottom': '10px'}),
 
         html.Details([
-            html.Summary(dcc.Markdown("3. Matriks Kompromi ($\mathbf{W}_c$)", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
+            html.Summary(dcc.Markdown(r"3. Matriks Kompromi ($\mathbf{W}_c$)", mathjax=True, style={'display':'inline-block', 'verticalAlign':'middle'}), style=summary_style),
             html.Div([
                 html.P("Dihitung sebagai kombinasi linear dari semua matriks W tahunan dikali bobot utamanya.", style={'fontStyle': 'italic'}),
                 render_step("1. General Formula", wc_f1),
@@ -610,8 +610,8 @@ def _calculate_R_matrix(Ws_list, k, D=None):
                 num = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
                 den = np.sqrt(np.trace(Ws_list[i] @ D @ Ws_list[i] @ D) * np.trace(Ws_list[j] @ D @ Ws_list[j] @ D))
             else:
-                num = np.trace(Ws_list[i].T @ Ws_list[j])
-                den = np.sqrt(np.trace(Ws_list[i].T @ Ws_list[i]) * np.trace(Ws_list[j].T @ Ws_list[j]))
+                num = np.trace(Ws_list[i] @ Ws_list[j])
+                den = np.sqrt(np.trace(Ws_list[i] @ Ws_list[i]) * np.trace(Ws_list[j] @ Ws_list[j]))
             R[i, j] = 0.0 if den == 0 else num / den
     return R
 
@@ -954,7 +954,7 @@ def calc_kmo_bartlett(df_dict, variables):
 # -----------------------------
 # STATIS Core Logic
 # -----------------------------
-def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
+def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenario='scenario2'):
     """
     Menjalankan perhitungan STATIS Lengkap (Matriks, Skor, Loading).
     Mengembalikan data siap plot dan siap tabel.
@@ -1008,6 +1008,16 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
         raise Exception("Gagal: Tidak ada Nama Wilayah (Kabupaten/Kota) yang sama di seluruh tahun.")
         
     tables = [t.loc[common_idx].copy() for t in tables]
+    
+    # [ROBUSTNESS] Drop baris yang memiliki NaN pada variabel terpilih
+    for i in range(len(tables)):
+        tables[i] = tables[i].dropna(subset=selected_vars)
+    
+    # Re-align setelah dropna jika ada yang hilang tidak konsisten
+    common_idx = tables[0].index
+    for t in tables[1:]:
+        common_idx = common_idx.intersection(t.index)
+    tables = [t.loc[common_idx].copy() for t in tables]
 
     obs_labels = tables[0].index.tolist()
     selected_vars_final = tables[0].columns.tolist() 
@@ -1056,67 +1066,157 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
         X_matrices.append(Z_k)
         # W_k = Z_k Z_k^T  -- pure unweighted intra-structure matrix (Lavit 1994)
         Ws.append(Z_k @ Z_k.T)                  # shape (n, n)
-
+        
     # 4. Inter-struktur: H (produk Hilbert–Schmidt) dan matriks RV untuk tampilan
     D_diag_mat = np.diag(m_weights)
-    H = _calculate_H_matrix(Ws, k, D=D_diag_mat)
-    R = _calculate_R_matrix(Ws, k, D=D_diag_mat)
-    vals_H, vecs_H = np.linalg.eig(H)
-    vals_H, vecs_H = np.real(vals_H), np.real(vecs_H)
-    idx_H = np.argsort(vals_H)[::-1]
-    vals_H_sorted, vecs_H_sorted = vals_H[idx_H], vecs_H[:, idx_H]
-
-    vals_R, vecs_R = np.linalg.eig(R)
-    vals_R, vecs_R = np.real(vals_R), np.real(vecs_R)
-    idx = np.argsort(vals_R)[::-1]
-    vals_R_sorted, vecs_R_sorted = vals_R[idx], vecs_R[:, idx]
-
-    # Bobot (Alpha): vektor eigen pertama dari H, dinormalisasi (Lavit 1994)
-    p1 = vecs_H_sorted[:, 0]
-    if p1.sum() < 0:
-        p1 = -p1
-    alphas = p1 / p1.sum()
-
-    # 5. Kompromi (Wc)
-    Wc = np.zeros_like(Ws[0])
-    for a, W in zip(alphas, Ws): Wc += a * W
-
-    # 6. Dekomposisi Wc (Mendapatkan Skor Fc) menggunakan SVD
-    # Sesuai teori, SVD/EVD dari Wc * D ekuivalen dengan SVD dari D^{1/2} * Wc * D^{1/2}
-    Wc_weighted = D_sqrt @ Wc @ D_sqrt
-    P, Lambda_c, Pt = np.linalg.svd(Wc_weighted)  # Dekomposisi spektral: P = vektor eigen, Lambda_c = nilai eigen
-    eig_vals_c = Lambda_c                         # Nilai eigen kompromi (Lambda)
-    eig_vecs_c = P                                # Vektor eigen kompromi (P)
-    idxc = np.argsort(eig_vals_c)[::-1]           # Indeks pengurutan dari nilai terbesar ke terkecil
-    eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]  # Menyusun nilai & vektor eigen sesuai urutan dominan
+    H_W = _calculate_H_matrix(Ws, k, D=D_diag_mat)
     
-    # Skor Kompromi: Fc = D^{-1/2} P Lambda^{1/2}  (Lavit 1994, Lampiran_Rumus Box 17)
-    # D^{-1/2} mengembalikan koordinat dari ruang metrik D ke ruang asli observasi
-    sq_2 = np.sqrt(np.clip(eig_vals_c[:2], a_min=0, a_max=None))
-    scores_raw = D_inv_sqrt @ eig_vecs_c[:, :2] * sq_2   # F_c = D^{-1/2} P Lambda^{1/2}
-    sq_full = np.sqrt(np.clip(eig_vals_c, a_min=0, a_max=None))
-
-    # 7. Kompromi Variabel (Sc) dan Loadings (Gc)
-    # S_k = Z_k^T D Z_k (kovarians terbobot antar-variabel dalam ruang metrik D)
-    p_vars = len(selected_vars_final)
-    Sc = np.zeros((p_vars, p_vars))
-    D_diag_mat = np.diag(m_weights)  # n x n diagonal matrix
     Ss_list = []
-    for a, X_std in zip(alphas, X_matrices):
+    for X_std in X_matrices:
         Sk = X_std.T @ D_diag_mat @ X_std   # S_k = Z_k^T D Z_k
         Ss_list.append(Sk)
-        Sc += a * Sk
+        
+    H_S = np.zeros((k, k))
+    for i in range(k):
+        for j in range(k):
+            H_S[i, j] = np.trace(Ss_list[i] @ Ss_list[j])
 
-    U_s, S_s, _ = np.linalg.svd(Sc)
-    Vc_vars = U_s[:, :2]
-    for col in range(2):
-        if Vc_vars[np.argmax(np.abs(Vc_vars[:, col])), col] < 0:
-            Vc_vars[:, col] *= -1
+    # PILIH SKENARIO (Lavit 1994)
+    # Hitung p1 untuk kedua matriks agar bisa ditampilkan di tabel mana pun skenarionya
+    # Menggunakan eigh karena H_W dan H_S simetris
+    vals_HW, vecs_HW = np.linalg.eigh(H_W)
+    idx_HW = np.argsort(np.real(vals_HW))[::-1]
+    p1_W = np.real(vecs_HW[:, idx_HW[0]])
+    if p1_W.sum() < 0: p1_W = -p1_W
 
-    sqrt_Ss = np.sqrt(np.clip(S_s[:2], 0, None))
-    Gc = Vc_vars * sqrt_Ss
-    loadings = Gc
-#pentingbanget
+    vals_HS, vecs_HS = np.linalg.eigh(H_S)
+    idx_HS = np.argsort(np.real(vals_HS))[::-1]
+    p1_S = np.real(vecs_HS[:, idx_HS[0]])
+    if p1_S.sum() < 0: p1_S = -p1_S
+
+    if scenario == 'scenario1':
+        H = H_W
+        p1 = p1_W
+        print("  [STATIS] Menggunakan Skenario 1: ACT Klasik (Host = Wilayah)")
+    else:
+        H = H_S
+        p1 = p1_S
+        print("  [STATIS] Menggunakan Skenario 2: Dual STATIS (Host = Indikator)")
+
+    # Bobot (Alpha): vektor eigen pertama dari H, dinormalisasi (Lavit 1994)
+    alphas = p1 / p1.sum()
+
+    # 5. Kompromi (Wc dan Sc)
+    Wc = np.zeros_like(Ws[0])
+    Sc = np.zeros_like(Ss_list[0])
+    for a, W, S in zip(alphas, Ws, Ss_list):
+        Wc += a * W
+        Sc += a * S
+
+    # 6. Dekomposisi dan Proyeksi
+    if scenario == 'scenario1':
+        # --- SKENARIO 1: HOST = WILAYAH (ACT Klasik) ---
+        Wc_weighted = D_sqrt @ Wc @ D_sqrt
+        P, Lambda_c, _ = np.linalg.svd(Wc_weighted)
+        eig_vals_c = Lambda_c
+        eig_vecs_c = P
+        idxc = np.argsort(eig_vals_c)[::-1]
+        eig_vals_c, eig_vecs_c = eig_vals_c[idxc], eig_vecs_c[:, idxc]
+        
+        # Skor: Fc = D^{-1/2} P Lambda^{1/2}
+        sq2 = np.sqrt(np.clip(eig_vals_c[:2], 0, None))
+        scores_raw = D_inv_sqrt @ eig_vecs_c[:, :2] * sq2
+        sq_full = np.sqrt(np.clip(eig_vals_c, 0, None))
+        
+        # Loadings: Proyeksi Variabel dari TIAP TAHUN ke ruang Skor (Abdi et al. 2012, Eq. 39)
+        loadings_intra_list = []
+        for Zk in X_matrices:
+            # Gk = Zk^T D Fc Lambda^{-1/2}
+            Gk = Zk.T @ D_diag_mat @ scores_raw / np.clip(sq2, 1e-12, None)
+            loadings_intra_list.append(Gk)
+            
+        # Compromise Loadings: Rata-rata dari koordinat loadings intra (Lavit Mazhab)
+        Gc = np.zeros_like(loadings_intra_list[0])
+        for a, Gk in zip(alphas, loadings_intra_list):
+            Gc += a * Gk
+            
+        loadings = Gc
+        Vc_vars = Gc / np.clip(sq2, 1e-12, None) # Normalisasi sebagai penunjuk arah
+        
+    else:
+        # --- SKENARIO 2: HOST = INDIKATOR (Dual STATIS) ---
+        U_s, S_s, _ = np.linalg.svd(Sc)
+        eig_vals_c = S_s # Nilai eigen dari Sc
+        idxc = np.argsort(eig_vals_c)[::-1]
+        eig_vals_c = eig_vals_c[idxc]
+        # Ambil 2 vektor eigen teratas (P) setelah diurutkan
+        Vc_vars = U_s[:, idxc[:2]]
+        
+        # Loadings: Gc = P Lambda^{1/2}
+        sq_s = np.sqrt(np.clip(eig_vals_c[:2], 0, None))
+        
+        # Loading Intra: Proyeksi struktur kovariansi parsial (Sk) ke ruang Kompromi (Lavit 1994)
+        loadings_intra_list = []
+        for Zk in X_matrices:
+            # Gk = Sk @ Vc @ Lambda^{-1/2}
+            Sk_i = Zk.T @ D_diag_mat @ Zk
+            Gk = Sk_i @ Vc_vars[:, :2] / np.clip(sq_s, 1e-12, None)
+            loadings_intra_list.append(Gk)
+            
+        # Compromise Loadings: Gc (Harus sama dengan Vc * sq_s jika menggunakan alfa)
+        Gc = np.zeros_like(loadings_intra_list[0])
+        for a, Gk in zip(alphas, loadings_intra_list):
+            Gc += a * Gk
+            
+        loadings = Gc
+        sq_full = np.sqrt(np.clip(eig_vals_c, 0, None))
+        
+        # Skor: Proyeksi Wilayah dari TIAP TAHUN ke ruang Loadings (Abdi et al. 2012, Eq. 25)
+        scores_intra_list = []
+        for Zk in X_matrices:
+            # Fk = Zk @ (Gc * Lambda^{-1/2})
+            # Kita gunakan Gc / sq_s karena Gc = Vc * sq_s
+            Fk = Zk @ (Gc / np.clip(sq_s, 1e-12, None))
+            scores_intra_list.append(Fk)
+            
+        # Skor Kompromi: Rata-rata dari koordinat skor intra
+        scores_kompromi = np.zeros_like(scores_intra_list[0])
+        for a, Fk in zip(alphas, scores_intra_list):
+            scores_kompromi += a * Fk
+            
+        scores_raw = scores_kompromi
+        
+        # [PENTING] Vektor eigen objek secara dualitas: U = D_sqrt @ Zc @ V @ Lambda^-1/2
+        # Untuk keperluan dualitas, kita tetap butuh representasi Zc sesaat di sini
+        Zc_temp = np.zeros_like(X_matrices[0])
+        for a, Zk in zip(alphas, X_matrices): Zc_temp += a * Zk
+        eig_vecs_c = D_sqrt @ Zc_temp @ Vc_vars[:, :2] / np.clip(sq_s, 1e-12, None)
+
+    # Simpan Koordinat Murni (Sebelum Flip) untuk Tabel Perbandingan
+    intra_score_svd_dict = {}
+    intra_load_svd_dict = {}
+    for i, yr in enumerate(sheet_names):
+        X_std = X_matrices[i]
+        if scenario == 'scenario1':
+            # Skenario 1: Host = Wilayah
+            # Fk = Wk @ D^{1/2} @ P @ Lambda^{-1/2}
+            fk_svd = Ws[i] @ D_sqrt @ eig_vecs_c[:, :2] / np.clip(sq2, 1e-12, None)
+            # Gk = Zk^T @ D @ Fc @ Lambda^{-1/2}
+            gk_svd = X_std.T @ D_diag_mat @ scores_raw / np.clip(sq2, 1e-12, None)
+        else:
+            # Skenario 2: Host = Indikator
+            # Gk = Sk @ Vc @ Lambda^{-1/2}
+            Sk_i = X_std.T @ D_diag_mat @ X_std
+            gk_svd = Sk_i @ Vc_vars[:, :2] / np.clip(sq_s, 1e-12, None)
+            # Fk = Zk @ (Gc @ Lambda^{-1/2})
+            fk_svd = X_std @ (Gc / np.clip(sq_s, 1e-12, None))
+        
+        intra_score_svd_dict[str(yr)] = fk_svd.tolist()
+        intra_load_svd_dict[str(yr)] = gk_svd.tolist()
+
+    scores_svd = scores_raw.copy()
+    loadings_svd = loadings.copy()
+
     # --- [OTOMATIS] Penyelarasan PC1 dengan Performa (Kesejahteraan) ---
     negative_vars = ['PPM', 'TPT', 'GK', 'PKKP', 'GR', 'Gini Ratio', 'Persentase Penduduk Miskin', 'Tingkat Pengangguran Terbuka']
     Zc = np.zeros_like(X_matrices[0])
@@ -1159,10 +1259,36 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
     df_Fc.index.name = 'Kab/Kota'; df_Fc = df_Fc.reset_index()
     df_Gc = pd.DataFrame(np.round(Gc, 6), index=selected_vars_final, columns=['PC1', 'PC2'])
     df_Gc.index.name = 'Variabel'; df_Gc = df_Gc.reset_index()
-    df_R = pd.DataFrame(R, index=sheet_names, columns=sheet_names)
+    R_W = _calculate_R_matrix(Ws, k, D=D_diag_mat)
+    R_S = np.zeros((k, k))
+    for i in range(k):
+        for j in range(k):
+            num = np.trace(Ss_list[i] @ Ss_list[j])
+            den = np.sqrt(np.trace(Ss_list[i] @ Ss_list[i]) * np.trace(Ss_list[j] @ Ss_list[j]))
+            R_S[i, j] = num / den if den > 0 else 0
+
+    # Untuk Scree Plot Interstruktur (Penyelarasan dengan dashboard)
+    R_used = R_W if scenario == 'scenario1' else R_S
+    vals_R_sorted = np.sort(np.real(np.linalg.eigvals(R_used)))[::-1]
+    H_used = H_W if scenario == 'scenario1' else H_S
+    vals_H_sorted = np.sort(np.real(np.linalg.eigvals(H_used)))[::-1]
+
+    df_R = pd.DataFrame(R_W, index=sheet_names, columns=sheet_names)
     df_R.index.name = 'Tahun'; df_R = df_R.reset_index()
-    df_H = pd.DataFrame(H, index=sheet_names, columns=sheet_names)
-    df_H.index.name = 'Tahun'; df_H = df_H.reset_index()
+    df_RS = pd.DataFrame(R_S, index=sheet_names, columns=sheet_names)
+    df_RS.index.name = 'Tahun'; df_RS = df_RS.reset_index()
+    
+    # Simpan H_W dan H_S secara terpisah untuk tabel
+    df_H_W = pd.DataFrame(H_W, index=sheet_names, columns=sheet_names)
+    df_H_W.index.name = 'Tahun'; df_H_W = df_H_W.reset_index()
+    df_H_S = pd.DataFrame(H_S, index=sheet_names, columns=sheet_names)
+    df_H_S.index.name = 'Tahun'; df_H_S = df_H_S.reset_index()
+    
+    # Tabel Vektor Eigen (Kompas / Vektor Eigen Tergeneralisasi)
+    # Menampilkan P_teori = D^{-1/2} @ P_svd agar memenuhi P^T D P = I
+    P_theory = D_inv_sqrt @ eig_vecs_c[:, :2]
+    df_V_W = pd.DataFrame(P_theory, index=obs_labels, columns=['P1', 'P2']).reset_index()
+    df_V_S = pd.DataFrame(Vc_vars, index=selected_vars_final, columns=['P1', 'P2']).reset_index()
     df_Wc = pd.DataFrame(Wc, index=obs_labels, columns=obs_labels)
     df_Wc.index.name = 'Kab/Kota'; df_Wc = df_Wc.reset_index()
     df_Sc = pd.DataFrame(np.round(Sc, 6), index=selected_vars_final, columns=selected_vars_final)
@@ -1172,51 +1298,83 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names):
 
     intra_score_dicts = {}
     for i, yr in enumerate(sheet_names):
-        # Matriks W_k
+        # 1. Matriks Produk Skalar (W_k atau S_k)
         df_wk = pd.DataFrame(np.round(Ws[i], 6), index=obs_labels, columns=obs_labels)
         df_wk.index.name = 'Kab/Kota'; df_wk = df_wk.reset_index()
         intra_score_dicts[fr"Matriks Intra-Skor \mathbf{{W}}_{{{yr}}}"] = df_wk.to_dict('records')
 
-        # Skor Intra F_k (Proyeksi objek tahun k ke ruang kompromi variabel - "Trajectory")
-        Fk_raw = np.array(per_year_coords[yr])
-        df_fk = pd.DataFrame(np.round(Fk_raw, 6), index=obs_labels, columns=['PC1', 'PC2'])
+        # 2. Skor Intra F_k (Trajectory Objek)
+        # Skenario 1: Fk = Wk * D^{1/2} * P * Lambda^{-1/2}
+        # Skenario 2: Fk = Zk * Vc
+        if scenario == 'scenario1':
+            Fk_val = Ws[i] @ D_sqrt @ eig_vecs_c[:, :2] / np.clip(sq2, 1e-12, None)
+        else:
+            Fk_val = per_year_coords[yr][:, :2]
+            
+        df_fk = pd.DataFrame(np.round(Fk_val, 6), index=obs_labels, columns=['PC1', 'PC2'])
         df_fk.index.name = 'Kab/Kota'; df_fk = df_fk.reset_index()
         intra_score_dicts[fr"Skor Intra \mathbf{{F}}_{{{yr}}}"] = df_fk.to_dict('records')
         
-        # Loading Intra G_k (Proyeksi variabel tahun k ke ruang kompromi)
-        # Formula: G_k = Z_k^T * D^{1/2} * P (Lavit 1994)
-        Gk_raw = X_matrices[i].T @ D_sqrt @ eig_vecs_c[:, :2]
-        df_gk = pd.DataFrame(np.round(Gk_raw, 6), index=selected_vars_final, columns=['PC1', 'PC2'])
+        # 3. Loading Intra G_k (Trajectory Variabel)
+        # Skenario 1: Gk = Zk^T * D * Fc * Lambda^{-1/2} (Cross-Projection)
+        # Skenario 2: Gk = Sk * Vc * Lambda^{-1/2} (Direct Projection - Dual STATIS)
+        if scenario == 'scenario1':
+            Gk_val = X_matrices[i].T @ D_diag_mat @ scores_raw / np.clip(sq2, 1e-12, None)
+        else:
+            # Hitung Sk untuk tahun i
+            Sk_i = X_matrices[i].T @ D_diag_mat @ X_matrices[i]
+            Gk_val = Sk_i @ Vc_vars[:, :2] / np.clip(sq_s, 1e-12, None)
+            
+        df_gk = pd.DataFrame(np.round(Gk_val, 6), index=selected_vars_final, columns=['PC1', 'PC2'])
         df_gk.index.name = 'Variabel'; df_gk = df_gk.reset_index()
         intra_score_dicts[fr"Loading Intra \mathbf{{G}}_{{{yr}}}"] = df_gk.to_dict('records')
 
-        # Matriks Intra-Loading S_k (Matriks Korelasi Terbobot Variabel - "Kebalikan" dari W_k)
-        # Formula: S_k = Z_k^T * D * Z_k
-        Sk = X_matrices[i].T @ D_diag_mat @ X_matrices[i]
-        df_sk_intra = pd.DataFrame(np.round(Sk, 6), index=selected_vars_final, columns=selected_vars_final)
+        # 4. Matriks Intra-Loading S_k
+        Sk_full = X_matrices[i].T @ D_diag_mat @ X_matrices[i]
+        df_sk_intra = pd.DataFrame(np.round(Sk_full, 6), index=selected_vars_final, columns=selected_vars_final)
         df_sk_intra.index.name = 'Variabel'; df_sk_intra = df_sk_intra.reset_index()
         intra_score_dicts[fr"Matriks Intra-Loading \mathbf{{S}}_{{{yr}}}"] = df_sk_intra.to_dict('records')
 
-    # Return Result Dictionary (Converted to list for JSON serialization)
     res = {
-        'R': R.tolist(), 'H': H.tolist(), 'alphas': alphas.tolist(), 'eig_vals_c': eig_vals_c.tolist(), 'scores': scores_raw.tolist(),
+        'scenario': scenario,
+        'R': R_W.tolist(), 'H': H_W.tolist(), 'alphas': alphas.tolist(), 'eig_vals_c': eig_vals_c.tolist(), 'scores': scores_raw.tolist(),
         'obs_labels': obs_labels, 'selected_vars': selected_vars_final, 'loadings': loadings.tolist(),
+        'scores_svd': scores_svd.tolist(),
+        'loadings_svd': loadings_svd.tolist(),
+        'intra_score_svd': intra_score_svd_dict,
+        'intra_load_svd': intra_load_svd_dict,
         'per_year_coords': {y: v.tolist() for y, v in per_year_coords.items()}, 'sheet_names': sheet_names,
         'X_matrices': [x.tolist() for x in X_matrices], 'vals_R_sorted': vals_R_sorted.tolist(),
         'vals_H_sorted': vals_H_sorted.tolist(), 'k': k,
         'm_weights': m_weights.tolist(),   # Bobot demografis m_i (konstan lintas tahun)
         r'Dataset Asli (\mathbf{X})': df_dataset.to_dict('records'),
         r'Bobot (\alpha)': df_alphas.to_dict('records'),
+        r'Bobot Alpha (Wilayah) (\alpha_W)': df_alphas.to_dict('records') if scenario == 'scenario1' else pd.DataFrame({'Tahun': sheet_names, 'Bobot (Alpha)': [round(a, 4) for a in p1_W / p1_W.sum()]}).to_dict('records'),
+        r'Bobot Alpha (Indikator) (\alpha_S)': df_alphas.to_dict('records') if scenario == 'scenario2' else pd.DataFrame({'Tahun': sheet_names, 'Bobot (Alpha)': [round(a, 4) for a in p1_S / p1_S.sum()]}).to_dict('records'),
         r'Nilai Eigen (\Lambda_c)': df_eigen.to_dict('records'),
         r'Skor Kompromi (F_c)': df_Fc.to_dict('records'),
         r'Loadings Kompromi (G_c)': df_Gc.to_dict('records'),
-        r'Matriks Interstruktur Hilbert-Schmidt (\mathbf{H})': df_H.to_dict('records'),
-        r'Matriks Koefisien RV (\mathbf{R}_{\mathrm{RV}})': df_R.to_dict('records'),
+        r'Vektor Eigen (Kompas Wilayah) (\mathbf{P}_W)': df_V_W.to_dict('records'),
+        r'Vektor Eigen (Kompas Indikator) (\mathbf{P}_S)': df_V_S.to_dict('records'),
+        r'Matriks Interstruktur (Wilayah) (\mathbf{H}_W)': df_H_W.to_dict('records'),
+        r'Matriks Interstruktur (Indikator) (\mathbf{H}_S)': df_H_S.to_dict('records'),
+        r'Matriks Koefisien RV (Wilayah) (\mathbf{R}_W)': df_R.to_dict('records'),
+        r'Matriks Koefisien RV (Indikator) (\mathbf{R}_S)': df_RS.to_dict('records'),
         r'Matriks Kompromi (\mathbf{W}_c)': df_Wc.to_dict('records'),
         r'Matriks Kompromi Variabel (\mathbf{S}_c)': df_Sc.to_dict('records')
     }
     res.update(intra_score_dicts)
-    return res
+    
+    # [FINAL ROBUSTNESS] Pastikan tidak ada NaN/Inf yang merusak JSON dcc.Store
+    def _clean_dict(d):
+        for k, v in d.items():
+            if isinstance(v, list):
+                d[k] = np.nan_to_num(v).tolist()
+            elif isinstance(v, dict):
+                _clean_dict(v)
+        return d
+    
+    return _clean_dict(res)
 
 def run_permutation_test(X_matrices, k, lambda_obs, n_permutations, m_weights=None):
     # Set seed untuk konsistensi hasil (penting untuk Skripsi)
@@ -1314,14 +1472,20 @@ def compute_structure_vector(H, alphas, sheet_names, X_matrices, m_weights, obs_
     # 7. Analisis Transversal: Vektor struktur per provinsi
     # ----------------------------------------------------------------
     beta_provinsi = {}
-    if province_map is not None:
-        D_sqrt_full = np.diag(np.sqrt(m_weights))
-        obs_array = np.array(obs_labels)
+    u1_provinsi = {}
+    lambda1_provinsi = {}
+    skipped_provinces = []
 
+    if province_map is not None:
         for prov_name, prov_wilayah in province_map.items():
             # Indeks wilayah pada provinsi ini
-            prov_idx = [i for i, lab in enumerate(obs_labels) if lab in prov_wilayah]
+            # Robust matching
+            obs_labels_clean = [str(lab).strip().upper() for lab in obs_labels]
+            prov_wilayah_clean = [str(w).strip().upper() for w in prov_wilayah]
+            prov_idx = [i for i, lab in enumerate(obs_labels_clean) if lab in prov_wilayah_clean]
+            
             if len(prov_idx) < 2:
+                skipped_provinces.append(prov_name)
                 continue  # Lewati jika terlalu sedikit wilayah
 
             # Hitung bobot untuk sub-populasi ini (ternormalisasi ulang)
@@ -1345,19 +1509,24 @@ def compute_structure_vector(H, alphas, sheet_names, X_matrices, m_weights, obs_
             u1_sub = vecs_sub[:, idx_sub[0]]
             if u1_sub.sum() < 0:
                 u1_sub = -u1_sub
-            beta_provinsi[prov_name] = lambda1_sub * u1_sub  # shape (K,)
+            beta_provinsi[prov_name] = (lambda1_sub * u1_sub).tolist() # Convert to list for JSON
+            u1_provinsi[prov_name] = u1_sub.tolist()
+            lambda1_provinsi[prov_name] = float(lambda1_sub)
 
     return {
-        'lambda1':         lambda1,
-        'u1':              u1,
-        'beta_tilde':      beta_tilde,
-        'H_frobenius_sq':  H_frobenius_sq,
-        'V':               V,
-        'inertia1':        inertia1,
-        'dominance_ratio': dominance_ratio,
-        'vals_H':          vals_H,
+        'lambda1':         float(lambda1),
+        'u1':              u1.tolist(),
+        'beta_tilde':      beta_tilde.tolist(),
+        'H_frobenius_sq':  float(H_frobenius_sq),
+        'V':               float(V),
+        'inertia1':        float(inertia1),
+        'dominance_ratio': float(dominance_ratio),
+        'vals_H':          vals_H.tolist(),
         'sheet_names':     sheet_names,
-        'beta_provinsi':   beta_provinsi,   # dict {prov_name: array(K,)}
+        'beta_provinsi':   beta_provinsi,   # dict {prov_name: list(K,)}
+        'u1_provinsi':     u1_provinsi,     # dict {prov_name: list(K,)}
+        'lambda1_provinsi': lambda1_provinsi, # dict {prov_name: float}
+        'skipped_provinces': skipped_provinces
     }
 
 
@@ -1434,7 +1603,7 @@ def export_structure_vector_latex(sv_res, output_dir="../output_app", label_pref
     _tex_table(
         rows=rows_diag,
         col_headers=["Kuantitas", "Nilai"],
-        caption=r"Diagnostik Dominansi Model Rank-1 (Areia et al., 2008)",
+        caption=r"Diagnostik Dominansi Model Rank-1 (Areia \textit{et al.}, 2008)",
         label="struktur_diagnostik",
         filename="output_table_struktur_diagnostik.tex"
     )
@@ -1518,7 +1687,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
     html.Div(style=CARD_STYLE, children=[
         html.H1('Dashboard Analisis Spasio-Temporal Sosio-Ekonomi', style=HEADER_STYLE),
         html.H2('(Metode STATIS & Dynamic Biplot)', style={'textAlign': 'center', 'color': '#546E7A', 'marginTop': '-10px'}),
-        html.H3("Studi Kasus: Provinsi Banten, DKI Jakarta, dan Jawa Barat (2020-2024)", style={'textAlign': 'center', 'color': '#78909C', 'fontStyle': 'italic'})
+        html.H3("Analisis Struktur Ekonomi dan Kesejahteraan Wilayah (STATIS)", style={'textAlign': 'center', 'color': '#78909C', 'fontStyle': 'italic'})
     ]),
     
     # --- 1. DATA INPUT ---
@@ -1690,8 +1859,10 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(className='three columns', children=[
                 html.Label('Filter Tahun:', style={'fontWeight':'bold'}),
                 dcc.Checklist(id='year-checklist-final', inline=True, style={'marginBottom':'5px'}),
-                html.Label('Mirroring (Flip PC2):', style={'fontSize':'12px', 'color':'#666'}),
-                dcc.Checklist(id='mirror-year-checklist-final', inline=True)
+                html.Label('Mirroring Biplot PCA (Flip PC2):', style={'fontSize':'12px', 'color':'#263238'}),
+                dcc.Checklist(id='mirror-year-checklist-final', inline=True, style={'marginBottom':'5px'}),
+                html.Label('Mirroring Biplot STATIS (Flip PC2):', style={'fontSize':'12px', 'color':'#2E7D32'}),
+                dcc.Checklist(id='mirror-year-checklist-statis', inline=True)
             ]),
             html.Div(className='three columns', children=[
                 html.Label('Highlight Trajektori:', style={'fontWeight':'bold'}),
@@ -1729,7 +1900,18 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Dropdown(id='vector-selector-final', multi=True, placeholder="Pilih vektor spesifik untuk ditampilkan (Kosong = Semua)...")
             ])
         ]),
-        html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'width': '100%', 'marginTop': '20px', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'})
+        html.P("Pilih Skenario Analisis (Lavit, 1994):", style={'marginTop': '15px', 'fontWeight': 'bold'}),
+        dcc.RadioItems(
+            id='statis-scenario',
+            options=[
+                {'label': ' Skenario 1: ACT Klasik (Host = Wilayah)', 'value': 'scenario1'},
+                {'label': ' Skenario 2: Dual STATIS (Host = Indikator)', 'value': 'scenario2'}
+            ],
+            value='scenario2',
+            labelStyle={'display': 'block', 'marginBottom': '5px'}
+        ),
+        html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'width': '100%', 'marginTop': '20px', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'}),
+        html.Div(id='statis-error-msg', style={'color': 'red', 'marginTop': '10px'})
     ]),
 
 
@@ -1835,8 +2017,11 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             ])
         ]),
         html.Div(className='row', style={'marginBottom':'30px'}, children=[
-            html.Div(className='twelve columns', children=[
+            html.Div(className='six columns', children=[
                 dcc.Loading(children=[dcc.Graph(id='statis-biplot', style={'height': '600px'})])
+            ]),
+            html.Div(className='six columns', children=[
+                dcc.Loading(children=[dcc.Graph(id='statis-structure-vector', style={'height': '600px'})])
             ])
         ]),
         html.Div(className='row', style={'marginBottom':'30px'}, children=[
@@ -2423,7 +2608,9 @@ def cb_upload(contents, filename):
 @app.callback(
     Output('variable-dropdown-final', 'options'), Output('variable-dropdown-final', 'value'),
     Output('trajectory-dropdown-final', 'options'), Output('year-checklist-final', 'options'), Output('year-checklist-final', 'value'),
-    Output('mirror-year-checklist-final', 'options'), Output('year-dropdown-2d-single', 'options'), Output('year-dropdown-2d-single', 'value'),
+    Output('mirror-year-checklist-final', 'options'), 
+    Output('mirror-year-checklist-statis', 'options'),
+    Output('year-dropdown-2d-single', 'options'), Output('year-dropdown-2d-single', 'value'),
     Output('baseline-name-final', 'options'), 
     Output('eval-year-dropdown', 'options'), Output('eval-year-dropdown', 'value'),
     Output('trans-year-dropdown', 'options'), Output('trans-year-dropdown', 'value'),
@@ -2458,7 +2645,7 @@ def cb_controls(data, base_type):
             break
     
     return (
-        f_opts, feats, traj_opts, y_opts, years, y_opts, y_opts, years[0], base_opts, 
+        f_opts, feats, traj_opts, y_opts, years, y_opts, y_opts, y_opts, years[0], base_opts, 
         y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
         trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
         trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
@@ -2503,37 +2690,123 @@ def cb_pca_calc(n_clicks, vars, data):
 
 # 4. STATIS Core Calculation
 @app.callback(
-    Output('statis-core-store', 'data'), 
+    Output('statis-core-store', 'data'),
+    Output('statis-error-msg', 'children'),
     Input('btn-run-statis', 'n_clicks'),
     State('variable-dropdown-final', 'value'),
-    State('upload-data', 'contents'), State('global-data-store', 'data')
+    State('upload-data', 'contents'),
+    State('global-data-store', 'data'),
+    State('statis-scenario', 'value'),
+    prevent_initial_call=True
 )
-def cb_statis_calc(n_clicks, vars, contents, global_data):
+def cb_statis_calc(n_clicks, vars, contents, global_data, scenario):
     if not n_clicks or not vars or not contents or not global_data: 
         raise exceptions.PreventUpdate
     try:
         print("--- [STATIS_CORE] MEMULAI PERHITUNGAN ---")
-        res = run_statis_core(contents, vars, global_data['sheet_names'])
+        res = run_statis_core(contents, vars, global_data['sheet_names'], scenario=scenario)
         
         # --- [TAMBAHAN] Injeksi Metadata Provinsi & Index untuk Visualisasi ---
         try:
             df_full = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
+            # NORMALIZE METADATA
+            df_full['Kabupaten/Kota'] = df_full['Kabupaten/Kota'].astype(str).str.strip().str.upper()
+            df_full['Provinsi'] = df_full['Provinsi'].astype(str).str.strip().str.upper()
+            
             # Ambil mapping Kab/Kota -> Provinsi (unik per nama)
             prov_map = df_full.drop_duplicates('Kabupaten/Kota').set_index('Kabupaten/Kota')['Provinsi'].to_dict()
             res['prov_map'] = prov_map
             # Index wilayah (1-indexed) berdasarkan urutan obs_labels
             res['kab_index_map'] = {name: i+1 for i, name in enumerate(res['obs_labels'])}
+            
+            # --- [NEW] Hitung Vektor Struktur beta_tilde ---
+            province_map_inv = {}
+            for kab, prov in prov_map.items():
+                if prov not in province_map_inv:
+                    province_map_inv[prov] = []
+                province_map_inv[prov].append(kab)
+            
+            # Filter province_map_inv agar hanya berisi wilayah yang ada di obs_labels
+            obs_labels_set = set([str(x).strip().upper() for x in res['obs_labels']])
+            province_map_inv_filtered = {}
+            for p, kabs in province_map_inv.items():
+                filtered_kabs = [k for k in kabs if k in obs_labels_set]
+                if len(filtered_kabs) >= 2:
+                    province_map_inv_filtered[p] = filtered_kabs
+            
+            sv_res = compute_structure_vector(
+                H=res['H'], 
+                alphas=np.array(res['alphas']), 
+                sheet_names=res['sheet_names'], 
+                X_matrices=[np.array(x) for x in res['X_matrices']], 
+                m_weights=np.array(res['m_weights']), 
+                obs_labels=res['obs_labels'],
+                province_map=province_map_inv_filtered
+            )
+            res['structure_vector_res'] = sv_res
+            
+            # Format beta ke Tabel (USER REQUEST: Tables for Beta, Eigenvector, Eigenvalue)
+            # 1. Tabel komponen beta_tilde per tahun (Global)
+            beta_vec_table = []
+            for i, yr in enumerate(res['sheet_names']):
+                beta_vec_table.append({
+                    'Tahun (k)': yr,
+                    'β̃_k = λ₁ u₁ₖ': round(sv_res['beta_tilde'][i], 4)
+                })
+            res[r'Vektor Struktur (β) - Gabungan'] = beta_vec_table
+
+            # 2. Tabel Vektor Eigen Struktur (u1) - Gabungan & Provinsi
+            u1_table = []
+            prov_names_sorted = sorted(list(sv_res['u1_provinsi'].keys()))
+            for i, yr in enumerate(res['sheet_names']):
+                row = {'Tahun (k)': yr, 'Global (u₁)': round(sv_res['u1'][i], 4)}
+                for p in prov_names_sorted:
+                    row[f'{p} (u₁)'] = round(sv_res['u1_provinsi'][p][i], 4)
+                u1_table.append(row)
+            res[r'Vektor Eigen Struktur (u₁)'] = u1_table
+
+            # 3. Tabel Nilai Eigen Struktur (λ₁) - Gabungan & Provinsi
+            lambda_table = [{'Wilayah': 'Global', 'Nilai Eigen (λ₁)': round(sv_res['lambda1'], 4)}]
+            for p in prov_names_sorted:
+                lambda_table.append({'Wilayah': p, 'Nilai Eigen (λ₁)': round(sv_res['lambda1_provinsi'][p], 4)})
+            res[r'Nilai Eigen Struktur (λ₁)'] = lambda_table
+
+            # 4. Tabel diagnostik dominansi
+            diag_table = [
+                {'Kuantitas': 'λ₁ (Nilai Eigen Dominan)', 'Nilai': round(sv_res['lambda1'], 4)},
+                {'Kuantitas': '‖H‖_F² (Frobenius²)', 'Nilai': round(sv_res['H_frobenius_sq'], 4)},
+                {'Kuantitas': 'V (SS Residual)', 'Nilai': round(sv_res['V'], 4)},
+                {'Kuantitas': 'V / ‖H‖_F² (Rasio Sisa)', 'Nilai': round(sv_res['V'] / sv_res['H_frobenius_sq'], 4) if sv_res['H_frobenius_sq'] > 0 else 0},
+                {'Kuantitas': 'Inertia₁ (Dominansi %)', 'Nilai': f"{sv_res['inertia1']*100:.2f}%"},
+                {'Kuantitas': 'λ₁ / λ₂ (Rasio Kegentingan)', 'Nilai': round(sv_res['dominance_ratio'], 4) if np.isfinite(sv_res['dominance_ratio']) else "∞"}
+            ]
+            res[r'Diagnostik Vektor Struktur'] = diag_table
+
+            # 5. Tabel beta_tilde per provinsi
+            beta_prov_table = []
+            for i, yr in enumerate(res['sheet_names']):
+                row = {'Tahun (k)': yr}
+                for p in prov_names_sorted:
+                    row[p] = round(sv_res['beta_provinsi'][p][i], 4) if i < len(sv_res['beta_provinsi'][p]) else "-"
+                beta_prov_table.append(row)
+            res[r'Vektor Struktur (β) - Per Provinsi'] = beta_prov_table
+
+            # --- [AUTO EXPORT] Generate .tex files immediately ---
+            export_structure_vector_latex(sv_res, output_dir="../output_app", label_prefix="")
+
         except Exception as e_meta:
-            print(f"Gagal injeksi metadata: {e_meta}")
+            print(f"Gagal injeksi metadata atau Vektor Struktur: {e_meta}")
+            import traceback
+            traceback.print_exc()
             
         print("--- [STATIS_CORE] BERHASIL ---")
-        return res
+        return res, ""
     except Exception as e:
         import traceback
-        err_msg = f"ERROR DI PERHITUNGAN CORE: {str(e)}\n{traceback.format_exc()}"
+        err_msg = f"ERROR DI PERHITUNGAN CORE: {str(e)}"
         print(err_msg)
-        # Mengembalikan error sebagai string agar visualisasi bisa menangkap dan menampilkan di UI
-        return {"ERROR_STATUS": True, "MESSAGE": str(e)}
+        traceback.print_exc()
+        return None, f"Terjadi kesalahan: {str(e)}"
 
 # 4c. SHOW/HIDE SECTIONS CALLBACK
 @app.callback(
@@ -2695,7 +2968,7 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
 @app.callback(
     Output('statis-graph-3d-main', 'figure'), Output('statis-graph-2d-year', 'figure'), Output('statis-graph-2d-traj', 'figure'),
     Output('statis-trajectory-table', 'data'), Output('statis-trajectory-table', 'columns'),
-    Input('statis-core-store', 'data'), Input('year-checklist-final', 'value'), Input('mirror-year-checklist-final', 'value'),
+    Input('statis-core-store', 'data'), Input('year-checklist-final', 'value'), Input('mirror-year-checklist-statis', 'value'),
     Input('baseline-type-final', 'value'), Input('baseline-name-final', 'value'), Input('trajectory-dropdown-final', 'value'),
     Input('statis-year-dropdown-2d-single', 'value'), Input('loading-vector-scope-final', 'value'),
     Input('visual-scaling-opts', 'value'), Input('vector-selector-final', 'value'),
@@ -2947,9 +3220,9 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
 # 6. STATIS PLOTS & TABLES
 @app.callback(
     Output('statis-scree', 'figure'), Output('statis-interstructure', 'figure'),
-    Output('statis-biplot', 'figure'), Output('statis-contribution', 'figure'),
-    Output('statis-cos2', 'figure'), Output('statis-trajectory', 'figure'),
-    Output('statis-trajectory-loading', 'figure'),
+    Output('statis-biplot', 'figure'), Output('statis-structure-vector', 'figure'),
+    Output('statis-contribution', 'figure'), Output('statis-cos2', 'figure'),
+    Output('statis-trajectory', 'figure'), Output('statis-trajectory-loading', 'figure'),
     Output('statis-table-selector', 'options'), Output('statis-detail-table', 'data'),
     Output('statis-detail-table', 'columns'), Output('table-info-display', 'children'),
     Output('formula-statis-output', 'children'),
@@ -2959,7 +3232,7 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
 def cb_statis_viz(res, table_key, vis_opts, page_size):
     # --- 1. SAFE EXIT: Jika data utama (res) belum ada ---
     if not res or not isinstance(res, dict):
-        return {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
+        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
     
     # --- 2. SAFE PREPARATION: Pastikan opsi dan data dasar tersedia ---
     vis_opts = vis_opts or []
@@ -2981,7 +3254,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         import traceback
         err_msg = f"Gagal memproses visualisasi: {str(e)} \n {traceback.format_exc()}"
         print(err_msg)
-        return {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
+        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
     
     def apply_visual_adjustments(s, l, norm, scale, ev=None):
         # 1. Normalisasi Independen (Penting!)
@@ -3037,6 +3310,44 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     fig_bi = create_biplot(plot_scores, plot_loadings, res['obs_labels'], res['selected_vars'], 
                            "Compromise Biplot", show_loadings=True, show_arrows=False)
     fig_bi.update_layout(xaxis_title=ax_x, yaxis_title=ax_y)
+    
+    # NEW: PLOT 5B: Structure Vector Calculation for Plot
+    try:
+        sv_res = res.get('structure_vector_res')
+        if sv_res:
+            beta_tilde = sv_res['beta_tilde']
+            beta_provinsi = sv_res.get('beta_provinsi', {})
+            x_vals_sv = res['sheet_names']
+            
+            fig_sv = go.Figure()
+            fig_sv.add_trace(go.Scatter(
+                x=x_vals_sv, y=beta_tilde, mode='lines+markers',
+                name='β̃ₖ (Gabungan)', line=dict(color='#1976D2', width=3),
+                marker=dict(size=10, symbol='circle')
+            ))
+            
+            colors_prov_list = ['#D81B60', '#43A047', '#FB8C00', '#7B1FA2', '#0097A7', '#F44336', '#9C27B0', '#3F51B5']
+            for i, (prov, betas) in enumerate(beta_provinsi.items()):
+                color = colors_prov_list[i % len(colors_prov_list)]
+                fig_sv.add_trace(go.Scatter(
+                    x=x_vals_sv, y=betas, mode='lines+markers',
+                    name=f'β̃_gk {prov}', line=dict(dash='dash', color=color),
+                    marker=dict(size=8, symbol='square'),
+                    opacity=0.8
+                ))
+                
+            fig_sv.update_layout(
+                title="Temporal Trajectory of Structure Vector (β̃)",
+                xaxis_title="Year (k)",
+                yaxis_title="β̃ₖ = λ₁ u₁ₖ",
+                template="plotly_white",
+                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+            )
+        else:
+            fig_sv = go.Figure().add_annotation(text="Data Vektor Struktur tidak ditemukan.", showarrow=False)
+    except Exception as e_sv:
+        print(f"Error rendering structure vector plot: {e_sv}")
+        fig_sv = go.Figure().add_annotation(text=f"Error Structure Vector: {e_sv}", showarrow=False)
     
     # PLOT 6: Object Trajectory
     coords_dict = res['per_year_coords']
@@ -3136,9 +3447,11 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     )
     
     # 5. Tables Logic
-    exclude_keys = ['R', 'H', 'alphas', 'eig_vals_c', 'scores', 'loadings', 'per_year_coords', 
+    exclude_keys = ['R', 'H', 'R_S', 'alphas', 'eig_vals_c', 'scores', 'loadings', 'per_year_coords', 
                     'sheet_names', 'X_matrices', 'vals_R_sorted', 'vals_H_sorted', 'k', 'obs_labels', 
-                    'selected_vars', 'perm_lambda_obs', 'perm_distribution', 'perm_p_value']
+                    'selected_vars', 'perm_lambda_obs', 'perm_distribution', 'perm_p_value',
+                    'scenario', 'prov_map', 'kab_index_map', 'm_weights', r'Bobot (\alpha)',
+                    'scores_svd', 'loadings_svd', 'intra_score_svd', 'intra_load_svd', 'structure_vector_res']
     
     def polish_statis_label(text):
         LABEL_MAP = {
@@ -3156,10 +3469,21 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
             r'Nilai Eigen (\Lambda_c)': "𝐍𝐢𝐥𝐚𝐢 𝐄𝐢𝐠𝐞𝐧 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 (𝚲꜀)",
             r'Skor Kompromi (F_c)': "𝐒𝐤𝐨𝐫 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 (𝐅꜀)",
             r'Loadings Kompromi (G_c)': "𝐋𝐨𝐚𝐝𝐢𝐧𝐠𝐬 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 (𝐆꜀)",
-            r'Matriks Interstruktur Hilbert-Schmidt (\mathbf{H})': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐞𝐫𝐬𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (𝐇)",
-            r'Matriks Koefisien RV (\mathbf{R}_{\mathrm{RV}})': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐞𝐟𝐢𝐬𝐢𝐞𝐧 𝐑𝐕 (𝐑)",
+            r'Matriks Koefisien RV (Wilayah) (\mathbf{R}_W)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐞𝐟𝐢𝐬𝐢𝐞𝐧 𝐑𝐕 (𝐖𝐢𝐥𝐚𝐲𝐚𝐡 - 𝐖)",
+            r'Matriks Koefisien RV (Indikator) (\mathbf{R}_S)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐞𝐟𝐢𝐬𝐢𝐞𝐧 𝐑𝐕 (𝐈𝐧𝐝𝐢𝐤𝐚𝐭𝐨𝐫 - 𝐒)",
+            r'Matriks Interstruktur (Wilayah) (\mathbf{H}_W)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐞𝐫𝐬𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (𝐖𝐢𝐥𝐚𝐲𝐚𝐡 - 𝐇)",
+            r'Matriks Interstruktur (Indikator) (\mathbf{H}_S)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐈𝐧𝐭𝐞𝐫𝐬𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (𝐈𝐧𝐝𝐢𝐤𝐚𝐭𝐨𝐫 - 𝐇)",
+            r'Vektor Eigen (Kompas Wilayah) (\mathbf{P}_W)': "𝐕𝐞𝐤𝐭𝐨𝐫 𝐄𝐢𝐠𝐞𝐧 / 𝐊𝐨𝐦𝐩𝐚𝐬 (𝐖𝐢𝐥𝐚𝐲𝐚𝐡)",
+            r'Vektor Eigen (Kompas Indikator) (\mathbf{P}_S)': "𝐕𝐞𝐤𝐭𝐨𝐫 𝐄𝐢𝐠𝐞𝐧 / 𝐊𝐨𝐦𝐩𝐚𝐬 (𝐈𝐧𝐝𝐢𝐤𝐚𝐭𝐨𝐫)",
+            r'Bobot Alpha (Wilayah) (\alpha_W)': "𝐁𝐨𝐛𝐨𝐭 𝐓𝐚𝐡𝐮𝐧 (𝛂 - 𝐖𝐢𝐥𝐚𝐲𝐚𝐡)",
+            r'Bobot Alpha (Indikator) (\alpha_S)': "𝐁𝐨𝐛𝐨𝐭 𝐓𝐚𝐡𝐮𝐧 (𝛂 - 𝐈𝐧𝐝𝐢𝐤𝐚𝐭𝐨𝐫)",
             r'Matriks Kompromi (\mathbf{W}_c)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 (𝐖꜀)",
-            r'Matriks Kompromi Variabel (\mathbf{S}_c)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 𝐕𝐚𝐫𝐢𝐚𝐛𝐞𝐥 (𝐒꜀)"
+            r'Matriks Kompromi Variabel (\mathbf{S}_c)': "𝐌𝐚𝐭𝐫𝐢𝐤𝐬 𝐊𝐨𝐦𝐩𝐫𝐨𝐦𝐢 𝐕𝐚𝐫𝐢𝐚𝐛𝐞𝐥 (𝐒꜀)",
+            r'Vektor Struktur (β) - Gabungan': "𝐕𝐞𝐤𝐭𝐨𝐫 𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (β) - 𝐆𝐚𝐛𝐮𝐧𝐠𝐚𝐧",
+            r'Vektor Eigen Struktur (u₁)': "𝐕𝐞𝐤𝐭𝐨𝐫 𝐄𝐢𝐠𝐞𝐧 𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (𝐮₁)",
+            r'Nilai Eigen Struktur (λ₁)': "𝐍𝐢𝐥𝐚𝐢 𝐄𝐢𝐠𝐞𝐧 𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (λ₁)",
+            r'Diagnostik Vektor Struktur': "𝐃𝐢𝐚𝐠𝐧𝐨𝐬𝐭𝐢𝐤 𝐕𝐞𝐤𝐭𝐨𝐫 𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫",
+            r'Vektor Struktur (β) - Per Provinsi': "𝐕𝐞𝐤𝐭𝐨𝐫 𝐒𝐭𝐫𝐮𝐤𝐭𝐮𝐫 (β) - 𝐏𝐞𝐫 𝐏𝐫𝐨𝐯𝐢𝐧𝐬𝐢"
         }
         
         if text in LABEL_MAP:
@@ -3222,6 +3546,62 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         elif isinstance(tbl_data, list) and len(tbl_data) > 0 and not isinstance(tbl_data[0], dict):
             tbl_data = [{"Index": i+1, "Value": v} for i, v in enumerate(tbl_data)]
 
+        # --- LOGIKA PERBANDINGAN KOORDINAT (ASLI VS VISUAL) ---
+        if table_key and any(x in table_key for x in ["Skor", "Loading"]):
+            new_tbl_data = []
+            
+            # Cari data ASLI (SVD Murni) dari res
+            raw_data_svd = None
+            if "Kompromi" in table_key:
+                if "Skor" in table_key: raw_data_svd = np.array(res.get('scores_svd', []))
+                else: raw_data_svd = np.array(res.get('loadings_svd', []))
+            else:
+                # Cari tahun dari table_key (misal: F_{2020})
+                import re
+                m = re.search(r'(\d{4})', table_key)
+                if m:
+                    yr = m.group(1)
+                    if "Skor" in table_key: raw_data_svd = np.array(res.get('intra_score_svd', {}).get(yr, []))
+                    else: raw_data_svd = np.array(res.get('intra_load_svd', {}).get(yr, []))
+
+            for idx, row in enumerate(tbl_data):
+                new_row = row.copy()
+                if 'PC1' in row and 'PC2' in row:
+                    # 1. Nilai ASLI (SVD Murni sebelum flip)
+                    if raw_data_svd is not None and idx < len(raw_data_svd):
+                        pc1_asli, pc2_asli = raw_data_svd[idx, 0], raw_data_svd[idx, 1]
+                    else:
+                        pc1_asli, pc2_asli = row['PC1'], row['PC2'] # Fallback
+                    
+                    # 2. Nilai VISUAL (Hasil Akhir di Dash)
+                    pc1_final, pc2_final = row['PC1'], row['PC2']
+                    pc1_vis, pc2_vis = pc1_final, pc2_final
+                    
+                    # Terapkan Normalisasi/Scaling HANYA untuk kolom Visual (agar sinkron dengan plot)
+                    if norm_score and "Skor" in table_key:
+                        m1 = np.abs(scores[:, 0]).max() if scores.shape[0]>0 else 1
+                        m2 = np.abs(scores[:, 1]).max() if scores.shape[0]>0 else 1
+                        pc1_vis = pc1_vis / m1
+                        pc2_vis = pc2_vis / m2
+                    
+                    if scale_load and "Loading" in table_key:
+                        max_s = np.max(np.abs(scores)) if scores.size > 0 else 1
+                        max_l = np.max(np.abs(loadings)) if loadings.size > 0 else 1
+                        vis_factor = (max_s / max_l) * 0.8 if max_l > 0 else 1
+                        pc1_vis *= vis_factor
+                        pc2_vis *= vis_factor
+                    
+                    label_key = list(row.keys())[0]
+                    new_row = {
+                        label_key: row[label_key],
+                        "PC1 (Asli/SVD)": round(pc1_asli, 4),
+                        "PC2 (Asli/SVD)": round(pc2_asli, 4),
+                        "PC1 (Visual/Dash)": round(pc1_vis, 4),
+                        "PC2 (Visual/Dash)": round(pc2_vis, 4)
+                    }
+                new_tbl_data.append(new_row)
+            tbl_data = new_tbl_data
+
         if tbl_data and len(tbl_data) > 0: 
             try:
                 tbl_cols = [{"name": i, "id": i} for i in tbl_data[0].keys()]
@@ -3247,7 +3627,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     r_matrix = np.array(res['R'])
     form_statis_ui = render_statis_formulas(res['alphas'], res['sheet_names'], w_slice, r_matrix)
 
-    return fig_scree, fig_inter, fig_bi, fig_contrib, fig_cos2, fig_traj, fig_traj_load, table_opts, tbl_data, tbl_cols, info_text, form_statis_ui
+    return fig_scree, fig_inter, fig_bi, fig_sv, fig_contrib, fig_cos2, fig_traj, fig_traj_load, table_opts, tbl_data, tbl_cols, info_text, form_statis_ui
 
 
 # 7. Permutation Test
@@ -3965,7 +4345,7 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
         )
 
     trend_section = html.Div([
-        html.H6(f"Tren {STAT_LABELS.get(stat_key, stat_key)} per Variabel (2020–2024)",
+        html.H6(f"Tren {STAT_LABELS.get(stat_key, stat_key)} per Variabel",
                 style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#4527A0',
                        'marginTop': '20px', 'marginBottom': '8px'}),
         html.Div(trend_figs, style={'display': 'flex', 'flexWrap': 'wrap'})
@@ -3983,6 +4363,8 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
 )
 def cb_eval_cluster(eval_year, res):
     if not eval_year or not res: return {}, {}
+    if str(eval_year) not in res.get('per_year_coords', {}):
+        return {}, {}
     coords = np.array(res['per_year_coords'][str(eval_year)])
     obs_labels = res['obs_labels']
     

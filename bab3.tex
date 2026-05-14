@@ -166,29 +166,38 @@ Teknik analisis data mengacu pada algoritma STATIS (\textit{Structuration des Ta
     \item \textbf{Struktur Data Tiga-Arah (\textit{Input Cube}):} Merupakan struktur data mentah yang dianalisis, yang terdiri dari 41 Kabupaten/Kota sebagai objek ($n$), 11 Indikator Kesejahteraan Rakyat sebagai variabel ($p$), dan 5 tahun pengamatan sebagai situasi waktu ($K$). Seluruh pengujian awal (KMO dan Bartlett) dilakukan pada dimensi variabel ($p$) ini.
     \item \textbf{Visualisasi Dinamis (\textit{Output Trajectory}):} Merupakan hasil reduksi dimensi oleh STATIS, di mana 11 variabel tersebut diringkas menjadi 2 Komponen Utama (PC1 dan PC2), sementara dimensi situasi ($K$) direpresentasikan melalui pergerakan atau lintasan wilayah di dalam ruang PC1 dan PC2 tersebut. 
 \end{itemize}
-\subsection{\normalsize Ilustrasi Pelaksanaan Prosedur Komputasi STATIS} \label{subsec:ilustrasi_statis}
+\subsection{\normalsize Prosedur Komputasi dan Ilustrasi Numerik STATIS} \label{subsec:ilustrasi_statis}
 
-Untuk memberikan gambaran yang transparan mengenai mekanisme kerja sistem, bagian ini menyajikan ilustrasi perhitungan manual (\textit{step-by-step}) menggunakan dataset sampel yang terdiri dari 4 wilayah ($n=4$) selama 3 tahun ($K=3$) dengan 3 variabel utama ($p=3$): Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Tingkat Pengangguran Terbuka (TPT). Wilayah sampel yang digunakan adalah: (1) Kota Jakarta Pusat, (2) Kabupaten Bandung Barat, (3) Kota Tasikmalaya, dan (4) Kota Cilegon.
+Bagian ini menyajikan rekonstruksi algoritmik secara sistematis dengan menyajikan ilustrasi perhitungan manual (\textit{step-by-step}) untuk memvalidasi fungsionalitas sistem komputasi yang dibangun. Ilustrasi dilakukan menggunakan dataset sampel yang terdiri dari 4 wilayah ($n=4$) selama 3 periode waktu ($K=3$) dengan 3 variabel utama ($p=3$): Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Tingkat Pengangguran Terbuka (TPT). Wilayah sampel meliputi: (1) Kota Jakarta Pusat, (2) Kabupaten Bandung Barat, (3) Kota Tasikmalaya, dan (4) Kota Cilegon.
 
 \subsubsection{Tahap 0: Pra-pemrosesan dan Bobot Demografis}
-Analisis diawali dengan ringkasan statistik untuk periode 2020 hingga 2022 (Tabel~\ref{tab:sampledesc_2020}, Tabel~\ref{tab:sampledesc_2021}, dan Tabel~\ref{tab:sampledesc_2022}) yang menyertakan data Jumlah Penduduk (JP) sebagai variabel tambahan:
+Analisis diawali dengan ringkasan statistik untuk periode 2020 hingga 2022 (Tabel~\ref{tab:sampledesc_uw_2020}--\ref{tab:sampledesc_uw_2022}). Statistika deskriptif tanpa bobot disajikan pada tabel berikut.
+
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Tahun 2020} \label{tab:sampledesc_2020}
+\caption{Statistika Deskriptif (Tanpa Bobot) Tahun 2020} \label{tab:sampledesc_uw_2020}
 \input{output_sample/output_table_deskriptif_2020.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Tahun 2021} \label{tab:sampledesc_2021}
+\caption{Statistika Deskriptif (Tanpa Bobot) Tahun 2021} \label{tab:sampledesc_uw_2021}
 \input{output_sample/output_table_deskriptif_2021.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Tahun 2022} \label{tab:sampledesc_2022}
+\caption{Statistika Deskriptif (Tanpa Bobot) Tahun 2022} \label{tab:sampledesc_uw_2022}
 \input{output_sample/output_table_deskriptif_2022.tex}
 \end{table}
+
+Selain statistika deskriptif biasa, digunakan pula statistika deskriptif \textbf{terbobot} yang memperhitungkan jumlah penduduk ($m_i$) sebagai bobot demografis (Persamaan~\ref{eq:weighted_mean} dan \ref{eq:weighted_std}). Hal ini penting karena STATIS bekerja pada ruang metrik $\mathbf{D}$.
+
+\input{output_sample/output_table_descriptive_2020.tex}
+
+\input{output_sample/output_table_descriptive_2021.tex}
+
+\input{output_sample/output_table_descriptive_2022.tex}
 
 Data awal atau matriks data mentah $\mathbf{X}_k$ untuk setiap situasi tahun $k = 1, 2, 3$ adalah:
 \[ \mathbf{X}_{2020} = \begin{pmatrix}
@@ -296,7 +305,7 @@ Dari matriks terstandardisasi $\mathbf{Z}_k$, dibentuk matriks intra-struktur $\
     &= -0{,}584564 - 1{,}245215 - 0{,}021646 = -1{,}851425
 \end{align*}
 }
-Matriks korelasi terbobot antar-indikator $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$ disajikan pada Tabel~\ref{tab:samplematriks_intra_loading_2020}, Tabel~\ref{tab:samplematriks_intra_loading_2021}, dan Tabel~\ref{tab:samplematriks_intra_loading_2022}.
+Matriks korelasi terbobot antar-indikator $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$ disajikan pada Tabel~\ref{tab:sample1matriks_intra_loading_2020}, Tabel~\ref{tab:sample1matriks_intra_loading_2021}, dan Tabel~\ref{tab:sample1matriks_intra_loading_2022}.
 \input{output_sample/output_table_matriks_intra_loading_2020.tex}
 \input{output_sample/output_table_matriks_intra_loading_2021.tex}
 \input{output_sample/output_table_matriks_intra_loading_2022.tex}
@@ -308,8 +317,8 @@ Kemiripan struktural diukur menggunakan koefisien RV:
     &= \frac{H_{1,2}}{\sqrt{H_{1,1} \cdot H_{2,2}}} = \frac{37{,}088194}{\sqrt{43{,}468012 \times 39{,}367215}} \\
     &= \frac{37{,}088194}{41{,}367214} = 0{,}896560 \approx 0{,}896560
 \end{align*}
-Matriks RV lengkap ditampilkan pada Tabel~\ref{tab:samplerv}.
-\input{output_sample/output_table_rv.tex}
+Matriks RV lengkap ditampilkan pada Tabel~\ref{tab:samplerv_w}.
+\input{output_sample/output_table_rv_w.tex}
 
 \begin{figure}[H]
     \centering
@@ -318,71 +327,113 @@ Matriks RV lengkap ditampilkan pada Tabel~\ref{tab:samplerv}.
     \label{fig:rv_heat_sample}
 \end{figure}
 
-\subsubsection{Tahap 4: Bobot Kompromi (\texorpdfstring{$\alpha_k$}{alpha})}
-Dekomposisi spektral $\mathbf{H}\mathbf{u} = \theta\mathbf{u}$ menghasilkan vektor eigen pertama $\mathbf{u}_1 = [0{,}567711;\; 0{,}565612;\; 0{,}598124]^T$. Normalisasi bobot:
-\begin{align*}
-    \alpha_{2020} &= \frac{0{,}567711}{0{,}567711 + 0{,}565612 + 0{,}598124} = \frac{0{,}567711}{1{,}731447} = 0{,}327882 \\[4pt]
-    \alpha_{2021} &= \frac{0{,}565612}{0{,}567711 + 0{,}565612 + 0{,}598124} = \frac{0{,}565612}{1{,}731447} = 0{,}326670 \\[4pt]
-    \alpha_{2022} &= \frac{0{,}598124}{0{,}567711 + 0{,}565612 + 0{,}598124} = \frac{0{,}598124}{1{,}731447} = 0{,}345448
-\end{align*}
-Hasil normalisasi tersaji dalam Tabel~\ref{tab:samplealpha}.
-\input{output_sample/output_table_alpha.tex}
+\subsubsection{Tahap 4: Penentuan Bobot Kompromi (\texorpdfstring{$\alpha_k$}{alpha}) -- Dua Skema Pembobotan}
+Langkah kritis dalam STATIS adalah penentuan bobot kompromi $\alpha_k$, yang mencerminkan kontribusi setiap situasi (tahun) terhadap struktur bersama. Sesuai dengan kerangka kerja \cite{lavit94}, penelitian ini menyediakan \textbf{dua skema pembobotan} yang menghasilkan dua skenario analisis:
 
-\subsubsection{Tahap 5: Sintesis Matriks Kompromi (\texorpdfstring{$\mathbf{W}_c$}{Wc})}
-Matriks kompromi disintesis melalui kombinasi linear tertimbang:
+\begin{itemize}
+    \item \textbf{Skenario 1 -- ACT Klasik (Host = Wilayah):} Matriks intra-struktur $\mathbf{W}_k = \tilde{\mathbf{Z}}_k\tilde{\mathbf{Z}}_k^T$ berukuran $n \times n$ menggambarkan kemiripan antar-wilayah. Matriks interstruktur $\mathbf{H}_W$ dihitung dari $\text{tr}(\mathbf{D}^{1/2}\mathbf{W}_k\mathbf{D}^{1/2} \cdot \mathbf{D}^{1/2}\mathbf{W}_{k'}\mathbf{D}^{1/2})$.
+    \item \textbf{Skenario 2 -- Dual STATIS (Host = Indikator):} Matriks intra-struktur $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$ berukuran $p \times p$ menggambarkan kemiripan antar-indikator. Matriks interstruktur $\mathbf{H}_S$ dihitung dari $\text{tr}(\mathbf{S}_k \mathbf{S}_{k'})$.
+\end{itemize}
+
+Dekomposisi spektral $\mathbf{H}_W \mathbf{u} = \theta \mathbf{u}$ menghasilkan vektor eigen pertama $\mathbf{u}_1$ dan bobot $\alpha_{W,k}$; demikian pula $\mathbf{H}_S \mathbf{v} = \vartheta \mathbf{v}$ menghasilkan $\alpha_{S,k}$. Kedua skema bobot disajikan pada Tabel~\ref{tab:samplealpha_w} dan Tabel~\ref{tab:samplealpha_s}.
+
+\input{output_sample/output_table_alpha_w.tex}
+
+\input{output_sample/output_table_alpha_s.tex}
+
+Dari kedua tabel di atas, perhatikan bahwa nilai $\alpha_{W,k}$ dan $\alpha_{S,k}$ dapat berbeda. Skenario~1 menekankan kestabilan posisi relatif antar-wilayah, sedangkan Skenario~2 menekankan konsistensi struktur hubungan antar-indikator.
+
+\subsubsection{Tahap 5: Sintesis Matriks Kompromi -- Skenario 1 vs Skenario 2}
+Matriks kompromi disintesis melalui kombinasi linear tertimbang. Kedua skenario menghasilkan matriks kompromi yang berbeda:
+
+\paragraph{Skenario 1 (ACT Klasik -- Host = Wilayah):}
+Matriks kompromi $\mathbf{W}_c = \sum_k \alpha_{W,k}\,\mathbf{W}_k$ berukuran $n \times n$, merupakan rataan terbobot matriks intra-struktur wilayah:
 \begin{align*}
-    \mathbf{W}_c &= 0{,}327882\,\mathbf{W}_{2020} + 0{,}326670\,\mathbf{W}_{2021} + 0{,}345448\,\mathbf{W}_{2022} \\
-    &= 0{,}327882 \begin{bmatrix} 1{,}278508 & -0{,}713075 & -0{,}419231 & 0{,}121234 \\ \vdots & \vdots & \vdots & \vdots \end{bmatrix} + \dots = \begin{pmatrix}
--2{,}248922 & -0{,}371122 \\
-1{,}268112 & -0{,}452231 \\
-0{,}118122 & 1{,}661021 \\
--1{,}221132 & -1{,}481122 \\
-\end{pmatrix}
+    \mathbf{W}_c^{(1)} &= \alpha_{W,2020}\,\mathbf{W}_{2020} + \alpha_{W,2021}\,\mathbf{W}_{2021} + \alpha_{W,2022}\,\mathbf{W}_{2022}
 \end{align*}
-Dekomposisi spektral $\mathbf{W}_c = \mathbf{P}\mathbf{\Lambda}\mathbf{P}^T$ menghasilkan nilai eigen pada Tabel~\ref{tab:sampleeigen}. Keandalan dari model rank-1 divalidasi melalui diagnostik dominansi model rank-1 pada Tabel~\ref{tab:samplestruktur_diagnostik}.
-\input{output_sample/output_table_eigen.tex}
+Dekomposisi spektral $\mathbf{W}_c^{(1)} = \mathbf{P}\mathbf{\Lambda}\mathbf{P}^T$ memberikan eigenvector $\mathbf{P}$ dan eigenvalue $\mathbf{\Lambda}$. Skor kompromi wilayah diperoleh melalui:
+\begin{equation}
+    \mathbf{F}_c^{(1)} = \mathbf{D}^{-1/2}\mathbf{P}\mathbf{\Lambda}^{1/2}, \quad
+    \mathbf{G}_c^{(1)} = \sum_k \alpha_{W,k}\left(\mathbf{Z}_k^T\mathbf{D}\mathbf{F}_c^{(1)}\mathbf{\Lambda}^{-1/2}\right)
+\end{equation}
+
+\paragraph{Skenario 2 (Dual STATIS -- Host = Indikator):}
+Matriks kompromi $\mathbf{S}_c = \sum_k \alpha_{S,k}\,\mathbf{S}_k$ berukuran $p \times p$, merupakan rataan terbobot matriks korelasi antar-indikator:
+\begin{align*}
+    \mathbf{S}_c^{(2)} &= \alpha_{S,2020}\,\mathbf{S}_{2020} + \alpha_{S,2021}\,\mathbf{S}_{2021} + \alpha_{S,2022}\,\mathbf{S}_{2022}
+\end{align*}
+Dekomposisi SVD $\mathbf{S}_c^{(2)} = \mathbf{U}\boldsymbol{\Sigma}\mathbf{U}^T$ memberikan eigenvector indikator $\mathbf{U}$ dan nilai singular $\boldsymbol{\Sigma}$. Loading (koordinat indikator) dan skor kompromi objek diperoleh melalui:
+\begin{equation}
+    \mathbf{G}_c^{(2)} = \mathbf{U}_{:,1:2}\,\boldsymbol{\Sigma}_{1:2}^{1/2}, \quad
+    \mathbf{F}_c^{(2)} = \sum_k \alpha_{S,k}\left(\mathbf{Z}_k\,\mathbf{U}_{:,1:2}\right)
+\end{equation}
+
+Hasil dekomposisi nilai eigen untuk masing-masing skenario disajikan pada Tabel~\ref{tab:sample1eigen} dan Tabel~\ref{tab:sample2eigen}.
+\input{output_sample/scenario1/output_table_eigen.tex}
+\input{output_sample/scenario2/output_table_eigen.tex}
 \input{output_sample/output_table_struktur_diagnostik.tex}
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.55\textwidth]{output_sample/scree_plot.png}
-    \caption{Scree Plot Analisis Kompromi Data Sampel}
+    \caption{Scree Plot Analisis Kompromi Data Sampel (Skenario 1)}
     \label{fig:scree_sample}
 \end{figure}
 
-\subsubsection{Tahap 6: Skor dan Loading Kompromi}
-Koordinat wilayah $\mathbf{F}_c = \mathbf{D}^{-1/2}\mathbf{P}\mathbf{\Lambda}^{1/2}$ dihitung sebagai berikut:
-\begin{align*}
-    f_{1,1} &= \frac{1}{\sqrt{m_1}} \cdot p_{1,1} \cdot \sqrt{\lambda_1} \\
-    &= \frac{1}{\sqrt{0{,}294320}} \times (-0{,}651231) \times \sqrt{2{,}301222} = 1{,}843181 \times (-0{,}651231) \times 1{,}516978 = -1{,}820872 \approx -2{,}248922
-\end{align*}
-Hasil lengkap skor dan loading disajikan pada tabel berikut.
-\input{output_sample/output_table_scores.tex}
-\input{output_sample/output_table_loadings.tex}
+\subsubsection{Tahap 6: Proyeksi Kompromi -- Perbandingan Skenario 1 dan Skenario 2}
+Koordinat kompromi dari kedua skenario disajikan berdampingan agar perbedaan pendekatan dapat dipahami secara komprehensif.
+
+\paragraph{Skenario 1 -- Skor Wilayah ($\mathbf{F}_c^{(1)}$) dan Loading Indikator ($\mathbf{G}_c^{(1)}$):}
+Skor wilayah mencerminkan posisi relatif tiap wilayah pada ruang kompromi, sedangkan loading indikator mencerminkan arah dan kekuatan kontribusi tiap variabel.
+\input{output_sample/scenario1/output_table_scores.tex}
+\input{output_sample/scenario1/output_table_loadings.tex}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{output_sample/compromise_biplot_matplotlib.png}
-    \caption{Compromise Biplot (Skor dan Loading) Data Sampel}
-    \label{fig:biplot_sample}
+    \includegraphics[width=0.72\textwidth]{output_sample/scenario1/compromise_biplot_matplotlib.png}
+    \caption{Compromise Biplot Skenario 1 (Host = Wilayah): Skor Wilayah dan Loading Indikator}
+    \label{fig:biplot_sample_s1}
 \end{figure}
 
-Lintasan pergerakan wilayah dari 2020 hingga 2022 (Persamaan~\ref{eq:lintasan}: $\mathbf{F}_k = \mathbf{Z}_k\mathbf{V}_c$) divisualisasikan melalui trajektori pada Gambar~\ref{fig:traj_sample}.
+\paragraph{Skenario 2 -- Skor Wilayah ($\mathbf{F}_c^{(2)}$) dan Loading Indikator ($\mathbf{G}_c^{(2)}$):}
+Pada Skenario 2, kompromi terbentuk pada ruang indikator, sehingga biplot lebih menekankan hubungan antar-variabel. Proyeksi wilayah ke ruang ini menghasilkan skor yang mencerminkan kemiripan profil indikator.
+\input{output_sample/scenario2/output_table_scores.tex}
+\input{output_sample/scenario2/output_table_loadings.tex}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{output_sample/statis_trajectories.png}
-    \caption{Visualisasi Trajektori Spasio-Temporal Data Sampel}
-    \label{fig:traj_sample}
+    \includegraphics[width=0.72\textwidth]{output_sample/scenario2/compromise_biplot_matplotlib.png}
+    \caption{Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}
+    \label{fig:biplot_sample_s2}
+\end{figure}
+
+Dari perbandingan kedua biplot, dapat dilihat bahwa orientasi loading berbeda karena Skenario 1 memaksimalkan varians antar-wilayah sementara Skenario 2 memaksimalkan konsistensi struktur antar-indikator. Dalam praktiknya, Skenario 1 lebih cocok untuk analisis mobilitas wilayah, sedangkan Skenario 2 lebih cocok untuk analisis hubungan antar-variabel lintas waktu.
+
+Lintasan pergerakan wilayah (Gambar~\ref{fig:traj_sample_s1} dan \ref{fig:traj_sample_s2}) mengilustrasikan dinamika temporal dari masing-masing skenario.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/scenario1/statis_trajectories.png}
+        \caption{Trajektori Skenario 1 (Host = Wilayah)}
+        \label{fig:traj_sample_s1}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/scenario2/statis_trajectories.png}
+        \caption{Trajektori Skenario 2 (Host = Indikator)}
+        \label{fig:traj_sample_s2}
+    \end{minipage}
 \end{figure}
 
 \subsubsection{Tahap 7: Uji Signifikansi dan Clustering}
 Signifikansi divalidasi dengan uji permutasi Monte Carlo. Langkah terakhir adalah pemetaan wilayah ke dalam cluster menggunakan K-Means.
-\input{output_sample/output_table_cluster_members.tex}
+\input{output_sample/scenario1/output_table_cluster_members.tex}
 
-Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal (Tabel~\ref{tab:sampletranssum2020x2021} dan Tabel~\ref{tab:sampletranssum2021x2022}).
-\input{output_sample/output_table_transition_matrix_sum_2020x2021.tex}
-\input{output_sample/output_table_transition_matrix_sum_2021x2022.tex}
+Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal (Tabel~\ref{tab:sample1transsum2020x2021} dan Tabel~\ref{tab:sample1transsum2021x2022}).
+\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
 
 \subsubsection{Tahap 8: Perbandingan Cluster Biplot vs STATIS}
 Untuk mengilustrasikan keunggulan STATIS yang mengakomodasi informasi temporal, kita dapat membandingkan cluster yang terbentuk dari matriks koordinat STATIS $\mathbf{F}_k$ dengan cluster yang dibentuk secara murni dari Principal Component Analysis (PCA) pada tahun individu (Biplot Unweighted). 
@@ -392,49 +443,108 @@ Dalam PCA standar, koordinat objek pada tahun $k$ (misalnya tahun 2020) dihitung
     \mathbf{F}_{\text{PCA}, 2020} = \mathbf{Z}_{2020} \mathbf{V}_{2020} \label{eq:pca_scores_2020}
 \end{equation}
 
-Berbeda halnya dengan metode STATIS, di mana proyeksi data pada tahun 2020 ($\mathbf{Z}_{2020}$) dilakukan terhadap vektor kompromi lintas tahun $\mathbf{V}_c$ sebagaimana dirumuskan pada Persamaan~\ref{eq:lintasan}:
+Berbeda halnya dengan metode STATIS, di mana proyeksi data pada tahun 2020 ($\mathbf{Z}_{2020}$) dilakukan terhadap vektor kompromi lintas tahun $\mathbf{V}_c^{(s)}$ (yang berbeda untuk setiap skenario $s$):
 \begin{equation}
-    \mathbf{F}_{\text{STATIS}, 2020} = \mathbf{Z}_{2020} \mathbf{V}_c \label{eq:statis_scores_2020}
+    \mathbf{F}_{\text{STATIS}, 2020}^{(s)} = \mathbf{Z}_{2020} \mathbf{V}_c^{(s)} \label{eq:statis_scores_2020}
 \end{equation}
 
-Perbedaan proyeksi ini menyebabkan titik koordinat masing-masing wilayah berada pada posisi yang berbeda, sehingga saat algoritma K-Means ($k=3$) diterapkan, susunan keanggotaan cluster dapat berubah. Matriks tabulasi silang berikut membandingkan keanggotaan cluster dari PCA murni berhadapan dengan STATIS untuk tahun 2020 pada data sampel.
+Perbedaan proyeksi ini menyebabkan titik koordinat masing-masing wilayah berada pada posisi yang berbeda, sehingga saat algoritma K-Means ($k=3$) diterapkan, susunan keanggotaan cluster dapat berubah. Perbandingan ini dilakukan secara terpisah untuk setiap skenario karena $\mathbf{V}_c^{(1)} \neq \mathbf{V}_c^{(2)}$.
 
-\input{output_sample/output_table_biplot_vs_statis_compare_sum_2020.tex}
-\input{output_sample/output_table_biplot_vs_statis_compare_name_2020.tex}
+Dua jenis tabel disajikan untuk setiap skenario:
+\begin{itemize}
+    \item \textbf{Tabel Jumlah (\textit{Sum}):} Matriks tabulasi silang yang menunjukkan berapa banyak wilayah berpindah cluster dari Biplot ke STATIS.
+    \item \textbf{Tabel Nama (\textit{Name}):} Daftar nama wilayah spesifik yang mengalami reklasifikasi cluster.
+\end{itemize}
 
-Gambar~\ref{fig:map_biplot_statis_sample_2020} memvisualisasikan perbedaan hasil pengelompokan tersebut secara spasial.
+\paragraph{Skenario 1 (ACT Klasik -- Host = Wilayah):}
+\input{output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex}
+\input{output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex}
+
+\paragraph{Skenario 2 (Dual STATIS -- Host = Indikator):}
+\input{output_sample/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex}
+\input{output_sample/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex}
+
+Gambar~\ref{fig:map_biplot_statis_sample_2020} memvisualisasikan perbedaan hasil pengelompokan tersebut secara spasial (berdasarkan Skenario~1).
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/cluster_map_biplot_2020.png}
+        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_biplot_2020.png}
         \caption*{Peta Cluster Biplot (Unweighted)}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/cluster_map_statis_2020.png}
-        \caption*{Peta Cluster STATIS}
+        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2020.png}
+        \caption*{Peta Cluster STATIS (Skenario 1)}
     \end{minipage}
-    \caption{Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel (2020)}
+    \caption{Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel Skenario 1 (2020)}
     \label{fig:map_biplot_statis_sample_2020}
 \end{figure}
 
-\subsubsection{Tahap 9: Tabulasi Silang K-Means vs IPM UNDP}
-Sebagai bentuk validasi eksternal, hasil clustering K-Means yang bersifat obyektif (\textit{data-driven}) dihadapkan dengan klasifikasi normatif IPM dari UNDP (Sangat Tinggi, Tinggi, Sedang, Rendah). Karena IPM merupakan indeks agregat yang telah mapan, tabulasi silang ini bertujuan memastikan bahwa cluster yang terbentuk sejalan dengan level pembangunan aktual.
+\subsubsection{Tahap 9: Validasi Eksternal (Cross-tab vs Kategori IPM UNDP)}
+Sebagai bentuk validasi eksternal, hasil pengelompokan yang bersifat obyektif (\textit{data-driven}) dihadapkan dengan klasifikasi normatif IPM dari UNDP (Sangat Tinggi, Tinggi, Sedang, Rendah). Tabel perbandingan ini \textbf{tidak bergantung pada skenario STATIS} (hanya menggunakan label cluster K-Means per tahun), sehingga disimpan sebagai output bersama (\textit{shared}) di folder root.
 
-\input{output_sample/output_table_cross_matrix_sum_2020.tex}
-\input{output_sample/output_table_cross_matrix_name_2020.tex}
+\input{output_sample/scenario1/output_table_cross_matrix_sum_2020.tex}
+\input{output_sample/scenario1/output_table_cross_matrix_name_2020.tex}
 
-\subsection{\normalsize Penyelarasan Label Cluster Lintas Waktu}
-Untuk menjamin konsistensi identitas Cluster antar periode waktu (mencegah \textit{label switching}), diterapkan prosedur penyelarasan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955}. Prosedur ini bekerja dengan menghitung matriks biaya (\textit{cost matrix}) berdasarkan jarak Euclidean antar centroid cluster pada tahun dasar ($t$) dan tahun tujuan ($t+1$) merujuk pada Persamaan \ref{eq:dist_centroid}. Solusi optimal pemetaan label diperoleh melalui minimalisasi total jarak sesuai fungsi objektif pada Persamaan \ref{eq:hungarian_min}. Langkah ini krusial untuk memastikan bahwa "Cluster Rendah" pada tahun tertentu merujuk pada karakteristik yang sebanding dengan "Cluster Rendah" pada tahun lainnya.
+\subsection{\normalsize Konsolidasi Hasil Komputasi Interstruktur dan Intra-Situasi}
+Untuk memberikan transparansi penuh terhadap proses komputasi, bagian ini merangkum seluruh parameter struktural yang dihasilkan oleh sistem selama pemrosesan data sampel (2020--2022).
 
-\subsection{\normalsize Kategorisasi dan Perankingan Cluster}
-Interpretasi sosio-ekonomi terhadap cluster dilakukan melalui perankingan otomatis menggunakan nilai rata-rata skor komponen utama pertama (PC1) pada masing-masing cluster. PC1 mewakili variansi utama dari 11 variabel tersebut sehingga berperan sebagai indeks performa umum (\textit{general performance index}). Cluster dengan rata-rata PC1 terendah diberi label \textbf{Cluster 1 (Rendah)}, menengah sebagai \textbf{Cluster 2 (Sedang)}, dan tertinggi sebagai \textbf{Cluster 3 (Tinggi)}. Apabila digunakan 4 kelompok, label tertinggi menjadi \textbf{Cluster 4 (Sangat Tinggi)}.
+\subsubsection{Matriks Interstruktur dan Koefisien Kemiripan}
+Matriks kemiripan struktural antar-tahun dihitung menggunakan Koefisien RV dan hasil dekomposisi Hilbert-Schmidt, sebagaimana disajikan pada tabel-tabel berikut.
 
-Untuk mempermudah pemantauan visual, sistem visualisasi menetapkan skema warna tetap (\textit{fixed color scheme}): Merah (\textit{Red}) untuk Cluster 1, Jingga (\textit{Yellow/Amber}) untuk Cluster 2, Hijau (\textit{Green}) untuk Cluster 3, dan Biru (\textit{Blue}) untuk Cluster 4. Hal ini menjamin konsistensi representasi visual di seluruh periode pengamatan (2020 hingga 2024), sehingga pembaca dapat langsung mengenali status wilayah berdasarkan warnanya tanpa fluktuasi visual antar-tahun.
+{\renewcommand{\label}[1]{}
+\input{output_sample/output_table_rv_w.tex}
+\input{output_sample/output_table_hw.tex}
+\input{output_sample/output_table_hs.tex}
+}
+
+\subsubsection{Dinamika Transisi Cluster Temporal}
+Perubahan keanggotaan wilayah antar-tahun dipantau melalui matriks transisi temporal untuk mengidentifikasi adanya pergeseran status kesejahteraan.
+
+{\renewcommand{\label}[1]{}
+\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
+}
+
+\subsubsection{Galeri Visualisasi Spasio-Temporal Intra-Tahun}
+Berikut disajikan rangkaian visualisasi snapshot tahunan yang mencakup peta sebaran cluster dan distribusi variabel melalui boxplot untuk memantau variabilitas data sampel.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2020.png}
+        \caption*{Peta Cluster 2020}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2021.png}
+        \caption*{Peta Cluster 2021}
+    \end{minipage} \hfill
+    \begin{minipage}{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2022.png}
+        \caption*{Peta Cluster 2022}
+    \end{minipage}
+    \caption{Dinamika Spasial Cluster Data Sampel (2020--2022)}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/boxplot_ppm_2020.png}
+        \caption*{PPM 2020}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_sample/boxplot_ppm_2022.png}
+        \caption*{PPM 2022}
+    \end{minipage}
+    \caption{Contoh Distribusi Boxplot Indikator PPM (Awal vs Akhir Periode)}
+\end{figure}
 
 \subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
-Sejalan dengan hasil pengelompokan pada skor kompromi, dilakukan pengujian untuk mendeteksi apakah terdapat ketergantungan spasial secara keseluruhan. Pengujian ini merujuk pada koefisien Global Moran's $I$ sebagaimana didefinisikan pada Persamaan \ref{eq:moran_i} di Bab 2.
-
-Signifikansi statistik $I$ kemudian dievaluasi menggunakan pendekatan \textbf{non-parametrik (permutasi)} melalui simulasi Monte Carlo. Pendekatan ini dilakukan dengan mengacak posisi nilai atribut secara spasial berkali-kali untuk membangun distribusi null, sehingga $p$-value diperoleh secara empiris tanpa bergantung pada asumsi normalitas data. Hal ini menjamin validitas pengujian pada data regional yang memiliki keterbatasan jumlah amatan ($n=41$).
+Sebagai tahap akhir metodologi, dilakukan pengujian untuk mendeteksi keberadaan dependensi spasial pada skor kompromi wilayah. Statistik Global Moran's $I$ dievaluasi menggunakan prosedur permutasi Monte Carlo untuk menjamin validitas inferensi pada jumlah amatan yang terbatas. Hasil pengujian ini menentukan apakah pola kesejahteraan yang terbentuk bersifat mengelompok (\textit{clustered}), menyebar (\textit{dispersed}), atau acak (\textit{random}) di wilayah penelitian.

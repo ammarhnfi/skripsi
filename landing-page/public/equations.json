@@ -156,6 +156,12 @@
     "raw": "\\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T"
   },
   {
+    "section": "\\textitPrincipal Component Analysis",
+    "latex": "\\[ \\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right) \\]",
+    "type": "equation",
+    "raw": "\\label{eq:scaling_biplot}\n      \\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right)"
+  },
+  {
     "section": "Tahap 1: Intra-struktur",
     "latex": "\\[ \\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T \\]",
     "type": "equation",
@@ -204,34 +210,64 @@
     "raw": "\\label{eq:decomp_W}\n    \\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T"
   },
   {
-    "section": "Tahap 3: Analisis Kompromi",
-    "latex": "\\[ \\mathbf{F}_c = \\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}^{1/2} \\]",
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2} \\]",
     "type": "equation",
-    "raw": "\\label{eq:fc}\n    \\mathbf{F}_c = \\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}^{1/2}"
+    "raw": "\\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2}"
   },
   {
-    "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{Z}_k \\]",
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{S}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{Z}_k"
+    "raw": "\\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2}"
   },
   {
-    "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{S}_k \\]",
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\label{eq:sc}\n        \\mathbf{S}_c = \\sum_{k=1}^{K} \\alpha_k \\mathbf{S}_k"
+    "raw": "\\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2}"
   },
   {
-    "section": "Tahap 4: Analisis Variabel (Loadings)",
-    "latex": "\\[ \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s \\mathbf{V}_c^T \\]",
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k \\]",
     "type": "equation",
-    "raw": "\\label{eq:vc}\n        \\mathbf{S}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s \\mathbf{V}_c^T"
+    "raw": "\\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k"
   },
   {
-    "section": "Tahap 4: Analisis Variabel (Loadings)",
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2} \\]",
     "type": "equation",
-    "raw": "\\label{eq:gc}\n        \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
+    "raw": "\\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
+  },
+  {
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2} \\]",
+    "type": "equation",
+    "raw": "\\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2}"
+  },
+  {
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2} \\]",
+    "type": "equation",
+    "raw": "\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2}"
+  },
+  {
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k \\]",
+    "type": "equation",
+    "raw": "\\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k"
+  },
+  {
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{X}_{vis} = \\mathbf{X}_{svd} \\times \\text{sign}(\\rho(PC1, \\text{Indikator\\_Utama})) \\]",
+    "type": "equation",
+    "raw": "\\mathbf{X}_{vis} = \\mathbf{X}_{svd} \\times \\text{sign}(\\rho(PC1, \\text{Indikator\\_Utama}))"
+  },
+  {
+    "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+    "latex": "\\[ \\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right) \\]",
+    "type": "equation",
+    "raw": "\\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right)"
   },
   {
     "section": "Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)",

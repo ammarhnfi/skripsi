@@ -18,6 +18,6 @@
     "mirror_years": [],
     "scale_load": true,
     "norm_score": false,
-    "highlight_objects": ["KOTA BEKASI", "KAB. BOGOR", "KOTA BANDUNG"],
-    "highlight_vars": ["TPT", "PPM"]
+    "highlight_objects": ["Kota Jakarta Pusat"],
+    "highlight_vars": ["PPM"]
 }

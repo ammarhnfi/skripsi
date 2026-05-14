@@ -113,6 +113,7 @@ function App() {
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
   const [iframeLoading, setIframeLoading] = useState(true);
+  const [previousDocsModal, setPreviousDocsModal] = useState('docs-real');
 
   // PDF Reader State
   const [numPages, setNumPages] = useState(null);
@@ -123,15 +124,35 @@ function App() {
   const [allResultsSample, setAllResultsSample] = useState([]);
   const [equations, setEquations] = useState([]);
   const [currentTime, setCurrentTime] = useState("");
-  const [selectedGroup, setSelectedGroup] = useState('Hasil Utama STATIS');
+  const [selectedGroup, setSelectedGroup] = useState('Shared');
+  const [selectedScenario, setSelectedScenario] = useState('Shared');
   const [texContent, setTexContent] = useState(null);
   const [lightboxImage, setLightboxImage] = useState(null);
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(-1);
 
-  // Helper: Get filtered documentation list based on active group
+  const getCurrentResults = () => {
+    const src = activeModal === 'tex-preview' ? previousDocsModal : activeModal;
+    return src === 'docs-sample' ? allResultsSample : allResultsReal;
+  };
+
+  // Helper: filter by scenario only (untuk group selector)
+  const getScenarioFiltered = (results) => (results || []).filter(item => {
+    if (!item) return false;
+    if (selectedScenario === 'All') return true;
+    return item.scenario === selectedScenario || item.scenario === 'Shared';
+  });
+
+  // Helper: filter by both group AND scenario (untuk gallery)
   const getFilteredDocs = () => {
-    const currentResults = activeModal === 'docs-real' ? allResultsReal : allResultsSample;
-    return (currentResults || []).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup);
+    return getScenarioFiltered(getCurrentResults()).filter(item =>
+      String(item.group || 'Lain-lain') === selectedGroup
+    );
+  };
+
+  // Groups yang tersedia sesuai scenario yang dipilih
+  const getAvailableGroups = () => {
+    const filtered = getScenarioFiltered(getCurrentResults());
+    return [...new Set(filtered.map(r => String(r.group || 'Lain-lain')))].sort();
   };
 
   useEffect(() => {
@@ -212,6 +233,7 @@ function App() {
 
   const openTexPreview = async (src, index = -1) => {
     try {
+      setPreviousDocsModal(activeModal); // ricorda quale modal era aperta
       const response = await fetch(src);
       const text = await response.text();
       setTexContent(text);
@@ -540,68 +562,110 @@ function App() {
           <h2>Dokumentasi & Hasil Analisis {activeModal === 'docs-sample' ? '(Sample N=4)' : '(Real N=41)'}</h2>
           <div className="modal-body">
             <p>
-              Hasil pengolahan data STATIS, K-Means Clustering, dan Uji Spasial
-              Moran's I yang dihasilkan secara otomatis oleh sistem.
+              Hasil pengolahan data STATIS, K-Means Clustering, dan Analisis Vektor Struktur yang dihasilkan secara otomatis oleh sistem.
             </p>
 
+            {/* Scenario Filter */}
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
+              {[
+                { key: 'Shared',     label: '🔗 Shared (Root)', desc: 'Berlaku di kedua skenario' },
+                { key: 'Scenario 1', label: '1️⃣ Skenario 1 (ACT)', desc: 'Host = Wilayah' },
+                { key: 'Scenario 2', label: '2️⃣ Skenario 2 (Dual)', desc: 'Host = Indikator' },
+                { key: 'All',        label: '📂 Semua', desc: 'Tanpa duplikat' },
+              ].map(({ key, label, desc }) => (
+                <button
+                  key={key}
+                  onClick={() => {
+                    const allRes = getCurrentResults() || [];
+                    const newFiltered = allRes.filter(i => !i ? false : key === 'All' ? true : i.scenario === key || i.scenario === 'Shared');
+                    const uniq = [...new Set(newFiltered.map(r => String(r.group || 'Lain-lain')))].sort();
+                    setSelectedScenario(key);
+                    if (uniq.length > 0 && !uniq.includes(selectedGroup)) setSelectedGroup(uniq[0]);
+                  }}
+                  title={desc}
+                  style={{
+                    padding: '7px 14px', borderRadius: '20px', cursor: 'pointer',
+                    border: selectedScenario === key ? '2px solid #60a5fa' : '1px solid rgba(255,255,255,0.2)',
+                    background: selectedScenario === key ? 'rgba(59,130,246,0.3)' : 'rgba(255,255,255,0.05)',
+                    color: selectedScenario === key ? '#60a5fa' : '#94a3b8',
+                    fontWeight: selectedScenario === key ? '700' : '400',
+                    fontSize: '0.85rem', transition: 'all 0.2s'
+                  }}
+                >{label}</button>
+              ))}
+            </div>
+
             {/* Group Selector Tags */}
-            <div className="group-selector" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '20px', padding: '10px 0' }}>
-              {[...new Set((activeModal === 'docs-sample' ? allResultsSample : allResultsReal).map(r => String(r.group || 'Lain-lain')))].sort().map(group => (
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '14px' }}>
+              {getAvailableGroups().map(group => (
                 <button
                   key={group}
                   onClick={() => setSelectedGroup(group)}
                   style={{
-                    padding: '6px 14px',
-                    borderRadius: '20px',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    background: selectedGroup === group ? 'rgba(59, 130, 246, 0.6)' : 'rgba(255,255,255,0.05)',
-                    color: 'white',
-                    cursor: 'pointer',
-                    fontSize: '0.85rem',
-                    transition: 'all 0.2s'
+                    padding: '5px 12px', borderRadius: '16px', cursor: 'pointer',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    background: selectedGroup === group ? 'rgba(99,102,241,0.5)' : 'rgba(255,255,255,0.04)',
+                    color: selectedGroup === group ? '#c7d2fe' : '#94a3b8',
+                    fontWeight: selectedGroup === group ? '700' : '400',
+                    fontSize: '0.78rem', transition: 'all 0.2s'
                   }}
-                >
-                  {group}
-                </button>
+                >{group}</button>
               ))}
+            </div>
+
+            {/* Item count */}
+            <div style={{ fontSize: '0.78rem', color: '#64748b', marginBottom: '10px' }}>
+              Menampilkan <b style={{color:'#94a3b8'}}>{getFilteredDocs().length}</b> item
+              {selectedScenario !== 'All' && <span> · <span style={{color:'#60a5fa'}}>{selectedScenario}</span></span>}
+              {selectedGroup && <span> · <span style={{color:'#a5b4fc'}}>{selectedGroup}</span></span>}
             </div>
 
             <div className="photo-grid" style={{ 
               display: 'grid', 
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', 
-              gap: '20px',
-              maxHeight: '60vh',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(185px, 1fr))', 
+              gap: '16px',
+              maxHeight: '58vh',
               overflowY: 'auto',
-              paddingRight: '10px'
+              paddingRight: '8px'
             }}>
-              {(activeModal === 'docs-sample' ? allResultsSample : allResultsReal).filter(item => item && String(item.group || 'Lain-lain') === selectedGroup).map((item, index) => (
+              {getFilteredDocs().map((item, index) => (
                 <div
                   key={index}
                   className="thumbnail-container"
                   onClick={() => item && item.type === 'image' ? (setLightboxImage(item), setCurrentGalleryIndex(index)) : openTexPreview(item.src, index)}
-                  style={{ transition: 'transform 0.2s', cursor: 'pointer' }}
+                  style={{ transition: 'transform 0.2s', cursor: 'pointer', position: 'relative' }}
                 >
-                  {item && item.type === 'image' ? (
-                    <img src={item.src} alt={String(item.caption || '')} className="thumbnail-img" style={{ width: '100%', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)' }} />
-                  ) : (
-                    <div style={{ 
-                      width: '100%', 
-                      aspectRatio: '3/2', 
-                      background: 'rgba(0,0,0,0.3)', 
-                      display: 'flex', 
-                      flexDirection: 'column',
-                      alignItems: 'center', 
-                      justifyContent: 'center', 
-                      borderRadius: '8px',
-                      border: '1px solid rgba(255,255,255,0.2)',
-                      padding: '10px',
-                      textAlign: 'center'
+                  {/* Scenario badge */}
+                  {selectedScenario === 'All' && item.scenario && (
+                    <div style={{
+                      position: 'absolute', top: '6px', left: '6px', zIndex: 2,
+                      fontSize: '0.6rem', fontWeight: '700', padding: '2px 6px',
+                      borderRadius: '8px', backdropFilter: 'blur(4px)',
+                      background: item.scenario === 'Shared' ? 'rgba(16,185,129,0.7)'
+                                : item.scenario === 'Scenario 1' ? 'rgba(59,130,246,0.7)'
+                                : 'rgba(168,85,247,0.7)',
+                      color: 'white'
                     }}>
-                      <div style={{ fontSize: '2rem', marginBottom: '5px' }}>📄</div>
-                      <div style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>{String(item ? (item.name || item.caption) : '')}</div>
+                      {item.scenario === 'Shared' ? 'Shared' : item.scenario === 'Scenario 1' ? 'S1' : 'S2'}
                     </div>
                   )}
-                  <div className="thumbnail-caption" style={{ marginTop: '8px', fontSize: '0.8rem', textAlign: 'center', color: '#cbd5e1' }}>
+                  {item && item.type === 'image' ? (
+                    <img src={item.src} alt={String(item.caption || '')} className="thumbnail-img"
+                      style={{ width: '100%', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.1)', display: 'block' }} />
+                  ) : (
+                    <div style={{ 
+                      width: '100%', aspectRatio: '3/2', background: 'rgba(15,23,42,0.6)',
+                      display: 'flex', flexDirection: 'column', alignItems: 'center',
+                      justifyContent: 'center', borderRadius: '8px',
+                      border: '1px solid rgba(255,255,255,0.15)', padding: '10px', textAlign: 'center'
+                    }}>
+                      <div style={{ fontSize: '1.8rem', marginBottom: '6px' }}>📄</div>
+                      <div style={{ fontSize: '0.68rem', fontWeight: '700', color: '#60a5fa', lineHeight: 1.3 }}>
+                        {String(item ? (item.name || item.caption) : '')}
+                      </div>
+                    </div>
+                  )}
+                  <div style={{ marginTop: '6px', fontSize: '0.72rem', textAlign: 'center', color: '#94a3b8', lineHeight: 1.3 }}>
                     {String((item ? item.caption : '') || '')}
                   </div>
                 </div>
