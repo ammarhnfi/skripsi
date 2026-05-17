@@ -317,27 +317,21 @@ function App() {
             </p>
           </div>
 
-          {/* Documentation Real Card */}
+          {/* Documentation Card (Unified & Hybrid) */}
           <div
-            className="card glass-effect"
-            onClick={() => openModal('docs-real')}
+            className="card glass-effect highlight"
+            onClick={() => {
+              if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                window.open('http://localhost:8060', '_blank');
+              } else {
+                openModal('docs-real');
+              }
+            }}
           >
-            <div className="card-icon">📊</div>
-            <h2>Dokumentasi & Hasil (Real, N=41)</h2>
+            <div className="card-icon">⚔️</div>
+            <h2>Dokumentasi & Perbandingan</h2>
             <p>
-              Kumpulan lengkap hasil perhitungan STATIS, matriks kompromi, animasi GIF, dan peta spasio-temporal untuk seluruh populasi.
-            </p>
-          </div>
-
-          {/* Documentation Sample Card */}
-          <div
-            className="card glass-effect"
-            onClick={() => openModal('docs-sample')}
-          >
-            <div className="card-icon">📈</div>
-            <h2>Dokumentasi & Hasil (Sample, N=4)</h2>
-            <p>
-              Data uji coba (sample 4 wilayah) untuk validasi penurunan rumus matriks secara matematis yang dilampirkan pada Bab 3.
+              Bandingkan hasil Skenario 1 (Kiri) vs Skenario 2 (Kanan) secara interaktif, data deskriptif, dan trajektori.
             </p>
           </div>
 
@@ -561,9 +555,43 @@ function App() {
           </button>
           <h2>Dokumentasi & Hasil Analisis {activeModal === 'docs-sample' ? '(Sample N=4)' : '(Real N=41)'}</h2>
           <div className="modal-body">
-            <p>
+            <p style={{ marginBottom: '1.2rem' }}>
               Hasil pengolahan data STATIS, K-Means Clustering, dan Analisis Vektor Struktur yang dihasilkan secara otomatis oleh sistem.
             </p>
+
+            {/* Real vs Sample Dataset Segment Selector Toggle */}
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '1.5rem', background: 'rgba(0,0,0,0.3)', padding: '5px', borderRadius: '30px', width: 'fit-content', border: '1px solid rgba(255,255,255,0.05)' }}>
+              <button
+                onClick={() => {
+                  setActiveModal('docs-real');
+                  setSelectedScenario('Shared');
+                  setSelectedGroup('Highlights');
+                }}
+                style={{
+                  padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', border: 'none',
+                  background: activeModal === 'docs-real' ? 'linear-gradient(to right, #3b82f6, #8b5cf6)' : 'transparent',
+                  color: activeModal === 'docs-real' ? '#fff' : '#94a3b8',
+                  fontWeight: '600', fontSize: '0.8rem', transition: 'all 0.3s'
+                }}
+              >
+                📊 Data Riil (N=41)
+              </button>
+              <button
+                onClick={() => {
+                  setActiveModal('docs-sample');
+                  setSelectedScenario('Shared');
+                  setSelectedGroup('Shared');
+                }}
+                style={{
+                  padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', border: 'none',
+                  background: activeModal === 'docs-sample' ? 'linear-gradient(to right, #3b82f6, #8b5cf6)' : 'transparent',
+                  color: activeModal === 'docs-sample' ? '#fff' : '#94a3b8',
+                  fontWeight: '600', fontSize: '0.8rem', transition: 'all 0.3s'
+                }}
+              >
+                📈 Data Contoh (N=4)
+              </button>
+            </div>
 
             {/* Scenario Filter */}
             <div style={{ display: 'flex', gap: '8px', marginBottom: '14px', flexWrap: 'wrap' }}>
