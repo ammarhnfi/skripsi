@@ -201,7 +201,7 @@ def save_tex_table(df, filename, out_dir, caption, label, longtable=False, float
     lines = []
     if longtable:
         lines.append(r"\begin{longtable}{|" + col_str + "}")
-        lines.append(r"\caption{" + caption + r"} \label{tab:" + full_label + r"} \\")
+        lines.append(r"\caption{" + escape_tex(caption) + r"} \label{tab:" + full_label + r"} \\")
         lines.append(r"\hline")
         header = " & ".join([f"\\textbf{{{escape_tex(c)}}}" for c in cols]) + r" \\"
         lines += [header, r"\hline", r"\endfirsthead", r"\hline", header, r"\hline", r"\endhead", r"\hline", r"\endfoot"]
@@ -212,7 +212,8 @@ def save_tex_table(df, filename, out_dir, caption, label, longtable=False, float
     else:
         lines.append(r"\begin{table}[H]")
         lines.append(r"\centering")
-        lines.append(r"\caption{" + caption + r"} \label{tab:" + full_label + "}")
+        # Use a guarded label to allow multiple inclusions of the same file
+        lines.append(r"\caption{" + escape_tex(caption) + r"} \makeatletter\@ifundefined{r@tab:" + full_label + r"}{\label{tab:" + full_label + r"}}{}\makeatother")
         # Use adjustbox to fit large tables like the 41-row scores table
         lines.append(r"\begin{adjustbox}{max width=\textwidth, max height=0.85\textheight}")
         lines.append(r"\begin{tabular}{|" + col_str + "}")
@@ -253,7 +254,7 @@ def save_tex_name_table(mapping, filename, out_dir, caption, label, label_prefix
     lines = [
         r"\begin{table}[H]",
         r"\centering",
-        r"\caption{" + caption + r"} \label{tab:" + full_label + "}",
+        r"\caption{" + escape_tex(caption) + r"} \makeatletter\@ifundefined{r@tab:" + full_label + r"}{\label{tab:" + full_label + r"}}{}\makeatother",
         r"\begin{adjustbox}{max width=\textwidth}",
         r"\begin{tabular}{|p{4cm}|p{10cm}|}",
         r"\hline",
@@ -1410,7 +1411,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             sn = sv_res['sheet_names']; bt = sv_res['beta_tilde']
             def _w(rows, cols, caption, label, fname):
                 lines = [r"\begin{table}[H]", r"\centering", r"\small",
-                         fr"\caption{{{caption}}} \label{{tab:{label_prefix}{label}}}",
+                         fr"\caption{{{escape_tex(caption)}}} \label{{tab:{label_prefix}{label}}}",
                          r"\begin{tabular}{|" + "c|"*len(cols) + "}",
                          r"\hline",
                          " & ".join([fr"\textbf{{{c}}}" for c in cols]) + r" \\",

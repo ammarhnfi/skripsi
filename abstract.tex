@@ -1,34 +1,82 @@
 %
-% Halaman Abstract
+% Halaman Extended Abstract (Bahasa Inggris)
+% Upgrade sesuai Format FMIPA UI 2025/2026
 %
-% @author  Andreas Febrian
-% @version 1.00
-%
-
-\chapter*{\normalsize ABSTRACT}
+% !TeX root = induk.tex
+\chapter*{\normalsize EXTENDED ABSTRACT}
+\addcontentsline{toc}{chapter}{EXTENDED ABSTRACT}
 \begin{singlespace}
 \vspace*{0.2cm}
 
-\noindent \begin{tabular}{l l >{\raggedright\arraybackslash}p{11.0cm}}
-	Name&: & \penulis \\ % ------------ Jangan diedit
-	Program&: & \jenjanginggris~Study Program of~\bidanginggris \\ % ------------ Jangan diedit
-	Title&: & \judulInggris \\ % ------------ Jangan diedit
-\end{tabular}
+\begin{center}
+    \textbf{Undergraduate Thesis}
+    
+    \vspace*{0.4cm}
+    
+    \textbf{\large \judulInggris}
+    
+    \vspace*{0.4cm}
+    
+    \begin{tabular}{l l}
+        \textbf{Student Name}: & \penulis \\ 
+        \textbf{Student ID Number (NPM)}: & 2206051582 \\ 
+        \textbf{Study Program}: & \jenjanginggris~Study Program of~\bidanginggris \\ 
+    \end{tabular}
+\end{center}
 
-\vspace*{0.5cm}
+\vspace*{0.6cm}
 
-\noindent
+The strategic regions of Banten, DKI Jakarta, and West Java constitute the core national economic agglomeration in Indonesia, which underwent significant structural variations during the 2020--2024 period as a consequence of the global pandemic and the subsequent recovery phase. Traditional multivariate approaches often encounter limitations in capturing the simultaneous interactions between spatial units, social indicators, and temporal shifts within a unified framework. This research addresses this gap by applying the \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}) method, a robust three-way data analysis framework, to synthesize a stable compromise structure that represents the common development patterns across 41 regencies and cities. The objective is to evaluate the longitudinal stability of 11 strategic development indicators and map the spatio-temporal trajectories to differentiate regional resilience. The methodology involves weighted $Z$-score standardization using demographic weights, inter-structure evaluation through $RV$ coefficients, and the construction of a compromise representation ($\mathbf{W}_c$) via optimal spectral weighting. A Monte Carlo permutation test ($B=1000$) is employed to validate the significance of the discovered structure, as illustrated in the schematic framework in Chapter 3.
 
-The development dynamics in the strategic regions of Banten, DKI Jakarta, and West Java exhibited high complexity during the 2020--2024 period. As the center of national economic agglomeration, these three provinces experienced simultaneous changes due to the COVID-19 pandemic, followed by an uneven recovery phase across regencies/cities. These changes occurred not only in macroeconomic indicators but also propagated to dimensions of social welfare and human capital quality. To thoroughly understand the evolution of the structural relationships among these indicators, a three-way data analysis approach capable of capturing spatio-temporal interaction patterns is required.
+Analysis of the inter-structure reveals an exceptionally high degree of consistency in the spatial configurations across the five-year period, with all $RV$ coefficients exceeding $0.90$ ($p < 0.001$). This suggests that while absolute economic levels experienced fluctuations, the underlying relative hierarchy and structural relationships between regencies remained remarkably persistent, as summarized in Table \ref{tab:rv_summary_ext}. The resulting compromise structure accounts for over $85\%$ of the total variance through two principal dimensions (Figure \ref{fig:biplot_ext}). Dimension 1 represents the primary axis of "Socio-Economic Capacity," showing strong positive correlations with GRDP, HDI, and Mean Years of Schooling. Conversely, Dimension 2 captures "Social and Health Resilience," primarily driven by variations in Life Expectancy and food security indicators.
 
-This research applies the STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) method to analyze the dynamics of 12 strategic development indicators---covering economic aspects (GRDP), welfare (Poverty, Poverty Line, Food), human development (HDI, Education, Health), labor, and equality (Gender, Gini Ratio)---across all regencies/cities in the three provinces. The analysis centers on the formation of a compromise structure. Referring to the definition by \citet{lavit94}, the compromise structure ($\mathbf{W}_c$) is constructed as a weighted sum of annual intra-structure matrices, where the weights ($\alpha_k$) are determined based on spectral decomposition to maximize inter-year similarity. This structure represents the most dominant and stable inter-regional relationship patterns during the observation period. Furthermore, this study tests the significance of the structure's stability using permutation tests and integrates the Dynamic Biplot concept to visualize the movement trajectories of regencies/cities from the crisis to the recovery period in a low-dimensional space.
+\begin{table}[H]
+    \centering
+    \captionsetup{hypcap=false}
+    \caption{Inter-structure Stability (RV Coefficients) 2020--2024}
+    \label{tab:rv_summary_ext}
+    \begin{adjustbox}{max width=0.85\textwidth}
+    \begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \textbf{index} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
+    \hline
+    2020 & 1.0000 & 0.9555 & 0.9429 & 0.9533 & 0.9545 \\
+    2021 & 0.9555 & 1.0000 & 0.9534 & 0.9487 & 0.9396 \\
+    2022 & 0.9429 & 0.9534 & 1.0000 & 0.9608 & 0.9497 \\
+    2023 & 0.9533 & 0.9487 & 0.9608 & 1.0000 & 0.9827 \\
+    2024 & 0.9545 & 0.9396 & 0.9497 & 0.9827 & 1.0000 \\
+    \hline
+    \end{tabular}
+    \end{adjustbox}
+\end{table}
 
-The entire analysis procedure, from data pre-processing to visualization, is implemented using the Python programming language within an interactive web dashboard. This system provides a comprehensive suite of analysis features, ranging from diagnostic tests (KMO, Bartlett) and STATIS analysis to spatio-temporal cluster evaluation (Elbow Method, Dendrograms, Transition Matrices). Through interactive features such as baseline rotation, regional trajectory filtering, and automatic integration of results into LaTeX. This application serves as a sophisticated analytical and visual tool for researchers and policymakers to monitor resilience and accelerate regional development equity in the post-pandemic era.
+The projection of yearly data into the compromise space through a \f{Dynamic Biplot} reveals three distinct regional trajectories (Figure \ref{fig:traj_ext}). Metropolitan centers, such as Jakarta Pusat and Bandung, exhibited a characteristic V-shape recovery pattern, where an initial contraction in 2020--2021 was followed by a robust structural rebound by 2024. In contrast, regencies in the southern parts of Banten and West Java, including Lebak and Garut, showed stagnant trajectories, indicating limited structural response to recovery stimuli. Furthermore, several buffer zones demonstrated progressive growth patterns, reflecting a steady enhancement of their socio-economic profiles.
 
-\vspace*{0.2cm}
+\begin{figure}[H]
+    \centering
+    \captionsetup{hypcap=false}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot_matplotlib.png}
+    \caption{Compromise Biplot: Structural Relationship between Regions and Indicators}
+    \label{fig:biplot_ext}
+\end{figure}
 
-\noindent \bo{Keywords}:
-	Interactive Visualization, K-Means Clustering, Panel Data, Regional Development, Spatial Autocorrelation, Three-way Analysis. % ------------ Jangan lupa diedit
+Advanced clustering using the K-Means algorithm ($k=3$) on the compromise coordinates successfully partitioned the regions into "Advanced," "Developing," and "Underdeveloped" clusters. External validation against normative UNDP HDI categories confirmed a high degree of structural alignment, particularly for the Advanced cluster which consistently comprised regions with "Very High" human development. These findings imply that regional disparities in Western Java are driven by deep-seated structural factors that are relatively invariant to short-term shocks, necessitating targeted policy interventions rather than uniform regional strategies.
+
+\begin{figure}[H]
+    \centering
+    \captionsetup{hypcap=false}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/statis_trajectories.png}
+    \caption{Spatio-temporal Trajectories of 41 Regencies/Cities (2020--2024)}
+    \label{fig:traj_ext}
+\end{figure}
+
+In conclusion, the STATIS method provides a comprehensive longitudinal perspective that outperforms traditional static approaches in monitoring regional dynamics. The structural stability of the compromise representation demonstrates that the core drivers of regional inequality remained persistent despite the global pandemic. The developed interactive system serves as a sophisticated analytical tool for policymakers to monitor resilience and design data-driven strategies for regional development equity.
+
+\vspace*{0.4cm}
+
+\noindent \bo{Keywords}: 
+    Interactive Visualization, K-Means Clustering, Panel Data Analysis, Regional Development, Spatial Autocorrelation, Three-way Data Data Analysis.
+\vfill
 \end{singlespace}
 
 \newpage 

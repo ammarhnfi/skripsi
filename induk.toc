@@ -5,11 +5,14 @@
 \contentsline {chapter}{KATA PENGANTAR}{ix}{section*.11}%
 \contentsline {chapter}{HALAMAN PERNYATAAN PERSETUJUAN PUBLIKASI}{xi}{section*.13}%
 \contentsline {chapter}{ABSTRAK}{xiii}{section*.15}%
-\contentsline {chapter}{ABSTRACT}{xv}{section*.17}%
-\contentsline {chapter}{\normalsize DAFTAR ISI}{xvii}{section*.19}%
-\contentsline {chapter}{\normalsize DAFTAR TABEL}{xxiii}{section*.20}%
-\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xxvii}{section*.21}%
-\contentsline {chapter}{DAFTAR LAMPIRAN}{xxxi}{section*.21}%
+\contentsline {chapter}{EXTENDED ABSTRACT (BAHASA INDONESIA)}{xv}{section*.17}%
+\contentsline {chapter}{EXTENDED ABSTRACT (INDONESIA)}{xv}{chapter*.18}%
+\contentsline {chapter}{EXTENDED ABSTRACT}{xix}{section*.22}%
+\contentsline {chapter}{EXTENDED ABSTRACT}{xix}{chapter*.23}%
+\contentsline {chapter}{\normalsize DAFTAR ISI}{xxiii}{section*.27}%
+\contentsline {chapter}{\normalsize DAFTAR TABEL}{xxix}{section*.28}%
+\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xxxiii}{section*.29}%
+\contentsline {chapter}{DAFTAR LAMPIRAN}{xxxvii}{section*.29}%
 \contentsline {chapter}{\numberline {1}\normalsize PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}\normalsize Latar Belakang}{1}{section.1.1}%
 \contentsline {section}{\numberline {1.2}\normalsize Rumusan Masalah}{4}{section.1.2}%
@@ -88,11 +91,11 @@
 \contentsline {paragraph}{Skenario 2 (Dual STATIS -- Host = Indikator):}{58}{equation.3.1}%
 \contentsline {subsubsection}{\numberline {3.7.1.7}Tahap 6: Proyeksi Kompromi -- Perbandingan Skenario 1 dan Skenario 2}{59}{subsubsection.3.7.1.7}%
 \contentsline {paragraph}{Skenario 1 -- Skor Wilayah ($\mathbf {F}_c^{(1)}$) dan Loading Indikator ($\mathbf {G}_c^{(1)}$):}{59}{subsubsection.3.7.1.7}%
-\contentsline {paragraph}{Skenario 2 -- Skor Wilayah ($\mathbf {F}_c^{(2)}$) dan Loading Indikator ($\mathbf {G}_c^{(2)}$):}{60}{figure.caption.47}%
+\contentsline {paragraph}{Skenario 2 -- Skor Wilayah ($\mathbf {F}_c^{(2)}$) dan Loading Indikator ($\mathbf {G}_c^{(2)}$):}{60}{figure.caption.55}%
 \contentsline {subsubsection}{\numberline {3.7.1.8}Tahap 7: Uji Signifikansi dan Clustering}{62}{subsubsection.3.7.1.8}%
 \contentsline {subsubsection}{\numberline {3.7.1.9}Tahap 8: Perbandingan Cluster Biplot vs STATIS}{63}{subsubsection.3.7.1.9}%
 \contentsline {paragraph}{Skenario 1 (ACT Klasik -- Host = Wilayah):}{63}{equation.3.4}%
-\contentsline {paragraph}{Skenario 2 (Dual STATIS -- Host = Indikator):}{64}{table.caption.56}%
+\contentsline {paragraph}{Skenario 2 (Dual STATIS -- Host = Indikator):}{64}{table.caption.64}%
 \contentsline {subsubsection}{\numberline {3.7.1.10}Tahap 9: Validasi Eksternal (Cross-tab vs Kategori IPM UNDP)}{65}{subsubsection.3.7.1.10}%
 \contentsline {subsection}{\numberline {3.7.2}\normalsize Konsolidasi Hasil Komputasi Interstruktur dan Intra-Situasi}{66}{subsection.3.7.2}%
 \contentsline {subsubsection}{\numberline {3.7.2.1}Matriks Interstruktur dan Koefisien Kemiripan}{66}{subsubsection.3.7.2.1}%
@@ -130,15 +133,15 @@
 \contentsline {subsection}{\numberline {4.7.4}\normalsize Klaster Trajektori Keseluruhan}{106}{subsection.4.7.4}%
 \contentsline {subsection}{\numberline {4.7.5}\normalsize Perbandingan Cluster Biplot (Unweighted) vs STATIS (Weighted) Tahunan}{109}{subsection.4.7.5}%
 \contentsline {paragraph}{Tahun 2020}{109}{subsection.4.7.5}%
-\contentsline {paragraph}{Tahun 2021}{110}{table.caption.136}%
-\contentsline {paragraph}{Tahun 2022}{110}{table.caption.138}%
-\contentsline {paragraph}{Tahun 2023}{111}{table.caption.140}%
-\contentsline {paragraph}{Tahun 2024}{112}{table.caption.142}%
-\contentsline {paragraph}{Tahun 2020}{113}{table.caption.144}%
-\contentsline {paragraph}{Tahun 2021}{114}{table.caption.146}%
-\contentsline {paragraph}{Tahun 2022}{115}{table.caption.148}%
-\contentsline {paragraph}{Tahun 2023}{116}{table.caption.150}%
-\contentsline {paragraph}{Tahun 2024}{117}{table.caption.152}%
+\contentsline {paragraph}{Tahun 2021}{110}{table.caption.144}%
+\contentsline {paragraph}{Tahun 2022}{110}{table.caption.146}%
+\contentsline {paragraph}{Tahun 2023}{111}{table.caption.148}%
+\contentsline {paragraph}{Tahun 2024}{112}{table.caption.150}%
+\contentsline {paragraph}{Tahun 2020}{113}{table.caption.152}%
+\contentsline {paragraph}{Tahun 2021}{114}{table.caption.154}%
+\contentsline {paragraph}{Tahun 2022}{115}{table.caption.156}%
+\contentsline {paragraph}{Tahun 2023}{116}{table.caption.158}%
+\contentsline {paragraph}{Tahun 2024}{117}{table.caption.160}%
 \contentsline {section}{\numberline {4.8}\normalsize Evaluasi Klaster terhadap Kategori IPM UNDP}{119}{section.4.8}%
 \contentsline {subsection}{\numberline {4.8.1}\normalsize Matriks Transisi Kategori IPM}{119}{subsection.4.8.1}%
 \contentsline {subsection}{\numberline {4.8.2}\normalsize Tabulasi Silang K-Means vs.\ Kategori IPM}{127}{subsection.4.8.2}%
@@ -151,4 +154,4 @@
 \contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{135}{chapter.5}%
 \contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{135}{section.5.1}%
 \contentsline {section}{\numberline {5.2}\normalsize Saran}{136}{section.5.2}%
-\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{139}{chapter*.174}%
+\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{139}{chapter*.182}%

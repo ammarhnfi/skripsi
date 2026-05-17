@@ -1,10 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  14 MAY 2026 18:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  17 MAY 2026 09:08
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**d:/Skripsi/my/induk.tex
-(d:/Skripsi/my/induk.tex
+**./induk.tex
+(induk.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
@@ -24,14 +23,18 @@ File: size12.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip49
 \belowcaptionskip=\skip50
 \bibindent=\dimen148
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ))
 \Gm@cnth=\count284
@@ -46,17 +49,24 @@ Package: iftex 2024/12/12 v1.0g TeX engine tests
 \Gm@layouthoffset=\dimen155
 \Gm@layoutvoffset=\dimen156
 \Gm@dimlist=\toks18
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
 Package: graphicx 2024/12/31 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
 Package: graphics 2024/08/06 v1.4g Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
 Package: trig 2023/12/02 v1.11 sin cos tan (DPC)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 106.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
 File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen157
@@ -71,14 +81,17 @@ Package: amsmath 2025/07/09 v2.17z AMS math features
 For additional information on amsmath, use the `?' option.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
 Package: amstext 2024/11/17 v2.01 AMS text
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
 \ex@=\dimen159
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen160
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
 \inf@bad=\count287
@@ -128,9 +141,11 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -148,21 +163,24 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@postskip=\skip55
 \thm@headsep=\skip56
 \dth@everypar=\toks30
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
 Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
 \symrsfs=\mathgroup6
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip57
 \bibsep=\skip58
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count299
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
-
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
@@ -205,9 +223,11 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforetabskip=\skip90
 \cfttabindent=\skip91
 \cfttabnumwidth=\skip92
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
 \caption@tempdima=\dimen168
 \captionmargin=\dimen169
@@ -221,16 +241,20 @@ Package caption Info: Standard document class detected.
 )
 \c@caption@flags=\count302
 \c@continuedfloat=\count303
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
 Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.sty
 Package: pict2e 2020/09/30 v0.4b Improved picture commands (HjG,RN,JT)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.cfg
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\pict2e.cfg
 File: pict2e.cfg 2016/02/05 v0.1u pict2e configuration for teTeX/TeXLive
 )
 Package pict2e Info: Driver file: pdftex.def on input line 112.
 Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\p2e-pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pict2e\p2e-pdftex.def
 File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 )
 \pIIe@GRAPH=\toks31
@@ -254,7 +278,8 @@ LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
 \calc@Ccount=\count306
 \calc@Cskip=\skip95
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \col@sep=\dimen186
 \ar@mcellbox=\box55
@@ -273,15 +298,18 @@ Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
 \diagbox@insepr=\dimen191
 \diagbox@outsepl=\dimen192
 \diagbox@outsepr=\dimen193
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
 \multirow@colwidth=\skip98
 \multirow@cntb=\count307
 \multirow@dima=\skip99
 \bigstrutjot=\dimen194
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
 \c@KVtest=\count308
 \sf@farskip=\skip100
@@ -294,12 +322,14 @@ Package: subfig 2005/06/28 ver: 1.3 subfig package
 \c@subtable@save=\count312
 \sf@top=\skip103
 \sf@bottom=\skip104
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen196
 \c@nlinenum=\count313
 \TeXr@lab=\toks33
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \LTleft=\skip105
 \LTright=\skip106
@@ -317,8 +347,10 @@ Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
 \c@LT@tables=\count317
 \c@LT@chunks=\count318
 \LT@p@ftn=\toks34
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
+
 \f@nch@headwidth=\skip109
 \f@nch@offset@elh=\skip110
 \f@nch@offset@erh=\skip111
@@ -334,28 +366,37 @@ Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 \f@nch@widthC=\skip121
 \f@nch@widthR=\skip122
 \@temptokenb=\toks35
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count319
 \float@exts=\toks36
 \float@box=\box65
 \@float@everytoks=\toks37
 \@floatcapt=\box66
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
 Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
 \XKV@toks=\toks38
 \XKV@tempa@toks=\toks39
 )
 \XKV@depth=\count320
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
-Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back
+-ends (calc, etex, pgfmath)
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\trimclip.sty
 Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.s
+ty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \collectedbox=\box67
 )
@@ -364,7 +405,8 @@ Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
 \tc@urx=\dimen256
 \tc@ury=\dimen257
 Package trimclip Info: Using driver 'tc-pdftex.def'.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
 File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 ))
 \adjbox@Width=\dimen258
@@ -375,7 +417,8 @@ File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 \adjbox@pheight=\dimen263
 \adjbox@pdepth=\dimen264
 \adjbox@ptotalheight=\dimen265
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
 \c@checkoddpage=\count321
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
@@ -395,22 +438,44 @@ Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
 \TX@delta=\dimen272
 \TX@cols=\count323
 \TX@ftn=\toks40
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex
 \pgfutil@everybye=\toks41
 \pgfutil@tempdima=\dimen273
 \pgfutil@tempdimb=\dimen274
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def
 \pgfutil@abb=\box69
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
 Package: pgfrcs 2025-08-29 v3.1.11a (3.1.11a)
 ))
 Package: pgf 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
 Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
 \pgfkeys@pathtoks=\toks42
 \pgfkeys@temptoks=\toks43
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks44
 ))
 \pgf@x=\dimen275
@@ -433,27 +498,39 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 \t@pgf@tokb=\toks46
 \t@pgf@tokc=\toks47
 \pgf@sys@id@count=\count328
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg
 File: pgf.cfg 2025-08-29 v3.1.11a (3.1.11a)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
 File: pgfsys-pdftex.def 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def
 File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
-))) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+)))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfsyssoftpath@smallbuffer@items=\count329
 \pgfsyssoftpath@bigbuffer@items=\count330
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex
 File: pgfsysprotocol.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
 Package: xcolor 2024/09/29 v3.02 LaTeX color extensions (UK)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 274.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1349.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1353.
 Package xcolor Info: Model `RGB' extended on input line 1365.
@@ -463,18 +540,52 @@ Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1370.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1371.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1372.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
 Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex
 \pgfmath@dimen=\dimen285
 \pgfmath@count=\count331
 \pgfmath@box=\box70
 \pgfmath@toks=\toks48
 \pgfmath@stack@operand=\toks49
 \pgfmath@stack@operation=\toks50
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex
 \c@pgfmathroundto@lastzeros=\count332
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@picminx=\dimen286
 \pgf@picmaxx=\dimen287
@@ -490,75 +601,130 @@ File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@yy=\dimen297
 \pgf@zx=\dimen298
 \pgf@zy=\dimen299
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@path@lastx=\dimen300
 \pgf@path@lasty=\dimen301
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex
 File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@shorten@end@additional=\dimen302
 \pgf@shorten@start@additional=\dimen303
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfpic=\box71
 \pgf@hbox=\box72
 \pgf@layerbox@main=\box73
 \pgf@picture@serial@count=\count333
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgflinewidth=\dimen304
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex
 File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@pt@x=\dimen305
 \pgf@pt@y=\dimen306
 \pgf@pt@temp=\dimen307
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex
 File: pgfcorequick.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex
 File: pgfcoreobjects.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex
 File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex
 File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowsep=\dimen308
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@max=\dimen309
 \pgf@sys@shading@range@num=\count334
 \pgf@shadingcount=\count335
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex
 File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfexternal@startupbox=\box74
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex
 File: pgfcorelayers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex
 File: pgfcoretransparency.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex
 File: pgfcorepatterns.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex
 File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-))) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+)))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfnodeparttextbox=\box75
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex
 File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@nodesepstart=\dimen310
 \pgf@nodesepend=\dimen311
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty
 Package: pgfcomp-version-1-18 2025-08-29 v3.1.11a (3.1.11a)
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
 \pgffor@iter=\dimen312
 \pgffor@skip=\dimen313
 \pgffor@stack=\toks51
 \pgffor@toks=\toks52
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
 Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgf@plot@mark@count=\count336
 \pgfplotmarksize=\dimen314
@@ -579,36 +745,55 @@ File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \tikznumberofchildren=\count338
 \tikznumberofcurrentchild=\count339
 \tikz@fig@count=\count340
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfmatrixcurrentrow=\count341
 \pgfmatrixcurrentcolumn=\count342
 \pgf@matrix@numberofcolumns=\count343
 )
 \tikz@expandcount=\count344
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-))) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
+)))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.geometric.code.tex
 File: tikzlibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.geometric.code.tex
 File: pgflibraryshapes.geometric.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.misc.code.tex
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibraryshapes.misc.code.tex
 File: tikzlibraryshapes.misc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.misc.code.tex
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\
+pgflibraryshapes.misc.code.tex
 File: pgflibraryshapes.misc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.meta.code.tex
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 \pgfarrowinset=\dimen323
 \pgfarrowlength=\dimen324
 \pgfarrowwidth=\dimen325
 \pgfarrowlinewidth=\dimen326
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarypositioning.code.tex
 File: tikzlibrarypositioning.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarycalc.code.tex
 File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
 \etb@tempcnta=\count345
 )
@@ -624,18 +809,23 @@ LaTeX Info: Redefining \textls on input line 1449.
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
 \MT@listname@count=\count347
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def
 File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
+
 LaTeX Info: Redefining \lsstyle on input line 944.
 LaTeX Info: Redefining \lslig on input line 944.
 \MT@outer@space=\skip123
 )
 Package microtype Info: Loading configuration file microtype.cfg.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
 File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 )
 LaTeX Info: Redefining \microtypesetup on input line 3065.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
 \lst@mode=\count348
 \lst@gtempboxa=\box81
 \lst@token=\toks55
@@ -648,18 +838,20 @@ LaTeX Info: Redefining \microtypesetup on input line 3065.
 \lst@newlines=\count352
 \lst@lineno=\count353
 \lst@maxwidth=\dimen331
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
 \c@lstnumber=\count354
 \lst@skipnumbers=\count355
 \lst@framebox=\box82
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
 ))
 Package: listings 2025/11/14 1.11b (Carsten Heinz)
-
 ==> First Aid for listings.sty no longer applied!
     Expected:
         2024/09/23 1.10c (Carsten Heinz)
@@ -668,10 +860,12 @@ Package: listings 2025/11/14 1.11b (Carsten Heinz)
     so I'm assuming it got fixed.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2025/11/14 1.11b listings language file
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-) (setspace.sty
+)
+(setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 ) (fncychap.sty
 Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
@@ -682,38 +876,59 @@ Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
 \py=\skip128
 \pyy=\skip129
 \pxx=\skip130
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+))
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
 Package: nameref 2025-06-21 v2.57 Cross-referencing by name of section
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
 \c@section@level=\count356
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
-Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty
+Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
+)
 )
 \@linkdim=\dimen332
 \Hy@linkcounter=\count357
@@ -741,10 +956,14 @@ Package hyperref Info: Bookmarks ON on input line 4462.
 \c@Hy@tempcnt=\count360
 LaTeX Info: Redefining \url on input line 4801.
 \XeTeXLinkMargin=\dimen333
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
-Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
 ))
 \Fld@menulength=\count361
 \Field@Width=\dimen334
@@ -761,24 +980,34 @@ Package hyperref Info: PDF/A mode OFF on input line 6108.
 \c@Hfootnote=\count364
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
 \Fld@listcount=\count365
 \c@bookmark@seq@number=\count366
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
 Package: rerunfilecheck 2025-06-21 v1.11 Rerun checks for auxiliary files (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 284.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+84.
 )
 \Hy@SectionHShift=\skip131
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
-File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
+File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
+)
 \BKM@id=\count367
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
+)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
 \xs_counta=\count368
 \xs_countb=\count369
 )
@@ -787,7 +1016,7 @@ Package: xstring 2023/08/22 v1.86 String manipulations (CT)
 \c@theorem=\count370
 \c@definition=\count371
 \c@example=\count372
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box83
 \beforetitleunit=\skip132
@@ -798,24 +1027,22 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \titlewidth=\dimen338
 \titlewidthlast=\dimen339
 \titlewidthfirst=\dimen340
-) (laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 178.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
+)
+(laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
+78.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count373
-) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux
-
-LaTeX Warning: Label `tab:samplerv_w' multiply defined.
-
-
-LaTeX Warning: Label `tab:sample1transsum2020x2021' multiply defined.
-
-
-LaTeX Warning: Label `tab:sample1transsum2021x2022' multiply defined.
-
-) (bab4.aux) (bab5.aux) (lampiran1.aux) (lampiran2.aux))
+) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux)
+(orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux)
+(persetujuan_publikasi.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux)
+(bab5.aux) (lampiran1.aux) (lampiran2.aux))
 \openout1 = `induk.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 178.
@@ -871,7 +1098,9 @@ LaTeX Font Info:    ... okay on input line 178.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count374
 \scratchdimen=\dimen341
@@ -884,10 +1113,15 @@ LaTeX Font Info:    ... okay on input line 178.
 \MPnumerator=\count378
 \makeMPintoPDFobject=\count379
 \everyMPtoPDFconversion=\toks58
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg
 File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 ))
 Package caption Info: Begin \AtBeginDocument code.
@@ -896,7 +1130,8 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: longtable package is loaded.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty
 Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
@@ -920,14 +1155,16 @@ Package microtype Info: Patching command `\showhyphens'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
 \c@lstlisting=\count380
 Package hyperref Info: Link coloring OFF on input line 178.
 \openout2 = `sampul.aux'.
 
- (sampul.tex
+
+(sampul.tex
 <pics/makara.png, id=6, 154.86429pt x 154.34807pt>
 File: pics/makara.png Graphic file (type png)
 <use pics/makara.png>
@@ -936,7 +1173,9 @@ Package pdftex.def Info: pics/makara.png  used on input line 14.
  [1
 
 
-{C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./pics/makara.png>])
+{C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/amma
+r/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc} <./pics/makara.png
+>])
 \openout2 = `judul_dalam.aux'.
 
  (judul_dalam.tex
@@ -956,23 +1195,33 @@ Package pdftex.def Info: pics/makara.png  used on input line 12.
 ]
 \openout2 = `pengesahan.aux'.
 
- (pengesahan.tex (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
-File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
+ (pengesahan.tex
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msa on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 13
+.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 Underfull \hbox (badness 10000) in paragraph at lines 12--18
@@ -1081,70 +1330,99 @@ Package pdftex.def Info: gambarku/TTD Ammar.png  used on input line 54.
 
 
 
-]
-\openout2 = `abstrak.aux'.
+] (abstrak.tex
+LaTeX Font Info:    Trying to load font information for OT1+phv on input line 3
+7.
 
- (abstrak.tex
-LaTeX Font Info:    Trying to load font information for OT1+phv on input line 37.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `phv' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [13
 
+[13
 
 ]) [14
 
 
+] (abstrak_tambahan.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [15
 
 ]
-\openout2 = `abstract.aux'.
+<output_real/scenario1/compromise_biplot_matplotlib.png, id=120, 907.42212pt x 
+767.79648pt>
+File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type
+ png)
+<use output_real/scenario1/compromise_biplot_matplotlib.png>
+Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png
+  used on input line 58.
+(pdftex.def)             Requested size: 320.0935pt x 270.8416pt.
 
- (abstract.tex [15
+[16 <./output_real/scenario1/compromise_biplot_matplotlib.png>]
+<output_real/scenario1/statis_trajectories.png, id=128, 1806.75pt x 1606.0pt>
+File: output_real/scenario1/statis_trajectories.png Graphic file (type png)
+<use output_real/scenario1/statis_trajectories.png>
+Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on
+ input line 68.
+(pdftex.def)             Requested size: 320.0935pt x 284.50949pt.
+ [17 <./output_real/scenario1/statis_trajectories.png>]) [18
 
 
-]) [16
+] (abstract.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [19
+
+]
+File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type
+ png)
+<use output_real/scenario1/compromise_biplot_matplotlib.png>
+Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png
+  used on input line 58.
+(pdftex.def)             Requested size: 320.0935pt x 270.8416pt.
+File: output_real/scenario1/statis_trajectories.png Graphic file (type png)
+<use output_real/scenario1/statis_trajectories.png>
+Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on
+ input line 68.
+(pdftex.def)             Requested size: 320.0935pt x 284.50949pt.
+
+[20] [21]) [22
 
 
-
-
-] (induk.toc [17] [18] [19] [20])
+] (induk.toc [23] [24] [25] [26])
 \tf@toc=\write4
 \openout4 = `induk.toc'.
 
- [21] [22
+ [27] [28
 
 
-] (induk.lot [23] [24]
-Underfull \vbox (badness 6978) has occurred while \output is active []
-
- [25])
+] (induk.lot [29]
+[30] [31])
 \tf@lot=\write5
 \openout5 = `induk.lot'.
 
- [26] (induk.lof
-Underfull \vbox (badness 4132) has occurred while \output is active []
+ [32] (induk.lof
+Underfull \vbox (badness 4779) has occurred while \output is active []
 
- [27
+ [33
 
 
 ]
-Underfull \hbox (badness 2865) in paragraph at lines 55--55
- [][] [][]\OT1/ptm/m/n/12 (+20) Tampilan An-tar-muka Ap-likasi Dash-board Ana-li-sis Spasio- 
+[34]
+Underfull \hbox (badness 2865) in paragraph at lines 59--59
+ [][] [][]\OT1/ptm/m/n/12 (+20) Tampilan An-tar-muka Ap-likasi Dash-board Ana-l
+i-sis Spasio- 
  []
 
 )
 \tf@lof=\write6
 \openout6 = `induk.lof'.
 
-
-Underfull \vbox (badness 6236) has occurred while \output is active []
-
- [28] [29] [30
+ [35] [36
 
 
 ]
@@ -1159,7 +1437,7 @@ Underfull \vbox (badness 6236) has occurred while \output is active []
 \tf@loa=\write7
 \openout7 = `induk.loa'.
 
- [31] [32
+ [37] [38
 
 
 ]
@@ -1168,7 +1446,8 @@ Underfull \vbox (badness 6236) has occurred while \output is active []
  (bab1.tex
 \normalsize BAB 1.
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.12 
@@ -1190,39 +1469,49 @@ Underfull \vbox (badness 2035) has occurred while \output is active []
 
 
 
-] [8]
+]
+[8]
 Underfull \vbox (badness 1584) has occurred while \output is active []
 
- [9] [10]
+ [9]
+[10]
 Overfull \hbox (4.47533pt too wide) in paragraph at lines 63--70
  [][] 
  []
 
 [11] [12] [13]
 Underfull \hbox (badness 1478) in paragraph at lines 138--140
-\OT1/ptm/m/n/12 (+20) Persamaan []2.5[] memas-tikan bahwa $[][] \OML/cmm/m/it/12 m[] z[] \OT1/cmr/m/n/12 = 0$ \OT1/ptm/m/n/12 (+20) (pusat ter-bobot nol) dan
+\OT1/ptm/m/n/12 (+20) Persamaan []2.5[] memas-tikan bahwa $[][] \OML/cmm/m/it/1
+2 m[] z[] \OT1/cmr/m/n/12 = 0$ \OT1/ptm/m/n/12 (+20) (pusat ter-bobot nol) dan
  []
 
 [14] [15] [16] [17]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 284.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 2
+84.
+
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [18] [19] [20] [21] [22]
-<gambarku/ilustrasi_biplot.png, id=1432, 371.13657pt x 341.02406pt>
+)
+[18] [19] [20] [21] [22]
+<gambarku/ilustrasi_biplot.png, id=1494, 371.13657pt x 341.02406pt>
 File: gambarku/ilustrasi_biplot.png Graphic file (type png)
 <use gambarku/ilustrasi_biplot.png>
 Package pdftex.def Info: gambarku/ilustrasi_biplot.png  used on input line 440.
+
 (pdftex.def)             Requested size: 341.43437pt x 313.74074pt.
  [23 <./gambarku/ilustrasi_biplot.png>] [24] [25]
 Underfull \vbox (badness 3568) has occurred while \output is active []
 
- [26] [27] [28] [29] [30] [31] [32]
+ [26]
+[27] [28] [29] [30] [31] [32]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33] [34] [35] [36] [37] [38]
+ [33]
+[34] [35] [36] [37] [38]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [39] [40] [41] [42]) [43] [44
+ [39]
+[40] [41] [42]) [43] [44
 
 
 
@@ -1241,9 +1530,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [46]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47] [48] [49] [50] (output_sample/output_table_deskriptif_2020.tex) (output_sample/output_table_deskriptif_2021.tex) (output_sample/output_table_deskriptif_2022.tex) (output_sample/output_table_descriptive_2020.tex) (output_sample/output_table_descriptive_2021.tex) [51] (output_sample/output_table_descriptive_2022.tex) [52]
+ [47]
+[48] [49] [50] (output_sample/output_table_deskriptif_2020.tex)
+(output_sample/output_table_deskriptif_2021.tex)
+(output_sample/output_table_deskriptif_2022.tex)
+(output_sample/output_table_descriptive_2020.tex)
+(output_sample/output_table_descriptive_2021.tex) [51]
+(output_sample/output_table_descriptive_2022.tex) [52]
 Underfull \hbox (badness 10000) in paragraph at lines 235--237
-[]\OT1/ptm/m/n/12 (+20) Proses stan-dard-is-asi meng-gu-nakan data men-tah $\OT1/cmr/bx/n/12 X[]\OT1/cmr/m/n/12 [:\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] =
+[]\OT1/ptm/m/n/12 (+20) Proses stan-dard-is-asi meng-gu-nakan data men-tah $\OT
+1/cmr/bx/n/12 X[]\OT1/cmr/m/n/12 [:\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 1] =
  []
 
 
@@ -1259,51 +1555,121 @@ Overfull \hbox (6.44385pt too wide) detected at line 306
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [54] (output_sample/output_table_matriks_intra_loading_2020.tex) (output_sample/output_table_matriks_intra_loading_2021.tex) (output_sample/output_table_matriks_intra_loading_2022.tex) [55] (output_sample/output_table_rv_w.tex)
-<output_sample/rv_heatmap.png, id=1865, 1405.25pt x 1204.5pt>
+ [54]
+
+LaTeX Warning: Reference `tab:sample1matriks_intra_loading_2020' on page 55 und
+efined on input line 308.
+
+
+LaTeX Warning: Reference `tab:sample1matriks_intra_loading_2021' on page 55 und
+efined on input line 308.
+
+
+LaTeX Warning: Reference `tab:sample1matriks_intra_loading_2022' on page 55 und
+efined on input line 308.
+
+(output_sample/output_table_matriks_intra_loading_2020.tex)
+(output_sample/output_table_matriks_intra_loading_2021.tex)
+(output_sample/output_table_matriks_intra_loading_2022.tex) [55]
+
+LaTeX Warning: Reference `tab:samplerv_w' on page 56 undefined on input line 32
+0.
+
+(output_sample/output_table_rv_w.tex)
+<output_sample/rv_heatmap.png, id=1922, 1405.25pt x 1204.5pt>
 File: output_sample/rv_heatmap.png Graphic file (type png)
 <use output_sample/rv_heatmap.png>
 Package pdftex.def Info: output_sample/rv_heatmap.png  used on input line 325.
 (pdftex.def)             Requested size: 256.07741pt x 219.48401pt.
- [56 <./output_sample/rv_heatmap.png>] (output_sample/output_table_alpha_w.tex) (output_sample/output_table_alpha_s.tex) [57] (output_sample/scenario1/output_table_eigen.tex) (output_sample/scenario2/output_table_eigen.tex) (output_sample/output_table_struktur_diagnostik.tex)
-<output_sample/scree_plot.png, id=1881, 1806.75pt x 1204.5pt>
+ [56 <./output_sample/rv_heatmap.png>]
+
+LaTeX Warning: Reference `tab:samplealpha_w' on page 57 undefined on input line
+ 338.
+
+
+LaTeX Warning: Reference `tab:samplealpha_s' on page 57 undefined on input line
+ 338.
+
+(output_sample/output_table_alpha_w.tex)
+(output_sample/output_table_alpha_s.tex) [57]
+
+LaTeX Warning: Reference `tab:sample1eigen' on page 58 undefined on input line 
+371.
+
+
+LaTeX Warning: Reference `tab:sample2eigen' on page 58 undefined on input line 
+371.
+
+(output_sample/scenario1/output_table_eigen.tex)
+(output_sample/scenario2/output_table_eigen.tex)
+(output_sample/output_table_struktur_diagnostik.tex)
+<output_sample/scree_plot.png, id=1934, 1806.75pt x 1204.5pt>
 File: output_sample/scree_plot.png Graphic file (type png)
 <use output_sample/scree_plot.png>
 Package pdftex.def Info: output_sample/scree_plot.png  used on input line 378.
 (pdftex.def)             Requested size: 234.73654pt x 156.48022pt.
- [58] (output_sample/scenario1/output_table_scores.tex) (output_sample/scenario1/output_table_loadings.tex)
-<output_sample/scenario1/compromise_biplot_matplotlib.png, id=1889, 907.7112pt x 767.79648pt>
-File: output_sample/scenario1/compromise_biplot_matplotlib.png Graphic file (type png)
+ [58]
+(output_sample/scenario1/output_table_scores.tex)
+(output_sample/scenario1/output_table_loadings.tex)
+<output_sample/scenario1/compromise_biplot_matplotlib.png, id=1942, 907.7112pt 
+x 767.79648pt>
+File: output_sample/scenario1/compromise_biplot_matplotlib.png Graphic file (ty
+pe png)
 <use output_sample/scenario1/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_sample/scenario1/compromise_biplot_matplotlib.png  used on input line 393.
+Package pdftex.def Info: output_sample/scenario1/compromise_biplot_matplotlib.p
+ng  used on input line 393.
 (pdftex.def)             Requested size: 307.29028pt x 259.92265pt.
 
 Underfull \vbox (badness 7326) has occurred while \output is active []
 
- [59 <./output_sample/scree_plot.png>] (output_sample/scenario2/output_table_scores.tex) (output_sample/scenario2/output_table_loadings.tex)
-<output_sample/scenario2/compromise_biplot_matplotlib.png, id=1895, 907.7112pt x 767.79648pt>
-File: output_sample/scenario2/compromise_biplot_matplotlib.png Graphic file (type png)
+ [59 <./output_sample/scree_plot.png>] (output_sample/scenario2/output_table_sc
+ores.tex)
+(output_sample/scenario2/output_table_loadings.tex)
+<output_sample/scenario2/compromise_biplot_matplotlib.png, id=1948, 907.7112pt 
+x 767.79648pt>
+File: output_sample/scenario2/compromise_biplot_matplotlib.png Graphic file (ty
+pe png)
 <use output_sample/scenario2/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_sample/scenario2/compromise_biplot_matplotlib.png  used on input line 405.
+Package pdftex.def Info: output_sample/scenario2/compromise_biplot_matplotlib.p
+ng  used on input line 405.
 (pdftex.def)             Requested size: 307.29028pt x 259.92265pt.
 
 Underfull \vbox (badness 2726) has occurred while \output is active []
 
  [60 <./output_sample/scenario1/compromise_biplot_matplotlib.png>]
-<output_sample/scenario1/statis_trajectories.png, id=1903, 1806.75pt x 1606.0pt>
+<output_sample/scenario1/statis_trajectories.png, id=1956, 1806.75pt x 1606.0pt
+>
 File: output_sample/scenario1/statis_trajectories.png Graphic file (type png)
 <use output_sample/scenario1/statis_trajectories.png>
-Package pdftex.def Info: output_sample/scenario1/statis_trajectories.png  used on input line 418.
+Package pdftex.def Info: output_sample/scenario1/statis_trajectories.png  used 
+on input line 418.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
-<output_sample/scenario2/statis_trajectories.png, id=1904, 1806.75pt x 1606.0pt>
+<output_sample/scenario2/statis_trajectories.png, id=1957, 1806.75pt x 1606.0pt
+>
 File: output_sample/scenario2/statis_trajectories.png Graphic file (type png)
 <use output_sample/scenario2/statis_trajectories.png>
-Package pdftex.def Info: output_sample/scenario2/statis_trajectories.png  used on input line 424.
+Package pdftex.def Info: output_sample/scenario2/statis_trajectories.png  used 
+on input line 424.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [61 <./output_sample/scenario2/compromise_biplot_matplotlib.png>] (output_sample/scenario1/output_table_cluster_members.tex) (output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex) (output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex) [62 <./output_sample/scenario1/statis_trajectories.png> <./output_sample/scenario2/statis_trajectories.png>] (output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex) (output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
+ [61 <./output_sample/scenario2/compromise_biplot_matplotlib.png>]
+(output_sample/scenario1/output_table_cluster_members.tex)
+
+LaTeX Warning: Reference `tab:sample1transsum2020x2021' on page 62 undefined on
+ input line 434.
+
+
+LaTeX Warning: Reference `tab:sample1transsum2021x2022' on page 62 undefined on
+ input line 434.
+
+(output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
+[62 <./output_sample/scenario1/statis_trajectories.png> <./output_sample/scenar
+io2/statis_trajectories.png>]
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -1351,7 +1717,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 5847) has occurred while \output is active []
 
- [63] (output_sample/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex) (output_sample/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
+ [63]
+(output_sample/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex)
+(output_sample/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -1400,48 +1768,74 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [64]
-<output_sample/scenario1/cluster_map_biplot_2020.png, id=1930, 943.8462pt x 505.52866pt>
-File: output_sample/scenario1/cluster_map_biplot_2020.png Graphic file (type png)
+<output_sample/scenario1/cluster_map_biplot_2020.png, id=1981, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_biplot_2020.png Graphic file (type pn
+g)
 <use output_sample/scenario1/cluster_map_biplot_2020.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_biplot_2020.png  used on input line 473.
+Package pdftex.def Info: output_sample/scenario1/cluster_map_biplot_2020.png  u
+sed on input line 473.
 (pdftex.def)             Requested size: 204.85802pt x 109.72018pt.
-<output_sample/scenario1/cluster_map_statis_2020.png, id=1931, 943.8462pt x 505.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type png)
+<output_sample/scenario1/cluster_map_statis_2020.png, id=1982, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type pn
+g)
 <use output_sample/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  used on input line 478.
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  u
+sed on input line 478.
 (pdftex.def)             Requested size: 204.85802pt x 109.72018pt.
- (output_sample/scenario1/output_table_cross_matrix_sum_2020.tex [65 <./output_sample/scenario1/cluster_map_biplot_2020.png> <./output_sample/scenario1/cluster_map_statis_2020.png>]) (output_sample/scenario1/output_table_cross_matrix_name_2020.tex
+
+(output_sample/scenario1/output_table_cross_matrix_sum_2020.tex [65 <./output_s
+ample/scenario1/cluster_map_biplot_2020.png> <./output_sample/scenario1/cluster
+_map_statis_2020.png>])
+(output_sample/scenario1/output_table_cross_matrix_name_2020.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
 
-) (output_sample/output_table_rv_w.tex) (output_sample/output_table_hw.tex [66]) (output_sample/output_table_hs.tex) (output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex) (output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
-File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type png)
+) (output_sample/output_table_rv_w.tex) (output_sample/output_table_hw.tex
+[66]) (output_sample/output_table_hs.tex)
+(output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
+File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type pn
+g)
 <use output_sample/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  used on input line 518.
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  u
+sed on input line 518.
 (pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
-<output_sample/scenario1/cluster_map_statis_2021.png, id=1942, 943.8462pt x 505.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2021.png Graphic file (type png)
+<output_sample/scenario1/cluster_map_statis_2021.png, id=1993, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2021.png Graphic file (type pn
+g)
 <use output_sample/scenario1/cluster_map_statis_2021.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2021.png  used on input line 523.
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2021.png  u
+sed on input line 523.
 (pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
-<output_sample/scenario1/cluster_map_statis_2022.png, id=1943, 943.8462pt x 505.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2022.png Graphic file (type png)
+<output_sample/scenario1/cluster_map_statis_2022.png, id=1994, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2022.png Graphic file (type pn
+g)
 <use output_sample/scenario1/cluster_map_statis_2022.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2022.png  used on input line 528.
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2022.png  u
+sed on input line 528.
 (pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
- [67]
-<output_sample/boxplot_ppm_2020.png, id=1948, 1003.75pt x 803.0pt>
+
+[67]
+<output_sample/boxplot_ppm_2020.png, id=1999, 1003.75pt x 803.0pt>
 File: output_sample/boxplot_ppm_2020.png Graphic file (type png)
 <use output_sample/boxplot_ppm_2020.png>
-Package pdftex.def Info: output_sample/boxplot_ppm_2020.png  used on input line 538.
+Package pdftex.def Info: output_sample/boxplot_ppm_2020.png  used on input line
+ 538.
 (pdftex.def)             Requested size: 204.85802pt x 163.88089pt.
-<output_sample/boxplot_ppm_2022.png, id=1949, 1003.75pt x 803.0pt>
+<output_sample/boxplot_ppm_2022.png, id=2000, 1003.75pt x 803.0pt>
 File: output_sample/boxplot_ppm_2022.png Graphic file (type png)
 <use output_sample/boxplot_ppm_2022.png>
-Package pdftex.def Info: output_sample/boxplot_ppm_2022.png  used on input line 543.
+Package pdftex.def Info: output_sample/boxplot_ppm_2022.png  used on input line
+ 543.
 (pdftex.def)             Requested size: 204.85802pt x 163.88089pt.
-) [68 <./output_sample/scenario1/cluster_map_statis_2021.png> <./output_sample/scenario1/cluster_map_statis_2022.png> <./output_sample/boxplot_ppm_2020.png> <./output_sample/boxplot_ppm_2022.png>]
+) [68 <./output_sample/scenario1/cluster_map_statis_2021.png> <./output_sample/
+scenario1/cluster_map_statis_2022.png> <./output_sample/boxplot_ppm_2020.png> <
+./output_sample/boxplot_ppm_2022.png>]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
@@ -1456,157 +1850,208 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-] (output_real/output_table_deskriptif_2021.tex) (output_real/output_table_deskriptif_2022.tex) (output_real/output_table_deskriptif_2023.tex) (output_real/output_table_deskriptif_2024.tex) [70]
-<output_real/boxplot_ipm_2020.png, id=1988, 1003.75pt x 803.0pt>
+]
+(output_real/output_table_deskriptif_2021.tex)
+(output_real/output_table_deskriptif_2022.tex)
+(output_real/output_table_deskriptif_2023.tex)
+(output_real/output_table_deskriptif_2024.tex) [70]
+<output_real/boxplot_ipm_2020.png, id=2039, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ipm_2020.png Graphic file (type png)
 <use output_real/boxplot_ipm_2020.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2020.png  used on input line 68.
+Package pdftex.def Info: output_real/boxplot_ipm_2020.png  used on input line 6
+8.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ipm_2022.png, id=1989, 1003.75pt x 803.0pt>
+<output_real/boxplot_ipm_2022.png, id=2040, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ipm_2022.png Graphic file (type png)
 <use output_real/boxplot_ipm_2022.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2022.png  used on input line 69.
+Package pdftex.def Info: output_real/boxplot_ipm_2022.png  used on input line 6
+9.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ipm_2024.png, id=1990, 1003.75pt x 803.0pt>
+<output_real/boxplot_ipm_2024.png, id=2041, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ipm_2024.png Graphic file (type png)
 <use output_real/boxplot_ipm_2024.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2024.png  used on input line 70.
+Package pdftex.def Info: output_real/boxplot_ipm_2024.png  used on input line 7
+0.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [71]
-<output_real/boxplot_ppm_2020.png, id=1995, 1003.75pt x 803.0pt>
+<output_real/boxplot_ppm_2020.png, id=2046, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ppm_2020.png Graphic file (type png)
 <use output_real/boxplot_ppm_2020.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2020.png  used on input line 77.
+Package pdftex.def Info: output_real/boxplot_ppm_2020.png  used on input line 7
+7.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ppm_2022.png, id=1996, 1003.75pt x 803.0pt>
+<output_real/boxplot_ppm_2022.png, id=2047, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ppm_2022.png Graphic file (type png)
 <use output_real/boxplot_ppm_2022.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2022.png  used on input line 78.
+Package pdftex.def Info: output_real/boxplot_ppm_2022.png  used on input line 7
+8.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ppm_2024.png, id=1997, 1003.75pt x 803.0pt>
+<output_real/boxplot_ppm_2024.png, id=2048, 1003.75pt x 803.0pt>
 File: output_real/boxplot_ppm_2024.png Graphic file (type png)
 <use output_real/boxplot_ppm_2024.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2024.png  used on input line 79.
+Package pdftex.def Info: output_real/boxplot_ppm_2024.png  used on input line 7
+9.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2020.png, id=1998, 1003.75pt x 803.0pt>
+<output_real/boxplot_pdrb_adhk_2020.png, id=2049, 1003.75pt x 803.0pt>
 File: output_real/boxplot_pdrb_adhk_2020.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk_2020.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2020.png  used on input line 86.
+Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2020.png  used on input 
+line 86.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2022.png, id=1999, 1003.75pt x 803.0pt>
+<output_real/boxplot_pdrb_adhk_2022.png, id=2050, 1003.75pt x 803.0pt>
 File: output_real/boxplot_pdrb_adhk_2022.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk_2022.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2022.png  used on input line 87.
+Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2022.png  used on input 
+line 87.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2024.png, id=2000, 1003.75pt x 803.0pt>
+<output_real/boxplot_pdrb_adhk_2024.png, id=2051, 1003.75pt x 803.0pt>
 File: output_real/boxplot_pdrb_adhk_2024.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk_2024.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2024.png  used on input line 88.
+Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2024.png  used on input 
+line 88.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_tpt_2020.png, id=2001, 1003.75pt x 803.0pt>
+<output_real/boxplot_tpt_2020.png, id=2052, 1003.75pt x 803.0pt>
 File: output_real/boxplot_tpt_2020.png Graphic file (type png)
 <use output_real/boxplot_tpt_2020.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2020.png  used on input line 95.
+Package pdftex.def Info: output_real/boxplot_tpt_2020.png  used on input line 9
+5.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_tpt_2022.png, id=2002, 1003.75pt x 803.0pt>
+<output_real/boxplot_tpt_2022.png, id=2053, 1003.75pt x 803.0pt>
 File: output_real/boxplot_tpt_2022.png Graphic file (type png)
 <use output_real/boxplot_tpt_2022.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2022.png  used on input line 96.
+Package pdftex.def Info: output_real/boxplot_tpt_2022.png  used on input line 9
+6.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_tpt_2024.png, id=2003, 1003.75pt x 803.0pt>
+<output_real/boxplot_tpt_2024.png, id=2054, 1003.75pt x 803.0pt>
 File: output_real/boxplot_tpt_2024.png Graphic file (type png)
 <use output_real/boxplot_tpt_2024.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2024.png  used on input line 97.
+Package pdftex.def Info: output_real/boxplot_tpt_2024.png  used on input line 9
+7.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2020.png, id=2004, 1003.75pt x 803.0pt>
+<output_real/boxplot_rls_2020.png, id=2055, 1003.75pt x 803.0pt>
 File: output_real/boxplot_rls_2020.png Graphic file (type png)
 <use output_real/boxplot_rls_2020.png>
-Package pdftex.def Info: output_real/boxplot_rls_2020.png  used on input line 104.
+Package pdftex.def Info: output_real/boxplot_rls_2020.png  used on input line 1
+04.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2022.png, id=2005, 1003.75pt x 803.0pt>
+<output_real/boxplot_rls_2022.png, id=2056, 1003.75pt x 803.0pt>
 File: output_real/boxplot_rls_2022.png Graphic file (type png)
 <use output_real/boxplot_rls_2022.png>
-Package pdftex.def Info: output_real/boxplot_rls_2022.png  used on input line 105.
+Package pdftex.def Info: output_real/boxplot_rls_2022.png  used on input line 1
+05.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2024.png, id=2006, 1003.75pt x 803.0pt>
+<output_real/boxplot_rls_2024.png, id=2057, 1003.75pt x 803.0pt>
 File: output_real/boxplot_rls_2024.png Graphic file (type png)
 <use output_real/boxplot_rls_2024.png>
-Package pdftex.def Info: output_real/boxplot_rls_2024.png  used on input line 106.
+Package pdftex.def Info: output_real/boxplot_rls_2024.png  used on input line 1
+06.
 (pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
 
 Underfull \vbox (badness 1033) has occurred while \output is active []
 
- [72 <./output_real/boxplot_ipm_2020.png> <./output_real/boxplot_ipm_2022.png> <./output_real/boxplot_ipm_2024.png> <./output_real/boxplot_ppm_2020.png> <./output_real/boxplot_ppm_2022.png> <./output_real/boxplot_ppm_2024.png> <./output_real/boxplot_pdrb_adhk_2020.png> <./output_real/boxplot_pdrb_adhk_2022.png> <./output_real/boxplot_pdrb_adhk_2024.png> <./output_real/boxplot_tpt_2020.png> <./output_real/boxplot_tpt_2022.png> <./output_real/boxplot_tpt_2024.png>] (output_real/output_table_kmo_bartlett.tex) [73 <./output_real/boxplot_rls_2020.png> <./output_real/boxplot_rls_2022.png> <./output_real/boxplot_rls_2024.png>] (output_real/output_table_rv_w.tex)
-<output_real/rv_heatmap.png, id=2038, 1405.25pt x 1204.5pt>
+ [72 <./output_real/boxplot_ipm_2020.png> <./output_real/boxplot_ipm_2022.png> 
+<./output_real/boxplot_ipm_2024.png> <./output_real/boxplot_ppm_2020.png> <./ou
+tput_real/boxplot_ppm_2022.png> <./output_real/boxplot_ppm_2024.png> <./output_
+real/boxplot_pdrb_adhk_2020.png> <./output_real/boxplot_pdrb_adhk_2022.png> <./
+output_real/boxplot_pdrb_adhk_2024.png> <./output_real/boxplot_tpt_2020.png> <.
+/output_real/boxplot_tpt_2022.png> <./output_real/boxplot_tpt_2024.png>]
+(output_real/output_table_kmo_bartlett.tex) [73 <./output_real/boxplot_rls_2020
+.png> <./output_real/boxplot_rls_2022.png> <./output_real/boxplot_rls_2024.png>
+] (output_real/output_table_rv_w.tex)
+<output_real/rv_heatmap.png, id=2089, 1405.25pt x 1204.5pt>
 File: output_real/rv_heatmap.png Graphic file (type png)
 <use output_real/rv_heatmap.png>
 Package pdftex.def Info: output_real/rv_heatmap.png  used on input line 144.
 (pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
- [74 <./output_real/rv_heatmap.png>] (output_real/output_table_alpha_w.tex) (output_real/output_table_alpha_s.tex) [75]
-<output_real/scree_plot.png, id=2055, 1806.75pt x 1204.5pt>
+ [74 <./output_real/rv_heatmap.png>]
+(output_real/output_table_alpha_w.tex) (output_real/output_table_alpha_s.tex)
+[75]
+<output_real/scree_plot.png, id=2106, 1806.75pt x 1204.5pt>
 File: output_real/scree_plot.png Graphic file (type png)
 <use output_real/scree_plot.png>
 Package pdftex.def Info: output_real/scree_plot.png  used on input line 187.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- (output_real/scenario1/output_table_eigen.tex) [76 <./output_real/scree_plot.png>] [77]
-<output_real/scenario1/compromise_map.png, id=2069, 1606.0pt x 1606.0pt>
+ (output_real/scenario1/output_table_eigen.tex) [76 <./output_real/scree_plot.p
+ng>] [77]
+<output_real/scenario1/compromise_map.png, id=2120, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/compromise_map.png Graphic file (type png)
 <use output_real/scenario1/compromise_map.png>
-Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on input line 205.
+Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
+t line 205.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
  [78 <./output_real/scenario1/compromise_map.png>]
-<output_real/scenario1/compromise_biplot_matplotlib.png, id=2078, 907.42212pt x 767.79648pt>
-File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type png)
+File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type
+ png)
 <use output_real/scenario1/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png  used on input line 220.
+Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png
+  used on input line 220.
 (pdftex.def)             Requested size: 204.85802pt x 173.33253pt.
-<output_real/scenario2/compromise_biplot_matplotlib.png, id=2079, 907.42212pt x 767.79648pt>
-File: output_real/scenario2/compromise_biplot_matplotlib.png Graphic file (type png)
+<output_real/scenario2/compromise_biplot_matplotlib.png, id=2129, 907.42212pt x
+ 767.79648pt>
+File: output_real/scenario2/compromise_biplot_matplotlib.png Graphic file (type
+ png)
 <use output_real/scenario2/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_real/scenario2/compromise_biplot_matplotlib.png  used on input line 226.
+Package pdftex.def Info: output_real/scenario2/compromise_biplot_matplotlib.png
+  used on input line 226.
 (pdftex.def)             Requested size: 204.85802pt x 173.33253pt.
- (output_real/scenario1/output_table_loadings.tex [79 <./output_real/scenario1/compromise_biplot_matplotlib.png> <./output_real/scenario2/compromise_biplot_matplotlib.png>]) (output_real/scenario2/output_table_loadings.tex)
-<output_real/scenario1/loading_plot.png, id=2092, 1405.25pt x 1405.25pt>
+
+(output_real/scenario1/output_table_loadings.tex [79 <./output_real/scenario2/c
+ompromise_biplot_matplotlib.png>])
+(output_real/scenario2/output_table_loadings.tex)
+<output_real/scenario1/loading_plot.png, id=2141, 1405.25pt x 1405.25pt>
 File: output_real/scenario1/loading_plot.png Graphic file (type png)
 <use output_real/scenario1/loading_plot.png>
-Package pdftex.def Info: output_real/scenario1/loading_plot.png  used on input line 256.
+Package pdftex.def Info: output_real/scenario1/loading_plot.png  used on input 
+line 256.
 (pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
-<output_real/scenario2/loading_plot.png, id=2093, 1405.25pt x 1405.25pt>
+<output_real/scenario2/loading_plot.png, id=2142, 1405.25pt x 1405.25pt>
 File: output_real/scenario2/loading_plot.png Graphic file (type png)
 <use output_real/scenario2/loading_plot.png>
-Package pdftex.def Info: output_real/scenario2/loading_plot.png  used on input line 262.
+Package pdftex.def Info: output_real/scenario2/loading_plot.png  used on input 
+line 262.
 (pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [80]
-<output_real/scenario1/variable_contribution.png, id=2100, 1806.75pt x 1204.5pt>
+<output_real/scenario1/variable_contribution.png, id=2149, 1806.75pt x 1204.5pt
+>
 File: output_real/scenario1/variable_contribution.png Graphic file (type png)
 <use output_real/scenario1/variable_contribution.png>
-Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used on input line 276.
+Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used 
+on input line 276.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_contribution.png, id=2101, 1806.75pt x 1204.5pt>
+<output_real/scenario2/variable_contribution.png, id=2150, 1806.75pt x 1204.5pt
+>
 File: output_real/scenario2/variable_contribution.png Graphic file (type png)
 <use output_real/scenario2/variable_contribution.png>
-Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used on input line 282.
+Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used 
+on input line 282.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario1/variable_cos2.png, id=2102, 1806.75pt x 1204.5pt>
+<output_real/scenario1/variable_cos2.png, id=2151, 1806.75pt x 1204.5pt>
 File: output_real/scenario1/variable_cos2.png Graphic file (type png)
 <use output_real/scenario1/variable_cos2.png>
-Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input line 292.
+Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input
+ line 292.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_cos2.png, id=2103, 1806.75pt x 1204.5pt>
+<output_real/scenario2/variable_cos2.png, id=2152, 1806.75pt x 1204.5pt>
 File: output_real/scenario2/variable_cos2.png Graphic file (type png)
 <use output_real/scenario2/variable_cos2.png>
-Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input line 298.
+Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input
+ line 298.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [81 <./output_real/scenario1/loading_plot.png> <./output_real/scenario2/loading_plot.png> <./output_real/scenario1/variable_contribution.png> <./output_real/scenario2/variable_contribution.png>] [82 <./output_real/scenario1/variable_cos2.png> <./output_real/scenario2/variable_cos2.png>] (output_real/scenario1/output_table_scores.tex) (output_real/scenario2/output_table_scores.tex)
+ [81 <./output_real/scenario1/loading_plot.png> <./output_real/scenario2/loadin
+g_plot.png> <./output_real/scenario1/variable_contribution.png> <./output_real/
+scenario2/variable_contribution.png>] [82 <./output_real/scenario1/variable_cos
+2.png> <./output_real/scenario2/variable_cos2.png>]
+(output_real/scenario1/output_table_scores.tex)
+(output_real/scenario2/output_table_scores.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [83
@@ -1615,204 +2060,272 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [84]
-<output_real/permutation_histogram.png, id=2130, 1806.75pt x 1204.5pt>
+<output_real/permutation_histogram.png, id=2179, 1806.75pt x 1204.5pt>
 File: output_real/permutation_histogram.png Graphic file (type png)
 <use output_real/permutation_histogram.png>
-Package pdftex.def Info: output_real/permutation_histogram.png  used on input line 330.
+Package pdftex.def Info: output_real/permutation_histogram.png  used on input l
+ine 330.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [85 <./output_real/permutation_histogram.png>] (output_real/output_table_beta_vec.tex)
+ [85 <./output_real/permutation_histogram.png>] (output_real/output_table_beta_
+vec.tex)
 Underfull \vbox (badness 1810) has occurred while \output is active []
 
- [86] (output_real/output_table_struktur_diagnostik.tex) [87] (output_real/output_table_beta_provinsi.tex)
-<output_real/beta_trajectory.png, id=2167, 498.1812pt x 278.4804pt>
+ [86]
+(output_real/output_table_struktur_diagnostik.tex) [87]
+(output_real/output_table_beta_provinsi.tex)
+<output_real/beta_trajectory.png, id=2216, 498.1812pt x 278.4804pt>
 File: output_real/beta_trajectory.png Graphic file (type png)
 <use output_real/beta_trajectory.png>
-Package pdftex.def Info: output_real/beta_trajectory.png  used on input line 407.
+Package pdftex.def Info: output_real/beta_trajectory.png  used on input line 40
+7.
 (pdftex.def)             Requested size: 320.0935pt x 178.93646pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [88]
-<output_real/scenario1/statis_trajectories.png, id=2174, 1806.75pt x 1606.0pt>
 File: output_real/scenario1/statis_trajectories.png Graphic file (type png)
 <use output_real/scenario1/statis_trajectories.png>
-Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on input line 428.
+Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on
+ input line 428.
 (pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [89 <./output_real/beta_trajectory.png>]
-<output_real/scenario1/biplot_tahun_2020.png, id=2183, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2020.png, id=2231, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2020.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2020.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on input line 447.
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on i
+nput line 447.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [90 <./output_real/scenario1/statis_trajectories.png>]
-<output_real/scenario1/biplot_tahun_2021.png, id=2192, 1606.0pt x 1606.0pt>
+ [90]
+<output_real/scenario1/biplot_tahun_2021.png, id=2239, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2021.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2021.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on input line 454.
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on i
+nput line 454.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [91 <./output_real/scenario1/biplot_tahun_2020.png>]
-<output_real/scenario1/biplot_tahun_2022.png, id=2198, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2022.png, id=2245, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2022.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2022.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on input line 461.
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on i
+nput line 461.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [92 <./output_real/scenario1/biplot_tahun_2021.png>]
-<output_real/scenario1/biplot_tahun_2023.png, id=2204, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2023.png, id=2251, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2023.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2023.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on input line 468.
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on i
+nput line 468.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [93 <./output_real/scenario1/biplot_tahun_2022.png>]
-<output_real/scenario1/biplot_tahun_2024.png, id=2210, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2024.png, id=2257, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2024.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2024.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on input line 475.
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on i
+nput line 475.
 (pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [94 <./output_real/scenario1/biplot_tahun_2023.png>] (output_real/output_table_loading_intra_2020.tex) (output_real/output_table_loading_intra_2021.tex) (output_real/output_table_loading_intra_2022.tex)
+ [94 <./output_real/scenario1/biplot_tahun_2023.png>]
+(output_real/output_table_loading_intra_2020.tex)
+(output_real/output_table_loading_intra_2021.tex)
+(output_real/output_table_loading_intra_2022.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [95 <./output_real/scenario1/biplot_tahun_2024.png>] (output_real/output_table_loading_intra_2023.tex) (output_real/output_table_loading_intra_2024.tex)
+ [95 <./output_real/scenario1/biplot_tahun_2024.png>]
+(output_real/output_table_loading_intra_2023.tex)
+(output_real/output_table_loading_intra_2024.tex)
 Underfull \vbox (badness 2150) has occurred while \output is active []
 
  [96]
-<output_real/scenario1/elbow_plot_2020.png, id=2230, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2020.png, id=2277, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2020.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on input line 535.
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
+ut line 535.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2020.png, id=2231, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2020.png, id=2278, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2020.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on input line 536.
+Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
+ut line 536.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2021.png, id=2232, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2021.png, id=2279, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2021.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on input line 543.
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
+ut line 543.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2021.png, id=2233, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2021.png, id=2280, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2021.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on input line 544.
+Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on inp
+ut line 544.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2022.png, id=2234, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2022.png, id=2281, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2022.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on input line 551.
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
+ut line 551.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2022.png, id=2235, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2022.png, id=2282, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2022.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on input line 552.
+Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
+ut line 552.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2023.png, id=2236, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2023.png, id=2283, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2023.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on input line 559.
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
+ut line 559.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2023.png, id=2237, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2023.png, id=2284, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2023.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on input line 560.
+Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
+ut line 560.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [97 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/dendrogram_2020.png> <./output_real/scenario1/elbow_plot_2021.png> <./output_real/scenario1/dendrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <./output_real/scenario1/dendrogram_2022.png>]
-<output_real/scenario1/elbow_plot_2024.png, id=2248, 1405.25pt x 903.375pt>
+
+[97 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/dend
+rogram_2020.png> <./output_real/scenario1/elbow_plot_2021.png> <./output_real/s
+cenario1/dendrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <./
+output_real/scenario1/dendrogram_2022.png>]
+<output_real/scenario1/elbow_plot_2024.png, id=2295, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2024.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on input line 567.
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
+ut line 567.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2024.png, id=2249, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2024.png, id=2296, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2024.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on input line 568.
+Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on inp
+ut line 568.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/cluster_scatter_statis_2020.png, id=2254, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type png)
+<output_real/scenario1/cluster_scatter_statis_2020.png, id=2301, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type 
+png)
 <use output_real/scenario1/cluster_scatter_statis_2020.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png  used on input line 583.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png 
+ used on input line 583.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2020.png, id=2255, 939.14865pt x 658.74104pt>
+<output_real/scenario1/cluster_map_statis_2020.png, id=2302, 939.14865pt x 658.
+74104pt>
 File: output_real/scenario1/cluster_map_statis_2020.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  used on input line 587.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  use
+d on input line 587.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [98 <./output_real/scenario1/elbow_plot_2023.png> <./output_real/scenario1/dendrogram_2023.png> <./output_real/scenario1/elbow_plot_2024.png> <./output_real/scenario1/dendrogram_2024.png>]
-<output_real/scenario1/cluster_scatter_statis_2021.png, id=2264, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type png)
+ [98 <./output_real/scenario1/elbow_plot_2023.png> <./output_real/scenario1/den
+drogram_2023.png> <./output_real/scenario1/elbow_plot_2024.png> <./output_real/
+scenario1/dendrogram_2024.png>]
+<output_real/scenario1/cluster_scatter_statis_2021.png, id=2311, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type 
+png)
 <use output_real/scenario1/cluster_scatter_statis_2021.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png  used on input line 597.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png 
+ used on input line 597.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2021.png, id=2265, 939.14865pt x 658.74104pt>
+<output_real/scenario1/cluster_map_statis_2021.png, id=2312, 939.14865pt x 658.
+74104pt>
 File: output_real/scenario1/cluster_map_statis_2021.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2021.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  used on input line 601.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  use
+d on input line 601.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2022.png, id=2266, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type png)
+<output_real/scenario1/cluster_scatter_statis_2022.png, id=2313, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type 
+png)
 <use output_real/scenario1/cluster_scatter_statis_2022.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png  used on input line 611.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png 
+ used on input line 611.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2022.png, id=2267, 938.7873pt x 658.74104pt>
+<output_real/scenario1/cluster_map_statis_2022.png, id=2314, 938.7873pt x 658.7
+4104pt>
 File: output_real/scenario1/cluster_map_statis_2022.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2022.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  used on input line 615.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  use
+d on input line 615.
 (pdftex.def)             Requested size: 204.85802pt x 143.74744pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [99 <./output_real/scenario1/cluster_scatter_statis_2020.png> <./output_real/scenario1/cluster_map_statis_2020.png> <./output_real/scenario1/cluster_scatter_statis_2021.png> <./output_real/scenario1/cluster_map_statis_2021.png>]
-<output_real/scenario1/cluster_scatter_statis_2023.png, id=2276, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type png)
+ [99 <./output_real/scenario1/cluster_scatter_statis_2020.png> <./output_real/s
+cenario1/cluster_map_statis_2020.png> <./output_real/scenario1/cluster_scatter_
+statis_2021.png> <./output_real/scenario1/cluster_map_statis_2021.png>]
+<output_real/scenario1/cluster_scatter_statis_2023.png, id=2323, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type 
+png)
 <use output_real/scenario1/cluster_scatter_statis_2023.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png  used on input line 625.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png 
+ used on input line 625.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2023.png, id=2277, 939.14865pt x 658.74104pt>
+<output_real/scenario1/cluster_map_statis_2023.png, id=2324, 939.14865pt x 658.
+74104pt>
 File: output_real/scenario1/cluster_map_statis_2023.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2023.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  used on input line 629.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  use
+d on input line 629.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2024.png, id=2278, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type png)
+<output_real/scenario1/cluster_scatter_statis_2024.png, id=2325, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type 
+png)
 <use output_real/scenario1/cluster_scatter_statis_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png  used on input line 639.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png 
+ used on input line 639.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2024.png, id=2279, 939.14865pt x 658.74104pt>
+<output_real/scenario1/cluster_map_statis_2024.png, id=2326, 939.14865pt x 658.
+74104pt>
 File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  used on input line 643.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
+d on input line 643.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [100 <./output_real/scenario1/cluster_scatter_statis_2022.png> <./output_real/scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter_statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>] (output_real/scenario1/output_table_transition_matrix_sum_2020x2021.tex) (output_real/scenario1/output_table_transition_matrix_name_2020x2021.tex
+ [100 <./output_real/scenario1/cluster_scatter_statis_2022.png> <./output_real/
+scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter
+_statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>]
+(output_real/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_real/scenario1/output_table_transition_matrix_name_2020x2021.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
  []
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 9--9
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1822,7 +2335,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 11--11
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1832,7 +2346,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--13
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 13--13
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -1842,7 +2357,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--15
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 15--15
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1852,7 +2368,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 17--17
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1862,7 +2379,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 19--19
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -1872,7 +2390,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 21--21
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1882,7 +2401,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 23--23
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1892,20 +2412,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--25
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 25--25
-\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
 Underfull \vbox (badness 4036) has occurred while \output is active []
 
- [101 <./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/scenario1/cluster_map_statis_2024.png>]) (output_real/scenario1/output_table_transition_matrix_sum_2021x2022.tex) (output_real/scenario1/output_table_transition_matrix_name_2021x2022.tex
+ [101 <./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/
+scenario1/cluster_map_statis_2024.png>])
+(output_real/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
+(output_real/scenario1/output_table_transition_matrix_name_2021x2022.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
  []
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 9--9
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1915,7 +2440,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 11--11
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1925,7 +2451,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--13
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 13--13
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -1935,7 +2462,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--15
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 15--15
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1945,7 +2473,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 17--17
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1955,7 +2484,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 19--19
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -1965,7 +2495,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 21--21
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -1975,7 +2506,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 23--23
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -1985,20 +2517,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--25
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 25--25
-\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [102]) (output_real/scenario1/output_table_transition_matrix_sum_2022x2023.tex) (output_real/scenario1/output_table_transition_matrix_name_2022x2023.tex
+ [102])
+(output_real/scenario1/output_table_transition_matrix_sum_2022x2023.tex)
+(output_real/scenario1/output_table_transition_matrix_name_2022x2023.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
  []
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 9--9
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -2008,7 +2544,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 11--11
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2018,7 +2555,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--13
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 13--13
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -2028,7 +2566,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--15
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 15--15
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -2038,7 +2577,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 17--17
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2053,7 +2593,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 19--19
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -2063,7 +2604,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 21--21
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -2073,7 +2615,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 23--23
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2083,25 +2626,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--25
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 25--25
-\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [103]) (output_real/scenario1/output_table_transition_matrix_sum_2023x2024.tex) (output_real/scenario1/output_table_transition_matrix_name_2023x2024.tex
+ [103])
+(output_real/scenario1/output_table_transition_matrix_sum_2023x2024.tex)
+(output_real/scenario1/output_table_transition_matrix_name_2023x2024.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
  []
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 9--9
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
 Underfull \hbox (badness 1348) in paragraph at lines 9--10
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan-
+[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
+-
  []
 
 
@@ -2111,7 +2659,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 11--11
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2121,7 +2670,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 13--13
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 13--13
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -2131,7 +2681,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 15--15
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 15--15
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -2141,7 +2692,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 17--17
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2151,7 +2703,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--19
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 19--19
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
@@ -2161,7 +2714,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 21--21
 
 
 Underfull \hbox (badness 5064) in paragraph at lines 21--21
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 1
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
  []
 
 
@@ -2171,7 +2725,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--23
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 23--23
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 2
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
  []
 
 
@@ -2181,30 +2736,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--25
 
 
 Underfull \hbox (badness 4416) in paragraph at lines 25--25
-\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-ter 3
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [104]) [105]
-<output_real/scenario1/dendrogram_compromise.png, id=2314, 1606.0pt x 1204.5pt>
+ [104])
+[105]
+<output_real/scenario1/dendrogram_compromise.png, id=2361, 1606.0pt x 1204.5pt>
+
 File: output_real/scenario1/dendrogram_compromise.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_compromise.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_compromise.png  used on input line 693.
+Package pdftex.def Info: output_real/scenario1/dendrogram_compromise.png  used 
+on input line 693.
 (pdftex.def)             Requested size: 362.77525pt x 272.08517pt.
-<output_real/scenario1/cluster_scatter_statis.png, id=2315, 1606.0pt x 1606.0pt>
+<output_real/scenario1/cluster_scatter_statis.png, id=2362, 1606.0pt x 1606.0pt
+>
 File: output_real/scenario1/cluster_scatter_statis.png Graphic file (type png)
 <use output_real/scenario1/cluster_scatter_statis.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis.png  used on input line 700.
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis.png  used
+ on input line 700.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [106 <./output_real/scenario1/dendrogram_compromise.png>] (output_real/scenario1/output_table_cluster_members.tex)
+ [106 <./output_real/scenario1/dendrogram_compromise.png>]
+(output_real/scenario1/output_table_cluster_members.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [107 <./output_real/scenario1/cluster_scatter_statis.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [108] (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex) (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
+ [108]
+(output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
+(output_real/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2249,7 +2813,8 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 []|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
  []
 
-) (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2021.tex) (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2021.tex
+) (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2021.tex)
+(output_real/scenario1/output_table_biplot_vs_statis_compare_name_2021.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2294,7 +2859,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 []|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
  []
 
-[109]) (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2022.tex) (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2022.tex
+[109])
+(output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2022.tex)
+(output_real/scenario1/output_table_biplot_vs_statis_compare_name_2022.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2342,7 +2909,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 6380) has occurred while \output is active []
 
- [110] (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2023.tex) (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2023.tex
+ [110]
+(output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2023.tex)
+(output_real/scenario1/output_table_biplot_vs_statis_compare_name_2023.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2390,7 +2959,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [111] (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex) (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex
+ [111]
+(output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex)
+(output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2438,7 +3009,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [112] (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex) (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
+ [112]
+(output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2486,7 +3059,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [113] (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2021.tex) (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2021.tex
+ [113]
+(output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2021.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_compare_name_2021.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2534,7 +3109,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [114] (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2022.tex) (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2022.tex
+ [114]
+(output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2022.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_compare_name_2022.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2582,7 +3159,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [115] (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2023.tex) (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2023.tex
+ [115]
+(output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2023.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_compare_name_2023.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2630,7 +3209,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [116] (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex) (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex
+ [116]
+(output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
  []
@@ -2684,21 +3265,29 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [117]
-<output_real/scenario1/cluster_map_biplot_2024.png, id=2372, 939.14865pt x 658.74104pt>
+<output_real/scenario1/cluster_map_biplot_2024.png, id=2419, 939.14865pt x 658.
+74104pt>
 File: output_real/scenario1/cluster_map_biplot_2024.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_biplot_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_biplot_2024.png  used on input line 766.
+Package pdftex.def Info: output_real/scenario1/cluster_map_biplot_2024.png  use
+d on input line 766.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
+
 <use output_real/scenario1/cluster_map_statis_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  used on input line 771.
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
+d on input line 771.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [118] (output_real/scenario1/output_table_ipm_matrix_sum_2020x2021.tex) (output_real/scenario1/output_table_ipm_matrix_name_2020x2021.tex
+ [118]
+(output_real/scenario1/output_table_ipm_matrix_sum_2020x2021.tex)
+(output_real/scenario1/output_table_ipm_matrix_name_2020x2021.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Tinggi (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Se-
+[]|\OT1/ptm/m/n/12 (+20) Tinggi (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+2
+0) Se-
  []
 
 
@@ -2714,9 +3303,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--35
 )
 Underfull \vbox (badness 4505) has occurred while \output is active []
 
- [119 <./output_real/scenario1/cluster_map_biplot_2024.png>] (output_real/scenario1/output_table_ipm_matrix_sum_2021x2022.tex) (output_real/scenario1/output_table_ipm_matrix_name_2021x2022.tex
+ [119 <./output_real/scenario1/cluster_map_biplot_2024.png>]
+(output_real/scenario1/output_table_ipm_matrix_sum_2021x2022.tex)
+(output_real/scenario1/output_table_ipm_matrix_name_2021x2022.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Tinggi (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Se-
+[]|\OT1/ptm/m/n/12 (+20) Tinggi (2021) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+2
+0) Se-
  []
 
 
@@ -2735,9 +3327,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [120])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [121] (output_real/scenario1/output_table_ipm_matrix_sum_2022x2023.tex) (output_real/scenario1/output_table_ipm_matrix_name_2022x2023.tex
+ [121]
+(output_real/scenario1/output_table_ipm_matrix_sum_2022x2023.tex)
+(output_real/scenario1/output_table_ipm_matrix_name_2022x2023.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Tinggi (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Se-
+[]|\OT1/ptm/m/n/12 (+20) Tinggi (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+2
+0) Se-
  []
 
 
@@ -2756,9 +3351,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [122])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [123] (output_real/scenario1/output_table_ipm_matrix_sum_2023x2024.tex) (output_real/scenario1/output_table_ipm_matrix_name_2023x2024.tex
+ [123]
+(output_real/scenario1/output_table_ipm_matrix_sum_2023x2024.tex)
+(output_real/scenario1/output_table_ipm_matrix_name_2023x2024.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Tinggi (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Se-
+[]|\OT1/ptm/m/n/12 (+20) Tinggi (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+2
+0) Se-
  []
 
 
@@ -2780,17 +3378,21 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
  [125]
 Underfull \vbox (badness 1515) has occurred while \output is active []
 
- [126] (output_real/scenario1/output_table_cross_matrix_sum_2020.tex) (output_real/scenario1/output_table_cross_matrix_name_2020.tex
+ [126]
+(output_real/scenario1/output_table_cross_matrix_sum_2020.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2020.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
 
-) (output_real/scenario1/output_table_cross_matrix_sum_2021.tex) (output_real/scenario1/output_table_cross_matrix_name_2021.tex
+) (output_real/scenario1/output_table_cross_matrix_sum_2021.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2021.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
 
-[127]) (output_real/scenario1/output_table_cross_matrix_sum_2022.tex) (output_real/scenario1/output_table_cross_matrix_name_2022.tex
+[127]) (output_real/scenario1/output_table_cross_matrix_sum_2022.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2022.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
@@ -2798,20 +3400,25 @@ Underfull \hbox (badness 3417) in paragraph at lines 11--11
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [128]) (output_real/scenario1/output_table_cross_matrix_sum_2023.tex) (output_real/scenario1/output_table_cross_matrix_name_2023.tex
+ [128])
+(output_real/scenario1/output_table_cross_matrix_sum_2023.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2023.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
 
 
 Underfull \hbox (badness 1348) in paragraph at lines 13--14
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan-
+[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
+-
  []
 
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [129]) (output_real/scenario1/output_table_cross_matrix_sum_2024.tex) (output_real/scenario1/output_table_cross_matrix_name_2024.tex
+ [129])
+(output_real/scenario1/output_table_cross_matrix_sum_2024.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2024.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
@@ -2819,7 +3426,9 @@ Underfull \hbox (badness 3417) in paragraph at lines 11--11
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [130]) [131] (output_real/scenario1/output_moran.tex) (output_real/scenario2/output_moran.tex) [132] [133]) [134]
+ [130])
+[131] (output_real/scenario1/output_moran.tex)
+(output_real/scenario2/output_moran.tex) [132] [133]) [134]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
@@ -2833,7 +3442,9 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] [136]
 Underfull \hbox (badness 1038) in paragraph at lines 52--54
-[]\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-board \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-sis web
+[]\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-boar
+d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
+is web
  []
 
 ) [137] [138
@@ -2843,49 +3454,59 @@ Underfull \hbox (badness 1038) in paragraph at lines 52--54
 
 ] (induk.bbl
 Underfull \hbox (badness 2293) in paragraph at lines 47--52
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20) In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20)
+ In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--59
-\OT1/ptm/m/n/12 (+20) table / 3 / WkdVMWRYVnBkMnBvVEhKSVkyWXhNblZtTjJSbmR6MDkjMw = = /
+\OT1/ptm/m/n/12 (+20) table / 3 / WkdVMWRYVnBkMnBvVEhKSVkyWXhNblZtTjJSbmR6MDkjM
+w = = /
  []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 54--59
-\OT1/ptm/m/n/12 (+17) produk -[] domestik -[] regional -[] bruto -[] atas -[] dasar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
+\OT1/ptm/m/n/12 (+17) produk -[] domestik -[] regional -[] bruto -[] atas -[] d
+asar -[] harga -[] berlaku -[] menurut -[] provinsi -[]-[] miliar -[]
  []
 
 
 Underfull \hbox (badness 2012) in paragraph at lines 61--65
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2020).  \OT1/ptm/m/it/12 (+20) Provinsi ban-ten dalam angka
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2020).  \OT1/p
+tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
 
 Underfull \hbox (badness 2012) in paragraph at lines 67--71
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2021).  \OT1/ptm/m/it/12 (+20) Provinsi ban-ten dalam angka
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2021).  \OT1/p
+tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
 [139
 
 ]
 Underfull \hbox (badness 2012) in paragraph at lines 73--77
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2022).  \OT1/ptm/m/it/12 (+20) Provinsi ban-ten dalam angka
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2022).  \OT1/p
+tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
 
 Underfull \hbox (badness 2012) in paragraph at lines 79--83
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2023).  \OT1/ptm/m/it/12 (+20) Provinsi ban-ten dalam angka
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2023).  \OT1/p
+tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
 
 Underfull \hbox (badness 2012) in paragraph at lines 85--89
-[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2024).  \OT1/ptm/m/it/12 (+20) Provinsi ban-ten dalam angka
+[]\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik Provinsi Ban-ten (2024).  \OT1/p
+tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
 [140] [141] [142] [143]
 Underfull \hbox (badness 2096) in paragraph at lines 359--363
-[]\OT1/ptm/m/n/12 (+20) Weisstein, Eric W. (2024).  \OT1/ptm/m/it/12 (+20) Kur-to-sis ex-cess\OT1/ptm/m/n/12 (+20) .  []$https : / / mathworld . wolfram . com /
+[]\OT1/ptm/m/n/12 (+20) Weisstein, Eric W. (2024).  \OT1/ptm/m/it/12 (+20) Kur-
+to-sis ex-cess\OT1/ptm/m/n/12 (+20) .  []$https : / / mathworld . wolfram . com
+ /
  []
 
 ) [144]
@@ -2896,7 +3517,8 @@ Underfull \hbox (badness 2096) in paragraph at lines 359--363
 
 
 
-] [146] [147] [148] [149] [150] [151] [152] [153] [154] [155] [156]) [157] [158
+] [146] [147] [148] [149] [150] [151] [152] [153]
+[154] [155] [156]) [157] [158
 
 
 
@@ -2905,7 +3527,7 @@ Underfull \hbox (badness 2096) in paragraph at lines 359--363
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
-<gambarku/screenshot_web.png, id=2664, 1444.64719pt x 548.80031pt>
+<gambarku/screenshot_web.png, id=2711, 1444.64719pt x 548.80031pt>
 File: gambarku/screenshot_web.png Graphic file (type png)
 <use gambarku/screenshot_web.png>
 Package pdftex.def Info: gambarku/screenshot_web.png  used on input line 16.
@@ -2918,28 +3540,57 @@ Package pdftex.def Info: gambarku/screenshot_web.png  used on input line 16.
 
 
 
-] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux) (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux) (persetujuan_publikasi.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux) (lampiran1.aux) (lampiran2.aux))
+] (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux)
+(orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux)
+(persetujuan_publikasi.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux)
+(bab5.aux) (lampiran1.aux) (lampiran2.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
 
 
-LaTeX Warning: There were multiply-defined labels.
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 34824 strings out of 467871
- 669496 string characters out of 5418376
+ 34830 strings out of 467871
+ 669205 string characters out of 5418376
  1145087 words of memory out of 5000000
- 61381 multiletter control sequences out of 15000+600000
- 680683 words of font info for 408 fonts, out of 8000000 for 9000
+ 61371 multiletter control sequences out of 15000+600000
+ 682541 words of font info for 414 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
- 84i,17n,104p,1507b,836s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (193 pages, 9001402 bytes).
+ 84i,17n,104p,1495b,836s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
+fonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/
+AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/User
+s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pf
+b><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
+cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
+onts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/User
+s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/U
+sers/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/U
+sers/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/
+Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/
+Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on induk.pdf (199 pages, 9020312 bytes).
 PDF statistics:
- 3339 PDF objects out of 3580 (max. 8388607)
- 749 named destinations out of 1000 (max. 500000)
- 64970 words of extra memory for PDF output out of 74296 (max. 10000000)
+ 3399 PDF objects out of 3580 (max. 8388607)
+ 763 named destinations out of 1000 (max. 500000)
+ 69090 words of extra memory for PDF output out of 74296 (max. 10000000)
 

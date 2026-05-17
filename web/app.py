@@ -27,6 +27,21 @@ app = Dash(
 )
 server = app.server
 
+def escape_tex(val):
+    if isinstance(val, (int, float)):
+        return val
+    s = str(val)
+    # Jika sudah mengandung LaTeX commands (pake $) jangan escape berlebihan
+    if '$' in s and (s.count('$') % 2 == 0):
+        # Kemungkinan math mode, hanya escape karakter lain kecuali _ dan $ jika perlu
+        for c, r in [('%', r'\%'), ('#', r'\#'), ('&', r'\&')]:
+            s = s.replace(c, r)
+        return s
+    for c, r in [('_', r'\_'), ('%', r'\%'), ('$', r'\$'), ('#', r'\#'), ('&', r'\&')]:
+        s = s.replace(c, r)
+    return s
+
+
 # --- GLOBAL MAP INITIALIZATION ---
 try:
     print("Sedang membaca Shapefile...")
@@ -763,14 +778,7 @@ def export_tables_latex(res):
         def write_single_table(data_list, filename, caption, label, columns=None, float_fmt="{:.4f}", longtable=False):
             if not data_list: return
             
-            # Sanitizer for LaTeX
-            def escape_tex(val):
-                if isinstance(val, (int, float)): return val
-                s = str(val)
-                chars = {'_': r'\_', '%': r'\%', '$': r'\$', '#': r'\#', '&': r'\&'}
-                for c, r in chars.items():
-                    s = s.replace(c, r)
-                return s
+
 
             df = pd.DataFrame(data_list)
             if columns: df = df[columns]
@@ -779,7 +787,7 @@ def export_tables_latex(res):
             if longtable:
                 # LONGTABLE logic
                 lines.append(r"\begin{longtable}{|" + "c|"*len(df.columns) + "}")
-                lines.append(r"\caption{" + caption + r"} \label{tab:" + label + r"} \\\\")
+                lines.append(r"\caption{" + escape_tex(caption) + r"} \label{tab:" + label + r"} \\\\")
                 lines.append(r"\hline")
                 # Escape headers
                 header = " & ".join([f"\\textbf{{{escape_tex(c)}}}" for c in df.columns]) + " \\\\"
@@ -804,7 +812,7 @@ def export_tables_latex(res):
                 # STANDARD TABLE logic
                 lines.append(r"\begin{table}[H]")
                 lines.append(r"\centering")
-                lines.append(r"\caption{" + caption + r"} \label{tab:" + label + r"}")
+                lines.append(r"\caption{" + escape_tex(caption) + r"} \label{tab:" + label + r"}")
                 lines.append(r"\begin{tabular}{|" + "c|"*len(df.columns) + "}")
                 lines.append(r"\hline")
                 # Escape headers
@@ -1556,7 +1564,7 @@ def export_structure_vector_latex(sv_res, output_dir="../output_app", label_pref
         lines.append(r"\begin{table}[H]")
         lines.append(r"\centering")
         lines.append(r"\small")
-        lines.append(fr"\caption{{{caption}}} \label{{tab:{label_prefix}{label}}}")
+        lines.append(fr"\caption{{{escape_tex(caption)}}} \label{{tab:{label_prefix}{label}}}")
         lines.append(r"\begin{tabular}{|" + "c|" * n_cols + "}")
         lines.append(r"\hline")
         lines.append(" & ".join([fr"\textbf{{{h}}}" for h in col_headers]) + r" \\")
@@ -5278,7 +5286,7 @@ def ui_table_to_latex(data, columns, caption, label):
     if not col_ids: return "% Setup kolom gagal"
     
     tex = [r"% !TeX root = ../induk.tex", r"\begin{table}[H]", r"\centering"]
-    tex.append(rf"\caption{{{caption}}} \label{{{label}}}")
+    tex.append(rf"\caption{{{escape_tex(caption)}}} \label{{{label}}}")
     
     # Lebar kolom pertama otomatis, sisa p{2.3cm} agar muat
     aligns = "|c|" + "p{2.3cm}|" * (len(col_ids)-1)
