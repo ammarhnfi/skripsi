@@ -107,8 +107,444 @@ function LatexTable({ tex }) {
   );
 }
 
+
+function SideBySideTexCard({ filename, folder, hasLeft, hasRight }) {
+  const [leftTex, setLeftTex] = useState('');
+  const [rightTex, setRightTex] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const leftPath = `/` + folder + `/scenario1/` + filename;
+        const rightPath = `/` + folder + `/scenario2/` + filename;
+
+        const promises = [];
+        if (hasLeft) promises.push(fetch(leftPath).then(r => r.text()));
+        else promises.push(Promise.resolve(''));
+
+        if (hasRight) promises.push(fetch(rightPath).then(r => r.text()));
+        else promises.push(Promise.resolve(''));
+
+        const [leftData, rightData] = await Promise.all(promises);
+
+        if (active) {
+          setLeftTex(leftData);
+          setRightTex(rightData);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching side-by-side tables:", err);
+        if (active) setLoading(false);
+      }
+    }
+    fetchData();
+    return () => { active = false; };
+  }, [filename, folder, hasLeft, hasRight]);
+
+  const cleanTitle = filename.replace('output_table_', '').replace(/_/g, ' ').replace('.tex', '').toUpperCase();
+
+  return (
+    <div className="compare-card card" style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
+        <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc', fontWeight: '600' }}>{cleanTitle}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ background: 'rgba(6, 182, 212, 0.1)', color: '#06b6d4', border: '1px solid rgba(6, 182, 212, 0.2)', borderRadius: '20px', padding: '3px 10px', fontSize: '0.75rem', fontWeight: '600' }}>DATA MATRIX/TABLE</span>
+          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Filename: {filename}</span>
+        </div>
+      </div>
+
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120px' }}>
+          <div className="spinner" style={{ width: '30px', height: '30px' }}></div>
+        </div>
+      ) : (
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+          {/* Left: Scenario 1 */}
+          <div>
+            <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '10px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
+            {hasLeft ? <LatexTable tex={leftTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 1</div>}
+          </div>
+          {/* Right: Scenario 2 */}
+          <div>
+            <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '10px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
+            {hasRight ? <LatexTable tex={rightTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 2</div>}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+function RootTexTableCard({ filename, folder }) {
+  const [tex, setTex] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const path = `/` + folder + `/` + filename;
+        const response = await fetch(path);
+        const data = await response.text();
+        if (active) {
+          setTex(data);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching root table:", err);
+        if (active) setLoading(false);
+      }
+    }
+    fetchData();
+    return () => { active = false; };
+  }, [filename, folder]);
+
+  return (
+    <div className="card" style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
+          <div className="spinner" style={{ width: '24px', height: '24px' }}></div>
+        </div>
+      ) : (
+        <LatexTable tex={tex} />
+      )}
+    </div>
+  );
+}
+
+
+function SideBySideImageCard({ filename, folder, hasLeft, hasRight }) {
+  const leftSrc = `/` + folder + `/scenario1/` + filename;
+  const rightSrc = `/` + folder + `/scenario2/` + filename;
+  
+  const cleanTitle = filename.replace(/_/g, ' ').replace('.png', '').toUpperCase();
+
+  return (
+    <div className="compare-card card" style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
+        <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc', fontWeight: '600' }}>{cleanTitle}</h3>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <span style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', border: '1px solid rgba(59, 130, 246, 0.2)', borderRadius: '20px', padding: '3px 10px', fontSize: '0.75rem', fontWeight: '600' }}>VISUALIZATION PLOT</span>
+          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Filename: {filename}</span>
+        </div>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+        {/* Left: Scenario 1 */}
+        <div>
+          <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
+          {hasLeft ? (
+            <div className="img-container" style={{ background: 'rgba(15,23,42,0.4)', borderRadius: '12px', padding: '10px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+              <img src={leftSrc} alt={filename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '420px', objectFit: 'contain' }} />
+            </div>
+          ) : (
+            <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 1</div>
+          )}
+        </div>
+        
+        {/* Right: Scenario 2 */}
+        <div>
+          <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
+          {hasRight ? (
+            <div className="img-container" style={{ background: 'rgba(15,23,42,0.4)', borderRadius: '12px', padding: '10px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+              <img src={rightSrc} alt={filename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '420px', objectFit: 'contain' }} />
+            </div>
+          ) : (
+            <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 2</div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
+  const [selectedFolder, setSelectedFolder] = useState('output_real');
+  const [activeTab, setActiveTab] = useState('core');
+  const [rootActiveTab, setRootActiveTab] = useState('boxplots');
+
+  const currentResults = selectedFolder === 'output_sample' ? allResultsSample : allResultsReal;
+
+  // 1. Root Files Filter
+  const rootTexFiles = currentResults.filter(item => {
+    if (!item) return false;
+    const isRoot = !item.src.includes('/scenario1/') && !item.src.includes('/scenario2/');
+    return isRoot && item.src.endsWith('.tex') && item.name.startsWith('output_table');
+  }).sort((a,b) => a.name.localeCompare(b.name));
+
+  const rootPngFiles = currentResults.filter(item => {
+    if (!item) return false;
+    const isRoot = !item.src.includes('/scenario1/') && !item.src.includes('/scenario2/');
+    return isRoot && item.src.endsWith('.png') && item.name.startsWith('boxplot');
+  }).sort((a,b) => a.name.localeCompare(b.name));
+
+  // 2. Scenario Files List
+  const sc1Files = currentResults.filter(i => i && i.src.includes('/scenario1/'));
+  const sc2Files = currentResults.filter(i => i && i.src.includes('/scenario2/'));
+
+  // Unique basenames in scenarios
+  const uniqueFilenames = [...new Set([
+    ...sc1Files.map(i => i.name),
+    ...sc2Files.map(i => i.name)
+  ])].sort();
+
+  // Filter files
+  const ignoredPatterns = ['.aux', '.log', '.bak', 'output_macros.tex', 'output_core_statis.tex', 'matrix_F_c.tex', 'matrix_G_c.tex', 'matrix_V_c.tex'];
+  const scenarioDisplayFiles = uniqueFilenames.filter(name => {
+    if (ignoredPatterns.some(p => name.endsWith(p))) return false;
+    return name.endsWith('.png') || name.endsWith('.tex');
+  });
+
+  // Categorize
+  const coreFilesList = ['scree_plot.png', 'loading_plot.png', 'rv_heatmap.png', 'statis_trajectories.png', 
+                         'statis_trajectories_highlight.png', 'compromise_map.png', 'compromise_biplot_matplotlib.png',
+                         'variable_contribution.png', 'variable_cos2.png', 'beta_trajectory.png'];
+
+  const categories = {
+    core: { label: '💎 Kompromis & Trajektori (Core)', files: [] },
+    yearly: { label: '📅 Biplot per Tahun', files: [] },
+    cluster: { label: '🧩 Klastering & Dendrogram', files: [] },
+    compare: { label: '🔄 Perbandingan & Transisi', files: [] },
+    tables: { label: '📋 Tabel Output (.tex)', files: [] }
+  };
+
+  scenarioDisplayFiles.forEach(name => {
+    if (name.endsWith('.tex')) {
+      categories.tables.files.push(name);
+    } else if (coreFilesList.includes(name)) {
+      categories.core.files.push(name);
+    } else if (name.includes('biplot_tahun')) {
+      categories.yearly.files.push(name);
+    } else if (name.includes('cluster') || name.includes('dendrogram') || name.includes('elbow')) {
+      categories.cluster.files.push(name);
+    } else if (name.includes('compare')) {
+      categories.compare.files.push(name);
+    } else {
+      categories.core.files.push(name);
+    }
+  });
+
+  // Ensure unique sorted
+  Object.keys(categories).forEach(key => {
+    categories[key].files = [...new Set(categories[key].files)].sort();
+  });
+
+  return (
+    <div className="app-container" style={{ padding: '40px', maxWidth: '1600px', margin: '0 auto', color: '#E2E8F0' }}>
+      {/* HEADER PANEL */}
+      <div className="header-glass" style={{
+        background: 'rgba(30, 41, 59, 0.45)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '24px',
+        padding: '30px',
+        marginBottom: '40px',
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '20px'
+      }}>
+        <div className="title-container">
+          <button 
+            onClick={onBack}
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              border: 'none',
+              color: '#06B6D4',
+              padding: '8px 18px',
+              borderRadius: '30px',
+              cursor: 'pointer',
+              fontSize: '0.85rem',
+              fontWeight: '700',
+              marginBottom: '14px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              transition: 'all 0.2s',
+              border: '1px solid rgba(6, 182, 212, 0.2)'
+            }}
+            onMouseOver={e => { e.target.style.background = 'rgba(6, 182, 212, 0.15)'; e.target.style.borderColor = '#06B6D4'; }}
+            onMouseOut={e => { e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.borderColor = 'rgba(6, 182, 212, 0.2)'; }}
+          >
+            ⬅ Kembali ke Beranda
+          </button>
+          <h1 style={{
+            margin: '0 0 6px 0',
+            fontSize: '28px',
+            fontWeight: '700',
+            letterSpacing: '-0.5px',
+            background: 'linear-gradient(135deg, #06B6D4, #3B82F6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>STATIS Scenario Comparison Dashboard</h1>
+          <p style={{ margin: 0, fontSize: '14px', color: '#94A3B8' }}>Compare statistical models, biplots, clustering maps, and data matrices side-by-side.</p>
+        </div>
+
+        {/* Folder selector dropdown */}
+        <div>
+          <label style={{ fontWeight: '600', fontSize: '13px', color: '#94A3B8', marginBottom: '6px', display: 'block' }}>Pilih Folder Output:</label>
+          <select
+            value={selectedFolder}
+            onChange={e => setSelectedFolder(e.target.value)}
+            style={{
+              width: '320px',
+              background: '#1E293B',
+              color: '#F8FAFC',
+              border: '1px solid rgba(255,255,255,0.15)',
+              borderRadius: '10px',
+              padding: '10px 14px',
+              fontSize: '14px',
+              fontWeight: '500',
+              outline: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <option value="output_real">📂 output_real (Data Skripsi Real)</option>
+            <option value="output_sample">📂 output_sample (Data Contoh)</option>
+          </select>
+        </div>
+      </div>
+
+      {/* ROOT SECTION (GLOBAL & DESCRIPTIVE) */}
+      <div style={{ marginBottom: '40px' }}>
+        <h2 className="section-title" style={{ fontSize: '18px', fontWeight: '600', color: '#F8FAFC', margin: '0 0 20px 0', borderLeft: '4px solid #06B6D4', paddingLeft: '12px' }}>📊 Root Output Files (Global & Descriptive)</h2>
+        
+        {/* Custom React Tabs for Root */}
+        <div className="card" style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+            <button
+              onClick={() => setRootActiveTab('boxplots')}
+              style={{
+                flex: 1, padding: '14px', border: 'none', cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600',
+                background: rootActiveTab === 'boxplots' ? 'rgba(30, 41, 59, 0.4)' : 'transparent',
+                color: rootActiveTab === 'boxplots' ? '#06b6d4' : '#94a3b8',
+                borderBottom: rootActiveTab === 'boxplots' ? '2px solid #06b6d4' : 'none',
+                transition: 'all 0.2s'
+              }}
+            >📈 Boxplots (Distribusi Data)</button>
+            <button
+              onClick={() => setRootActiveTab('tables')}
+              style={{
+                flex: 1, padding: '14px', border: 'none', cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600',
+                background: rootActiveTab === 'tables' ? 'rgba(30, 41, 59, 0.4)' : 'transparent',
+                color: rootActiveTab === 'tables' ? '#06b6d4' : '#94a3b8',
+                borderBottom: rootActiveTab === 'tables' ? '2px solid #06b6d4' : 'none',
+                transition: 'all 0.2s'
+              }}
+            >📋 Global & Descriptive Tables</button>
+          </div>
+
+          <div style={{ padding: '24px' }}>
+            {rootActiveTab === 'boxplots' ? (
+              rootPngFiles.length > 0 ? (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))', gap: '24px' }}>
+                  {rootPngFiles.map(img => (
+                    <div key={img.name} className="card" style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <h5 style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 12px 0', textAlign: 'center', textTransform: 'uppercase' }}>{img.name.replace(/_/g, ' ').replace('.png', '')}</h5>
+                      <div className="img-container" style={{ display: 'flex', justifyContent: 'center', background: 'rgba(15,23,42,0.4)', borderRadius: '12px', padding: '10px' }}>
+                        <img src={img.src} alt={img.caption} style={{ maxWidth: '100%', maxHeight: '250px', objectFit: 'contain', borderRadius: '8px' }} />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ padding: '30px', textAlign: 'center', color: '#64748b' }}>Tidak ada boxplot di folder root.</div>
+              )
+            ) : (
+              rootTexFiles.length > 0 ? (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(500px, 1fr))', gap: '24px' }}>
+                  {rootTexFiles.map(tex => (
+                    <div key={tex.name} style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      <h5 style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 4px 0', textAlign: 'center', textTransform: 'uppercase' }}>{tex.name.replace('output_table_', '').replace(/_/g, ' ').replace('.tex', '')}</h5>
+                      <RootTexTableCard filename={tex.name} folder={selectedFolder} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div style={{ padding: '30px', textAlign: 'center', color: '#64748b' }}>Tidak ada tabel di folder root.</div>
+              )
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* SCENARIO COMPARISON SECTION */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <h2 className="section-title" style={{ fontSize: '18px', fontWeight: '600', color: '#F8FAFC', margin: '0', borderLeft: '4px solid #06B6D4', paddingLeft: '12px' }}>⚔️ Side-by-Side Scenario Comparison</h2>
+          <span style={{ fontSize: '13px', color: '#94A3B8', marginLeft: '16px' }}>Skenario 1 (Kiri) vs Skenario 2 (Kanan)</span>
+        </div>
+
+        {/* Custom React Tabs for Scenarios */}
+        <div className="card" style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
+          <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.06)', overflowX: 'auto' }}>
+            {Object.keys(categories).map(catKey => (
+              <button
+                key={catKey}
+                onClick={() => setActiveTab(catKey)}
+                style={{
+                  flex: 1, minWidth: '150px', padding: '14px', border: 'none', cursor: 'pointer', fontSize: '0.88rem', fontWeight: '600',
+                  background: activeTab === catKey ? 'rgba(30, 41, 59, 0.4)' : 'transparent',
+                  color: activeTab === catKey ? '#06b6d4' : '#94a3b8',
+                  borderBottom: activeTab === catKey ? '2px solid #06b6d4' : 'none',
+                  transition: 'all 0.2s',
+                  whiteSpace: 'nowrap'
+                }}
+              >{categories[catKey].label}</button>
+            ))}
+          </div>
+
+          <div style={{ padding: '24px' }}>
+            {categories[activeTab].files.length > 0 ? (
+              categories[activeTab].files.map(filename => {
+                const hasLeft = sc1Files.some(f => f.name === filename);
+                const hasRight = sc2Files.some(f => f.name === filename);
+
+                if (filename.endsWith('.tex')) {
+                  return (
+                    <SideBySideTexCard
+                      key={filename}
+                      filename={filename}
+                      folder={selectedFolder}
+                      hasLeft={hasLeft}
+                      hasRight={hasRight}
+                    />
+                  );
+                } else {
+                  return (
+                    <SideBySideImageCard
+                      key={filename}
+                      filename={filename}
+                      folder={selectedFolder}
+                      hasLeft={hasLeft}
+                      hasRight={hasRight}
+                    />
+                  );
+                }
+              })
+            ) : (
+              <div style={{ padding: '30px', textAlign: 'center', color: '#64748b' }}>Tidak ada file dalam kategori ini.</div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function App() {
   const [activeModal, setActiveModal] = useState(null);
+  const [compareView, setCompareView] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
@@ -280,15 +716,22 @@ function App() {
     <>
       <div className="background-animation"></div>
 
-      <div className="container">
-        <header>
-          <h1 className="title">Analisis STATIS dan Biplot Dinamis</h1>
-          <p className="subtitle">
-            Studi Kasus: Indikator Sosio-Ekonomi di Banten, DKI Jakarta, dan
-            Jawa Barat (2020-2024)
-          </p>
-          <div className="author">Oleh: Ammar Hanafi</div>
-        </header>
+      {compareView ? (
+        <CompareDashboard
+          onBack={() => setCompareView(false)}
+          allResultsReal={allResultsReal}
+          allResultsSample={allResultsSample}
+        />
+      ) : (
+        <div className="container">
+          <header>
+            <h1 className="title">Analisis STATIS dan Biplot Dinamis</h1>
+            <p className="subtitle">
+              Studi Kasus: Indikator Sosio-Ekonomi di Banten, DKI Jakarta, dan
+              Jawa Barat (2020-2024)
+            </p>
+            <div className="author">Oleh: Ammar Hanafi</div>
+          </header>
 
         <div className="grid-menu">
           {/* PDF Card */}
@@ -317,16 +760,10 @@ function App() {
             </p>
           </div>
 
-          {/* Documentation Card (Unified & Hybrid) */}
+          {/* Documentation Card (Unified) */}
           <div
             className="card glass-effect highlight"
-            onClick={() => {
-              if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-                window.open('http://localhost:8060', '_blank');
-              } else {
-                openModal('docs-real');
-              }
-            }}
+            onClick={() => setCompareView(true)}
           >
             <div className="card-icon">⚔️</div>
             <h2>Dokumentasi & Perbandingan</h2>
@@ -369,6 +806,7 @@ function App() {
           <p className="copyright">&copy; 2026 Universitas Indonesia</p>
         </footer>
       </div>
+      )}
 
       {/* MODALS */}
       <div
