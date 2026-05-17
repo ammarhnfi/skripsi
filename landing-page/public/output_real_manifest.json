@@ -192,6 +192,30 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "permutation_histogram.png",
+    "caption": "Permutation Histogram",
+    "type": "image",
+    "src": "/output_real/scenario1/permutation_histogram.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "rv_heatmap.png",
+    "caption": "Rv Heatmap",
+    "type": "image",
+    "src": "/output_real/scenario1/rv_heatmap.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "scree_plot.png",
+    "caption": "Scree Plot",
+    "type": "image",
+    "src": "/output_real/scenario1/scree_plot.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "statis_trajectories.png",
     "caption": "Statis Trajectories",
     "type": "image",
@@ -213,6 +237,14 @@
     "type": "image",
     "src": "/output_real/scenario1/variable_cos2.png",
     "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "beta_trajectory.png",
+    "caption": "Beta Trajectory",
+    "type": "image",
+    "src": "/output_real/scenario1/beta_trajectory.png",
+    "group": "Lain-lain",
     "scenario": "Scenario 1"
   },
   {
@@ -248,10 +280,34 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_core_statis.tex",
+    "caption": "Output Core Statis",
+    "type": "text",
+    "src": "/output_real/scenario1/output_core_statis.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_macros.tex",
+    "caption": "Output Macros",
+    "type": "text",
+    "src": "/output_real/scenario1/output_macros.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_moran.tex",
     "caption": "Output Moran",
     "type": "text",
     "src": "/output_real/scenario1/output_moran.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_perm_statis.tex",
+    "caption": "Output Perm Statis",
+    "type": "text",
+    "src": "/output_real/scenario1/output_perm_statis.tex",
     "group": "Lain-lain",
     "scenario": "Scenario 1"
   },
@@ -616,6 +672,22 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_beta_provinsi.tex",
+    "caption": "Output Table Beta Provinsi",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_beta_provinsi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_beta_vec.tex",
+    "caption": "Output Table Beta Vec",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_beta_vec.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
     "caption": "Output Table Biplot Vs Statis Compare Name 2020",
     "type": "text",
@@ -936,6 +1008,126 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_jarak_loading_2020.tex",
+    "caption": "Output Table Jarak Loading 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_2021.tex",
+    "caption": "Output Table Jarak Loading 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_2022.tex",
+    "caption": "Output Table Jarak Loading 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_2023.tex",
+    "caption": "Output Table Jarak Loading 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_2024.tex",
+    "caption": "Output Table Jarak Loading 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_2020.tex",
+    "caption": "Output Table Jarak Skor 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_skor_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_2021.tex",
+    "caption": "Output Table Jarak Skor 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_skor_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_2022.tex",
+    "caption": "Output Table Jarak Skor 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_skor_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_2023.tex",
+    "caption": "Output Table Jarak Skor 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_skor_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_2024.tex",
+    "caption": "Output Table Jarak Skor 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_jarak_skor_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_loading_intra_2020.tex",
+    "caption": "Output Table Loading Intra 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_loading_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_loading_intra_2021.tex",
+    "caption": "Output Table Loading Intra 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_loading_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_loading_intra_2022.tex",
+    "caption": "Output Table Loading Intra 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_loading_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_loading_intra_2023.tex",
+    "caption": "Output Table Loading Intra 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_loading_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_loading_intra_2024.tex",
+    "caption": "Output Table Loading Intra 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_loading_intra_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_loadings.tex",
     "caption": "Output Table Loadings",
     "type": "text",
@@ -944,10 +1136,90 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_matriks_intra_loading_2020.tex",
+    "caption": "Output Table Matriks Intra Loading 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_matriks_intra_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2021.tex",
+    "caption": "Output Table Matriks Intra Loading 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_matriks_intra_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2022.tex",
+    "caption": "Output Table Matriks Intra Loading 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_matriks_intra_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2023.tex",
+    "caption": "Output Table Matriks Intra Loading 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_matriks_intra_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2024.tex",
+    "caption": "Output Table Matriks Intra Loading 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_matriks_intra_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_scores.tex",
     "caption": "Output Table Scores",
     "type": "text",
     "src": "/output_real/scenario1/output_table_scores.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_skor_intra_2020.tex",
+    "caption": "Output Table Skor Intra 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_skor_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_skor_intra_2021.tex",
+    "caption": "Output Table Skor Intra 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_skor_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_skor_intra_2022.tex",
+    "caption": "Output Table Skor Intra 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_skor_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_skor_intra_2023.tex",
+    "caption": "Output Table Skor Intra 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_skor_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_skor_intra_2024.tex",
+    "caption": "Output Table Skor Intra 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_skor_intra_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -964,6 +1236,14 @@
     "caption": "Output Table Statis Vs Ipm Avg Sum",
     "type": "text",
     "src": "/output_real/scenario1/output_table_statis_vs_ipm_avg_sum.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_struktur_diagnostik.tex",
+    "caption": "Output Table Struktur Diagnostik",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_struktur_diagnostik.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1224,6 +1504,30 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "permutation_histogram.png",
+    "caption": "Permutation Histogram",
+    "type": "image",
+    "src": "/output_real/scenario2/permutation_histogram.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "rv_heatmap.png",
+    "caption": "Rv Heatmap",
+    "type": "image",
+    "src": "/output_real/scenario2/rv_heatmap.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "scree_plot.png",
+    "caption": "Scree Plot",
+    "type": "image",
+    "src": "/output_real/scenario2/scree_plot.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "statis_trajectories.png",
     "caption": "Statis Trajectories",
     "type": "image",
@@ -1245,6 +1549,14 @@
     "type": "image",
     "src": "/output_real/scenario2/variable_cos2.png",
     "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "beta_trajectory.png",
+    "caption": "Beta Trajectory",
+    "type": "image",
+    "src": "/output_real/scenario2/beta_trajectory.png",
+    "group": "Lain-lain",
     "scenario": "Scenario 2"
   },
   {
@@ -1280,10 +1592,34 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_core_statis.tex",
+    "caption": "Output Core Statis",
+    "type": "text",
+    "src": "/output_real/scenario2/output_core_statis.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_macros.tex",
+    "caption": "Output Macros",
+    "type": "text",
+    "src": "/output_real/scenario2/output_macros.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_moran.tex",
     "caption": "Output Moran",
     "type": "text",
     "src": "/output_real/scenario2/output_moran.tex",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_perm_statis.tex",
+    "caption": "Output Perm Statis",
+    "type": "text",
+    "src": "/output_real/scenario2/output_perm_statis.tex",
     "group": "Lain-lain",
     "scenario": "Scenario 2"
   },
@@ -1648,6 +1984,22 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_beta_provinsi.tex",
+    "caption": "Output Table Beta Provinsi",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_beta_provinsi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_beta_vec.tex",
+    "caption": "Output Table Beta Vec",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_beta_vec.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
     "caption": "Output Table Biplot Vs Statis Compare Name 2020",
     "type": "text",
@@ -1968,6 +2320,126 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_jarak_loading_2020.tex",
+    "caption": "Output Table Jarak Loading 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_2021.tex",
+    "caption": "Output Table Jarak Loading 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_2022.tex",
+    "caption": "Output Table Jarak Loading 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_2023.tex",
+    "caption": "Output Table Jarak Loading 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_2024.tex",
+    "caption": "Output Table Jarak Loading 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_2020.tex",
+    "caption": "Output Table Jarak Skor 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_skor_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_2021.tex",
+    "caption": "Output Table Jarak Skor 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_skor_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_2022.tex",
+    "caption": "Output Table Jarak Skor 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_skor_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_2023.tex",
+    "caption": "Output Table Jarak Skor 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_skor_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_2024.tex",
+    "caption": "Output Table Jarak Skor 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_jarak_skor_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_loading_intra_2020.tex",
+    "caption": "Output Table Loading Intra 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_loading_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_loading_intra_2021.tex",
+    "caption": "Output Table Loading Intra 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_loading_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_loading_intra_2022.tex",
+    "caption": "Output Table Loading Intra 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_loading_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_loading_intra_2023.tex",
+    "caption": "Output Table Loading Intra 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_loading_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_loading_intra_2024.tex",
+    "caption": "Output Table Loading Intra 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_loading_intra_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_loadings.tex",
     "caption": "Output Table Loadings",
     "type": "text",
@@ -1976,10 +2448,90 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_matriks_intra_loading_2020.tex",
+    "caption": "Output Table Matriks Intra Loading 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_matriks_intra_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2021.tex",
+    "caption": "Output Table Matriks Intra Loading 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_matriks_intra_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2022.tex",
+    "caption": "Output Table Matriks Intra Loading 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_matriks_intra_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2023.tex",
+    "caption": "Output Table Matriks Intra Loading 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_matriks_intra_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2024.tex",
+    "caption": "Output Table Matriks Intra Loading 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_matriks_intra_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_scores.tex",
     "caption": "Output Table Scores",
     "type": "text",
     "src": "/output_real/scenario2/output_table_scores.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_skor_intra_2020.tex",
+    "caption": "Output Table Skor Intra 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_skor_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_skor_intra_2021.tex",
+    "caption": "Output Table Skor Intra 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_skor_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_skor_intra_2022.tex",
+    "caption": "Output Table Skor Intra 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_skor_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_skor_intra_2023.tex",
+    "caption": "Output Table Skor Intra 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_skor_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_skor_intra_2024.tex",
+    "caption": "Output Table Skor Intra 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_skor_intra_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -1996,6 +2548,14 @@
     "caption": "Output Table Statis Vs Ipm Avg Sum",
     "type": "text",
     "src": "/output_real/scenario2/output_table_statis_vs_ipm_avg_sum.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_struktur_diagnostik.tex",
+    "caption": "Output Table Struktur Diagnostik",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_struktur_diagnostik.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2252,6 +2812,14 @@
     "caption": "Boxplot Gr 2024",
     "type": "image",
     "src": "/output_real/boxplot_gr_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipg.png",
+    "caption": "Boxplot Ipg",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -2664,62 +3232,6 @@
     "scenario": "Shared"
   },
   {
-    "name": "permutation_histogram.png",
-    "caption": "Permutation Histogram",
-    "type": "image",
-    "src": "/output_real/permutation_histogram.png",
-    "group": "Hasil Utama STATIS",
-    "scenario": "Shared"
-  },
-  {
-    "name": "rv_heatmap.png",
-    "caption": "Rv Heatmap",
-    "type": "image",
-    "src": "/output_real/rv_heatmap.png",
-    "group": "Hasil Utama STATIS",
-    "scenario": "Shared"
-  },
-  {
-    "name": "scree_plot.png",
-    "caption": "Scree Plot",
-    "type": "image",
-    "src": "/output_real/scree_plot.png",
-    "group": "Hasil Utama STATIS",
-    "scenario": "Shared"
-  },
-  {
-    "name": "beta_trajectory.png",
-    "caption": "Beta Trajectory",
-    "type": "image",
-    "src": "/output_real/beta_trajectory.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_core_statis.tex",
-    "caption": "Output Core Statis",
-    "type": "text",
-    "src": "/output_real/output_core_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_macros.tex",
-    "caption": "Output Macros",
-    "type": "text",
-    "src": "/output_real/output_macros.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_perm_statis.tex",
-    "caption": "Output Perm Statis",
-    "type": "text",
-    "src": "/output_real/output_perm_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
     "name": "output_table_alpha_s.tex",
     "caption": "Output Table Alpha S",
     "type": "text",
@@ -2732,22 +3244,6 @@
     "caption": "Output Table Alpha W",
     "type": "text",
     "src": "/output_real/output_table_alpha_w.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_beta_provinsi.tex",
-    "caption": "Output Table Beta Provinsi",
-    "type": "text",
-    "src": "/output_real/output_table_beta_provinsi.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_beta_vec.tex",
-    "caption": "Output Table Beta Vec",
-    "type": "text",
-    "src": "/output_real/output_table_beta_vec.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -2848,170 +3344,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "output_table_jarak_loading_2020.tex",
-    "caption": "Output Table Jarak Loading 2020",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_loading_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2021.tex",
-    "caption": "Output Table Jarak Loading 2021",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_loading_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2022.tex",
-    "caption": "Output Table Jarak Loading 2022",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_loading_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2023.tex",
-    "caption": "Output Table Jarak Loading 2023",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_loading_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2024.tex",
-    "caption": "Output Table Jarak Loading 2024",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_loading_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2020.tex",
-    "caption": "Output Table Jarak Skor 2020",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_skor_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2021.tex",
-    "caption": "Output Table Jarak Skor 2021",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_skor_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2022.tex",
-    "caption": "Output Table Jarak Skor 2022",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_skor_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2023.tex",
-    "caption": "Output Table Jarak Skor 2023",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_skor_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2024.tex",
-    "caption": "Output Table Jarak Skor 2024",
-    "type": "text",
-    "src": "/output_real/output_table_jarak_skor_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
     "name": "output_table_kmo_bartlett.tex",
     "caption": "Output Table Kmo Bartlett",
     "type": "text",
     "src": "/output_real/output_table_kmo_bartlett.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2020.tex",
-    "caption": "Output Table Loading Intra 2020",
-    "type": "text",
-    "src": "/output_real/output_table_loading_intra_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2021.tex",
-    "caption": "Output Table Loading Intra 2021",
-    "type": "text",
-    "src": "/output_real/output_table_loading_intra_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2022.tex",
-    "caption": "Output Table Loading Intra 2022",
-    "type": "text",
-    "src": "/output_real/output_table_loading_intra_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2023.tex",
-    "caption": "Output Table Loading Intra 2023",
-    "type": "text",
-    "src": "/output_real/output_table_loading_intra_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2024.tex",
-    "caption": "Output Table Loading Intra 2024",
-    "type": "text",
-    "src": "/output_real/output_table_loading_intra_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2020.tex",
-    "caption": "Output Table Matriks Intra Loading 2020",
-    "type": "text",
-    "src": "/output_real/output_table_matriks_intra_loading_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2021.tex",
-    "caption": "Output Table Matriks Intra Loading 2021",
-    "type": "text",
-    "src": "/output_real/output_table_matriks_intra_loading_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2022.tex",
-    "caption": "Output Table Matriks Intra Loading 2022",
-    "type": "text",
-    "src": "/output_real/output_table_matriks_intra_loading_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2023.tex",
-    "caption": "Output Table Matriks Intra Loading 2023",
-    "type": "text",
-    "src": "/output_real/output_table_matriks_intra_loading_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2024.tex",
-    "caption": "Output Table Matriks Intra Loading 2024",
-    "type": "text",
-    "src": "/output_real/output_table_matriks_intra_loading_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -3028,54 +3364,6 @@
     "caption": "Output Table Rv W",
     "type": "text",
     "src": "/output_real/output_table_rv_w.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2020.tex",
-    "caption": "Output Table Skor Intra 2020",
-    "type": "text",
-    "src": "/output_real/output_table_skor_intra_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2021.tex",
-    "caption": "Output Table Skor Intra 2021",
-    "type": "text",
-    "src": "/output_real/output_table_skor_intra_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2022.tex",
-    "caption": "Output Table Skor Intra 2022",
-    "type": "text",
-    "src": "/output_real/output_table_skor_intra_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2023.tex",
-    "caption": "Output Table Skor Intra 2023",
-    "type": "text",
-    "src": "/output_real/output_table_skor_intra_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2024.tex",
-    "caption": "Output Table Skor Intra 2024",
-    "type": "text",
-    "src": "/output_real/output_table_skor_intra_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_struktur_diagnostik.tex",
-    "caption": "Output Table Struktur Diagnostik",
-    "type": "text",
-    "src": "/output_real/output_table_struktur_diagnostik.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   }

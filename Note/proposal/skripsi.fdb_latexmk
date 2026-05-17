@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex skripsi"] 1772487841.40385 "skripsi.aux" "skripsi.bbl" "skripsi" 1772487843.56356 0
+["bibtex skripsi"] 1779024224.93634 "skripsi.aux" "skripsi.bbl" "skripsi" 1779024229.08558 0
   "./pustaka.bib" 1765165693 5357 3c738a00842a90434d3c113a07367fb3 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/bibtex/bst/apalike-ejor/apalike-ejor.bst" 1624043162 28652 e5a8a7c13c51b86c01de9b8cc08e3bf4 ""
-  "hype_indonesia.aux" 1772487842 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
-  "skripsi.aux" 1772487842 5119 f3c5b425770464955af11cda480ae10d "pdflatex"
+  "hype_indonesia.aux" 1779024227 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
+  "skripsi.aux" 1779024227 5119 f3c5b425770464955af11cda480ae10d "pdflatex"
   (generated)
   "skripsi.bbl"
   "skripsi.blg"
   (rewritten before read)
-["pdflatex"] 1772487841.76373 "d:/Skripsi/my/proposal/skripsi.tex" "skripsi.pdf" "skripsi" 1772487843.56427 0
-  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1772487363 82686 2381c3433487640bf26aa76a10db7eb2 ""
+["pdflatex"] 1779024225.57364 "d:/Skripsi/my/Note/proposal/skripsi.tex" "skripsi.pdf" "skripsi" 1779024229.08722 0
+  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1778755463 83788 3e06ff692e1323f668f12ea28ca579e9 ""
   "C:/Users/ammar/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1772487366 11548 74b4e2b9aeff5a1b337ebf2d86b35deb ""
   "C:/Users/ammar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1769175176 13333487 f903ec6d1e50474fb369260a691f839e ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
@@ -169,14 +169,14 @@
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1751104012 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "d:/Skripsi/my/proposal/skripsi.tex" 1772487095 57443 53ae970a573fce8dc6ee01f6cd087bfa ""
-  "hype_indonesia.aux" 1772487842 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
+  "d:/Skripsi/my/Note/proposal/skripsi.tex" 1779024208 57443 53ae970a573fce8dc6ee01f6cd087bfa ""
+  "hype_indonesia.aux" 1779024227 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
   "hype_indonesia.tex" 1765165703 2670 f3b6e41a0fc4fc9aa8fc8779cf2aa79c ""
   "logo_ui.jpg" 1765165699 9415 8bf1b6f186d8a199f3945755d7df3a77 ""
-  "skripsi.aux" 1772487842 5119 f3c5b425770464955af11cda480ae10d "pdflatex"
-  "skripsi.bbl" 1772487841 4422 b16a260bfaf54a0541ffc80e167545e2 "bibtex skripsi"
-  "skripsi.out" 1772487842 4240 84f14af4d1fff80e06f264aa9f9e001f "pdflatex"
-  "skripsi.tex" 1772487095 57443 53ae970a573fce8dc6ee01f6cd087bfa ""
+  "skripsi.aux" 1779024227 5119 f3c5b425770464955af11cda480ae10d "pdflatex"
+  "skripsi.bbl" 1779024225 4422 b16a260bfaf54a0541ffc80e167545e2 "bibtex skripsi"
+  "skripsi.out" 1779024227 4240 84f14af4d1fff80e06f264aa9f9e001f "pdflatex"
+  "skripsi.tex" 1779024208 57443 53ae970a573fce8dc6ee01f6cd087bfa ""
   (generated)
   "hype_indonesia.aux"
   "skripsi.aux"

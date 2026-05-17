@@ -637,7 +637,10 @@ def _calculate_H_matrix(Ws_list, k, D=None):
     for i in range(k):
         for j in range(k):
             if D is not None:
-                H[i, j] = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
+                if isinstance(D, list):
+                    H[i, j] = np.trace(Ws_list[i] @ D[i] @ Ws_list[j] @ D[j])
+                else:
+                    H[i, j] = np.trace(Ws_list[i] @ D @ Ws_list[j] @ D)
             else:
                 H[i, j] = np.trace(Ws_list[i] @ Ws_list[j])
     return H
@@ -1389,23 +1392,20 @@ def run_permutation_test(X_matrices, k, lambda_obs, n_permutations, m_weights=No
     np.random.seed(42) 
     dist_lambdas = []
     
-    # Pre-calculate D_sqrt if weights provided
-    D_sqrt = None
+    D = None
     if m_weights is not None:
-        D_sqrt = np.diag(np.sqrt(m_weights))
-
+        D = np.diag(m_weights)
+    
     for _ in range(n_permutations):
         Ws_perm = []
         for X in X_matrices:
-            X_perm = np.random.permutation(X) # Shuffle baris (Objek)
-            if D_sqrt is not None:
-                # Terapkan bobot D yang sama seperti pada perhitungan observasi
-                DsqrtX = D_sqrt @ X_perm
-                Ws_perm.append(DsqrtX @ DsqrtX.T)
-            else:
-                Ws_perm.append(X_perm @ X_perm.T)
+            # Permutasi PER KOLOM secara independen sesuai literatur Abdi et al. 2012
+            X_p = np.zeros_like(X)
+            for j in range(X.shape[1]):
+                X_p[:, j] = np.random.permutation(X[:, j])
+            Ws_perm.append(X_p @ X_p.T)
                 
-        H_perm = _calculate_H_matrix(Ws_perm, k)
+        H_perm = _calculate_H_matrix(Ws_perm, k, D=D)
         dist_lambdas.append(_get_first_eigenvalue(H_perm))
     
     dist_lambdas = np.array(dist_lambdas)

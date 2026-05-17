@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex name"] 1772487751.69451 "name.aux" "name.bbl" "name" 1772487753.52476 0
+["bibtex name"] 1779024241.39947 "name.aux" "name.bbl" "name" 1779024244.66347 0
   "./pustaka.bib" 1765165693 5357 3c738a00842a90434d3c113a07367fb3 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/bibtex/bst/apalike-ejor/apalike-ejor.bst" 1624043162 28652 e5a8a7c13c51b86c01de9b8cc08e3bf4 ""
-  "hype_indonesia.aux" 1772487752 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
-  "name.aux" 1772487752 4574 59df3f92d33c4622023cfe463e537c8a "pdflatex"
+  "hype_indonesia.aux" 1779024243 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
+  "name.aux" 1779024243 4574 59df3f92d33c4622023cfe463e537c8a "pdflatex"
   (generated)
   "name.bbl"
   "name.blg"
   (rewritten before read)
-["pdflatex"] 1772487751.99767 "d:/Skripsi/my/proposal/name.tex" "name.pdf" "name" 1772487753.52628 0
-  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1772487363 82686 2381c3433487640bf26aa76a10db7eb2 ""
+["pdflatex"] 1779024241.92208 "d:/Skripsi/my/Note/proposal/name.tex" "name.pdf" "name" 1779024244.66546 0
+  "C:/Users/ammar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1778755463 83788 3e06ff692e1323f668f12ea28ca579e9 ""
   "C:/Users/ammar/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1000.pk" 1772487366 11548 74b4e2b9aeff5a1b337ebf2d86b35deb ""
   "C:/Users/ammar/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1769175176 13333487 f903ec6d1e50474fb369260a691f839e ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1000.tfm" 993062508 1436 c7f957a372ef2fbe93c0982f96625e12 ""
@@ -100,14 +100,14 @@
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/refcount/refcount.sty" 1576433952 9878 9e94e8fa600d95f9c7731bb21dfb67a4 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/rerunfilecheck/rerunfilecheck.sty" 1751104012 9684 a33a14b82ce60d6e77cb9be689d79ee6 ""
   "C:/Users/ammar/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
-  "d:/Skripsi/my/proposal/name.tex" 1772487746 52760 6b59b9cdb966645ce251a32b3ec2816f ""
-  "hype_indonesia.aux" 1772487752 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
+  "d:/Skripsi/my/Note/proposal/name.tex" 1779024221 52760 6b59b9cdb966645ce251a32b3ec2816f ""
+  "hype_indonesia.aux" 1779024243 794 d44c2f96daa9d6207e300a0b64886fbf "pdflatex"
   "hype_indonesia.tex" 1765165703 2670 f3b6e41a0fc4fc9aa8fc8779cf2aa79c ""
   "logo_ui.jpg" 1765165699 9415 8bf1b6f186d8a199f3945755d7df3a77 ""
-  "name.aux" 1772487752 4574 59df3f92d33c4622023cfe463e537c8a "pdflatex"
-  "name.bbl" 1772487751 3601 f20eab4c00dec006e1d2c65db9ea22db "bibtex name"
-  "name.out" 1772487752 4232 ea2e90138630d6c09f9b04f1cda0b749 "pdflatex"
-  "name.tex" 1772487746 52760 6b59b9cdb966645ce251a32b3ec2816f ""
+  "name.aux" 1779024243 4574 59df3f92d33c4622023cfe463e537c8a "pdflatex"
+  "name.bbl" 1779024241 3601 f20eab4c00dec006e1d2c65db9ea22db "bibtex name"
+  "name.out" 1779024243 4232 ea2e90138630d6c09f9b04f1cda0b749 "pdflatex"
+  "name.tex" 1779024221 52760 6b59b9cdb966645ce251a32b3ec2816f ""
   (generated)
   "hype_indonesia.aux"
   "name.aux"

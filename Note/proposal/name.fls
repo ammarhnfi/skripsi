@@ -1,6 +1,6 @@
-PWD d:\Skripsi\my\proposal
+PWD d:\Skripsi\my\Note\proposal
 INPUT C:\Users\ammar\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT d:\Skripsi\my\proposal\name.tex
+INPUT d:\Skripsi\my\Note\proposal\name.tex
 OUTPUT name.log
 INPUT C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls
 INPUT C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex\latex\base\article.cls

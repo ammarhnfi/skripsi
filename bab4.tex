@@ -2,7 +2,7 @@
 \chapter{\normalsize HASIL DAN PEMBAHASAN}
 
 % ---- Auto-generated numerical macros from export_all.py ----
-\input{output_real/output_macros.tex}
+\input{output_real/scenario1/output_macros.tex}
 
 Bab ini menyajikan hasil analisis data panel 41 kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat periode 2020 hingga 2024 menggunakan metode STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}). Analisis dimulai dari eksplorasi data awal dan uji kelayakan, dilanjutkan dengan analisis inter-struktur, pembentukan struktur kompromi, uji stabilitas, analisis trajektori spasio-temporal, hingga analisis klaster dan evaluasinya. Seluruh proses komputasi dilakukan menggunakan \textit{dashboard} interaktif berbasis Python (Dash/Plotly).
 
@@ -141,7 +141,7 @@ Hasil perhitungan koefisien RV untuk seluruh pasangan tahun disajikan pada Tabel
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.65\textwidth]{output_real/rv_heatmap.png}
+    \includegraphics[width=0.65\textwidth]{output_real/scenario1/rv_heatmap.png}
     \caption{Heatmap Koefisien RV Antar-Tahun (2020 hingga 2024)}
     \label{fig:rv_heatmap}
 \end{figure}
@@ -184,7 +184,7 @@ Gambar~\ref{fig:scree_plot} menyajikan \textit{scree plot}, yaitu grafik nilai e
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.8\textwidth]{output_real/scree_plot.png}
+    \includegraphics[width=0.8\textwidth]{output_real/scenario1/scree_plot.png}
     \caption{Scree Plot Nilai Eigen Matriks Kompromi}
     \label{fig:scree_plot}
 \end{figure}
@@ -323,11 +323,11 @@ Untuk memvalidasi bahwa struktur kompromi yang diperoleh bukan merupakan artefak
 
 \subsection{\normalsize Prosedur dan Hasil Uji Permutasi}
 
-Pada setiap iterasi, baris-baris matriks data $\mathbf{X}_t$ diacak secara independen untuk setiap tahun, kemudian dihitung nilai eigen terbesar $\theta_1^{(b)}$ dari matriks interstruktur $\mathbf{H}$ yang baru terbentuk. Distribusi dari 1000 nilai $\theta_1^{(b)}$ ini membentuk distribusi null yang dibandingkan dengan nilai observasi $\theta_1^{\text{obs}}$.
+Pada setiap iterasi, entri-entri di dalam masing-masing kolom (variabel) dari matriks data $\mathbf{X}_t$ diacak secara independen untuk setiap tahun (permutasi per kolom) sebagaimana direkomendasikan oleh Abdi \textit{et al.} (2012), guna menghancurkan korelasi antar-variabel sekaligus mempertahankan sifat normalisasi asli (skala Z-score) dari masing-masing kolom. Setelah pengacakan kolom tersebut, dihitung nilai eigen terbesar $\theta_1^{(b)}$ dari matriks interstruktur $\mathbf{H}$ yang baru terbentuk. Distribusi dari 1000 nilai $\theta_1^{(b)}$ ini membentuk distribusi null yang dibandingkan dengan nilai observasi $\theta_1^{\text{obs}}$.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/permutation_histogram.png}
+    \includegraphics[width=0.80\textwidth]{output_real/scenario1/permutation_histogram.png}
     \caption{Distribusi Null Uji Permutasi vs.\ Nilai Eigen Observasi ($\lambda_1^{obs}$)}
     \label{fig:perm_histogram}
 \end{figure}
@@ -343,7 +343,7 @@ Hasil pengujian yang divisualisasikan pada Gambar~\ref{fig:perm_histogram} menun
 \textbf{Parameter} & \textbf{Nilai} \\ \hline
 Jumlah Permutasi ($B$) & 1000 \\ \hline
 $\lambda_1^{obs}$ (Nilai Eigen Observasi) & $\AppLambdaObs{}$ \\ \hline
-$p\text{-value}$ & 0{,}0010 \\ \hline
+$p\text{-value}$ & \AppPValuePerm{} \\ \hline
 Taraf Signifikansi ($\alpha$) & 0{,}05 \\ \hline
 Keputusan & Tolak $H_0$ \\ \hline
 Interpretasi & Struktur Signifikan (Stabil) \\ \hline
@@ -369,7 +369,7 @@ dengan estimator vektor struktur $\tilde{\boldsymbol{\beta}} = \lambda_1 \boldsy
 
 Komponen $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$ (di mana $u_{1k}$ adalah elemen ke-$k$ dari vektor eigen pertama $\mathbf{H}$ \emph{sebelum} normalisasi) merupakan estimator dari ``kontribusi terbobot'' setiap situasi waktu terhadap struktur bersama. Tabel~\ref{tab:app1beta_vec} menyajikan hasil komputasi ini.
 
-\input{output_real/output_table_beta_vec.tex}
+\input{output_real/scenario1/output_table_beta_vec.tex}
 % Label: \label{tab:beta_vec}
 
 Nilai $\tilde{\beta}_k$ yang besar pada situasi ke-$k$ menunjukkan bahwa konfigurasi antar-wilayah pada tahun tersebut memberikan kontribusi yang dominan dalam membentuk struktur bersama. Nilai yang kecil (relatif) mengindikasikan bahwa tahun tersebut memiliki deviasi yang lebih besar dari pola struktur konsensus.
@@ -383,7 +383,7 @@ Validitas pendekatan rank-1 dinilai melalui dua kuantitas (Persamaan~\ref{eq:pro
   \item \textbf{Sum of Squares Residual} ($V$): Besaran $V = \|\mathbf{H}\|_F^2 - \lambda_1^2$ mengukur varians interstruktur yang \emph{tidak} dapat dijelaskan oleh model rank-1. Nilai $V$ yang kecil relatif terhadap $\|\mathbf{H}\|_F^2$ mengkonfirmasi keselarasan model.
 \end{enumerate}
 
-\input{output_real/output_table_struktur_diagnostik.tex}
+\input{output_real/scenario1/output_table_struktur_diagnostik.tex}
 % Label: \label{tab:struktur_diagnostik}
 
 Berdasarkan Tabel~\ref{tab:app1struktur_diagnostik}, nilai $\mathrm{Inertia}_1$ yang mendekati 1,00 mengkonfirmasi secara kuantitatif bahwa struktur bersama derajat-1 yang diasumsikan dalam model \citet{areia2008} terpenuhi dengan baik pada data penelitian ini. Dengan demikian, estimasi $\tilde{\boldsymbol{\beta}}$ dan $\boldsymbol{\alpha}$ yang diperoleh memiliki validitas statistik yang memadai.
@@ -392,7 +392,7 @@ Berdasarkan Tabel~\ref{tab:app1struktur_diagnostik}, nilai $\mathrm{Inertia}_1$ 
 
 Mengacu pada kerangka Analisis Transversal dalam \citet{oliveira2024}, data penelitian dipartisi menjadi tiga seri studi yang berkorespondensi dengan tiga provinsi yang diamati: Banten (8 wilayah), DKI Jakarta (6 wilayah), dan Jawa Barat (27 wilayah). Untuk masing-masing provinsi $g$ ($g = 1,2,3$), matriks interstruktur $\mathbf{H}_g$ dihitung menggunakan hanya wilayah-wilayah yang termasuk dalam provinsi tersebut, dan vektor struktur $\tilde{\boldsymbol{\beta}}_g = \lambda_{1g}\boldsymbol{\alpha}_{1g}$ diestimasi secara independen.
 
-\input{output_real/output_table_beta_provinsi.tex}
+\input{output_real/scenario1/output_table_beta_provinsi.tex}
 % Label: \label{tab:beta_provinsi}
 
 Tabel~\ref{tab:app1beta_provinsi} menyajikan komponen $\tilde{\beta}_{gk}$ untuk masing-masing provinsi $g$ dan tahun $k$. Perbedaan pola komponen antar-provinsi mencerminkan heterogenitas respons temporal terhadap perubahan (terutama pandemi COVID-19 2020 hingga 2021) dari masing-masing kelompok wilayah. DKI Jakarta, sebagai wilayah dengan struktur ekonomi yang sangat berbeda (berbasis jasa dan keuangan), diharapkan menghasilkan profil $\tilde{\boldsymbol{\beta}}$ yang kontrastif dibandingkan Banten (berbasis industri manufaktur) maupun Jawa Barat (campuran pertanian-industri).
@@ -404,7 +404,7 @@ Analisis Longitudinal \citep{areia2008,oliveira2024} mengevaluasi apakah kompone
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/beta_trajectory.png}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/beta_trajectory.png}
     \caption{Lintasan Temporal Komponen Vektor Struktur $\tilde{\beta}_k$ (2020 hingga 2024)}
     \label{fig:beta_trajectory}
 \end{figure}
@@ -488,15 +488,15 @@ Selain pergerakan wilayah, metode STATIS juga memungkinkan analisis terhadap per
 \caption{Loading Intra-Struktur Variabel Tahun 2020 hingga 2022}
 \begin{minipage}{0.32\textwidth}
 \centering
-\input{output_real/output_table_loading_intra_2020.tex}
+\input{output_real/scenario1/output_table_loading_intra_2020.tex}
 \end{minipage} \hfill
 \begin{minipage}{0.32\textwidth}
 \centering
-\input{output_real/output_table_loading_intra_2021.tex}
+\input{output_real/scenario1/output_table_loading_intra_2021.tex}
 \end{minipage} \hfill
 \begin{minipage}{0.32\textwidth}
 \centering
-\input{output_real/output_table_loading_intra_2022.tex}
+\input{output_real/scenario1/output_table_loading_intra_2022.tex}
 \end{minipage}
 \label{tab:loading_intra_2020_2022}
 \end{table}
@@ -506,11 +506,11 @@ Selain pergerakan wilayah, metode STATIS juga memungkinkan analisis terhadap per
 \caption{Loading Intra-Struktur Variabel Tahun 2023 hingga 2024}
 \begin{minipage}{0.48\textwidth}
 \centering
-\input{output_real/output_table_loading_intra_2023.tex}
+\input{output_real/scenario1/output_table_loading_intra_2023.tex}
 \end{minipage} \hfill
 \begin{minipage}{0.48\textwidth}
 \centering
-\input{output_real/output_table_loading_intra_2024.tex}
+\input{output_real/scenario1/output_table_loading_intra_2024.tex}
 \end{minipage}
 \label{tab:loading_intra_2023_2024}
 \end{table}

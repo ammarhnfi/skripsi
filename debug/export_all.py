@@ -44,6 +44,32 @@ def deduplicate_and_clean(root_path):
     """
     s1_path = os.path.join(root_path, 'scenario1')
     s2_path = os.path.join(root_path, 'scenario2')
+
+    # Hapus file core, macros, perm, scree, rv, dan beta dari root_path agar tidak ada duplikasi dengan scenario
+    for filename in [
+        "output_core_statis.tex", "output_macros.tex", "output_perm_statis.tex", "permutation_histogram.png",
+        "scree_plot.png", "rv_heatmap.png", "beta_trajectory.png",
+        "output_table_beta_provinsi.tex", "output_table_beta_vec.tex", "output_table_struktur_diagnostik.tex"
+    ]:
+        root_file = os.path.join(root_path, filename)
+        if os.path.exists(root_file):
+            try:
+                os.remove(root_file)
+                print(f"  [CLEAN] Menghapus file duplikat {filename} dari root.")
+            except Exception as e:
+                print(f"  [WARN] Gagal menghapus {filename} dari root: {e}")
+
+    for yr in ["2020", "2021", "2022", "2023", "2024"]:
+        for prefix in ["output_table_jarak_skor_", "output_table_jarak_loading_", "output_table_skor_intra_", "output_table_loading_intra_", "output_table_matriks_intra_loading_"]:
+            filename = f"{prefix}{yr}.tex"
+            root_file = os.path.join(root_path, filename)
+            if os.path.exists(root_file):
+                try:
+                    os.remove(root_file)
+                    print(f"  [CLEAN] Menghapus file duplikat {filename} dari root.")
+                except Exception as e:
+                    print(f"  [WARN] Gagal menghapus {filename} dari root: {e}")
+
     if not os.path.exists(s1_path) or not os.path.exists(s2_path): return
 
     print("\n" + "="*55)
@@ -1121,9 +1147,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             'PC1 (STATIS)': ls_adj[:, 0], 'PC2 (STATIS)': ls_adj[:, 1],
             'Jarak Euclidean ($d$)': dist_loads
         })
-        if current_scenario == 'scenario1':
-            save_tex_table(df_dist_scores, f"output_table_jarak_skor_{yr}.tex", ROOT_OUT_DIR, f"Perbandingan Jarak Skor Objek (PCA vs STATIS) Tahun {yr}", f"jarak_skor_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-            save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", ROOT_OUT_DIR, f"Perbandingan Jarak Loading Variabel (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_dist_scores, f"output_table_jarak_skor_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Skor Objek (PCA vs STATIS) Tahun {yr}", f"jarak_skor_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Loading Variabel (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
     
         # Tabel Skor Intra (F_k)
         df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
@@ -1143,9 +1168,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_gk.index.name = 'Variabel'
         df_gk = df_gk.reset_index()
 
-        if current_scenario == 'scenario1':
-            save_tex_table(df_fk, f"output_table_skor_intra_{yr}.tex", ROOT_OUT_DIR, fr"Skor Intra Tahun {yr} ($\mathbf{{F}}_{{{yr}}}$)", f"skor_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-            save_tex_table(df_gk, f"output_table_loading_intra_{yr}.tex", ROOT_OUT_DIR, fr"Loading Intra Tahun {yr} ($\mathbf{{G}}_{{{yr}}}$)", f"loading_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_fk, f"output_table_skor_intra_{yr}.tex", OUT_DIR, fr"Skor Intra Tahun {yr} ($\mathbf{{F}}_{{{yr}}}$)", f"skor_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_gk, f"output_table_loading_intra_{yr}.tex", OUT_DIR, fr"Loading Intra Tahun {yr} ($\mathbf{{G}}_{{{yr}}}$)", f"loading_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
         
         # Matriks Intra-Loading S_k (Matriks Korelasi Terbobot Variabel - "Kebalikan" dari W_k)
         # Formula: S_k = Z_k^T * D * Z_k
@@ -1153,8 +1177,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_sk_intra = pd.DataFrame(np.round(Sk, 6), index=selected_vars, columns=selected_vars)
         df_sk_intra.index.name = 'Variabel'
         df_sk_intra = df_sk_intra.reset_index()
-        if current_scenario == 'scenario1':
-            save_tex_table(df_sk_intra, f"output_table_matriks_intra_loading_{yr}.tex", ROOT_OUT_DIR, fr"Matriks Korelasi Terbobot Variabel Tahun {yr} ($\mathbf{{S}}_{{{yr}}}$)", f"matriks_intra_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_sk_intra, f"output_table_matriks_intra_loading_{yr}.tex", OUT_DIR, fr"Matriks Korelasi Terbobot Variabel Tahun {yr} ($\mathbf{{S}}_{{{yr}}}$)", f"matriks_intra_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
     
     # Statistika Deskriptif per tahun
     print("\n=== 3b. Tabel Statistika Deskriptif ===")
@@ -1325,10 +1348,10 @@ for current_scenario in ['scenario1', 'scenario2']:
         f"\\newcommand{{\\{get_macro_name('KMOInterpret')}}}{{{kmo_label(kmo_avg)}}}",
         "",
     ]
-    if IS_FIRST:
-        with open(os.path.join(ROOT_OUT_DIR, "output_macros.tex"), "w", encoding="utf-8") as f:
-            f.write("\n".join(macro_lines))
-        print("  [TEX] output_macros.tex")
+    # Tulis ke folder skenario masing-masing (Wilayah / Indikator)
+    with open(os.path.join(OUT_DIR, "output_macros.tex"), "w", encoding="utf-8") as f:
+        f.write("\n".join(macro_lines))
+    print(f"  [TEX] {os.path.join(OUT_DIR, 'output_macros.tex')}")
     
     
     # ============================================================
@@ -1477,8 +1500,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             obs_labels=obs_labels,
             province_map=_province_map
         )
-        if current_scenario == 'scenario1':
-            _sv_export(sv_result, output_dir=ROOT_OUT_DIR, label_prefix=CUR_LABEL_PREFIX)
+        _sv_export(sv_result, output_dir=OUT_DIR, label_prefix=CUR_LABEL_PREFIX)
         print(f"  [OK] lambda1={sv_result['lambda1']:.4f}, "
               f"Inertia1={sv_result['inertia1']*100:.2f}%, "
               f"V={sv_result['V']:.4f}")
@@ -1512,9 +1534,8 @@ for current_scenario in ['scenario1', 'scenario2']:
     )
     fig_rv_heat.update_layout(template='plotly_white')
 
-    if IS_FIRST:
-        save_png(fig_scree, "scree_plot.png", ROOT_OUT_DIR)
-        save_png(fig_rv_heat, "rv_heatmap.png", ROOT_OUT_DIR, width=700, height=600)
+    save_png(fig_scree, "scree_plot.png", OUT_DIR)
+    save_png(fig_rv_heat, "rv_heatmap.png", OUT_DIR, width=700, height=600)
     
     # --- Compromise Map (skor saja, tanpa loading) ---
     colors = ['#1E88E5', '#D81B60', '#43A047', '#FB8C00', '#8E24AA']
@@ -1936,14 +1957,24 @@ for current_scenario in ['scenario1', 'scenario2']:
     
     lambda_obs = vals_H_sorted[0]
     dist_lambdas = []
+    
     for _ in range(N_PERM):
         Ws_perm = []
         for X in X_matrices:
-            X_p = np.random.permutation(X)
-            DsqrtXp = D_sqrt @ X_p
-            Ws_perm.append(DsqrtXp @ DsqrtXp.T)
-        H_p = calc_H_matrix(Ws_perm, k_time)
+            # Permutasi PER KOLOM secara independen sesuai literatur Abdi et al. 2012
+            X_p = np.zeros_like(X)
+            for j in range(X.shape[1]):
+                X_p[:, j] = np.random.permutation(X[:, j])
+            Ws_perm.append(X_p @ X_p.T)
+            
+        # Hitung H_p menggunakan Ws_perm dan D_diag_mat tetap (statis)
+        H_p = np.zeros((k_time, k_time))
+        for i in range(k_time):
+            for j in range(k_time):
+                H_p[i, j] = np.trace(Ws_perm[i] @ D_diag_mat @ Ws_perm[j] @ D_diag_mat)
+                
         dist_lambdas.append(get_first_eigenvalue(H_p))
+        
     dist_lambdas = np.array(dist_lambdas)
     p_value = (np.sum(dist_lambdas >= lambda_obs) + 1) / (N_PERM + 1)
     interp_perm = "Signifikan (Struktur Stabil)" if p_value < 0.05 else "Tidak Signifikan (Acak)"
@@ -1975,14 +2006,33 @@ for current_scenario in ['scenario1', 'scenario2']:
             core_lines.append(fr"\newcommand{{\statisAlphaTahun{core_labels[i]}}}{{{val:.4f}}} % {yr}")
     core_lines.append(fr"\newcommand{{\statisEigenA}}{{{eig_vals_c[0]:.4f}}}")
     core_lines.append(fr"\newcommand{{\statisInertiaA}}{{{var_pct[0]:.2f}}}")
-    if IS_FIRST:
-        save_png(fig_perm, "permutation_histogram.png", ROOT_OUT_DIR)
-        with open(os.path.join(ROOT_OUT_DIR, "output_perm_statis.tex"), "w", encoding="utf-8") as f:
-            f.write("\n".join(perm_lines))
-        print(f"  [TEX] output_perm_statis.tex")
-        with open(os.path.join(ROOT_OUT_DIR, "output_core_statis.tex"), "w", encoding="utf-8") as f:
-            f.write("\n".join(core_lines))
-        print(f"  [TEX] output_core_statis.tex")
+    # Selalu tulis hasil permutasi dan core statis ke folder skenario masing-masing (Wilayah / Indikator)
+    save_png(fig_perm, "permutation_histogram.png", OUT_DIR)
+    with open(os.path.join(OUT_DIR, "output_perm_statis.tex"), "w", encoding="utf-8") as f:
+        f.write("\n".join(perm_lines))
+    print(f"  [TEX] {os.path.join(OUT_DIR, 'output_perm_statis.tex')}")
+    with open(os.path.join(OUT_DIR, "output_core_statis.tex"), "w", encoding="utf-8") as f:
+        f.write("\n".join(core_lines))
+    print(f"  [TEX] {os.path.join(OUT_DIR, 'output_core_statis.tex')}")
+    
+    # Ganti p-value hardcoded di output_macros.tex dengan yang asli terkomputasi secara dinamis
+    macro_path = os.path.join(OUT_DIR, "output_macros.tex")
+    if os.path.exists(macro_path):
+        try:
+            with open(macro_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            p_val_indo = f"{p_value:.4f}".replace(".", ",")
+            import re
+            content_new = re.sub(
+                r"\\newcommand\{\\" + get_macro_name('PValuePerm') + r"\}\{.*\}",
+                fr"\\newcommand{{\\{get_macro_name('PValuePerm')}}}{{{p_val_indo}}}",
+                content
+            )
+            with open(macro_path, "w", encoding="utf-8") as f:
+                f.write(content_new)
+            print(f"  [TEX] Updated dynamic PValuePerm in {OUT_DIR}/output_macros.tex to {p_val_indo}")
+        except Exception as e:
+            print(f"  [WARN] Gagal update dynamic p-value di {OUT_DIR}/output_macros.tex: {e}")
     
     
     # ============================================================
