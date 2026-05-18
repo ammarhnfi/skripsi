@@ -35,6 +35,15 @@ if %ERRORLEVEL% NEQ 0 (
 )
 echo.
 
+echo [LANGKAH 2.5] Ekstraksi Substitusi Rumus Riil (Excel)...
+python "d:\Skripsi\my\debug\export_formulas_json.py"
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Gagal mengekstrak substitusi rumus.
+) else (
+    echo -- Substitusi Rumus Berhasil diperbarui! --
+)
+echo.
+
 echo [LANGKAH 3] Sinkronisasi Gambar ^& Tabel Hasil Analisis...
 python "d:\Skripsi\my\debug\prepare_landing_assets.py"
 if %ERRORLEVEL% NEQ 0 (

@@ -147,7 +147,7 @@ function SideBySideTexCard({ filename, folder, hasLeft, hasRight }) {
   const cleanTitle = filename.replace('output_table_', '').replace(/_/g, ' ').replace('.tex', '').toUpperCase();
 
   return (
-    <div className="compare-card card" style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+    <div style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
         <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc', fontWeight: '600' }}>{cleanTitle}</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -163,12 +163,12 @@ function SideBySideTexCard({ filename, folder, hasLeft, hasRight }) {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
           {/* Left: Scenario 1 */}
-          <div>
+          <div style={{ minWidth: 0, overflow: 'hidden' }}>
             <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '10px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
             {hasLeft ? <LatexTable tex={leftTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 1</div>}
           </div>
           {/* Right: Scenario 2 */}
-          <div>
+          <div style={{ minWidth: 0, overflow: 'hidden' }}>
             <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '10px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
             {hasRight ? <LatexTable tex={rightTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>File tidak tersedia di Skenario 2</div>}
           </div>
@@ -205,7 +205,7 @@ function RootTexTableCard({ filename, folder }) {
   }, [filename, folder]);
 
   return (
-    <div className="card" style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
+    <div style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '20px', border: '1px solid rgba(255,255,255,0.05)' }}>
       {loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100px' }}>
           <div className="spinner" style={{ width: '24px', height: '24px' }}></div>
@@ -225,7 +225,7 @@ function SideBySideImageCard({ filename, folder, hasLeft, hasRight }) {
   const cleanTitle = filename.replace(/_/g, ' ').replace('.png', '').toUpperCase();
 
   return (
-    <div className="compare-card card" style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+    <div style={{ background: 'rgba(30, 41, 59, 0.4)', borderRadius: '20px', padding: '24px', marginBottom: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '12px' }}>
         <h3 style={{ margin: 0, fontSize: '1.1rem', color: '#f8fafc', fontWeight: '600' }}>{cleanTitle}</h3>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -269,7 +269,7 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
   const [activeTab, setActiveTab] = useState('core');
   const [rootActiveTab, setRootActiveTab] = useState('boxplots');
 
-  const currentResults = selectedFolder === 'output_sample' ? allResultsSample : allResultsReal;
+  const currentResults = (selectedFolder === 'output_sample' ? allResultsSample : allResultsReal).filter(item => item && item.name && item.src);
 
   // 1. Root Files Filter
   const rootTexFiles = currentResults.filter(item => {
@@ -354,29 +354,55 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
         gap: '20px'
       }}>
         <div className="title-container">
-          <button 
-            onClick={onBack}
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              border: 'none',
-              color: '#06B6D4',
-              padding: '8px 18px',
-              borderRadius: '30px',
-              cursor: 'pointer',
-              fontSize: '0.85rem',
-              fontWeight: '700',
-              marginBottom: '14px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              transition: 'all 0.2s',
-              border: '1px solid rgba(6, 182, 212, 0.2)'
-            }}
-            onMouseOver={e => { e.target.style.background = 'rgba(6, 182, 212, 0.15)'; e.target.style.borderColor = '#06B6D4'; }}
-            onMouseOut={e => { e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.borderColor = 'rgba(6, 182, 212, 0.2)'; }}
-          >
-            ⬅ Kembali ke Beranda
-          </button>
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '14px', alignItems: 'center' }}>
+            <button 
+              onClick={onBack}
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                border: 'none',
+                color: '#06B6D4',
+                padding: '8px 18px',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.2s',
+                border: '1px solid rgba(6, 182, 212, 0.2)'
+              }}
+              onMouseOver={e => { e.target.style.background = 'rgba(6, 182, 212, 0.15)'; e.target.style.borderColor = '#06B6D4'; }}
+              onMouseOut={e => { e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.borderColor = 'rgba(6, 182, 212, 0.2)'; }}
+            >
+              ⬅ Kembali ke Beranda
+            </button>
+
+            <a 
+              href="http://localhost:8060/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'rgba(6, 182, 212, 0.1)',
+                border: '1px solid rgba(6, 182, 212, 0.3)',
+                color: '#06B6D4',
+                padding: '8px 18px',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: '700',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.2s'
+              }}
+              onMouseOver={e => { e.currentTarget.style.background = 'rgba(6, 182, 212, 0.2)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+              onMouseOut={e => { e.currentTarget.style.background = 'rgba(6, 182, 212, 0.1)'; e.currentTarget.style.transform = 'none'; }}
+            >
+              ⚔️ Buka Dashboard Python (Port 8060) &rarr;
+            </a>
+          </div>
           <h1 style={{
             margin: '0 0 6px 0',
             fontSize: '28px',
@@ -419,7 +445,7 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
         <h2 className="section-title" style={{ fontSize: '18px', fontWeight: '600', color: '#F8FAFC', margin: '0 0 20px 0', borderLeft: '4px solid #06B6D4', paddingLeft: '12px' }}>📊 Root Output Files (Global & Descriptive)</h2>
         
         {/* Custom React Tabs for Root */}
-        <div className="card" style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
+        <div style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
           <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
             <button
               onClick={() => setRootActiveTab('boxplots')}
@@ -448,9 +474,9 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
               rootPngFiles.length > 0 ? (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(450px, 1fr))', gap: '24px' }}>
                   {rootPngFiles.map(img => (
-                    <div key={img.name} className="card" style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                    <div key={img.name} style={{ background: 'rgba(30, 41, 59, 0.3)', borderRadius: '20px', padding: '16px', border: '1px solid rgba(255,255,255,0.05)' }}>
                       <h5 style={{ fontSize: '13px', color: '#94A3B8', margin: '0 0 12px 0', textAlign: 'center', textTransform: 'uppercase' }}>{img.name.replace(/_/g, ' ').replace('.png', '')}</h5>
-                      <div className="img-container" style={{ display: 'flex', justifyContent: 'center', background: 'rgba(15,23,42,0.4)', borderRadius: '12px', padding: '10px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'center', background: 'rgba(15,23,42,0.4)', borderRadius: '12px', padding: '10px' }}>
                         <img src={img.src} alt={img.caption} style={{ maxWidth: '100%', maxHeight: '250px', objectFit: 'contain', borderRadius: '8px' }} />
                       </div>
                     </div>
@@ -485,7 +511,7 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
         </div>
 
         {/* Custom React Tabs for Scenarios */}
-        <div className="card" style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
+        <div style={{ background: 'rgba(30, 41, 59, 0.25)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '20px', padding: '0', overflow: 'hidden' }}>
           <div style={{ display: 'flex', background: 'rgba(15, 23, 42, 0.4)', borderBottom: '1px solid rgba(255,255,255,0.06)', overflowX: 'auto' }}>
             {Object.keys(categories).map(catKey => (
               <button
@@ -542,9 +568,346 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
 }
 
 
+function FormulasDashboard({ onBack }) {
+  const [formulas, setFormulas] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  useEffect(() => {
+    fetch('/formulas_substitusi.json')
+      .then(res => res.json())
+      .then(data => {
+        setFormulas(data);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error loading formulas:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (!loading && window.MathJax && window.MathJax.typesetPromise) {
+      const timer = setTimeout(() => {
+        window.MathJax.typesetPromise().catch(err => console.log('MathJax error:', err));
+      }, 80);
+      return () => clearTimeout(timer);
+    }
+  }, [formulas, searchQuery, activeCategory, expandedCards, loading]);
+
+  const toggleExpand = (id) => {
+    setExpandedCards(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
+  // Render a string that may contain LaTeX ($...$ or $$...$$) via MathJax.
+  // We insert it as raw HTML so MathJax can process it after mount.
+  const renderLatexText = (text) => {
+    if (!text) return null;
+    return (
+      <span dangerouslySetInnerHTML={{ __html: text }} />
+    );
+  };
+
+  const getFilteredFormulas = () => {
+    return formulas.filter(f => {
+      const matchesSearch = f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            f.formula.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                            f.keterangan.some(k => k.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesCat = activeCategory === 'all' || f.category === activeCategory;
+      return matchesSearch && matchesCat;
+    });
+  };
+
+  const CATEGORIES = {
+    all: "📐 Semua Rumus",
+    descriptive: "📊 Statistika Deskriptif",
+    suitability: "🛡️ Uji Kelayakan Data",
+    pca: "🔑 Korelasi & PCA",
+    statis: "📐 Tahapan Metode STATIS",
+    spatial: "🗺️ Klaster & Spasial"
+  };
+
+  const getCategoryBadgeLabel = (cat) => {
+    switch(cat) {
+      case 'descriptive': return 'DESKRIPTIF';
+      case 'suitability': return 'KELAYAKAN';
+      case 'pca': return 'KORELASI & PCA';
+      case 'statis': return 'METODE STATIS';
+      case 'spatial': return 'KLASTER & SPASIAL';
+      default: return 'UMUM';
+    }
+  };
+
+  return (
+    <div className="app-container" style={{ padding: '40px', maxWidth: '1600px', margin: '0 auto', color: '#E2E8F0', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      {/* HEADER PANEL */}
+      <div className="header-glass" style={{
+        background: 'rgba(30, 41, 59, 0.45)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(255, 255, 255, 0.08)',
+        borderRadius: '24px',
+        padding: '24px 30px',
+        marginBottom: '24px',
+        boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '20px'
+      }}>
+        <div className="title-container">
+          <div style={{ display: 'flex', gap: '12px', marginBottom: '8px', alignItems: 'center' }}>
+            <button 
+              onClick={onBack}
+              style={{
+                background: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(6, 182, 212, 0.3)',
+                color: '#06B6D4',
+                padding: '8px 18px',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: '700',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px',
+                transition: 'all 0.2s',
+              }}
+              onMouseOver={e => { e.currentTarget.style.background = 'rgba(6, 182, 212, 0.15)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+              onMouseOut={e => { e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)'; e.currentTarget.style.transform = 'none'; }}
+            >
+              ⬅ Kembali ke Beranda
+            </button>
+          </div>
+          <h1 style={{
+            margin: '0 0 6px 0',
+            fontSize: '28px',
+            fontWeight: '700',
+            letterSpacing: '-0.5px',
+            background: 'linear-gradient(135deg, #06B6D4, #3B82F6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent'
+          }}>📐 STATIS Math Formulas & Substitutions</h1>
+          <p style={{ margin: 0, fontSize: '14px', color: '#94A3B8' }}>Eksplorasi seluruh 67 rumus matematika dari landasan teori skripsi beserta 24 kalkulasi langkah substitusi riil secara statis.</p>
+        </div>
+      </div>
+
+      {/* SEARCH AND FILTER BLOCK */}
+      <div style={{
+        background: 'rgba(30, 41, 59, 0.3)',
+        border: '1px solid rgba(255, 255, 255, 0.06)',
+        borderRadius: '24px',
+        padding: '24px',
+        marginBottom: '28px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '20px'
+      }}>
+        {/* Search Input */}
+        <div style={{ position: 'relative' }}>
+          <input
+            type="text"
+            placeholder="🔍 Cari formula berdasarkan nama, variabel, atau keterangan..."
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+            style={{
+              width: '100%',
+              background: 'rgba(15, 23, 42, 0.6)',
+              border: '1px solid rgba(255, 255, 255, 0.12)',
+              borderRadius: '16px',
+              padding: '14px 20px',
+              fontSize: '15px',
+              color: '#F8FAFC',
+              outline: 'none',
+              transition: 'all 0.2s'
+            }}
+          />
+        </div>
+
+        {/* Category Tabs */}
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '16px' }}>
+          {Object.entries(CATEGORIES).map(([key, label]) => (
+            <button
+              key={key}
+              onClick={() => setActiveCategory(key)}
+              style={{
+                background: activeCategory === key ? 'rgba(6, 182, 212, 0.15)' : 'rgba(255,255,255,0.03)',
+                border: activeCategory === key ? '1px solid rgba(6, 182, 212, 0.4)' : '1px solid rgba(255,255,255,0.08)',
+                color: activeCategory === key ? '#38BDF8' : '#94A3B8',
+                padding: '8px 18px',
+                borderRadius: '30px',
+                cursor: 'pointer',
+                fontSize: '0.85rem',
+                fontWeight: '600',
+                transition: 'all 0.2s'
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* LOADING STATE */}
+      {loading ? (
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
+          <div className="spinner" style={{ width: '40px', height: '40px', border: '4px solid rgba(255,255,255,0.1)', borderTopColor: '#06B6D4', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+          <p style={{ color: '#94A3B8', marginTop: '16px' }}>Memuat bank formula matematika...</p>
+        </div>
+      ) : (
+        /* FORMULAS GRID */
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(650px, 1fr))',
+          gap: '28px'
+        }}>
+          {getFilteredFormulas().map((f) => {
+            const isExpanded = !!expandedCards[f.id];
+            return (
+              <div
+                key={f.id}
+                style={{
+                  background: 'rgba(30, 41, 59, 0.35)',
+                  border: '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '24px',
+                  padding: '28px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '20px',
+                  transition: 'all 0.3s',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.15)'
+                }}
+              >
+                {/* Header */}
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid rgba(255,255,255,0.06)', paddingBottom: '14px' }}>
+                  <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: '600', color: '#F8FAFC' }}>{f.title}</h3>
+                  <span style={{
+                    background: 'rgba(56, 189, 248, 0.1)',
+                    color: '#38BDF8',
+                    border: '1px solid rgba(56, 189, 248, 0.2)',
+                    borderRadius: '20px',
+                    padding: '4px 12px',
+                    fontSize: '11px',
+                    fontWeight: '700',
+                    letterSpacing: '0.5px'
+                  }}>
+                    {getCategoryBadgeLabel(f.category)}
+                  </span>
+                </div>
+
+                {/* Math Latex Box */}
+                <div style={{
+                  background: 'rgba(15, 23, 42, 0.45)',
+                  border: '1px solid rgba(255, 255, 255, 0.04)',
+                  borderRadius: '16px',
+                  padding: '20px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  minHeight: '80px',
+                  overflowX: 'auto'
+                }}>
+                  <div style={{ color: '#E2E8F0', fontSize: '1.1rem' }}
+                    dangerouslySetInnerHTML={{ __html: f.formula }}
+                  />
+                </div>
+
+                {/* Keterangan */}
+                <div>
+                  <div style={{ fontSize: '12px', fontWeight: '700', color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Keterangan:</div>
+                  <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                    {f.keterangan.map((ket, idx) => (
+                      <li key={idx} style={{ fontSize: '13.5px', color: '#CBD5E1', lineHeight: '1.5', paddingLeft: '12px', borderLeft: '2px solid rgba(255,255,255,0.15)' }}
+                        dangerouslySetInnerHTML={{ __html: ket }}
+                      />
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Collapse Substitusi Panel */}
+                <div style={{ marginTop: 'auto', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '16px' }}>
+                  <button
+                    onClick={() => toggleExpand(f.id)}
+                    style={{
+                      background: isExpanded ? 'rgba(56, 189, 248, 0.12)' : 'rgba(255,255,255,0.05)',
+                      border: '1px solid rgba(56, 189, 248, 0.2)',
+                      color: isExpanded ? '#38BDF8' : '#94A3B8',
+                      padding: '8px 16px',
+                      borderRadius: '12px',
+                      cursor: 'pointer',
+                      fontSize: '0.8rem',
+                      fontWeight: '600',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      width: '100%',
+                      justifyContent: 'center',
+                      transition: 'all 0.2s'
+                    }}
+                  >
+                    {isExpanded ? "❌ Tutup Substitusi Riil" : "🔬 Lihat Substitusi Data Riil (Excel)"}
+                  </button>
+
+                  {isExpanded && (
+                    <div style={{
+                      marginTop: '16px',
+                      background: 'rgba(15, 23, 42, 0.3)',
+                      borderRadius: '16px',
+                      padding: '20px',
+                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '16px'
+                    }}>
+                      <div>
+                        <div style={{ fontSize: '12px', fontWeight: '700', color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Langkah Substitusi Data:</div>
+                        <ol style={{ listStyleType: 'decimal', paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                          {f.substitusi.map((sub, idx) => (
+                            <li key={idx} style={{ fontSize: '13.5px', color: '#CBD5E1', lineHeight: '1.6' }}
+                              dangerouslySetInnerHTML={{ __html: sub }}
+                            />
+                          ))}
+                        </ol>
+                      </div>
+
+                      <div style={{ borderTop: '1px solid rgba(255,255,255,0.04)', paddingTop: '12px' }}>
+                        <div style={{ fontSize: '12px', fontWeight: '700', color: '#38BDF8', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Hasil Komputasi Riil:</div>
+                        <div style={{
+                          background: 'rgba(0, 0, 0, 0.2)',
+                          padding: '12px',
+                          borderRadius: '8px',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          fontSize: '1rem',
+                          overflowX: 'auto'
+                        }}>
+                          <span dangerouslySetInnerHTML={{ __html: f.hasil }} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+  );
+}
+
+
 function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [compareView, setCompareView] = useState(false);
+  const [formulasView, setFormulasView] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
@@ -722,6 +1085,10 @@ function App() {
           allResultsReal={allResultsReal}
           allResultsSample={allResultsSample}
         />
+      ) : formulasView ? (
+        <FormulasDashboard
+          onBack={() => setFormulasView(false)}
+        />
       ) : (
         <div className="container">
           <header>
@@ -775,7 +1142,7 @@ function App() {
           {/* Formulas Card */}
           <div
             className="card glass-effect"
-            onClick={() => openModal('formulas')}
+            onClick={() => setFormulasView(true)}
           >
             <div className="card-icon">🧮</div>
             <h2>Rumus & Referensi</h2>
@@ -1200,62 +1567,7 @@ function App() {
         )}
       </div>
 
-      <div
-        className={`modal ${activeModal === 'formulas' ? 'active' : ''}`}
-        onClick={(e) => {
-          if (e.target.classList.contains('modal')) closeModal();
-        }}
-      >
-        <div className="modal-content glass-effect">
-          <button className="close-btn" onClick={closeModal} title="Tutup">
-            &times;
-          </button>
-          <h2>Rumus Utama dan Referensi</h2>
-          <div className="modal-body" style={{ maxHeight: '70vh', overflowY: 'auto' }}>
-            <p style={{ marginBottom: '1.5rem', color: '#94a3b8' }}>
-              Formula matematika yang digunakan dalam landasan teori (@bab2.tex).
-            </p>
-            {equations.length > 0 ? (
-              <div className="equation-grid">
-                {equations.map((eq, i) => (
-                  <div key={i} className="eq-item" style={{ marginBottom: '2rem', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '1rem' }}>
-                    <div className="eq-label" style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '8px' }}>
-                      <span style={{ fontSize: '0.7rem', textTransform: 'uppercase', color: '#60a5fa', fontWeight: 'bold' }}>{eq.section}</span>
-                      <span style={{ fontSize: '0.6rem', color: '#64748b' }}>#{i + 1}</span>
-                    </div>
-                    <div className="math-formula" style={{ background: 'rgba(0,0,0,0.2)', padding: '1.5rem', borderRadius: '8px', overflow: 'hidden' }}>
-                      {eq.latex}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p>Sedang mengekstrak rumus dari dokumen...</p>
-            )}
-
-            <hr style={{ borderColor: 'rgba(255,255,255,0.1)', margin: '2rem 0' }} />
-            <h3>Referensi Pilihan (Ekonometrika & Multivariat)</h3>
-            <ul className="reference-list">
-              <li>
-                <strong>Egido & Galindo (2015)</strong> - Dynamic Biplot.
-                Evolution of the Economic Freedom in the European Union.
-              </li>
-              <li>
-                <strong>Lavit et al. (1994)</strong> - The ACT (STATIS method).
-                Computational Statistics & Data Analysis.
-              </li>
-              <li>
-                <strong>Gabriel (1971)</strong> - The biplot graphic display of
-                matrices with application to principal component analysis.
-              </li>
-              <li>
-                <strong>Baltagi (2021)</strong> - Econometric Analysis of Panel
-                Data.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      {/* formulas modal removed — FormulasDashboard is rendered natively via formulasView state */}
 
       <div
         className={`modal ${activeModal === 'dataset' ? 'active' : ''}`}

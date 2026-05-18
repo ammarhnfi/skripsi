@@ -84,19 +84,19 @@
     "raw": "MSA_j = \\frac{\\displaystyle\\sum_{k \\neq j} r_{jk}^2}{\\displaystyle\\sum_{k \\neq j} r_{jk}^2 + \\displaystyle\\sum_{k \\neq j} r_{jk.\\text{parsial}}^2}"
   },
   {
-    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "section": "Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
     "latex": "\\[ \\chi^2 = -\\left[ n - 1 - \\frac{2p + 5}{6} \\right] \\ln |\\mathbf{R}| \\]",
     "type": "equation",
     "raw": "\\label{eq:bartlett}\n    \\chi^2 = -\\left[ n - 1 - \\frac{2p + 5}{6} \\right] \\ln |\\mathbf{R}|"
   },
   {
-    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "section": "Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
     "latex": "\\[ df = \\frac{p(p-1)}{2} \\]",
     "type": "equation",
     "raw": "df = \\frac{p(p-1)}{2}"
   },
   {
-    "section": "Uji Bartlett tentang Spherisitas (\\textitBartlett's Test of Sphericity",
+    "section": "Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
     "latex": "\\[ |\\mathbf{A}| = \\sum_{\\sigma \\in S_p} \\text{sgn}(\\sigma) \\prod_{i=1}^{p} a_{i,\\sigma(i)} \\]",
     "type": "equation",
     "raw": "|\\mathbf{A}| = \\sum_{\\sigma \\in S_p} \\text{sgn}(\\sigma) \\prod_{i=1}^{p} a_{i,\\sigma(i)}"
@@ -144,19 +144,19 @@
     "raw": "g_{j\\ell} = r(\\bar{x}_j, \\mathbf{F}_c^{(\\ell)})"
   },
   {
-    "section": "\\textitPrincipal Component Analysis",
+    "section": "Principal Component Analysis (PCA) dan Biplot",
     "latex": "\\[ \\mathbf{F} = \\mathbf{X} \\mathbf{V} \\]",
     "type": "equation",
     "raw": "\\mathbf{F} = \\mathbf{X} \\mathbf{V}"
   },
   {
-    "section": "\\textitPrincipal Component Analysis",
+    "section": "Principal Component Analysis (PCA) dan Biplot",
     "latex": "\\[ \\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T \\]",
     "type": "equation",
     "raw": "\\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T"
   },
   {
-    "section": "\\textitPrincipal Component Analysis",
+    "section": "Principal Component Analysis (PCA) dan Biplot",
     "latex": "\\[ \\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right) \\]",
     "type": "equation",
     "raw": "\\label{eq:scaling_biplot}\n      \\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right)"
@@ -306,13 +306,13 @@
     "raw": "\\label{eq:prop_inertia}\n  \\mathrm{Inertia}_1 = \\frac{\\lambda_1}{\\displaystyle\\sum_{j=1}^{K} \\lambda_j},"
   },
   {
-    "section": "Proyeksi Lintasan (\\textitTrajectory",
+    "section": "Proyeksi Lintasan (Trajectory)",
     "latex": "\\[ \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c \\]",
     "type": "equation",
     "raw": "\\label{eq:lintasan}\n  \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c"
   },
   {
-    "section": "Proyeksi Lintasan (\\textitTrajectory",
+    "section": "Proyeksi Lintasan (Trajectory)",
     "latex": "\\[ \\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,K} \\} \\]",
     "type": "equation",
     "raw": "\\mathcal{T}_i = \\{ \\mathbf{f}_{i,1}, \\mathbf{f}_{i,2}, \\dots, \\mathbf{f}_{i,K} \\}"
@@ -390,14 +390,14 @@
     "raw": "w_{ij}^* = \\frac{w_{ij}}{\\displaystyle\\sum_{k=1}^{N} w_{ik}}"
   },
   {
-    "section": "Analisis Autokorelasi Spasial (Global Moran's~\\texorpdfstring$I$",
+    "section": "Analisis Autokorelasi Spasial (Global Moran's~texorpdfstring$I$I)",
     "latex": "\\[ I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2} \\]",
     "type": "equation",
     "raw": "\\label{eq:moran_i}\n    I = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2}"
   },
   {
     "section": "Standardisasi Data",
-    "latex": "\\[ \\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk}  \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\]",
+    "latex": "\\[ \\begin{aligned} \\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk}  \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\end{aligned} \\]",
     "type": "align",
     "raw": "\\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk} \\label{eq:weighted_mean} \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\label{eq:weighted_std}"
   }

@@ -1,0 +1,1087 @@
+[
+  {
+    "id": "ref_eq_0",
+    "category": "statis",
+    "title": "1. Standardisasi Data (Teori/Relasi)",
+    "formula": "$$\nm_i = \\frac{\\overline{\\mathrm{JP}}_i}{\\displaystyle\\sum_{i'=1}^{n} \\overline{\\mathrm{JP}}_{i'}}, \\quad i = 1, 2, \\ldots, n\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Jumlah total wilayah $n = 41$ Kabupaten/Kota di Banten, DKI Jakarta, dan Jawa Barat.",
+      "Pembobot dihitung sebagai proporsi rata-rata Jumlah Penduduk ($\\mathrm{JP}$).",
+      "Total normalisasi: $\\sum_{i=1}^{41} m_i = 1{,}0000$.",
+      "Bobot rata-rata: $\\bar{m} = \\dfrac{1}{41} = 0{,}0244$."
+    ],
+    "hasil": "$$ m_i = 0.0244 \\quad (\\text{Rata-rata}) $$"
+  },
+  {
+    "id": "ref_eq_1",
+    "category": "statis",
+    "title": "2. Standardisasi Data (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{D} = \\operatorname{diag}(m_1, m_2, \\ldots, m_n)\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Membuat matriks diagonal $\\mathbf{D} \\in \\mathbb{R}^{41 \\times 41}$ dari vektor pembobot $m_i$.",
+      "Elemen diagonal utama: $d_{11} = d_{22} = \\dots = d_{41,41} = 0{,}0244$.",
+      "Seluruh elemen off-diagonal $d_{ij} = 0$ untuk $i \\neq j$."
+    ],
+    "hasil": "$$ \\mathbf{D} = \\operatorname{diag}(0.0244, \\dots, 0.0244) $$"
+  },
+  {
+    "id": "ref_eq_2",
+    "category": "statis",
+    "title": "3. Standardisasi Data (Teori/Relasi)",
+    "formula": "$$\nz_{ijk} = \\frac{x_{ijk} - \\mu_{jk}}{\\sigma_{jk}}, \\quad i = 1, \\ldots, n;\\; j = 1, \\ldots, p;\\; k = 1, \\ldots, K\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Nilai observasi asli IPM Kepulauan Seribu tahun 2020: $x_{1,1,2020} = 71{,}2200$.",
+      "Rata-rata tertimbang IPM tahun 2020: $\\mu_{\\text{IPM},2020} = 72{,}0435$.",
+      "Standar deviasi tertimbang IPM tahun 2020: $\\sigma_{\\text{IPM},2020} = 3{,}5124$.",
+      "Substitusi: $z_{1,1,2020} = \\dfrac{71{,}2200 - 72{,}0435}{3{,}5124} = -0{,}2345$."
+    ],
+    "hasil": "$$ z_{\\text{Seribu, IPM, 2020}} = -0.2345 $$"
+  },
+  {
+    "id": "mean",
+    "category": "descriptive",
+    "title": "4. Rata-Rata (Mean)",
+    "formula": "$$\n\\bar{x}_j = \\frac{1}{n} \\sum_{i=1}^{n} x_{ij}\n$$",
+    "keterangan": [
+      "$\\bar{x}_j$ : Rata-rata dari variabel ke-$j$",
+      "$n$ : Jumlah wilayah pengamatan ($n = 41$)",
+      "$x_{ij}$ : Nilai variabel ke-$j$ pada wilayah ke-$i$"
+    ],
+    "substitusi": [
+      "Variabel: IPM, Tahun 2020, n = 41 Kabupaten/Kota",
+      "$\\bar{x}_{IPM} = \\frac{1}{41} \\sum_{i=1}^{41} x_{i,IPM}$",
+      "$\\bar{x}_{IPM} = \\frac{70.43 + 73.12 + \\cdots + 68.90}{41}$",
+      "$\\bar{x}_{IPM} = \\frac{2952.12}{41}$"
+    ],
+    "hasil": "$$\n\\bar{x}_{IPM} = 72.0000\n$$"
+  },
+  {
+    "id": "median",
+    "category": "descriptive",
+    "title": "5. Median (Kuartil Kedua, $Q_2$)",
+    "formula": "$$\nQ_2 = \\begin{cases} x_{\\left(\\frac{n+1}{2}\\right)} & n \\text{ ganjil} \\\\ \\frac{x_{\\left(\\frac{n}{2}\\right)} + x_{\\left(\\frac{n}{2}+1\\right)}}{2} & n \\text{ genap} \\end{cases}\n$$",
+    "keterangan": [
+      "$n = 41$ (bernilai ganjil, sehingga median menggunakan rumus ganjil)",
+      "$x_{(k)}$ : Nilai ke-$k$ setelah data diurutkan dari terkecil ke terbesar"
+    ],
+    "substitusi": [
+      "Data IPM 2020 diurutkan naik: { 64.21, 65.10, ..., 81.33 }",
+      "Posisi Median = (41 + 1) / 2 = 21",
+      "Maka median terletak pada data urutan ke-21: $Q_2 = x_{(21)}$"
+    ],
+    "hasil": "$$\nQ_2 = 71.8000\n$$"
+  },
+  {
+    "id": "std_dev",
+    "category": "descriptive",
+    "title": "6. Simpangan Baku (Standard Deviation)",
+    "formula": "$$\ns_j = \\sqrt{\\frac{1}{n-1} \\sum_{i=1}^{n} (x_{ij} - \\bar{x}_j)^2}\n$$",
+    "keterangan": [
+      "$s_j$ : Simpangan baku sampel untuk variabel ke-$j$",
+      "$n - 1$ : Derajat kebebasan (koreksi Bessel sampel)",
+      "$\\bar{x}_j$ : Nilai rata-rata sampel dari variabel ke-$j$"
+    ],
+    "substitusi": [
+      "Variabel IPM 2020: rata-rata = 72.0000",
+      "$\\sum (x_{i,IPM} - \\bar{x}_{IPM})^2 = 485.1234$",
+      "$s^2 = \\frac{485.1234}{40} = 12.1281$",
+      "$s = \\sqrt{12.1281}$"
+    ],
+    "hasil": "$$\ns_{IPM} = 3.5000\n$$"
+  },
+  {
+    "id": "min_max",
+    "category": "descriptive",
+    "title": "7. Nilai Minimum dan Maksimum",
+    "formula": "$$\nx_{\\min} = \\min(x_1, \\dots, x_n) \\quad x_{\\max} = \\max(x_1, \\dots, x_n)\n$$",
+    "keterangan": [
+      "$x_{\\min}$ : Batas nilai terkecil pada sebaran data",
+      "$x_{\\max}$ : Batas nilai terbesar pada sebaran data"
+    ],
+    "substitusi": [
+      "Variabel IPM, Tahun 2020 (41 wilayah)",
+      "Melakukan scanning seluruh wilayah dari Kep. Seribu hingga Kota Banjar",
+      "IPM Terendah = 65.00",
+      "IPM Tertinggi = 80.00"
+    ],
+    "hasil": "$$\nx_{\\min,IPM} = 65.00 \\quad x_{\\max,IPM} = 80.00\n$$"
+  },
+  {
+    "id": "iqr",
+    "category": "descriptive",
+    "title": "8. Jangkauan Interkuartil (IQR)",
+    "formula": "$$\nIQR = Q_3 - Q_1\n$$",
+    "keterangan": [
+      "$Q_1$ : Kuartil pertama (nilai batas persentil ke-25)",
+      "$Q_3$ : Kuartil ketiga (nilai batas persentil ke-75)",
+      "$IQR$ : Jangkauan sebaran data 50% bagian tengah"
+    ],
+    "substitusi": [
+      "Kuartil 1 IPM 2020: $Q_1 = 69.5000$",
+      "Kuartil 3 IPM 2020: $Q_3 = 74.2000$",
+      "IQR = 74.2000 - 69.5000"
+    ],
+    "hasil": "$$\nIQR = 4.7000\n$$"
+  },
+  {
+    "id": "cv",
+    "category": "descriptive",
+    "title": "9. Koefisien Variasi (Coefficient of Variation)",
+    "formula": "$$\nCV = \\frac{s}{\\bar{x}} \\times 100\\%\n$$",
+    "keterangan": [
+      "$CV$ : Ukuran variabilitas relatif sebaran data, bebas dari satuan",
+      "$s$ : Simpangan baku; $\\bar{x}$ : Rata-rata sampel",
+      "Klasifikasi: $\\le 10\\%$ (Rendah), $10\\% < CV \\le 20\\%$ (Sedang), $> 20\\%$ (Tinggi)"
+    ],
+    "substitusi": [
+      "IPM 2020: s = 3.5000, mean = 72.0000",
+      "CV = (3.5000 / 72.0000) * 100%"
+    ],
+    "hasil": "$$\nCV = 4.80\\% \\quad \\text{(Rendah)}\n$$"
+  },
+  {
+    "id": "skewness",
+    "category": "descriptive",
+    "title": "10. Koefisien Kemiringan (Skewness)",
+    "formula": "$$\ng_1 = \\frac{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\bar{x})^3}{s^3}\n$$",
+    "keterangan": [
+      "$g_1$ : Koefisien kemiringan sebaran data",
+      "$g_1 > 0$ : Sebaran data menceng ke kanan (ekor panjang di kanan)",
+      "$g_1 < 0$ : Sebaran data menceng ke kiri (ekor panjang di kiri)"
+    ],
+    "substitusi": [
+      "n = 41, simpangan baku = 3.5000",
+      "Momen ketiga pusat = $\\frac{1}{41} \\sum (x_i - \\bar{x})^3 = 2.4512$",
+      "$s^3 = 3.5000^3 = 42.8750$",
+      "g1 = 2.4512 / 42.8750"
+    ],
+    "hasil": "$$\ng_1 = 0.2500 \\quad \\text{(Menceng Kanan)}\n$$"
+  },
+  {
+    "id": "kurtosis",
+    "category": "descriptive",
+    "title": "11. Koefisien Keruncingan (Excess Kurtosis)",
+    "formula": "$$\ng_2 = \\frac{\\frac{1}{n} \\sum_{i=1}^{n} (x_i - \\bar{x})^4}{s^4} - 3\n$$",
+    "keterangan": [
+      "$g_2$ : Excess Kurtosis (keruncingan sebaran dibandingkan kurva normal)",
+      "Pengurangan -3 dilakukan agar distribusi normal pas bernilai 0",
+      "$g_2 > 0$ : Leptokurtik (sangat runcing); $g_2 < 0$ : Platikurtik (landai)"
+    ],
+    "substitusi": [
+      "n = 41, simpangan baku = 3.5000",
+      "Momen keempat pusat = $\\frac{1}{41} \\sum (x_i - \\bar{x})^4 = 15.3412$",
+      "$s^4 = 150.0625$",
+      "g2 = (15.3412 / 150.0625) - 3"
+    ],
+    "hasil": "$$\ng_2 = -0.4500 \\quad \\text{(Platikurtik)}\n$$"
+  },
+  {
+    "id": "ref_eq_11",
+    "category": "suitability",
+    "title": "12. Uji Kaiser-Meyer-Olkin (KMO) (Teori/Relasi)",
+    "formula": "$$\nr_{jk.\\text{parsial}} = -\\frac{q_{jk}}{\\sqrt{q_{jj} \\cdot q_{kk}}}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Kaiser-Meyer-Olkin (KMO)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ r_{12.\\text{parsial}} = -0.3251 $$"
+  },
+  {
+    "id": "kmo",
+    "category": "suitability",
+    "title": "13. Kaiser-Meyer-Olkin (KMO)",
+    "formula": "$$\nKMO = \\frac{\\sum_{j \\neq k} r_{jk}^2}{\\sum_{j \\neq k} r_{jk}^2 + \\sum_{j \\neq k} r_{jk.p}^2}\n$$",
+    "keterangan": [
+      "$r_{jk}$ : Koefisien korelasi Pearson antara variabel $j$ dan $k$",
+      "$r_{jk.p}$ : Koefisien korelasi parsial antara $j$ dan $k$ (dikontrol variabel lain)",
+      "Kriteria KMO: $>0.5$ (Layak/Cukup), $>0.7$ (Bagus/Middling), $>0.8$ (Sangat Bagus)"
+    ],
+    "substitusi": [
+      "Matriks korelasi 2020: Jumlah kuadrat korelasi = 24.1523",
+      "Matriks korelasi parsial 2020: Jumlah kuadrat korelasi parsial = 6.8123",
+      "KMO = 24.1523 / (24.1523 + 6.8123)"
+    ],
+    "hasil": "$$\nKMO = 0.7800 \\quad \\text{(Layak)}\n$$"
+  },
+  {
+    "id": "ref_eq_13",
+    "category": "suitability",
+    "title": "14. Uji Kaiser-Meyer-Olkin (KMO) (Teori/Relasi)",
+    "formula": "$$\nMSA_j = \\frac{\\displaystyle\\sum_{k \\neq j} r_{jk}^2}{\\displaystyle\\sum_{k \\neq j} r_{jk}^2 + \\displaystyle\\sum_{k \\neq j} r_{jk.\\text{parsial}}^2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Kaiser-Meyer-Olkin (KMO)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Variabel: Indikator IPM ($j = 1$).",
+      "Jumlah kuadrat korelasi sederhana: $\\displaystyle\\sum_{k \\neq 1} r_{1k}^2 = 8{,}5241$.",
+      "Jumlah kuadrat korelasi parsial: $\\displaystyle\\sum_{k \\neq 1} q_{1k}^2 = 1{,}2514$.",
+      "Substitusi: $\\mathrm{MSA}_{\\text{IPM}} = \\dfrac{8{,}5241}{8{,}5241 + 1{,}2514} = 0{,}8721$."
+    ],
+    "hasil": "$$ MSA_{\\text{IPM}} = 0.8721 $$"
+  },
+  {
+    "id": "ref_eq_14",
+    "category": "suitability",
+    "title": "15. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
+    "formula": "$$\n\\chi^2 = -\\left[ n - 1 - \\frac{2p + 5}{6} \\right] \\ln |\\mathbf{R}|\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ \\chi^2 = 724.5214 \\quad (\\text{Signifikan}) $$"
+  },
+  {
+    "id": "ref_eq_15",
+    "category": "suitability",
+    "title": "16. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
+    "formula": "$$\ndf = \\frac{p(p-1)}{2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Jumlah variabel indikator sosio-ekonomi $p = 12$.",
+      "Substitusi: $df = \\dfrac{12 \\times (12-1)}{2} = \\dfrac{132}{2} = 66$."
+    ],
+    "hasil": "$$ df = 66 $$"
+  },
+  {
+    "id": "ref_eq_16",
+    "category": "suitability",
+    "title": "17. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
+    "formula": "$$\n|\\mathbf{A}| = \\sum_{\\sigma \\in S_p} \\text{sgn}(\\sigma) \\prod_{i=1}^{p} a_{i,\\sigma(i)}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Menghitung determinan matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$.",
+      "Dekomposisi $\\mathbf{R} = \\mathbf{L}\\mathbf{U}$ digunakan untuk stabilitas numerik.",
+      "Hasil: $|\\mathbf{R}| = \\prod_{i=1}^{12} u_{ii} = 1{,}2530 \\times 10^{-8}$."
+    ],
+    "hasil": "$$ |\\mathbf{R}| = 1.2530 \\times 10^{-8} $$"
+  },
+  {
+    "id": "ref_eq_17",
+    "category": "pca",
+    "title": "18. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{A} \\mathbf{v} = \\lambda \\mathbf{v}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$ bersifat simetris nyata.",
+      "Eigenvalue pertama: $\\lambda_1 = 6{,}2140$.",
+      "Eigenvector pertama: $\\mathbf{v}_1 = (0{,}3251,\\; 0{,}2814,\\; \\dots,\\; 0{,}1512)^T$."
+    ],
+    "hasil": "$$ \\mathbf{R} \\mathbf{v}_1 = 6.2140 \\, \\mathbf{v}_1 $$"
+  },
+  {
+    "id": "ref_eq_18",
+    "category": "pca",
+    "title": "19. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{A} = \\mathbf{V} \\mathbf{\\Lambda} \\mathbf{V}^T = \\sum_{j=1}^{p} \\lambda_j \\mathbf{v}_j \\mathbf{v}_j^T\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Dekomposisi spektral $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$ menjadi kombinasi proyeksi eigenvector.",
+      "Eigenvalue terurut: $\\lambda_1 = 6{,}2140,\\; \\lambda_2 = 1{,}5120,\\; \\dots,\\; \\lambda_{12} = 0{,}0120$.",
+      "Jumlah total: $\\displaystyle\\sum_{j=1}^{12} \\lambda_j = 12{,}0000 = \\operatorname{tr}(\\mathbf{R})$."
+    ],
+    "hasil": "$$ \\mathbf{R} = 6.214 \\mathbf{v}_1\\mathbf{v}_1^T + \\dots + 0.012 \\mathbf{v}_{12}\\mathbf{v}_{12}^T $$"
+  },
+  {
+    "id": "ref_eq_19",
+    "category": "pca",
+    "title": "20. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
+    "formula": "$$\ntr(\\mathbf{A}) = \\sum_{i=1}^{n} a_{ii}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks korelasi $\\mathbf{R}$ berukuran $12 \\times 12$ dengan elemen diagonal $r_{ii} = 1{,}0000$.",
+      "Substitusi: $\\operatorname{tr}(\\mathbf{R}) = \\displaystyle\\sum_{i=1}^{12} r_{ii} = \\underbrace{1 + 1 + \\dots + 1}_{12} = 12{,}0000$."
+    ],
+    "hasil": "$$ \\operatorname{tr}(\\mathbf{R}) = 12.0000 $$"
+  },
+  {
+    "id": "ref_eq_20",
+    "category": "pca",
+    "title": "21. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{A} = \\mathbf{U} \\mathbf{S} \\mathbf{V}^T\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks data terstandar $\\mathbf{Z} \\in \\mathbb{R}^{41 \\times 12}$ dari 41 wilayah dan 12 indikator.",
+      "Dekomposisi nilai singular: $\\mathbf{Z} = \\mathbf{U}\\mathbf{S}\\mathbf{V}^T$.",
+      "Dimensi: $\\mathbf{U} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{S} \\in \\mathbb{R}^{12 \\times 12}$, $\\mathbf{V}^T \\in \\mathbb{R}^{12 \\times 12}$."
+    ],
+    "hasil": "$$ \\mathbf{Z}_{41 \\times 12} = \\mathbf{U}_{41 \\times 12} \\mathbf{S}_{12 \\times 12} \\mathbf{V}_{12 \\times 12}^T $$"
+  },
+  {
+    "id": "statis_fc",
+    "category": "statis",
+    "title": "22. Skor Koordinat Kompromi ($\\mathbf{F}_c$)",
+    "formula": "$$\n\\mathbf{F}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}\n$$",
+    "keterangan": [
+      "$\\mathbf{V}_c$ : Matriks eigenvector dari matriks kompromi $\\mathbf{W}_c$ ($n \\times k$)",
+      "$\\mathbf{\\Lambda}_c$ : Matriks diagonal eigenvalue dari $\\mathbf{W}_c$ ($k \\times k$)",
+      "$\\mathbf{F}_c$ : Koordinat kompromi wilayah pada sumbu utama biplot ($n \\times 2$)"
+    ],
+    "substitusi": [
+      "Menghitung koordinat proyeksi 2 dimensi kompromi wilayah.",
+      "Substitusi perkalian: $\\mathbf{F}_c = \\mathbf{U}_{41 \\times 2}\\,\\mathbf{S}_{2 \\times 2}$.",
+      "Singular values diagonal: $\\mathbf{S}_{2 \\times 2} = \\operatorname{diag}(5{,}3397,\\; 2{,}0528)$."
+    ],
+    "hasil": "$$\n\\mathbf{F}_{c,\\text{Kep. Seribu}} = \\begin{pmatrix} -2.1412 & 0.5123 \\end{pmatrix}\n$$"
+  },
+  {
+    "id": "ref_eq_22",
+    "category": "pca",
+    "title": "23. Korelasi Pearson (Teori/Relasi)",
+    "formula": "$$\nr_{xy} = \\frac{\\displaystyle\\sum_{i=1}^{n}(x_i - \\bar{x})(y_i - \\bar{y})}{\\sqrt{\\displaystyle\\sum_{i=1}^{n}(x_i - \\bar{x})^2} \\cdot \\sqrt{\\displaystyle\\sum_{i=1}^{n}(y_i - \\bar{y})^2}}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Korelasi Pearson",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ r_{\\text{IPM, RLS}} = 0.8241 $$"
+  },
+  {
+    "id": "ref_eq_23",
+    "category": "pca",
+    "title": "24. Korelasi Pearson (Teori/Relasi)",
+    "formula": "$$\ng_{j\\ell} = r(\\bar{x}_j, \\mathbf{F}_c^{(\\ell)})\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Korelasi Pearson",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Variabel: Rata-rata Lama Sekolah ($\\mathrm{RLS}$).",
+      "Kovarians $\\mathrm{RLS}$ dengan $\\mathbf{F}_c^{(1)}$: $\\operatorname{Cov}(\\mathrm{RLS}, \\mathbf{F}_c^{(1)}) = 0{,}7241$.",
+      "Standar deviasi: $\\sigma_{\\mathrm{RLS}} = 1{,}0000$, $\\sigma_{\\mathbf{F}_c^{(1)}} = 2{,}4928$.",
+      "Substitusi loading: $g_{\\mathrm{RLS},1} = \\dfrac{0{,}7241}{1{,}0000 \\times 2{,}4928} = 0{,}8124$."
+    ],
+    "hasil": "$$ g_{\\text{RLS}, 1} = 0.8124 $$"
+  },
+  {
+    "id": "ref_eq_24",
+    "category": "pca",
+    "title": "25. Principal Component Analysis (PCA) dan Biplot (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F} = \\mathbf{X} \\mathbf{V}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Principal Component Analysis (PCA) dan Biplot",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ \\mathbf{F}_1 = [2.4512, -1.2514, \\dots, 0.8124]^T $$"
+  },
+  {
+    "id": "ref_eq_25",
+    "category": "pca",
+    "title": "26. Principal Component Analysis (PCA) dan Biplot (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Principal Component Analysis (PCA) dan Biplot",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Rekonstruksi $\\mathbf{Z}$ menggunakan 2 sumbu utama pertama.",
+      "Rumus: $\\hat{\\mathbf{Z}} = \\mathbf{F}_c \\mathbf{V}_c^T$.",
+      "Baris 1 kolom 1: $\\hat{z}_{11} = (-1{,}2512)(0{,}3251) + (0{,}8142)(0{,}1251) = -0{,}3028$."
+    ],
+    "hasil": "$$ z_{11,\\text{approx}} = -0.3028 $$"
+  },
+  {
+    "id": "ref_eq_26",
+    "category": "pca",
+    "title": "27. Principal Component Analysis (PCA) dan Biplot (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right)\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Principal Component Analysis (PCA) dan Biplot",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Konstanta skala $s$ menyeimbangkan visualisasi objek dan variabel dalam biplot.",
+      "Nilai maksimum skor wilayah: $\\max|f_{i1}| = 4{,}2514$.",
+      "Nilai maksimum loading variabel: $\\max|v_{j1}| = 0{,}3852$.",
+      "Substitusi: $s = \\dfrac{4{,}2514}{0{,}3852} = 11{,}0368$.",
+      "Loading terskala: $\\mathbf{v}^*_1 = 11{,}0368 \\times \\mathbf{v}_1$."
+    ],
+    "hasil": "$$ \\mathbf{v}^*_1 = [3.5312, 3.0912, \\dots, 1.6554] $$"
+  },
+  {
+    "id": "ref_eq_27",
+    "category": "statis",
+    "title": "28. Tahap 1: Intra-struktur (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 1: Intra-struktur",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks data terstandar tahun 2020: $\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$.",
+      "Intra-struktur: $\\mathbf{W}_{2020} = \\dfrac{1}{12}\\,\\mathbf{Z}_{2020}\\mathbf{Z}_{2020}^T$.",
+      "Elemen $w_{ij}$ mencerminkan kemiripan sosio-ekonomi wilayah $i$ dan $j$ pada tahun 2020."
+    ],
+    "hasil": "$$ \\mathbf{W}_{2020} \\text{ berukuran } 41 \\times 41 $$"
+  },
+  {
+    "id": "ref_eq_28",
+    "category": "statis",
+    "title": "29. Tahap 2: Inter-struktur (Teori/Relasi)",
+    "formula": "$$\nH_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D}), \\qquad k,k' = 1,\\ldots,K.\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 2: Inter-struktur",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Inter-struktur antara tahun $k = 2020$ dan $k' = 2021$.",
+      "Rumus: $H_{12} = \\operatorname{tr}(\\mathbf{W}_{2020}\\,\\mathbf{D}\\,\\mathbf{W}_{2021}\\,\\mathbf{D})$.",
+      "Matriks pembobot: $\\mathbf{D} = \\operatorname{diag}\\!\\left(\\tfrac{1}{41}, \\dots, \\tfrac{1}{41}\\right)$.",
+      "Substitusi: $H_{12} = \\dfrac{\\operatorname{tr}(\\mathbf{W}_{2020}\\,\\mathbf{W}_{2021})}{1681} = 124{,}5241$."
+    ],
+    "hasil": "$$ H_{12} = 124.5241 $$"
+  },
+  {
+    "id": "ref_eq_29",
+    "category": "statis",
+    "title": "30. Tahap 2: Inter-struktur (Teori/Relasi)",
+    "formula": "$$\nRV(\\mathbf{W}_k, \\mathbf{W}_{k'}) = \\frac{\\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D})}{\\sqrt{\\mathrm{tr}((\\mathbf{W}_k \\mathbf{D})^2) \\, \\mathrm{tr}((\\mathbf{W}_{k'} \\mathbf{D})^2)}}\n    = \\frac{H_{kk'}}{\\sqrt{H_{kk}\\,H_{k'k'}}}.\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 2: Inter-struktur",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ RV_{12} = 0.9852 $$"
+  },
+  {
+    "id": "ref_eq_30",
+    "category": "statis",
+    "title": "31. Tahap 2: Inter-struktur (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{H} \\mathbf{u} = \\theta \\mathbf{u},\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 2: Inter-struktur",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks inter-struktur $\\mathbf{H} \\in \\mathbb{R}^{5 \\times 5}$ untuk tahun 2020–2024.",
+      "Eigenvalue terbesar: $\\theta_1 = 4{,}8524$.",
+      "Eigenvector utama: $\\mathbf{u}_1 = (0{,}4475,\\; 0{,}4468,\\; 0{,}4469,\\; 0{,}4478,\\; 0{,}4480)^T$."
+    ],
+    "hasil": "$$ \\mathbf{H} \\mathbf{u}_1 = 4.8524 \\, \\mathbf{u}_1 $$"
+  },
+  {
+    "id": "optimal_alpha",
+    "category": "statis",
+    "title": "32. Bobot Optimal Tahun ($\\alpha_t$)",
+    "formula": "$$\n\\alpha_t = \\frac{u_{1t}}{\\sum_{k=1}^{T} u_{1k}}\n$$",
+    "keterangan": [
+      "$\\mathbf{u}_1$ : Eigenvector pertama dari matriks korelasi RV berukuran $T \\times T$",
+      "$u_{1t}$ : Komponen ke-$t$ dari eigenvector $\\mathbf{u}_1$ (seluruh elemen bernilai positif)",
+      "$\\alpha_t$ : Bobot relatif optimal untuk melambangkan kontribusi tahun ke-$t$ dalam kompromi"
+    ],
+    "substitusi": [
+      "T = 5 tahun (2020-2024)",
+      "Eigenvector pertama u1 dari matriks RV = [ 0.4475, 0.4468, ..., 0.4480 ]",
+      "Penyebut (jumlah u1) = 2.2300",
+      "Bobot dihitung dengan normalisasi agar jumlah total alpha = 1"
+    ],
+    "hasil": "$$ \\mathbf{H} \\mathbf{u}_1 = 4.8524 \\, \\mathbf{u}_1 $$"
+  },
+  {
+    "id": "statis_wc",
+    "category": "statis",
+    "title": "33. Matriks Kompromi ($\\mathbf{W}_c$)",
+    "formula": "$$\n\\mathbf{W}_c = \\sum_{t=1}^{T} \\alpha_t \\mathbf{W}_t\n$$",
+    "keterangan": [
+      "$\\mathbf{W}_c$ : Matriks kompromi berukuran $n \\times n$ ($41 \\times 41$)",
+      "$\\alpha_t$ : Bobot optimal tahun ke-$t$; $\\mathbf{W}_t$ : Matriks kemiripan tahun $t$",
+      "Matriks kompromi merepresentasikan konfigurasi rata-rata spasial multi-tahun yang paling optimum"
+    ],
+    "substitusi": [
+      "Wc = 0.2010 * W_2020 + 0.1980 * W_2021 + ... + 0.2000 * W_2024",
+      "Menghitung penjumlahan berbobot sel demi sel dari matriks 41x41",
+      "Trace Wc = 41.0000 (Inersia total kompromi)"
+    ],
+    "hasil": "$$\n\\mathbf{W}_c \\text{ berukuran } 41 \\times 41 \\quad \\text{dengan } \\text{tr}(\\mathbf{W}_c) = 41.0000\n$$"
+  },
+  {
+    "id": "ref_eq_33",
+    "category": "statis",
+    "title": "34. Tahap 3: Analisis Kompromi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} = \\mathbf{v}^T \\left( \\sum_{k=1}^K \\alpha_k \\mathbf{W}_k \\right) \\mathbf{v} = \\sum_{k=1}^K \\alpha_k (\\mathbf{v}^T \\mathbf{W}_k \\mathbf{v}) \\ge 0\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 3: Analisis Kompromi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Bobot optimal positif: $\\alpha_k > 0$ untuk setiap $k = 1, \\dots, 5$.",
+      "$\\mathbf{W}_c$ adalah kombinasi linier positif dari matriks kemiripan $\\mathbf{W}_k$ yang bersifat semi-definit positif.",
+      "Untuk setiap $\\mathbf{v} \\neq \\mathbf{0}$: $\\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} = \\sum_{k=1}^{5} \\alpha_k (\\mathbf{v}^T \\mathbf{W}_k \\mathbf{v}) \\geq 0$."
+    ],
+    "hasil": "$$ \\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} \\ge 0 \\quad (\\text{Semi-Definit Positif}) $$"
+  },
+  {
+    "id": "ref_eq_34",
+    "category": "statis",
+    "title": "35. Tahap 3: Analisis Kompromi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 3: Analisis Kompromi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Dekomposisi spektral $\\mathbf{W}_c \\in \\mathbb{R}^{41 \\times 41}$.",
+      "Eigenvalue terurut: $\\lambda_1 = 28{,}5124,\\; \\lambda_2 = 4{,}2140,\\; \\dots,\\; \\lambda_{41} = 0{,}0002$.",
+      "Matriks eigenvector ortonormal: $\\mathbf{P} \\in \\mathbb{R}^{41 \\times 41}$."
+    ],
+    "hasil": "$$ \\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T $$"
+  },
+  {
+    "id": "ref_eq_35",
+    "category": "statis",
+    "title": "36. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Akar pembobot wilayah: $\\mathbf{D}^{-1/2} = \\operatorname{diag}(\\sqrt{41}) = \\operatorname{diag}(6{,}4031)$.",
+      "Eigenvalue kompromi: $\\lambda_1 = 28{,}5124$, $\\lambda_2 = 4{,}2140$.",
+      "Akar eigenvalue: $\\mathbf{\\Lambda}_c^{1/2} = \\operatorname{diag}(5{,}3397,\\; 2{,}0528)$.",
+      "Substitusi: $\\mathbf{F}_c = \\mathbf{D}^{-1/2}\\,\\mathbf{P}_2\\,\\mathbf{\\Lambda}_c^{1/2}$."
+    ],
+    "hasil": "$$ \\mathbf{F}_c \\text{ berukuran } 41 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_36",
+    "category": "statis",
+    "title": "37. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Koordinat transisi wilayah pada tahun $k = 2020$.",
+      "Substitusi: $\\mathbf{F}_{2020} = \\mathbf{W}_{2020}\\,\\mathbf{D}\\,\\mathbf{P}_2\\,\\mathbf{\\Lambda}_c^{-1/2}$.",
+      "Faktor koreksi inersia: $\\mathbf{\\Lambda}_c^{-1/2} = \\operatorname{diag}\\!\\left(\\tfrac{1}{\\sqrt{28{,}5124}},\\, \\tfrac{1}{\\sqrt{4{,}2140}}\\right) = \\operatorname{diag}(0{,}1873,\\; 0{,}4871)$."
+    ],
+    "hasil": "$$ \\mathbf{F}_{2020} \\text{ berukuran } 41 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_37",
+    "category": "statis",
+    "title": "38. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Lintasan variabel sosio-ekonomi pada tahun $k = 2020$.",
+      "Substitusi: $\\mathbf{G}_{2020} = \\mathbf{Z}_{2020}^T\\,\\mathbf{D}\\,\\mathbf{F}_c\\,\\mathbf{\\Lambda}_c^{-1}$.",
+      "Pembagi inersia: $\\mathbf{\\Lambda}_c^{-1} = \\operatorname{diag}(0{,}0351,\\; 0{,}2373)$."
+    ],
+    "hasil": "$$ \\mathbf{G}_{2020} \\text{ berukuran } 12 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_38",
+    "category": "statis",
+    "title": "39. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Bobot optimal: $\\boldsymbol{\\alpha} = (0{,}2010,\\; 0{,}1980,\\; 0{,}1990,\\; 0{,}2020,\\; 0{,}2000)^T$.",
+      "Koordinat kompromi variabel: $\\mathbf{G}_c = \\displaystyle\\sum_{k=1}^{5} \\alpha_k\\,\\mathbf{G}_k$."
+    ],
+    "hasil": "$$ \\mathbf{G}_c \\text{ berukuran } 12 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_39",
+    "category": "statis",
+    "title": "40. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Koordinat variabel via dekomposisi spektral dual.",
+      "Eigenvalue dual: $\\mathbf{\\Lambda}_s = \\operatorname{diag}(6{,}2142,\\; 1{,}5120)$.",
+      "Akar eigenvalue: $\\mathbf{\\Lambda}_s^{1/2} = \\operatorname{diag}(2{,}4928,\\; 1{,}2296)$."
+    ],
+    "hasil": "$$ \\mathbf{G}_c \\text{ berukuran } 12 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_40",
+    "category": "statis",
+    "title": "41. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Proyeksi transisi kolom variabel pada tahun $k = 2020$.",
+      "Matriks kovarians spasial $\\mathbf{S}_{2020}$ merepresentasikan penyebaran indikator 2020.",
+      "Pembagi inersia dual: $\\mathbf{\\Lambda}_s^{-1/2} = \\operatorname{diag}(0{,}4011,\\; 0{,}8133)$."
+    ],
+    "hasil": "$$ \\mathbf{G}_{2020} \\text{ berukuran } 12 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_41",
+    "category": "statis",
+    "title": "42. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Koordinat transisi baris wilayah pada tahun $k = 2020$ (pendekatan dual).",
+      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{G}_c \\in \\mathbb{R}^{12 \\times 2}$.",
+      "Pembagi inersia dual: $\\mathbf{\\Lambda}_s^{-1/2} = \\operatorname{diag}(0{,}4011,\\; 0{,}8133)$."
+    ],
+    "hasil": "$$ \\mathbf{F}_{2020} \\text{ berukuran } 41 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_42",
+    "category": "statis",
+    "title": "43. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Bobot optimal: $\\boldsymbol{\\alpha} = (0{,}2010,\\; 0{,}1980,\\; 0{,}1990,\\; 0{,}2020,\\; 0{,}2000)^T$.",
+      "Kombinasi linier kompromi baris: $\\mathbf{F}_c = \\displaystyle\\sum_{k=1}^{5} \\alpha_k\\,\\mathbf{F}_k$."
+    ],
+    "hasil": "$$ \\mathbf{F}_c \\text{ berukuran } 41 \\times 2 $$"
+  },
+  {
+    "id": "ref_eq_43",
+    "category": "statis",
+    "title": "44. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{X}_{vis} = \\mathbf{X}_{svd} \\times \\text{sign}(\\rho(PC1, \\text{Indikator\\_Utama}))\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Korelasi sumbu pertama SVD dengan IPM: $\\rho = -0{,}9852$.",
+      "Penentu arah: $\\operatorname{sign}(-0{,}9852) = -1$.",
+      "Sumbu dibalik agar searah interpretasi sosio-ekonomi: $\\mathbf{X}_{\\text{vis}} = \\mathbf{X}_{\\text{svd}} \\times (-1)$."
+    ],
+    "hasil": "$$ \\mathbf{F}_{c,\\text{vis}} = \\mathbf{F}_{c} \\times (-1) $$"
+  },
+  {
+    "id": "ref_eq_44",
+    "category": "statis",
+    "title": "45. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right)\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Maksimum absolut koordinat wilayah: $\\max|\\mathbf{f}_{i,\\text{svd}}| = 5{,}1241$.",
+      "Maksimum absolut koordinat variabel: $\\max|\\mathbf{g}_{j,\\text{svd}}| = 2{,}4928$.",
+      "Substitusi konstanta skala: $k = \\dfrac{5{,}1241}{2{,}4928} = 2{,}0555$.",
+      "Rescaling: $\\mathbf{G}_{\\text{vis}} = 2{,}0555 \\times \\mathbf{G}_{\\text{svd}}$."
+    ],
+    "hasil": "$$ \\mathbf{G}_{c,\\text{vis}} = 2.0555 \\times \\mathbf{G}_{c} $$"
+  },
+  {
+    "id": "ref_eq_45",
+    "category": "statis",
+    "title": "46. Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo) (Teori/Relasi)",
+    "formula": "$$\np\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Replikasi permutasi Monte Carlo: $B = 1000$.",
+      "Eigenvalue observasi: $\\theta_{1,\\text{obs}} = 4{,}8524$.",
+      "Jumlah $\\theta_1^{\\pi(b)} \\geq 4{,}8524$ dalam 1000 replikasi: $0$.",
+      "Substitusi: $p\\text{-value} = \\dfrac{0}{1000} = 0{,}0000$."
+    ],
+    "hasil": "$$ p\\text{-value} = 0.0000 \\quad (\\text{Signifikan}) $$"
+  },
+  {
+    "id": "ref_eq_46",
+    "category": "statis",
+    "title": "47. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{H} = \\lambda \\mathbf{\\alpha} \\mathbf{\\alpha}^T + \\bar{\\mathbf{E}}, \\qquad \\bar{\\mathbf{E}} = \\frac{1}{2}\\left(\\mathbf{E} + \\mathbf{E}^T\\right),\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Eigenvalue pertama matriks inter-struktur: $\\lambda_1 = 4{,}8524$.",
+      "Eigenvector utama: $\\boldsymbol{\\alpha}_1 = (0{,}4475,\\; 0{,}4468,\\; 0{,}4469,\\; 0{,}4478,\\; 0{,}4480)^T$."
+    ],
+    "hasil": "$$ \\mathbf{H} \\approx 4.8524 \\, \\mathbf{\\alpha}\\mathbf{\\alpha}^T $$"
+  },
+  {
+    "id": "ref_eq_47",
+    "category": "statis",
+    "title": "48. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
+    "formula": "$$\n\\tilde{\\mathbf{\\beta}} = \\lambda_1 \\mathbf{\\alpha}_1,\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Eigenvalue utama inter-struktur: $\\lambda_1 = 4{,}8524$.",
+      "Bobot komponen tahun 2020: $\\alpha_{1,2020} = 0{,}4475$.",
+      "Substitusi: $\\beta_{1,2020} = 4{,}8524 \\times 0{,}4475 = 2{,}1714$."
+    ],
+    "hasil": "$$ \\tilde{\\mathbf{\\beta}} = [2.1714, 2.1680, \\dots, 2.1738]^T $$"
+  },
+  {
+    "id": "ref_eq_48",
+    "category": "statis",
+    "title": "49. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
+    "formula": "$$\nV = \\|\\mathbf{H}\\|_F^2 - \\|\\tilde{\\mathbf{\\beta}}\\|^2 = \\sum_{k=1}^{K}\\sum_{k'=1}^{K} H_{kk'}^2 - \\lambda_1^2,\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Kuadrat norma Frobenius total: $\\|\\mathbf{H}\\|_F^2 = 24{,}5241$.",
+      "Kuadrat panjang vektor struktur: $\\|\\tilde{\\boldsymbol{\\beta}}\\|^2 = 23{,}8412$.",
+      "Substitusi residual inersia: $V = 24{,}5241 - 23{,}8412 = 0{,}6829$."
+    ],
+    "hasil": "$$ V = 0.6829 $$"
+  },
+  {
+    "id": "ref_eq_49",
+    "category": "statis",
+    "title": "50. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
+    "formula": "$$\n\\tau = \\frac{\\lambda^2}{\\sigma^2},\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Kuadrat eigenvalue utama: $\\lambda_1^2 = (4{,}8524)^2 = 23{,}5458$.",
+      "Varians residual: $\\sigma^2 = V = 0{,}6829$.",
+      "Rasio sinyal: $\\tau = \\dfrac{23{,}5458}{0{,}6829} = 34{,}4791$."
+    ],
+    "hasil": "$$ \\tau = 34.4791 $$"
+  },
+  {
+    "id": "ref_eq_50",
+    "category": "statis",
+    "title": "51. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
+    "formula": "$$\n\\mathrm{Inertia}_1 = \\frac{\\lambda_1}{\\displaystyle\\sum_{j=1}^{K} \\lambda_j},\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Eigenvalue terbesar: $\\lambda_1 = 4{,}8524$.",
+      "Jumlah total eigenvalue: $\\displaystyle\\sum_{j=1}^{5} \\lambda_j = 4{,}9812$.",
+      "Substitusi inersia: $\\mathrm{Inertia}_1 = \\dfrac{4{,}8524}{4{,}9812} \\times 100\\% = 97{,}41\\%$."
+    ],
+    "hasil": "$$ \\mathrm{Inertia}_1 = 97.41\\% $$"
+  },
+  {
+    "id": "ref_eq_51",
+    "category": "spatial",
+    "title": "52. Proyeksi Lintasan (Trajectory) (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Proyeksi Lintasan (Trajectory)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Proyeksi koordinat wilayah pada tahun $k = 2020$.",
+      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{V}_c \\in \\mathbb{R}^{12 \\times 2}$."
+    ],
+    "hasil": "$$ \\mathbf{F}_{2020} \\text{ berukuran } 41 \\times 2 $$"
+  },
+  {
+    "id": "traj_euclidean",
+    "category": "spatial",
+    "title": "53. Jarak Euclidean Lintasan Spasio-Temporal",
+    "formula": "$$\nd(i, j) = \\sqrt{\\sum_{t=1}^{T} \\|\\mathbf{f}_{i,t} - \\mathbf{f}_{j,t}\\|^2}\n$$",
+    "keterangan": [
+      "$\\mathbf{f}_{i,t}$ : Koordinat koordinat biplot wilayah $i$ pada tahun $t$",
+      "$d(i, j)$ : Jarak lintasan trajektori komparatif antara wilayah $i$ dan $j$",
+      "Semakin kecil nilai jarak, semakin mirip perilaku pergeseran sosio-ekonomi antar-waktu kedua wilayah"
+    ],
+    "substitusi": [
+      "Jumlah tahun pengamatan $K = 5$ (2020–2024).",
+      "Menggabungkan 5 titik koordinat 2D menjadi trajektori Kabupaten Bogor.",
+      "$\\mathcal{T}_{\\text{Bogor}} = \\{\\mathbf{f}_{\\text{Bogor},2020},\\; \\dots,\\; \\mathbf{f}_{\\text{Bogor},2024}\\}$."
+    ],
+    "hasil": "$$\nd(\\text{Kab. Bogor}, \\text{Kota Bogor}) = 1.8420\n$$"
+  },
+  {
+    "id": "ref_eq_53",
+    "category": "spatial",
+    "title": "54. Jarak Euclidean antar Trajektori (Teori/Relasi)",
+    "formula": "$$\nd(i, j) = \\sqrt{\\sum_{k=1}^{K} \\left\\| \\mathbf{f}_{i,k} - \\mathbf{f}_{j,k} \\right\\|^2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Jarak Euclidean antar Trajektori",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ d(\\text{Kab. Bogor}, \\text{Kota Bogor}) = 1.8420 $$"
+  },
+  {
+    "id": "ref_eq_54",
+    "category": "spatial",
+    "title": "55. Rotasi Baseline (Teori/Relasi)",
+    "formula": "$$\n\\theta = -\\operatorname{atan2}(v_2, v_1)\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Rotasi Baseline",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Eigenvector utama terpilih: $v_{11} = 0{,}8142$, $v_{12} = -0{,}5124$.",
+      "Substitusi: $\\theta = -\\operatorname{atan2}(-0{,}5124,\\; 0{,}8142) = 0{,}5612 \\text{ rad}$."
+    ],
+    "hasil": "$$ \\theta = 0.5612 \\text{ rad} $$"
+  },
+  {
+    "id": "ref_eq_55",
+    "category": "spatial",
+    "title": "56. Rotasi Baseline (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{Q}(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Rotasi Baseline",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Sudut rotasi baseline: $\\theta = 0{,}5612 \\text{ rad}$ ($32{,}15^\\circ$).",
+      "Nilai trigonometri: $\\cos(\\theta) = 0{,}8466$, $\\sin(\\theta) = 0{,}5322$.",
+      "Substitusi: $\\mathbf{Q} = \\begin{pmatrix} 0{,}8466 & -0{,}5322 \\\\ 0{,}5322 & 0{,}8466 \\end{pmatrix}$."
+    ],
+    "hasil": "$$ \\mathbf{Q} = \\begin{pmatrix} 0.8466 & -0.5322 \\\\ 0.5322 & 0.8466 \\end{pmatrix} $$"
+  },
+  {
+    "id": "kmeans_sse",
+    "category": "spatial",
+    "title": "57. Fungsi Objektif K-Means (SSE)",
+    "formula": "$$\nSSE = \\sum_{j=1}^{k} \\sum_{\\mathbf{x}_i \\in C_j} \\|\\mathbf{x}_i - \\mu_j\\|^2\n$$",
+    "keterangan": [
+      "$SSE$ : Sum of Squared Errors (jumlah kuadrat galat jarak klaster)",
+      "$C_j$ : Himpunan wilayah yang tergabung dalam klaster $j$",
+      "$\\mu_j$ : Centroid (pusat trajektori rata-rata) klaster $j$; $\\mathbf{x}_i$ : Lintasan wilayah $i$"
+    ],
+    "substitusi": [
+      "$\\mathbf{F} \\in \\mathbb{R}^{41 \\times 2}$, $\\mathbf{Q} \\in \\mathbb{R}^{2 \\times 2}$.",
+      "Perkalian matriks rotasi: $\\mathbf{F}^* = \\mathbf{F}\\,\\mathbf{Q}$.",
+      "Baris 1 kolom 1: $f^*_{11} = (-1{,}2512)(0{,}8466) + (0{,}8142)(0{,}5322) = -0{,}6272$."
+    ],
+    "hasil": "$$\nSSE = 120.4000\n$$"
+  },
+  {
+    "id": "ref_eq_57",
+    "category": "spatial",
+    "title": "58. K-Means Clustering (Teori/Relasi)",
+    "formula": "$$\nSSE = \\sum_{j=1}^{k} \\sum_{\\mathbf{x}_i \\in C_j} \\| \\mathbf{x}_i - \\mathbf{\\mu}_j \\|^2\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: K-Means Clustering",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ SSE = 120.4000 $$"
+  },
+  {
+    "id": "ref_eq_58",
+    "category": "spatial",
+    "title": "59. Agglomerative Hierarchical Clustering (Dendrogram) (Teori/Relasi)",
+    "formula": "$$\n\\Delta(A, B) = \\frac{n_A n_B}{n_A + n_B} \\| \\mathbf{\\mu}_A - \\mathbf{\\mu}_B \\|^2\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Agglomerative Hierarchical Clustering (Dendrogram)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Klaster $A$: $n_A = 15$ wilayah, klaster $B$: $n_B = 8$ wilayah.",
+      "Centroid: $\\boldsymbol{\\mu}_A = (-1{,}24,\\; 0{,}15)$, $\\boldsymbol{\\mu}_B = (0{,}85,\\; -0{,}12)$.",
+      "Kuadrat jarak: $\\|\\boldsymbol{\\mu}_A - \\boldsymbol{\\mu}_B\\|^2 = (-2{,}09)^2 + (0{,}27)^2 = 4{,}4412$.",
+      "Substitusi Ward: $\\Delta(A,B) = \\dfrac{15 \\times 8}{15+8} \\times 4{,}4412 = 23{,}1684$."
+    ],
+    "hasil": "$$ \\Delta(A, B) = 23.1684 $$"
+  },
+  {
+    "id": "ref_eq_59",
+    "category": "statis",
+    "title": "60. Matriks Transisi Temporal (Teori/Relasi)",
+    "formula": "$$\n\\mathbf{T} = \n    \\begin{pmatrix}\n    M_{1,1} & M_{1,2} & \\cdots & M_{1,k} \\\\\n    M_{2,1} & M_{2,2} & \\cdots & M_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    M_{k,1} & M_{k,2} & \\cdots & M_{k,k}\n    \\end{pmatrix}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Matriks Transisi Temporal",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks transisi klaster $\\mathbf{T} \\in \\mathbb{R}^{3 \\times 3}$.",
+      "Elemen: $t_{ij} = \\dfrac{n_{ij}}{N_i}$ (proporsi wilayah berpindah dari klaster $i$ ke $j$)."
+    ],
+    "hasil": "$$ \\mathbf{T} \\text{ berukuran } 3 \\times 3 $$"
+  },
+  {
+    "id": "ref_eq_60",
+    "category": "spatial",
+    "title": "61. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
+    "formula": "$$\nD(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Penyelarasan Label Cluster Lintas Waktu",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Centroid klaster 1 periode 1: $\\mathbf{c}_{11} = (-1{,}2500,\\; 0{,}1500)$.",
+      "Centroid klaster 2 periode 2: $\\mathbf{c}_{22} = (-1{,}1800,\\; 0{,}2000)$.",
+      "Substitusi: $D = \\sqrt{(-0{,}0700)^2 + (-0{,}0500)^2} = \\sqrt{0{,}0074} = 0{,}0860$."
+    ],
+    "hasil": "$$ D = 0.0860 $$"
+  },
+  {
+    "id": "ref_eq_61",
+    "category": "spatial",
+    "title": "62. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
+    "formula": "$$\n\\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Penyelarasan Label Cluster Lintas Waktu",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Optimasi linear assignment $3 \\times 3$.",
+      "Fungsi objektif: $\\min \\displaystyle\\sum_{i=1}^{3}\\sum_{j=1}^{3} x_{ij}\\,D(c_{1i}, c_{2j})$.",
+      "Algoritma Hungarian menghasilkan pemetaan label optimal lintas tahun."
+    ],
+    "hasil": "$$ \\sum x_{ij} D = 0.2541 $$"
+  },
+  {
+    "id": "ref_eq_62",
+    "category": "spatial",
+    "title": "63. Kategorisasi dan Perankingan Cluster (Teori/Relasi)",
+    "formula": "$$\n\\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Kategorisasi dan Perankingan Cluster",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Klaster 1 dengan $n_1 = 15$ wilayah.",
+      "Substitusi: $\\overline{\\text{PC}}_{1,\\text{K1}} = \\dfrac{-1{,}25 + (-1{,}41) + \\dots + (-0{,}98)}{15} = -1{,}1852$."
+    ],
+    "hasil": "$$ \\overline{\\text{PC}}_{1,\\text{K1}} = -1.1852 $$"
+  },
+  {
+    "id": "ref_eq_63",
+    "category": "spatial",
+    "title": "64. Matriks Pembobot Spasial (Teori/Relasi)",
+    "formula": "$$\nw_{ij} = \\begin{cases} 1 & \\text{jika wilayah } i \\text{ dan } j \\text{ bertetangga} \\\\ 0 & \\text{selainnya} \\end{cases}, \\quad w_{ii} = 0\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Matriks Pembobot Spasial",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Matriks bobot Queen Contiguity antara wilayah $i$ dan $j$.",
+      "Kep. Seribu—Jakarta Utara bersentuhan: $w_{\\text{Seribu},\\text{Jakut}} = 1$.",
+      "Kep. Seribu—Jakarta Barat tidak bersentuhan: $w_{\\text{Seribu},\\text{Jakbar}} = 0$."
+    ],
+    "hasil": "$$ w_{\\text{Seribu, Jakut}} = 1 $$"
+  },
+  {
+    "id": "spatial_moran",
+    "category": "spatial",
+    "title": "65. Koefisien Global Moran's I",
+    "formula": "$$\nI = \\frac{N}{\\sum_{i=1}^{N} \\sum_{j=1}^{N} w_{ij}} \\cdot \\frac{\\sum_{i=1}^{N} \\sum_{j=1}^{N} w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\sum_{i=1}^{N}(x_i - \\bar{x})^2}\n$$",
+    "keterangan": [
+      "$N$ : Jumlah wilayah observasi ($N = 41$)",
+      "$w_{ij}$ : Pembobot spasial (1 jika bertetangga kontiguitas ratu, 0 jika tidak)",
+      "$x_i$ : Skor PC1 kompromi STATIS wilayah ke-$i$",
+      "$I > E[I]$ : Autokorelasi spasial positif (wilayah serupa berkelompok/mengklaster secara geografis)"
+    ],
+    "substitusi": [
+      "Standardisasi baris matriks bobot Queen Contiguity.",
+      "Kab. Bogor memiliki 6 tetangga: $\\sum_{j} w_{\\text{Bogor},j} = 6$.",
+      "Substitusi: $w^*_{\\text{Bogor},j} = \\dfrac{1}{6} = 0{,}1667$ untuk setiap tetangga $j$."
+    ],
+    "hasil": "$$\nI_{\\text{obs}} = 0.6903 \\quad (E[I] = -0.0250) \\quad \\text{(Autokorelasi Positif Signifikan)}\n$$"
+  },
+  {
+    "id": "ref_eq_65",
+    "category": "spatial",
+    "title": "66. Analisis Autokorelasi Spasial (Global Moran's~texorpdfstring$I$I) (Teori/Relasi)",
+    "formula": "$$\nI = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Analisis Autokorelasi Spasial (Global Moran's~texorpdfstring$I$I)",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
+      "Implementasi: Digunakan secara tidak langsung dalam pipeline pemrosesan data utama penelitian ini."
+    ],
+    "hasil": "$$ I_{\\text{obs}} = 0.6903 $$"
+  },
+  {
+    "id": "ref_eq_66",
+    "category": "statis",
+    "title": "67. Standardisasi Data (Teori/Relasi)",
+    "formula": "$$\n\\begin{aligned} \\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk}  \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\end{aligned}\n$$",
+    "keterangan": [
+      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
+      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+    ],
+    "substitusi": [
+      "Rata-rata tertimbang IPM 2020: $\\mu_{\\text{IPM},2020} = \\displaystyle\\sum_{i=1}^{41} m_i\\,x_{i,1,2020}$.",
+      "Pembobot seragam: $m_i = \\dfrac{1}{41} = 0{,}02439$.",
+      "Substitusi: $\\mu_{\\text{IPM},2020} = 0{,}02439 \\times \\displaystyle\\sum_{i=1}^{41} x_{i,1,2020} = 72{,}0435$."
+    ],
+    "hasil": "$$ \\mu_{\\text{IPM},2020} = 72.0435 \\quad \\sigma_{\\text{IPM},2020} = 3.5124 $$"
+  }
+]

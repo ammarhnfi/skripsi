@@ -1,0 +1,165 @@
+636:         "hasil": r"$$ \mathbf{D} = \operatorname{diag}(0.0244, \dots, 0.0244) $$"
+637:     },
+638:     2: {
+639:         "keterangan": [
+640:             r"$z_{ijk}$ : Nilai terstandar variabel ke-$j$ pada wilayah ke-$i$ di tahun ke-$k$",
+641:             r"$x_{ijk}$ : Nilai observasi asli sosio-ekonomi",
+642:             r"$\mu_{jk}$ : Rata-rata tertimbang variabel $j$ pada tahun $k$",
+643:             r"$\sigma_{jk}$ : Standar deviasi tertimbang variabel $j$ pada tahun $k$"
+644:         ],
+645:         "substitusi": [
+646:             r"Nilai observasi asli IPM Kepulauan Seribu tahun 2020: $x_{1,1,2020} = 71.2200$.",
+647:             r"Rata-rata tertimbang IPM tahun 2020: $\mu_{\text{IPM}, 2020} = 72.0435$.",
+648:             r"Standar deviasi tertimbang IPM tahun 2020: $\sigma_{\text{IPM}, 2020} = 3.5124$.",
+649:             r"Substitusi nilai terstandar: $z_{1,1,2020} = \frac{71.2200 - 72.0435}{3.5124}$."
+650:         ],
+651:         "hasil": r"$$ z_{\text{Seribu, IPM, 2020}} = -0.2345 $$"
+652:     },
+653:     13: {
+654:         "keterangan": [
+655:             r"$MSA_j$ : Measure of Sampling Adequacy untuk variabel ke-$j$",
+656:             r"$r_{jk}$ : Koefisien korelasi sederhana antara variabel $j$ dan $k$",
+657:             r"$q_{jk}$ : Koefisien korelasi parsial antara variabel $j$ and $k$"
+658:         ],
+659:         "substitusi": [
+660:             r"Variabel analisis terpilih: Indikator IPM ($j = 1$).",
+661:             r"Jumlah kuadrat koefisien korelasi sederhana pembilang: $\sum_{k \neq 1} r_{1k}^2 = 8.5241$.",
+662:             r"Jumlah kuadrat koefisien korelasi parsial penyebut: $\sum_{k \neq 1} q_{1k}^2 = 1.2514$.",
+663:             r"Substitusi rumus: $\mathrm{MSA}_{\text{IPM}} = \frac{8.5241}{8.5241 + 1.2514}$."
+664:         ],
+665:         "hasil": r"$$ MSA_{\text{IPM}} = 0.8721 \quad \text{(Sangat Layak)} $$"
+666:     },
+667:     15: {
+668:         "keterangan": [
+669:             r"$df$ : Derajat bebas untuk uji Bartlett's Sphericity",
+670:             r"$p$ : Jumlah variabel sosio-ekonomi ($p = 12$)"
+671:         ],
+672:         "substitusi": [
+673:             r"Jumlah variabel indikator sosio-ekonomi $p = 12$.",
+674:             r"Substitusi derajat bebas: $df = \frac{12 \times (12 - 1)}{2} = \frac{132}{2} = 66$."
+675:         ],
+676:         "hasil": r"$$ df = 66 $$"
+677:     },
+678:     16: {
+679:         "keterangan": [
+680:             r"$|\mathbf{A}|$ : Determinan dari matriks persegi $\mathbf{A}$",
+681:             r"$\sigma$ : Permutasi elemen matriks",
+682:             r"$\text{sgn}(\sigma)$ : Tanda permutasi (+1 atau -1)"
+683:         ],
+684:         "substitusi": [
+685:             r"Menghitung determinan matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$.",
+686:             r"Melakukan dekomposisi $\mathbf{R} = \mathbf{L}\mathbf{U}$ untuk stabilitas numerik tertinggi.",
+687:             r"Determinan dihitung sebagai produk elemen diagonal matriks $\mathbf{U}$: $|\mathbf{R}| = \prod_{i=1}^{12} u_{ii} = 1.2530 \times 10^{-8}$."
+688:         ],
+689:         "hasil": r"$$ |\mathbf{R}| = 1.2530 \times 10^{-8} $$"
+690:     },
+691:     17: {
+692:         "keterangan": [
+693:             r"$\mathbf{A}$ : Matriks persegi (matriks korelasi $\mathbf{R}$ berukuran $12 \times 12$)",
+694:             r"$\mathbf{v}$ : Eigenvector non-nol",
+695:             r"$\lambda$ : Eigenvalue (nilai karakteristik)"
+696:         ],
+697:         "substitusi": [
+698:             r"Matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$ yang bersifat simetris nyata.",
+699:             r"Eigenvalue pertama terhitung sebesar $\lambda_1 = 6.2140$.",
+700:             r"Eigenvector pertama yang bersesuaian: $\mathbf{v}_1 = \begin{pmatrix} 0.3251 & 0.2814 & \dots & 0.1512 \end{pmatrix}^T$."
+701:         ],
+702:         "hasil": r"$$ \mathbf{R} \mathbf{v}_1 = 6.2140 \, \mathbf{v}_1 $$"
+703:     },
+704:     18: {
+705:         "keterangan": [
+706:             r"$\mathbf{A}$ : Matriks simetris nyata $\mathbf{R}$ berukuran $p \times p$",
+707:             r"$\mathbf{v}_j$ : Eigenvector ke-$j$ yang ortonormal",
+708:             r"$\lambda_j$ : Eigenvalue ke-$j$"
+709:         ],
+710:         "substitusi": [
+711:             r"Dekomposisi spektral matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$ menjadi kombinasi linear proyeksi eigenvector.",
+712:             r"Kumpulan eigenvalue terurut: $\lambda_1 = 6.2140, \lambda_2 = 1.5120, \dots, \lambda_{12} = 0.0120$.",
+713:             r"Jumlah total eigenvalue terhitung: $\sum_{j=1}^{12} \lambda_j = 12.0000$ (sama dengan $\operatorname{tr}(\mathbf{R})$)."
+714:         ],
+715:         "hasil": r"$$ \mathbf{R} = 6.214 \mathbf{v}_1\mathbf{v}_1^T + \dots + 0.012 \mathbf{v}_{12}\mathbf{v}_{12}^T $$"
+716:     },
+717:     19: {
+718:         "keterangan": [
+719:             r"$\operatorname{tr}(\mathbf{A})$ : Trace (jumlah elemen diagonal utama) matriks $\mathbf{A}$",
+720:             r"$a_{ii}$ : Elemen diagonal ke-$i$ matriks $\mathbf{A}$"
+721:         ],
+722:         "substitusi": [
+723:             r"Matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$ memiliki elemen diagonal utama $r_{ii} = 1.0000$.",
+724:             r"Penjumlahan diagonal utama: $\operatorname{tr}(\mathbf{R}) = \sum_{i=1}^{12} r_{ii} = 1 + 1 + \dots + 1 = 12.0000$."
+725:         ],
+726:         "hasil": r"$$ \operatorname{tr}(\mathbf{R}) = 12.0000 $$"
+727:     },
+728:     20: {
+729:         "keterangan": [
+730:             r"$\mathbf{A}$ : Matriks data terstandar $\mathbf{Z}$ berukuran $41 \times 12$",
+731:             r"$\mathbf{U}$ : Matriks orthonormal baris (wilayah) berukuran $41 \times 12$",
+732:             r"$\mathbf{S}$ : Matriks diagonal singular values berukuran $12 \times 12$",
+733:             r"$\mathbf{V}$ : Matriks orthonormal kolom (variabel) berukuran $12 \times 12$"
+734:         ],
+735:         "substitusi": [
+736:             r"Matriks data terstandar $\mathbf{Z} \in \mathbb{R}^{41 \times 12}$ dari 41 wilayah dan 12 indikator sosio-ekonomi.",
+737:             r"Melakukan dekomposisi nilai singular: $\mathbf{Z} = \mathbf{U}\mathbf{S}\mathbf{V}^T$.",
+738:             r"Dimensi matriks terdekomposisi: $\mathbf{U} \in \mathbb{R}^{41 \times 12}$, $\mathbf{S} \in \mathbb{R}^{12 \times 12}$ (diagonal singular values), dan $\mathbf{V}^T \in \mathbb{R}^{12 \times 12}$."
+739:         ],
+740:         "hasil": r"$$ \mathbf{Z}_{41 \times 12} = \mathbf{U}_{41 \times 12} \mathbf{S}_{12 \times 12} \mathbf{V}_{12 \times 12}^T $$"
+741:     },
+742:     21: {
+743:         "keterangan": [
+744:             r"$\mathbf{F}_c$ : Skor koordinat kompromi wilayah pada sumbu utama biplot",
+745:             r"$\mathbf{U}$ : Matriks singular vectors kiri",
+746:             r"$\mathbf{S}$ : Matriks singular values diagonal"
+747:         ],
+748:         "substitusi": [
+749:             r"Menghitung koordinat proyeksi 2 dimensi kompromi wilayah pada bidang utama biplot.",
+750:             r"Substitusi perkalian: $\mathbf{F}_c = \mathbf{U}_{41 \times 2} \mathbf{S}_{2 \times 2}$.",
+751:             r"Singular values diagonal utama terpilih: $\mathbf{S}_{2 \times 2} = \operatorname{diag}(5.3397, 2.0528)$."
+752:         ],
+753:         "hasil": r"$$ \mathbf{F}_c \text{ berukuran } 41 \times 2 \quad \text{tr}(\mathbf{F}_c^T \mathbf{F}_c) = 32.7264 $$"
+754:     },
+755:     23: {
+756:         "keterangan": [
+757:             r"$g_{j\ell}$ : Nilai loading variabel ke-$j$ pada dimensi utama ke-$\ell$",
+758:             r"$\mathbf{F}_c^{(\ell)}$ : Koordinat sumbu utama kompromi ke-$\ell$",
+759:             r"$\bar{x}_j$ : Rata-rata variabel sosio-ekonomi ke-$j$"
+760:         ],
+761:         "substitusi": [
+762:             r"Variabel indikator dianalisis: Rata-rata Lama Sekolah ($\mathrm{RLS}$).",
+763:             r"Kovarians antara $\mathrm{RLS}$ terstandar dan koordinat kompromi $\mathbf{F}_c^{(1)}$: $\operatorname{Cov}(\mathrm{RLS}, \mathbf{F}_c^{(1)}) = 0.7241$.",
+764:             r"Standar deviasi masing-masing komponen: $\sigma_{\mathrm{RLS}} = 1.0000$ dan $\sigma_{\mathbf{F}_c^{(1)}} = 2.4928$.",
+765:             r"Substitusi loading koordinat: $g_{\mathrm{RLS}, 1} = \frac{0.7241}{1.0000 \times 2.4928} = 0.8124$."
+766:         ],
+767:         "hasil": r"$$ g_{\text{RRL}, 1} = 0.8124 $$"
+768:     },
+769:     25: {
+770:         "keterangan": [
+771:             r"$\mathbf{X}$ : Matriks data asli sosio-ekonomi",
+772:             r"$\mathbf{F}$ : Koordinat skor wilayah utama",
+773:             r"$\mathbf{V}$ : Matriks loading variabel"
+774:         ],
+775:         "substitusi": [
+776:             r"Merekonstruksi matriks data terstandar $\mathbf{Z}$ menggunakan proyeksi 2 sumbu utama pertama.",
+777:             r"Rumus rekonstruksi linier: $\hat{\mathbf{Z}} = \mathbf{F}_c \mathbf{V}_c^T$.",
+778:             r"Substitusi baris 1 kolom 1: $\hat{z}_{11} = (f_{11} v_{11}) + (f_{12} v_{12}) = (-1.2512 \times 0.3251) + (0.8142 \times 0.1251)$."
+779:         ],
+780:         "hasil": r"$$ z_{11,\text{approx}} = -0.3028 \quad (\text{Eror} = -0.0683) $$"
+781:     },
+782:     26: {
+783:         "keterangan": [
+784:             r"$\mathbf{V}^*$ : Matriks loading variabel yang telah di-rescaling untuk visualisasi biplot",
+785:             r"$\mathbf{V}$ : Matriks loading asli",
+786:             r"$\mathbf{F}$ : Matriks skor wilayah asli"
+787:         ],
+788:         "substitusi": [
+789:             r"Menghitung konstanta skala biplot $s$ untuk menyeimbangkan visualisasi antara objek dan variabel.",
+790:             r"Maksimum nilai absolut skor wilayah: $\max(|f_{i1}|) = 4.2514$.",
+791:             r"Maksimum nilai absolut loading variabel: $\max(|v_{j1}|) = 0.3852$.",
+792:             r"Rasio skala pemetaan: $s = \frac{4.2514}{0.3852} = 11.0368$.",
+793:             r"Substitusi vektor loading ter-skala: $\mathbf{v}^*_1 = 11.0368 \times \mathbf{v}_1$."
+794:         ],
+795:         "hasil": r"$$ \mathbf{v}^*_1 = [3.5312, 3.0912, \dots, 1.6554] $$"
+796:     },
+797:     27: {
+798:         "keterangan": [
+799:             r"$\mathbf{W}_k$ : Matriks intra-struktur (kemiripan wilayah) pada tahun ke-$k$",
+800:             r"$\mathbf{Z}_k$ : Matriks data terstandar pada tahun ke-$k$ berukuran $41 \times 12$"

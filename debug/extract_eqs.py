@@ -2,6 +2,24 @@ import re
 import json
 import os
 
+def clean_latex_title(text):
+    # Remove \textit{...} and keep the inside text
+    text = re.sub(r'\\textit\{([^}]+)\}', r'\1', text)
+    text = re.sub(r'\\textit\s*([a-zA-Z0-9]+)', r'\1', text)
+    # Remove \textbf{...} and keep the inside text
+    text = re.sub(r'\\textbf\{([^}]+)\}', r'\1', text)
+    text = re.sub(r'\\textbf\s*([a-zA-Z0-9]+)', r'\1', text)
+    # Replace \_ with a space
+    text = text.replace(r'\_', ' ')
+    text = text.replace(r'_', ' ')
+    # Remove any stray curly braces
+    text = text.replace('{', '').replace('}', '')
+    # Remove stray backslashes
+    text = text.replace('\\', '')
+    # Normalize spaces
+    text = re.sub(r'\s+', ' ', text).strip()
+    return text
+
 def extract_equations(file_path):
     if not os.path.exists(file_path):
         return []
@@ -28,17 +46,25 @@ def extract_equations(file_path):
         for match in re.finditer(pattern, content, re.DOTALL):
             # find what section this is in
             preceding_text = content[:match.start()]
-            secs = re.findall(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?(.*?)\}', preceding_text)
+            # Match nested braces up to 1 level (e.g. \textit{Dendrogram})
+            secs = re.findall(r'\\(?:section|subsection)\{(?:\\normalsize\s+)?((?:[^{}]|\{[^{}]*\})*)\}', preceding_text)
             section = secs[-1] if secs else "General"
-            section = section.replace('{', '').replace('}', '').strip()
+            section = clean_latex_title(section)
             
             eq_content = match.group(1).strip()
             # Clean up labels from the content for display
             display_content = re.sub(r'\\label\{.*?\}', '', eq_content).strip()
             
+            if eq_type == 'align':
+                latex_str = f"\\[ \\begin{{aligned}} {display_content} \\end{{aligned}} \\]"
+            elif eq_type == 'gather':
+                latex_str = f"\\[ \\begin{{gathered}} {display_content} \\end{{gathered}} \\]"
+            else:
+                latex_str = f"\\[ {display_content} \\]"
+                
             all_eqs.append({
                 'section': section,
-                'latex': f"\\[ {display_content} \\]",
+                'latex': latex_str,
                 'type': eq_type,
                 'raw': eq_content
             })
