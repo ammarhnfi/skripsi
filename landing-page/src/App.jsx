@@ -377,31 +377,6 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
             >
               ⬅ Kembali ke Beranda
             </button>
-
-            <a 
-              href="http://localhost:8060/"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                background: 'rgba(6, 182, 212, 0.1)',
-                border: '1px solid rgba(6, 182, 212, 0.3)',
-                color: '#06B6D4',
-                padding: '8px 18px',
-                borderRadius: '30px',
-                cursor: 'pointer',
-                fontSize: '0.85rem',
-                fontWeight: '700',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                transition: 'all 0.2s'
-              }}
-              onMouseOver={e => { e.currentTarget.style.background = 'rgba(6, 182, 212, 0.2)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-              onMouseOut={e => { e.currentTarget.style.background = 'rgba(6, 182, 212, 0.1)'; e.currentTarget.style.transform = 'none'; }}
-            >
-              ⚔️ Buka Dashboard Python (Port 8060) &rarr;
-            </a>
           </div>
           <h1 style={{
             margin: '0 0 6px 0',
@@ -1662,6 +1637,45 @@ function FormulasDashboard({ onBack }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [loading, setLoading] = useState(false);
   const [expandedCards, setExpandedCards] = useState({});
+
+  useEffect(() => {
+    let active = true;
+    async function loadFormulas() {
+      try {
+        setLoading(true);
+        const res = await fetch('/formulas_substitusi.json');
+        if (!res.ok) throw new Error('Gagal memuat formulas_substitusi.json');
+        const data = await res.json();
+        if (active) {
+          setFormulas(data);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error loading formulas_substitusi.json, using fallback:", err);
+        if (active) setLoading(false);
+      }
+    }
+    loadFormulas();
+    return () => { active = false; };
+  }, []);
+
+  // Trigger MathJax typesetting whenever the list of formulas, search query, active category, or expanded cards changes
+  useEffect(() => {
+    if (window.MathJax) {
+      const timer = setTimeout(() => {
+        window.MathJax.typesetPromise && window.MathJax.typesetPromise()
+          .catch((err) => console.warn("MathJax typesetting failed: ", err));
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [formulas, searchQuery, activeCategory, expandedCards]);
+
+  const formatTextHtml = (text) => {
+    if (!text) return "";
+    // Replace **text** with premium bold styling
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #38BDF8; font-weight: 700;">$1</strong>');
+  };
+
   const toggleExpand = (id) => {
     setExpandedCards(prev => ({
       ...prev,
@@ -1674,7 +1688,7 @@ function FormulasDashboard({ onBack }) {
   const renderLatexText = (text) => {
     if (!text) return null;
     return (
-      <span dangerouslySetInnerHTML={{ __html: text }} />
+      <span dangerouslySetInnerHTML={{ __html: formatTextHtml(text) }} />
     );
   };
 
@@ -1879,7 +1893,7 @@ function FormulasDashboard({ onBack }) {
                   overflowX: 'auto'
                 }}>
                   <div style={{ color: '#E2E8F0', fontSize: '1.1rem' }}
-                    dangerouslySetInnerHTML={{ __html: f.formula }}
+                    dangerouslySetInnerHTML={{ __html: formatTextHtml(f.formula) }}
                   />
                 </div>
 
@@ -1889,7 +1903,7 @@ function FormulasDashboard({ onBack }) {
                   <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     {f.keterangan.map((ket, idx) => (
                       <li key={idx} style={{ fontSize: '13.5px', color: '#CBD5E1', lineHeight: '1.5', paddingLeft: '12px', borderLeft: '2px solid rgba(255,255,255,0.15)' }}
-                        dangerouslySetInnerHTML={{ __html: ket }}
+                        dangerouslySetInnerHTML={{ __html: formatTextHtml(ket) }}
                       />
                     ))}
                   </ul>
@@ -1935,7 +1949,7 @@ function FormulasDashboard({ onBack }) {
                         <ol style={{ listStyleType: 'decimal', paddingLeft: '20px', margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                           {f.substitusi.map((sub, idx) => (
                             <li key={idx} style={{ fontSize: '13.5px', color: '#CBD5E1', lineHeight: '1.6' }}
-                              dangerouslySetInnerHTML={{ __html: sub }}
+                              dangerouslySetInnerHTML={{ __html: formatTextHtml(sub) }}
                             />
                           ))}
                         </ol>
@@ -1953,7 +1967,7 @@ function FormulasDashboard({ onBack }) {
                           fontSize: '1rem',
                           overflowX: 'auto'
                         }}>
-                          <span dangerouslySetInnerHTML={{ __html: f.hasil }} />
+                          <span dangerouslySetInnerHTML={{ __html: formatTextHtml(f.hasil) }} />
                         </div>
                       </div>
                     </div>
