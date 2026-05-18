@@ -501,7 +501,7 @@
       "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
     ],
     "substitusi": [
-      "Matriks inter-struktur $\\mathbf{H} \\in \\mathbb{R}^{5 \\times 5}$ untuk tahun 2020\u20132024.",
+      "Matriks inter-struktur $\\mathbf{H} \\in \\mathbb{R}^{5 \\times 5}$ untuk tahun 2020–2024.",
       "Eigenvalue terbesar: $\\theta_1 = 4{,}8524$.",
       "Eigenvector utama: $\\mathbf{u}_1 = (0{,}4475,\\; 0{,}4468,\\; 0{,}4469,\\; 0{,}4478,\\; 0{,}4480)^T$."
     ],
@@ -856,7 +856,7 @@
       "Semakin kecil nilai jarak, semakin mirip perilaku pergeseran sosio-ekonomi antar-waktu kedua wilayah"
     ],
     "substitusi": [
-      "Jumlah tahun pengamatan $K = 5$ (2020\u20132024).",
+      "Jumlah tahun pengamatan $K = 5$ (2020–2024).",
       "Menggabungkan 5 titik koordinat 2D menjadi trajektori Kabupaten Bogor.",
       "$\\mathcal{T}_{\\text{Bogor}} = \\{\\mathbf{f}_{\\text{Bogor},2020},\\; \\dots,\\; \\mathbf{f}_{\\text{Bogor},2024}\\}$."
     ],
@@ -1030,8 +1030,8 @@
     ],
     "substitusi": [
       "Matriks bobot Queen Contiguity antara wilayah $i$ dan $j$.",
-      "Kep. Seribu\u2014Jakarta Utara bersentuhan: $w_{\\text{Seribu},\\text{Jakut}} = 1$.",
-      "Kep. Seribu\u2014Jakarta Barat tidak bersentuhan: $w_{\\text{Seribu},\\text{Jakbar}} = 0$."
+      "Kep. Seribu—Jakarta Utara bersentuhan: $w_{\\text{Seribu},\\text{Jakut}} = 1$.",
+      "Kep. Seribu—Jakarta Barat tidak bersentuhan: $w_{\\text{Seribu},\\text{Jakbar}} = 0$."
     ],
     "hasil": "$$ w_{\\text{Seribu, Jakut}} = 1 $$"
   },

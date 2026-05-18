@@ -1,2 +1,0 @@
-"#!/usr/bin/env python3\n# -*- coding: utf-8 -*-\n\"\"\"\nfix_substitusi.py\nRewrites all HIGH_FIDELITY_REFS substitusi entries in formulas_dashboard.py\nfrom plain-text/code-style to proper LaTeX math notation.\n\"\"\"\n\nimport re\n\nDASHBOARD = r\"d:\\S
-<truncated 16715 bytes>

@@ -37,6 +37,7 @@ echo.
 
 echo [LANGKAH 2.5] Ekstraksi Substitusi Rumus Riil (Excel)...
 python "d:\Skripsi\my\debug\export_formulas_json.py"
+python "d:\Skripsi\my\debug\fix_substitusi.py"
 if %ERRORLEVEL% NEQ 0 (
     echo [ERROR] Gagal mengekstrak substitusi rumus.
 ) else (
