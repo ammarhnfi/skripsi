@@ -68,18 +68,6 @@
 \usepackage{bookmark}
 \hypersetup{pdfstartview=FitH,pdfview=FitH}
 
-% Patch agar "et al." menjadi miring (italic) pada sitasi natbib
-\usepackage{xstring}
-\makeatletter
-\let\oldNAT@nmfmt\NAT@nmfmt
-\renewcommand{\NAT@nmfmt}[1]{%
-  \noexpandarg
-  \StrSubstitute{#1}{et~al.}{\textit{et~al.}}[\@tempa]%
-  \StrSubstitute{\@tempa}{et al.}{\textit{et~al.}}[\@tempb]%
-  \oldNAT@nmfmt{\@tempb}%
-}
-\makeatother
-
 %-----------------------------------------------------------------------------%
 % Konfigurasi
 %-----------------------------------------------------------------------------%

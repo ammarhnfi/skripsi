@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  19 MAY 2026 10:13
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  19 MAY 2026 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1006,16 +1006,11 @@ Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
 \BKM@id=\count367
-)) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/xstring\xstring.sty
-(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/xstring\xstring.tex
-\xs_counta=\count368
-\xs_countb=\count369
-)
-Package: xstring 2023/08/22 v1.86 String manipulations (CT)
-)
-\c@theorem=\count370
-\c@definition=\count371
-\c@example=\count372
+))
+\c@theorem=\count368
+\c@definition=\count369
+\c@example=\count370
+
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
 \ttl@box=\box83
@@ -1030,7 +1025,7 @@ Package: titlesec 2025/01/04 v2.17 Sectioning titles
 )
 (laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
-78.
+66.
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -1038,10 +1033,13 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count373
+\l__color_backend_stack_int=\count371
 ) (induk.aux (sampul.aux) (judul_dalam.aux) (pengesahan.aux)
 (orisinal.aux) (pengesahan_sidang.aux) (pakai_ai.aux) (pengantar.aux)
 (persetujuan_publikasi.aux) (bab1.aux) (bab2.aux) (bab3.aux
+
+LaTeX Warning: Label `tab:sample1transsum2020x2021' multiply defined.
+
 
 LaTeX Warning: Label `tab:samplerv_w' multiply defined.
 
@@ -1054,24 +1052,24 @@ LaTeX Warning: Label `tab:sample1transsum2021x2022' multiply defined.
 ) (bab4.aux) (bab5.aux) (lampiran1.aux) (lampiran2.aux))
 \openout1 = `induk.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 178.
-LaTeX Font Info:    ... okay on input line 178.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1111,16 +1109,16 @@ LaTeX Font Info:    ... okay on input line 178.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count374
+\scratchcounter=\count372
 \scratchdimen=\dimen341
 \scratchbox=\box84
-\nofMPsegments=\count375
-\nofMParguments=\count376
+\nofMPsegments=\count373
+\nofMParguments=\count374
 \everyMPshowfont=\toks57
-\MPscratchCnt=\count377
+\MPscratchCnt=\count375
 \MPscratchDim=\dimen342
-\MPnumerator=\count378
-\makeMPintoPDFobject=\count379
+\MPnumerator=\count376
+\makeMPintoPDFobject=\count377
 \everyMPtoPDFconversion=\toks58
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -1147,13 +1145,13 @@ Package caption Info: End \AtBeginDocument code.
 Package microtype Info: Patching varwidth to enable character protrusion.
 \MT@vwid@leftmargin=\dimen343
 \MT@vwid@rightmargin=\dimen344
-LaTeX Info: Redefining \microtypecontext on input line 178.
-Package microtype Info: Applying patch `item' on input line 178.
-Package microtype Info: Applying patch `toc' on input line 178.
-Package microtype Info: Applying patch `eqnum' on input line 178.
-Package microtype Info: Applying patch `footnote' on input line 178.
-Package microtype Info: Applying patch `verbatim' on input line 178.
-LaTeX Info: Redefining \microtypesetup on input line 178.
+LaTeX Info: Redefining \microtypecontext on input line 166.
+Package microtype Info: Applying patch `item' on input line 166.
+Package microtype Info: Applying patch `toc' on input line 166.
+Package microtype Info: Applying patch `eqnum' on input line 166.
+Package microtype Info: Applying patch `footnote' on input line 166.
+Package microtype Info: Applying patch `verbatim' on input line 166.
+LaTeX Info: Redefining \microtypesetup on input line 166.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1168,8 +1166,8 @@ Package microtype Info: No adjustment of character kerning.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@lstlisting=\count380
-Package hyperref Info: Link coloring OFF on input line 178.
+\c@lstlisting=\count378
+Package hyperref Info: Link coloring OFF on input line 166.
 \openout2 = `sampul.aux'.
 
 
@@ -1416,19 +1414,23 @@ Underfull \vbox (badness 6758) has occurred while \output is active []
  [27] [28
 
 
-] (induk.lot [29] [30] [31])
+] (induk.lot [29]
+Underfull \vbox (badness 1348) has occurred while \output is active []
+
+ [30]
+[31] [32])
 \tf@lot=\write5
 \openout5 = `induk.lot'.
 
- [32] (induk.lof
-Underfull \vbox (badness 4779) has occurred while \output is active []
-
- [33
+ [33] [34
 
 
-]
-[34]
-Underfull \hbox (badness 2865) in paragraph at lines 59--59
+] (induk.lof
+Underfull \vbox (badness 3590) has occurred while \output is active []
+
+ [35]
+[36]
+Underfull \hbox (badness 2865) in paragraph at lines 68--68
  [][] [][]\OT1/ptm/m/n/12 (+20) Tampilan An-tar-muka Ap-likasi Dash-board Ana-l
 i-sis Spasio- 
  []
@@ -1437,22 +1439,22 @@ i-sis Spasio-
 \tf@lof=\write6
 \openout6 = `induk.lof'.
 
- [35] [36
+ [37] [38
 
 
 ]
-\c@lampiran=\count381
+\c@lampiran=\count379
 \cftbeforelampiranskip=\skip134
 \cftlampiranindent=\skip135
 \cftlampirannumwidth=\skip136
-\c@loadepth=\count382
+\c@loadepth=\count380
 \cftbeforeloatitleskip=\skip137
 \cftafterloatitleskip=\skip138
  (induk.loa)
 \tf@loa=\write7
 \openout7 = `induk.loa'.
 
- [37] [38
+ [39] [40
 
 
 ]
@@ -1787,7 +1789,7 @@ Package natbib Warning: Citation `gabriel1971' on page 22 undefined on input li
 ne 427.
 
 [22]
-<gambarku/ilustrasi_biplot.png, id=1339, 371.13657pt x 341.02406pt>
+<gambarku/ilustrasi_biplot.png, id=1438, 371.13657pt x 341.02406pt>
 File: gambarku/ilustrasi_biplot.png Graphic file (type png)
 <use gambarku/ilustrasi_biplot.png>
 Package pdftex.def Info: gambarku/ilustrasi_biplot.png  used on input line 440.
@@ -2137,46 +2139,53 @@ Overfull \hbox (2.39912pt too wide) detected at line 244
 []
  []
 
-[51]
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [51]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [52]
 Overfull \hbox (6.44385pt too wide) detected at line 306
 []
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [52]
 (output_sample/scenario1/output_table_matriks_intra_loading_2020.tex)
 (output_sample/scenario1/output_table_matriks_intra_loading_2021.tex)
-(output_sample/scenario1/output_table_matriks_intra_loading_2022.tex) [53]
+(output_sample/scenario1/output_table_matriks_intra_loading_2022.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [53])
 (output_sample/output_table_rv_w.tex)
-<output_sample/scenario1/rv_heatmap.png, id=1592, 1405.25pt x 1204.5pt>
+<output_sample/scenario1/rv_heatmap.png, id=1691, 1405.25pt x 1204.5pt>
 File: output_sample/scenario1/rv_heatmap.png Graphic file (type png)
 <use output_sample/scenario1/rv_heatmap.png>
 Package pdftex.def Info: output_sample/scenario1/rv_heatmap.png  used on input 
 line 325.
 (pdftex.def)             Requested size: 256.07741pt x 219.48401pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package natbib Warning: Citation `lavit94' on page 54 undefined on input line 3
+ [54]
+
+Package natbib Warning: Citation `lavit94' on page 55 undefined on input line 3
 31.
 
-[54 <./output_sample/scenario1/rv_heatmap.png>]
 (output_sample/output_table_alpha_w.tex)
-(output_sample/output_table_alpha_s.tex) [55]
-(output_sample/scenario1/output_table_eigen.tex)
-(output_sample/scenario2/output_table_eigen.tex)
+(output_sample/output_table_alpha_s.tex) [55 <./output_sample/scenario1/rv_heat
+map.png>] (output_sample/scenario1/output_table_eigen.tex)
+(output_sample/scenario2/output_table_eigen.tex [56])
 (output_sample/scenario1/output_table_struktur_diagnostik.tex)
-<output_sample/scenario1/scree_plot.png, id=1606, 1806.75pt x 1204.5pt>
+<output_sample/scenario1/scree_plot.png, id=1712, 1806.75pt x 1204.5pt>
 File: output_sample/scenario1/scree_plot.png Graphic file (type png)
 <use output_sample/scenario1/scree_plot.png>
 Package pdftex.def Info: output_sample/scenario1/scree_plot.png  used on input 
 line 378.
 (pdftex.def)             Requested size: 234.73654pt x 156.48022pt.
- [56]
-(output_sample/scenario1/output_table_scores.tex)
-(output_sample/scenario1/output_table_loadings.tex)
-<output_sample/scenario1/compromise_biplot_matplotlib.png, id=1613, 909.44568pt
+
+(output_sample/scenario1/output_table_scores.tex [57 <./output_sample/scenario1
+/scree_plot.png>]) (output_sample/scenario1/output_table_loadings.tex)
+<output_sample/scenario1/compromise_biplot_matplotlib.png, id=1718, 909.44568pt
  x 767.79648pt>
 File: output_sample/scenario1/compromise_biplot_matplotlib.png Graphic file (ty
 pe png)
@@ -2185,12 +2194,10 @@ Package pdftex.def Info: output_sample/scenario1/compromise_biplot_matplotlib.p
 ng  used on input line 393.
 (pdftex.def)             Requested size: 307.29028pt x 259.41887pt.
 
-Underfull \vbox (badness 7326) has occurred while \output is active []
-
- [57 <./output_sample/scenario1/scree_plot.png>]
-(output_sample/scenario2/output_table_scores.tex)
+(output_sample/scenario2/output_table_scores.tex [58 <./output_sample/scenario1
+/compromise_biplot_matplotlib.png>])
 (output_sample/scenario2/output_table_loadings.tex)
-<output_sample/scenario2/compromise_biplot_matplotlib.png, id=1619, 909.44568pt
+<output_sample/scenario2/compromise_biplot_matplotlib.png, id=1724, 909.44568pt
  x 767.79648pt>
 File: output_sample/scenario2/compromise_biplot_matplotlib.png Graphic file (ty
 pe png)
@@ -2198,18 +2205,15 @@ pe png)
 Package pdftex.def Info: output_sample/scenario2/compromise_biplot_matplotlib.p
 ng  used on input line 405.
 (pdftex.def)             Requested size: 307.29028pt x 259.41887pt.
-
-Underfull \vbox (badness 2799) has occurred while \output is active []
-
- [58 <./output_sample/scenario1/compromise_biplot_matplotlib.png>]
-<output_sample/scenario1/statis_trajectories.png, id=1628, 1806.75pt x 1606.0pt
+ [59 <./output_sample/scenario2/compromise_biplot_matplotlib.png>]
+<output_sample/scenario1/statis_trajectories.png, id=1732, 1806.75pt x 1606.0pt
 >
 File: output_sample/scenario1/statis_trajectories.png Graphic file (type png)
 <use output_sample/scenario1/statis_trajectories.png>
 Package pdftex.def Info: output_sample/scenario1/statis_trajectories.png  used 
 on input line 418.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
-<output_sample/scenario2/statis_trajectories.png, id=1629, 1806.75pt x 1606.0pt
+<output_sample/scenario2/statis_trajectories.png, id=1733, 1806.75pt x 1606.0pt
 >
 File: output_sample/scenario2/statis_trajectories.png Graphic file (type png)
 <use output_sample/scenario2/statis_trajectories.png>
@@ -2217,747 +2221,20 @@ Package pdftex.def Info: output_sample/scenario2/statis_trajectories.png  used
 on input line 424.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [59 <./output_sample/scenario2/compromise_biplot_matplotlib.png>]
 (output_sample/scenario1/output_table_cluster_members.tex)
 (output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
 (output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
+[60 <./output_sample/scenario1/statis_trajectories.png> <./output_sample/scenar
+io2/statis_trajectories.png>]
 Underfull \hbox (badness 3407) in paragraph at lines 438--438
 |[]\OT1/ptm/b/n/12 (+20) Tahap 7a: Kom-putasi Vek-tor Struk-tur dan Ana-li-sis 
 Transversal-
  []
 
-[60 <./output_sample/scenario1/statis_trajectories.png> <./output_sample/scenar
-io2/statis_trajectories.png>]
-(output_sample/scenario1/output_table_beta_vec.tex)
-(output_sample/scenario1/output_table_beta_provinsi.tex) [61]
-(output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
-(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
-Underfull \hbox (badness 1721) in paragraph at lines 9--9
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 13--13
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 15--15
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 17--17
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 19--19
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 23--23
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 25--25
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-[62])
-(output_sample/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex)
-(output_sample/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
-Underfull \hbox (badness 1721) in paragraph at lines 9--9
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 13--13
-[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 15--15
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 17--17
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 2269) in paragraph at lines 19--19
-[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 21--21
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 23--23
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-
-Underfull \hbox (badness 4429) in paragraph at lines 25--25
-[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
- []
-
-)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [63]
-<output_sample/cluster_map_biplot_2020.png, id=1663, 943.8462pt x 505.52866pt>
-File: output_sample/cluster_map_biplot_2020.png Graphic file (type png)
-<use output_sample/cluster_map_biplot_2020.png>
-Package pdftex.def Info: output_sample/cluster_map_biplot_2020.png  used on inp
-ut line 502.
-(pdftex.def)             Requested size: 204.85802pt x 109.72018pt.
-<output_sample/scenario1/cluster_map_statis_2020.png, id=1664, 943.8462pt x 505
-.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type pn
-g)
-<use output_sample/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  u
-sed on input line 507.
-(pdftex.def)             Requested size: 204.85802pt x 109.72018pt.
-
-(output_sample/scenario1/output_table_cross_matrix_sum_2020.tex [64 <./output_s
-ample/cluster_map_biplot_2020.png> <./output_sample/scenario1/cluster_map_stati
-s_2020.png>]) (output_sample/scenario1/output_table_cross_matrix_name_2020.tex
-Underfull \hbox (badness 3417) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
- []
-
-) (output_sample/output_table_rv_w.tex) (output_sample/output_table_hw.tex
-[65]) (output_sample/output_table_hs.tex)
-(output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
-(output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
-File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type pn
-g)
-<use output_sample/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  u
-sed on input line 547.
-(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
-<output_sample/scenario1/cluster_map_statis_2021.png, id=1676, 943.8462pt x 505
-.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2021.png Graphic file (type pn
-g)
-<use output_sample/scenario1/cluster_map_statis_2021.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2021.png  u
-sed on input line 552.
-(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
-<output_sample/scenario1/cluster_map_statis_2022.png, id=1677, 943.8462pt x 505
-.52866pt>
-File: output_sample/scenario1/cluster_map_statis_2022.png Graphic file (type pn
-g)
-<use output_sample/scenario1/cluster_map_statis_2022.png>
-Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2022.png  u
-sed on input line 557.
-(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
-
-[66]
-<output_sample/boxplot_ppm_2020.png, id=1682, 1003.75pt x 803.0pt>
-File: output_sample/boxplot_ppm_2020.png Graphic file (type png)
-<use output_sample/boxplot_ppm_2020.png>
-Package pdftex.def Info: output_sample/boxplot_ppm_2020.png  used on input line
- 567.
-(pdftex.def)             Requested size: 204.85802pt x 163.88089pt.
-<output_sample/boxplot_ppm_2022.png, id=1683, 1003.75pt x 803.0pt>
-File: output_sample/boxplot_ppm_2022.png Graphic file (type png)
-<use output_sample/boxplot_ppm_2022.png>
-Package pdftex.def Info: output_sample/boxplot_ppm_2022.png  used on input line
- 572.
-(pdftex.def)             Requested size: 204.85802pt x 163.88089pt.
-) [67 <./output_sample/scenario1/cluster_map_statis_2021.png> <./output_sample/
-scenario1/cluster_map_statis_2022.png> <./output_sample/boxplot_ppm_2020.png> <
-./output_sample/boxplot_ppm_2022.png>] [68
-
-
-
-
-]
-\openout2 = `bab4.aux'.
-
- (bab4.tex
-\normalsize BAB 4.
-(output_real/scenario1/output_macros.tex)
-
-Package natbib Warning: Citation `bps_banten_2020' on page 69 undefined on inpu
-t line 10.
-
-
-Package natbib Warning: Citation `bps_banten_2021' on page 69 undefined on inpu
-t line 10.
-
-
-Package natbib Warning: Citation `bps_banten_2022' on page 69 undefined on inpu
-t line 10.
-
-
-Package natbib Warning: Citation `bps_banten_2023' on page 69 undefined on inpu
-t line 10.
-
-
-Package natbib Warning: Citation `bps_banten_2024' on page 69 undefined on inpu
-t line 10.
-
-
-Package natbib Warning: Citation `bps_dki_2020' on page 69 undefined on input l
-ine 10.
-
-
-Package natbib Warning: Citation `bps_dki_2021' on page 69 undefined on input l
-ine 10.
-
-
-Package natbib Warning: Citation `bps_dki_2022' on page 69 undefined on input l
-ine 10.
-
-
-Package natbib Warning: Citation `bps_dki_2023' on page 69 undefined on input l
-ine 10.
-
-
-Package natbib Warning: Citation `bps_dki_2024' on page 69 undefined on input l
-ine 10.
-
-
-Package natbib Warning: Citation `bps_jabar_2020' on page 69 undefined on input
- line 10.
-
-
-Package natbib Warning: Citation `bps_jabar_2021' on page 69 undefined on input
- line 10.
-
-
-Package natbib Warning: Citation `bps_jabar_2022' on page 69 undefined on input
- line 10.
-
-
-Package natbib Warning: Citation `bps_jabar_2023' on page 69 undefined on input
- line 10.
-
-
-Package natbib Warning: Citation `bps_jabar_2024' on page 69 undefined on input
- line 10.
-
-(output_real/output_table_deskriptif_2020.tex)
-(output_real/output_table_deskriptif_2021.tex) [69
-
-
-]
-(output_real/output_table_deskriptif_2022.tex)
-(output_real/output_table_deskriptif_2023.tex)
-(output_real/output_table_deskriptif_2024.tex) [70]
-<output_real/boxplot_ipm_2020.png, id=1707, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ipm_2020.png Graphic file (type png)
-<use output_real/boxplot_ipm_2020.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2020.png  used on input line 6
-8.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ipm_2022.png, id=1708, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ipm_2022.png Graphic file (type png)
-<use output_real/boxplot_ipm_2022.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2022.png  used on input line 6
-9.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ipm_2024.png, id=1709, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ipm_2024.png Graphic file (type png)
-<use output_real/boxplot_ipm_2024.png>
-Package pdftex.def Info: output_real/boxplot_ipm_2024.png  used on input line 7
-0.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ppm_2020.png, id=1710, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ppm_2020.png Graphic file (type png)
-<use output_real/boxplot_ppm_2020.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2020.png  used on input line 7
-7.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ppm_2022.png, id=1711, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ppm_2022.png Graphic file (type png)
-<use output_real/boxplot_ppm_2022.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2022.png  used on input line 7
-8.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_ppm_2024.png, id=1712, 1003.75pt x 803.0pt>
-File: output_real/boxplot_ppm_2024.png Graphic file (type png)
-<use output_real/boxplot_ppm_2024.png>
-Package pdftex.def Info: output_real/boxplot_ppm_2024.png  used on input line 7
-9.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2020.png, id=1713, 1003.75pt x 803.0pt>
-File: output_real/boxplot_pdrb_adhk_2020.png Graphic file (type png)
-<use output_real/boxplot_pdrb_adhk_2020.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2020.png  used on input 
-line 86.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2022.png, id=1714, 1003.75pt x 803.0pt>
-File: output_real/boxplot_pdrb_adhk_2022.png Graphic file (type png)
-<use output_real/boxplot_pdrb_adhk_2022.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2022.png  used on input 
-line 87.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_pdrb_adhk_2024.png, id=1715, 1003.75pt x 803.0pt>
-File: output_real/boxplot_pdrb_adhk_2024.png Graphic file (type png)
-<use output_real/boxplot_pdrb_adhk_2024.png>
-Package pdftex.def Info: output_real/boxplot_pdrb_adhk_2024.png  used on input 
-line 88.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
- [71 <./output_real/boxplot_ipm_2020.png> <./output_real/boxplot_ipm_2022.png> 
-<./output_real/boxplot_ipm_2024.png> <./output_real/boxplot_ppm_2020.png> <./ou
-tput_real/boxplot_ppm_2022.png> <./output_real/boxplot_ppm_2024.png>]
-<output_real/boxplot_tpt_2020.png, id=1726, 1003.75pt x 803.0pt>
-File: output_real/boxplot_tpt_2020.png Graphic file (type png)
-<use output_real/boxplot_tpt_2020.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2020.png  used on input line 9
-5.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_tpt_2022.png, id=1727, 1003.75pt x 803.0pt>
-File: output_real/boxplot_tpt_2022.png Graphic file (type png)
-<use output_real/boxplot_tpt_2022.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2022.png  used on input line 9
-6.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_tpt_2024.png, id=1728, 1003.75pt x 803.0pt>
-File: output_real/boxplot_tpt_2024.png Graphic file (type png)
-<use output_real/boxplot_tpt_2024.png>
-Package pdftex.def Info: output_real/boxplot_tpt_2024.png  used on input line 9
-7.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2020.png, id=1729, 1003.75pt x 803.0pt>
-File: output_real/boxplot_rls_2020.png Graphic file (type png)
-<use output_real/boxplot_rls_2020.png>
-Package pdftex.def Info: output_real/boxplot_rls_2020.png  used on input line 1
-04.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2022.png, id=1730, 1003.75pt x 803.0pt>
-File: output_real/boxplot_rls_2022.png Graphic file (type png)
-<use output_real/boxplot_rls_2022.png>
-Package pdftex.def Info: output_real/boxplot_rls_2022.png  used on input line 1
-05.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-<output_real/boxplot_rls_2024.png, id=1731, 1003.75pt x 803.0pt>
-File: output_real/boxplot_rls_2024.png Graphic file (type png)
-<use output_real/boxplot_rls_2024.png>
-Package pdftex.def Info: output_real/boxplot_rls_2024.png  used on input line 1
-06.
-(pdftex.def)             Requested size: 136.57635pt x 109.25801pt.
-
-(output_real/output_table_kmo_bartlett.tex [72 <./output_real/boxplot_pdrb_adhk
-_2020.png> <./output_real/boxplot_pdrb_adhk_2022.png> <./output_real/boxplot_pd
-rb_adhk_2024.png> <./output_real/boxplot_tpt_2020.png> <./output_real/boxplot_t
-pt_2022.png> <./output_real/boxplot_tpt_2024.png> <./output_real/boxplot_rls_20
-20.png> <./output_real/boxplot_rls_2022.png> <./output_real/boxplot_rls_2024.pn
-g>]) (output_real/output_table_rv_w.tex)
-<output_real/scenario1/rv_heatmap.png, id=1753, 1405.25pt x 1204.5pt>
-File: output_real/scenario1/rv_heatmap.png Graphic file (type png)
-<use output_real/scenario1/rv_heatmap.png>
-Package pdftex.def Info: output_real/scenario1/rv_heatmap.png  used on input li
-ne 144.
-(pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
- [73]
-(output_real/output_table_alpha_w.tex) [74 <./output_real/scenario1/rv_heatmap.
-png>] (output_real/output_table_alpha_s.tex)
-<output_real/scenario1/scree_plot.png, id=1770, 1806.75pt x 1204.5pt>
-File: output_real/scenario1/scree_plot.png Graphic file (type png)
-<use output_real/scenario1/scree_plot.png>
-Package pdftex.def Info: output_real/scenario1/scree_plot.png  used on input li
-ne 187.
-(pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [75]
-(output_real/scenario1/output_table_eigen.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [76 <./output_real/scenario1/scree_plot.png>] [77]
-<output_real/scenario1/compromise_map.png, id=1788, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/compromise_map.png Graphic file (type png)
-<use output_real/scenario1/compromise_map.png>
-Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
-t line 205.
-(pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [78 <./output_real/scenario1/compromise_map.png>]
-File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type
- png)
-<use output_real/scenario1/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png
-  used on input line 220.
-(pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
-<output_real/scenario2/compromise_biplot_matplotlib.png, id=1797, 907.13304pt x
- 767.79648pt>
-File: output_real/scenario2/compromise_biplot_matplotlib.png Graphic file (type
- png)
-<use output_real/scenario2/compromise_biplot_matplotlib.png>
-Package pdftex.def Info: output_real/scenario2/compromise_biplot_matplotlib.png
-  used on input line 226.
-(pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
- (output_real/scenario1/output_table_loadings.tex [79 <./output_real/scenario2/
-compromise_biplot_matplotlib.png>])
-(output_real/scenario2/output_table_loadings.tex)
-<output_real/scenario1/loading_plot.png, id=1809, 1405.25pt x 1405.25pt>
-File: output_real/scenario1/loading_plot.png Graphic file (type png)
-<use output_real/scenario1/loading_plot.png>
-Package pdftex.def Info: output_real/scenario1/loading_plot.png  used on input 
-line 256.
-(pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
-<output_real/scenario2/loading_plot.png, id=1810, 1405.25pt x 1405.25pt>
-File: output_real/scenario2/loading_plot.png Graphic file (type png)
-<use output_real/scenario2/loading_plot.png>
-Package pdftex.def Info: output_real/scenario2/loading_plot.png  used on input 
-line 262.
-(pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [80]
-<output_real/scenario1/variable_contribution.png, id=1817, 1806.75pt x 1204.5pt
->
-File: output_real/scenario1/variable_contribution.png Graphic file (type png)
-<use output_real/scenario1/variable_contribution.png>
-Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used 
-on input line 276.
-(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_contribution.png, id=1818, 1806.75pt x 1204.5pt
->
-File: output_real/scenario2/variable_contribution.png Graphic file (type png)
-<use output_real/scenario2/variable_contribution.png>
-Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used 
-on input line 282.
-(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario1/variable_cos2.png, id=1819, 1806.75pt x 1204.5pt>
-File: output_real/scenario1/variable_cos2.png Graphic file (type png)
-<use output_real/scenario1/variable_cos2.png>
-Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input
- line 292.
-(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_cos2.png, id=1820, 1806.75pt x 1204.5pt>
-File: output_real/scenario2/variable_cos2.png Graphic file (type png)
-<use output_real/scenario2/variable_cos2.png>
-Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input
- line 298.
-(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [81 <./output_real/scenario1/loading_plot.png> <./output_real/scenario2/loadin
-g_plot.png> <./output_real/scenario1/variable_contribution.png> <./output_real/
-scenario2/variable_contribution.png>] [82 <./output_real/scenario1/variable_cos
-2.png> <./output_real/scenario2/variable_cos2.png>]
-(output_real/scenario1/output_table_scores.tex)
-(output_real/scenario2/output_table_scores.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [83
-
-]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [84]
-<output_real/scenario1/permutation_histogram.png, id=1847, 1806.75pt x 1204.5pt
->
-File: output_real/scenario1/permutation_histogram.png Graphic file (type png)
-<use output_real/scenario1/permutation_histogram.png>
-Package pdftex.def Info: output_real/scenario1/permutation_histogram.png  used 
-on input line 330.
-(pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
-
-Underfull \vbox (badness 6016) has occurred while \output is active []
-
- [85 <./output_real/scenario1/permutation_histogram.png>]
-
-Package natbib Warning: Citation `areia2008' on page 86 undefined on input line
- 362.
-
-
-Package natbib Warning: Citation `oliveira2024' on page 86 undefined on input l
-ine 362.
-
-(output_real/scenario1/output_table_beta_vec.tex)
-Underfull \vbox (badness 1502) has occurred while \output is active []
-
- [86]
-(output_real/scenario1/output_table_struktur_diagnostik.tex)
-
-Package natbib Warning: Citation `areia2008' on page 87 undefined on input line
- 389.
-
-
-Package natbib Warning: Citation `oliveira2024' on page 87 undefined on input l
-ine 393.
-
-[87] (output_real/scenario1/output_table_beta_provinsi.tex)
-
-Package natbib Warning: Citation `areia2008' on page 88 undefined on input line
- 403.
-
-
-Package natbib Warning: Citation `oliveira2024' on page 88 undefined on input l
-ine 403.
-
-<output_real/scenario1/beta_trajectory.png, id=1872, 498.1812pt x 278.4804pt>
-File: output_real/scenario1/beta_trajectory.png Graphic file (type png)
-<use output_real/scenario1/beta_trajectory.png>
-Package pdftex.def Info: output_real/scenario1/beta_trajectory.png  used on inp
-ut line 407.
-(pdftex.def)             Requested size: 320.0935pt x 178.93646pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [88]
-File: output_real/scenario1/statis_trajectories.png Graphic file (type png)
-<use output_real/scenario1/statis_trajectories.png>
-Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on
- input line 428.
-(pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [89 <./output_real/scenario1/beta_trajectory.png>]
-<output_real/scenario1/biplot_tahun_2020.png, id=1887, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/biplot_tahun_2020.png Graphic file (type png)
-<use output_real/scenario1/biplot_tahun_2020.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on i
-nput line 447.
-(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
- [90]
-<output_real/scenario1/biplot_tahun_2021.png, id=1895, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/biplot_tahun_2021.png Graphic file (type png)
-<use output_real/scenario1/biplot_tahun_2021.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on i
-nput line 454.
-(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [91 <./output_real/scenario1/biplot_tahun_2020.png>]
-<output_real/scenario1/biplot_tahun_2022.png, id=1901, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/biplot_tahun_2022.png Graphic file (type png)
-<use output_real/scenario1/biplot_tahun_2022.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on i
-nput line 461.
-(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [92 <./output_real/scenario1/biplot_tahun_2021.png>]
-<output_real/scenario1/biplot_tahun_2023.png, id=1907, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/biplot_tahun_2023.png Graphic file (type png)
-<use output_real/scenario1/biplot_tahun_2023.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on i
-nput line 468.
-(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [93 <./output_real/scenario1/biplot_tahun_2022.png>]
-<output_real/scenario1/biplot_tahun_2024.png, id=1913, 1606.0pt x 1606.0pt>
-File: output_real/scenario1/biplot_tahun_2024.png Graphic file (type png)
-<use output_real/scenario1/biplot_tahun_2024.png>
-Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on i
-nput line 475.
-(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [94 <./output_real/scenario1/biplot_tahun_2023.png>]
-(output_real/scenario1/output_table_loading_intra_2020.tex)
-(output_real/scenario1/output_table_loading_intra_2021.tex)
-(output_real/scenario1/output_table_loading_intra_2022.tex)
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [95 <./output_real/scenario1/biplot_tahun_2024.png>]
-(output_real/scenario1/output_table_loading_intra_2023.tex)
-(output_real/scenario1/output_table_loading_intra_2024.tex)
-Underfull \vbox (badness 2150) has occurred while \output is active []
-
- [96]
-<output_real/scenario1/elbow_plot_2020.png, id=1933, 1405.25pt x 903.375pt>
-File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
-<use output_real/scenario1/elbow_plot_2020.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
-ut line 535.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2020.png, id=1934, 1606.0pt x 1104.125pt>
-File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
-<use output_real/scenario1/dendrogram_2020.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
-ut line 536.
-(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2021.png, id=1935, 1405.25pt x 903.375pt>
-File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
-<use output_real/scenario1/elbow_plot_2021.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
-ut line 543.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2021.png, id=1936, 1606.0pt x 1104.125pt>
-File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
-<use output_real/scenario1/dendrogram_2021.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on inp
-ut line 544.
-(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2022.png, id=1937, 1405.25pt x 903.375pt>
-File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
-<use output_real/scenario1/elbow_plot_2022.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
-ut line 551.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2022.png, id=1938, 1606.0pt x 1104.125pt>
-File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
-<use output_real/scenario1/dendrogram_2022.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
-ut line 552.
-(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2023.png, id=1939, 1405.25pt x 903.375pt>
-File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
-<use output_real/scenario1/elbow_plot_2023.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
-ut line 559.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2023.png, id=1940, 1606.0pt x 1104.125pt>
-File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
-<use output_real/scenario1/dendrogram_2023.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
-ut line 560.
-(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-
-[97 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/dend
-rogram_2020.png> <./output_real/scenario1/elbow_plot_2021.png> <./output_real/s
-cenario1/dendrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <./
-output_real/scenario1/dendrogram_2022.png>]
-<output_real/scenario1/elbow_plot_2024.png, id=1951, 1405.25pt x 903.375pt>
-File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
-<use output_real/scenario1/elbow_plot_2024.png>
-Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
-ut line 567.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2024.png, id=1952, 1606.0pt x 1104.125pt>
-File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
-<use output_real/scenario1/dendrogram_2024.png>
-Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on inp
-ut line 568.
-(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/cluster_scatter_statis_2020.png, id=1957, 1606.0pt x 160
-6.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type 
-png)
-<use output_real/scenario1/cluster_scatter_statis_2020.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png 
- used on input line 583.
-(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2020.png, id=1958, 939.14865pt x 658.
-74104pt>
-File: output_real/scenario1/cluster_map_statis_2020.png Graphic file (type png)
-
-<use output_real/scenario1/cluster_map_statis_2020.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  use
-d on input line 587.
-(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [98 <./output_real/scenario1/elbow_plot_2023.png> <./output_real/scenario1/den
-drogram_2023.png> <./output_real/scenario1/elbow_plot_2024.png> <./output_real/
-scenario1/dendrogram_2024.png>]
-<output_real/scenario1/cluster_scatter_statis_2021.png, id=1967, 1606.0pt x 160
-6.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type 
-png)
-<use output_real/scenario1/cluster_scatter_statis_2021.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png 
- used on input line 597.
-(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2021.png, id=1968, 939.14865pt x 658.
-74104pt>
-File: output_real/scenario1/cluster_map_statis_2021.png Graphic file (type png)
-
-<use output_real/scenario1/cluster_map_statis_2021.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  use
-d on input line 601.
-(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2022.png, id=1969, 1606.0pt x 160
-6.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type 
-png)
-<use output_real/scenario1/cluster_scatter_statis_2022.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png 
- used on input line 611.
-(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2022.png, id=1970, 938.7873pt x 658.7
-4104pt>
-File: output_real/scenario1/cluster_map_statis_2022.png Graphic file (type png)
-
-<use output_real/scenario1/cluster_map_statis_2022.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  use
-d on input line 615.
-(pdftex.def)             Requested size: 204.85802pt x 143.74744pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [99 <./output_real/scenario1/cluster_scatter_statis_2020.png> <./output_real/s
-cenario1/cluster_map_statis_2020.png> <./output_real/scenario1/cluster_scatter_
-statis_2021.png> <./output_real/scenario1/cluster_map_statis_2021.png>]
-<output_real/scenario1/cluster_scatter_statis_2023.png, id=1979, 1606.0pt x 160
-6.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type 
-png)
-<use output_real/scenario1/cluster_scatter_statis_2023.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png 
- used on input line 625.
-(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2023.png, id=1980, 939.14865pt x 658.
-74104pt>
-File: output_real/scenario1/cluster_map_statis_2023.png Graphic file (type png)
-
-<use output_real/scenario1/cluster_map_statis_2023.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  use
-d on input line 629.
-(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2024.png, id=1981, 1606.0pt x 160
-6.0pt>
-File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type 
-png)
-<use output_real/scenario1/cluster_scatter_statis_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png 
- used on input line 639.
-(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2024.png, id=1982, 939.14865pt x 658.
-74104pt>
-File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
-
-<use output_real/scenario1/cluster_map_statis_2024.png>
-Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
-d on input line 643.
-(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [100 <./output_real/scenario1/cluster_scatter_statis_2022.png> <./output_real/
-scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter
-_statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>]
-(output_real/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
-(output_real/scenario1/output_table_transition_matrix_name_2020x2021.tex
+(output_sample/scenario1/output_table_beta_vec.tex) [61]
+(output_sample/scenario1/output_table_beta_provinsi.tex) [62]
+(output_sample/output_table_biplot_transition_sum_2020x2021.tex)
+(output_sample/output_table_biplot_transition_name_2020x2021.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
  []
@@ -3056,10 +2333,991 @@ Underfull \hbox (badness 4416) in paragraph at lines 25--25
 r 3
  []
 
+)
+Underfull \vbox (badness 5388) has occurred while \output is active []
+
+ [63]
+(output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_sample/scenario1/output_table_transition_matrix_name_2020x2021.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 9--9
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 11--11
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 13--13
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 15--15
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 17--17
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 19--19
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 21--21
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 23--23
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 25--25
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [64]
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
+Underfull \hbox (badness 1721) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [65]
+(output_sample/scenario1/output_table_ipm_matrix_sum_2020x2021.tex)
+(output_sample/scenario1/output_table_ipm_matrix_name_2020x2021.tex
+Underfull \hbox (badness 1603) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Tinggi (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+2
+0) Se-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 27--27
+[]|\OT1/ptm/m/n/12 (+20) Sedang (2020) $\OMS/cmsy/m/n/12 !$
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 35--35
+[]|\OT1/ptm/m/n/12 (+20) Rendah (2020) $\OMS/cmsy/m/n/12 !$
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [66]
+(output_sample/scenario1/output_table_cross_matrix_sum_2020.tex)
+(output_sample/scenario1/output_table_cross_matrix_name_2020.tex
+Underfull \hbox (badness 3417) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
+ []
+
+) [67] (output_sample/scenario1/output_table_statis_vs_ipm_sum_2020.tex)
+(output_sample/scenario1/output_table_statis_vs_ipm_name_2020.tex
+Underfull \hbox (badness 3417) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [68]
+(output_sample/scenario1/output_table_biplot_vs_compromise_sum_2020.tex)
+(output_sample/scenario1/output_table_biplot_vs_compromise_name_2020.tex
+Underfull \hbox (badness 1721) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [69]
+(output_sample/scenario1/output_table_compromise_vs_statis_sum_2020.tex)
+(output_sample/scenario1/output_table_compromise_vs_statis_name_2020.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [70]
+(output_sample/scenario1/output_table_compromise_vs_ipm_sum_2020.tex)
+(output_sample/scenario1/output_table_compromise_vs_ipm_name_2020.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [71]
+[72] (output_sample/output_table_rv_w.tex) (output_sample/output_table_hw.tex)
+(output_sample/output_table_hs.tex)
+(output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
+<output_sample/scenario1/cluster_map_statis_2020.png, id=1806, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2020.png Graphic file (type pn
+g)
+<use output_sample/scenario1/cluster_map_statis_2020.png>
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2020.png  u
+sed on input line 549.
+(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
+<output_sample/scenario1/cluster_map_statis_2021.png, id=1807, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2021.png Graphic file (type pn
+g)
+<use output_sample/scenario1/cluster_map_statis_2021.png>
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2021.png  u
+sed on input line 554.
+(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
+<output_sample/scenario1/cluster_map_statis_2022.png, id=1808, 943.8462pt x 505
+.52866pt>
+File: output_sample/scenario1/cluster_map_statis_2022.png Graphic file (type pn
+g)
+<use output_sample/scenario1/cluster_map_statis_2022.png>
+Package pdftex.def Info: output_sample/scenario1/cluster_map_statis_2022.png  u
+sed on input line 559.
+(pdftex.def)             Requested size: 136.57635pt x 73.14935pt.
+
+[73]
+<output_sample/boxplot_ipm.png, id=1813, 1606.0pt x 1003.75pt>
+File: output_sample/boxplot_ipm.png Graphic file (type png)
+<use output_sample/boxplot_ipm.png>
+Package pdftex.def Info: output_sample/boxplot_ipm.png  used on input line 567.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_sample/boxplot_ppm.png, id=1814, 1606.0pt x 1003.75pt>
+File: output_sample/boxplot_ppm.png Graphic file (type png)
+<use output_sample/boxplot_ppm.png>
+Package pdftex.def Info: output_sample/boxplot_ppm.png  used on input line 574.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [74 <./output_sample/scenario1/cluster_map_statis_2020.png> <./output_sample/s
+cenario1/cluster_map_statis_2021.png> <./output_sample/scenario1/cluster_map_st
+atis_2022.png> <./output_sample/boxplot_ipm.png>]
+<output_sample/boxplot_rls.png, id=1824, 1606.0pt x 1003.75pt>
+File: output_sample/boxplot_rls.png Graphic file (type png)
+<use output_sample/boxplot_rls.png>
+Package pdftex.def Info: output_sample/boxplot_rls.png  used on input line 581.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_sample/boxplot_tpt.png, id=1825, 1606.0pt x 1003.75pt>
+File: output_sample/boxplot_tpt.png Graphic file (type png)
+<use output_sample/boxplot_tpt.png>
+Package pdftex.def Info: output_sample/boxplot_tpt.png  used on input line 588.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [75 <./output_sample/boxplot_ppm.png> <./output_sample/boxplot_rls.png>]) [76 
+<./output_sample/boxplot_tpt.png>]
+\openout2 = `bab4.aux'.
+
+ (bab4.tex
+\normalsize BAB 4.
+(output_real/scenario1/output_macros.tex)
+
+Package natbib Warning: Citation `bps_banten_2020' on page 77 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `bps_banten_2021' on page 77 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `bps_banten_2022' on page 77 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `bps_banten_2023' on page 77 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `bps_banten_2024' on page 77 undefined on inpu
+t line 10.
+
+
+Package natbib Warning: Citation `bps_dki_2020' on page 77 undefined on input l
+ine 10.
+
+
+Package natbib Warning: Citation `bps_dki_2021' on page 77 undefined on input l
+ine 10.
+
+
+Package natbib Warning: Citation `bps_dki_2022' on page 77 undefined on input l
+ine 10.
+
+
+Package natbib Warning: Citation `bps_dki_2023' on page 77 undefined on input l
+ine 10.
+
+
+Package natbib Warning: Citation `bps_dki_2024' on page 77 undefined on input l
+ine 10.
+
+
+Package natbib Warning: Citation `bps_jabar_2020' on page 77 undefined on input
+ line 10.
+
+
+Package natbib Warning: Citation `bps_jabar_2021' on page 77 undefined on input
+ line 10.
+
+
+Package natbib Warning: Citation `bps_jabar_2022' on page 77 undefined on input
+ line 10.
+
+
+Package natbib Warning: Citation `bps_jabar_2023' on page 77 undefined on input
+ line 10.
+
+
+Package natbib Warning: Citation `bps_jabar_2024' on page 77 undefined on input
+ line 10.
+
+(output_real/output_table_deskriptif_2020.tex)
+(output_real/output_table_deskriptif_2021.tex) [77
+
+
+
+
+
+
+]
+(output_real/output_table_deskriptif_2022.tex)
+(output_real/output_table_deskriptif_2023.tex)
+(output_real/output_table_deskriptif_2024.tex) [78]
+<output_real/boxplot_ipm.png, id=1847, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_ipm.png Graphic file (type png)
+<use output_real/boxplot_ipm.png>
+Package pdftex.def Info: output_real/boxplot_ipm.png  used on input line 68.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_ipg.png, id=1848, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_ipg.png Graphic file (type png)
+<use output_real/boxplot_ipg.png>
+Package pdftex.def Info: output_real/boxplot_ipg.png  used on input line 75.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 1648) has occurred while \output is active []
+
+ [79 <./output_real/boxplot_ipm.png>]
+<output_real/boxplot_ppm.png, id=1854, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_ppm.png Graphic file (type png)
+<use output_real/boxplot_ppm.png>
+Package pdftex.def Info: output_real/boxplot_ppm.png  used on input line 82.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_pdrb_adhk.png, id=1855, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_pdrb_adhk.png Graphic file (type png)
+<use output_real/boxplot_pdrb_adhk.png>
+Package pdftex.def Info: output_real/boxplot_pdrb_adhk.png  used on input line 
+89.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [80 <./output_real/boxplot_ipg.png> <./output_real/boxplot_ppm.png>]
+<output_real/boxplot_rls.png, id=1863, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_rls.png Graphic file (type png)
+<use output_real/boxplot_rls.png>
+Package pdftex.def Info: output_real/boxplot_rls.png  used on input line 96.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_ahh_l.png, id=1864, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_ahh_l.png Graphic file (type png)
+<use output_real/boxplot_ahh_l.png>
+Package pdftex.def Info: output_real/boxplot_ahh_l.png  used on input line 103.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [81 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_rls.png>]
+<output_real/boxplot_ahh_p.png, id=1871, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_ahh_p.png Graphic file (type png)
+<use output_real/boxplot_ahh_p.png>
+Package pdftex.def Info: output_real/boxplot_ahh_p.png  used on input line 110.
+
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_gk.png, id=1872, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_gk.png Graphic file (type png)
+<use output_real/boxplot_gk.png>
+Package pdftex.def Info: output_real/boxplot_gk.png  used on input line 117.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [82 <./output_real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
+<output_real/boxplot_pkkp.png, id=1879, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_pkkp.png Graphic file (type png)
+<use output_real/boxplot_pkkp.png>
+Package pdftex.def Info: output_real/boxplot_pkkp.png  used on input line 124.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_tpt.png, id=1880, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_tpt.png Graphic file (type png)
+<use output_real/boxplot_tpt.png>
+Package pdftex.def Info: output_real/boxplot_tpt.png  used on input line 131.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [83 <./output_real/boxplot_gk.png> <./output_real/boxplot_pkkp.png>]
+<output_real/boxplot_tpak.png, id=1887, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_tpak.png Graphic file (type png)
+<use output_real/boxplot_tpak.png>
+Package pdftex.def Info: output_real/boxplot_tpak.png  used on input line 138.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+<output_real/boxplot_gr.png, id=1888, 1606.0pt x 1003.75pt>
+File: output_real/boxplot_gr.png Graphic file (type png)
+<use output_real/boxplot_gr.png>
+Package pdftex.def Info: output_real/boxplot_gr.png  used on input line 145.
+(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [84 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png>]
+(output_real/output_table_kmo_bartlett.tex) [85 <./output_real/boxplot_gr.png>]
+(output_real/output_table_rv_w.tex)
+<output_real/scenario1/rv_heatmap.png, id=1908, 1405.25pt x 1204.5pt>
+File: output_real/scenario1/rv_heatmap.png Graphic file (type png)
+<use output_real/scenario1/rv_heatmap.png>
+Package pdftex.def Info: output_real/scenario1/rv_heatmap.png  used on input li
+ne 183.
+(pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [86]
+(output_real/output_table_alpha_w.tex) [87 <./output_real/scenario1/rv_heatmap.
+png>] (output_real/output_table_alpha_s.tex)
+<output_real/scenario1/scree_plot.png, id=1926, 1806.75pt x 1204.5pt>
+File: output_real/scenario1/scree_plot.png Graphic file (type png)
+<use output_real/scenario1/scree_plot.png>
+Package pdftex.def Info: output_real/scenario1/scree_plot.png  used on input li
+ne 226.
+(pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
+ [88]
+(output_real/scenario1/output_table_eigen.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [89 <./output_real/scenario1/scree_plot.png>] [90]
+<output_real/scenario1/cluster_map_statis.png, id=1943, 939.14865pt x 658.74104
+pt>
+File: output_real/scenario1/cluster_map_statis.png Graphic file (type png)
+<use output_real/scenario1/cluster_map_statis.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis.png  used on 
+input line 244.
+(pdftex.def)             Requested size: 362.77525pt x 254.45538pt.
+ [91 <./output_real/scenario1/cluster_map_statis.png>]
+File: output_real/scenario1/compromise_biplot_matplotlib.png Graphic file (type
+ png)
+<use output_real/scenario1/compromise_biplot_matplotlib.png>
+Package pdftex.def Info: output_real/scenario1/compromise_biplot_matplotlib.png
+  used on input line 259.
+(pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
+<output_real/scenario2/compromise_biplot_matplotlib.png, id=1952, 907.13304pt x
+ 767.79648pt>
+File: output_real/scenario2/compromise_biplot_matplotlib.png Graphic file (type
+ png)
+<use output_real/scenario2/compromise_biplot_matplotlib.png>
+Package pdftex.def Info: output_real/scenario2/compromise_biplot_matplotlib.png
+  used on input line 265.
+(pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
+ (output_real/scenario1/output_table_loadings.tex)
+Underfull \vbox (badness 1297) has occurred while \output is active []
+
+ [92 <./output_real/scenario2/compromise_biplot_matplotlib.png>]
+(output_real/scenario2/output_table_loadings.tex)
+<output_real/scenario1/loading_plot.png, id=1965, 1405.25pt x 1405.25pt>
+File: output_real/scenario1/loading_plot.png Graphic file (type png)
+<use output_real/scenario1/loading_plot.png>
+Package pdftex.def Info: output_real/scenario1/loading_plot.png  used on input 
+line 295.
+(pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
+<output_real/scenario2/loading_plot.png, id=1966, 1405.25pt x 1405.25pt>
+File: output_real/scenario2/loading_plot.png Graphic file (type png)
+<use output_real/scenario2/loading_plot.png>
+Package pdftex.def Info: output_real/scenario2/loading_plot.png  used on input 
+line 301.
+(pdftex.def)             Requested size: 204.85802pt x 204.83887pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [93]
+<output_real/scenario1/variable_contribution.png, id=1973, 1806.75pt x 1204.5pt
+>
+File: output_real/scenario1/variable_contribution.png Graphic file (type png)
+<use output_real/scenario1/variable_contribution.png>
+Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used 
+on input line 315.
+(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
+<output_real/scenario2/variable_contribution.png, id=1974, 1806.75pt x 1204.5pt
+>
+File: output_real/scenario2/variable_contribution.png Graphic file (type png)
+<use output_real/scenario2/variable_contribution.png>
+Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used 
+on input line 321.
+(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
+<output_real/scenario1/variable_cos2.png, id=1975, 1806.75pt x 1204.5pt>
+File: output_real/scenario1/variable_cos2.png Graphic file (type png)
+<use output_real/scenario1/variable_cos2.png>
+Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input
+ line 331.
+(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
+<output_real/scenario2/variable_cos2.png, id=1976, 1806.75pt x 1204.5pt>
+File: output_real/scenario2/variable_cos2.png Graphic file (type png)
+<use output_real/scenario2/variable_cos2.png>
+Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input
+ line 337.
+(pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [94 <./output_real/scenario1/loading_plot.png> <./output_real/scenario2/loadin
+g_plot.png> <./output_real/scenario1/variable_contribution.png> <./output_real/
+scenario2/variable_contribution.png>] [95 <./output_real/scenario1/variable_cos
+2.png> <./output_real/scenario2/variable_cos2.png>]
+(output_real/scenario1/output_table_scores.tex)
+(output_real/scenario2/output_table_scores.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [96
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [97]
+<output_real/scenario1/permutation_histogram.png, id=2002, 1806.75pt x 1204.5pt
+>
+File: output_real/scenario1/permutation_histogram.png Graphic file (type png)
+<use output_real/scenario1/permutation_histogram.png>
+Package pdftex.def Info: output_real/scenario1/permutation_histogram.png  used 
+on input line 369.
+(pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
+
+Underfull \vbox (badness 6016) has occurred while \output is active []
+
+ [98 <./output_real/scenario1/permutation_histogram.png>]
+
+Package natbib Warning: Citation `areia2008' on page 99 undefined on input line
+ 401.
+
+
+Package natbib Warning: Citation `oliveira2024' on page 99 undefined on input l
+ine 401.
+
+(output_real/scenario1/output_table_beta_vec.tex)
+Underfull \vbox (badness 1502) has occurred while \output is active []
+
+ [99]
+(output_real/scenario1/output_table_struktur_diagnostik.tex)
+
+Package natbib Warning: Citation `areia2008' on page 100 undefined on input lin
+e 428.
+
+
+Package natbib Warning: Citation `oliveira2024' on page 100 undefined on input 
+line 432.
+
+[100] (output_real/scenario1/output_table_beta_provinsi.tex)
+
+Package natbib Warning: Citation `areia2008' on page 101 undefined on input lin
+e 442.
+
+
+Package natbib Warning: Citation `oliveira2024' on page 101 undefined on input 
+line 442.
+
+<output_real/scenario1/beta_trajectory.png, id=2028, 498.1812pt x 278.4804pt>
+File: output_real/scenario1/beta_trajectory.png Graphic file (type png)
+<use output_real/scenario1/beta_trajectory.png>
+Package pdftex.def Info: output_real/scenario1/beta_trajectory.png  used on inp
+ut line 446.
+(pdftex.def)             Requested size: 320.0935pt x 178.93646pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [101]
+File: output_real/scenario1/statis_trajectories.png Graphic file (type png)
+<use output_real/scenario1/statis_trajectories.png>
+Package pdftex.def Info: output_real/scenario1/statis_trajectories.png  used on
+ input line 467.
+(pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [102 <./output_real/scenario1/beta_trajectory.png>]
+<output_real/scenario1/biplot_tahun_2020.png, id=2042, 1606.0pt x 1606.0pt>
+File: output_real/scenario1/biplot_tahun_2020.png Graphic file (type png)
+<use output_real/scenario1/biplot_tahun_2020.png>
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on i
+nput line 486.
+(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
+ [103]
+<output_real/scenario1/biplot_tahun_2021.png, id=2050, 1606.0pt x 1606.0pt>
+File: output_real/scenario1/biplot_tahun_2021.png Graphic file (type png)
+<use output_real/scenario1/biplot_tahun_2021.png>
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on i
+nput line 493.
+(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [104 <./output_real/scenario1/biplot_tahun_2020.png>]
+<output_real/scenario1/biplot_tahun_2022.png, id=2057, 1606.0pt x 1606.0pt>
+File: output_real/scenario1/biplot_tahun_2022.png Graphic file (type png)
+<use output_real/scenario1/biplot_tahun_2022.png>
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on i
+nput line 500.
+(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [105 <./output_real/scenario1/biplot_tahun_2021.png>]
+<output_real/scenario1/biplot_tahun_2023.png, id=2063, 1606.0pt x 1606.0pt>
+File: output_real/scenario1/biplot_tahun_2023.png Graphic file (type png)
+<use output_real/scenario1/biplot_tahun_2023.png>
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on i
+nput line 507.
+(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [106 <./output_real/scenario1/biplot_tahun_2022.png>]
+<output_real/scenario1/biplot_tahun_2024.png, id=2069, 1606.0pt x 1606.0pt>
+File: output_real/scenario1/biplot_tahun_2024.png Graphic file (type png)
+<use output_real/scenario1/biplot_tahun_2024.png>
+Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on i
+nput line 514.
+(pdftex.def)             Requested size: 341.43437pt x 341.4359pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [107 <./output_real/scenario1/biplot_tahun_2023.png>]
+(output_real/scenario1/output_table_loading_intra_2020.tex)
+(output_real/scenario1/output_table_loading_intra_2021.tex)
+(output_real/scenario1/output_table_loading_intra_2022.tex)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [108 <./output_real/scenario1/biplot_tahun_2024.png>]
+(output_real/scenario1/output_table_loading_intra_2023.tex)
+(output_real/scenario1/output_table_loading_intra_2024.tex)
+Underfull \vbox (badness 2150) has occurred while \output is active []
+
+ [109]
+<output_real/scenario1/elbow_plot_2020.png, id=2088, 1405.25pt x 903.375pt>
+File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
+<use output_real/scenario1/elbow_plot_2020.png>
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
+ut line 574.
+(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+<output_real/scenario1/dendrogram_2020.png, id=2089, 1606.0pt x 1104.125pt>
+File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
+<use output_real/scenario1/dendrogram_2020.png>
+Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
+ut line 575.
+(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
+<output_real/scenario1/elbow_plot_2021.png, id=2090, 1405.25pt x 903.375pt>
+File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
+<use output_real/scenario1/elbow_plot_2021.png>
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
+ut line 582.
+(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+<output_real/scenario1/dendrogram_2021.png, id=2091, 1606.0pt x 1104.125pt>
+File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
+<use output_real/scenario1/dendrogram_2021.png>
+Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on inp
+ut line 583.
+(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
+<output_real/scenario1/elbow_plot_2022.png, id=2092, 1405.25pt x 903.375pt>
+File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
+<use output_real/scenario1/elbow_plot_2022.png>
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
+ut line 590.
+(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+<output_real/scenario1/dendrogram_2022.png, id=2093, 1606.0pt x 1104.125pt>
+File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
+<use output_real/scenario1/dendrogram_2022.png>
+Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
+ut line 591.
+(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
+<output_real/scenario1/elbow_plot_2023.png, id=2094, 1405.25pt x 903.375pt>
+File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
+<use output_real/scenario1/elbow_plot_2023.png>
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
+ut line 598.
+(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+<output_real/scenario1/dendrogram_2023.png, id=2095, 1606.0pt x 1104.125pt>
+File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
+<use output_real/scenario1/dendrogram_2023.png>
+Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
+ut line 599.
+(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
+
+[110 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/den
+drogram_2020.png> <./output_real/scenario1/elbow_plot_2021.png> <./output_real/
+scenario1/dendrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <.
+/output_real/scenario1/dendrogram_2022.png>]
+<output_real/scenario1/elbow_plot_2024.png, id=2107, 1405.25pt x 903.375pt>
+File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
+<use output_real/scenario1/elbow_plot_2024.png>
+Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
+ut line 606.
+(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+<output_real/scenario1/dendrogram_2024.png, id=2108, 1606.0pt x 1104.125pt>
+File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
+<use output_real/scenario1/dendrogram_2024.png>
+Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on inp
+ut line 607.
+(pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
+<output_real/scenario1/cluster_scatter_statis_2020.png, id=2113, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type 
+png)
+<use output_real/scenario1/cluster_scatter_statis_2020.png>
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png 
+ used on input line 622.
+(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
+<output_real/scenario1/cluster_map_statis_2020.png, id=2114, 939.14865pt x 658.
+74104pt>
+File: output_real/scenario1/cluster_map_statis_2020.png Graphic file (type png)
+
+<use output_real/scenario1/cluster_map_statis_2020.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  use
+d on input line 626.
+(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [111 <./output_real/scenario1/elbow_plot_2023.png> <./output_real/scenario1/de
+ndrogram_2023.png> <./output_real/scenario1/elbow_plot_2024.png> <./output_real
+/scenario1/dendrogram_2024.png>]
+<output_real/scenario1/cluster_scatter_statis_2021.png, id=2123, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type 
+png)
+<use output_real/scenario1/cluster_scatter_statis_2021.png>
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png 
+ used on input line 636.
+(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
+<output_real/scenario1/cluster_map_statis_2021.png, id=2124, 939.14865pt x 658.
+74104pt>
+File: output_real/scenario1/cluster_map_statis_2021.png Graphic file (type png)
+
+<use output_real/scenario1/cluster_map_statis_2021.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  use
+d on input line 640.
+(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
+<output_real/scenario1/cluster_scatter_statis_2022.png, id=2125, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type 
+png)
+<use output_real/scenario1/cluster_scatter_statis_2022.png>
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png 
+ used on input line 650.
+(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
+<output_real/scenario1/cluster_map_statis_2022.png, id=2126, 939.14865pt x 658.
+74104pt>
+File: output_real/scenario1/cluster_map_statis_2022.png Graphic file (type png)
+
+<use output_real/scenario1/cluster_map_statis_2022.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  use
+d on input line 654.
+(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [112 <./output_real/scenario1/cluster_scatter_statis_2020.png> <./output_real/
+scenario1/cluster_map_statis_2020.png> <./output_real/scenario1/cluster_scatter
+_statis_2021.png> <./output_real/scenario1/cluster_map_statis_2021.png>]
+<output_real/scenario1/cluster_scatter_statis_2023.png, id=2135, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type 
+png)
+<use output_real/scenario1/cluster_scatter_statis_2023.png>
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png 
+ used on input line 664.
+(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
+<output_real/scenario1/cluster_map_statis_2023.png, id=2136, 939.14865pt x 658.
+74104pt>
+File: output_real/scenario1/cluster_map_statis_2023.png Graphic file (type png)
+
+<use output_real/scenario1/cluster_map_statis_2023.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  use
+d on input line 668.
+(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
+<output_real/scenario1/cluster_scatter_statis_2024.png, id=2137, 1606.0pt x 160
+6.0pt>
+File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type 
+png)
+<use output_real/scenario1/cluster_scatter_statis_2024.png>
+Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png 
+ used on input line 678.
+(pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
+<output_real/scenario1/cluster_map_statis_2024.png, id=2138, 939.14865pt x 658.
+74104pt>
+File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
+
+<use output_real/scenario1/cluster_map_statis_2024.png>
+Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
+d on input line 682.
+(pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [113 <./output_real/scenario1/cluster_scatter_statis_2022.png> <./output_real/
+scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter
+_statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>]
+(output_real/scenario1/output_table_transition_matrix_sum_2020x2021.tex)
+(output_real/scenario1/output_table_transition_matrix_name_2020x2021.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 9--9
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 11--11
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 13--13
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 15--15
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 17--17
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 1472) in paragraph at lines 17--18
+\OT1/ptm/m/n/12 (+20) Sumedang, Sub-ang, Pur-wakarta, Karawang, Ban-dung
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 19--19
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 21--21
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 23--23
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 25--25
+\OT1/ptm/m/n/12 (+20) (2020) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
 
 Underfull \vbox (badness 4036) has occurred while \output is active []
 
- [101 <./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/
+ [114 <./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/
 scenario1/cluster_map_statis_2024.png>])
 (output_real/scenario1/output_table_transition_matrix_sum_2021x2022.tex)
 (output_real/scenario1/output_table_transition_matrix_name_2021x2022.tex
@@ -3164,7 +3422,7 @@ r 3
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [102])
+ [115])
 (output_real/scenario1/output_table_transition_matrix_sum_2022x2023.tex)
 (output_real/scenario1/output_table_transition_matrix_name_2022x2023.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
@@ -3175,6 +3433,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--9
 Underfull \hbox (badness 5064) in paragraph at lines 9--9
 \OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
 r 1
+ []
+
+
+Underfull \hbox (badness 1348) in paragraph at lines 9--10
+[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
+-
  []
 
 
@@ -3219,11 +3483,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 17--17
 Underfull \hbox (badness 4416) in paragraph at lines 17--17
 \OT1/ptm/m/n/12 (+20) (2022) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
 r 2
- []
-
-
-Underfull \hbox (badness 1509) in paragraph at lines 17--18
-\OT1/ptm/m/n/12 (+20) Cire-bon, Sumedang, In-dra-mayu, Sub-ang, Pur-wakarta,
  []
 
 
@@ -3273,7 +3532,7 @@ r 3
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [103])
+ [116])
 (output_real/scenario1/output_table_transition_matrix_sum_2023x2024.tex)
 (output_real/scenario1/output_table_transition_matrix_name_2023x2024.tex
 Underfull \hbox (badness 10000) in paragraph at lines 9--9
@@ -3383,30 +3642,30 @@ r 3
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [104])
-[105]
-<output_real/scenario1/dendrogram_compromise.png, id=2017, 1606.0pt x 1204.5pt>
+ [117])
+[118]
+<output_real/scenario1/dendrogram_compromise.png, id=2173, 1606.0pt x 1204.5pt>
 
 File: output_real/scenario1/dendrogram_compromise.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_compromise.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_compromise.png  used 
-on input line 693.
+on input line 732.
 (pdftex.def)             Requested size: 362.77525pt x 272.08517pt.
-<output_real/scenario1/cluster_scatter_statis.png, id=2018, 1606.0pt x 1606.0pt
+<output_real/scenario1/cluster_scatter_statis.png, id=2174, 1606.0pt x 1606.0pt
 >
 File: output_real/scenario1/cluster_scatter_statis.png Graphic file (type png)
 <use output_real/scenario1/cluster_scatter_statis.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis.png  used
- on input line 700.
+ on input line 739.
 (pdftex.def)             Requested size: 362.77525pt x 362.78024pt.
- [106 <./output_real/scenario1/dendrogram_compromise.png>]
+ [119 <./output_real/scenario1/dendrogram_compromise.png>]
 (output_real/scenario1/output_table_cluster_members.tex)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [107 <./output_real/scenario1/cluster_scatter_statis.png>]
+ [120 <./output_real/scenario1/cluster_scatter_statis.png>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [108]
+ [121]
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3499,7 +3758,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 []|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
  []
 
-[109])
+[122])
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2022.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2022.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3519,6 +3778,11 @@ Underfull \hbox (badness 1721) in paragraph at lines 13--13
 
 Underfull \hbox (badness 2269) in paragraph at lines 15--15
 []|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 15--16
+[]|\OT1/ptm/m/n/12 (+20) Sukabumi, Cian-jur, Garut, Tasik-malaya, Ciamis, Ma-
  []
 
 
@@ -3547,9 +3811,9 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
  []
 
 )
-Underfull \vbox (badness 6380) has occurred while \output is active []
+Underfull \vbox (badness 2521) has occurred while \output is active []
 
- [110]
+ [123]
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2023.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2023.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3599,7 +3863,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [111]
+ [124]
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3649,7 +3913,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [112]
+ [125]
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3699,7 +3963,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [113]
+ [126]
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2021.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2021.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3749,7 +4013,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [114]
+ [127]
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2022.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2022.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3769,6 +4033,11 @@ Underfull \hbox (badness 1721) in paragraph at lines 13--13
 
 Underfull \hbox (badness 2269) in paragraph at lines 15--15
 []|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 1237) in paragraph at lines 15--16
+[]|\OT1/ptm/m/n/12 (+20) Sukabumi, Cian-jur, Garut, Tasik-malaya, Ciamis, Ma-
  []
 
 
@@ -3799,7 +4068,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [115]
+ [128]
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2023.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2023.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3849,7 +4118,7 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [116]
+ [129]
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex
 Underfull \hbox (badness 1721) in paragraph at lines 9--9
@@ -3904,23 +4173,23 @@ Underfull \hbox (badness 4429) in paragraph at lines 25--25
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [117]
-<output_real/cluster_map_biplot_2024.png, id=2075, 939.14865pt x 658.74104pt>
+ [130]
+<output_real/cluster_map_biplot_2024.png, id=2231, 939.14865pt x 658.74104pt>
 File: output_real/cluster_map_biplot_2024.png Graphic file (type png)
 <use output_real/cluster_map_biplot_2024.png>
 Package pdftex.def Info: output_real/cluster_map_biplot_2024.png  used on input
- line 766.
+ line 805.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
-d on input line 771.
+d on input line 810.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [118]
+ [131]
 (output_real/scenario1/output_table_ipm_matrix_sum_2020x2021.tex)
 (output_real/scenario1/output_table_ipm_matrix_name_2020x2021.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
@@ -3941,7 +4210,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--35
 )
 Underfull \vbox (badness 4505) has occurred while \output is active []
 
- [119 <./output_real/cluster_map_biplot_2024.png>]
+ [132 <./output_real/cluster_map_biplot_2024.png>]
 (output_real/scenario1/output_table_ipm_matrix_sum_2021x2022.tex)
 (output_real/scenario1/output_table_ipm_matrix_name_2021x2022.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
@@ -3962,10 +4231,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--35
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [120])
+ [133])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [121]
+ [134]
 (output_real/scenario1/output_table_ipm_matrix_sum_2022x2023.tex)
 (output_real/scenario1/output_table_ipm_matrix_name_2022x2023.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
@@ -3986,10 +4255,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--35
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [122])
+ [135])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [123]
+ [136]
 (output_real/scenario1/output_table_ipm_matrix_sum_2023x2024.tex)
 (output_real/scenario1/output_table_ipm_matrix_name_2023x2024.tex
 Underfull \hbox (badness 1603) in paragraph at lines 21--21
@@ -4010,66 +4279,192 @@ Underfull \hbox (badness 10000) in paragraph at lines 35--35
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [124])
+ [137])
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [125]
+ [138]
 Underfull \vbox (badness 1515) has occurred while \output is active []
 
- [126]
-(output_real/scenario1/output_table_cross_matrix_sum_2020.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2020.tex
-Underfull \hbox (badness 3417) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
- []
-
-) (output_real/scenario1/output_table_cross_matrix_sum_2021.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2021.tex
-Underfull \hbox (badness 3417) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
- []
-
-[127]) (output_real/scenario1/output_table_cross_matrix_sum_2022.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2022.tex
-Underfull \hbox (badness 3417) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [128])
-(output_real/scenario1/output_table_cross_matrix_sum_2023.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2023.tex
-Underfull \hbox (badness 3417) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
- []
-
-
-Underfull \hbox (badness 1348) in paragraph at lines 13--14
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
--
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [129])
+ [139]
 (output_real/scenario1/output_table_cross_matrix_sum_2024.tex)
 (output_real/scenario1/output_table_cross_matrix_name_2024.tex
 Underfull \hbox (badness 3417) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
  []
 
-
+)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [130])
-[131] (output_real/scenario1/output_moran.tex
+ [140]
+(output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex)
+(output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex
+Underfull \hbox (badness 3417) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cl. 1 (Ren-dah) &
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [141]
+[142] (output_real/output_table_biplot_transition_sum_2023x2024.tex)
+(output_real/output_table_biplot_transition_name_2023x2024.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 9--9
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 11--11
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-dah)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 13--13
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 15--15
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 17--17
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-dang)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 19--19
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 5064) in paragraph at lines 21--21
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 1
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 23--23
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Cluster 3 (Tinggi)
+ []
+
+
+Underfull \hbox (badness 4416) in paragraph at lines 25--25
+\OT1/ptm/m/n/12 (+20) (2023) $\OMS/cmsy/m/n/12 !$ \OT1/ptm/m/n/12 (+20) Clus-te
+r 3
+ []
+
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [143]
+(output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex)
+(output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex
+Underfull \hbox (badness 1721) in paragraph at lines 9--9
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 11--11
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 1721) in paragraph at lines 13--13
+[]|\OT1/ptm/m/n/12 (+20) Biplot 1 (Ren-dah) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 15--15
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 17--17
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 2269) in paragraph at lines 19--19
+[]|\OT1/ptm/m/n/12 (+20) Biplot 2 (Se-dang) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 21--21
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 23--23
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+
+Underfull \hbox (badness 4429) in paragraph at lines 25--25
+[]|\OT1/ptm/m/n/12 (+20) Biplot 3 (Tinggi) &
+ []
+
+[144]) (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
+(output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex)
+[145] (output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex)
+(output_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex) [146]
+(output_real/scenario1/output_moran.tex
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4078,14 +4473,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4094,7 +4489,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4103,7 +4498,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4115,7 +4510,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.1 \newcommand{\App1MoranI}{0.6974}
+l.1 \newcommand{\App1MoranI}{0.6903}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4177,7 +4572,7 @@ as well as the token that followed it.
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4186,14 +4581,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4202,7 +4597,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4211,7 +4606,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4223,7 +4618,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.3 \newcommand{\App1MoranZ}{1.0143}
+l.3 \newcommand{\App1MoranZ}{1.0046}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4231,7 +4626,7 @@ as well as the token that followed it.
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4240,14 +4635,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4256,7 +4651,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4265,7 +4660,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4277,7 +4672,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.4 \newcommand{\App1MoranP}{0.3104}
+l.4 \newcommand{\App1MoranP}{0.3151}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4336,11 +4731,11 @@ l.5 ...terp}{Tidak Signifikan (Pola Spasial Acak)}
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
 
-) (output_real/scenario2/output_moran.tex
+) [147] (output_real/scenario2/output_moran.tex
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4349,14 +4744,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4365,7 +4760,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4374,7 +4769,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4386,7 +4781,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.1 \newcommand{\App2MoranI}{0.7011}
+l.1 \newcommand{\App2MoranI}{0.6930}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4448,7 +4843,7 @@ as well as the token that followed it.
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4457,14 +4852,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4473,7 +4868,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4482,7 +4877,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4494,7 +4889,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.3 \newcommand{\App2MoranZ}{1.0192}
+l.3 \newcommand{\App2MoranZ}{1.0083}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4502,7 +4897,7 @@ as well as the token that followed it.
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4511,14 +4906,14 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing = inserted for \ifnum.
 <to be read again> 
                    M
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 I was expecting to see `<', `=', or `>'. Didn't.
 
 ! Missing number, treated as zero.
 <to be read again> 
                    M
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4527,7 +4922,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \l@ngrel@x 
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -4536,7 +4931,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \l@ngrel@x 
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -4548,7 +4943,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! You already have nine parameters.
 \reserved@a ...f \expandafter \App \reserved@b #10
                                                   M{
-l.4 \newcommand{\App2MoranP}{0.3081}
+l.4 \newcommand{\App2MoranP}{0.3133}
                                     
 I'm going to ignore the # sign you just used,
 as well as the token that followed it.
@@ -4609,7 +5004,7 @@ as well as the token that followed it.
 
 )
 ! Undefined control sequence.
-l.856 ...(ACT Klasik):} Moran's $I = \AppOneMoranI
+l.916 ...(ACT Klasik):} Moran's $I = \AppOneMoranI
                                                   {}$, $p\text{-value} = \Ap...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4618,7 +5013,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.856 ...oranI{}$, $p\text{-value} = \AppOneMoranP
+l.916 ...oranI{}$, $p\text{-value} = \AppOneMoranP
                                                   {}$, \textit{\AppOneMoranI...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4629,7 +5024,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \AppOneMoranInterp 
                                    
-l.856 ...eMoranP{}$, \textit{\AppOneMoranInterp{}}
+l.916 ...eMoranP{}$, \textit{\AppOneMoranInterp{}}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4638,7 +5033,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.857 ...Dual STATIS):} Moran's $I = \AppTwoMoranI
+l.917 ...Dual STATIS):} Moran's $I = \AppTwoMoranI
                                                   {}$, $p\text{-value} = \Ap...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4647,7 +5042,7 @@ spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
 ! Undefined control sequence.
-l.857 ...oranI{}$, $p\text{-value} = \AppTwoMoranP
+l.917 ...oranI{}$, $p\text{-value} = \AppTwoMoranP
                                                   {}$, \textit{\AppTwoMoranI...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4658,7 +5053,7 @@ and I'll forget about whatever was undefined.
 ! Undefined control sequence.
 <recently read> \AppTwoMoranInterp 
                                    
-l.857 ...oMoranP{}$, \textit{\AppTwoMoranInterp{}}
+l.917 ...oMoranP{}$, \textit{\AppTwoMoranInterp{}}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -4666,27 +5061,26 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[132] [133]) [134] [135] [136
-
-
-
-
-]
+[148] [149]) [150]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 \normalsize BAB 5.
-[137
+[151
 
 
-] [138]
+
+
+
+
+] [152]
 Underfull \hbox (badness 1038) in paragraph at lines 45--47
 []\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-boar
 d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
 is web
  []
 
-) [139] [140
+) [153] [154
 
 
 
@@ -4694,13 +5088,13 @@ is web
 ] (induk.bbl)
 \openout2 = `lampiran1.aux'.
 
- (lampiran1.tex [141
+ (lampiran1.tex [155
 
 
 
 
-] [142] [143] [144] [145] [146]
-[147] [148] [149] [150] [151] [152]) [153] [154
+] [156] [157] [158] [159] [160]
+[161] [162] [163] [164] [165] [166]) [167] [168
 
 
 
@@ -4709,15 +5103,15 @@ is web
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
-<gambarku/screenshot_web.png, id=2262, 1444.64719pt x 548.80031pt>
+<gambarku/screenshot_web.png, id=2421, 1444.64719pt x 548.80031pt>
 File: gambarku/screenshot_web.png Graphic file (type png)
 <use gambarku/screenshot_web.png>
 Package pdftex.def Info: gambarku/screenshot_web.png  used on input line 16.
 (pdftex.def)             Requested size: 426.79135pt x 162.12915pt.
-) [155
+) [169
 
 
- <./gambarku/screenshot_web.png>] [156
+ <./gambarku/screenshot_web.png>] [170
 
 
 
@@ -4740,11 +5134,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34632 strings out of 467871
- 666753 string characters out of 5418376
- 1135087 words of memory out of 5000000
- 61207 multiletter control sequences out of 15000+600000
- 684908 words of font info for 425 fonts, out of 8000000 for 9000
+ 34474 strings out of 467871
+ 668117 string characters out of 5418376
+ 1131087 words of memory out of 5000000
+ 60969 multiletter control sequences out of 15000+600000
+ 684732 words of font info for 423 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
  84i,17n,104p,1498b,836s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
@@ -4771,9 +5165,9 @@ sers/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/U
 sers/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/
 Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/
 Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (195 pages, 8994992 bytes).
+Output written on induk.pdf (211 pages, 9540211 bytes).
 PDF statistics:
- 2935 PDF objects out of 2984 (max. 8388607)
- 709 named destinations out of 1000 (max. 500000)
- 75226 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 3111 PDF objects out of 3580 (max. 8388607)
+ 757 named destinations out of 1000 (max. 500000)
+ 75232 words of extra memory for PDF output out of 89155 (max. 10000000)
 

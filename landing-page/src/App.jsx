@@ -359,8 +359,9 @@ function SideBySideIntegratedTexLoader({ filename, folder, hasLeft, hasRight }) 
     async function fetchData() {
       try {
         setLoading(true);
-        const leftPath = `/` + folder + `/scenario1/` + filename;
-        const rightPath = `/` + folder + `/scenario2/` + filename;
+        const isRootFile = filename.startsWith('output_table_biplot_transition_');
+        const leftPath = isRootFile ? `/` + folder + `/` + filename : `/` + folder + `/scenario1/` + filename;
+        const rightPath = isRootFile ? `/` + folder + `/` + filename : `/` + folder + `/scenario2/` + filename;
 
         const promises = [];
         if (hasLeft) promises.push(fetch(leftPath).then(r => r.text()));
@@ -410,46 +411,163 @@ function SideBySideIntegratedTexLoader({ filename, folder, hasLeft, hasRight }) 
 }
 
 function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, availableYears, availablePairs }) {
-  const [compMode, setCompMode] = useState('biplot_vs_statis');
-  const [selectedYear, setSelectedYear] = useState('');
-  const [selectedPair, setSelectedPair] = useState('');
+  const [compMode, setCompMode] = useState('comp_3_biplot_vs_statis');
+  const [selectedPeriod, setSelectedPeriod] = useState('');
   const [compView, setCompView] = useState('map');
 
   useEffect(() => {
-    if (availableYears.length > 0 && !selectedYear) {
-      setSelectedYear(availableYears[0]);
+    if (availableYears.length > 0 && !selectedPeriod) {
+      setSelectedPeriod(availableYears[0]);
     }
   }, [availableYears]);
 
   useEffect(() => {
-    if (availablePairs.length > 0 && !selectedPair) {
-      setSelectedPair(availablePairs[0]);
+    const isTransition = ['comp_1_trans_biplot', 'comp_2_trans_statis', 'comp_4_trans_ipm'].includes(compMode);
+    if (isTransition) {
+      if (availablePairs.length > 0 && !availablePairs.includes(selectedPeriod)) {
+        setSelectedPeriod(availablePairs[0]);
+      }
+    } else {
+      if (availableYears.length > 0 && !availableYears.includes(selectedPeriod)) {
+        setSelectedPeriod(availableYears[0]);
+      }
     }
-  }, [availablePairs]);
+  }, [compMode, availableYears, availablePairs]);
 
-  const selectedPeriod = compMode === 'biplot_vs_statis' ? selectedYear : selectedPair;
+  useEffect(() => {
+    const isIpmMode = ['comp_4_trans_ipm', 'comp_5_biplot_vs_ipm', 'comp_6_statis_vs_ipm', 'comp_9_compromise_vs_ipm'].includes(compMode);
+    if (isIpmMode && compView === 'scatter') {
+      setCompView('map');
+    }
+  }, [compMode, compView]);
 
-  // Determine filenames
+  // Define all 9 rows dynamically (Years + Pairs)
+  const rows = [
+    // 1. Transisi Biplot
+    ...availablePairs.map(pr => ({
+      mode: 'comp_1_trans_biplot',
+      period: pr,
+      label: `🔄 1. Transisi Biplot ${pr.replace('x', ' ke ')}`,
+      fullLabel: `Transisi Biplot ${pr.replace('x', ' ke ')}`
+    })),
+    // 2. Transisi STATIS
+    ...availablePairs.map(pr => ({
+      mode: 'comp_2_trans_statis',
+      period: pr,
+      label: `📈 2. Transisi STATIS ${pr.replace('x', ' ke ')}`,
+      fullLabel: `Transisi STATIS ${pr.replace('x', ' ke ')}`
+    })),
+    // 3. Biplot vs STATIS
+    ...availableYears.map(yr => ({
+      mode: 'comp_3_biplot_vs_statis',
+      period: yr,
+      label: `📊 3. Biplot vs STATIS ${yr}`,
+      fullLabel: `Biplot vs STATIS Tahun ${yr}`
+    })),
+    // 4. Transisi Kategori IPM
+    ...availablePairs.map(pr => ({
+      mode: 'comp_4_trans_ipm',
+      period: pr,
+      label: `🌱 4. Transisi Kategori IPM ${pr.replace('x', ' ke ')}`,
+      fullLabel: `Transisi Kategori IPM ${pr.replace('x', ' ke ')}`
+    })),
+    // 5. Biplot vs Kategori IPM
+    ...availableYears.map(yr => ({
+      mode: 'comp_5_biplot_vs_ipm',
+      period: yr,
+      label: `⚖️ 5. Biplot vs Kategori IPM ${yr}`,
+      fullLabel: `Biplot vs Kategori IPM Tahun ${yr}`
+    })),
+    // 6. STATIS vs Kategori IPM
+    ...availableYears.map(yr => ({
+      mode: 'comp_6_statis_vs_ipm',
+      period: yr,
+      label: `🔍 6. STATIS vs Kategori IPM ${yr}`,
+      fullLabel: `STATIS vs Kategori IPM Tahun ${yr}`
+    })),
+    // 7. Kompromi vs Biplot
+    ...availableYears.map(yr => ({
+      mode: 'comp_7_compromise_vs_biplot',
+      period: yr,
+      label: `🧭 7. Kompromi vs Biplot ${yr}`,
+      fullLabel: `Kompromi vs Biplot Tahun ${yr}`
+    })),
+    // 8. Kompromi vs STATIS
+    ...availableYears.map(yr => ({
+      mode: 'comp_8_compromise_vs_statis',
+      period: yr,
+      label: `📌 8. Kompromi vs STATIS ${yr}`,
+      fullLabel: `Kompromi vs STATIS Tahun ${yr}`
+    })),
+    // 9. Kompromi vs Kategori IPM
+    ...availableYears.map(yr => ({
+      mode: 'comp_9_compromise_vs_ipm',
+      period: yr,
+      label: `🏆 9. Kompromi vs Kategori IPM ${yr}`,
+      fullLabel: `Kompromi vs Kategori IPM Tahun ${yr}`
+    }))
+  ];
+
+  // Determine active period
+  const activePeriod = selectedPeriod || (availableYears.length > 0 ? availableYears[0] : '');
+
+  // Determine filenames based on exact naming conventions in export_all.py
   let mapFile = '';
   let scatterFile = '';
+  let pieFile = '';
   let sumTableFile = '';
   let nameTableFile = '';
 
-  if (compMode === 'biplot_vs_statis') {
-    mapFile = `compare_map_biplot_vs_statis_${selectedPeriod}.png`;
-    scatterFile = `compare_scatter_biplot_vs_statis_${selectedPeriod}.png`;
-    sumTableFile = `output_table_biplot_vs_statis_compare_sum_${selectedPeriod}.tex`;
-    nameTableFile = `output_table_biplot_vs_statis_compare_name_${selectedPeriod}.tex`;
-  } else if (compMode === 'trans_biplot') {
-    mapFile = `compare_map_trans_biplot_${selectedPeriod}.png`;
-    scatterFile = `compare_scatter_trans_biplot_${selectedPeriod}.png`;
-    sumTableFile = `output_table_transition_matrix_sum_${selectedPeriod}.tex`;
-    nameTableFile = `output_table_transition_matrix_name_${selectedPeriod}.tex`;
-  } else if (compMode === 'trans_statis') {
-    mapFile = `compare_map_trans_statis_${selectedPeriod}.png`;
-    scatterFile = `compare_scatter_trans_statis_${selectedPeriod}.png`;
-    sumTableFile = `output_table_transition_matrix_sum_${selectedPeriod}.tex`;
-    nameTableFile = `output_table_transition_matrix_name_${selectedPeriod}.tex`;
+  if (compMode === 'comp_1_trans_biplot') {
+    mapFile = `compare_map_trans_biplot_${activePeriod}.png`;
+    scatterFile = `compare_scatter_trans_biplot_${activePeriod}.png`;
+    pieFile = `compare_pie_trans_biplot_${activePeriod}.png`;
+    sumTableFile = `output_table_biplot_transition_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_biplot_transition_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_2_trans_statis') {
+    mapFile = `compare_map_trans_statis_${activePeriod}.png`;
+    scatterFile = `compare_scatter_trans_statis_${activePeriod}.png`;
+    pieFile = `compare_pie_trans_statis_${activePeriod}.png`;
+    sumTableFile = `output_table_transition_matrix_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_transition_matrix_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_3_biplot_vs_statis') {
+    mapFile = `compare_map_biplot_vs_statis_${activePeriod}.png`;
+    scatterFile = `compare_scatter_biplot_vs_statis_${activePeriod}.png`;
+    pieFile = `compare_pie_biplot_vs_statis_${activePeriod}.png`;
+    sumTableFile = `output_table_biplot_vs_statis_compare_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_biplot_vs_statis_compare_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_4_trans_ipm') {
+    mapFile = `compare_map_ipm_matrix_${activePeriod}.png`;
+    pieFile = `compare_pie_ipm_matrix_${activePeriod}.png`;
+    sumTableFile = `output_table_ipm_matrix_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_ipm_matrix_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_5_biplot_vs_ipm') {
+    mapFile = `compare_map_cross_matrix_${activePeriod}.png`;
+    pieFile = `compare_pie_cross_matrix_${activePeriod}.png`;
+    sumTableFile = `output_table_cross_matrix_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_cross_matrix_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_6_statis_vs_ipm') {
+    mapFile = `compare_map_statis_vs_ipm_${activePeriod}.png`;
+    pieFile = `compare_pie_statis_vs_ipm_${activePeriod}.png`;
+    sumTableFile = `output_table_statis_vs_ipm_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_statis_vs_ipm_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_7_compromise_vs_biplot') {
+    mapFile = `compare_map_biplot_vs_statis_compromise_${activePeriod}.png`;
+    scatterFile = `compare_scatter_biplot_vs_statis_compromise_${activePeriod}.png`;
+    pieFile = `compare_pie_biplot_vs_statis_compromise_${activePeriod}.png`;
+    sumTableFile = `output_table_biplot_vs_statis_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_biplot_vs_statis_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_8_compromise_vs_statis') {
+    mapFile = `compare_map_compromise_vs_statis_${activePeriod}.png`;
+    scatterFile = `compare_scatter_compromise_vs_statis_${activePeriod}.png`;
+    pieFile = `compare_pie_compromise_vs_statis_${activePeriod}.png`;
+    sumTableFile = `output_table_compromise_vs_statis_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_compromise_vs_statis_name_${activePeriod}.tex`;
+  } else if (compMode === 'comp_9_compromise_vs_ipm') {
+    mapFile = `compare_map_compromise_vs_ipm_${activePeriod}.png`;
+    pieFile = `compare_pie_compromise_vs_ipm_${activePeriod}.png`;
+    sumTableFile = `output_table_compromise_vs_ipm_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_compromise_vs_ipm_name_${activePeriod}.tex`;
   }
 
   // Active file based on selected view
@@ -457,192 +575,200 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
   let isImage = true;
   if (compView === 'map') { activeFilename = mapFile; isImage = true; }
   else if (compView === 'scatter') { activeFilename = scatterFile; isImage = true; }
+  else if (compView === 'pie') { activeFilename = pieFile; isImage = true; }
   else if (compView === 'sum') { activeFilename = sumTableFile; isImage = false; }
   else if (compView === 'name') { activeFilename = nameTableFile; isImage = false; }
 
-  const hasLeft = sc1Files.some(f => f.name === activeFilename);
-  const hasRight = sc2Files.some(f => f.name === activeFilename);
-
-  // Styled helper for mode tabs
-  const renderModeButton = (mode, label) => {
-    const isActive = compMode === mode;
-    return (
-      <button
-        onClick={() => setCompMode(mode)}
-        style={{
-          padding: '8px 16px',
-          borderRadius: '8px',
-          border: 'none',
-          cursor: 'pointer',
-          fontWeight: '600',
-          fontSize: '0.85rem',
-          background: isActive ? 'linear-gradient(135deg, #06B6D4, #3B82F6)' : 'rgba(255,255,255,0.05)',
-          color: isActive ? '#FFFFFF' : '#94A3B8',
-          border: isActive ? '1px solid #06B6D4' : '1px solid rgba(255,255,255,0.1)',
-          boxShadow: isActive ? '0 4px 12px rgba(6, 182, 212, 0.3)' : 'none',
-          transition: 'all 0.2s',
-          marginRight: '8px'
-        }}
-      >
-        {label}
-      </button>
-    );
-  };
-
-  // Styled helper for view tab buttons
-  const renderViewButton = (view, icon, label) => {
-    const isActive = compView === view;
-    return (
-      <button
-        onClick={() => setCompView(view)}
-        style={{
-          flex: 1,
-          padding: '12px 18px',
-          borderRadius: '10px',
-          border: 'none',
-          cursor: 'pointer',
-          fontWeight: '600',
-          fontSize: '0.9rem',
-          background: isActive ? 'rgba(6, 182, 212, 0.15)' : 'rgba(15,23,42,0.4)',
-          color: isActive ? '#06b6d4' : '#94A3B8',
-          border: isActive ? '1px solid #06b6d4' : '1px solid rgba(255,255,255,0.06)',
-          transition: 'all 0.2s',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap: '8px'
-        }}
-      >
-        <span>{icon}</span> {label}
-      </button>
-    );
-  };
+  const isRootFile = activeFilename.startsWith('output_table_biplot_transition_');
+  const hasLeft = isRootFile ? currentResults.some(f => f.name === activeFilename) : sc1Files.some(f => f.name === activeFilename);
+  const hasRight = isRootFile ? currentResults.some(f => f.name === activeFilename) : sc2Files.some(f => f.name === activeFilename);
 
   return (
-    <div style={{ background: 'rgba(30, 41, 59, 0.35)', borderRadius: '24px', padding: '30px', border: '1px solid rgba(255,255,255,0.08)' }}>
+    <div style={{ background: 'rgba(30, 41, 59, 0.25)', borderRadius: '24px', padding: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
       
-      {/* STEP 1: CONTROL PANEL */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px', marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '20px' }}>
+      {/* GRID LAYOUT: SIDEBAR LIST (LEFT) & PREVIEW AREA (RIGHT) */}
+      <div style={{ display: 'grid', gridTemplateColumns: '360px 1fr', gap: '30px', alignItems: 'start' }}>
         
-        {/* Left: Mode Selection */}
-        <div>
-          <span style={{ fontWeight: '600', fontSize: '13px', color: '#94A3B8', marginBottom: '8px', display: 'block' }}>Tipe Perbandingan:</span>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-            {renderModeButton('biplot_vs_statis', '📊 Biplot vs STATIS (Tahun Sama)')}
-            {renderModeButton('trans_biplot', '🔄 Transisi Biplot (Tahun k vs k+1)')}
-            {renderModeButton('trans_statis', '📈 Transisi STATIS (Tahun k vs k+1)')}
+        {/* LEFT COLUMN: CONDENSED ROWS PANEL */}
+        <div style={{
+          background: 'rgba(15, 23, 42, 0.45)',
+          borderRadius: '20px',
+          padding: '20px',
+          border: '1px solid rgba(255, 255, 255, 0.08)',
+          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)'
+        }}>
+          <h4 style={{ 
+            margin: '0 0 16px 0', 
+            fontSize: '0.85rem', 
+            fontWeight: '700', 
+            color: '#38BDF8', 
+            letterSpacing: '1px', 
+            textTransform: 'uppercase',
+            borderBottom: '1px solid rgba(255,255,255,0.08)',
+            paddingBottom: '10px',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <span>📊 Opsi Perbandingan</span>
+            <span style={{ fontSize: '0.7rem', color: '#64748b', background: 'rgba(255,255,255,0.05)', padding: '2px 8px', borderRadius: '10px' }}>9 Metode</span>
+          </h4>
+          
+          <div className="custom-scrollbar" style={{ display: 'flex', flexDirection: 'column', gap: '8px', maxHeight: '720px', overflowY: 'auto', paddingRight: '4px' }}>
+            {rows.map((row, idx) => {
+              const isRowSelected = compMode === row.mode && activePeriod === row.period;
+              const isIpmRow = ['comp_4_trans_ipm', 'comp_5_biplot_vs_ipm', 'comp_6_statis_vs_ipm', 'comp_9_compromise_vs_ipm'].includes(row.mode);
+              const viewsToRender = isIpmRow ? ['map', 'pie', 'sum', 'name'] : ['map', 'scatter', 'pie', 'sum', 'name'];
+
+              return (
+                <div 
+                  key={idx}
+                  style={{
+                    background: isRowSelected ? 'rgba(6, 182, 212, 0.08)' : 'rgba(30, 41, 59, 0.15)',
+                    border: isRowSelected ? '1px solid rgba(6, 182, 212, 0.35)' : '1px solid rgba(255,255,255,0.03)',
+                    borderRadius: '12px',
+                    padding: '8px 10px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '6px',
+                    transition: 'all 0.2s'
+                  }}
+                >
+                  {/* Row title */}
+                  <div style={{ 
+                    fontSize: '0.72rem', 
+                    fontWeight: isRowSelected ? '700' : '500', 
+                    color: isRowSelected ? '#06b6d4' : '#cbd5e1',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between'
+                  }}>
+                    <span style={{ letterSpacing: '0.2px' }}>{row.label}</span>
+                    {isRowSelected && (
+                      <span style={{ 
+                        background: 'rgba(6, 182, 212, 0.15)', 
+                        color: '#06b6d4', 
+                        fontSize: '0.6rem', 
+                        padding: '1px 5px', 
+                        borderRadius: '6px',
+                        fontWeight: '700',
+                        letterSpacing: '0.5px'
+                      }}>ACTIVE</span>
+                    )}
+                  </div>
+                  
+                  {/* Small version buttons (4 or 5 options dynamically) */}
+                  <div style={{ display: 'grid', gridTemplateColumns: `repeat(${viewsToRender.length}, 1fr)`, gap: '4px' }}>
+                    {viewsToRender.map(view => {
+                      const isActiveButton = isRowSelected && compView === view;
+                      let btnLabel = '';
+                      let btnIcon = '';
+                      if (view === 'map') { btnLabel = 'Peta'; btnIcon = '🗺️'; }
+                      else if (view === 'scatter') { btnLabel = 'Scatter'; btnIcon = '📈'; }
+                      else if (view === 'pie') { btnLabel = 'Pie'; btnIcon = '🍕'; }
+                      else if (view === 'sum') { btnLabel = 'Jumlah'; btnIcon = '🔢'; }
+                      else if (view === 'name') { btnLabel = 'Nama'; btnIcon = '📝'; }
+                      
+                      return (
+                        <button
+                          key={view}
+                          onClick={() => {
+                            setCompMode(row.mode);
+                            setSelectedPeriod(row.period);
+                            setCompView(view);
+                          }}
+                          style={{
+                            background: isActiveButton ? 'linear-gradient(135deg, #06B6D4, #3B82F6)' : 'rgba(15,23,42,0.6)',
+                            color: isActiveButton ? '#fff' : '#94a3b8',
+                            border: isActiveButton ? '1px solid #06b6d4' : '1px solid rgba(255,255,255,0.05)',
+                            borderRadius: '6px',
+                            padding: '4px 0',
+                            fontSize: '0.62rem',
+                            fontWeight: '600',
+                            cursor: 'pointer',
+                            transition: 'all 0.15s',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            gap: '1px',
+                            boxShadow: isActiveButton ? '0 2px 8px rgba(6, 182, 212, 0.25)' : 'none'
+                          }}
+                          onMouseOver={e => { if(!isActiveButton) { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.color = '#fff'; } }}
+                          onMouseOut={e => { if(!isActiveButton) { e.currentTarget.style.background = 'rgba(15,23,42,0.6)'; e.currentTarget.style.color = '#94a3b8'; } }}
+                        >
+                          <span style={{ fontSize: '0.72rem' }}>{btnIcon}</span>
+                          <span>{btnLabel}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
-
-        {/* Right: Period Selection */}
-        <div style={{ minWidth: '220px' }}>
-          <span style={{ fontWeight: '600', fontSize: '13px', color: '#94A3B8', marginBottom: '8px', display: 'block' }}>Pilih Tahun / Periode:</span>
-          {compMode === 'biplot_vs_statis' ? (
-            <select
-              value={selectedYear}
-              onChange={e => setSelectedYear(e.target.value)}
-              style={{
-                width: '100%',
-                background: '#1E293B',
-                color: '#F8FAFC',
-                border: '1px solid rgba(255,255,255,0.15)',
-                borderRadius: '8px',
-                padding: '8px 12px',
-                fontSize: '14px',
-                fontWeight: '500',
-                outline: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              {availableYears.map(yr => <option key={yr} value={yr}>📅 Tahun {yr}</option>)}
-            </select>
-          ) : (
-            <select
-              value={selectedPair}
-              onChange={e => setSelectedPair(e.target.value)}
-              style={{
-                width: '100%',
-                background: '#1E293B',
-                color: '#F8FAFC',
-                border: '1px solid rgba(255,255,255,0.15)',
-                borderRadius: '8px',
-                padding: '8px 12px',
-                fontSize: '14px',
-                fontWeight: '500',
-                outline: 'none',
-                cursor: 'pointer'
-              }}
-            >
-              {availablePairs.map(pr => <option key={pr} value={pr}>🔄 Transisi {pr.replace('x', ' ke ')}</option>)}
-            </select>
-          )}
-        </div>
-      </div>
-
-      {/* STEP 2: VIEW VERSION BUTTONS */}
-      <div style={{ display: 'flex', gap: '12px', marginBottom: '30px' }}>
-        {renderViewButton('map', '🗺️', 'Versi Map')}
-        {renderViewButton('scatter', '📈', 'Versi Scatter')}
-        {renderViewButton('sum', '🔢', 'Versi Jumlah')}
-        {renderViewButton('name', '📝', 'Versi Nama')}
-      </div>
-
-      {/* STEP 3: INTEGRATED VISUALIZATION BOX */}
-      <div style={{ background: 'rgba(15,23,42,0.3)', borderRadius: '20px', padding: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
         
-        {/* Info header */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span style={{
-              background: isImage ? 'rgba(59, 130, 246, 0.1)' : 'rgba(6, 182, 212, 0.1)',
-              color: isImage ? '#3b82f6' : '#06b6d4',
-              border: isImage ? '1px solid rgba(59, 130, 246, 0.2)' : '1px solid rgba(6, 182, 212, 0.2)',
-              borderRadius: '20px', padding: '3px 10px', fontSize: '0.75rem', fontWeight: '600'
-            }}>
-              {isImage ? 'VISUALIZATION PLOT' : 'DATA MATRIX/TABLE'}
-            </span>
-            <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#F8FAFC' }}>
-              {activeFilename.replace(/_/g, ' ').replace('.png', '').replace('.tex', '').replace('output_table_', '').toUpperCase()}
-            </span>
+        {/* RIGHT COLUMN: PREVIEW DISPLAY BOX */}
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ background: 'rgba(15,23,42,0.35)', borderRadius: '20px', padding: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+            
+            {/* Info header */}
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{
+                  background: isImage ? 'rgba(59, 130, 246, 0.12)' : 'rgba(6, 182, 212, 0.12)',
+                  color: isImage ? '#3b82f6' : '#06b6d4',
+                  border: isImage ? '1px solid rgba(59, 130, 246, 0.25)' : '1px solid rgba(6, 182, 212, 0.25)',
+                  borderRadius: '20px', padding: '3px 12px', fontSize: '0.72rem', fontWeight: '700', letterSpacing: '0.5px'
+                }}>
+                  {isImage ? 'VISUALIZATION PLOT' : 'DATA MATRIX/TABLE'}
+                </span>
+                <span style={{ fontWeight: '700', fontSize: '0.9rem', color: '#F8FAFC', letterSpacing: '0.2px' }}>
+                  {activeFilename.replace(/_/g, ' ').replace('.png', '').replace('.tex', '').replace('output_table_', '').toUpperCase()}
+                </span>
+              </div>
+              <span style={{ fontSize: '0.72rem', color: '#64748b', fontFamily: 'monospace' }}>{activeFilename}</span>
+            </div>
+ 
+            {/* Display comparison side-by-side */}
+            {isImage ? (
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
+                {/* Left Scenario 1 */}
+                <div>
+                  <div style={{ fontWeight: '700', color: '#06B6D4', fontSize: '0.7rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH)</div>
+                  {hasLeft ? (
+                    <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+                      <img src={`/${folder}/scenario1/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '420px', objectFit: 'contain' }} />
+                    </div>
+                  ) : (
+                    <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>Gambar perbandingan tidak tersedia di Skenario 1</div>
+                  )}
+                </div>
+                {/* Right Scenario 2 */}
+                <div>
+                  <div style={{ fontWeight: '700', color: '#3B82F6', fontSize: '0.7rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR)</div>
+                  {hasRight ? (
+                    <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+                      <img src={`/${folder}/scenario2/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '420px', objectFit: 'contain' }} />
+                    </div>
+                  ) : (
+                    <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.8rem' }}>Gambar perbandingan tidak tersedia di Skenario 2</div>
+                  )}
+                </div>
+              </div>
+            ) : (
+              <SideBySideIntegratedTexLoader 
+                filename={activeFilename}
+                folder={folder}
+                hasLeft={hasLeft}
+                hasRight={hasRight}
+              />
+            )}
+
           </div>
-          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Filename: {activeFilename}</span>
         </div>
-
-        {/* Display comparison side-by-side */}
-        {isImage ? (
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
-            {/* Left Scenario 1 */}
-            <div>
-              <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
-              {hasLeft ? (
-                <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
-                  <img src={`/${folder}/scenario1/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '450px', objectFit: 'contain' }} />
-                </div>
-              ) : (
-                <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.85rem' }}>Gambar perbandingan tidak tersedia di Skenario 1</div>
-              )}
-            </div>
-            {/* Right Scenario 2 */}
-            <div>
-              <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
-              {hasRight ? (
-                <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
-                  <img src={`/${folder}/scenario2/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '450px', objectFit: 'contain' }} />
-                </div>
-              ) : (
-                <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.85rem' }}>Gambar perbandingan tidak tersedia di Skenario 2</div>
-              )}
-            </div>
-          </div>
-        ) : (
-          <SideBySideIntegratedTexLoader 
-            filename={activeFilename}
-            folder={folder}
-            hasLeft={hasLeft}
-            hasRight={hasRight}
-          />
-        )}
-
+        
       </div>
     </div>
   );
@@ -2106,6 +2232,45 @@ function FormulasDashboard({ onBack }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [loading, setLoading] = useState(false);
   const [expandedCards, setExpandedCards] = useState({});
+
+  useEffect(() => {
+    let active = true;
+    async function loadFormulas() {
+      try {
+        setLoading(true);
+        const res = await fetch('/formulas_substitusi.json');
+        if (!res.ok) throw new Error('Gagal memuat formulas_substitusi.json');
+        const data = await res.json();
+        if (active) {
+          setFormulas(data);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error loading formulas_substitusi.json, using fallback:", err);
+        if (active) setLoading(false);
+      }
+    }
+    loadFormulas();
+    return () => { active = false; };
+  }, []);
+
+  // Trigger MathJax typesetting whenever the list of formulas, search query, active category, or expanded cards changes
+  useEffect(() => {
+    if (window.MathJax) {
+      const timer = setTimeout(() => {
+        window.MathJax.typesetPromise && window.MathJax.typesetPromise()
+          .catch((err) => console.warn("MathJax typesetting failed: ", err));
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [formulas, searchQuery, activeCategory, expandedCards]);
+
+  const formatTextHtml = (text) => {
+    if (!text) return "";
+    // Replace **text** with premium bold styling
+    return text.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #38BDF8; font-weight: 700;">$1</strong>');
+  };
+
   const toggleExpand = (id) => {
     setExpandedCards(prev => ({
       ...prev,

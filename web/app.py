@@ -2157,6 +2157,16 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Loading(children=[dcc.Graph(id='trans-scatter-t2', style={'height': '500px'})])
                 ])
             ]),
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-pie-t1', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='trans-pie-t2', style={'height': '400px'})])
+                ])
+            ]),
             html.Hr(),
             html.H6("Matriks Transisi (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
@@ -2200,6 +2210,16 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Div(className='six columns', children=[
                     html.H6(id='title-weighted-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
                     dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t2', style={'height': '500px'})])
+                ])
+            ]),
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t1', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-weighted-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t2', style={'height': '400px'})])
                 ])
             ]),
             html.Hr(),
@@ -2249,6 +2269,16 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-statis', style={'height': '500px'})])
                 ])
             ]),
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-pie-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-biplot', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-statis-compare-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-statis', style={'height': '400px'})])
+                ])
+            ]),
             html.Hr(),
             html.H6("Matriks Tabulasi Silang (Biplot vs STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#D84315'}),
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
@@ -2282,10 +2312,10 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     html.H5("Peta Sebaran (Scatter Plot)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
                     dcc.Loading(children=[dcc.Graph(id='cluster-scatter', style={'height': '800px'})])
                 ]),
-                # Kanan: Dendrogram
+                # Kanan: Pie Chart
                 html.Div(className='six columns', children=[
-                    html.H5("Dendrogram Kemiripan", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='cluster-dendrogram', style={'height': '800px'})])
+                    html.H5("Proporsi Cluster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '800px'})])
                 ])
             ]),
 
@@ -2332,6 +2362,28 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             
             html.Div(id='ipm-disclaimer-text', style={'textAlign': 'center', 'marginBottom': '20px', 'fontStyle': 'italic', 'fontWeight': 'bold'}),
             
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-ipm-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t1', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-ipm-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t2', style={'height': '500px'})])
+                ])
+            ]),
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-ipm-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t1', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-ipm-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t2', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
                 dcc.RadioItems(id='ipm-trans-view-mode', options=[
                     {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
@@ -2365,6 +2417,31 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                             style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
             
+            # Maps Row
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-cross-map-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='cross-map-biplot', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-cross-map-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='cross-map-ipm', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Pie Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-cross-pie-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='cross-pie-biplot', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-cross-pie-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='cross-pie-ipm', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
                 dcc.RadioItems(id='cross-view-mode', options=[
                     {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
@@ -2383,9 +2460,139 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             ])
         ]),
 
-        # --- [TAMBAHAN BARU] SECTION 10: PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS ---
+        # --- SECTION: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Biplot vs Cluster Statis", 
+            html.H5("Perbandingan Cluster STATIS vs Kategori IPM (UNDP)", 
+                    style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#004D40'}),
+            html.P("Membandingkan hasil pengelompokan wilayah berdasarkan Trajektori STATIS (Weighted) per tahun dengan Kategori IPM (UNDP).", 
+                   style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+            
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Div([
+                    html.Label("Tahun:", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Dropdown(id='statis-vs-ipm-year', clearable=False, style={'width': '120px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Div([
+                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Input(id='statis-vs-ipm-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-vs-ipm', n_clicks=0, 
+                            style={'backgroundColor': '#004D40', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+            ]),
+            
+            # Maps Row
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-vs-ipm-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-vs-ipm-map-statis', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-vs-ipm-map-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-vs-ipm-map-ipm', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Pie Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-vs-ipm-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-vs-ipm-pie-statis', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-vs-ipm-pie-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-vs-ipm-pie-ipm', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='statis-vs-ipm-view-mode', options=[
+                    {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
+                    {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
+                ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            
+            dcc.Loading(children=[
+                dash_table.DataTable(id='statis-vs-ipm-table', style_table={'overflowX': 'auto'}, 
+                                     style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
+                                     style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ]),
+            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-statis-vs-ipm-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                dcc.Download(id="download-statis-vs-ipm-tex")
+            ])
+        ]),
+
+        # --- SECTION 10: PERBANDINGAN HASIL CLUSTER KOMPROMI STATIS VS IPM RATA-RATA ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP)", 
+                    style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#01579B'}),
+            html.P("Membandingkan keanggotaan cluster hasil kompromi STATIS dengan Kategori IPM (UNDP) per tahun.", 
+                   style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+            
+            html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+                html.Div([
+                    html.Label("Tahun:", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Dropdown(id='statis-vs-ipm-avg-year', clearable=False, style={'width': '120px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Div([
+                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Input(id='statis-vs-ipm-avg-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-ipm-avg', n_clicks=0, 
+                            style={'backgroundColor': '#01579B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+            ]),
+            
+            # Maps Row
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-ipm-avg-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-ipm-avg-map-statis', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-ipm-avg-map-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-ipm-avg-map-ipm', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Pie Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-ipm-avg-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-ipm-avg-pie-statis', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-statis-ipm-avg-pie-ipm', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='statis-ipm-avg-pie-ipm', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
+            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                dcc.RadioItems(id='statis-vs-ipm-avg-view-mode', options=[
+                    {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
+                    {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
+                ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+            ]),
+            
+            dcc.Loading(children=[
+                dash_table.DataTable(id='statis-vs-ipm-avg-table', style_table={'overflowX': 'auto'}, 
+                                     style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
+                                     style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+            ]),
+            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-statis-ipm-avg-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                dcc.Download(id="download-statis-ipm-avg-tex")
+            ])
+        ]),
+
+        # --- SECTION 11: PERBANDINGAN CLUSTER BIPLOT VS CLUSTER KOMPROMI STATIS ---
+        html.Div(style=CARD_STYLE, children=[
+            html.H5("Perbandingan Cluster Kompromi STATIS vs Cluster Biplot", 
                     style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#5D4037'}),
             html.P("Membandingkan stabilitas anggota cluster antara hasil 'Kompromi' (STATIS) dengan hasil 'Tahunan' (Statis per Tahun).", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
@@ -2405,6 +2612,43 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                             style={'backgroundColor': '#5D4037', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
             
+            # Maps Row
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-map-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-map-biplot', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-map-statis', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Scatter Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-scatter-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-scatter-biplot', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-scatter-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-scatter-statis', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Pie Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-pie-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-pie-biplot', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-biplot-vs-statis-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='biplot-vs-statis-pie-statis', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
                 dcc.RadioItems(id='biplot-vs-statis-view-mode', options=[
                     {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
@@ -2423,35 +2667,80 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             ])
         ]),
 
-        # --- [TAMBAHAN BARU] SECTION 11: PERBANDINGAN HASIL CLUSTER STATIS VS IPM RATA-RATA ---
+        # --- SECTION: PERBANDINGAN CLUSTER KOMPROMI STATIS VS CLUSTER STATIS TAHUNAN ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Statis vs Kategori IPM Rata-rata (UNDP)", 
-                    style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#01579B'}),
-            html.P("Membandingkan keanggotaan cluster hasil kompromi STATIS dengan kategori IPM yang telah dirata-ratakan selama periode tahun yang ada.", 
+            html.H5("Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan", 
+                    style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#33691E'}),
+            html.P("Membandingkan stabilitas anggota cluster antara hasil 'Kompromi' (STATIS Trajektori Keseluruhan) dengan hasil STATIS per Tahun.", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
-                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
-                dcc.Input(id='statis-vs-ipm-avg-k', type='number', value=3, min=2, max=10, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("BANDINGKAN DENGAN IPM RATA-RATA", id='btn-run-statis-ipm-avg', n_clicks=0, 
-                            style={'backgroundColor': '#01579B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Div([
+                    html.Label("Tahun:", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Dropdown(id='compromise-statis-vs-statis-year', clearable=False, style={'width': '120px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Div([
+                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    dcc.Input(id='compromise-statis-vs-statis-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
+                ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
+                
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-compromise-statis-vs-statis', n_clicks=0, 
+                            style={'backgroundColor': '#33691E', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
             
+            # Maps Row
+            html.Div(className='row', children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-map-comp', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-map-comp', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-map-statis', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Scatter Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-scatter-comp', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-scatter-comp', style={'height': '500px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-scatter-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-scatter-statis', style={'height': '500px'})])
+                ])
+            ]),
+            
+            # Pie Row
+            html.Div(className='row', style={'marginTop': '15px'}, children=[
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-pie-comp', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-pie-comp', style={'height': '400px'})])
+                ]),
+                html.Div(className='six columns', children=[
+                    html.H6(id='title-compromise-statis-vs-statis-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                    dcc.Loading(children=[dcc.Graph(id='compromise-statis-vs-statis-pie-statis', style={'height': '400px'})])
+                ])
+            ]),
+            html.Hr(),
+            
             html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
-                dcc.RadioItems(id='statis-vs-ipm-avg-view-mode', options=[
+                dcc.RadioItems(id='compromise-statis-vs-statis-view-mode', options=[
                     {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
                     {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
                 ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
             ]),
             
             dcc.Loading(children=[
-                dash_table.DataTable(id='statis-vs-ipm-avg-table', style_table={'overflowX': 'auto'}, 
+                dash_table.DataTable(id='compromise-statis-vs-statis-table', style_table={'overflowX': 'auto'}, 
                                      style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
                                      style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
             ]),
             html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
-                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-statis-ipm-avg-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
-                dcc.Download(id="download-statis-ipm-avg-tex")
+                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-compromise-statis-vs-statis-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                dcc.Download(id="download-compromise-statis-vs-statis-tex")
             ])
         ])
     ])
@@ -2549,6 +2838,32 @@ def cb_upload(contents, filename):
         # Store
         base_features = sorted(list(set(cols)))
         years = sorted(list(df_concat['Tahun'].unique()))
+        kab_kota = df_concat['Kabupaten/Kota'].unique().tolist()
+        
+        # --- [NEW] AUTOMATIC NAME NORMALIZATION WITH SHAPEFILE ---
+        valid_peta = gdf['id_cocok'].unique().tolist() if gdf is not None else []
+        norm_to_valid = {str(v).strip().lower(): v for v in valid_peta}
+        
+        name_map = {}
+        for k in kab_kota:
+            k_clean = str(k).strip()
+            if k in valid_peta:
+                name_map[k] = k
+            elif k_clean.lower() in norm_to_valid:
+                name_map[k] = norm_to_valid[k_clean.lower()]
+            else:
+                import difflib
+                suggestions = difflib.get_close_matches(k_clean, valid_peta, n=1, cutoff=0.6)
+                if suggestions:
+                    name_map[k] = suggestions[0]
+                else:
+                    clean_valid = [v for v in valid_peta if k_clean.lower() in str(v).lower() or any(sub in str(v).lower() for sub in k_clean.lower().split())]
+                    if clean_valid:
+                        name_map[k] = clean_valid[0]
+                    else:
+                        name_map[k] = k
+        
+        df_concat['Kabupaten/Kota'] = df_concat['Kabupaten/Kota'].map(name_map)
         kab_kota = df_concat['Kabupaten/Kota'].unique().tolist()
         
         # --- [NEW] VALIDASI NAMA EKSAK DENGAN SHAPEFILE ---
@@ -2676,6 +2991,20 @@ def cb_controls(data, base_type):
 def cb_sync_vector_selector(selected_vars):
     if not selected_vars: return []
     return [{'label': v, 'value': v} for v in selected_vars]
+
+
+# 2c. Sync Year options for the new comparison cards
+@app.callback(
+    Output('statis-vs-ipm-year', 'options'), Output('statis-vs-ipm-year', 'value'),
+    Output('compromise-statis-vs-statis-year', 'options'), Output('compromise-statis-vs-statis-year', 'value'),
+    Output('statis-vs-ipm-avg-year', 'options'), Output('statis-vs-ipm-avg-year', 'value'),
+    Input('global-data-store', 'data')
+)
+def cb_sync_new_dropdowns(data):
+    if not data: raise exceptions.PreventUpdate
+    years = data['years']
+    y_opts = [{'label': str(y), 'value': y} for y in years]
+    return y_opts, years[-1], y_opts, years[-1], y_opts, years[-1]
 
 # 3. Dynamic PCA Calculation
 @app.callback(
@@ -3309,7 +3638,14 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     
     # PLOT 2: Scree Plot
     fig_scree = go.Figure()
-    fig_scree.add_trace(go.Scatter(x=list(range(1, len(eig_vals)+1)), y=eig_vals, mode="lines+markers", marker=dict(color='#E91E63', size=10)))
+    fig_scree.add_trace(go.Scatter(
+        x=list(range(1, len(eig_vals)+1)), 
+        y=eig_vals, 
+        mode="lines+markers+text", 
+        marker=dict(color='#E91E63', size=10),
+        text=[f"{v:.4f}".replace('.', ',') for v in eig_vals],
+        textposition="top center"
+    ))
     fig_scree.update_layout(title="Scree Plot (Eigenvalue Compromise Matrix)", xaxis_title="Component", yaxis_title="Eigenvalue", template="plotly_white")
     
     # PLOT 3: Contribution
@@ -3357,7 +3693,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
                 xaxis_title="Year (k)",
                 yaxis_title="β̃ₖ = λ₁ u₁ₖ",
                 template="plotly_white",
-                legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+                legend=dict(orientation="h", yanchor="top", y=-0.15, xanchor="center", x=0.5)
             )
         else:
             fig_sv = go.Figure().add_annotation(text="Data Vektor Struktur tidak ditemukan.", showarrow=False)
@@ -3706,6 +4042,18 @@ def cb_toggle_weight_vars(mode):
 @app.callback(
     Output('biplot-vs-statis-table', 'data'),
     Output('biplot-vs-statis-table', 'columns'),
+    Output('title-biplot-vs-statis-map-biplot', 'children'),
+    Output('biplot-vs-statis-map-biplot', 'figure'),
+    Output('title-biplot-vs-statis-map-statis', 'children'),
+    Output('biplot-vs-statis-map-statis', 'figure'),
+    Output('title-biplot-vs-statis-scatter-biplot', 'children'),
+    Output('biplot-vs-statis-scatter-biplot', 'figure'),
+    Output('title-biplot-vs-statis-scatter-statis', 'children'),
+    Output('biplot-vs-statis-scatter-statis', 'figure'),
+    Output('title-biplot-vs-statis-pie-biplot', 'children'),
+    Output('biplot-vs-statis-pie-biplot', 'figure'),
+    Output('title-biplot-vs-statis-pie-statis', 'children'),
+    Output('biplot-vs-statis-pie-statis', 'figure'),
     Input('btn-run-biplot-statis', 'n_clicks'),
     State('biplot-vs-statis-year', 'value'),
     State('biplot-vs-statis-k', 'value'),
@@ -3715,7 +4063,7 @@ def cb_toggle_weight_vars(mode):
 )
 def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
     if not n or not statis_data or not global_data or not year:
-        return [], []
+        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
     
     try:
         from sklearn.cluster import KMeans
@@ -3763,9 +4111,20 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         X_std = StandardScaler().fit_transform(X_year)
         km_static = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_std)
         
-        # --- ALIGNED LABELING (Using PC1 of current year for ranking) ---
-        pc1_yearly = PCA(n_components=1).fit_transform(X_std).flatten()
-        cl_means_s = [np.mean(pc1_yearly[km_static.labels_ == cl]) for cl in range(k)]
+        # --- ALIGNED LABELING (Using IPM of current year for ranking to ensure stable colors) ---
+        ipm_col = None
+        for c in df_all.columns:
+            if 'ipm' in c.lower():
+                ipm_col = c
+                break
+        if ipm_col:
+            df_year_ipm = df_all[df_all['Tahun'].astype(str) == str(year)].set_index('Kabupaten/Kota').reindex(obs_labels)
+            ipm_vals = df_year_ipm[ipm_col].fillna(df_year_ipm[ipm_col].mean()).values
+            cl_means_s = [np.mean(ipm_vals[km_static.labels_ == cl]) for cl in range(k)]
+        else:
+            pc1_yearly = PCA(n_components=1).fit_transform(X_std).flatten()
+            cl_means_s = [np.mean(pc1_yearly[km_static.labels_ == cl]) for cl in range(k)]
+            
         rnk_s = np.argsort(cl_means_s)
         mp_s = {old: new for new, old in enumerate(rnk_s)}
         labels_static = [f"Statis {mp_s[l]+1} ({name_map.get(mp_s[l], 'Lvl ' + str(mp_s[l]+1))})" for l in km_static.labels_]
@@ -3781,7 +4140,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         
         # Sort CT to be consistent (Lvl 1 to Lvl K)
         ct = ct.sort_index(ascending=True).sort_index(axis=1, ascending=True)
-
+ 
         if mode == 'names':
             res_df = ct.copy().astype(object)
             for r in ct.index:
@@ -3793,24 +4152,107 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
             res_df = ct.reset_index()
             
         cols = [{"name": str(i), "id": str(i)} for i in res_df.columns]
-        return res_df.to_dict('records'), cols
+        
+        # D. BUILD MAPS, SCATTERS, PIE
+        # Define exact color map matching between Cluster & Statis prefixes
+        BIPLOT_COLOR_MAP = {}
+        for key, color in CLUSTER_COLOR_MAP.items():
+            BIPLOT_COLOR_MAP[key] = color
+            BIPLOT_COLOR_MAP[key.replace("Cluster", "Statis")] = color
+            
+        BIPLOT_ORDER = [o.replace("Cluster", "Statis") for o in LEVEL_ORDER]
+
+        fig_map_biplot, fig_map_statis = go.Figure(), go.Figure()
+        if indonesia_geojson:
+            mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+            df_map_b = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': labels_static, 'match_key': obs_labels})
+            df_map_s = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': labels_biplot, 'match_key': obs_labels})
+            
+            fig_map_biplot = px.choropleth_mapbox(df_map_b, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=BIPLOT_COLOR_MAP, category_orders={"Cluster": BIPLOT_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_biplot.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            fig_map_statis = px.choropleth_mapbox(df_map_s, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_statis.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            for f, df_m in [(fig_map_biplot, df_map_b), (fig_map_statis, df_map_s)]:
+                lon_list, lat_list, text_list = [], [], []
+                for _, row in df_m.iterrows():
+                    area = row['Kab/Kota']
+                    geom = gdf[gdf['id_cocok'] == area]
+                    if not geom.empty:
+                        lon_list.append(geom.geometry.centroid.x.values[0])
+                        lat_list.append(geom.geometry.centroid.y.values[0])
+                        text_list.append(area)
+                if text_list:
+                    f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+                    
+        # PCA 2D for selected year biplot scatter
+        pca_2d = PCA(n_components=2).fit_transform(X_std)
+        fig_scatter_biplot = px.scatter(x=pca_2d[:,0], y=pca_2d[:,1], color=labels_static, text=obs_labels, color_discrete_map=BIPLOT_COLOR_MAP, category_orders={"color": BIPLOT_ORDER})
+        fig_scatter_biplot.update_traces(marker=dict(size=9), textposition='top center')
+        fig_scatter_biplot.update_layout(template='plotly_white', xaxis_title="PC1", yaxis_title="PC2")
+        
+        # STATIS Trajectory compromise scatter
+        fig_scatter_statis = px.scatter(x=scores_comp[:,0], y=scores_comp[:,1], color=labels_biplot, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+        fig_scatter_statis.update_traces(marker=dict(size=9), textposition='top center')
+        fig_scatter_statis.update_layout(template='plotly_white', xaxis_title="PC1 Kompromi", yaxis_title="PC2 Kompromi")
+        
+        from collections import Counter
+        counts_b = Counter(labels_static)
+        fig_pie_biplot = px.pie(
+            names=list(counts_b.keys()),
+            values=list(counts_b.values()),
+            color=list(counts_b.keys()),
+            color_discrete_map=BIPLOT_COLOR_MAP,
+            category_orders={"names": BIPLOT_ORDER}
+        )
+        fig_pie_biplot.update_layout(template='plotly_white')
+        
+        counts_s = Counter(labels_biplot)
+        fig_pie_statis = px.pie(
+            names=list(counts_s.keys()),
+            values=list(counts_s.values()),
+            color=list(counts_s.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_statis.update_layout(template='plotly_white')
+        
+        return (
+            res_df.to_dict('records'), cols,
+            f"Peta Cluster Biplot ({year})", fig_map_biplot,
+            "Peta Cluster Kompromi STATIS", fig_map_statis,
+            f"Scatter Plot Cluster Biplot ({year})", fig_scatter_biplot,
+            "Scatter Plot Cluster Kompromi STATIS", fig_scatter_statis,
+            f"Proporsi Cluster Biplot ({year})", fig_pie_biplot,
+            "Proporsi Cluster Kompromi STATIS", fig_pie_statis
+        )
     except Exception as e:
         print(f"Error Section 10: {e}")
-        return [], []
+        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
 
 # 11. Callback Section 11: Statis vs IPM Rata-rata
 @app.callback(
     Output('statis-vs-ipm-avg-table', 'data'),
     Output('statis-vs-ipm-avg-table', 'columns'),
+    Output('title-statis-ipm-avg-map-statis', 'children'),
+    Output('statis-ipm-avg-map-statis', 'figure'),
+    Output('title-statis-ipm-avg-map-ipm', 'children'),
+    Output('statis-ipm-avg-map-ipm', 'figure'),
+    Output('title-statis-ipm-avg-pie-statis', 'children'),
+    Output('statis-ipm-avg-pie-statis', 'figure'),
+    Output('title-statis-ipm-avg-pie-ipm', 'children'),
+    Output('statis-ipm-avg-pie-ipm', 'figure'),
     Input('btn-run-statis-ipm-avg', 'n_clicks'),
     State('statis-vs-ipm-avg-k', 'value'),
     State('statis-vs-ipm-avg-view-mode', 'value'),
+    State('statis-vs-ipm-avg-year', 'value'),
     State('statis-core-store', 'data'),
     State('global-data-store', 'data')
 )
-def cb_run_statis_vs_ipm_avg(n, k, mode, statis_data, global_data):
+def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     if not n or not statis_data or not global_data:
-        return [], []
+        return [], [], "", {}, "", {}, "", {}, "", {}
         
     try:
         from sklearn.cluster import KMeans
@@ -3840,7 +4282,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, statis_data, global_data):
         name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi"}
         labels_statis = [f"Cluster {mp[l]+1} ({name_map.get(mp[l], 'Level ' + str(mp[l]+1))})" for l in km.labels_]
         
-        # B. IPM Rata-rata
+        # B. IPM for Selected Year
         df_all = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
         ipm_col = None
         for c in df_all.columns:
@@ -3849,9 +4291,10 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, statis_data, global_data):
                 break
         
         if not ipm_col:
-            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}]
+            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}], "", {}, "", {}, "", {}, "", {}
             
-        df_avg = df_all.groupby('Kabupaten/Kota')[ipm_col].mean().reindex(obs_labels)
+        df_year_ipm = df_all[df_all['Tahun'].astype(str) == str(year)].set_index('Kabupaten/Kota').reindex(obs_labels)
+        ipm_vals = df_year_ipm[ipm_col].fillna(df_year_ipm[ipm_col].mean()).values
         
         def ipm_cat(val):
             if val >= 80: return "Sangat Tinggi"
@@ -3859,7 +4302,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, statis_data, global_data):
             if val >= 55: return "Sedang" # Align with UNDP Standard in Section 8
             return "Rendah"
             
-        cats_ipm = [ipm_cat(v) for v in df_avg.values]
+        cats_ipm = [ipm_cat(v) for v in ipm_vals]
         
         df_comp = pd.DataFrame({
             'Kabupaten/Kota': obs_labels,
@@ -3887,10 +4330,411 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, statis_data, global_data):
             res_df = ct.reset_index()
             
         cols = [{"name": str(i), "id": str(i)} for i in res_df.columns]
-        return res_df.to_dict('records'), cols
+        
+        # C. BUILD MAPS, PIE
+        fig_map_statis, fig_map_ipm = go.Figure(), go.Figure()
+        if indonesia_geojson:
+            mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+            df_map_s = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': labels_statis, 'match_key': obs_labels})
+            df_map_i = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': cats_ipm, 'match_key': obs_labels})
+            
+            fig_map_statis = px.choropleth_mapbox(df_map_s, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_statis.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            fig_map_ipm = px.choropleth_mapbox(df_map_i, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=IPM_COLOR_MAP, category_orders={"Cluster": IPM_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_ipm.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            for f, df_m in [(fig_map_statis, df_map_s), (fig_map_ipm, df_map_i)]:
+                lon_list, lat_list, text_list = [], [], []
+                for _, row in df_m.iterrows():
+                    area = row['Kab/Kota']
+                    geom = gdf[gdf['id_cocok'] == area]
+                    if not geom.empty:
+                        lon_list.append(geom.geometry.centroid.x.values[0])
+                        lat_list.append(geom.geometry.centroid.y.values[0])
+                        text_list.append(area)
+                if text_list:
+                    f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+                    
+        from collections import Counter
+        counts_s = Counter(labels_statis)
+        fig_pie_statis = px.pie(
+            names=list(counts_s.keys()),
+            values=list(counts_s.values()),
+            color=list(counts_s.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_statis.update_layout(template='plotly_white')
+        
+        counts_i = Counter(cats_ipm)
+        fig_pie_ipm = px.pie(
+            names=list(counts_i.keys()),
+            values=list(counts_i.values()),
+            color=list(counts_i.keys()),
+            color_discrete_map=IPM_COLOR_MAP,
+            category_orders={"names": IPM_ORDER}
+        )
+        fig_pie_ipm.update_layout(template='plotly_white')
+        
+        return (
+            res_df.to_dict('records'), cols,
+            "Peta Cluster Kompromi STATIS", fig_map_statis,
+            "Peta Kategori IPM (UNDP)", fig_map_ipm,
+            "Proporsi Cluster Kompromi STATIS", fig_pie_statis,
+            "Proporsi Kategori IPM (UNDP)", fig_pie_ipm
+        )
     except Exception as e:
         print(f"Error Section 11: {e}")
-        return [], []
+        return [], [], "", {}, "", {}, "", {}, "", {}
+
+
+# --- CALLBACK: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
+@app.callback(
+    Output('statis-vs-ipm-table', 'data'),
+    Output('statis-vs-ipm-table', 'columns'),
+    Output('title-statis-vs-ipm-map-statis', 'children'),
+    Output('statis-vs-ipm-map-statis', 'figure'),
+    Output('title-statis-vs-ipm-map-ipm', 'children'),
+    Output('statis-vs-ipm-map-ipm', 'figure'),
+    Output('title-statis-vs-ipm-pie-statis', 'children'),
+    Output('statis-vs-ipm-pie-statis', 'figure'),
+    Output('title-statis-vs-ipm-pie-ipm', 'children'),
+    Output('statis-vs-ipm-pie-ipm', 'figure'),
+    Input('btn-run-statis-vs-ipm', 'n_clicks'),
+    Input('statis-vs-ipm-view-mode', 'value'),
+    State('statis-vs-ipm-year', 'value'),
+    State('statis-vs-ipm-k', 'value'),
+    State('global-data-store', 'data'),
+    State('statis-core-store', 'data')
+)
+def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_store):
+    if not n_clicks or not sel_year or not data_store or not statis_store: 
+        return [], [], "", {}, "", {}, "", {}, "", {}
+    
+    try:
+        from sklearn.cluster import KMeans
+        # 1. Ambil IPM kategories dari data asli
+        df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
+        df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
+        
+        def categorize_ipm(val):
+            if val >= 80: return "Sangat Tinggi"
+            elif val >= 70: return "Tinggi"
+            elif val >= 55: return "Sedang"
+            else: return "Rendah"
+        df_yr['IPM_Cat'] = df_yr['IPM'].apply(categorize_ipm)
+        
+        # 2. Ambil label K-Means STATIS Tahunan dari statis store
+        obs_labels = statis_store['obs_labels']
+        str_year = str(sel_year)
+        if str_year not in statis_store['per_year_coords']: 
+            return [], [], "", {}, "", {}, "", {}, "", {}
+        
+        coords = np.array(statis_store['per_year_coords'][str_year])
+        km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
+        lbls = km_curr.fit_predict(coords)
+        
+        # Rank by PC1
+        cl_means = [np.mean(coords[lbls == cl, 0]) for cl in range(k)]
+        sorted_indices = np.argsort(cl_means)
+        rank_map = {old: new for new, old in enumerate(sorted_indices)}
+        name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
+        str_labels = [f"Cluster {rank_map[l]+1} ({name_map.get(rank_map[l], 'Level ' + str(rank_map[l]+1))})" for l in lbls]
+        
+        # Gabung
+        df_clusters = pd.DataFrame({'Cluster_Statis': str_labels}, index=obs_labels)
+        df_merged = df_yr.join(df_clusters).dropna(subset=['Cluster_Statis', 'IPM_Cat'])
+        
+        # Tabulasi Silang
+        categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
+        target_clusters = [f"Cluster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
+        
+        df_merged['IPM_Cat'] = pd.Categorical(df_merged['IPM_Cat'], categories=categories, ordered=True)
+        df_merged['Cluster_Statis'] = pd.Categorical(df_merged['Cluster_Statis'], categories=target_clusters, ordered=True)
+        
+        ct = pd.crosstab(df_merged['IPM_Cat'], df_merged['Cluster_Statis'])
+        ct = ct.reindex(index=categories, fill_value=0).reindex(columns=target_clusters, fill_value=0)
+        
+        if view_mode == 'names':
+            res_df = ct.copy().astype(object)
+            for r in ct.index:
+                for c in ct.columns:
+                    names = df_merged[(df_merged['IPM_Cat'] == r) & (df_merged['Cluster_Statis'] == c)].index.tolist()
+                    res_df.loc[r, c] = ", ".join(names) if names else "-"
+            res_df = res_df.reset_index()
+        else:
+            res_df = ct.reset_index()
+            
+        cols = [{"name": str(c), "id": str(c)} for c in res_df.columns]
+        
+        # C. BUILD MAPS AND PIES
+        fig_map_statis, fig_map_ipm = go.Figure(), go.Figure()
+        if indonesia_geojson:
+            mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+            df_map_s = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels, 'match_key': obs_labels})
+            cats_ipm_list = df_yr['IPM_Cat'].reindex(obs_labels).fillna('Sedang').tolist()
+            df_map_i = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': cats_ipm_list, 'match_key': obs_labels})
+            
+            fig_map_statis = px.choropleth_mapbox(df_map_s, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_statis.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            fig_map_ipm = px.choropleth_mapbox(df_map_i, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=IPM_COLOR_MAP, category_orders={"Cluster": IPM_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_ipm.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            for f, df_m in [(fig_map_statis, df_map_s), (fig_map_ipm, df_map_i)]:
+                lon_list, lat_list, text_list = [], [], []
+                for _, row in df_m.iterrows():
+                    area = row['Kab/Kota']
+                    geom = gdf[gdf['id_cocok'] == area]
+                    if not geom.empty:
+                        lon_list.append(geom.geometry.centroid.x.values[0])
+                        lat_list.append(geom.geometry.centroid.y.values[0])
+                        text_list.append(area)
+                if text_list:
+                    f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+                    
+        from collections import Counter
+        counts_s = Counter(str_labels)
+        fig_pie_statis = px.pie(
+            names=list(counts_s.keys()),
+            values=list(counts_s.values()),
+            color=list(counts_s.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_statis.update_layout(template='plotly_white')
+        
+        counts_i = Counter(df_yr['IPM_Cat'].reindex(obs_labels).fillna('Sedang').tolist())
+        fig_pie_ipm = px.pie(
+            names=list(counts_i.keys()),
+            values=list(counts_i.values()),
+            color=list(counts_i.keys()),
+            color_discrete_map=IPM_COLOR_MAP,
+            category_orders={"names": IPM_ORDER}
+        )
+        fig_pie_ipm.update_layout(template='plotly_white')
+        
+        return (
+            res_df.to_dict('records'), cols,
+            f"Peta Cluster STATIS ({sel_year})", fig_map_statis,
+            f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
+            f"Proporsi Cluster STATIS ({sel_year})", fig_pie_statis,
+            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
+        )
+    except Exception as e:
+        print(f"Error cb_run_statis_vs_ipm: {e}")
+        return [], [], "", {}, "", {}, "", {}, "", {}
+
+
+@app.callback(
+    Output("download-statis-vs-ipm-tex", "data"),
+    Input("btn-dl-statis-vs-ipm-tex", "n_clicks"),
+    State("statis-vs-ipm-table", "data"),
+    State("statis-vs-ipm-table", "columns"),
+    State("statis-vs-ipm-year", "value"),
+    State("statis-vs-ipm-view-mode", "value"),
+    prevent_initial_call=True
+)
+def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
+    if not n_clicks or not data or not columns: return None
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_statis_vs_ipm_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster STATIS Tahunan vs IPM (UNDP) ({year})"
+        label = f"statis_ipm_name_{year}"
+    else:
+        caption = f"Perbandingan Cluster STATIS Tahunan vs Kategori IPM (UNDP) ({year})"
+        label = f"statis_ipm_{year}"
+    content = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dict(content=content, filename=filename)
+
+
+# --- CALLBACK: PERBANDINGAN CLUSTER KOMPROMI STATIS VS CLUSTER STATIS TAHUNAN ---
+@app.callback(
+    Output('compromise-statis-vs-statis-table', 'data'),
+    Output('compromise-statis-vs-statis-table', 'columns'),
+    Output('title-compromise-statis-vs-statis-map-comp', 'children'),
+    Output('compromise-statis-vs-statis-map-comp', 'figure'),
+    Output('title-compromise-statis-vs-statis-map-statis', 'children'),
+    Output('compromise-statis-vs-statis-map-statis', 'figure'),
+    Output('title-compromise-statis-vs-statis-scatter-comp', 'children'),
+    Output('compromise-statis-vs-statis-scatter-comp', 'figure'),
+    Output('title-compromise-statis-vs-statis-scatter-statis', 'children'),
+    Output('compromise-statis-vs-statis-scatter-statis', 'figure'),
+    Output('title-compromise-statis-vs-statis-pie-comp', 'children'),
+    Output('compromise-statis-vs-statis-pie-comp', 'figure'),
+    Output('title-compromise-statis-vs-statis-pie-statis', 'children'),
+    Output('compromise-statis-vs-statis-pie-statis', 'figure'),
+    Input('btn-run-compromise-statis-vs-statis', 'n_clicks'),
+    Input('compromise-statis-vs-statis-view-mode', 'value'),
+    State('compromise-statis-vs-statis-year', 'value'),
+    State('compromise-statis-vs-statis-k', 'value'),
+    State('statis-core-store', 'data')
+)
+def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data):
+    if not n_clicks or not statis_data or not year:
+        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+    
+    try:
+        from sklearn.cluster import KMeans
+        # A. Get STATIS Trajectory Cluster (Compromise)
+        obs_labels = statis_data['obs_labels']
+        coords_dict = statis_data['per_year_coords']
+        sheet_names = statis_data.get('sheet_names', sorted(list(coords_dict.keys())))
+        alphas = statis_data.get('alphas', [1.0] * len(sheet_names))
+        
+        # Build weighted trajectory features (Lavit 1994 logic)
+        features = []
+        for i in range(len(obs_labels)):
+            city_feats = []
+            for j, yr in enumerate(sheet_names):
+                w = np.sqrt(alphas[j])
+                coords_yr = np.array(coords_dict[str(yr)])
+                city_feats.extend(coords_yr[i, :] * w)
+            features.append(city_feats)
+        X_traj = np.array(features)
+        
+        km_comp = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_traj)
+        
+        # Rank by Compromise PC1
+        scores_comp = np.array(statis_data['scores'])
+        cl_means_c = [np.mean(scores_comp[km_comp.labels_ == cl, 0]) for cl in range(k)]
+        rnk_c = np.argsort(cl_means_c)
+        mp_c = {old: new for new, old in enumerate(rnk_c)}
+        name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
+        labels_comp = [f"Cluster {mp_c[l]+1} ({name_map.get(mp_c[l], 'Level ' + str(mp_c[l]+1))})" for l in km_comp.labels_]
+        
+        # B. Get STATIS Tahunan Cluster (for selected year)
+        str_year = str(year)
+        if str_year not in coords_dict:
+            return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+        
+        X_year = np.array(coords_dict[str_year])
+        km_yr = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_year)
+        
+        # Rank by current year STATIS PC1
+        cl_means_y = [np.mean(X_year[km_yr.labels_ == cl, 0]) for cl in range(k)]
+        rnk_y = np.argsort(cl_means_y)
+        mp_y = {old: new for new, old in enumerate(rnk_y)}
+        labels_yr = [f"Cluster {mp_y[l]+1} ({name_map.get(mp_y[l], 'Level ' + str(mp_y[l]+1))})" for l in km_yr.labels_]
+        
+        # C. Cross-tab
+        df_comp = pd.DataFrame({
+            'Kabupaten/Kota': obs_labels,
+            'Kompromi': labels_comp,
+            'Tahunan': labels_yr
+        })
+        
+        target_clusters = [f"Cluster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
+        df_comp['Kompromi'] = pd.Categorical(df_comp['Kompromi'], categories=target_clusters, ordered=True)
+        df_comp['Tahunan'] = pd.Categorical(df_comp['Tahunan'], categories=target_clusters, ordered=True)
+        
+        ct = pd.crosstab(df_comp['Tahunan'], df_comp['Kompromi'])
+        ct = ct.reindex(index=target_clusters, fill_value=0).reindex(columns=target_clusters, fill_value=0)
+        
+        if view_mode == 'names':
+            res_df = ct.copy().astype(object)
+            for r in ct.index:
+                for c in ct.columns:
+                    names = df_comp[(df_comp['Tahunan'] == r) & (df_comp['Kompromi'] == c)]['Kabupaten/Kota'].tolist()
+                    res_df.loc[r, c] = ", ".join(names) if names else "-"
+            res_df = res_df.reset_index()
+        else:
+            res_df = ct.reset_index()
+            
+        cols = [{"name": str(i), "id": str(i)} for i in res_df.columns]
+        
+        # D. BUILD MAPS, SCATTERS, PIE
+        fig_map_comp, fig_map_statis = go.Figure(), go.Figure()
+        if indonesia_geojson:
+            mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+            df_map_c = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': labels_comp, 'match_key': obs_labels})
+            df_map_s = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': labels_yr, 'match_key': obs_labels})
+            
+            fig_map_comp = px.choropleth_mapbox(df_map_c, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_comp.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            fig_map_statis = px.choropleth_mapbox(df_map_s, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_statis.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            for f, df_m in [(fig_map_comp, df_map_c), (fig_map_statis, df_map_s)]:
+                lon_list, lat_list, text_list = [], [], []
+                for _, row in df_m.iterrows():
+                    area = row['Kab/Kota']
+                    geom = gdf[gdf['id_cocok'] == area]
+                    if not geom.empty:
+                        lon_list.append(geom.geometry.centroid.x.values[0])
+                        lat_list.append(geom.geometry.centroid.y.values[0])
+                        text_list.append(area)
+                if text_list:
+                    f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+                    
+        # Scatters
+        fig_scatter_comp = px.scatter(x=scores_comp[:,0], y=scores_comp[:,1], color=labels_comp, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+        fig_scatter_comp.update_traces(marker=dict(size=9), textposition='top center')
+        fig_scatter_comp.update_layout(template='plotly_white', xaxis_title="PC1 Kompromi", yaxis_title="PC2 Kompromi")
+        
+        fig_scatter_statis = px.scatter(x=X_year[:,0], y=X_year[:,1], color=labels_yr, text=obs_labels, color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"color": LEVEL_ORDER})
+        fig_scatter_statis.update_traces(marker=dict(size=9), textposition='top center')
+        fig_scatter_statis.update_layout(template='plotly_white', xaxis_title="PC1 Tahunan", yaxis_title="PC2 Tahunan")
+        
+        from collections import Counter
+        counts_c = Counter(labels_comp)
+        fig_pie_comp = px.pie(
+            names=list(counts_c.keys()),
+            values=list(counts_c.values()),
+            color=list(counts_c.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_comp.update_layout(template='plotly_white')
+        
+        counts_s = Counter(labels_yr)
+        fig_pie_statis = px.pie(
+            names=list(counts_s.keys()),
+            values=list(counts_s.values()),
+            color=list(counts_s.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_statis.update_layout(template='plotly_white')
+        
+        return (
+            res_df.to_dict('records'), cols,
+            "Peta Cluster Kompromi STATIS", fig_map_comp,
+            f"Peta Cluster STATIS Tahunan ({year})", fig_map_statis,
+            "Scatter Plot Cluster Kompromi STATIS", fig_scatter_comp,
+            f"Scatter Plot Cluster STATIS Tahunan ({year})", fig_scatter_statis,
+            "Proporsi Cluster Kompromi STATIS", fig_pie_comp,
+            f"Proporsi Cluster STATIS Tahunan ({year})", fig_pie_statis
+        )
+    except Exception as e:
+        print(f"Error cb_run_compromise_statis_vs_statis: {e}")
+        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+
+
+@app.callback(
+    Output("download-compromise-statis-vs-statis-tex", "data"),
+    Input("btn-dl-compromise-statis-vs-statis-tex", "n_clicks"),
+    State("compromise-statis-vs-statis-table", "data"),
+    State("compromise-statis-vs-statis-table", "columns"),
+    State("compromise-statis-vs-statis-year", "value"),
+    State("compromise-statis-vs-statis-view-mode", "value"),
+    prevent_initial_call=True
+)
+def dl_compromise_statis_vs_statis_tex(n_clicks, data, columns, year, mode):
+    if not n_clicks or not data or not columns: return None
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_compromise_vs_statis_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ({year})"
+        label = f"compromise_statis_name_{year}"
+    else:
+        caption = f"Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ({year})"
+        label = f"compromise_statis_{year}"
+    content = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dict(content=content, filename=filename)
 
 
 # 7c. Run Descriptive Statistics
@@ -4632,10 +5476,14 @@ def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
     Output('trans-scatter-t1', 'figure'),
     Output('title-trans-scatter-t2', 'children'),
     Output('trans-scatter-t2', 'figure'),
+    Output('title-trans-pie-t1', 'children'),
+    Output('trans-pie-t1', 'figure'),
+    Output('title-trans-pie-t2', 'children'),
+    Output('trans-pie-t2', 'figure'),
     Input('statis-trans-store', 'data')
 )
 def cb_render_trans_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}
+    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
@@ -4675,7 +5523,35 @@ def cb_render_trans_plots(data):
             if text_list:
                 f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
 
-    return (f"Peta Sebaran Cluster ({t1_year})", fig_map_t1, f"Peta Sebaran Cluster ({t2_year})", fig_map_t2, f"Biplot Cluster ({t1_year})", fig_scatter_t1, f"Biplot Cluster ({t2_year})", fig_scatter_t2)
+    from collections import Counter
+    counts_t1 = Counter(str_labels_t1)
+    fig_pie_t1 = px.pie(
+        names=list(counts_t1.keys()),
+        values=list(counts_t1.values()),
+        color=list(counts_t1.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t1.update_layout(template='plotly_white')
+    
+    counts_t2 = Counter(str_labels_t2)
+    fig_pie_t2 = px.pie(
+        names=list(counts_t2.keys()),
+        values=list(counts_t2.values()),
+        color=list(counts_t2.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t2.update_layout(template='plotly_white')
+
+    return (
+        f"Peta Sebaran Cluster ({t1_year})", fig_map_t1,
+        f"Peta Sebaran Cluster ({t2_year})", fig_map_t2,
+        f"Biplot Cluster ({t1_year})", fig_scatter_t1,
+        f"Biplot Cluster ({t2_year})", fig_scatter_t2,
+        f"Proporsi Cluster ({t1_year})", fig_pie_t1,
+        f"Proporsi Cluster ({t2_year})", fig_pie_t2
+    )
 
 # 10C. RENDERING: TABLE (INSTANT)
 @app.callback(
@@ -4709,10 +5585,14 @@ def cb_render_trans_table(data, view_mode):
     Output('weighted-trans-scatter-t1', 'figure'),
     Output('title-weighted-trans-scatter-t2', 'children'),
     Output('weighted-trans-scatter-t2', 'figure'),
+    Output('title-weighted-trans-pie-t1', 'children'),
+    Output('weighted-trans-pie-t1', 'figure'),
+    Output('title-weighted-trans-pie-t2', 'children'),
+    Output('weighted-trans-pie-t2', 'figure'),
     Input('weighted-trans-store', 'data')
 )
 def cb_render_weighted_trans_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}
+    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
@@ -4752,7 +5632,35 @@ def cb_render_weighted_trans_plots(data):
             if text_list:
                 f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
 
-    return (f"Peta Sebaran Cluster Terbobot ({t1_year})", fig_map_t1, f"Peta Sebaran Cluster Terbobot ({t2_year})", fig_map_t2, f"Biplot Cluster Terbobot ({t1_year})", fig_scatter_t1, f"Biplot Cluster Terbobot ({t2_year})", fig_scatter_t2)
+    from collections import Counter
+    counts_t1 = Counter(str_labels_t1)
+    fig_pie_t1 = px.pie(
+        names=list(counts_t1.keys()),
+        values=list(counts_t1.values()),
+        color=list(counts_t1.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t1.update_layout(template='plotly_white')
+    
+    counts_t2 = Counter(str_labels_t2)
+    fig_pie_t2 = px.pie(
+        names=list(counts_t2.keys()),
+        values=list(counts_t2.values()),
+        color=list(counts_t2.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t2.update_layout(template='plotly_white')
+
+    return (
+        f"Peta Sebaran Cluster Terbobot ({t1_year})", fig_map_t1,
+        f"Peta Sebaran Cluster Terbobot ({t2_year})", fig_map_t2,
+        f"Biplot Cluster Terbobot ({t1_year})", fig_scatter_t1,
+        f"Biplot Cluster Terbobot ({t2_year})", fig_scatter_t2,
+        f"Proporsi Cluster Terbobot ({t1_year})", fig_pie_t1,
+        f"Proporsi Cluster Terbobot ({t2_year})", fig_pie_t2
+    )
 
 
 # 10C-2. RENDERING TERBOBOT: TABLE (INSTANT)
@@ -4786,10 +5694,14 @@ def cb_render_weighted_trans_table(data, view_mode):
     Output('biplot-statis-compare-scatter-biplot', 'figure'),
     Output('title-biplot-statis-compare-scatter-statis', 'children'),
     Output('biplot-statis-compare-scatter-statis', 'figure'),
+    Output('title-biplot-statis-compare-pie-biplot', 'children'),
+    Output('biplot-statis-compare-pie-biplot', 'figure'),
+    Output('title-biplot-statis-compare-pie-statis', 'children'),
+    Output('biplot-statis-compare-pie-statis', 'figure'),
     Input('biplot-statis-compare-store', 'data')
 )
 def cb_render_biplot_statis_compare_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}
+    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     actual_year = data['actual_year']
@@ -4830,7 +5742,35 @@ def cb_render_biplot_statis_compare_plots(data):
             if text_list:
                 f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
 
-    return (f"Peta Sebaran Cluster {t1_year} ({actual_year})", fig_map_t1, f"Peta Sebaran Cluster {t2_year} ({actual_year})", fig_map_t2, f"Cluster {t1_year} ({actual_year})", fig_scatter_t1, f"Cluster {t2_year} ({actual_year})", fig_scatter_t2)
+    from collections import Counter
+    counts_t1 = Counter(str_labels_t1)
+    fig_pie_t1 = px.pie(
+        names=list(counts_t1.keys()),
+        values=list(counts_t1.values()),
+        color=list(counts_t1.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t1.update_layout(template='plotly_white')
+    
+    counts_t2 = Counter(str_labels_t2)
+    fig_pie_t2 = px.pie(
+        names=list(counts_t2.keys()),
+        values=list(counts_t2.values()),
+        color=list(counts_t2.keys()),
+        color_discrete_map=CLUSTER_COLOR_MAP,
+        category_orders={"names": LEVEL_ORDER}
+    )
+    fig_pie_t2.update_layout(template='plotly_white')
+
+    return (
+        f"Peta Sebaran Cluster {t1_year} ({actual_year})", fig_map_t1,
+        f"Peta Sebaran Cluster {t2_year} ({actual_year})", fig_map_t2,
+        f"Cluster {t1_year} ({actual_year})", fig_scatter_t1,
+        f"Cluster {t2_year} ({actual_year})", fig_scatter_t2,
+        f"Proporsi Cluster {t1_year} ({actual_year})", fig_pie_t1,
+        f"Proporsi Cluster {t2_year} ({actual_year})", fig_pie_t2
+    )
 
 # 10C-4. RENDERING PERBANDINGAN: TABLE (INSTANT)
 @app.callback(
@@ -4860,7 +5800,7 @@ def cb_render_biplot_statis_compare_table(data, view_mode):
 # 11. CLUSTERING TRAJEKTORI CALLBACK (STATIS FULL)
 @app.callback(
     Output('cluster-scatter', 'figure'),
-    Output('cluster-dendrogram', 'figure'),
+    Output('cluster-pie', 'figure'),
     Output('cluster-map', 'figure'),
     Output('cluster-interpretation', 'children'),
     Output('formula-cluster-output', 'children'),
@@ -4922,42 +5862,24 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     try: fig_scatter.write_image("../output_app/cluster_compromise_biplot.png")
     except: pass
 
-    # --- 3. Dendrogram (Dengan Pewarnaan Sesuai K) ---
+    # --- 3. Pie Chart ---
     try:
-        import plotly.figure_factory as ff
-        from scipy.cluster.hierarchy import linkage
-        
-        # 1. Hitung Linkage Matrix manual untuk mencari threshold
-        Z = linkage(X_traj, method='ward')
-        
-        # 2. Hitung Threshold Jarak agar terbentuk persis K cluster
-        # Logika: Kita cari jarak merge pada langkah ke-(k-1) dari atas.
-        # Kita set threshold sedikit di bawah jarak tersebut.
-        if k_clusters > 1 and k_clusters < len(X_traj):
-            # Ambil rata-rata jarak antara merge k dan k-1 agar aman
-            dist_k = Z[-k_clusters, 2]      # Jarak saat masih k+1 cluster
-            dist_k_minus_1 = Z[-(k_clusters-1), 2] # Jarak saat jadi k cluster
-            color_thresh = 0.5 * (dist_k + dist_k_minus_1)
-        else:
-            color_thresh = 0 # Default jika k=1 atau error
-            
-        # 3. Buat Dendrogram dengan threshold tersebut
-        fig_dendro = ff.create_dendrogram(
-            X_traj, 
-            labels=obs_labels, 
-            orientation='left', 
-            linkagefun=lambda x: Z, # Gunakan Z yang sama agar konsisten
-            color_threshold=color_thresh, # <--- INI KUNCINYA
-            colorscale=px.colors.qualitative.Bold
+        df_pie = pd.DataFrame({'Cluster': str_labels})
+        fig_pie = px.pie(
+            df_pie, 
+            names='Cluster', 
+            title="Proporsi Cluster Trajektori",
+            color='Cluster', 
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"Cluster": LEVEL_ORDER}
         )
-        
-        fig_dendro.update_layout(title="Dendrogram Kemiripan Trajektori", template='plotly_white', margin=dict(l=150))
+        fig_pie.update_layout(template='plotly_white', width=800, height=800)
         import os
         os.makedirs("../output_app", exist_ok=True)
-        try: fig_dendro.write_image("../output_app/dendrogram_compromise.png")
+        try: fig_pie.write_image("../output_app/pie_compromise.png")
         except: pass
     except Exception as e:
-        fig_dendro = go.Figure().add_annotation(text=f"Error Dendrogram: {e}", showarrow=False)
+        fig_pie = go.Figure().add_annotation(text=f"Error Pie Chart: {e}", showarrow=False)
 
     # --- 3B. Hitung Moran's I untuk PC1 Kompromi (Sumbu Ekonomi Utama) ---
     moran_text = ""
@@ -5077,29 +5999,37 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     else:
         math_ui = render_cluster_formulas()
 
-    return fig_scatter, fig_dendro, fig_map, interp_text, math_ui, member_data, member_cols
+    return fig_scatter, fig_pie, fig_map, interp_text, math_ui, member_data, member_cols
 
 # 12. IPM MATRIX CALLBACK (UNDP CATEGORIES)
 @app.callback(
     Output('ipm-disclaimer-text', 'children'),
     Output('ipm-trans-matrix-table', 'data'),
     Output('ipm-trans-matrix-table', 'columns'),
+    Output('title-ipm-trans-map-t1', 'children'),
+    Output('ipm-trans-map-t1', 'figure'),
+    Output('title-ipm-trans-map-t2', 'children'),
+    Output('ipm-trans-map-t2', 'figure'),
+    Output('title-ipm-trans-pie-t1', 'children'),
+    Output('ipm-trans-pie-t1', 'figure'),
+    Output('title-ipm-trans-pie-t2', 'children'),
+    Output('ipm-trans-pie-t2', 'figure'),
     Input('btn-run-ipm-trans', 'n_clicks'),
     Input('ipm-trans-view-mode', 'value'),
     State('ipm-trans-year-dropdown', 'value'),
     State('global-data-store', 'data')
 )
 def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
-    if not n_clicks or not t2_year or not data: return "", [], []
+    if not n_clicks or not t2_year or not data: return "", [], [], "", {}, "", {}, "", {}, "", {}
     
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
     years = data['years']
     
     if 'IPM' not in df.columns:
-        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], []
+        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], [], "", {}, "", {}, "", {}, "", {}
         
     t2_idx = years.index(t2_year)
-    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], []
+    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], [], "", {}, "", {}, "", {}, "", {}
     t1_year = years[t2_idx - 1]
     
     # Filter Data untuk T1 dan T2
@@ -5107,7 +6037,7 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     df_t2 = df[df['Tahun'] == t2_year].set_index('Kabupaten/Kota')
     
     common_kabs = df_t1.index.intersection(df_t2.index)
-    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], []
+    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], [], "", {}, "", {}, "", {}, "", {}
     
     df_t1 = df_t1.loc[common_kabs]
     df_t2 = df_t2.loc[common_kabs]
@@ -5183,13 +6113,77 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     req_data = data_count if view_mode == 'count' else data_names
     cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
     
-    return disclaimer_parts, req_data, cols
+    # --- BUILD MAP & PIE CHARTS ---
+    obs_labels = list(common_kabs)
+    str_labels_t1 = df_t1.loc[common_kabs, 'IPM_Cat'].tolist()
+    str_labels_t2 = df_t2.loc[common_kabs, 'IPM_Cat'].tolist()
+    
+    fig_map_t1, fig_map_t2 = go.Figure(), go.Figure()
+    if indonesia_geojson:
+        mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+        df_map_t1 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t1, 'match_key': obs_labels})
+        df_map_t2 = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels_t2, 'match_key': obs_labels})
+        
+        fig_map_t1 = px.choropleth_mapbox(df_map_t1, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=IPM_COLOR_MAP, category_orders={"Cluster": IPM_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t1.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        fig_map_t2 = px.choropleth_mapbox(df_map_t2, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=IPM_COLOR_MAP, category_orders={"Cluster": IPM_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+        fig_map_t2.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+        
+        for f, df_m in [(fig_map_t1, df_map_t1), (fig_map_t2, df_map_t2)]:
+            lon_list, lat_list, text_list = [], [], []
+            for _, row in df_m.iterrows():
+                area = row['Kab/Kota']
+                geom = gdf[gdf['id_cocok'] == area]
+                if not geom.empty:
+                    lon_list.append(geom.geometry.centroid.x.values[0])
+                    lat_list.append(geom.geometry.centroid.y.values[0])
+                    text_list.append(area)
+            if text_list:
+                f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+
+    from collections import Counter
+    counts_p1 = Counter(str_labels_t1)
+    fig_pie_t1 = px.pie(
+        names=list(counts_p1.keys()),
+        values=list(counts_p1.values()),
+        color=list(counts_p1.keys()),
+        color_discrete_map=IPM_COLOR_MAP,
+        category_orders={"names": IPM_ORDER}
+    )
+    fig_pie_t1.update_layout(template='plotly_white')
+    
+    counts_p2 = Counter(str_labels_t2)
+    fig_pie_t2 = px.pie(
+        names=list(counts_p2.keys()),
+        values=list(counts_p2.values()),
+        color=list(counts_p2.keys()),
+        color_discrete_map=IPM_COLOR_MAP,
+        category_orders={"names": IPM_ORDER}
+    )
+    fig_pie_t2.update_layout(template='plotly_white')
+
+    return (
+        disclaimer_parts, req_data, cols,
+        f"Peta Sebaran IPM ({t1_year})", fig_map_t1,
+        f"Peta Sebaran IPM ({t2_year})", fig_map_t2,
+        f"Proporsi Kategori IPM ({t1_year})", fig_pie_t1,
+        f"Proporsi Kategori IPM ({t2_year})", fig_pie_t2
+    )
 
 
 # 13. CROSS TABULATION CALLBACK (K-MEANS VS IPM)
 @app.callback(
     Output('cross-table', 'data'),
     Output('cross-table', 'columns'),
+    Output('title-cross-map-biplot', 'children'),
+    Output('cross-map-biplot', 'figure'),
+    Output('title-cross-map-ipm', 'children'),
+    Output('cross-map-ipm', 'figure'),
+    Output('title-cross-pie-biplot', 'children'),
+    Output('cross-pie-biplot', 'figure'),
+    Output('title-cross-pie-ipm', 'children'),
+    Output('cross-pie-ipm', 'figure'),
     Input('btn-run-cross', 'n_clicks'),
     Input('cross-view-mode', 'value'),
     State('cross-year-dropdown', 'value'),
@@ -5198,90 +6192,152 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     State('statis-core-store', 'data')
 )
 def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store):
-    if not n_clicks or not sel_year or not data_store or not statis_store: return [], []
+    if not n_clicks or not sel_year or not data_store or not statis_store: 
+        return [], [], "", {}, "", {}, "", {}, "", {}
     
-    # 1. Ambil IPM kategories dari data asli
-    df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
-    if 'IPM' not in df.columns: return [], []
-    
-    df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
-    def categorize_ipm(val):
-        if val >= 80: return "Sangat Tinggi"
-        elif val >= 70: return "Tinggi"
-        elif val >= 55: return "Sedang"
-        else: return "Rendah"
-    df_yr['IPM_Cat'] = df_yr['IPM'].apply(categorize_ipm)
-    
-    # 2. Ambil label K-Means dari statis store
-    obs_labels = statis_store['obs_labels']
-    str_year = str(sel_year)
-    if str_year not in statis_store['per_year_coords']: return [], []
-    
-    coords = np.array(statis_store['per_year_coords'][str_year])
-    km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
-    lbls = km_curr.fit_predict(coords)
-    curr_centroids = km_curr.cluster_centers_
-    
-    # --- AUTOMATED ALIGNED LABELING (Same as Spatial-Temporal section) ---
-    cluster_means = []
-    unique_lbls = sorted(list(set(lbls)))
-    for cl in unique_lbls:
-        cluster_means.append(np.mean(coords[[i for i, l in enumerate(lbls) if l == cl], 0]))
-        
-    sorted_indices = np.argsort(cluster_means)
-    rank_map = {old: new for new, old in enumerate(sorted_indices)}
-    name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
-    str_labels = [name_map.get(rank_map[l], f"Cluster {rank_map[l]+1}") for l in lbls]
-    
-    # Gabung
-    df_clusters = pd.DataFrame({'Cluster_KMeans': str_labels}, index=obs_labels)
-    df_merged = df_yr.join(df_clusters).dropna(subset=['Cluster_KMeans', 'IPM_Cat'])
-    
-    # Tabulasi Silang
-    categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
-    target_clusters = [name_map.get(i, f"Cluster {i+1}") for i in range(k)]
-    
-    def build_cross_matrix(mode):
-        matrix_data, matrix_tex = [], []
-        matrix_tex.append(r"% !TeX root = ../induk.tex")
-        matrix_tex.append(r"\begin{table}[H]")
-        matrix_tex.append(r"\centering")
-        matrix_tex.append(r"\caption{Perbandingan Cluster dengan Kategori IPM (" + str(sel_year) + r")} \label{tab:ipm_cross_" + str(sel_year) + r"}")
-        matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*len(categories) + "}")
-        matrix_tex.append(r"\hline")
-        
-        header_row = ["Cluster K-Means"] + categories
-        matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
-        
-        for c_name in target_clusters:
-            row_dict = {"Cluster K-Means": c_name}
-            tex_row = [f"\\textbf{{{c_name}}}"]
-            for cat in categories:
-                kabs = df_merged[(df_merged['Cluster_KMeans'] == c_name) & (df_merged['IPM_Cat'] == cat)].index.tolist()
-                if mode == 'count': val = str(len(kabs))
-                else: val = ", ".join(kabs) if kabs else "-"
-                row_dict[cat] = val
-                tex_row.append(val.replace('&', r'\&').replace('%', r'\%'))
-            matrix_data.append(row_dict)
-            matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
-            
-        matrix_tex.append(r"\end{tabular}")
-        matrix_tex.append(r"\end{table}")
-        return matrix_data, matrix_tex
-        
-    data_count, tex_count = build_cross_matrix('count')
-    data_names, tex_names = build_cross_matrix('names')
-    
-    import os
-    os.makedirs("../output_app", exist_ok=True)
     try:
-        with open(f"../output_app/output_table_cross_matrix_sum_{sel_year}.tex", "w") as f: f.write("\n".join(tex_count))
-        with open(f"../output_app/output_table_cross_matrix_name_{sel_year}.tex", "w") as f: f.write("\n".join(tex_names))
-    except: pass
-    
-    req_data = data_count if view_mode == 'count' else data_names
-    cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
-    return req_data, cols
+        # 1. Ambil IPM kategories dari data asli
+        df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
+        if 'IPM' not in df.columns: 
+            return [], [], "", {}, "", {}, "", {}, "", {}
+        
+        df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
+        def categorize_ipm(val):
+            if val >= 80: return "Sangat Tinggi"
+            elif val >= 70: return "Tinggi"
+            elif val >= 55: return "Sedang"
+            else: return "Rendah"
+        df_yr['IPM_Cat'] = df_yr['IPM'].apply(categorize_ipm)
+        
+        # 2. Ambil label K-Means dari statis store
+        obs_labels = statis_store['obs_labels']
+        str_year = str(sel_year)
+        if str_year not in statis_store['per_year_coords']: 
+            return [], [], "", {}, "", {}, "", {}, "", {}
+        
+        coords = np.array(statis_store['per_year_coords'][str_year])
+        km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
+        lbls = km_curr.fit_predict(coords)
+        curr_centroids = km_curr.cluster_centers_
+        
+        # --- AUTOMATED ALIGNED LABELING (Same as Spatial-Temporal section) ---
+        cluster_means = []
+        unique_lbls = sorted(list(set(lbls)))
+        for cl in unique_lbls:
+            cluster_means.append(np.mean(coords[[i for i, l in enumerate(lbls) if l == cl], 0]))
+            
+        sorted_indices = np.argsort(cluster_means)
+        rank_map = {old: new for new, old in enumerate(sorted_indices)}
+        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        str_labels = [name_map.get(rank_map[l], f"Cluster {rank_map[l]+1}") for l in lbls]
+        
+        # Gabung
+        df_clusters = pd.DataFrame({'Cluster_KMeans': str_labels}, index=obs_labels)
+        df_merged = df_yr.join(df_clusters).dropna(subset=['Cluster_KMeans', 'IPM_Cat'])
+        
+        # Tabulasi Silang
+        categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
+        target_clusters = [name_map.get(i, f"Cluster {i+1}") for i in range(k)]
+        
+        def build_cross_matrix(mode):
+            matrix_data, matrix_tex = [], []
+            matrix_tex.append(r"% !TeX root = ../induk.tex")
+            matrix_tex.append(r"\begin{table}[H]")
+            matrix_tex.append(r"\centering")
+            matrix_tex.append(r"\caption{Perbandingan Cluster dengan Kategori IPM (" + str(sel_year) + r")} \label{tab:ipm_cross_" + str(sel_year) + r"}")
+            matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*len(categories) + "}")
+            matrix_tex.append(r"\hline")
+            
+            header_row = ["Cluster K-Means"] + categories
+            matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
+            
+            for c_name in target_clusters:
+                row_dict = {"Cluster K-Means": c_name}
+                tex_row = [f"\\textbf{{{c_name}}}"]
+                for cat in categories:
+                    kabs = df_merged[(df_merged['Cluster_KMeans'] == c_name) & (df_merged['IPM_Cat'] == cat)].index.tolist()
+                    if mode == 'count': val = str(len(kabs))
+                    else: val = ", ".join(kabs) if kabs else "-"
+                    row_dict[cat] = val
+                    tex_row.append(val.replace('&', r'\&').replace('%', r'\%'))
+                matrix_data.append(row_dict)
+                matrix_tex.append(" & ".join(tex_row) + r" \\ \hline")
+                
+            matrix_tex.append(r"\end{tabular}")
+            matrix_tex.append(r"\end{table}")
+            return matrix_data, matrix_tex
+            
+        data_count, tex_count = build_cross_matrix('count')
+        data_names, tex_names = build_cross_matrix('names')
+        
+        import os
+        os.makedirs("../output_app", exist_ok=True)
+        try:
+            with open(f"../output_app/output_table_cross_matrix_sum_{sel_year}.tex", "w") as f: f.write("\n".join(tex_count))
+            with open(f"../output_app/output_table_cross_matrix_name_{sel_year}.tex", "w") as f: f.write("\n".join(tex_names))
+        except: 
+            pass
+        
+        req_data = data_count if view_mode == 'count' else data_names
+        cols = [{"name": c, "id": c} for c in req_data[0].keys()] if req_data else []
+        
+        # C. BUILD MAPS AND PIES
+        fig_map_biplot, fig_map_ipm = go.Figure(), go.Figure()
+        if indonesia_geojson:
+            mapbox_center, mapbox_zoom = {"lat": -6.9, "lon": 107}, 6.5
+            df_map_b = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': str_labels, 'match_key': obs_labels})
+            cats_ipm_list = df_yr['IPM_Cat'].reindex(obs_labels).fillna('Sedang').tolist()
+            df_map_i = pd.DataFrame({'Kab/Kota': obs_labels, 'Cluster': cats_ipm_list, 'match_key': obs_labels})
+            
+            fig_map_biplot = px.choropleth_mapbox(df_map_b, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=CLUSTER_COLOR_MAP, category_orders={"Cluster": LEVEL_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_biplot.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            fig_map_ipm = px.choropleth_mapbox(df_map_i, geojson=indonesia_geojson, locations='match_key', featureidkey='properties.id_cocok', color='Cluster', color_discrete_map=IPM_COLOR_MAP, category_orders={"Cluster": IPM_ORDER}, hover_name='Kab/Kota', mapbox_style="carto-positron", center=mapbox_center, zoom=mapbox_zoom, opacity=0.7)
+            fig_map_ipm.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+            
+            for f, df_m in [(fig_map_biplot, df_map_b), (fig_map_ipm, df_map_i)]:
+                lon_list, lat_list, text_list = [], [], []
+                for _, row in df_m.iterrows():
+                    area = row['Kab/Kota']
+                    geom = gdf[gdf['id_cocok'] == area]
+                    if not geom.empty:
+                        lon_list.append(geom.geometry.centroid.x.values[0])
+                        lat_list.append(geom.geometry.centroid.y.values[0])
+                        text_list.append(area)
+                if text_list:
+                    f.add_trace(go.Scattermapbox(lon=lon_list, lat=lat_list, mode='text', text=text_list, textfont=dict(size=9, color='black'), showlegend=False))
+                    
+        from collections import Counter
+        counts_b = Counter(str_labels)
+        fig_pie_biplot = px.pie(
+            names=list(counts_b.keys()),
+            values=list(counts_b.values()),
+            color=list(counts_b.keys()),
+            color_discrete_map=CLUSTER_COLOR_MAP,
+            category_orders={"names": LEVEL_ORDER}
+        )
+        fig_pie_biplot.update_layout(template='plotly_white')
+        
+        counts_i = Counter(df_yr['IPM_Cat'].reindex(obs_labels).fillna('Sedang').tolist())
+        fig_pie_ipm = px.pie(
+            names=list(counts_i.keys()),
+            values=list(counts_i.values()),
+            color=list(counts_i.keys()),
+            color_discrete_map=IPM_COLOR_MAP,
+            category_orders={"names": IPM_ORDER}
+        )
+        fig_pie_ipm.update_layout(template='plotly_white')
+        
+        return (
+            req_data, cols,
+            f"Peta Cluster Biplot ({sel_year})", fig_map_biplot,
+            f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
+            f"Proporsi Cluster Biplot ({sel_year})", fig_pie_biplot,
+            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
+        )
+    except Exception as e:
+        print(f"Error cb_run_cross_tab: {e}")
+        return [], [], "", {}, "", {}, "", {}, "", {}
 
 # =========================================================
 # UTIL: EKSPOR TABEL UI COMPONENT KE .TEX
@@ -5322,78 +6378,147 @@ def ui_table_to_latex(data, columns, caption, label):
     Output("download-trans-tex", "data"),
     Input("btn-dl-trans-tex", "n_clicks"),
     State("trans-matrix-table", "data"), State("trans-matrix-table", "columns"),
+    State("trans-year-dropdown", "value"), State("trans-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_trans_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Matriks Transisi Cluster Tahunan", "tab:trans_tahunan")
-    return dcc.send_string(tex_str, "output_transisi_cluster.tex")
+def dl_trans_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    y2 = int(year)
+    y1 = y2 - 1
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_biplot_transition_{sfx}_{y1}x{y2}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Transisi Cluster Biplot Tahunan ({y1} vs {y2})"
+        label = f"biplot_transition_name_{y1}x{y2}"
+    else:
+        caption = f"Matriks Transisi Cluster Biplot Tahunan ({y1} vs {y2})"
+        label = f"biplot_transition_{y1}x{y2}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-weighted-trans-tex", "data"),
     Input("btn-dl-weighted-trans-tex", "n_clicks"),
     State("weighted-trans-matrix-table", "data"), State("weighted-trans-matrix-table", "columns"),
+    State("weighted-trans-year-dropdown", "value"), State("weighted-trans-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_weighted_trans_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Matriks Transisi Cluster Terbobot", "tab:weighted_trans_tahunan")
-    return dcc.send_string(tex_str, "output_transisi_cluster_terbobot.tex")
+def dl_weighted_trans_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    y2 = int(year)
+    y1 = y2 - 1
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_transition_matrix_{sfx}_{y1}x{y2}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Transisi Cluster STATIS Tahunan ({y1} vs {y2})"
+        label = f"statis_transition_name_{y1}x{y2}"
+    else:
+        caption = f"Matriks Transisi Cluster STATIS Tahunan ({y1} vs {y2})"
+        label = f"statis_transition_{y1}x{y2}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-biplot-statis-compare-tex", "data"),
     Input("btn-dl-biplot-statis-compare-tex", "n_clicks"),
     State("biplot-statis-compare-matrix-table", "data"), State("biplot-statis-compare-matrix-table", "columns"),
+    State("biplot-statis-compare-year", "value"), State("biplot-statis-compare-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_biplot_statis_compare_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Matriks Perbandingan Cluster Biplot vs STATIS", "tab:biplot_vs_statis_compare")
-    return dcc.send_string(tex_str, "output_biplot_statis_compare.tex")
+def dl_biplot_statis_compare_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_biplot_vs_statis_compare_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster Biplot vs STATIS Tahunan ({year})"
+        label = f"biplot_statis_comp_name_{year}"
+    else:
+        caption = f"Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) ({year})"
+        label = f"biplot_statis_comp_{year}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-ipm-trans-tex", "data"),
     Input("btn-dl-ipm-trans-tex", "n_clicks"),
     State("ipm-trans-matrix-table", "data"), State("ipm-trans-matrix-table", "columns"),
+    State("ipm-trans-year-dropdown", "value"), State("ipm-trans-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_ipm_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Matriks Transisi Kategori IPM (UNDP)", "tab:ipm_trans_undp")
-    return dcc.send_string(tex_str, "output_ipm_undp.tex")
+def dl_ipm_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    y2 = int(year)
+    y1 = y2 - 1
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_ipm_matrix_{sfx}_{y1}x{y2}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Transisi Kategori IPM (UNDP) ({y1} vs {y2})"
+        label = f"ipm_transition_name_{y1}x{y2}"
+    else:
+        caption = f"Matriks Transisi Kategori IPM (UNDP) ({y1} vs {y2})"
+        label = f"ipm_transition_{y1}x{y2}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-cross-tex", "data"),
     Input("btn-dl-cross-tex", "n_clicks"),
     State("cross-table", "data"), State("cross-table", "columns"),
+    State("cross-year-dropdown", "value"), State("cross-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_cross_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Tabulasi Silang Cluster Biplot vs IPM", "tab:cross_kmeans_ipm")
-    return dcc.send_string(tex_str, "output_cross_tab.tex")
+def dl_cross_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_cross_matrix_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster Biplot vs IPM (UNDP) ({year})"
+        label = f"biplot_ipm_name_{year}"
+    else:
+        caption = f"Matriks Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({year})"
+        label = f"biplot_ipm_{year}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-biplot-statis-tex", "data"),
     Input("btn-dl-biplot-statis-tex", "n_clicks"),
     State("biplot-vs-statis-table", "data"), State("biplot-vs-statis-table", "columns"),
+    State("biplot-vs-statis-year", "value"), State("biplot-vs-statis-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_biplot_statis_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Perbandingan Cluster Biplot vs Statis", "tab:biplot_vs_statis")
-    return dcc.send_string(tex_str, "output_biplot_vs_statis.tex")
+def dl_biplot_statis_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_biplot_vs_statis_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({year})"
+        label = f"biplot_statis_name_{year}"
+    else:
+        caption = f"Matriks Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({year})"
+        label = f"biplot_statis_{year}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-statis-ipm-avg-tex", "data"),
     Input("btn-dl-statis-ipm-avg-tex", "n_clicks"),
     State("statis-vs-ipm-avg-table", "data"), State("statis-vs-ipm-avg-table", "columns"),
+    State("statis-vs-ipm-avg-year", "value"), State("statis-vs-ipm-avg-view-mode", "value"),
     prevent_initial_call=True
 )
-def dl_statis_ipm_avg_tex(n_clicks, data, columns):
-    if not data: return dash.no_update
-    tex_str = ui_table_to_latex(data, columns, "Perbandingan Cluster Statis vs IPM Rata-rata (UNDP)", "tab:statis_vs_ipm_avg")
-    return dcc.send_string(tex_str, "output_statis_vs_ipm_avg.tex")
+def dl_statis_ipm_avg_tex(n_clicks, data, columns, year, mode):
+    if not data or not year: return dash.no_update
+    sfx = "name" if mode == "names" else "sum"
+    filename = f"output_table_compromise_vs_ipm_{sfx}_{year}.tex"
+    if mode == "names":
+        caption = f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs IPM (UNDP) ({year})"
+        label = f"compromise_ipm_name_{year}"
+    else:
+        caption = f"Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) ({year})"
+        label = f"compromise_ipm_{year}"
+    tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
+    return dcc.send_string(tex_str, filename)
 
 @app.callback(
     Output("download-detail-tex", "data"),

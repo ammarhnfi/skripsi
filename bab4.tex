@@ -20,35 +20,35 @@ Langkah pertama sebelum menerapkan analisis multivariat adalah melakukan eksplor
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2020}
+\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2020 (N = 41)}
 \label{tab:deskriptif_2020}
 \input{output_real/output_table_deskriptif_2020.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2021}
+\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2021 (N = 41)}
 \label{tab:deskriptif_2021}
 \input{output_real/output_table_deskriptif_2021.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2022}
+\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2022 (N = 41)}
 \label{tab:deskriptif_2022}
 \input{output_real/output_table_deskriptif_2022.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2023}
+\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2023 (N = 41)}
 \label{tab:deskriptif_2023}
 \input{output_real/output_table_deskriptif_2023.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2024}
+\caption{Statistika Deskriptif Variabel Pembangunan Manusia Tahun 2024 (N = 41)}
 \label{tab:deskriptif_2024}
 \input{output_real/output_table_deskriptif_2024.tex}
 \end{table}
@@ -61,51 +61,90 @@ Secara keseluruhan, data menunjukkan bahwa periode 2020 hingga 2024 diwarnai ole
 
 \subsection{\normalsize Distribusi Variabel (Boxplot)}
 
-Untuk memvisualisasikan sebaran data secara lebih intuitif, termasuk mendeteksi keberadaan \textit{outlier}, disajikan diagram kotak-garis (\textit{boxplot}) untuk setiap variabel pada masing-masing tahun.
+Untuk memvisualisasikan sebaran data secara lebih intuitif, termasuk mendeteksi keberadaan \textit{outlier}, disajikan diagram kotak-garis (\textit{boxplot}) untuk setiap variabel sebagai perbandingan tahunan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ipm_2020.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ipm_2022.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ipm_2024.png}
-    \caption{Boxplot IPM Tahun 2020, 2022, dan 2024}
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ipm.png}
+    \caption{Boxplot IPM (Perbandingan Tahunan 2020--2024)}
     \label{fig:boxplot_ipm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ppm_2020.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ppm_2022.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_ppm_2024.png}
-    \caption{Boxplot Persentase Penduduk Miskin (PPM) Tahun 2020, 2022, dan 2024}
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ipg.png}
+    \caption{Boxplot IPG (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_ipg}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ppm.png}
+    \caption{Boxplot Persentase Penduduk Miskin (PPM) (Perbandingan Tahunan 2020--2024)}
     \label{fig:boxplot_ppm}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_pdrb_adhk_2020.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_pdrb_adhk_2022.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_pdrb_adhk_2024.png}
-    \caption{Boxplot PDRB ADHK Tahun 2020, 2022, dan 2024}
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_pdrb_adhk.png}
+    \caption{Boxplot PDRB ADHK (Perbandingan Tahunan 2020--2024)}
     \label{fig:boxplot_pdrb}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_tpt_2020.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_tpt_2022.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_tpt_2024.png}
-    \caption{Boxplot Tingkat Pengangguran Terbuka (TPT) Tahun 2020, 2022, dan 2024}
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_rls.png}
+    \caption{Boxplot Rata-Rata Lama Sekolah (RLS) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_rls}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ahh_l.png}
+    \caption{Boxplot Angka Harapan Hidup Laki-Laki (AHH L) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_ahh_l}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ahh_p.png}
+    \caption{Boxplot Angka Harapan Hidup Perempuan (AHH P) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_ahh_p}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_gk.png}
+    \caption{Boxplot Garis Kemiskinan (GK) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_gk}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_pkkp.png}
+    \caption{Boxplot Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_pkkp}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_tpt.png}
+    \caption{Boxplot Tingkat Pengangguran Terbuka (TPT) (Perbandingan Tahunan 2020--2024)}
     \label{fig:boxplot_tpt}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_rls_2020.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_rls_2022.png}
-    \includegraphics[width=0.32\textwidth]{output_real/boxplot_rls_2024.png}
-    \caption{Boxplot Rata-Rata Lama Sekolah (RLS) Tahun 2020, 2022, dan 2024}
-    \label{fig:boxplot_rls}
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_tpak.png}
+    \caption{Boxplot Tingkat Partisipasi Angkatan Kerja (TPAK) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_tpak}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_real/boxplot_gr.png}
+    \caption{Boxplot Gini Ratio (GR) (Perbandingan Tahunan 2020--2024)}
+    \label{fig:boxplot_gr}
 \end{figure}
 
 Boxplot pada Gambar~\ref{fig:boxplot_ipm} menunjukkan bahwa nilai IPM mengalami peningkatan yang konsisten dari 2020 ke 2024, terlihat dari pergeseran median ke atas. Pada variabel PDRB ADHK (Gambar~\ref{fig:boxplot_pdrb}), tampak \textit{outlier} ekstrem yang secara konsisten mewakili wilayah DKI Jakarta yang memiliki kapasitas ekonomi jauh melampaui wilayah lainnya. Fenomena yang sama terlihat pada TPT (Gambar~\ref{fig:boxplot_tpt}) di mana terjadi lonjakan pada 2020 akibat pandemi namun berangsur-angsur menurun padatahun selanjutnya.
@@ -202,7 +241,7 @@ Gambar~\ref{fig:compromise_map} menampilkan posisi 41 kabupaten/kota pada ruang 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\textwidth]{output_real/scenario1/compromise_map.png}
+    \includegraphics[width=0.85\textwidth]{output_real/scenario1/cluster_map_statis.png}
     \caption{Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}
     \label{fig:compromise_map}
 \end{figure}
@@ -809,25 +848,13 @@ Matriks transisi IPM di atas menunjukkan bahwa selama 2020 hingga 2024 terdapat 
 
 Untuk mengevaluasi seberapa erat kesesuaian antara klaster K-Means dengan kategori IPM UNDP, dilakukan tabulasi silang (\textit{cross-tabulation}) untuk setiap tahun pengamatan.
 
-\subsubsection*{Tahun 2020}
-\input{output_real/scenario1/output_table_cross_matrix_sum_2020.tex}
-\input{output_real/scenario1/output_table_cross_matrix_name_2020.tex}
-
-\subsubsection*{Tahun 2021}
-\input{output_real/scenario1/output_table_cross_matrix_sum_2021.tex}
-\input{output_real/scenario1/output_table_cross_matrix_name_2021.tex}
-
-\subsubsection*{Tahun 2022}
-\input{output_real/scenario1/output_table_cross_matrix_sum_2022.tex}
-\input{output_real/scenario1/output_table_cross_matrix_name_2022.tex}
-
-\subsubsection*{Tahun 2023}
-\input{output_real/scenario1/output_table_cross_matrix_sum_2023.tex}
-\input{output_real/scenario1/output_table_cross_matrix_name_2023.tex}
-
-\subsubsection*{Tahun 2024}
+\subsubsection*{Perbandingan 5: Cluster Biplot (Unweighted) vs Kategori IPM -- Tahun 2024 (Contoh)}
 \input{output_real/scenario1/output_table_cross_matrix_sum_2024.tex}
 \input{output_real/scenario1/output_table_cross_matrix_name_2024.tex}
+
+\subsubsection*{Perbandingan 6: Cluster STATIS Tahunan vs Kategori IPM -- Tahun 2024 (Contoh)}
+\input{output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex}
+\input{output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex}
 
 Dari tabulasi silang di atas, terlihat bahwa:
 \begin{itemize}
@@ -836,8 +863,41 @@ Dari tabulasi silang di atas, terlihat bahwa:
 
     \item \textbf{Klaster~2 (Berkembang) yang Heterogen:} Klaster~2 merupakan kelompok paling heterogen dari perspektif IPM karena menghimpun wilayah dari kategori ``Tinggi'' hingga ``Sedang''. Hal ini mencerminkan bahwa Klaster~2 menangkap variasi pembangunan yang lebih halus, yaitu perbedaan kecepatan dan pola pertumbuhan, yang tidak selalu direpresentasikan dengan baik melalui nilai skalar IPM saja.
 \end{itemize}
-
 Tingginya kesesuaian antara klaster \textit{data-driven} (K-Means) dengan standar institusi global (IPM UNDP) merupakan bukti \textbf{validitas eksternal} yang kuat dari metode STATIS dalam menangkap struktur laten pembangunan manusia di wilayah studi.
+
+\subsection{\normalsize Perbandingan 1: Matriks Transisi Cluster Biplot (Unweighted)}
+
+Melengkapi analisis transisi pada Subbab sebelumnya yang berfokus pada metode STATIS, berikut disajikan matriks transisi cluster berbasis K-Means Biplot PCA (\textit{Unweighted}) untuk memantau mobilitas wilayah pada ruang PCA individu tanpa koreksi temporal. Sebagai contoh representatif, periode 2023 hingga 2024 dipilih.
+
+\subsubsection*{Perbandingan 1 -- Periode 2023 hingga 2024}
+\input{output_real/output_table_biplot_transition_sum_2023x2024.tex}
+\input{output_real/output_table_biplot_transition_name_2023x2024.tex}
+
+Matriks di atas merepresentasikan kondisi terakhir periode pengamatan. Hasil lengkap untuk seluruh 4 pasangan tahun tersedia di aplikasi dashboard interaktif.
+
+\subsection{\normalsize Perbandingan 7 \& 8: Cluster Kompromi STATIS vs Cluster Tahunan}
+
+Evaluasi sejauh mana cluster berbasis trajektori keseluruhan (Kompromi STATIS) konsisten terhadap cluster tahunan dilakukan melalui dua jenis tabulasi silang: (7) Kompromi STATIS vs Biplot PCA per tahun dan (8) Kompromi STATIS vs STATIS Tahunan. Sebagai contoh representatif, tahun 2024 dipilih.
+
+\subsubsection*{Perbandingan 7 -- Kompromi STATIS vs Cluster Biplot (2024)}
+\input{output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex}
+\input{output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex}
+
+\subsubsection*{Perbandingan 8 -- Kompromi STATIS vs Cluster STATIS Tahunan (2024)}
+\input{output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex}
+\input{output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex}
+
+Tingginya kesesuaian pada diagonal utama kedua tabel di atas memvalidasi bahwa cluster Kompromi STATIS bukan sekadar rata-rata temporal, melainkan representasi yang stabil dari struktur bersama selama periode 2020 hingga 2024.
+
+\subsection{\normalsize Perbandingan 9: Kompromi STATIS vs Kategori IPM (UNDP)}
+
+Sebagai validasi eksternal final, cluster Kompromi STATIS (berbasis trajektori keseluruhan) dibandingkan dengan klasifikasi IPM UNDP per tahun. Sebagai contoh representatif, tahun 2024 dipilih.
+
+\subsubsection*{Perbandingan 9 -- Kompromi STATIS vs Kategori IPM (2024)}
+\input{output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex}
+\input{output_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex}
+
+Konsistensi antara cluster trajektori dengan kategori IPM tahunan mengkonfirmasi bahwa pengelompokan berbasis STATIS mampu merekam struktur pembangunan jangka panjang secara lebih holistik dibandingkan analisis satu-tahun.
 
 % --- 4.9 ---
 \section{\normalsize Uji Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}

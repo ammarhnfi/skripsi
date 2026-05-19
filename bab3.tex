@@ -464,64 +464,66 @@ Setelah memperoleh matriks interstruktur $\mathbf{H}_W$ (Skenario 1) dan memasti
 
 Perbedaan pola temporal antara $\tilde{\boldsymbol{\beta}}$ gabungan yang cenderung meningkat (menunjukkan kestabilan struktur yang menguat) dengan $\tilde{\boldsymbol{\beta}}_{\text{Jabar}}$ yang menurun mencerminkan dinamika lokal sub-populasi yang berbeda dari tren global.
 
-\subsubsection{Tahap 8: Perbandingan Cluster Biplot vs STATIS}
-Untuk mengilustrasikan keunggulan STATIS yang mengakomodasi informasi temporal, kita dapat membandingkan cluster yang terbentuk dari matriks koordinat STATIS $\mathbf{F}_k$ dengan cluster yang dibentuk secara murni dari Principal Component Analysis (PCA) pada tahun individu (Biplot Unweighted). 
+\subsubsection{Tahap 8: Analisis Perbandingan Cluster (9 Jenis)}
+Untuk mengevaluasi konsistensi dan dinamika hasil pengelompokan secara komprehensif, penelitian ini melaksanakan sembilan jenis analisis perbandingan yang terstruktur dalam empat kategori, sesuai dengan kerangka spasio-temporal STATIS:
 
-Dalam PCA standar, koordinat objek pada tahun $k$ (misalnya tahun 2020) dihitung semata-mata dengan memproyeksikan data yang distandardisasi ($\mathbf{Z}_{2020}$) ke matriks vektor eigen $\mathbf{V}_{2020}$ hasil dekomposisi matriks kovariansi pada tahun tersebut, yang dirumuskan sebagai:
-\begin{equation}
-    \mathbf{F}_{\text{PCA}, 2020} = \mathbf{Z}_{2020} \mathbf{V}_{2020} \label{eq:pca_scores_2020}
-\end{equation}
+\begin{enumerate}
+    \item \textbf{Perbandingan 1 -- Transisi Biplot $k \to k+1$:} Matriks transisi cluster hasil K-Means Biplot PCA (Unweighted) antar-tahun berturutan, untuk memonitor mobilitas wilayah pada ruang PCA individu tanpa koreksi temporal.
+    \item \textbf{Perbandingan 2 -- Transisi STATIS $k \to k+1$:} Matriks transisi cluster hasil K-Means pada koordinat STATIS tahunan ($\mathbf{F}_k$) antar-tahun berturutan, untuk memantau mobilitas berbasis struktur kompromi terbobot.
+    \item \textbf{Perbandingan 3 -- Biplot $k$ vs STATIS $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan label cluster STATIS Tahunan ($\mathbf{F}_k$) pada tahun yang sama, untuk mengukur perbedaan struktural akibat bobot temporal.
+    \item \textbf{Perbandingan 4 -- Transisi IPM $k \to k+1$:} Matriks transisi klasifikasi kategori IPM (UNDP) antar-tahun berturutan, sebagai \textit{baseline} mobilitas normatif berbasis standar internasional.
+    \item \textbf{Perbandingan 5 -- Biplot $k$ vs IPM $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode Biplot.
+    \item \textbf{Perbandingan 6 -- STATIS $k$ vs IPM $k$:} Tabulasi silang antara label cluster STATIS Tahunan ($\mathbf{F}_k$) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode STATIS.
+    \item \textbf{Perbandingan 7 -- Kompromi STATIS vs Biplot $k$:} Tabulasi silang antara label cluster Kompromi STATIS (hasil clustering trajektori keseluruhan) dengan label cluster Biplot PCA pada setiap tahun, untuk mengukur konsistensi posisi relatif lintas metode.
+    \item \textbf{Perbandingan 8 -- Kompromi STATIS vs STATIS $k$:} Tabulasi silang antara label cluster Kompromi STATIS (clustering trajektori keseluruhan) dengan label cluster STATIS Tahunan pada setiap tahun, untuk mengevaluasi seberapa representatif kompromi terhadap gambaran tahunan.
+    \item \textbf{Perbandingan 9 -- Kompromi STATIS vs IPM $k$:} Tabulasi silang antara label cluster Kompromi STATIS dengan klasifikasi Kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal final dari pengelompokan berbasis trajektori.
+\end{enumerate}
 
-Berbeda halnya dengan metode STATIS, di mana proyeksi data pada tahun 2020 ($\mathbf{Z}_{2020}$) dilakukan terhadap vektor kompromi lintas tahun $\mathbf{V}_c^{(s)}$ (yang berbeda untuk setiap skenario $s$):
-\begin{equation}
-    \mathbf{F}_{\text{STATIS}, 2020}^{(s)} = \mathbf{Z}_{2020} \mathbf{V}_c^{(s)} \label{eq:statis_scores_2020}
-\end{equation}
+Tabel perbandingan untuk setiap jenis disajikan masing-masing satu contoh (tahun atau pasangan tahun representatif) berikut sebagai bagian dari dokumentasi metodologi. Hasil komparasi selengkapnya untuk seluruh tahun tersedia pada dashboard interaktif.
 
-Perbedaan proyeksi ini menyebabkan titik koordinat masing-masing wilayah berada pada posisi yang berbeda, sehingga saat algoritma K-Means ($k=3$) diterapkan, susunan keanggotaan cluster dapat berubah. Perbandingan ini dilakukan secara terpisah untuk setiap skenario karena $\mathbf{V}_c^{(1)} \neq \mathbf{V}_c^{(2)}$.
+{\renewcommand{\label}[1]{}
+\paragraph{Contoh: Perbandingan 1 -- Transisi Biplot (Tahun 2020 vs 2021):}
+\input{output_sample/output_table_biplot_transition_sum_2020x2021.tex}
+\input{output_sample/output_table_biplot_transition_name_2020x2021.tex}
 
-Dua jenis tabel disajikan untuk setiap skenario:
-\begin{itemize}
-    \item \textbf{Tabel Jumlah (\textit{Sum}):} Matriks tabulasi silang yang menunjukkan berapa banyak wilayah berpindah cluster dari Biplot ke STATIS.
-    \item \textbf{Tabel Nama (\textit{Name}):} Daftar nama wilayah spesifik yang mengalami reklasifikasi cluster.
-\end{itemize}
+\paragraph{Contoh: Perbandingan 2 -- Transisi STATIS (Skenario 1, Tahun 2020 vs 2021):}
+\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_transition_matrix_name_2020x2021.tex}
 
-\paragraph{Skenario 1 (ACT Klasik -- Host = Wilayah):}
+\paragraph{Contoh: Perbandingan 3 -- Biplot vs STATIS (Skenario 1, Tahun 2020):}
 \input{output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex}
 \input{output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex}
 
-\paragraph{Skenario 2 (Dual STATIS -- Host = Indikator):}
-\input{output_sample/scenario2/output_table_biplot_vs_statis_compare_sum_2020.tex}
-\input{output_sample/scenario2/output_table_biplot_vs_statis_compare_name_2020.tex}
+\paragraph{Contoh: Perbandingan 4 -- Transisi Kategori IPM (Tahun 2020 vs 2021):}
+\input{output_sample/scenario1/output_table_ipm_matrix_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_ipm_matrix_name_2020x2021.tex}
 
-Gambar~\ref{fig:map_biplot_statis_sample_2020} memvisualisasikan perbedaan hasil pengelompokan tersebut secara spasial (berdasarkan Skenario~1).
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_sample/cluster_map_biplot_2020.png}
-        \caption*{Peta Cluster Biplot (Unweighted)}
-    \end{minipage} \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2020.png}
-        \caption*{Peta Cluster STATIS (Skenario 1)}
-    \end{minipage}
-    \caption{Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel Skenario 1 (2020)}
-    \label{fig:map_biplot_statis_sample_2020}
-\end{figure}
-
-\subsubsection{Tahap 9: Validasi Eksternal (Cross-tab vs Kategori IPM UNDP)}
-Sebagai bentuk validasi eksternal, hasil pengelompokan yang bersifat obyektif (\textit{data-driven}) dihadapkan dengan klasifikasi normatif IPM dari UNDP (Sangat Tinggi, Tinggi, Sedang, Rendah). Tabel perbandingan ini \textbf{tidak bergantung pada skenario STATIS} (hanya menggunakan label cluster K-Means per tahun), sehingga disimpan sebagai output bersama (\textit{shared}) di folder root.
-
+\paragraph{Contoh: Perbandingan 5 -- Biplot vs Kategori IPM (Tahun 2020):}
 \input{output_sample/scenario1/output_table_cross_matrix_sum_2020.tex}
 \input{output_sample/scenario1/output_table_cross_matrix_name_2020.tex}
+
+\paragraph{Contoh: Perbandingan 6 -- STATIS vs Kategori IPM (Skenario 1, Tahun 2020):}
+\input{output_sample/scenario1/output_table_statis_vs_ipm_sum_2020.tex}
+\input{output_sample/scenario1/output_table_statis_vs_ipm_name_2020.tex}
+
+\paragraph{Contoh: Perbandingan 7 -- Kompromi STATIS vs Biplot (Skenario 1, Tahun 2020):}
+\input{output_sample/scenario1/output_table_biplot_vs_compromise_sum_2020.tex}
+\input{output_sample/scenario1/output_table_biplot_vs_compromise_name_2020.tex}
+
+\paragraph{Contoh: Perbandingan 8 -- Kompromi STATIS vs STATIS Tahunan (Skenario 1, Tahun 2020):}
+\input{output_sample/scenario1/output_table_compromise_vs_statis_sum_2020.tex}
+\input{output_sample/scenario1/output_table_compromise_vs_statis_name_2020.tex}
+
+\paragraph{Contoh: Perbandingan 9 -- Kompromi STATIS vs Kategori IPM (Skenario 1, Tahun 2020):}
+\input{output_sample/scenario1/output_table_compromise_vs_ipm_sum_2020.tex}
+\input{output_sample/scenario1/output_table_compromise_vs_ipm_name_2020.tex}
+}
 
 \subsection{\normalsize Konsolidasi Hasil Komputasi Interstruktur dan Intra-Situasi}
 Untuk memberikan transparansi penuh terhadap proses komputasi, bagian ini merangkum seluruh parameter struktural yang dihasilkan oleh sistem selama pemrosesan data sampel (2020--2022).
 
 \subsubsection{Matriks Interstruktur dan Koefisien Kemiripan}
-Matriks kemiripan struktural antar-tahun dihitung menggunakan Koefisien RV dan hasil dekomposisi Hilbert-Schmidt, sebagaimana disajikan pada tabel-tabel berikut.
+Matriks kemiripan struktural antar-tahun dihitung menggunakan Koefisien RV dan hasil dekomposisi Hilbert-Schmidt, sebagaimana disajikan pada tabel-tabel berikut. Perlu dicatat bahwa matriks interstruktur ($R_V$ dan $H$) yang dihasilkan untuk Skenario 1 (Indikator) dan Skenario 2 (Wilayah) bernilai identik. Hal ini disebabkan karena dekomposisi interstruktur STATIS hanya bergantung pada matriks data terstandar dan struktur pembobotan awal yang sama pada tiap tahun sebelum dilakukan analisis arah proyeksi yang membedakan kedua skenario. Oleh karena itu, matriks-matriks ini disajikan sebagai hasil bersama (*shared*) untuk kedua skenario guna menghindari duplikasi penyajian data.
 
 {\renewcommand{\label}[1]{}
 \input{output_sample/output_table_rv_w.tex}
@@ -562,17 +564,30 @@ Berikut disajikan rangkaian visualisasi snapshot tahunan yang mencakup peta seba
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_sample/boxplot_ppm_2020.png}
-        \caption*{PPM 2020}
-    \end{minipage} \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_sample/boxplot_ppm_2022.png}
-        \caption*{PPM 2022}
-    \end{minipage}
-    \caption{Contoh Distribusi Boxplot Indikator PPM (Awal vs Akhir Periode)}
+    \includegraphics[width=0.75\textwidth]{output_sample/boxplot_ipm.png}
+    \caption{Contoh Distribusi Boxplot Indikator IPM (Perbandingan Tahunan)}
+    \label{fig:boxplot_ipm_sample}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_sample/boxplot_ppm.png}
+    \caption{Contoh Distribusi Boxplot Indikator PPM (Perbandingan Tahunan)}
+    \label{fig:boxplot_ppm_sample}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_sample/boxplot_rls.png}
+    \caption{Contoh Distribusi Boxplot Indikator RLS (Perbandingan Tahunan)}
+    \label{fig:boxplot_rls_sample}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_sample/boxplot_tpt.png}
+    \caption{Contoh Distribusi Boxplot Indikator TPT (Perbandingan Tahunan)}
+    \label{fig:boxplot_tpt_sample}
 \end{figure}
 
 \subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}

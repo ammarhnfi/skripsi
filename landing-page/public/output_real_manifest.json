@@ -1,45 +1,5 @@
 [
   {
-    "name": "cluster_scatter_biplot_2020.png",
-    "caption": "Cluster Scatter Biplot 2020",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_scatter_biplot_2020.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_biplot_2021.png",
-    "caption": "Cluster Scatter Biplot 2021",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_scatter_biplot_2021.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_biplot_2022.png",
-    "caption": "Cluster Scatter Biplot 2022",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_scatter_biplot_2022.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_biplot_2023.png",
-    "caption": "Cluster Scatter Biplot 2023",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_scatter_biplot_2023.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_biplot_2024.png",
-    "caption": "Cluster Scatter Biplot 2024",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_scatter_biplot_2024.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "cluster_scatter_statis.png",
     "caption": "Cluster Scatter Statis",
     "type": "image",
@@ -248,6 +208,54 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "cluster_pie_statis.png",
+    "caption": "Cluster Pie Statis",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2020.png",
+    "caption": "Cluster Pie Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis_2020.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2021.png",
+    "caption": "Cluster Pie Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis_2021.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2022.png",
+    "caption": "Cluster Pie Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis_2022.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2023.png",
+    "caption": "Cluster Pie Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis_2023.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2024.png",
+    "caption": "Cluster Pie Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_pie_statis_2024.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "compromise_biplot_matplotlib.png",
     "caption": "Compromise Biplot Matplotlib",
     "type": "image",
@@ -328,6 +336,46 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "compare_map_biplot_vs_ipm_2020.png",
+    "caption": "Compare Map Biplot Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_biplot_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2021.png",
+    "caption": "Compare Map Biplot Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_biplot_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2022.png",
+    "caption": "Compare Map Biplot Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_biplot_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2023.png",
+    "caption": "Compare Map Biplot Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_biplot_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2024.png",
+    "caption": "Compare Map Biplot Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_biplot_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "compare_map_biplot_vs_statis_2020.png",
     "caption": "Compare Map Biplot Vs Statis 2020",
     "type": "image",
@@ -364,6 +412,198 @@
     "caption": "Compare Map Biplot Vs Statis 2024",
     "type": "image",
     "src": "/output_real/scenario1/compare_map_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2020.png",
+    "caption": "Compare Map Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2021.png",
+    "caption": "Compare Map Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2022.png",
+    "caption": "Compare Map Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2023.png",
+    "caption": "Compare Map Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2024.png",
+    "caption": "Compare Map Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2020.png",
+    "caption": "Compare Map Compromise Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2021.png",
+    "caption": "Compare Map Compromise Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2022.png",
+    "caption": "Compare Map Compromise Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2023.png",
+    "caption": "Compare Map Compromise Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2024.png",
+    "caption": "Compare Map Compromise Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2020.png",
+    "caption": "Compare Map Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2021.png",
+    "caption": "Compare Map Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2022.png",
+    "caption": "Compare Map Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2023.png",
+    "caption": "Compare Map Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2024.png",
+    "caption": "Compare Map Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_compromise_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_ipm_2020x2021.png",
+    "caption": "Compare Map Ipm 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_ipm_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_ipm_2021x2022.png",
+    "caption": "Compare Map Ipm 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_ipm_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_ipm_2022x2023.png",
+    "caption": "Compare Map Ipm 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_ipm_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_ipm_2023x2024.png",
+    "caption": "Compare Map Ipm 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_ipm_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2020.png",
+    "caption": "Compare Map Statis Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_statis_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2021.png",
+    "caption": "Compare Map Statis Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_statis_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2022.png",
+    "caption": "Compare Map Statis Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_statis_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2023.png",
+    "caption": "Compare Map Statis Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_statis_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2024.png",
+    "caption": "Compare Map Statis Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_map_statis_vs_ipm_2024.png",
     "group": "Perbandingan Bersandingan",
     "scenario": "Scenario 1"
   },
@@ -432,6 +672,342 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "compare_pie_biplot_vs_ipm_2020.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2021.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2022.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2023.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2024.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2020.png",
+    "caption": "Compare Pie Biplot Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2021.png",
+    "caption": "Compare Pie Biplot Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2022.png",
+    "caption": "Compare Pie Biplot Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2023.png",
+    "caption": "Compare Pie Biplot Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2024.png",
+    "caption": "Compare Pie Biplot Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2020.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2021.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2022.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2023.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2024.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2020.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2021.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2022.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2023.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2024.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2020.png",
+    "caption": "Compare Pie Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2021.png",
+    "caption": "Compare Pie Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2022.png",
+    "caption": "Compare Pie Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2023.png",
+    "caption": "Compare Pie Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2024.png",
+    "caption": "Compare Pie Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_compromise_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_ipm_2020x2021.png",
+    "caption": "Compare Pie Ipm 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_ipm_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_ipm_2021x2022.png",
+    "caption": "Compare Pie Ipm 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_ipm_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_ipm_2022x2023.png",
+    "caption": "Compare Pie Ipm 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_ipm_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_ipm_2023x2024.png",
+    "caption": "Compare Pie Ipm 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_ipm_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2020.png",
+    "caption": "Compare Pie Statis Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_statis_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2021.png",
+    "caption": "Compare Pie Statis Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_statis_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2022.png",
+    "caption": "Compare Pie Statis Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_statis_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2023.png",
+    "caption": "Compare Pie Statis Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_statis_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2024.png",
+    "caption": "Compare Pie Statis Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_statis_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2020x2021.png",
+    "caption": "Compare Pie Trans Biplot 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_biplot_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2021x2022.png",
+    "caption": "Compare Pie Trans Biplot 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_biplot_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2022x2023.png",
+    "caption": "Compare Pie Trans Biplot 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_biplot_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2023x2024.png",
+    "caption": "Compare Pie Trans Biplot 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_biplot_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_statis_2020x2021.png",
+    "caption": "Compare Pie Trans Statis 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_statis_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_statis_2021x2022.png",
+    "caption": "Compare Pie Trans Statis 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_statis_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_statis_2022x2023.png",
+    "caption": "Compare Pie Trans Statis 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_statis_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_pie_trans_statis_2023x2024.png",
+    "caption": "Compare Pie Trans Statis 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_pie_trans_statis_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "compare_scatter_biplot_vs_statis_2020.png",
     "caption": "Compare Scatter Biplot Vs Statis 2020",
     "type": "image",
@@ -468,6 +1044,86 @@
     "caption": "Compare Scatter Biplot Vs Statis 2024",
     "type": "image",
     "src": "/output_real/scenario1/compare_scatter_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2020.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2021.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2022.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2023.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2024.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2020.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2021.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2022.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2023.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2024.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/compare_scatter_compromise_vs_statis_2024.png",
     "group": "Perbandingan Bersandingan",
     "scenario": "Scenario 1"
   },
@@ -648,6 +1304,86 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_biplot_vs_compromise_name_2020.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2021.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2022.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2023.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2024.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2020.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2021.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2022.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2023.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2024.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
     "caption": "Output Table Biplot Vs Statis Compare Name 2020",
     "type": "text",
@@ -812,6 +1548,166 @@
     "caption": "Output Table Cluster Members",
     "type": "text",
     "src": "/output_real/scenario1/output_table_cluster_members.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2020.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2021.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2022.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2023.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2024.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2020.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2021.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2022.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2023.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2024.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2020.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2021.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2022.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2023.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2024.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2020.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2021.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2022.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2023.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2024.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1184,18 +2080,82 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_name.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "name": "output_table_statis_vs_ipm_name_2020.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2020",
     "type": "text",
-    "src": "/output_real/scenario1/output_table_statis_vs_ipm_avg_name.tex",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_name_2020.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_sum.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "name": "output_table_statis_vs_ipm_name_2021.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2021",
     "type": "text",
-    "src": "/output_real/scenario1/output_table_statis_vs_ipm_avg_sum.tex",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2022.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2023.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2024.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2020.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2021.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2022.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2023.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2024.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1270,46 +2230,6 @@
     "src": "/output_real/scenario1/output_table_transition_matrix_sum_2023x2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_biplot_2020.png",
-    "caption": "Cluster Scatter Biplot 2020",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_scatter_biplot_2020.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_scatter_biplot_2021.png",
-    "caption": "Cluster Scatter Biplot 2021",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_scatter_biplot_2021.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_scatter_biplot_2022.png",
-    "caption": "Cluster Scatter Biplot 2022",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_scatter_biplot_2022.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_scatter_biplot_2023.png",
-    "caption": "Cluster Scatter Biplot 2023",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_scatter_biplot_2023.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_scatter_biplot_2024.png",
-    "caption": "Cluster Scatter Biplot 2024",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_scatter_biplot_2024.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
   },
   {
     "name": "cluster_scatter_statis.png",
@@ -1520,6 +2440,54 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "cluster_pie_statis.png",
+    "caption": "Cluster Pie Statis",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2020.png",
+    "caption": "Cluster Pie Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis_2020.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2021.png",
+    "caption": "Cluster Pie Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis_2021.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2022.png",
+    "caption": "Cluster Pie Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis_2022.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2023.png",
+    "caption": "Cluster Pie Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis_2023.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2024.png",
+    "caption": "Cluster Pie Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_pie_statis_2024.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "compromise_biplot_matplotlib.png",
     "caption": "Compromise Biplot Matplotlib",
     "type": "image",
@@ -1600,6 +2568,46 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "compare_map_biplot_vs_ipm_2020.png",
+    "caption": "Compare Map Biplot Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_biplot_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2021.png",
+    "caption": "Compare Map Biplot Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_biplot_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2022.png",
+    "caption": "Compare Map Biplot Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_biplot_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2023.png",
+    "caption": "Compare Map Biplot Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_biplot_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_biplot_vs_ipm_2024.png",
+    "caption": "Compare Map Biplot Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_biplot_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "compare_map_biplot_vs_statis_2020.png",
     "caption": "Compare Map Biplot Vs Statis 2020",
     "type": "image",
@@ -1636,6 +2644,198 @@
     "caption": "Compare Map Biplot Vs Statis 2024",
     "type": "image",
     "src": "/output_real/scenario2/compare_map_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2020.png",
+    "caption": "Compare Map Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2021.png",
+    "caption": "Compare Map Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2022.png",
+    "caption": "Compare Map Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2023.png",
+    "caption": "Compare Map Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_biplot_2024.png",
+    "caption": "Compare Map Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2020.png",
+    "caption": "Compare Map Compromise Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2021.png",
+    "caption": "Compare Map Compromise Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2022.png",
+    "caption": "Compare Map Compromise Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2023.png",
+    "caption": "Compare Map Compromise Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_ipm_2024.png",
+    "caption": "Compare Map Compromise Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2020.png",
+    "caption": "Compare Map Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2021.png",
+    "caption": "Compare Map Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2022.png",
+    "caption": "Compare Map Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2023.png",
+    "caption": "Compare Map Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_compromise_vs_statis_2024.png",
+    "caption": "Compare Map Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_compromise_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_ipm_2020x2021.png",
+    "caption": "Compare Map Ipm 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_ipm_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_ipm_2021x2022.png",
+    "caption": "Compare Map Ipm 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_ipm_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_ipm_2022x2023.png",
+    "caption": "Compare Map Ipm 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_ipm_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_ipm_2023x2024.png",
+    "caption": "Compare Map Ipm 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_ipm_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2020.png",
+    "caption": "Compare Map Statis Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_statis_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2021.png",
+    "caption": "Compare Map Statis Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_statis_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2022.png",
+    "caption": "Compare Map Statis Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_statis_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2023.png",
+    "caption": "Compare Map Statis Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_statis_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_map_statis_vs_ipm_2024.png",
+    "caption": "Compare Map Statis Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_map_statis_vs_ipm_2024.png",
     "group": "Perbandingan Bersandingan",
     "scenario": "Scenario 2"
   },
@@ -1704,6 +2904,342 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "compare_pie_biplot_vs_ipm_2020.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2021.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2022.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2023.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_ipm_2024.png",
+    "caption": "Compare Pie Biplot Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2020.png",
+    "caption": "Compare Pie Biplot Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2021.png",
+    "caption": "Compare Pie Biplot Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2022.png",
+    "caption": "Compare Pie Biplot Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2023.png",
+    "caption": "Compare Pie Biplot Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_biplot_vs_statis_2024.png",
+    "caption": "Compare Pie Biplot Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2020.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2021.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2022.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2023.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_biplot_2024.png",
+    "caption": "Compare Pie Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2020.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2021.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2022.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2023.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_ipm_2024.png",
+    "caption": "Compare Pie Compromise Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2020.png",
+    "caption": "Compare Pie Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2021.png",
+    "caption": "Compare Pie Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2022.png",
+    "caption": "Compare Pie Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2023.png",
+    "caption": "Compare Pie Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_compromise_vs_statis_2024.png",
+    "caption": "Compare Pie Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_compromise_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_ipm_2020x2021.png",
+    "caption": "Compare Pie Ipm 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_ipm_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_ipm_2021x2022.png",
+    "caption": "Compare Pie Ipm 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_ipm_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_ipm_2022x2023.png",
+    "caption": "Compare Pie Ipm 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_ipm_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_ipm_2023x2024.png",
+    "caption": "Compare Pie Ipm 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_ipm_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2020.png",
+    "caption": "Compare Pie Statis Vs Ipm 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_statis_vs_ipm_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2021.png",
+    "caption": "Compare Pie Statis Vs Ipm 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_statis_vs_ipm_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2022.png",
+    "caption": "Compare Pie Statis Vs Ipm 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_statis_vs_ipm_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2023.png",
+    "caption": "Compare Pie Statis Vs Ipm 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_statis_vs_ipm_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_statis_vs_ipm_2024.png",
+    "caption": "Compare Pie Statis Vs Ipm 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_statis_vs_ipm_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2020x2021.png",
+    "caption": "Compare Pie Trans Biplot 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_biplot_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2021x2022.png",
+    "caption": "Compare Pie Trans Biplot 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_biplot_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2022x2023.png",
+    "caption": "Compare Pie Trans Biplot 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_biplot_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_biplot_2023x2024.png",
+    "caption": "Compare Pie Trans Biplot 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_biplot_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_statis_2020x2021.png",
+    "caption": "Compare Pie Trans Statis 2020X2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_statis_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_statis_2021x2022.png",
+    "caption": "Compare Pie Trans Statis 2021X2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_statis_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_statis_2022x2023.png",
+    "caption": "Compare Pie Trans Statis 2022X2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_statis_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_pie_trans_statis_2023x2024.png",
+    "caption": "Compare Pie Trans Statis 2023X2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_pie_trans_statis_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "compare_scatter_biplot_vs_statis_2020.png",
     "caption": "Compare Scatter Biplot Vs Statis 2020",
     "type": "image",
@@ -1740,6 +3276,86 @@
     "caption": "Compare Scatter Biplot Vs Statis 2024",
     "type": "image",
     "src": "/output_real/scenario2/compare_scatter_biplot_vs_statis_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2020.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_biplot_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2021.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_biplot_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2022.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_biplot_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2023.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_biplot_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_biplot_2024.png",
+    "caption": "Compare Scatter Compromise Vs Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_biplot_2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2020.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2021.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2022.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2023.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compare_scatter_compromise_vs_statis_2024.png",
+    "caption": "Compare Scatter Compromise Vs Statis 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/compare_scatter_compromise_vs_statis_2024.png",
     "group": "Perbandingan Bersandingan",
     "scenario": "Scenario 2"
   },
@@ -1920,6 +3536,86 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_biplot_vs_compromise_name_2020.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2021.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2022.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2023.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_name_2024.tex",
+    "caption": "Output Table Biplot Vs Compromise Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2020.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2021.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2022.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2023.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_biplot_vs_compromise_sum_2024.tex",
+    "caption": "Output Table Biplot Vs Compromise Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_biplot_vs_compromise_sum_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
     "caption": "Output Table Biplot Vs Statis Compare Name 2020",
     "type": "text",
@@ -2084,6 +3780,166 @@
     "caption": "Output Table Cluster Members",
     "type": "text",
     "src": "/output_real/scenario2/output_table_cluster_members.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2020.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2021.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2022.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2023.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_name_2024.tex",
+    "caption": "Output Table Compromise Vs Ipm Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2020.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2021.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2022.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2023.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_ipm_sum_2024.tex",
+    "caption": "Output Table Compromise Vs Ipm Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_ipm_sum_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2020.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2021.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2022.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2023.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_name_2024.tex",
+    "caption": "Output Table Compromise Vs Statis Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2020.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2021.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2022.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2023.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_compromise_vs_statis_sum_2024.tex",
+    "caption": "Output Table Compromise Vs Statis Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_compromise_vs_statis_sum_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2456,18 +4312,82 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_name.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "name": "output_table_statis_vs_ipm_name_2020.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2020",
     "type": "text",
-    "src": "/output_real/scenario2/output_table_statis_vs_ipm_avg_name.tex",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_name_2020.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_sum.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "name": "output_table_statis_vs_ipm_name_2021.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2021",
     "type": "text",
-    "src": "/output_real/scenario2/output_table_statis_vs_ipm_avg_sum.tex",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2022.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2023.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_name_2024.tex",
+    "caption": "Output Table Statis Vs Ipm Name 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_name_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2020.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2020",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2021.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2021",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2022.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2022",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2023.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2023",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_sum_2024.tex",
+    "caption": "Output Table Statis Vs Ipm Sum 2024",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_sum_2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2632,90 +4552,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_ahh_l_2020.png",
-    "caption": "Boxplot Ahh L 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_l_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_l_2021.png",
-    "caption": "Boxplot Ahh L 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_l_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_l_2022.png",
-    "caption": "Boxplot Ahh L 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_l_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_l_2023.png",
-    "caption": "Boxplot Ahh L 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_l_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_l_2024.png",
-    "caption": "Boxplot Ahh L 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_l_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_ahh_p.png",
     "caption": "Boxplot Ahh P",
     "type": "image",
     "src": "/output_real/boxplot_ahh_p.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_p_2020.png",
-    "caption": "Boxplot Ahh P 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_p_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_p_2021.png",
-    "caption": "Boxplot Ahh P 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_p_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_p_2022.png",
-    "caption": "Boxplot Ahh P 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_p_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_p_2023.png",
-    "caption": "Boxplot Ahh P 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_p_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ahh_p_2024.png",
-    "caption": "Boxplot Ahh P 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_ahh_p_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -2728,90 +4568,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_gk_2020.png",
-    "caption": "Boxplot Gk 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_gk_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gk_2021.png",
-    "caption": "Boxplot Gk 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_gk_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gk_2022.png",
-    "caption": "Boxplot Gk 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_gk_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gk_2023.png",
-    "caption": "Boxplot Gk 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_gk_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gk_2024.png",
-    "caption": "Boxplot Gk 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_gk_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_gr.png",
     "caption": "Boxplot Gr",
     "type": "image",
     "src": "/output_real/boxplot_gr.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gr_2020.png",
-    "caption": "Boxplot Gr 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_gr_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gr_2021.png",
-    "caption": "Boxplot Gr 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_gr_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gr_2022.png",
-    "caption": "Boxplot Gr 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_gr_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gr_2023.png",
-    "caption": "Boxplot Gr 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_gr_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_gr_2024.png",
-    "caption": "Boxplot Gr 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_gr_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -2824,122 +4584,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_ipg_2020.png",
-    "caption": "Boxplot Ipg 2020",
+    "name": "boxplot_ipm.png",
+    "caption": "Boxplot Ipm",
     "type": "image",
-    "src": "/output_real/boxplot_ipg_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipg_2021.png",
-    "caption": "Boxplot Ipg 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_ipg_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipg_2022.png",
-    "caption": "Boxplot Ipg 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_ipg_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipg_2023.png",
-    "caption": "Boxplot Ipg 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_ipg_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipg_2024.png",
-    "caption": "Boxplot Ipg 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_ipg_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2020.png",
-    "caption": "Boxplot Ipm 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_ipm_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2021.png",
-    "caption": "Boxplot Ipm 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_ipm_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2022.png",
-    "caption": "Boxplot Ipm 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_ipm_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2023.png",
-    "caption": "Boxplot Ipm 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_ipm_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2024.png",
-    "caption": "Boxplot Ipm 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_ipm_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2020.png",
-    "caption": "Boxplot Jp 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_jp_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2021.png",
-    "caption": "Boxplot Jp 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_jp_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2022.png",
-    "caption": "Boxplot Jp 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_jp_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2023.png",
-    "caption": "Boxplot Jp 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_jp_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2024.png",
-    "caption": "Boxplot Jp 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_jp_2024.png",
+    "src": "/output_real/boxplot_ipm.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -2952,90 +4600,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_pdrb_adhk_2020.png",
-    "caption": "Boxplot Pdrb Adhk 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_pdrb_adhk_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pdrb_adhk_2021.png",
-    "caption": "Boxplot Pdrb Adhk 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_pdrb_adhk_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pdrb_adhk_2022.png",
-    "caption": "Boxplot Pdrb Adhk 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_pdrb_adhk_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pdrb_adhk_2023.png",
-    "caption": "Boxplot Pdrb Adhk 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_pdrb_adhk_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pdrb_adhk_2024.png",
-    "caption": "Boxplot Pdrb Adhk 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_pdrb_adhk_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_pkkp.png",
     "caption": "Boxplot Pkkp",
     "type": "image",
     "src": "/output_real/boxplot_pkkp.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pkkp_2020.png",
-    "caption": "Boxplot Pkkp 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_pkkp_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pkkp_2021.png",
-    "caption": "Boxplot Pkkp 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_pkkp_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pkkp_2022.png",
-    "caption": "Boxplot Pkkp 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_pkkp_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pkkp_2023.png",
-    "caption": "Boxplot Pkkp 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_pkkp_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_pkkp_2024.png",
-    "caption": "Boxplot Pkkp 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_pkkp_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -3048,90 +4616,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_ppm_2020.png",
-    "caption": "Boxplot Ppm 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_ppm_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2021.png",
-    "caption": "Boxplot Ppm 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_ppm_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2022.png",
-    "caption": "Boxplot Ppm 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_ppm_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2023.png",
-    "caption": "Boxplot Ppm 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_ppm_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2024.png",
-    "caption": "Boxplot Ppm 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_ppm_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_rls.png",
     "caption": "Boxplot Rls",
     "type": "image",
     "src": "/output_real/boxplot_rls.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2020.png",
-    "caption": "Boxplot Rls 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_rls_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2021.png",
-    "caption": "Boxplot Rls 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_rls_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2022.png",
-    "caption": "Boxplot Rls 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_rls_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2023.png",
-    "caption": "Boxplot Rls 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_rls_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2024.png",
-    "caption": "Boxplot Rls 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_rls_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -3144,90 +4632,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_tpak_2020.png",
-    "caption": "Boxplot Tpak 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_tpak_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpak_2021.png",
-    "caption": "Boxplot Tpak 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_tpak_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpak_2022.png",
-    "caption": "Boxplot Tpak 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_tpak_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpak_2023.png",
-    "caption": "Boxplot Tpak 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_tpak_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpak_2024.png",
-    "caption": "Boxplot Tpak 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_tpak_2024.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_tpt.png",
     "caption": "Boxplot Tpt",
     "type": "image",
     "src": "/output_real/boxplot_tpt.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2020.png",
-    "caption": "Boxplot Tpt 2020",
-    "type": "image",
-    "src": "/output_real/boxplot_tpt_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2021.png",
-    "caption": "Boxplot Tpt 2021",
-    "type": "image",
-    "src": "/output_real/boxplot_tpt_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2022.png",
-    "caption": "Boxplot Tpt 2022",
-    "type": "image",
-    "src": "/output_real/boxplot_tpt_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2023.png",
-    "caption": "Boxplot Tpt 2023",
-    "type": "image",
-    "src": "/output_real/boxplot_tpt_2023.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2024.png",
-    "caption": "Boxplot Tpt 2024",
-    "type": "image",
-    "src": "/output_real/boxplot_tpt_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -3269,6 +4677,126 @@
     "type": "image",
     "src": "/output_real/elbow_plot_2024.png",
     "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_pie_biplot_2020.png",
+    "caption": "Cluster Pie Biplot 2020",
+    "type": "image",
+    "src": "/output_real/cluster_pie_biplot_2020.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_pie_biplot_2021.png",
+    "caption": "Cluster Pie Biplot 2021",
+    "type": "image",
+    "src": "/output_real/cluster_pie_biplot_2021.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_pie_biplot_2022.png",
+    "caption": "Cluster Pie Biplot 2022",
+    "type": "image",
+    "src": "/output_real/cluster_pie_biplot_2022.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_pie_biplot_2023.png",
+    "caption": "Cluster Pie Biplot 2023",
+    "type": "image",
+    "src": "/output_real/cluster_pie_biplot_2023.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_pie_biplot_2024.png",
+    "caption": "Cluster Pie Biplot 2024",
+    "type": "image",
+    "src": "/output_real/cluster_pie_biplot_2024.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_map_2020.png",
+    "caption": "Ipm Map 2020",
+    "type": "image",
+    "src": "/output_real/ipm_map_2020.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_map_2021.png",
+    "caption": "Ipm Map 2021",
+    "type": "image",
+    "src": "/output_real/ipm_map_2021.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_map_2022.png",
+    "caption": "Ipm Map 2022",
+    "type": "image",
+    "src": "/output_real/ipm_map_2022.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_map_2023.png",
+    "caption": "Ipm Map 2023",
+    "type": "image",
+    "src": "/output_real/ipm_map_2023.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_map_2024.png",
+    "caption": "Ipm Map 2024",
+    "type": "image",
+    "src": "/output_real/ipm_map_2024.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_pie_2020.png",
+    "caption": "Ipm Pie 2020",
+    "type": "image",
+    "src": "/output_real/ipm_pie_2020.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_pie_2021.png",
+    "caption": "Ipm Pie 2021",
+    "type": "image",
+    "src": "/output_real/ipm_pie_2021.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_pie_2022.png",
+    "caption": "Ipm Pie 2022",
+    "type": "image",
+    "src": "/output_real/ipm_pie_2022.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_pie_2023.png",
+    "caption": "Ipm Pie 2023",
+    "type": "image",
+    "src": "/output_real/ipm_pie_2023.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "ipm_pie_2024.png",
+    "caption": "Ipm Pie 2024",
+    "type": "image",
+    "src": "/output_real/ipm_pie_2024.png",
+    "group": "Lain-lain",
     "scenario": "Shared"
   },
   {
@@ -3364,6 +4892,70 @@
     "caption": "Output Table Alpha W",
     "type": "text",
     "src": "/output_real/output_table_alpha_w.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_name_2020x2021.tex",
+    "caption": "Output Table Biplot Transition Name 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_name_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_name_2021x2022.tex",
+    "caption": "Output Table Biplot Transition Name 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_name_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_name_2022x2023.tex",
+    "caption": "Output Table Biplot Transition Name 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_name_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_name_2023x2024.tex",
+    "caption": "Output Table Biplot Transition Name 2023X2024",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_name_2023x2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_sum_2020x2021.tex",
+    "caption": "Output Table Biplot Transition Sum 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_sum_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_sum_2021x2022.tex",
+    "caption": "Output Table Biplot Transition Sum 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_sum_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_sum_2022x2023.tex",
+    "caption": "Output Table Biplot Transition Sum 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_sum_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_transition_sum_2023x2024.tex",
+    "caption": "Output Table Biplot Transition Sum 2023X2024",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_transition_sum_2023x2024.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
