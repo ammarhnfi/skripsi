@@ -14,47 +14,46 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}}{59}{figure.caption.58}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Trajektori Skenario 1 (Host = Wilayah)}}{60}{figure.caption.59}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Trajektori Skenario 2 (Host = Indikator)}}{60}{figure.caption.59}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel Skenario 1 (2020)}}{63}{figure.caption.67}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Dinamika Spasial Cluster Data Sampel (2020--2022)}}{66}{figure.caption.75}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Contoh Distribusi Boxplot Indikator PPM (Awal vs Akhir Periode)}}{66}{figure.caption.76}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Perbandingan Spasial Cluster Biplot vs STATIS Data Sampel Skenario 1 (2020)}}{64}{figure.caption.69}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Dinamika Spasial Cluster Data Sampel (2020--2022)}}{67}{figure.caption.77}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Contoh Distribusi Boxplot Indikator PPM (Awal vs Akhir Periode)}}{67}{figure.caption.78}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplot IPM Tahun 2020, 2022, dan 2024}}{69}{figure.caption.82}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Boxplot Persentase Penduduk Miskin (PPM) Tahun 2020, 2022, dan 2024}}{69}{figure.caption.83}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Boxplot PDRB ADHK Tahun 2020, 2022, dan 2024}}{70}{figure.caption.84}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Boxplot Tingkat Pengangguran Terbuka (TPT) Tahun 2020, 2022, dan 2024}}{70}{figure.caption.85}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Boxplot Rata-Rata Lama Sekolah (RLS) Tahun 2020, 2022, dan 2024}}{70}{figure.caption.86}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Heatmap Koefisien RV Antar-Tahun (2020 hingga 2024)}}{72}{figure.caption.89}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Scree Plot Nilai Eigen Matriks Kompromi}}{74}{figure.caption.92}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}}{76}{figure.caption.94}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Biplot Kompromi Skenario 1 (Host = Wilayah)}}{77}{figure.caption.95}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Biplot Kompromi Skenario 2 (Host = Indikator)}}{77}{figure.caption.95}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Loading Plot Skenario 1 (Host = Wilayah)}}{79}{figure.caption.98}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Loading Plot Skenario 2 (Host = Indikator)}}{79}{figure.caption.98}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Kontribusi Variabel Dim~1 -- Skenario 1}}{79}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Kontribusi Variabel Dim~1 -- Skenario 2}}{79}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 1}}{80}{figure.caption.100}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 2}}{80}{figure.caption.100}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Distribusi Null Uji Permutasi vs.\ Nilai Eigen Observasi ($\lambda _1^{obs}$)}}{83}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Lintasan Temporal Komponen Vektor Struktur $\tilde {\beta }_k$ (2020 hingga 2024)}}{87}{figure.caption.108}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Trajektori Pergerakan 41 Kabupaten/Kota pada Ruang Kompromi (2020 hingga 2024)}}{88}{figure.caption.109}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}}{89}{figure.caption.110}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Biplot Tahunan Tahun 2021}}{90}{figure.caption.111}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Biplot Tahunan Tahun 2022 (Awal Masa Pemulihan)}}{91}{figure.caption.112}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Biplot Tahunan Tahun 2023}}{92}{figure.caption.113}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Biplot Tahunan Tahun 2024}}{93}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2020}}{95}{figure.caption.122}%
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2021}}{95}{figure.caption.123}%
-\contentsline {figure}{\numberline {4.27}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2022}}{95}{figure.caption.124}%
-\contentsline {figure}{\numberline {4.28}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2023}}{96}{figure.caption.125}%
-\contentsline {figure}{\numberline {4.29}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2024}}{96}{figure.caption.126}%
-\contentsline {figure}{\numberline {4.30}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2020: Biplot (kiri) dan Peta (kanan)}}{97}{figure.caption.127}%
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2021: Biplot (kiri) dan Peta (kanan)}}{97}{figure.caption.128}%
-\contentsline {figure}{\numberline {4.32}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2022: Biplot (kiri) dan Peta (kanan)}}{98}{figure.caption.129}%
-\contentsline {figure}{\numberline {4.33}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2023: Biplot (kiri) dan Peta (kanan)}}{98}{figure.caption.130}%
-\contentsline {figure}{\numberline {4.34}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2024: Biplot (kiri) dan Peta (kanan)}}{99}{figure.caption.131}%
-\contentsline {figure}{\numberline {4.35}{\ignorespaces Dendrogram Klaster Trajektori Keseluruhan (2020 hingga 2024)}}{104}{figure.caption.140}%
-\contentsline {figure}{\numberline {4.36}{\ignorespaces Scatter Plot Klaster Trajektori pada Ruang Kompromi}}{105}{figure.caption.141}%
-\contentsline {figure}{\numberline {4.37}{\ignorespaces Perbandingan Peta Klaster Biplot vs STATIS Tahun 2024}}{117}{figure.caption.163}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplot IPM Tahun 2020, 2022, dan 2024}}{71}{figure.caption.84}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Boxplot Persentase Penduduk Miskin (PPM) Tahun 2020, 2022, dan 2024}}{71}{figure.caption.85}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Boxplot PDRB ADHK Tahun 2020, 2022, dan 2024}}{72}{figure.caption.86}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Boxplot Tingkat Pengangguran Terbuka (TPT) Tahun 2020, 2022, dan 2024}}{72}{figure.caption.87}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Boxplot Rata-Rata Lama Sekolah (RLS) Tahun 2020, 2022, dan 2024}}{72}{figure.caption.88}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Heatmap Koefisien RV Antar-Tahun (2020 hingga 2024)}}{74}{figure.caption.91}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Scree Plot Nilai Eigen Matriks Kompromi}}{76}{figure.caption.94}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}}{78}{figure.caption.96}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Biplot Kompromi Skenario 1 (Host = Wilayah)}}{79}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Biplot Kompromi Skenario 2 (Host = Indikator)}}{79}{figure.caption.97}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Loading Plot Skenario 1 (Host = Wilayah)}}{81}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Loading Plot Skenario 2 (Host = Indikator)}}{81}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Kontribusi Variabel Dim~1 -- Skenario 1}}{81}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Kontribusi Variabel Dim~1 -- Skenario 2}}{81}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 1}}{82}{figure.caption.102}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 2}}{82}{figure.caption.102}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Distribusi Null Uji Permutasi vs.\ Nilai Eigen Observasi ($\lambda _1^{obs}$)}}{85}{figure.caption.105}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Lintasan Temporal Komponen Vektor Struktur $\tilde {\beta }_k$ (2020 hingga 2024)}}{89}{figure.caption.110}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Trajektori Pergerakan 41 Kabupaten/Kota pada Ruang Kompromi (2020 hingga 2024)}}{90}{figure.caption.111}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}}{91}{figure.caption.112}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Biplot Tahunan Tahun 2021}}{92}{figure.caption.113}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Biplot Tahunan Tahun 2022 (Awal Masa Pemulihan)}}{93}{figure.caption.114}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Biplot Tahunan Tahun 2023}}{94}{figure.caption.115}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Biplot Tahunan Tahun 2024}}{95}{figure.caption.116}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2020}}{97}{figure.caption.124}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2021}}{97}{figure.caption.125}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2022}}{97}{figure.caption.126}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2023}}{98}{figure.caption.127}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2024}}{98}{figure.caption.128}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2020: Biplot (kiri) dan Peta (kanan)}}{99}{figure.caption.129}%
+\contentsline {figure}{\numberline {4.31}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2021: Biplot (kiri) dan Peta (kanan)}}{99}{figure.caption.130}%
+\contentsline {figure}{\numberline {4.32}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2022: Biplot (kiri) dan Peta (kanan)}}{100}{figure.caption.131}%
+\contentsline {figure}{\numberline {4.33}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2023: Biplot (kiri) dan Peta (kanan)}}{100}{figure.caption.132}%
+\contentsline {figure}{\numberline {4.34}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2024: Biplot (kiri) dan Peta (kanan)}}{101}{figure.caption.133}%
+\contentsline {figure}{\numberline {4.35}{\ignorespaces Dendrogram Klaster Trajektori Keseluruhan (2020 hingga 2024)}}{106}{figure.caption.142}%
+\contentsline {figure}{\numberline {4.36}{\ignorespaces Scatter Plot Klaster Trajektori pada Ruang Kompromi}}{107}{figure.caption.143}%
+\contentsline {figure}{\numberline {4.37}{\ignorespaces Perbandingan Peta Klaster Biplot vs STATIS Tahun 2024}}{119}{figure.caption.165}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Tampilan Antarmuka Aplikasi Dashboard Analisis Spasio-Temporal Sosio-Ekonomi}}{159}{figure.caption.185}%
-}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Tampilan Antarmuka Aplikasi Dashboard Analisis Spasio-Temporal Sosio-Ekonomi}}{155}{figure.caption.186}%

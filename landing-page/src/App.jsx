@@ -7,6 +7,89 @@ import './App.css';
 // Initialize PDF.js worker
 pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+/* UTILITY: Clean up LaTeX Math symbols into beautiful Unicode equivalents */
+function cleanMathSymbols(str) {
+  if (!str) return '';
+  let res = str;
+
+  // Replace common LaTeX Greek letters and math symbols
+  res = res.replace(/\\boldsymbol\{\\beta\}/g, 'β')
+           .replace(/\\boldsymbol\\beta/g, 'β')
+           .replace(/\\tilde\{\\beta\}/g, 'β̃')
+           .replace(/\\tilde\\beta/g, 'β̃')
+           .replace(/\\beta/g, 'β')
+           .replace(/\\alpha/g, 'α')
+           .replace(/\\lambda/g, 'λ')
+           .replace(/\\mu/g, 'μ')
+           .replace(/\\sigma/g, 'σ')
+           .replace(/\\tau/g, 'τ')
+           .replace(/\\chi/g, 'χ')
+           .replace(/\\rho/g, 'ρ')
+           .replace(/\\phi/g, 'φ')
+           .replace(/\\theta/g, 'θ')
+           .replace(/\\eta/g, 'η')
+           .replace(/\\delta/g, 'δ')
+           .replace(/\\epsilon/g, 'ε')
+           .replace(/\\gamma/g, 'γ')
+           .replace(/\\omega/g, 'ω')
+           .replace(/\\pi/g, 'π')
+           .replace(/\\psi/g, 'ψ')
+           .replace(/\\zeta/g, 'ζ')
+           .replace(/\\xi/g, 'ξ');
+
+  // Subscripts mapping
+  const subscriptMap = {
+    '0': '₀', '1': '₁', '2': '₂', '3': '₃', '4': '₄',
+    '5': '₅', '6': '₆', '7': '₇', '8': '₈', '9': '₉',
+    'a': 'ₐ', 'e': 'ₑ', 'h': 'ₕ', 'i': 'ᵢ', 'j': 'ⱼ',
+    'k': 'ₖ', 'l': 'ₗ', 'm': 'ₘ', 'n': 'ₙ', 'o': 'ₒ',
+    'p': 'ₚ', 'r': 'ᵣ', 's': 'ₛ', 't': 'ₜ', 'u': 'ᵤ',
+    'v': 'ᵥ', 'x': 'ₓ', 'y': 'ᵧ'
+  };
+
+  // Convert _{abc} to subscripts
+  res = res.replace(/_\{(.*?)\}/g, (match, p1) => {
+    return p1.split('').map(char => subscriptMap[char] || char).join('');
+  });
+
+  // Convert _a to subscript (single char subscript)
+  res = res.replace(/_([0-9a-zA-Z])/g, (match, p1) => {
+    return subscriptMap[p1] || p1;
+  });
+
+  // Convert ^{abc} to superscripts
+  const superscriptMap = {
+    '0': '⁰', '1': '¹', '2': '²', '3': '³', '4': '⁴',
+    '5': '⁵', '6': '⁶', '7': '⁷', '8': '⁸', '9': '⁹',
+    '+': '⁺', '-': '⁻', '=': '⁼', '(': '⁽', ')': '⁾',
+    'a': 'ᵃ', 'b': 'ᵇ', 'c': 'ᶜ', 'd': 'ᵈ', 'e': 'ᵉ',
+    'f': 'ᶠ', 'g': 'ᵍ', 'h': 'ʰ', 'i': 'ⁱ', 'j': 'ʲ',
+    'k': 'ᵏ', 'l': 'ˡ', 'm': 'ᵐ', 'n': 'ⁿ', 'o': 'ᵒ',
+    'p': 'ᵖ', 'r': 'ʳ', 's': 'ˢ', 't': 'ᵗ', 'u': 'ᵘ',
+    'v': 'ᵛ', 'w': 'ʷ', 'x': 'ˣ', 'y': 'ʸ', 'z': 'ᶻ'
+  };
+  
+  res = res.replace(/\^\{(.*?)\}/g, (match, p1) => {
+    return p1.split('').map(char => superscriptMap[char] || char).join('');
+  });
+  
+  res = res.replace(/\^([0-9a-zA-Z])/g, (match, p1) => {
+    return superscriptMap[p1] || p1;
+  });
+
+  // Strip dollar signs
+  res = res.replace(/\$/g, '');
+
+  // Strip remaining latex formatting macros
+  res = res.replace(/\\mathrm/g, '')
+           .replace(/\\mathbf/g, '')
+           .replace(/\\mathit/g, '')
+           .replace(/\\boldsymbol/g, '')
+           .replace(/\\tilde/g, '~');
+
+  return res.trim();
+}
+
 /* UTILITY: Renders LaTeX Table string as Visual HTML Table */
 function LatexTable({ tex }) {
   if (!tex) return null;
@@ -76,8 +159,10 @@ function LatexTable({ tex }) {
         .replace(/\\bfseries/g, '').replace(/\\small/g, '').replace(/\\scriptsize/g, '')
         .replace(/\\%/g, '%').replace(/\\&/g, '&').replace(/\\\$/g, '$').replace(/\\_/g, '_')
         .replace(/\\rightarrow/g, '→').replace(/\\textrightarrow/g, '→')
-        .replace(/\\\(|\\\)/g, '').replace(/\\text\{(.*?)\}/g, '$1')
-        .replace(/\{/g, '').replace(/\}/g, '');
+        .replace(/\\\(|\\\)/g, '').replace(/\\text\{(.*?)\}/g, '$1');
+      
+      content = cleanMathSymbols(content);
+      content = content.replace(/\{/g, '').replace(/\}/g, '');
       return content;
     });
 
@@ -264,12 +349,328 @@ function SideBySideImageCard({ filename, folder, hasLeft, hasRight }) {
 }
 
 
+function SideBySideIntegratedTexLoader({ filename, folder, hasLeft, hasRight }) {
+  const [leftTex, setLeftTex] = useState('');
+  const [rightTex, setRightTex] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let active = true;
+    async function fetchData() {
+      try {
+        setLoading(true);
+        const leftPath = `/` + folder + `/scenario1/` + filename;
+        const rightPath = `/` + folder + `/scenario2/` + filename;
+
+        const promises = [];
+        if (hasLeft) promises.push(fetch(leftPath).then(r => r.text()));
+        else promises.push(Promise.resolve(''));
+
+        if (hasRight) promises.push(fetch(rightPath).then(r => r.text()));
+        else promises.push(Promise.resolve(''));
+
+        const [leftData, rightData] = await Promise.all(promises);
+
+        if (active) {
+          setLeftTex(leftData);
+          setRightTex(rightData);
+          setLoading(false);
+        }
+      } catch (err) {
+        console.error("Error fetching side-by-side tables:", err);
+        if (active) setLoading(false);
+      }
+    }
+    fetchData();
+    return () => { active = false; };
+  }, [filename, folder, hasLeft, hasRight]);
+
+  if (loading) {
+    return (
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '150px' }}>
+        <div className="spinner" style={{ width: '32px', height: '32px' }}></div>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+      {/* Left: Scenario 1 */}
+      <div style={{ minWidth: 0, overflow: 'hidden' }}>
+        <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
+        {hasLeft ? <LatexTable tex={leftTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>Tabel tidak tersedia di Skenario 1</div>}
+      </div>
+      {/* Right: Scenario 2 */}
+      <div style={{ minWidth: 0, overflow: 'hidden' }}>
+        <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
+        {hasRight ? <LatexTable tex={rightTex} /> : <div className="placeholder-box" style={{ padding: '20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b' }}>Tabel tidak tersedia di Skenario 2</div>}
+      </div>
+    </div>
+  );
+}
+
+function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, availableYears, availablePairs }) {
+  const [compMode, setCompMode] = useState('biplot_vs_statis');
+  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedPair, setSelectedPair] = useState('');
+  const [compView, setCompView] = useState('map');
+
+  useEffect(() => {
+    if (availableYears.length > 0 && !selectedYear) {
+      setSelectedYear(availableYears[0]);
+    }
+  }, [availableYears]);
+
+  useEffect(() => {
+    if (availablePairs.length > 0 && !selectedPair) {
+      setSelectedPair(availablePairs[0]);
+    }
+  }, [availablePairs]);
+
+  const selectedPeriod = compMode === 'biplot_vs_statis' ? selectedYear : selectedPair;
+
+  // Determine filenames
+  let mapFile = '';
+  let scatterFile = '';
+  let sumTableFile = '';
+  let nameTableFile = '';
+
+  if (compMode === 'biplot_vs_statis') {
+    mapFile = `compare_map_biplot_vs_statis_${selectedPeriod}.png`;
+    scatterFile = `compare_scatter_biplot_vs_statis_${selectedPeriod}.png`;
+    sumTableFile = `output_table_biplot_vs_statis_compare_sum_${selectedPeriod}.tex`;
+    nameTableFile = `output_table_biplot_vs_statis_compare_name_${selectedPeriod}.tex`;
+  } else if (compMode === 'trans_biplot') {
+    mapFile = `compare_map_trans_biplot_${selectedPeriod}.png`;
+    scatterFile = `compare_scatter_trans_biplot_${selectedPeriod}.png`;
+    sumTableFile = `output_table_transition_matrix_sum_${selectedPeriod}.tex`;
+    nameTableFile = `output_table_transition_matrix_name_${selectedPeriod}.tex`;
+  } else if (compMode === 'trans_statis') {
+    mapFile = `compare_map_trans_statis_${selectedPeriod}.png`;
+    scatterFile = `compare_scatter_trans_statis_${selectedPeriod}.png`;
+    sumTableFile = `output_table_transition_matrix_sum_${selectedPeriod}.tex`;
+    nameTableFile = `output_table_transition_matrix_name_${selectedPeriod}.tex`;
+  }
+
+  // Active file based on selected view
+  let activeFilename = '';
+  let isImage = true;
+  if (compView === 'map') { activeFilename = mapFile; isImage = true; }
+  else if (compView === 'scatter') { activeFilename = scatterFile; isImage = true; }
+  else if (compView === 'sum') { activeFilename = sumTableFile; isImage = false; }
+  else if (compView === 'name') { activeFilename = nameTableFile; isImage = false; }
+
+  const hasLeft = sc1Files.some(f => f.name === activeFilename);
+  const hasRight = sc2Files.some(f => f.name === activeFilename);
+
+  // Styled helper for mode tabs
+  const renderModeButton = (mode, label) => {
+    const isActive = compMode === mode;
+    return (
+      <button
+        onClick={() => setCompMode(mode)}
+        style={{
+          padding: '8px 16px',
+          borderRadius: '8px',
+          border: 'none',
+          cursor: 'pointer',
+          fontWeight: '600',
+          fontSize: '0.85rem',
+          background: isActive ? 'linear-gradient(135deg, #06B6D4, #3B82F6)' : 'rgba(255,255,255,0.05)',
+          color: isActive ? '#FFFFFF' : '#94A3B8',
+          border: isActive ? '1px solid #06B6D4' : '1px solid rgba(255,255,255,0.1)',
+          boxShadow: isActive ? '0 4px 12px rgba(6, 182, 212, 0.3)' : 'none',
+          transition: 'all 0.2s',
+          marginRight: '8px'
+        }}
+      >
+        {label}
+      </button>
+    );
+  };
+
+  // Styled helper for view tab buttons
+  const renderViewButton = (view, icon, label) => {
+    const isActive = compView === view;
+    return (
+      <button
+        onClick={() => setCompView(view)}
+        style={{
+          flex: 1,
+          padding: '12px 18px',
+          borderRadius: '10px',
+          border: 'none',
+          cursor: 'pointer',
+          fontWeight: '600',
+          fontSize: '0.9rem',
+          background: isActive ? 'rgba(6, 182, 212, 0.15)' : 'rgba(15,23,42,0.4)',
+          color: isActive ? '#06b6d4' : '#94A3B8',
+          border: isActive ? '1px solid #06b6d4' : '1px solid rgba(255,255,255,0.06)',
+          transition: 'all 0.2s',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          gap: '8px'
+        }}
+      >
+        <span>{icon}</span> {label}
+      </button>
+    );
+  };
+
+  return (
+    <div style={{ background: 'rgba(30, 41, 59, 0.35)', borderRadius: '24px', padding: '30px', border: '1px solid rgba(255,255,255,0.08)' }}>
+      
+      {/* STEP 1: CONTROL PANEL */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '20px', marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '20px' }}>
+        
+        {/* Left: Mode Selection */}
+        <div>
+          <span style={{ fontWeight: '600', fontSize: '13px', color: '#94A3B8', marginBottom: '8px', display: 'block' }}>Tipe Perbandingan:</span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+            {renderModeButton('biplot_vs_statis', '📊 Biplot vs STATIS (Tahun Sama)')}
+            {renderModeButton('trans_biplot', '🔄 Transisi Biplot (Tahun k vs k+1)')}
+            {renderModeButton('trans_statis', '📈 Transisi STATIS (Tahun k vs k+1)')}
+          </div>
+        </div>
+
+        {/* Right: Period Selection */}
+        <div style={{ minWidth: '220px' }}>
+          <span style={{ fontWeight: '600', fontSize: '13px', color: '#94A3B8', marginBottom: '8px', display: 'block' }}>Pilih Tahun / Periode:</span>
+          {compMode === 'biplot_vs_statis' ? (
+            <select
+              value={selectedYear}
+              onChange={e => setSelectedYear(e.target.value)}
+              style={{
+                width: '100%',
+                background: '#1E293B',
+                color: '#F8FAFC',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '8px',
+                padding: '8px 12px',
+                fontSize: '14px',
+                fontWeight: '500',
+                outline: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              {availableYears.map(yr => <option key={yr} value={yr}>📅 Tahun {yr}</option>)}
+            </select>
+          ) : (
+            <select
+              value={selectedPair}
+              onChange={e => setSelectedPair(e.target.value)}
+              style={{
+                width: '100%',
+                background: '#1E293B',
+                color: '#F8FAFC',
+                border: '1px solid rgba(255,255,255,0.15)',
+                borderRadius: '8px',
+                padding: '8px 12px',
+                fontSize: '14px',
+                fontWeight: '500',
+                outline: 'none',
+                cursor: 'pointer'
+              }}
+            >
+              {availablePairs.map(pr => <option key={pr} value={pr}>🔄 Transisi {pr.replace('x', ' ke ')}</option>)}
+            </select>
+          )}
+        </div>
+      </div>
+
+      {/* STEP 2: VIEW VERSION BUTTONS */}
+      <div style={{ display: 'flex', gap: '12px', marginBottom: '30px' }}>
+        {renderViewButton('map', '🗺️', 'Versi Map')}
+        {renderViewButton('scatter', '📈', 'Versi Scatter')}
+        {renderViewButton('sum', '🔢', 'Versi Jumlah')}
+        {renderViewButton('name', '📝', 'Versi Nama')}
+      </div>
+
+      {/* STEP 3: INTEGRATED VISUALIZATION BOX */}
+      <div style={{ background: 'rgba(15,23,42,0.3)', borderRadius: '20px', padding: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+        
+        {/* Info header */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <span style={{
+              background: isImage ? 'rgba(59, 130, 246, 0.1)' : 'rgba(6, 182, 212, 0.1)',
+              color: isImage ? '#3b82f6' : '#06b6d4',
+              border: isImage ? '1px solid rgba(59, 130, 246, 0.2)' : '1px solid rgba(6, 182, 212, 0.2)',
+              borderRadius: '20px', padding: '3px 10px', fontSize: '0.75rem', fontWeight: '600'
+            }}>
+              {isImage ? 'VISUALIZATION PLOT' : 'DATA MATRIX/TABLE'}
+            </span>
+            <span style={{ fontWeight: '700', fontSize: '0.95rem', color: '#F8FAFC' }}>
+              {activeFilename.replace(/_/g, ' ').replace('.png', '').replace('.tex', '').replace('output_table_', '').toUpperCase()}
+            </span>
+          </div>
+          <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Filename: {activeFilename}</span>
+        </div>
+
+        {/* Display comparison side-by-side */}
+        {isImage ? (
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px' }}>
+            {/* Left Scenario 1 */}
+            <div>
+              <div style={{ fontWeight: '600', color: '#06B6D4', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 1 (ACT KLASIK - HOST WILAYAH / MATRIKS W)</div>
+              {hasLeft ? (
+                <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+                  <img src={`/${folder}/scenario1/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '450px', objectFit: 'contain' }} />
+                </div>
+              ) : (
+                <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.85rem' }}>Gambar perbandingan tidak tersedia di Skenario 1</div>
+              )}
+            </div>
+            {/* Right Scenario 2 */}
+            <div>
+              <div style={{ fontWeight: '600', color: '#3B82F6', fontSize: '0.75rem', marginBottom: '12px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>SKENARIO 2 (DUAL STATIS - HOST INDIKATOR / MATRIKS S)</div>
+              {hasRight ? (
+                <div style={{ background: 'rgba(15,23,42,0.5)', borderRadius: '12px', padding: '12px', border: '1px solid rgba(255,255,255,0.05)', display: 'flex', justifyContent: 'center' }}>
+                  <img src={`/${folder}/scenario2/${activeFilename}`} alt={activeFilename} style={{ maxWidth: '100%', borderRadius: '8px', maxHeight: '450px', objectFit: 'contain' }} />
+                </div>
+              ) : (
+                <div style={{ padding: '40px 20px', background: 'rgba(0,0,0,0.2)', borderRadius: '12px', textAlign: 'center', color: '#64748b', fontSize: '0.85rem' }}>Gambar perbandingan tidak tersedia di Skenario 2</div>
+              )}
+            </div>
+          </div>
+        ) : (
+          <SideBySideIntegratedTexLoader 
+            filename={activeFilename}
+            folder={folder}
+            hasLeft={hasLeft}
+            hasRight={hasRight}
+          />
+        )}
+
+      </div>
+    </div>
+  );
+}
+
 function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
   const [selectedFolder, setSelectedFolder] = useState('output_real');
   const [activeTab, setActiveTab] = useState('core');
   const [rootActiveTab, setRootActiveTab] = useState('boxplots');
 
   const currentResults = (selectedFolder === 'output_sample' ? allResultsSample : allResultsReal).filter(item => item && item.name && item.src);
+
+  // Extract available years and year pairs dynamically for comparative dashboard
+  const availableYears = [...new Set(currentResults
+    .map(item => {
+      const match = item.name.match(/compare_map_biplot_vs_statis_(\d+)\.png/);
+      return match ? match[1] : null;
+    })
+    .filter(Boolean)
+  )].sort();
+
+  const availablePairs = [...new Set(currentResults
+    .map(item => {
+      const match = item.name.match(/compare_map_trans_biplot_(\d+x\d+)\.png/);
+      return match ? match[1] : null;
+    })
+    .filter(Boolean)
+  )].sort();
 
   // 1. Root Files Filter
   const rootTexFiles = currentResults.filter(item => {
@@ -311,7 +712,8 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
     yearly: { label: '📅 Biplot per Tahun', files: [] },
     cluster: { label: '🧩 Klastering & Dendrogram', files: [] },
     compare: { label: '🔄 Perbandingan & Transisi', files: [] },
-    tables: { label: '📋 Tabel Output (.tex)', files: [] }
+    tables: { label: '📋 Tabel Output (.tex)', files: [] },
+    dashboard_pembanding: { label: '📊 Dashboard Komparatif Terintegrasi', files: ['integrated'] }
   };
 
   scenarioDisplayFiles.forEach(name => {
@@ -505,7 +907,16 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
           </div>
 
           <div style={{ padding: '24px' }}>
-            {categories[activeTab].files.length > 0 ? (
+            {activeTab === 'dashboard_pembanding' ? (
+              <IntegratedDashboardView
+                currentResults={currentResults}
+                folder={selectedFolder}
+                sc1Files={sc1Files}
+                sc2Files={sc2Files}
+                availableYears={availableYears}
+                availablePairs={availablePairs}
+              />
+            ) : categories[activeTab].files.length > 0 ? (
               categories[activeTab].files.map(filename => {
                 const hasLeft = sc1Files.some(f => f.name === filename);
                 const hasRight = sc2Files.some(f => f.name === filename);
@@ -550,8 +961,9 @@ const FORMULAS_DATA = [
     "title": "1. Standardisasi Data (Teori/Relasi)",
     "formula": "$$\nm_i = \\frac{\\overline{\\mathrm{JP}}_i}{\\displaystyle\\sum_{i'=1}^{n} \\overline{\\mathrm{JP}}_{i'}}, \\quad i = 1, 2, \\ldots, n\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$m_i$: Bobot demografis spasial wilayah ke-$i$ (terstandardisasi).",
+      "$\\overline{V}_i$: Rata-rata variabel pembobot (jumlah penduduk) wilayah ke-$i$ selama periode pengamatan.",
+      "$n$: Jumlah total wilayah pengamatan ($n = 41$ Kabupaten/Kota)."
     ],
     "substitusi": [
       "Jumlah total wilayah $n = 41$ Kabupaten/Kota di Banten, DKI Jakarta, dan Jawa Barat.",
@@ -567,8 +979,9 @@ const FORMULAS_DATA = [
     "title": "2. Standardisasi Data (Teori/Relasi)",
     "formula": "$$\n\\mathbf{D} = \\operatorname{diag}(m_1, m_2, \\ldots, m_n)\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{D}$: Matriks diagonal pembobot spasial wilayah berukuran $41 \\times 41$.",
+      "$m_i$: Elemen diagonal utama pembobot spasial wilayah ke-$i$.",
+      "Elemen off-diagonal bernilai $0$ karena pembobotan bersifat independen antar wilayah."
     ],
     "substitusi": [
       "Membuat matriks diagonal $\\mathbf{D} \\in \\mathbb{R}^{41 \\times 41}$ dari vektor pembobot $m_i$.",
@@ -583,8 +996,10 @@ const FORMULAS_DATA = [
     "title": "3. Standardisasi Data (Teori/Relasi)",
     "formula": "$$\nz_{ijk} = \\frac{x_{ijk} - \\mu_{jk}}{\\sigma_{jk}}, \\quad i = 1, \\ldots, n;\\; j = 1, \\ldots, p;\\; k = 1, \\ldots, K\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$z_{ijk}$: Nilai data terstandardisasi (z-score) untuk wilayah $i$, variabel $j$, pada tahun $k$.",
+      "$x_{ijk}$: Nilai observasi asli wilayah $i$, variabel $j$, pada tahun $k$.",
+      "$\\mu_{jk}$: Rata-rata tertimbang spasial dari variabel $j$ pada tahun $k$.",
+      "$\\sigma_{jk}$: Simpangan baku tertimbang spasial dari variabel $j$ pada tahun $k$."
     ],
     "substitusi": [
       "Nilai observasi asli IPM Kepulauan Seribu tahun 2020: $x_{1,1,2020} = 71{,}2200$.",
@@ -738,8 +1153,9 @@ const FORMULAS_DATA = [
     "title": "12. Uji Kaiser-Meyer-Olkin (KMO) (Teori/Relasi)",
     "formula": "$$\nr_{jk.\\text{parsial}} = -\\frac{q_{jk}}{\\sqrt{q_{jj} \\cdot q_{kk}}}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Kaiser-Meyer-Olkin (KMO)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathrm{MSA}_j$: Indeks kelayakan sampling (Measure of Sampling Adequacy) untuk variabel ke-$j$.",
+      "$r_{ij}$: Elemen matriks korelasi sederhana antara variabel $i$ dan $j$.",
+      "$q_{ij}$: Elemen matriks korelasi parsial antara variabel $i$ dan $j$."
     ],
     "substitusi": [
       "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
@@ -770,8 +1186,9 @@ const FORMULAS_DATA = [
     "title": "14. Uji Kaiser-Meyer-Olkin (KMO) (Teori/Relasi)",
     "formula": "$$\nMSA_j = \\frac{\\displaystyle\\sum_{k \\neq j} r_{jk}^2}{\\displaystyle\\sum_{k \\neq j} r_{jk}^2 + \\displaystyle\\sum_{k \\neq j} r_{jk.\\text{parsial}}^2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Kaiser-Meyer-Olkin (KMO)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$KMO$: Indeks Kaiser-Meyer-Olkin global untuk seluruh matriks data terstandardisasi.",
+      "$r_{jk}$: Koefisien korelasi sederhana antara variabel $j$ dan $k$.",
+      "$q_{jk}$: Koefisien korelasi parsial antara variabel $j$ dan $k$."
     ],
     "substitusi": [
       "Variabel: Indikator IPM ($j = 1$).",
@@ -787,8 +1204,10 @@ const FORMULAS_DATA = [
     "title": "15. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
     "formula": "$$\n\\chi^2 = -\\left[ n - 1 - \\frac{2p + 5}{6} \\right] \\ln |\\mathbf{R}|\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\chi^2$: Statistik uji Chi-Square Bartlett's Sphericity.",
+      "$n$: Jumlah wilayah pengamatan ($n = 41$).",
+      "$p$: Jumlah variabel indikator sosio-ekonomi ($p = 11$).",
+      "$|\\mathbf{R}|$: Determinan matriks korelasi antar-variabel $\\mathbf{R}$."
     ],
     "substitusi": [
       "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
@@ -802,12 +1221,12 @@ const FORMULAS_DATA = [
     "title": "16. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
     "formula": "$$\ndf = \\frac{p(p-1)}{2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$df$: Derajat bebas (degrees of freedom) untuk uji statistik Bartlett.",
+      "$p$: Jumlah variabel indikator sosio-ekonomi ($p = 11$)."
     ],
     "substitusi": [
-      "Jumlah variabel indikator sosio-ekonomi $p = 12$.",
-      "Substitusi: $df = \\dfrac{12 \\times (12-1)}{2} = \\dfrac{132}{2} = 66$."
+      "Jumlah variabel indikator sosio-ekonomi $p = 11$.",
+      "Substitusi: $df = \\dfrac{11 \\times (11-1)}{2} = \\dfrac{110}{2} = 55$."
     ],
     "hasil": "$$ df = 66 $$"
   },
@@ -817,13 +1236,14 @@ const FORMULAS_DATA = [
     "title": "17. Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity) (Teori/Relasi)",
     "formula": "$$\n|\\mathbf{A}| = \\sum_{\\sigma \\in S_p} \\text{sgn}(\\sigma) \\prod_{i=1}^{p} a_{i,\\sigma(i)}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Bartlett tentang Spherisitas (Bartlett's Test of Sphericity)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{R}$: Matriks korelasi antar variabel berukuran $11 \\times 11$.",
+      "$\\lambda$: Nilai eigen (eigenvalue) dari matriks korelasi.",
+      "$\\mathbf{I}$: Matriks identitas berukuran $11 \\times 11$."
     ],
     "substitusi": [
-      "Menghitung determinan matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$.",
+      "Menghitung determinan matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{11 \\times 11}$.",
       "Dekomposisi $\\mathbf{R} = \\mathbf{L}\\mathbf{U}$ digunakan untuk stabilitas numerik.",
-      "Hasil: $|\\mathbf{R}| = \\prod_{i=1}^{12} u_{ii} = 1{,}2530 \\times 10^{-8}$."
+      "Hasil: $|\\mathbf{R}| = \\prod_{i=1}^{11} u_{ii} = 1{,}2530 \\times 10^{-8}$."
     ],
     "hasil": "$$ |\\mathbf{R}| = 1.2530 \\times 10^{-8} $$"
   },
@@ -833,11 +1253,12 @@ const FORMULAS_DATA = [
     "title": "18. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
     "formula": "$$\n\\mathbf{A} \\mathbf{v} = \\lambda \\mathbf{v}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{R}$: Matriks korelasi antar variabel berukuran $11 \\times 11$.",
+      "$\\mathbf{v}_i$: Vektor eigen (eigenvector) ke-$i$ yang ortonormal.",
+      "$\\lambda_i$: Nilai eigen (eigenvalue) ke-$i$ dari matriks korelasi."
     ],
     "substitusi": [
-      "Matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$ bersifat simetris nyata.",
+      "Matriks korelasi $\\mathbf{R} \\in \\mathbb{R}^{11 \\times 11}$ bersifat simetris nyata.",
       "Eigenvalue pertama: $\\lambda_1 = 6{,}2140$.",
       "Eigenvector pertama: $\\mathbf{v}_1 = (0{,}3251,\\; 0{,}2814,\\; \\dots,\\; 0{,}1512)^T$."
     ],
@@ -849,13 +1270,15 @@ const FORMULAS_DATA = [
     "title": "19. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
     "formula": "$$\n\\mathbf{A} = \\mathbf{V} \\mathbf{\\Lambda} \\mathbf{V}^T = \\sum_{j=1}^{p} \\lambda_j \\mathbf{v}_j \\mathbf{v}_j^T\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{R}$: Matriks korelasi terdekomposisi berukuran $11 \\times 11$.",
+      "$\\lambda_i$: Nilai eigen ke-$i$ yang merepresentasikan varians sumbu utama.",
+      "$\\mathbf{v}_i$: Vektor eigen ke-$i$ yang menggambarkan kontribusi loadings.",
+      "$p$: Jumlah total variabel indikator ($p = 11$)."
     ],
     "substitusi": [
-      "Dekomposisi spektral $\\mathbf{R} \\in \\mathbb{R}^{12 \\times 12}$ menjadi kombinasi proyeksi eigenvector.",
-      "Eigenvalue terurut: $\\lambda_1 = 6{,}2140,\\; \\lambda_2 = 1{,}5120,\\; \\dots,\\; \\lambda_{12} = 0{,}0120$.",
-      "Jumlah total: $\\displaystyle\\sum_{j=1}^{12} \\lambda_j = 12{,}0000 = \\operatorname{tr}(\\mathbf{R})$."
+      "Dekomposisi spektral $\\mathbf{R} \\in \\mathbb{R}^{11 \\times 11}$ menjadi kombinasi proyeksi eigenvector.",
+      "Eigenvalue terurut: $\\lambda_1 = 6{,}2140,\\; \\lambda_2 = 1{,}5120,\\; \\dots,\\; \\lambda_{11} = 0{,}0120$.",
+      "Jumlah total: $\\displaystyle\\sum_{j=1}^{11} \\lambda_j = 11{,}0000 = \\operatorname{tr}(\\mathbf{R})$."
     ],
     "hasil": "$$ \\mathbf{R} = 6.214 \\mathbf{v}_1\\mathbf{v}_1^T + \\dots + 0.012 \\mathbf{v}_{12}\\mathbf{v}_{12}^T $$"
   },
@@ -865,12 +1288,13 @@ const FORMULAS_DATA = [
     "title": "20. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
     "formula": "$$\ntr(\\mathbf{A}) = \\sum_{i=1}^{n} a_{ii}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\operatorname{tr}(\\mathbf{R})$: Trace (jumlah elemen diagonal utama) matriks korelasi $\\mathbf{R}$.",
+      "$\\lambda_i$: Nilai eigen ke-$i$.",
+      "$p$: Jumlah total variabel indikator ($p = 11$)."
     ],
     "substitusi": [
-      "Matriks korelasi $\\mathbf{R}$ berukuran $12 \\times 12$ dengan elemen diagonal $r_{ii} = 1{,}0000$.",
-      "Substitusi: $\\operatorname{tr}(\\mathbf{R}) = \\displaystyle\\sum_{i=1}^{12} r_{ii} = \\underbrace{1 + 1 + \\dots + 1}_{12} = 12{,}0000$."
+      "Matriks korelasi $\\mathbf{R}$ berukuran $11 \\times 11$ dengan elemen diagonal $r_{ii} = 1{,}0000$.",
+      "Substitusi: $\\operatorname{tr}(\\mathbf{R}) = \\displaystyle\\sum_{i=1}^{11} r_{ii} = \\underbrace{1 + 1 + \\dots + 1}_{11} = 11{,}0000$."
     ],
     "hasil": "$$ \\operatorname{tr}(\\mathbf{R}) = 12.0000 $$"
   },
@@ -880,15 +1304,17 @@ const FORMULAS_DATA = [
     "title": "21. Dasar Aljabar Linier dan Dekomposisi Matriks (Teori/Relasi)",
     "formula": "$$\n\\mathbf{A} = \\mathbf{U} \\mathbf{S} \\mathbf{V}^T\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Dasar Aljabar Linier dan Dekomposisi Matriks",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{Z}$: Matriks data terstandardisasi berukuran $41 \\times 11$.",
+      "$\\mathbf{U}$: Matriks koordinat kiri (wilayah) berukuran $41 \\times 11$.",
+      "$\\mathbf{\\Lambda}^{1/2}$: Matriks diagonal nilai singular berukuran $11 \\times 11$.",
+      "$\\mathbf{V}^T$: Transpos matriks loadings (eigenvector kanan) berukuran $11 \\times 11$."
     ],
     "substitusi": [
-      "Matriks data terstandar $\\mathbf{Z} \\in \\mathbb{R}^{41 \\times 12}$ dari 41 wilayah dan 12 indikator.",
+      "Matriks data terstandar $\\mathbf{Z} \\in \\mathbb{R}^{41 \\times 11}$ dari 41 wilayah dan 11 indikator.",
       "Dekomposisi nilai singular: $\\mathbf{Z} = \\mathbf{U}\\mathbf{S}\\mathbf{V}^T$.",
-      "Dimensi: $\\mathbf{U} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{S} \\in \\mathbb{R}^{12 \\times 12}$, $\\mathbf{V}^T \\in \\mathbb{R}^{12 \\times 12}$."
+      "Dimensi: $\\mathbf{U} \\in \\mathbb{R}^{41 \\times 11}$, $\\mathbf{S} \\in \\mathbb{R}^{11 \\times 11}$, $\\mathbf{V}^T \\in \\mathbb{R}^{11 \\times 11}$."
     ],
-    "hasil": "$$ \\mathbf{Z}_{41 \\times 12} = \\mathbf{U}_{41 \\times 12} \\mathbf{S}_{12 \\times 12} \\mathbf{V}_{12 \\times 12}^T $$"
+    "hasil": "$$ \\mathbf{Z}_{41 \\times 11} = \\mathbf{U}_{41 \\times 11} \\mathbf{S}_{11 \\times 11} \\mathbf{V}_{11 \\times 11}^T $$"
   },
   {
     "id": "statis_fc",
@@ -896,9 +1322,9 @@ const FORMULAS_DATA = [
     "title": "22. Skor Koordinat Kompromi ($\\mathbf{F}_c$)",
     "formula": "$$\n\\mathbf{F}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_c^{1/2}\n$$",
     "keterangan": [
-      "$\\mathbf{V}_c$ : Matriks eigenvector dari matriks kompromi $\\mathbf{W}_c$ ($n \\times k$)",
-      "$\\mathbf{\\Lambda}_c$ : Matriks diagonal eigenvalue dari $\\mathbf{W}_c$ ($k \\times k$)",
-      "$\\mathbf{F}_c$ : Koordinat kompromi wilayah pada sumbu utama biplot ($n \\times 2$)"
+      "$\\mathbf{F}$: Matriks koordinat skor wilayah pada komponen utama.",
+      "$\\mathbf{Z}$: Matriks data terstandardisasi.",
+      "$\\mathbf{V}$: Matriks loadings (eigenvector kanan) untuk proyeksi."
     ],
     "substitusi": [
       "Menghitung koordinat proyeksi 2 dimensi kompromi wilayah.",
@@ -928,8 +1354,10 @@ const FORMULAS_DATA = [
     "title": "24. Korelasi Pearson (Teori/Relasi)",
     "formula": "$$\ng_{j\\ell} = r(\\bar{x}_j, \\mathbf{F}_c^{(\\ell)})\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Korelasi Pearson",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$g_{jk}$: Nilai loading (korelasi) variabel $j$ pada komponen utama ke-$k$.",
+      "$\\operatorname{Cov}(X_j, F_k)$: Nilai kovarians antara variabel asli dengan skor komponen.",
+      "$\\sigma_{X_j}$: Simpangan baku dari variabel asli $j$.",
+      "$\\sigma_{F_k}$: Simpangan baku dari skor komponen utama ke-$k$."
     ],
     "substitusi": [
       "Variabel: Rata-rata Lama Sekolah ($\\mathrm{RLS}$).",
@@ -960,8 +1388,9 @@ const FORMULAS_DATA = [
     "title": "26. Principal Component Analysis (PCA) dan Biplot (Teori/Relasi)",
     "formula": "$$\n\\mathbf{X} \\approx \\mathbf{F} \\mathbf{V}^T\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Principal Component Analysis (PCA) dan Biplot",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\hat{\\mathbf{Z}}$: Matriks rekonstruksi data asli terstandardisasi berukuran $41 \\times 11$.",
+      "$\\mathbf{F}$: Matriks koordinat skor wilayah terpilih.",
+      "$\\mathbf{V}^T$: Transpos matriks loadings variabel terpilih."
     ],
     "substitusi": [
       "Rekonstruksi $\\mathbf{Z}$ menggunakan 2 sumbu utama pertama.",
@@ -976,8 +1405,9 @@ const FORMULAS_DATA = [
     "title": "27. Principal Component Analysis (PCA) dan Biplot (Teori/Relasi)",
     "formula": "$$\n\\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right)\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Principal Component Analysis (PCA) dan Biplot",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$s$: Konstanta skala penyelerasan visualisasi biplot.",
+      "$f_{ik}$: Elemen koordinat skor wilayah $i$ pada komponen ke-$k$.",
+      "$v_{jk}$: Elemen koordinat loadings variabel $j$ pada komponen ke-$k$."
     ],
     "substitusi": [
       "Konstanta skala $s$ menyeimbangkan visualisasi objek dan variabel dalam biplot.",
@@ -994,12 +1424,12 @@ const FORMULAS_DATA = [
     "title": "28. Tahap 1: Intra-struktur (Teori/Relasi)",
     "formula": "$$\n\\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 1: Intra-struktur",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{W}_k$: Matriks kemiripan (intra-struktur) spasial wilayah pada tahun $k$ berukuran $41 \\times 41$.",
+      "$\\mathbf{Z}_k$: Matriks data terstandardisasi pada tahun $k$ berukuran $41 \\times 11$."
     ],
     "substitusi": [
-      "Matriks data terstandar tahun 2020: $\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$.",
-      "Intra-struktur: $\\mathbf{W}_{2020} = \\dfrac{1}{12}\\,\\mathbf{Z}_{2020}\\mathbf{Z}_{2020}^T$.",
+      "Matriks data terstandar tahun 2020: $\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 11}$.",
+      "Intra-struktur: $\\mathbf{W}_{2020} = \\dfrac{1}{11}\\,\\mathbf{Z}_{2020}\\mathbf{Z}_{2020}^T$.",
       "Elemen $w_{ij}$ mencerminkan kemiripan sosio-ekonomi wilayah $i$ dan $j$ pada tahun 2020."
     ],
     "hasil": "$$ \\mathbf{W}_{2020} \\text{ berukuran } 41 \\times 41 $$"
@@ -1010,8 +1440,9 @@ const FORMULAS_DATA = [
     "title": "29. Tahap 2: Inter-struktur (Teori/Relasi)",
     "formula": "$$\nH_{kk'} = \\mathrm{tr}(\\mathbf{W}_k \\mathbf{D} \\mathbf{W}_{k'} \\mathbf{D}), \\qquad k,k' = 1,\\ldots,K.\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 2: Inter-struktur",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$H_{kk'}$: Nilai produk dalam Hilbert-Schmidt (inter-struktur) antara tahun $k$ dan $k'$.",
+      "$\\mathbf{W}_k$: Matriks kemiripan spasial pada tahun $k$.",
+      "$\\mathbf{D}$: Matriks diagonal pembobot wilayah."
     ],
     "substitusi": [
       "Inter-struktur antara tahun $k = 2020$ dan $k' = 2021$.",
@@ -1042,8 +1473,9 @@ const FORMULAS_DATA = [
     "title": "31. Tahap 2: Inter-struktur (Teori/Relasi)",
     "formula": "$$\n\\mathbf{H} \\mathbf{u} = \\theta \\mathbf{u},\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 2: Inter-struktur",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{H}$: Matriks inter-struktur antar-tahun berukuran $5 \\times 5$.",
+      "$\\mathbf{u}_1$: Vektor eigen utama dari matriks inter-struktur.",
+      "$\\theta_1$: Nilai eigen terbesar (dominan) dari matriks inter-struktur."
     ],
     "substitusi": [
       "Matriks inter-struktur $\\mathbf{H} \\in \\mathbb{R}^{5 \\times 5}$ untuk tahun 2020–2024.",
@@ -1093,8 +1525,10 @@ const FORMULAS_DATA = [
     "title": "34. Tahap 3: Analisis Kompromi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{v}^T \\mathbf{W}_c \\mathbf{v} = \\mathbf{v}^T \\left( \\sum_{k=1}^K \\alpha_k \\mathbf{W}_k \\right) \\mathbf{v} = \\sum_{k=1}^K \\alpha_k (\\mathbf{v}^T \\mathbf{W}_k \\mathbf{v}) \\ge 0\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 3: Analisis Kompromi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{W}_c$: Matriks kemiripan kompromi spasial terbobot berukuran $41 \\times 41$.",
+      "$\\alpha_k$: Bobot optimal untuk kontribusi tahun ke-$k$ (diambil dari eigenvector utama $\\mathbf{u}_1$).",
+      "$\\mathbf{W}_k$: Matriks kemiripan spasial tahun ke-$k$.",
+      "$K$: Jumlah total tahun pengamatan ($K = 5$)."
     ],
     "substitusi": [
       "Bobot optimal positif: $\\alpha_k > 0$ untuk setiap $k = 1, \\dots, 5$.",
@@ -1109,8 +1543,9 @@ const FORMULAS_DATA = [
     "title": "35. Tahap 3: Analisis Kompromi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{W}_c = \\mathbf{P} \\mathbf{\\Lambda} \\mathbf{P}^T\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 3: Analisis Kompromi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{W}_c$: Matriks kemiripan kompromi spasial berukuran $41 \\times 41$.",
+      "$\\mathbf{P}$: Matriks eigenvector ortonormal kompromi berukuran $41 \\times 41$.",
+      "$\\mathbf{\\Lambda}_c$: Matriks diagonal nilai eigen kompromi berukuran $41 \\times 41$."
     ],
     "substitusi": [
       "Dekomposisi spektral $\\mathbf{W}_c \\in \\mathbb{R}^{41 \\times 41}$.",
@@ -1125,8 +1560,10 @@ const FORMULAS_DATA = [
     "title": "36. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{F}_c$: Matriks koordinat kompromi wilayah pada ruang 2 dimensi.",
+      "$\\mathbf{D}^{-1/2}$: Akar kuadrat invers matriks diagonal pembobot wilayah.",
+      "$\\mathbf{P}_r$: Proyeksi subset $r$ eigenvector utama.",
+      "$\\mathbf{\\Lambda}_{c,r}^{1/2}$: Akar kuadrat diagonal $r$ eigenvalue utama."
     ],
     "substitusi": [
       "Akar pembobot wilayah: $\\mathbf{D}^{-1/2} = \\operatorname{diag}(\\sqrt{41}) = \\operatorname{diag}(6{,}4031)$.",
@@ -1142,8 +1579,11 @@ const FORMULAS_DATA = [
     "title": "37. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{F}_k$: Matriks koordinat transisi wilayah pada tahun $k$.",
+      "$\\mathbf{W}_k$: Matriks kemiripan spasial wilayah tahun $k$.",
+      "$\\mathbf{D}$: Matriks diagonal pembobot wilayah.",
+      "$\\mathbf{P}_r$: Eigenvector kompromi terpilih.",
+      "$\\mathbf{\\Lambda}_{c,r}^{-1/2}$: Akar kuadrat invers diagonal eigenvalue kompromi."
     ],
     "substitusi": [
       "Koordinat transisi wilayah pada tahun $k = 2020$.",
@@ -1158,8 +1598,10 @@ const FORMULAS_DATA = [
     "title": "38. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{G}_k$: Matriks koordinat transisi variabel pada tahun $k$ berukuran $11 \\times 2$.",
+      "$\\mathbf{Z}_k^T$: Transpos matriks data terstandardisasi tahun $k$ berukuran $11 \\times 41$.",
+      "$\\mathbf{F}_c$: Matriks koordinat kompromi wilayah berukuran $41 \\times 2$.",
+      "$\\mathbf{\\Lambda}_{c,r}^{-1}$: Invers diagonal eigenvalue kompromi terpilih."
     ],
     "substitusi": [
       "Lintasan variabel sosio-ekonomi pada tahun $k = 2020$.",
@@ -1174,8 +1616,9 @@ const FORMULAS_DATA = [
     "title": "39. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{G}_c$: Matriks koordinat kompromi variabel berukuran $11 \\times 2$.",
+      "$\\alpha_k$: Bobot kontribusi optimal tahun ke-$k$.",
+      "$\\mathbf{G}_k$: Matriks koordinat transisi variabel tahun ke-$k$."
     ],
     "substitusi": [
       "Bobot optimal: $\\boldsymbol{\\alpha} = (0{,}2010,\\; 0{,}1980,\\; 0{,}1990,\\; 0{,}2020,\\; 0{,}2000)^T$.",
@@ -1189,8 +1632,9 @@ const FORMULAS_DATA = [
     "title": "40. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{G}_c$: Matriks koordinat kompromi variabel berukuran $11 \\times 2$.",
+      "$\\mathbf{V}_r$: Eigenvector kanan terpilih.",
+      "$\\mathbf{\\Lambda}_{s,r}^{1/2}$: Akar kuadrat diagonal eigenvalue dual."
     ],
     "substitusi": [
       "Koordinat variabel via dekomposisi spektral dual.",
@@ -1205,8 +1649,10 @@ const FORMULAS_DATA = [
     "title": "41. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{G}_k$: Matriks koordinat transisi variabel tahun $k$ berukuran $11 \\times 2$.",
+      "$\\mathbf{S}_k$: Matriks korelasi spasial variabel tahun $k$ berukuran $11 \\times 11$.",
+      "$\\mathbf{V}_r$: Eigenvector kanan kompromi terpilih.",
+      "$\\mathbf{\\Lambda}_{s,r}^{-1/2}$: Akar kuadrat invers diagonal eigenvalue dual."
     ],
     "substitusi": [
       "Proyeksi transisi kolom variabel pada tahun $k = 2020$.",
@@ -1221,12 +1667,13 @@ const FORMULAS_DATA = [
     "title": "42. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{F}_k$: Matriks koordinat transisi wilayah tahun $k$ berukuran $41 \\times 2$.",
+      "$\\mathbf{Z}_k$: Matriks data terstandardisasi tahun $k$ berukuran $41 \\times 11$.",
+      "$\\mathbf{G}_c$: Matriks koordinat kompromi variabel berukuran $11 \\times 2$."
     ],
     "substitusi": [
       "Koordinat transisi baris wilayah pada tahun $k = 2020$ (pendekatan dual).",
-      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{G}_c \\in \\mathbb{R}^{12 \\times 2}$.",
+      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 11}$, $\\mathbf{G}_c \\in \\mathbb{R}^{11 \\times 2}$.",
       "Pembagi inersia dual: $\\mathbf{\\Lambda}_s^{-1/2} = \\operatorname{diag}(0{,}4011,\\; 0{,}8133)$."
     ],
     "hasil": "$$ \\mathbf{F}_{2020} \\text{ berukuran } 41 \\times 2 $$"
@@ -1237,8 +1684,9 @@ const FORMULAS_DATA = [
     "title": "43. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{F}_c$: Matriks koordinat kompromi wilayah berukuran $41 \\times 2$.",
+      "\\alpha_k$: Bobot kontribusi optimal tahun ke-$k$.",
+      "$\\mathbf{F}_k$: Matriks koordinat transisi wilayah tahun ke-$k$."
     ],
     "substitusi": [
       "Bobot optimal: $\\boldsymbol{\\alpha} = (0{,}2010,\\; 0{,}1980,\\; 0{,}1990,\\; 0{,}2020,\\; 0{,}2000)^T$.",
@@ -1250,10 +1698,11 @@ const FORMULAS_DATA = [
     "id": "ref_eq_43",
     "category": "statis",
     "title": "44. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
-    "formula": "$$\n\\mathbf{X}_{vis} = \\mathbf{X}_{svd} \\times \\text{sign}(\\rho(PC1, \\text{Indikator\\_Utama}))\n$$",
+    "formula": "$$\n\\mathbf{X}_{vis} = \\mathbf{X}_{svd} \\times \\operatorname{sign}(\\rho(PC1, \\text{Indikator Utama}))\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{X}_{vis}$: Matriks koordinat visualisasi akhir yang disesuaikan arah interpretasinya.",
+      "$\\mathbf{X}_{svd}$: Matriks koordinat mentah hasil SVD.",
+      "$\\rho(PC1, \\text{Indikator Utama})$: Nilai korelasi sumbu pertama PC1 dengan variabel pembanding utama (IPM)."
     ],
     "substitusi": [
       "Korelasi sumbu pertama SVD dengan IPM: $\\rho = -0{,}9852$.",
@@ -1268,8 +1717,10 @@ const FORMULAS_DATA = [
     "title": "45. Tahap 4: Ekstraksi Koordinat dan Relasi Transisi (Teori/Relasi)",
     "formula": "$$\n\\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right)\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{G}_{vis}$: Matriks kordinat loadings variabel terskala untuk visualisasi akhir.",
+      "$\\mathbf{G}_{svd}$: Matriks kordinat loadings variabel mentah hasil SVD.",
+      "\\max(|\\mathbf{F}_{svd}|)$: Nilai koordinat absolut maksimum dari skor wilayah.",
+      "\\max(|\\mathbf{G}_{svd}|)$: Nilai koordinat absolut maksimum dari loadings variabel."
     ],
     "substitusi": [
       "Maksimum absolut koordinat wilayah: $\\max|\\mathbf{f}_{i,\\text{svd}}| = 5{,}1241$.",
@@ -1285,8 +1736,9 @@ const FORMULAS_DATA = [
     "title": "46. Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo) (Teori/Relasi)",
     "formula": "$$\np\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\left(\\theta_1^{\\pi(b)} \\ge \\theta_1^{\\text{obs}}\\right) + 1}{B + 1}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\beta_k$: Elemen ke-$k$ dari vektor struktur $\\boldsymbol{\\beta}$ yang menggambarkan kemiripan tahun $k$ dengan kompromi.",
+      "$\\lambda_1$: Nilai eigen utama dari matriks inter-struktur.",
+      "\\alpha_k$: Nilai bobot optimal dari tahun ke-$k$."
     ],
     "substitusi": [
       "Replikasi permutasi Monte Carlo: $B = 1000$.",
@@ -1302,8 +1754,9 @@ const FORMULAS_DATA = [
     "title": "47. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
     "formula": "$$\n\\mathbf{H} = \\lambda \\mathbf{\\alpha} \\mathbf{\\alpha}^T + \\bar{\\mathbf{E}}, \\qquad \\bar{\\mathbf{E}} = \\frac{1}{2}\\left(\\mathbf{E} + \\mathbf{E}^T\\right),\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\tilde{\\boldsymbol{\\beta}}$: Vektor struktur spasio-temporal kompromi.",
+      "$\\lambda_1$: Nilai eigen utama dari matriks inter-struktur.",
+      "\\boldsymbol{\\alpha}_1$: Vektor eigen utama dari matriks inter-struktur."
     ],
     "substitusi": [
       "Eigenvalue pertama matriks inter-struktur: $\\lambda_1 = 4{,}8524$.",
@@ -1317,8 +1770,8 @@ const FORMULAS_DATA = [
     "title": "48. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
     "formula": "$$\n\\tilde{\\mathbf{\\beta}} = \\lambda_1 \\mathbf{\\alpha}_1,\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "\\|\\tilde{\\boldsymbol{\\beta}}\\|^2$: Kuadrat norma (panjang) dari vektor struktur kompromi.",
+      "$\\lambda_1^2$: Kuadrat nilai eigen utama inter-struktur."
     ],
     "substitusi": [
       "Eigenvalue utama inter-struktur: $\\lambda_1 = 4{,}8524$.",
@@ -1333,8 +1786,9 @@ const FORMULAS_DATA = [
     "title": "49. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
     "formula": "$$\nV = \\|\\mathbf{H}\\|_F^2 - \\|\\tilde{\\mathbf{\\beta}}\\|^2 = \\sum_{k=1}^{K}\\sum_{k'=1}^{K} H_{kk'}^2 - \\lambda_1^2,\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$V$: Sisa inersia (residual variance) dari inter-struktur yang tidak tertangkap oleh komponen utama pertama.",
+      "\\|\\mathbf{H}\\|_F^2$: Kuadrat norma Frobenius dari matriks inter-struktur $\\mathbf{H}$.",
+      "\\|\\tilde{\\boldsymbol{\\beta}}\\|^2$: Kuadrat norma dari vektor struktur kompromi."
     ],
     "substitusi": [
       "Kuadrat norma Frobenius total: $\\|\\mathbf{H}\\|_F^2 = 24{,}5241$.",
@@ -1349,8 +1803,9 @@ const FORMULAS_DATA = [
     "title": "50. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
     "formula": "$$\n\\tau = \\frac{\\lambda^2}{\\sigma^2},\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\tau$: Rasio sinyal-ke-derau (signal-to-noise ratio) dari representasi kompromi.",
+      "$\\lambda^2$: Kuadrat nilai eigen utama (representasi sinyal).",
+      "$\\sigma^2$: Varians residual (derau/noise)."
     ],
     "substitusi": [
       "Kuadrat eigenvalue utama: $\\lambda_1^2 = (4{,}8524)^2 = 23{,}5458$.",
@@ -1365,8 +1820,9 @@ const FORMULAS_DATA = [
     "title": "51. Model Vektor Struktur dan Kerangka Inferensial STATIS (Teori/Relasi)",
     "formula": "$$\n\\mathrm{Inertia}_1 = \\frac{\\lambda_1}{\\displaystyle\\sum_{j=1}^{K} \\lambda_j},\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Model Vektor Struktur dan Kerangka Inferensial STATIS",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathrm{Inertia}_1$: Persentase inersia inter-struktur yang terjelaskan oleh sumbu kompromi pertama.",
+      "$\\lambda_1$: Nilai eigen utama dari matriks inter-struktur.",
+      "$K$: Jumlah total tahun pengamatan ($K = 5$)."
     ],
     "substitusi": [
       "Eigenvalue terbesar: $\\lambda_1 = 4{,}8524$.",
@@ -1381,12 +1837,13 @@ const FORMULAS_DATA = [
     "title": "52. Proyeksi Lintasan (Trajectory) (Teori/Relasi)",
     "formula": "$$\n\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{V}_c\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Proyeksi Lintasan (Trajectory)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{F}_k$: Matriks koordinat transisi wilayah pada tahun $k$ berukuran $41 \\times 2$.",
+      "$\\mathbf{Z}_k$: Matriks data terstandardisasi pada tahun $k$ berukuran $41 \\times 11$.",
+      "$\\mathbf{V}_c$: Matriks loadings kompromi berukuran $11 \\times 2$."
     ],
     "substitusi": [
       "Proyeksi koordinat wilayah pada tahun $k = 2020$.",
-      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 12}$, $\\mathbf{V}_c \\in \\mathbb{R}^{12 \\times 2}$."
+      "$\\mathbf{Z}_{2020} \\in \\mathbb{R}^{41 \\times 11}$, $\\mathbf{V}_c \\in \\mathbb{R}^{11 \\times 2}$."
     ],
     "hasil": "$$ \\mathbf{F}_{2020} \\text{ berukuran } 41 \\times 2 $$"
   },
@@ -1413,8 +1870,9 @@ const FORMULAS_DATA = [
     "title": "54. Jarak Euclidean antar Trajektori (Teori/Relasi)",
     "formula": "$$\nd(i, j) = \\sqrt{\\sum_{k=1}^{K} \\left\\| \\mathbf{f}_{i,k} - \\mathbf{f}_{j,k} \\right\\|^2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Jarak Euclidean antar Trajektori",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$d(i, j)$: Jarak Euclidean lintas waktu (spasio-temporal) antara wilayah $i$ dan $j$.",
+      "\\mathbf{f}_{i,k}$: Vektor koordinat wilayah $i$ pada tahun $k$.",
+      "$K$: Jumlah total tahun pengamatan ($K = 5$)."
     ],
     "substitusi": [
       "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
@@ -1428,8 +1886,9 @@ const FORMULAS_DATA = [
     "title": "55. Rotasi Baseline (Teori/Relasi)",
     "formula": "$$\n\\theta = -\\operatorname{atan2}(v_2, v_1)\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Rotasi Baseline",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\theta$: Sudut rotasi baseline (dalam radian).",
+      "$v_1, v_2$: Koordinat sumbu pertama (PC1) dan kedua (PC2) dari titik jangkar baseline.",
+      "\\operatorname{atan2}$: Fungsi busur tangen 2-argumen untuk mendapatkan sudut kuadran yang tepat."
     ],
     "substitusi": [
       "Eigenvector utama terpilih: $v_{11} = 0{,}8142$, $v_{12} = -0{,}5124$.",
@@ -1443,8 +1902,8 @@ const FORMULAS_DATA = [
     "title": "56. Rotasi Baseline (Teori/Relasi)",
     "formula": "$$\n\\mathbf{Q}(\\theta) = \\begin{pmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{pmatrix}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Rotasi Baseline",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{Q}(\\theta)$: Matriks transformasi rotasi ortogonal berukuran $2 \\times 2$.",
+      "$\\theta$: Sudut rotasi baseline (dalam radian)."
     ],
     "substitusi": [
       "Sudut rotasi baseline: $\\theta = 0{,}5612 \\text{ rad}$ ($32{,}15^\\circ$).",
@@ -1476,8 +1935,10 @@ const FORMULAS_DATA = [
     "title": "58. K-Means Clustering (Teori/Relasi)",
     "formula": "$$\nSSE = \\sum_{j=1}^{k} \\sum_{\\mathbf{x}_i \\in C_j} \\| \\mathbf{x}_i - \\mathbf{\\mu}_j \\|^2\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: K-Means Clustering",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$SSE$: Jumlah kuadrat galat/kesalahan intra-klaster (Sum of Squared Errors).",
+      "$k$: Jumlah kelompok/klaster yang dibentuk.",
+      "\\mathbf{x}_i$: Vektor koordinat lintasan wilayah ke-$i$.",
+      "\\mathbf{\\mu}_j$: Vektor centroid (rata-rata lintasan) klaster ke-$j$."
     ],
     "substitusi": [
       "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
@@ -1491,8 +1952,9 @@ const FORMULAS_DATA = [
     "title": "59. Agglomerative Hierarchical Clustering (Dendrogram) (Teori/Relasi)",
     "formula": "$$\n\\Delta(A, B) = \\frac{n_A n_B}{n_A + n_B} \\| \\mathbf{\\mu}_A - \\mathbf{\\mu}_B \\|^2\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Agglomerative Hierarchical Clustering (Dendrogram)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "\\Delta(A, B)$: Kenaikan jarak/inersia Ward dari penggabungan klaster $A$ dan $B$.",
+      "$n_A, n_B$: Jumlah anggota wilayah di dalam klaster $A$ dan $B$.",
+      "\\mathbf{\\mu}_A, \\mathbf{\\mu}_B$: Centroid (titik pusat) dari klaster $A$ dan $B$."
     ],
     "substitusi": [
       "Klaster $A$: $n_A = 15$ wilayah, klaster $B$: $n_B = 8$ wilayah.",
@@ -1508,8 +1970,8 @@ const FORMULAS_DATA = [
     "title": "60. Matriks Transisi Temporal (Teori/Relasi)",
     "formula": "$$\n\\mathbf{T} = \n    \\begin{pmatrix}\n    M_{1,1} & M_{1,2} & \\cdots & M_{1,k} \\\\\n    M_{2,1} & M_{2,2} & \\cdots & M_{2,k} \\\\\n    \\vdots & \\vdots & \\ddots & \\vdots \\\\\n    M_{k,1} & M_{k,2} & \\cdots & M_{k,k}\n    \\end{pmatrix}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Matriks Transisi Temporal",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mathbf{T}$: Matriks peluang transisi klaster berukuran $k \\times k$.",
+      "$M_{i,j}$: Elemen matriks berupa probabilitas transisi perpindahan dari klaster $i$ ke $j$."
     ],
     "substitusi": [
       "Matriks transisi klaster $\\mathbf{T} \\in \\mathbb{R}^{3 \\times 3}$.",
@@ -1523,8 +1985,9 @@ const FORMULAS_DATA = [
     "title": "61. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
     "formula": "$$\nD(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Penyelarasan Label Cluster Lintas Waktu",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$D(c_{1i}, c_{2j})$: Jarak Euclidean antara centroid klaster $i$ pada periode 1 dan centroid klaster $j$ pada periode 2.",
+      "$c_{1ih}, c_{2jh}$: Elemen koordinat dimensi ke-$h$ dari masing-masing centroid.",
+      "$p$: Jumlah koordinat dimensi komponen ($p = 2$)."
     ],
     "substitusi": [
       "Centroid klaster 1 periode 1: $\\mathbf{c}_{11} = (-1{,}2500,\\; 0{,}1500)$.",
@@ -1539,8 +2002,9 @@ const FORMULAS_DATA = [
     "title": "62. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
     "formula": "$$\n\\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Penyelarasan Label Cluster Lintas Waktu",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$x_{ij}$: Variabel keputusan biner (bernilai 1 jika klaster $i$ dipetakan ke klaster $j$, bernilai 0 jika tidak).",
+      "$D(c_{1i}, c_{2j})$: Jarak Euclidean antara centroid klaster periode 1 dan 2.",
+      "$k$: Jumlah klaster yang diselaraskan."
     ],
     "substitusi": [
       "Optimasi linear assignment $3 \\times 3$.",
@@ -1555,8 +2019,9 @@ const FORMULAS_DATA = [
     "title": "63. Kategorisasi dan Perankingan Cluster (Teori/Relasi)",
     "formula": "$$\n\\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Kategorisasi dan Perankingan Cluster",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\overline{\\text{PC}}_{1,k}$: Nilai rata-rata skor koordinat sumbu pertama (PC1) untuk klaster ke-$k$.",
+      "$n_k$: Jumlah wilayah di dalam klaster ke-$k$.",
+      "\\mathbf{f}_{i,1}$: Skor sumbu pertama (PC1) wilayah ke-$i$ di dalam klaster ke-$k$."
     ],
     "substitusi": [
       "Klaster 1 dengan $n_1 = 15$ wilayah.",
@@ -1570,8 +2035,8 @@ const FORMULAS_DATA = [
     "title": "64. Matriks Pembobot Spasial (Teori/Relasi)",
     "formula": "$$\nw_{ij} = \\begin{cases} 1 & \\text{jika wilayah } i \\text{ dan } j \\text{ bertetangga} \\\\ 0 & \\text{selainnya} \\end{cases}, \\quad w_{ii} = 0\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Matriks Pembobot Spasial",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$w_{ij}$: Elemen bobot kontiguitas spasial (adjasensi) antara wilayah $i$ dan $j$.",
+      "$w_{ii}$: Nilai diagonal utama yang bernilai 0 (wilayah tidak bertetangga dengan dirinya sendiri)."
     ],
     "substitusi": [
       "Matriks bobot Queen Contiguity antara wilayah $i$ dan $j$.",
@@ -1604,8 +2069,10 @@ const FORMULAS_DATA = [
     "title": "66. Analisis Autokorelasi Spasial (Global Moran's~texorpdfstring$I$I) (Teori/Relasi)",
     "formula": "$$\nI = \\frac{N}{\\displaystyle\\sum_i \\sum_j w_{ij}} \\cdot \\frac{\\displaystyle\\sum_i \\sum_j w_{ij}(x_i - \\bar{x})(x_j - \\bar{x})}{\\displaystyle\\sum_i (x_i - \\bar{x})^2}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Analisis Autokorelasi Spasial (Global Moran's~texorpdfstring$I$I)",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$I$: Nilai koefisien autokorelasi spasial Global Moran's I.",
+      "$N$: Jumlah total wilayah pengamatan ($N = 41$).",
+      "$w_{ij}$: Elemen matriks bobot spasial antara wilayah $i$ dan $j$.",
+      "$x_i, x_j$: Nilai skor PC1 untuk masing-masing wilayah $i$ dan $j$."
     ],
     "substitusi": [
       "Status: Persamaan ini merupakan teori dasar / hubungan relasi spasio-temporal.",
@@ -1619,8 +2086,10 @@ const FORMULAS_DATA = [
     "title": "67. Standardisasi Data (Teori/Relasi)",
     "formula": "$$\n\\begin{aligned} \\mu_{jk} &= \\sum_{i=1}^{n} m_i\\, x_{ijk}  \\\\\n    \\sigma_{jk} &= \\sqrt{\\sum_{i=1}^{n} m_i\\, (x_{ijk} - \\mu_{jk})^2} \\end{aligned}\n$$",
     "keterangan": [
-      "Variabel terdaftar dalam Bab 2 tesis pada bagian: Standardisasi Data",
-      "Fungsi: Sebagai basis persamaan teoretis atau langkah antara (intermediate step) dalam alur pemodelan."
+      "$\\mu_{jk}$: Rata-rata tertimbang spasial variabel $j$ pada tahun $k$.",
+      "$\\sigma_{jk}$: Simpangan baku tertimbang spasial variabel $j$ pada tahun $k$.",
+      "$m_i$: Bobot demografis (spasial) wilayah ke-$i$.",
+      "$x_{ijk}$: Nilai observasi asli wilayah $i$, variabel $j$, pada tahun $k$."
     ],
     "substitusi": [
       "Rata-rata tertimbang IPM 2020: $\\mu_{\\text{IPM},2020} = \\displaystyle\\sum_{i=1}^{41} m_i\\,x_{i,1,2020}$.",
@@ -1637,45 +2106,6 @@ function FormulasDashboard({ onBack }) {
   const [activeCategory, setActiveCategory] = useState('all');
   const [loading, setLoading] = useState(false);
   const [expandedCards, setExpandedCards] = useState({});
-
-  useEffect(() => {
-    let active = true;
-    async function loadFormulas() {
-      try {
-        setLoading(true);
-        const res = await fetch('/formulas_substitusi.json');
-        if (!res.ok) throw new Error('Gagal memuat formulas_substitusi.json');
-        const data = await res.json();
-        if (active) {
-          setFormulas(data);
-          setLoading(false);
-        }
-      } catch (err) {
-        console.error("Error loading formulas_substitusi.json, using fallback:", err);
-        if (active) setLoading(false);
-      }
-    }
-    loadFormulas();
-    return () => { active = false; };
-  }, []);
-
-  // Trigger MathJax typesetting whenever the list of formulas, search query, active category, or expanded cards changes
-  useEffect(() => {
-    if (window.MathJax) {
-      const timer = setTimeout(() => {
-        window.MathJax.typesetPromise && window.MathJax.typesetPromise()
-          .catch((err) => console.warn("MathJax typesetting failed: ", err));
-      }, 100);
-      return () => clearTimeout(timer);
-    }
-  }, [formulas, searchQuery, activeCategory, expandedCards]);
-
-  const formatTextHtml = (text) => {
-    if (!text) return "";
-    // Replace **text** with premium bold styling
-    return text.replace(/\*\*(.*?)\*\*/g, '<strong style="color: #38BDF8; font-weight: 700;">$1</strong>');
-  };
-
   const toggleExpand = (id) => {
     setExpandedCards(prev => ({
       ...prev,

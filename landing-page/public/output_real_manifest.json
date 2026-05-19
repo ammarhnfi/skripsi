@@ -536,46 +536,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "cluster_map_biplot_2020.png",
-    "caption": "Cluster Map Biplot 2020",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_map_biplot_2020.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2021.png",
-    "caption": "Cluster Map Biplot 2021",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_map_biplot_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2022.png",
-    "caption": "Cluster Map Biplot 2022",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_map_biplot_2022.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2023.png",
-    "caption": "Cluster Map Biplot 2023",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_map_biplot_2023.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2024.png",
-    "caption": "Cluster Map Biplot 2024",
-    "type": "image",
-    "src": "/output_real/scenario1/cluster_map_biplot_2024.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "cluster_map_statis.png",
     "caption": "Cluster Map Statis",
     "type": "image",
@@ -1848,46 +1808,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "cluster_map_biplot_2020.png",
-    "caption": "Cluster Map Biplot 2020",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_map_biplot_2020.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2021.png",
-    "caption": "Cluster Map Biplot 2021",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_map_biplot_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2022.png",
-    "caption": "Cluster Map Biplot 2022",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_map_biplot_2022.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2023.png",
-    "caption": "Cluster Map Biplot 2023",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_map_biplot_2023.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2024.png",
-    "caption": "Cluster Map Biplot 2024",
-    "type": "image",
-    "src": "/output_real/scenario2/cluster_map_biplot_2024.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "cluster_map_statis.png",
     "caption": "Cluster Map Statis",
     "type": "image",
@@ -2624,6 +2544,86 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "cluster_scatter_biplot_2020.png",
+    "caption": "Cluster Scatter Biplot 2020",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_biplot_2020.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_scatter_biplot_2021.png",
+    "caption": "Cluster Scatter Biplot 2021",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_biplot_2021.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_scatter_biplot_2022.png",
+    "caption": "Cluster Scatter Biplot 2022",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_biplot_2022.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_scatter_biplot_2023.png",
+    "caption": "Cluster Scatter Biplot 2023",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_biplot_2023.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_scatter_biplot_2024.png",
+    "caption": "Cluster Scatter Biplot 2024",
+    "type": "image",
+    "src": "/output_real/cluster_scatter_biplot_2024.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "dendrogram_2020.png",
+    "caption": "Dendrogram 2020",
+    "type": "image",
+    "src": "/output_real/dendrogram_2020.png",
+    "group": "Dendrogram",
+    "scenario": "Shared"
+  },
+  {
+    "name": "dendrogram_2021.png",
+    "caption": "Dendrogram 2021",
+    "type": "image",
+    "src": "/output_real/dendrogram_2021.png",
+    "group": "Dendrogram",
+    "scenario": "Shared"
+  },
+  {
+    "name": "dendrogram_2022.png",
+    "caption": "Dendrogram 2022",
+    "type": "image",
+    "src": "/output_real/dendrogram_2022.png",
+    "group": "Dendrogram",
+    "scenario": "Shared"
+  },
+  {
+    "name": "dendrogram_2023.png",
+    "caption": "Dendrogram 2023",
+    "type": "image",
+    "src": "/output_real/dendrogram_2023.png",
+    "group": "Dendrogram",
+    "scenario": "Shared"
+  },
+  {
+    "name": "dendrogram_2024.png",
+    "caption": "Dendrogram 2024",
+    "type": "image",
+    "src": "/output_real/dendrogram_2024.png",
+    "group": "Dendrogram",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_ahh_l.png",
     "caption": "Boxplot Ahh L",
     "type": "image",
@@ -3229,6 +3229,126 @@
     "type": "image",
     "src": "/output_real/boxplot_tpt_2024.png",
     "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "elbow_plot_2020.png",
+    "caption": "Elbow Plot 2020",
+    "type": "image",
+    "src": "/output_real/elbow_plot_2020.png",
+    "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "elbow_plot_2021.png",
+    "caption": "Elbow Plot 2021",
+    "type": "image",
+    "src": "/output_real/elbow_plot_2021.png",
+    "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "elbow_plot_2022.png",
+    "caption": "Elbow Plot 2022",
+    "type": "image",
+    "src": "/output_real/elbow_plot_2022.png",
+    "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "elbow_plot_2023.png",
+    "caption": "Elbow Plot 2023",
+    "type": "image",
+    "src": "/output_real/elbow_plot_2023.png",
+    "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "elbow_plot_2024.png",
+    "caption": "Elbow Plot 2024",
+    "type": "image",
+    "src": "/output_real/elbow_plot_2024.png",
+    "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_biplot_2020.png",
+    "caption": "Cluster Map Biplot 2020",
+    "type": "image",
+    "src": "/output_real/cluster_map_biplot_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_biplot_2021.png",
+    "caption": "Cluster Map Biplot 2021",
+    "type": "image",
+    "src": "/output_real/cluster_map_biplot_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_biplot_2022.png",
+    "caption": "Cluster Map Biplot 2022",
+    "type": "image",
+    "src": "/output_real/cluster_map_biplot_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_biplot_2023.png",
+    "caption": "Cluster Map Biplot 2023",
+    "type": "image",
+    "src": "/output_real/cluster_map_biplot_2023.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_biplot_2024.png",
+    "caption": "Cluster Map Biplot 2024",
+    "type": "image",
+    "src": "/output_real/cluster_map_biplot_2024.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "biplot_tahun_2020.png",
+    "caption": "Biplot Tahun 2020",
+    "type": "image",
+    "src": "/output_real/biplot_tahun_2020.png",
+    "group": "Snapshot Biplot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "biplot_tahun_2021.png",
+    "caption": "Biplot Tahun 2021",
+    "type": "image",
+    "src": "/output_real/biplot_tahun_2021.png",
+    "group": "Snapshot Biplot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "biplot_tahun_2022.png",
+    "caption": "Biplot Tahun 2022",
+    "type": "image",
+    "src": "/output_real/biplot_tahun_2022.png",
+    "group": "Snapshot Biplot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "biplot_tahun_2023.png",
+    "caption": "Biplot Tahun 2023",
+    "type": "image",
+    "src": "/output_real/biplot_tahun_2023.png",
+    "group": "Snapshot Biplot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "biplot_tahun_2024.png",
+    "caption": "Biplot Tahun 2024",
+    "type": "image",
+    "src": "/output_real/biplot_tahun_2024.png",
+    "group": "Snapshot Biplot",
     "scenario": "Shared"
   },
   {

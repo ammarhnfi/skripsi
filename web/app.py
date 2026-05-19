@@ -1415,7 +1415,7 @@ def run_permutation_test(X_matrices, k, lambda_obs, n_permutations, m_weights=No
 
 
 def compute_structure_vector(H, alphas, sheet_names, X_matrices, m_weights, obs_labels,
-                              province_map=None):
+                              province_map=None, scenario='scenario1'):
     """
     Mengimplementasikan model vektor struktur Areia, Oliveira & Mexia (2008),
     sebagaimana dirangkum dalam Oliveira et al. (2024).
@@ -1502,13 +1502,20 @@ def compute_structure_vector(H, alphas, sheet_names, X_matrices, m_weights, obs_
             D_sqrt_sub = np.diag(np.sqrt(m_sub_norm))
 
             # Hitung W_k dan H untuk sub-seri
-            Ws_sub = []
-            for X_k in X_matrices:
-                X_sub = X_k[prov_idx, :]
-                DsqZ = D_sqrt_sub @ X_sub
-                Ws_sub.append(DsqZ @ DsqZ.T)
-
-            H_sub = _calculate_H_matrix(Ws_sub, K)
+            if scenario == 'scenario1':
+                Ws_sub = []
+                for X_k in X_matrices:
+                    X_sub = X_k[prov_idx, :]
+                    DsqZ = D_sqrt_sub @ X_sub
+                    Ws_sub.append(DsqZ @ DsqZ.T)
+                H_sub = _calculate_H_matrix(Ws_sub, K)
+            else:
+                Ss_sub = []
+                for X_k in X_matrices:
+                    X_sub = X_k[prov_idx, :]
+                    S_sub = X_sub.T @ np.diag(m_sub_norm) @ X_sub
+                    Ss_sub.append(S_sub)
+                H_sub = _calculate_H_matrix(Ss_sub, K)
             vals_sub, vecs_sub = np.linalg.eig(H_sub)
             vals_sub = np.real(vals_sub)
             vecs_sub = np.real(vecs_sub)
@@ -2749,7 +2756,8 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario):
                 X_matrices=[np.array(x) for x in res['X_matrices']], 
                 m_weights=np.array(res['m_weights']), 
                 obs_labels=res['obs_labels'],
-                province_map=province_map_inv_filtered
+                province_map=province_map_inv_filtered,
+                scenario=scenario
             )
             res['structure_vector_res'] = sv_res
             

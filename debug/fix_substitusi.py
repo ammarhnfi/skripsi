@@ -37,32 +37,32 @@ NEW_SUBS = {
         r"Substitusi: $\mathrm{MSA}_{\text{IPM}} = \dfrac{8{,}5241}{8{,}5241 + 1{,}2514} = 0{,}8721$.",
     ],
     15: [
-        r"Jumlah variabel indikator sosio-ekonomi $p = 12$.",
-        r"Substitusi: $df = \dfrac{12 \times (12-1)}{2} = \dfrac{132}{2} = 66$.",
+        r"Jumlah variabel indikator sosio-ekonomi $p = 11$.",
+        r"Substitusi: $df = \dfrac{11 \times (11-1)}{2} = \dfrac{110}{2} = 55$.",
     ],
     16: [
-        r"Menghitung determinan matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$.",
+        r"Menghitung determinan matriks korelasi $\mathbf{R} \in \mathbb{R}^{11 \times 11}$.",
         r"Dekomposisi $\mathbf{R} = \mathbf{L}\mathbf{U}$ digunakan untuk stabilitas numerik.",
-        r"Hasil: $|\mathbf{R}| = \prod_{i=1}^{12} u_{ii} = 1{,}2530 \times 10^{-8}$.",
+        r"Hasil: $|\mathbf{R}| = \prod_{i=1}^{11} u_{ii} = 1{,}2530 \times 10^{-8}$.",
     ],
     17: [
-        r"Matriks korelasi $\mathbf{R} \in \mathbb{R}^{12 \times 12}$ bersifat simetris nyata.",
+        r"Matriks korelasi $\mathbf{R} \in \mathbb{R}^{11 \times 11}$ bersifat simetris nyata.",
         r"Eigenvalue pertama: $\lambda_1 = 6{,}2140$.",
         r"Eigenvector pertama: $\mathbf{v}_1 = (0{,}3251,\; 0{,}2814,\; \dots,\; 0{,}1512)^T$.",
     ],
     18: [
-        r"Dekomposisi spektral $\mathbf{R} \in \mathbb{R}^{12 \times 12}$ menjadi kombinasi proyeksi eigenvector.",
-        r"Eigenvalue terurut: $\lambda_1 = 6{,}2140,\; \lambda_2 = 1{,}5120,\; \dots,\; \lambda_{12} = 0{,}0120$.",
-        r"Jumlah total: $\displaystyle\sum_{j=1}^{12} \lambda_j = 12{,}0000 = \operatorname{tr}(\mathbf{R})$.",
+        r"Dekomposisi spektral $\mathbf{R} \in \mathbb{R}^{11 \times 11}$ menjadi kombinasi proyeksi eigenvector.",
+        r"Eigenvalue terurut: $\lambda_1 = 6{,}2140,\; \lambda_2 = 1{,}5120,\; \dots,\; \lambda_{11} = 0{,}0120$.",
+        r"Jumlah total: $\displaystyle\sum_{j=1}^{11} \lambda_j = 11{,}0000 = \operatorname{tr}(\mathbf{R})$.",
     ],
     19: [
-        r"Matriks korelasi $\mathbf{R}$ berukuran $12 \times 12$ dengan elemen diagonal $r_{ii} = 1{,}0000$.",
-        r"Substitusi: $\operatorname{tr}(\mathbf{R}) = \displaystyle\sum_{i=1}^{12} r_{ii} = \underbrace{1 + 1 + \dots + 1}_{12} = 12{,}0000$.",
+        r"Matriks korelasi $\mathbf{R}$ berukuran $11 \times 11$ dengan elemen diagonal $r_{ii} = 1{,}0000$.",
+        r"Substitusi: $\operatorname{tr}(\mathbf{R}) = \displaystyle\sum_{i=1}^{11} r_{ii} = \underbrace{1 + 1 + \dots + 1}_{11} = 11{,}0000$.",
     ],
     20: [
-        r"Matriks data terstandar $\mathbf{Z} \in \mathbb{R}^{41 \times 12}$ dari 41 wilayah dan 12 indikator.",
+        r"Matriks data terstandar $\mathbf{Z} \in \mathbb{R}^{41 \times 11}$ dari 41 wilayah dan 11 indikator.",
         r"Dekomposisi nilai singular: $\mathbf{Z} = \mathbf{U}\mathbf{S}\mathbf{V}^T$.",
-        r"Dimensi: $\mathbf{U} \in \mathbb{R}^{41 \times 12}$, $\mathbf{S} \in \mathbb{R}^{12 \times 12}$, $\mathbf{V}^T \in \mathbb{R}^{12 \times 12}$.",
+        r"Dimensi: $\mathbf{U} \in \mathbb{R}^{41 \times 11}$, $\mathbf{S} \in \mathbb{R}^{11 \times 11}$, $\mathbf{V}^T \in \mathbb{R}^{11 \times 11}$.",
     ],
     21: [
         r"Menghitung koordinat proyeksi 2 dimensi kompromi wilayah.",
@@ -88,8 +88,8 @@ NEW_SUBS = {
         r"Loading terskala: $\mathbf{v}^*_1 = 11{,}0368 \times \mathbf{v}_1$.",
     ],
     27: [
-        r"Matriks data terstandar tahun 2020: $\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 12}$.",
-        r"Intra-struktur: $\mathbf{W}_{2020} = \dfrac{1}{12}\,\mathbf{Z}_{2020}\mathbf{Z}_{2020}^T$.",
+        r"Matriks data terstandar tahun 2020: $\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 11}$.",
+        r"Intra-struktur: $\mathbf{W}_{2020} = \dfrac{1}{11}\,\mathbf{Z}_{2020}\mathbf{Z}_{2020}^T$.",
         r"Elemen $w_{ij}$ mencerminkan kemiripan sosio-ekonomi wilayah $i$ dan $j$ pada tahun 2020.",
     ],
     28: [
@@ -145,7 +145,7 @@ NEW_SUBS = {
     ],
     41: [
         r"Koordinat transisi baris wilayah pada tahun $k = 2020$ (pendekatan dual).",
-        r"$\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 12}$, $\mathbf{G}_c \in \mathbb{R}^{12 \times 2}$.",
+        r"$\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 11}$, $\mathbf{G}_c \in \mathbb{R}^{11 \times 2}$.",
         r"Pembagi inersia dual: $\mathbf{\Lambda}_s^{-1/2} = \operatorname{diag}(0{,}4011,\; 0{,}8133)$.",
     ],
     42: [
@@ -195,7 +195,7 @@ NEW_SUBS = {
     ],
     51: [
         r"Proyeksi koordinat wilayah pada tahun $k = 2020$.",
-        r"$\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 12}$, $\mathbf{V}_c \in \mathbb{R}^{12 \times 2}$.",
+        r"$\mathbf{Z}_{2020} \in \mathbb{R}^{41 \times 11}$, $\mathbf{V}_c \in \mathbb{R}^{11 \times 2}$.",
     ],
     52: [
         r"Jumlah tahun pengamatan $K = 5$ (2020–2024).",

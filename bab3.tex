@@ -435,6 +435,35 @@ Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal
 \input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
 \input{output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
 
+\subsubsection{Tahap 7a: Komputasi Vektor Struktur dan Analisis Transversal-Longitudinal}
+Setelah memperoleh matriks interstruktur $\mathbf{H}_W$ (Skenario 1) dan memastikan signifikansinya melalui uji permutasi, parameter interstruktur dipadatkan ke dalam vektor struktur $\tilde{\boldsymbol{\beta}} = \lambda_1 \boldsymbol{\alpha}_1$ (Persamaan~\ref{eq:beta_vec}). 
+
+\begin{enumerate}
+    \item \textbf{Vektor Struktur Gabungan (Global):}
+    Untuk data sampel, nilai eigen pertama dari matriks $\mathbf{H}_W$ adalah $\lambda_1 = 29{,}6278$. Vektor eigen pertama yang dinormalisasi menjadi $\boldsymbol{\alpha}$ adalah $\mathbf{u}_1 = (0{,}2881;\; 0{,}3503;\; 0{,}3616)^T$. Substitusi ke rumus menghasilkan komponen $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$:
+    \begin{align*}
+        \tilde{\beta}_{2020} &= 29{,}6278 \times 0{,}2881 = 8{,}5347 \\
+        \tilde{\beta}_{2021} &= 29{,}6278 \times 0{,}3503 = 10{,}3798 \\
+        \tilde{\beta}_{2022} &= 29{,}6278 \times 0{,}3616 = 10{,}7133
+    \end{align*}
+    Hasil komputasi ini disajikan secara lengkap pada Tabel~\ref{tab:sample1beta_vec} berikut.
+    \input{output_sample/scenario1/output_table_beta_vec.tex}
+    
+    \item \textbf{Vektor Struktur Sub-populasi (Provinsi Jawa Barat):}
+    Untuk analisis transversal provinsi pada data sampel, Jawa Barat memiliki 2 wilayah ($n_{\text{sub}}=2$) yaitu Kabupaten Bandung Barat dan Kota Tasikmalaya. Bobot lokal $\mathbf{D}_{\text{sub}}$ dibentuk dengan menormalisasi bobot kedua wilayah tersebut sehingga berjumlah satu. Matriks interstruktur lokal Jawa Barat $\mathbf{H}_{\text{Jabar}}$ dibentuk dari produk skalar wilayah sub-populasi. 
+    
+    Eigendekomposisi $\mathbf{H}_{\text{Jabar}}$ menghasilkan nilai eigen pertama $\lambda_{1,\text{Jabar}} = 12{,}8858$ dan vektor eigen pertama $\mathbf{u}_{1,\text{Jabar}} = (0{,}3712;\; 0{,}3305;\; 0{,}2982)^T$. Substitusi menghasilkan komponen $\tilde{\beta}_{\text{Jabar}, k}$:
+    \begin{align*}
+        \tilde{\beta}_{\text{Jabar}, 2020} &= 12{,}8858 \times 0{,}3712 = 4{,}7834 \\
+        \tilde{\beta}_{\text{Jabar}, 2021} &= 12{,}8858 \times 0{,}3305 = 4{,}2591 \\
+        \tilde{\beta}_{\text{Jabar}, 2022} &= 12{,}8858 \times 0{,}2982 = 3{,}8433
+    \end{align*}
+    Hasil ini disajikan secara lengkap pada Tabel~\ref{tab:sample1beta_provinsi} berikut.
+    \input{output_sample/scenario1/output_table_beta_provinsi.tex}
+\end{enumerate}
+
+Perbedaan pola temporal antara $\tilde{\boldsymbol{\beta}}$ gabungan yang cenderung meningkat (menunjukkan kestabilan struktur yang menguat) dengan $\tilde{\boldsymbol{\beta}}_{\text{Jabar}}$ yang menurun mencerminkan dinamika lokal sub-populasi yang berbeda dari tren global.
+
 \subsubsection{Tahap 8: Perbandingan Cluster Biplot vs STATIS}
 Untuk mengilustrasikan keunggulan STATIS yang mengakomodasi informasi temporal, kita dapat membandingkan cluster yang terbentuk dari matriks koordinat STATIS $\mathbf{F}_k$ dengan cluster yang dibentuk secara murni dari Principal Component Analysis (PCA) pada tahun individu (Biplot Unweighted). 
 
@@ -470,7 +499,7 @@ Gambar~\ref{fig:map_biplot_statis_sample_2020} memvisualisasikan perbedaan hasil
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_biplot_2020.png}
+        \includegraphics[width=\textwidth]{output_sample/cluster_map_biplot_2020.png}
         \caption*{Peta Cluster Biplot (Unweighted)}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}

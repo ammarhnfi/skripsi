@@ -1123,6 +1123,9 @@ for current_scenario in ['scenario1', 'scenario2']:
     pca_pc_adj, pca_load_adj = apply_global_adjustments(np.vstack(pca_pc_list), np.vstack(pca_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
     statis_pc_adj, statis_load_adj = apply_global_adjustments(np.vstack(statis_pc_list), np.vstack(statis_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
     
+    pca_pc_adj_dict = {}
+    pca_load_adj_dict = {}
+    
     n_obs = len(obs_labels)
     n_vars = len(selected_vars)
     for i, yr in enumerate(sheet_names):
@@ -1140,6 +1143,9 @@ for current_scenario in ['scenario1', 'scenario2']:
         lp_adj = pca_load_adj[i*n_vars:(i+1)*n_vars]
         ls_adj = statis_load_adj[i*n_vars:(i+1)*n_vars]
         dist_loads = np.sqrt(np.sum((lp_adj - ls_adj)**2, axis=1))
+        
+        pca_pc_adj_dict[yr] = sp_adj
+        pca_load_adj_dict[yr] = lp_adj
         
         df_dist_loads = pd.DataFrame({
             'Variabel': selected_vars,
@@ -1396,7 +1402,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         print(f"  [WARN] Gagal memuat dari app.py: {_e_load}. Komputasi inline...")
     
         # Fallback: definisi inline ringkas agar export_all.py tetap mandiri
-        def _sv_compute(H, alphas, sheet_names, X_matrices, m_weights, obs_labels, province_map=None):
+        def _sv_compute(H, alphas, sheet_names, X_matrices, m_weights, obs_labels, province_map=None, scenario='scenario1'):
             K = len(sheet_names)
             H = np.array(H)
             vals, vecs = np.linalg.eigh(H)
@@ -1416,10 +1422,14 @@ for current_scenario in ['scenario1', 'scenario2']:
                     pidx = [i for i, lb in enumerate(obs_labels) if lb in pwilayah]
                     if len(pidx) < 2: continue
                     ms = m_weights[pidx]; ms = ms / ms.sum()
-                    Dss = np.diag(np.sqrt(ms))
-                    Ws_sub = [Dss @ Xk[pidx, :] for Xk in X_matrices]
-                    Ws_sub = [W @ W.T for W in Ws_sub]
-                    Hs = np.array([[np.trace(Ws_sub[i] @ Ws_sub[j]) for j in range(K)] for i in range(K)])
+                    if scenario == 'scenario1':
+                        Dss = np.diag(np.sqrt(ms))
+                        Ws_sub = [Dss @ Xk[pidx, :] for Xk in X_matrices]
+                        Ws_sub = [W @ W.T for W in Ws_sub]
+                        Hs = np.array([[np.trace(Ws_sub[i] @ Ws_sub[j]) for j in range(K)] for i in range(K)])
+                    else:
+                        Ss_sub = [Xk[pidx, :].T @ np.diag(ms) @ Xk[pidx, :] for Xk in X_matrices]
+                        Hs = np.array([[np.trace(Ss_sub[i] @ Ss_sub[j]) for j in range(K)] for i in range(K)])
                     vs_h, ve_h = np.linalg.eigh(Hs)
                     i_s = np.argsort(vs_h)[::-1]
                     l1s, u1s = vs_h[i_s[0]], ve_h[:, i_s[0]]
@@ -1498,7 +1508,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             X_matrices=X_matrices,
             m_weights=m_weights,
             obs_labels=obs_labels,
-            province_map=_province_map
+            province_map=_province_map,
+            scenario=SCENARIO
         )
         _sv_export(sv_result, output_dir=OUT_DIR, label_prefix=CUR_LABEL_PREFIX)
         print(f"  [OK] lambda1={sv_result['lambda1']:.4f}, "
@@ -1607,29 +1618,51 @@ for current_scenario in ['scenario1', 'scenario2']:
         ax.axvline(0, color=GRID_COLOR, linewidth=1.2, zorder=1)
         ax.grid(True, color=GRID_COLOR, linewidth=0.6, linestyle='--', alpha=0.7, zorder=0)
         
-        # Titik objek (skor kompromi)
-        ax.scatter(plot_scores[:, 0], plot_scores[:, 1], color='#1E88E5', s=55, alpha=0.85, zorder=3, edgecolors='white', linewidths=0.5)
+        # 1. Titik objek (skor kompromi) dengan pembedaan highlight
+        for i, label in enumerate(obs_labels):
+            is_hl = label in HIGHLIGHT_OBJECTS
+            ax.scatter(plot_scores[i, 0], plot_scores[i, 1],
+                       color='#E53935' if is_hl else '#1E88E5',
+                       s=110 if is_hl else 50,
+                       alpha=0.95 if is_hl else 0.75,
+                       zorder=4 if is_hl else 3,
+                       edgecolors='white', linewidths=0.5)
         
-        # Label Objek
+        # 2. Label Objek dengan koordinat untuk highlight
         for i, txt in enumerate(obs_labels):
-            ax.annotate(txt, (plot_scores[i, 0], plot_scores[i, 1]),
+            is_hl = txt in HIGHLIGHT_OBJECTS
+            lbl = f"{txt} ({plot_scores[i, 0]:.2f}, {plot_scores[i, 1]:.2f})" if is_hl else txt
+            ax.annotate(lbl, (plot_scores[i, 0], plot_scores[i, 1]),
                         xytext=(0, 6), textcoords='offset points',
-                        ha='center', va='bottom', fontsize=8.5, color='#333333',
-                        path_effects=[pe.withStroke(linewidth=1.5, foreground='white')])
+                        ha='center', va='bottom',
+                        fontsize=9.5 if is_hl else 8,
+                        color='#D32F2F' if is_hl else '#333333',
+                        fontweight='bold' if is_hl else 'normal',
+                        path_effects=[pe.withStroke(linewidth=2 if is_hl else 1.5, foreground='white')],
+                        zorder=5 if is_hl else 4)
                         
-        # Vektor Variabel (Loading)
+        # 3. Vektor Variabel (Loading) dengan koordinat dan pembedaan highlight
         for i, var in enumerate(selected_vars):
+            is_hl_var = var in HIGHLIGHT_VARS
+            line_color = '#D81B60' if is_hl_var else '#F06292'
+            line_width = 3.5 if is_hl_var else 1.8
+            
             # Garis
-            ax.plot([0, plot_loadings[i, 0]], [0, plot_loadings[i, 1]], color='#D81B60', linewidth=2.5, zorder=4)
+            ax.plot([0, plot_loadings[i, 0]], [0, plot_loadings[i, 1]], color=line_color, linewidth=line_width, zorder=4)
             # Panah
             ax.annotate('', xy=(plot_loadings[i, 0], plot_loadings[i, 1]), xytext=(0, 0),
-                        arrowprops=dict(arrowstyle="->", color='#D81B60', lw=2.5, mutation_scale=15),
+                        arrowprops=dict(arrowstyle="->", color=line_color, lw=line_width, mutation_scale=15),
                         zorder=4)
             # Label Variabel
-            ax.annotate(var, (plot_loadings[i, 0], plot_loadings[i, 1]),
+            var_lbl = f"{var} ({plot_loadings[i, 0]:.2f}, {plot_loadings[i, 1]:.2f})" if is_hl_var else var
+            ax.annotate(var_lbl, (plot_loadings[i, 0], plot_loadings[i, 1]),
                         xytext=(0, 8), textcoords='offset points',
-                        ha='center', va='bottom', fontsize=10, color='#C2185B', fontweight='bold',
-                        path_effects=[pe.withStroke(linewidth=3, foreground='white')], zorder=5)
+                        ha='center', va='bottom',
+                        fontsize=11 if is_hl_var else 9.5,
+                        color='#880E4F' if is_hl_var else '#C2185B',
+                        fontweight='bold',
+                        path_effects=[pe.withStroke(linewidth=3, foreground='white')],
+                        zorder=5)
                         
         ax.set_xlabel(ax_x_label, fontsize=12, labelpad=10)
         ax.set_ylabel(ax_y_label, fontsize=12, labelpad=10)
@@ -1922,18 +1955,35 @@ for current_scenario in ['scenario1', 'scenario2']:
             gk_y[:, 1] *= -1
             
         ps_y, pl_y = apply_visual_adjustments(arr_y, gk_y, norm=NORM_SCORE, scale=SCALE_LOAD)
+        
+        # Format text and sizes for objects in yearly biplots
+        obj_text = []
+        obj_sizes = []
+        obj_colors = []
+        for j, label in enumerate(obs_labels):
+            if label in HIGHLIGHT_OBJECTS:
+                obj_text.append(f"<b>{label} ({ps_y[j, 0]:.2f}, {ps_y[j, 1]:.2f})</b>")
+                obj_sizes.append(12)
+                obj_colors.append('#E53935')
+            else:
+                obj_text.append(label)
+                obj_sizes.append(7)
+                obj_colors.append('#1E88E5')
+        
         fig_yr = go.Figure()
         fig_yr.add_trace(go.Scatter(
             x=ps_y[:, 0], y=ps_y[:, 1],
-            mode='markers+text', text=obs_labels, textposition='top center',
+            mode='markers+text', text=obj_text, textposition='top center',
             textfont=dict(size=9, color='black'),
-            marker=dict(size=7, color='#1E88E5'), name='Objek'
+            marker=dict(size=obj_sizes, color=obj_colors), name='Objek'
         ))
-        for i, var in enumerate(selected_vars):
+        
+        for j, var in enumerate(selected_vars):
             is_hl_var = var in HIGHLIGHT_VARS
+            var_lbl = f"<b>{var} ({pl_y[j, 0]:.2f}, {pl_y[j, 1]:.2f})</b>" if is_hl_var else var
             fig_yr.add_trace(go.Scatter(
-                x=[0, pl_y[i, 0]], y=[0, pl_y[i, 1]],
-                mode='lines+markers+text', text=['', var], textposition='top center',
+                x=[0, pl_y[j, 0]], y=[0, pl_y[j, 1]],
+                mode='lines+markers+text', text=['', var_lbl], textposition='top center',
                 textfont=dict(size=10, color='black'),
                 line=dict(color='#D81B60' if is_hl_var else '#F06292',
                           width=3 if is_hl_var else 1.5),
@@ -1945,6 +1995,50 @@ for current_scenario in ['scenario1', 'scenario2']:
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
         save_png(fig_yr, f"biplot_tahun_{yr}.png", OUT_DIR, width=800, height=800)
+        
+        # Generate unweighted yearly biplot in root (only when IS_FIRST)
+        if IS_FIRST:
+            ps_y_un, pl_y_un = pca_pc_adj_dict[yr], pca_load_adj_dict[yr]
+            
+            # Format text and sizes for objects in unweighted yearly biplot
+            obj_text_un = []
+            obj_sizes_un = []
+            obj_colors_un = []
+            for j, label in enumerate(obs_labels):
+                if label in HIGHLIGHT_OBJECTS:
+                    obj_text_un.append(f"<b>{label} ({ps_y_un[j, 0]:.2f}, {ps_y_un[j, 1]:.2f})</b>")
+                    obj_sizes_un.append(12)
+                    obj_colors_un.append('#E53935')
+                else:
+                    obj_text_un.append(label)
+                    obj_sizes_un.append(7)
+                    obj_colors_un.append('#1E88E5')
+            
+            fig_yr_un = go.Figure()
+            fig_yr_un.add_trace(go.Scatter(
+                x=ps_y_un[:, 0], y=ps_y_un[:, 1],
+                mode='markers+text', text=obj_text_un, textposition='top center',
+                textfont=dict(size=9, color='black'),
+                marker=dict(size=obj_sizes_un, color=obj_colors_un), name='Objek'
+            ))
+            
+            for j, var in enumerate(selected_vars):
+                is_hl_var = var in HIGHLIGHT_VARS
+                var_lbl = f"<b>{var} ({pl_y_un[j, 0]:.2f}, {pl_y_un[j, 1]:.2f})</b>" if is_hl_var else var
+                fig_yr_un.add_trace(go.Scatter(
+                    x=[0, pl_y_un[j, 0]], y=[0, pl_y_un[j, 1]],
+                    mode='lines+markers+text', text=['', var_lbl], textposition='top center',
+                    textfont=dict(size=10, color='black'),
+                    line=dict(color='#D81B60' if is_hl_var else '#F06292',
+                              width=3 if is_hl_var else 1.5),
+                    showlegend=False
+                ))
+            fig_yr_un.add_hline(y=0, line_dash='dot', line_color='gray')
+            fig_yr_un.add_vline(x=0, line_dash='dot', line_color='gray')
+            fig_yr_un.update_layout(title=f"Biplot Tahunan (PCA Unweighted) — Tahun {yr}",
+                                    xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
+                                    xaxis=dict(scaleanchor='y', scaleratio=1))
+            save_png(fig_yr_un, f"biplot_tahun_{yr}.png", ROOT_OUT_DIR, width=800, height=800)
     
     
     # ============================================================
@@ -2116,12 +2210,25 @@ for current_scenario in ['scenario1', 'scenario2']:
                 cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
             elif K_CLUSTERS == 2:
                 cluster_name = ["Rendah", "Tinggi"][cl]
+            
+            # Format text and sizes for this cluster using ps_y coordinates
+            cl_texts = []
+            cl_sizes = []
+            idx_list = [i for i in range(len(obs_labels)) if mask[i]]
+            for idx in idx_list:
+                label = obs_labels[idx]
+                if label in HIGHLIGHT_OBJECTS:
+                    cl_texts.append(f"<b>{label} ({ps_y[idx, 0]:.2f}, {ps_y[idx, 1]:.2f})</b>")
+                    cl_sizes.append(14)
+                else:
+                    cl_texts.append(label)
+                    cl_sizes.append(9)
                 
             fig_sc.add_trace(go.Scatter(
                 x=ps_y[mask, 0], y=ps_y[mask, 1],
-                mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
+                mode='markers+text', text=cl_texts,
                 textposition='top center', textfont=dict(size=9, color='black'),
-                marker=dict(size=9, color=palette[cl]),
+                marker=dict(size=cl_sizes, color=palette[cl]),
                 name=f'Cluster {cl+1} ({cluster_name})'
             ))
         fig_sc.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -2144,6 +2251,11 @@ for current_scenario in ['scenario1', 'scenario2']:
                             title=f"Kurva Elbow — Tahun {yr}",
                             labels={'x': 'Jumlah Cluster (k)', 'y': 'Inersia (SSE)'},
                             color_discrete_sequence=['#1976D2'])
+        fig_elbow.update_traces(
+            text=[f"{val:,.2f}" for val in inertias],
+            textposition="top center",
+            mode="lines+markers+text"
+        )
         fig_elbow.update_layout(template='plotly_white')
         save_png(fig_elbow, f"elbow_plot_{yr}.png", OUT_DIR, width=700, height=450)
     
@@ -2156,6 +2268,34 @@ for current_scenario in ['scenario1', 'scenario2']:
             save_png(fig_dendro, f"dendrogram_{yr}.png", OUT_DIR, width=800, height=550)
         except Exception as e:
             print(f"  [WARN] Dendrogram {yr} gagal: {e}")
+            
+        # Unweighted Elbow Plot and Dendrogram in Root (only when IS_FIRST)
+        if IS_FIRST:
+            Xc_bp = pca_pc_adj_dict[yr]
+            inertias_bp = []
+            for kk in k_range:
+                km_e_bp = KMeans(n_clusters=kk, random_state=42, n_init=10)
+                km_e_bp.fit(Xc_bp)
+                inertias_bp.append(km_e_bp.inertia_)
+            fig_elbow_bp = px.line(x=list(k_range), y=inertias_bp, markers=True,
+                                   title=f"Kurva Elbow (Unweighted) — Tahun {yr}",
+                                   labels={'x': 'Jumlah Cluster (k)', 'y': 'Inersia (SSE)'},
+                                   color_discrete_sequence=['#1976D2'])
+            fig_elbow_bp.update_traces(
+                text=[f"{val:,.2f}" for val in inertias_bp],
+                textposition="top center",
+                mode="lines+markers+text"
+            )
+            fig_elbow_bp.update_layout(template='plotly_white')
+            save_png(fig_elbow_bp, f"elbow_plot_{yr}.png", ROOT_OUT_DIR, width=700, height=450)
+            
+            try:
+                fig_dendro_bp = ff.create_dendrogram(Xc_bp, labels=obs_labels, orientation='left')
+                fig_dendro_bp.update_layout(title=f"Dendrogram (Unweighted) — Tahun {yr}",
+                                            template='plotly_white', margin=dict(l=150, r=20, t=40, b=20), height=550)
+                save_png(fig_dendro_bp, f"dendrogram_{yr}.png", ROOT_OUT_DIR, width=800, height=550)
+            except Exception as e:
+                print(f"  [WARN] Dendrogram unweighted {yr} gagal: {e}")
     
     # Matriks Transisi Cluster (jumlah & nama)
     year_pairs = [(sheet_names[i], sheet_names[i+1]) for i in range(len(sheet_names)-1)]
@@ -2295,7 +2435,9 @@ for current_scenario in ['scenario1', 'scenario2']:
     
     CLUSTER_COLORS = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Match app.py: Red, Orange, Green, Blue, Purple
     
-    def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename):
+    def draw_cluster_map(labels_arr, obs_labels_list, gdf_map, title, out_filename, out_dir=None):
+        if out_dir is None:
+            out_dir = OUT_DIR
         n_cl = K_CLUSTERS
         palette = CLUSTER_COLORS[:n_cl]
         df_cl = pd.DataFrame({'name_raw': obs_labels_list, 'Cluster': labels_arr})
@@ -2371,7 +2513,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         legend.get_frame().set_linewidth(1.0)
     
         plt.tight_layout(pad=0.5)
-        plt.savefig(os.path.join(OUT_DIR, out_filename), dpi=200, bbox_inches='tight')
+        plt.savefig(os.path.join(out_dir, out_filename), dpi=200, bbox_inches='tight')
         plt.close(fig)
         print(f"  [PNG] {out_filename}")
     
@@ -2487,25 +2629,39 @@ for current_scenario in ['scenario1', 'scenario2']:
         save_tex_name_table(rows_bs_nm_yr, f"output_table_biplot_vs_statis_compare_name_{yr}.tex", OUT_DIR,
                             f"Nama Daerah Perbandingan Cluster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
                             
-        # Draw Map for Biplot
-        if 'gdf_map' in locals():
+        # Draw Map for Biplot (Unweighted PCA Map - Root only)
+        if 'gdf_map' in locals() and IS_FIRST:
             draw_cluster_map(lbl_biplot_yr, obs_labels, gdf_map,
-                             f"Peta Cluster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png")
+                             f"Peta Cluster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png", out_dir=ROOT_OUT_DIR)
                              
         # Draw Scatter for Biplot
         palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
         fig_sc_bp = go.Figure()
+        sp_adj = pca_pc_adj_dict[yr] # Rotated, mirrored, scaled unweighted coordinates
         for cl in range(K_CLUSTERS):
             mask = lbl_biplot_yr == cl
             cluster_name = f"Cluster {cl+1}"
             if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
             elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
             
+            # Format text and sizes for this cluster using sp_adj
+            cl_texts_bp = []
+            cl_sizes_bp = []
+            idx_list = [idx for idx in range(len(obs_labels)) if mask[idx]]
+            for idx in idx_list:
+                label = obs_labels[idx]
+                if label in HIGHLIGHT_OBJECTS:
+                    cl_texts_bp.append(f"<b>{label} ({sp_adj[idx, 0]:.2f}, {sp_adj[idx, 1]:.2f})</b>")
+                    cl_sizes_bp.append(14)
+                else:
+                    cl_texts_bp.append(label)
+                    cl_sizes_bp.append(9)
+            
             fig_sc_bp.add_trace(go.Scatter(
-                x=coords_biplot[mask, 0], y=coords_biplot[mask, 1],
-                mode='markers+text', text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
+                x=sp_adj[mask, 0], y=sp_adj[mask, 1],
+                mode='markers+text', text=cl_texts_bp,
                 textposition='top center', textfont=dict(size=9, color='black'),
-                marker=dict(size=9, color=palette[cl]),
+                marker=dict(size=cl_sizes_bp, color=palette[cl]),
                 name=f'Cluster {cl+1} ({cluster_name})'
             ))
         fig_sc_bp.add_hline(y=0, line_dash='dot', line_color='gray')
@@ -2514,6 +2670,8 @@ for current_scenario in ['scenario1', 'scenario2']:
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
         save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", OUT_DIR, width=800, height=800)
+        if IS_FIRST:
+            save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", ROOT_OUT_DIR, width=800, height=800)
     
     # ============================================================
     # 8.A PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS
@@ -2680,8 +2838,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             
             # 1. Transisi Biplot (Unweighted) Map & Scatter
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, f"cluster_map_biplot_{y1}.png"),
-                os.path.join(OUT_DIR, f"cluster_map_biplot_{y2}.png"),
+                os.path.join(ROOT_OUT_DIR, f"cluster_map_biplot_{y1}.png"),
+                os.path.join(ROOT_OUT_DIR, f"cluster_map_biplot_{y2}.png"),
                 os.path.join(OUT_DIR, f"compare_map_trans_biplot_{y1}x{y2}.png")
             )
             combine_images_side_by_side(
@@ -2705,7 +2863,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         # B. Perbandingan Biplot vs STATIS (Tahun Sama)
         for yr in sheet_names:
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, f"cluster_map_biplot_{yr}.png"),
+                os.path.join(ROOT_OUT_DIR, f"cluster_map_biplot_{yr}.png"),
                 os.path.join(OUT_DIR, f"cluster_map_statis_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_map_biplot_vs_statis_{yr}.png")
             )
