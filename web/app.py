@@ -1240,15 +1240,7 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenari
     
     # Samakan scores_raw (titik kompromi) dengan performa
     corr_scores = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
-    if corr_scores < 0:
-        scores_raw[:, 0] *= -1
-        # Jika scores di-flip, maka ruang trajektori (Vc_vars) juga harus di-flip
-        # agar trajektori searah dengan titik kompromi
-        Vc_vars[:, 0] *= -1
-        # Gc (loadings) juga di-flip agar visualisasi biplot konsisten
-        Gc[:, 0] *= -1
-        loadings = Gc
-        print("  [DEBUG] PC1 di-flip agar searah dengan performa (Kesejahteraan).")
+    
 #pentingbanget
     # 8. Trajectories (Projecting onto Variable Compromise Space)
     # This aligns with the "Dual" interpretation: city trajectories in variable space
@@ -3601,23 +3593,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         print(err_msg)
         return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
     
-    def apply_visual_adjustments(s, l, norm, scale, ev=None):
-        # 1. Normalisasi Independen (Penting!)
-        if norm:
-            for col in range(s.shape[1]):
-                m = np.abs(s[:, col]).max() if s.shape[0] > 0 and np.abs(s[:, col]).max() > 0 else 1
-                s[:, col] = s[:, col] / m
-        
-        # 2. Skalasi Loading "SMART VISUAL" (Berdasarkan lama.py) - KHUSUS PLOT
-        if scale:
-            max_s = np.max(np.abs(s)) if s.size > 0 else 1
-            max_l = np.max(np.abs(l)) if l.size > 0 else 1
-            vis_factor = (max_s / max_l) * 0.8 if max_l > 0 else 1
-            l = l * vis_factor
-            
-        return s, l
-
-    plot_scores, plot_loadings = apply_visual_adjustments(scores, loadings, norm_score, scale_load, eig_vals)
+    plot_scores, plot_loadings = apply_visual_adjustments(scores, loadings, norm_score, scale_load)
     
     # Label Sumbu (Persentase Variansi)
     eig_vals = np.array(res.get('eig_vals_c', [1, 0]))

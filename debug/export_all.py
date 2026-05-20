@@ -113,14 +113,14 @@ def deduplicate_and_clean(root_path):
         'compromise_map',            # Peta Kompromi STATIS
         'scatter_statis',            # Scatter plot STATIS
         'compromise_biplot',         # Biplot kompromi
-        'loading_plot',              # Loading plot kompromi
         'variable_contribution',     # Kontribusi variabel
         'variable_cos2',             # Cos2 variabel
         'biplot_tahun_',             # Biplot tahunan per skenario
         'statis_trajectories',       # Lintasan trajektori STATIS
-        'cluster_scatter_statis',    # Scatter plot cluster STATIS
-        'cluster_map_statis',        # Peta cluster STATIS
-        'cluster_pie_statis',        # Pie chart cluster STATIS (tahunan & kompromi)
+        'compromise_map',            # Peta cluster STATIS
+        'compromise_scatter',         # Scatter plot kompromi STATIS
+        'cluster_pie_statis',        # Pie chart cluster STATIS (tahunan)
+        'compromise_pie',             # Pie chart kompromi STATIS
         'elbow_plot_', 'dendrogram_', 'dendrogram_compromise', # Elbow & Dendrogram
         'output_table_cluster_members', # Anggota cluster kompromi
         'beta',                      # Koefisien Beta (tabel & grafik) per skenario
@@ -337,6 +337,9 @@ def save_tex_name_table(mapping, filename, out_dir, caption, label, label_prefix
         r"\hline"
     ]
     for sel, names in mapping.items():
+        # Skip baris jika nama kosong atau berisi "-" (sum = 0)
+        if not names or str(names).strip() == "-":
+            continue
         sel_esc = escape_tex(str(sel))
         names_esc = escape_tex(str(names))
         lines.append(f"{sel_esc} & {names_esc} \\\\")
@@ -464,6 +467,7 @@ def save_moran_tex(results, filename, out_dir, label_prefix=""):
     
     # Prefix unik per skenario agar tidak tabrakan di induk.tex
     pfx = label_prefix.capitalize() if label_prefix else "Macro"
+    pfx = pfx.replace("1", "One").replace("2", "Two")
     
     lines = [
         fr"\newcommand{{\{pfx}MoranI}}{{{mi:.4f}}}",
@@ -1018,12 +1022,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         if any(neg.lower() in var.lower() for neg in negative_vars):
             Zc_proxy[:, i] *= -1
     mean_perf_c = Zc_proxy.mean(axis=1)
-    corr_orient = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
-    if corr_orient < 0:
-        scores_raw[:, 0] *= -1
-        loadings[:, 0] *= -1  # flip loadings agar konsisten dengan scores
-        Vc_vars[:, 0] *= -1
-        print(f"  [INFO] PC1 {SCENARIO} di-flip agar searah dengan kesejahteraan.")
+    # Skor dan loading saat ini ditampilkan sesuai perhitungan SVD; tidak ada flip otomatis berdasarkan mean_perf_c.
 
     # Bangun tables_std (Z-score per tahun) untuk dipakai di KMO section
     tables_std = []
@@ -1076,9 +1075,8 @@ for current_scenario in ['scenario1', 'scenario2']:
     def apply_visual_adjustments(scores, loads, norm=False, scale=True):
         ps, pl = scores.copy(), loads.copy()
         if norm:
-            for col in range(ps.shape[1]):
-                m_val = np.abs(ps[:, col]).max() if ps.shape[0] > 0 and np.abs(ps[:, col]).max() > 0 else 1
-                ps[:, col] = ps[:, col] / m_val
+            max_val = np.max(np.abs(ps)) if ps.size > 0 else 1
+            if max_val > 0: ps = ps / max_val
         if scale:
             ms, ml = np.max(np.abs(ps)), np.max(np.abs(pl))
             if ml > 0: pl = pl * (ms / ml) * 0.8
@@ -1617,26 +1615,6 @@ for current_scenario in ['scenario1', 'scenario2']:
     save_png(fig_scree, "scree_plot.png", OUT_DIR)
     save_png(fig_rv_heat, "rv_heatmap.png", OUT_DIR, width=700, height=600)
     
-    # --- Compromise Map (skor saja, tanpa loading) ---
-    colors = ['#1E88E5', '#D81B60', '#43A047', '#FB8C00', '#8E24AA']
-    fig_comp = go.Figure()
-    for i, label in enumerate(obs_labels):
-        color = colors[i % len(colors)]
-        show_text = label in HIGHLIGHT_OBJECTS
-        fig_comp.add_trace(go.Scatter(
-            x=[scores_raw[i, 0]], y=[scores_raw[i, 1]],
-            mode='markers+text' if show_text else 'markers',
-            marker=dict(size=10, color=color),
-            text=[f"{label}<br>({scores_raw[i,0]:.2f}, {scores_raw[i,1]:.2f})"] if show_text else None,
-            textposition="top center",
-            name=label
-        ))
-    fig_comp.add_hline(y=0, line_dash='dot', line_color='gray')
-    fig_comp.add_vline(x=0, line_dash='dot', line_color='gray')
-    fig_comp.update_layout(title="Peta Kompromi (Skor Objek)", xaxis_title=ax_x, yaxis_title=ax_y,
-                           template='plotly_white', xaxis=dict(scaleanchor='y', scaleratio=1))
-    save_png(fig_comp, "compromise_map.png", OUT_DIR, width=800, height=800)
-    
     # --- Biplot Kompromi ---
     fig_bi = go.Figure()
     # 1. Objek (Skor)
@@ -1767,26 +1745,6 @@ for current_scenario in ['scenario1', 'scenario2']:
     save_png(fig_cos2, "variable_cos2.png", OUT_DIR)
     
     # --- Inter-struktur (heatmap with bar annotation, already saved as rv_heatmap) ---
-    # Also save a loading-only plot
-    fig_load_only = go.Figure()
-    for i, var in enumerate(selected_vars):
-        fig_load_only.add_trace(go.Scatter(
-            x=[0, loadings[i, 0]], y=[0, loadings[i, 1]],
-            mode='lines+markers+text', text=['', var], textposition='top center',
-            textfont=dict(size=11, color='black'),
-            line=dict(width=2), showlegend=False
-        ))
-    theta = np.linspace(0, 2 * np.pi, 200)
-    fig_load_only.add_trace(go.Scatter(x=np.cos(theta), y=np.sin(theta),
-                                       mode='lines', line=dict(color='gray', dash='dot'), showlegend=False))
-    fig_load_only.add_hline(y=0, line_dash='dot', line_color='gray')
-    fig_load_only.add_vline(x=0, line_dash='dot', line_color='gray')
-    fig_load_only.update_layout(title="Compromise Loading Plot", xaxis_title=ax_x, yaxis_title=ax_y,
-                                 template='plotly_white', xaxis=dict(scaleanchor='y', scaleratio=1,
-                                                                      range=[-1.2, 1.2]),
-                                 yaxis=dict(range=[-1.2, 1.2]))
-    save_png(fig_load_only, "loading_plot.png", OUT_DIR, width=700, height=700)
-    
     # --- STATIS Trajectories ---
     df_traj_list = []
     for yr, coords in per_year_coords_plot.items():
@@ -2648,16 +2606,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     fig_traj_cl.update_layout(title="Scatter Plot Cluster Trajektori (Diberi Peringkat)",
                                xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                                xaxis=dict(scaleanchor='y', scaleratio=1))
-    save_png(fig_traj_cl, "cluster_scatter_statis.png", OUT_DIR, width=800, height=800)
-    
-    # Dendrogram Kompromi
-    try:
-        fig_dendro_c = ff.create_dendrogram(X_traj, labels=obs_labels, orientation='left')
-        fig_dendro_c.update_layout(title="Dendrogram Cluster Trajektori Keseluruhan",
-                                    template='plotly_white', margin=dict(l=150, r=20, t=40, b=20), height=600)
-        save_png(fig_dendro_c, "dendrogram_compromise.png", OUT_DIR, width=800, height=600)
-    except Exception as e:
-        print(f"  [WARN] Dendrogram kompromi gagal: {e}")
+    save_png(fig_traj_cl, "compromise_scatter.png", OUT_DIR, width=800, height=800)
     
     # Tabel anggota cluster trajektori
     df_members = pd.DataFrame({
@@ -2777,7 +2726,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     
         # Peta trajektori keseluruhan
         draw_cluster_map(cluster_traj, obs_labels, gdf_map,
-                         "Peta Cluster STATIS 2020-2024", "cluster_map_statis.png")
+                         "Peta Cluster STATIS 2020-2024", "compromise_map.png")
     
     except Exception as e:
         print(f"  [WARN] Peta choropleth gagal: {e}")
@@ -3152,7 +3101,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 draw_ipm_pie_chart(ipm_yr, f"Proporsi Kategori IPM Tahun {yr}", f"ipm_pie_{yr}.png", ROOT_OUT_DIR)
                 
         # 4. Global Compromise STATIS Pie
-        draw_pie_chart(cluster_traj, "Proporsi Cluster Kompromi STATIS (Keseluruhan)", "cluster_pie_statis.png", OUT_DIR)
+        draw_pie_chart(cluster_traj, "Proporsi Cluster Kompromi STATIS (Keseluruhan)", "compromise_pie.png", OUT_DIR)
 
         # B. GENERATE INDIVIDUAL IPM MAPS
         if ipm_col and 'gdf_map' in locals():
@@ -3266,12 +3215,12 @@ for current_scenario in ['scenario1', 'scenario2']:
             # Comparison 9: Kompromi STATIS vs IPM k
             for yr in sheet_names:
                 combine_images_side_by_side(
-                    os.path.join(OUT_DIR, "cluster_map_statis.png"),
+                    os.path.join(OUT_DIR, "compromise_map.png"),
                     os.path.join(ROOT_OUT_DIR, f"ipm_map_{yr}.png"),
                     os.path.join(OUT_DIR, f"compare_map_compromise_vs_ipm_{yr}.png")
                 )
                 combine_images_side_by_side(
-                    os.path.join(OUT_DIR, "cluster_pie_statis.png"),
+                    os.path.join(OUT_DIR, "compromise_pie.png"),
                     os.path.join(ROOT_OUT_DIR, f"ipm_pie_{yr}.png"),
                     os.path.join(OUT_DIR, f"compare_pie_compromise_vs_ipm_{yr}.png")
                 )
@@ -3279,17 +3228,17 @@ for current_scenario in ['scenario1', 'scenario2']:
         # Comparison 7: Kompromi STATIS vs Biplot k
         for yr in sheet_names:
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_map_statis.png"),
+                os.path.join(OUT_DIR, "compromise_map.png"),
                 os.path.join(ROOT_OUT_DIR, f"cluster_map_biplot_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_map_compromise_vs_biplot_{yr}.png")
             )
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_scatter_statis.png"),
+                os.path.join(OUT_DIR, "compromise_scatter.png"),
                 os.path.join(ROOT_OUT_DIR, f"cluster_scatter_biplot_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_scatter_compromise_vs_biplot_{yr}.png")
             )
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_pie_statis.png"),
+                os.path.join(OUT_DIR, "compromise_pie.png"),
                 os.path.join(ROOT_OUT_DIR, f"cluster_pie_biplot_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_pie_compromise_vs_biplot_{yr}.png")
             )
@@ -3297,17 +3246,17 @@ for current_scenario in ['scenario1', 'scenario2']:
         # Comparison 8: Kompromi STATIS vs STATIS k
         for yr in sheet_names:
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_map_statis.png"),
+                os.path.join(OUT_DIR, "compromise_map.png"),
                 os.path.join(OUT_DIR, f"cluster_map_statis_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_map_compromise_vs_statis_{yr}.png")
             )
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_scatter_statis.png"),
+                os.path.join(OUT_DIR, "compromise_scatter.png"),
                 os.path.join(OUT_DIR, f"cluster_scatter_statis_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_scatter_compromise_vs_statis_{yr}.png")
             )
             combine_images_side_by_side(
-                os.path.join(OUT_DIR, "cluster_pie_statis.png"),
+                os.path.join(OUT_DIR, "compromise_pie.png"),
                 os.path.join(OUT_DIR, f"cluster_pie_statis_{yr}.png"),
                 os.path.join(OUT_DIR, f"compare_pie_compromise_vs_statis_{yr}.png")
             )

@@ -264,6 +264,30 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "compromise_pie.png",
+    "caption": "Compromise Pie",
+    "type": "image",
+    "src": "/output_real/scenario1/compromise_pie.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compromise_scatter.png",
+    "caption": "Compromise Scatter",
+    "type": "image",
+    "src": "/output_real/scenario1/compromise_scatter.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compromise_statis.png",
+    "caption": "Compromise Statis",
+    "type": "image",
+    "src": "/output_real/scenario1/compromise_statis.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "matrix_F_c.tex",
     "caption": "Matrix F C",
     "type": "text",
@@ -1192,6 +1216,46 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "cluster_map_biplot_2020.png",
+    "caption": "Cluster Map Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_map_biplot_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_map_biplot_2021.png",
+    "caption": "Cluster Map Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_map_biplot_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_map_biplot_2022.png",
+    "caption": "Cluster Map Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_map_biplot_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_map_biplot_2023.png",
+    "caption": "Cluster Map Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_map_biplot_2023.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_map_biplot_2024.png",
+    "caption": "Cluster Map Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario1/cluster_map_biplot_2024.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "cluster_map_statis.png",
     "caption": "Cluster Map Statis",
     "type": "image",
@@ -2080,6 +2144,22 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_statis_vs_ipm_avg_name.tex",
+    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_avg_name.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_avg_sum.tex",
+    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_statis_vs_ipm_avg_sum.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_statis_vs_ipm_name_2020.tex",
     "caption": "Output Table Statis Vs Ipm Name 2020",
     "type": "text",
@@ -2492,6 +2572,30 @@
     "caption": "Compromise Biplot Matplotlib",
     "type": "image",
     "src": "/output_real/scenario2/compromise_biplot_matplotlib.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compromise_pie.png",
+    "caption": "Compromise Pie",
+    "type": "image",
+    "src": "/output_real/scenario2/compromise_pie.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compromise_scatter.png",
+    "caption": "Compromise Scatter",
+    "type": "image",
+    "src": "/output_real/scenario2/compromise_scatter.png",
+    "group": "Lain-lain",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compromise_statis.png",
+    "caption": "Compromise Statis",
+    "type": "image",
+    "src": "/output_real/scenario2/compromise_statis.png",
     "group": "Lain-lain",
     "scenario": "Scenario 2"
   },
@@ -3424,6 +3528,46 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "cluster_map_biplot_2020.png",
+    "caption": "Cluster Map Biplot 2020",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_map_biplot_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_map_biplot_2021.png",
+    "caption": "Cluster Map Biplot 2021",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_map_biplot_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_map_biplot_2022.png",
+    "caption": "Cluster Map Biplot 2022",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_map_biplot_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_map_biplot_2023.png",
+    "caption": "Cluster Map Biplot 2023",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_map_biplot_2023.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_map_biplot_2024.png",
+    "caption": "Cluster Map Biplot 2024",
+    "type": "image",
+    "src": "/output_real/scenario2/cluster_map_biplot_2024.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "cluster_map_statis.png",
     "caption": "Cluster Map Statis",
     "type": "image",
@@ -4312,6 +4456,22 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_statis_vs_ipm_avg_name.tex",
+    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_avg_name.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_vs_ipm_avg_sum.tex",
+    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_statis_vs_ipm_avg_sum.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_statis_vs_ipm_name_2020.tex",
     "caption": "Output Table Statis Vs Ipm Name 2020",
     "type": "text",
@@ -4464,6 +4624,46 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "cluster_biplot_2020.png",
+    "caption": "Cluster Biplot 2020",
+    "type": "image",
+    "src": "/output_real/cluster_biplot_2020.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_biplot_2021.png",
+    "caption": "Cluster Biplot 2021",
+    "type": "image",
+    "src": "/output_real/cluster_biplot_2021.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_biplot_2022.png",
+    "caption": "Cluster Biplot 2022",
+    "type": "image",
+    "src": "/output_real/cluster_biplot_2022.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_biplot_2023.png",
+    "caption": "Cluster Biplot 2023",
+    "type": "image",
+    "src": "/output_real/cluster_biplot_2023.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_biplot_2024.png",
+    "caption": "Cluster Biplot 2024",
+    "type": "image",
+    "src": "/output_real/cluster_biplot_2024.png",
+    "group": "Biplot Klaster",
+    "scenario": "Shared"
+  },
+  {
     "name": "cluster_scatter_biplot_2020.png",
     "caption": "Cluster Scatter Biplot 2020",
     "type": "image",
@@ -4552,10 +4752,90 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_ahh_l_2020.png",
+    "caption": "Boxplot Ahh L 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_l_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_l_2021.png",
+    "caption": "Boxplot Ahh L 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_l_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_l_2022.png",
+    "caption": "Boxplot Ahh L 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_l_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_l_2023.png",
+    "caption": "Boxplot Ahh L 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_l_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_l_2024.png",
+    "caption": "Boxplot Ahh L 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_l_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_ahh_p.png",
     "caption": "Boxplot Ahh P",
     "type": "image",
     "src": "/output_real/boxplot_ahh_p.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_p_2020.png",
+    "caption": "Boxplot Ahh P 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_p_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_p_2021.png",
+    "caption": "Boxplot Ahh P 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_p_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_p_2022.png",
+    "caption": "Boxplot Ahh P 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_p_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_p_2023.png",
+    "caption": "Boxplot Ahh P 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_p_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ahh_p_2024.png",
+    "caption": "Boxplot Ahh P 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_ahh_p_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4568,10 +4848,90 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_gk_2020.png",
+    "caption": "Boxplot Gk 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_gk_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gk_2021.png",
+    "caption": "Boxplot Gk 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_gk_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gk_2022.png",
+    "caption": "Boxplot Gk 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_gk_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gk_2023.png",
+    "caption": "Boxplot Gk 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_gk_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gk_2024.png",
+    "caption": "Boxplot Gk 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_gk_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_gr.png",
     "caption": "Boxplot Gr",
     "type": "image",
     "src": "/output_real/boxplot_gr.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gr_2020.png",
+    "caption": "Boxplot Gr 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_gr_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gr_2021.png",
+    "caption": "Boxplot Gr 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_gr_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gr_2022.png",
+    "caption": "Boxplot Gr 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_gr_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gr_2023.png",
+    "caption": "Boxplot Gr 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_gr_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_gr_2024.png",
+    "caption": "Boxplot Gr 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_gr_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4584,10 +4944,130 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_ipg_2020.png",
+    "caption": "Boxplot Ipg 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipg_2021.png",
+    "caption": "Boxplot Ipg 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipg_2022.png",
+    "caption": "Boxplot Ipg 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipg_2023.png",
+    "caption": "Boxplot Ipg 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipg_2024.png",
+    "caption": "Boxplot Ipg 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_ipg_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_ipm.png",
     "caption": "Boxplot Ipm",
     "type": "image",
     "src": "/output_real/boxplot_ipm.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipm_2020.png",
+    "caption": "Boxplot Ipm 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_ipm_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipm_2021.png",
+    "caption": "Boxplot Ipm 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_ipm_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipm_2022.png",
+    "caption": "Boxplot Ipm 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_ipm_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipm_2023.png",
+    "caption": "Boxplot Ipm 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_ipm_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ipm_2024.png",
+    "caption": "Boxplot Ipm 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_ipm_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_jp_2020.png",
+    "caption": "Boxplot Jp 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_jp_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_jp_2021.png",
+    "caption": "Boxplot Jp 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_jp_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_jp_2022.png",
+    "caption": "Boxplot Jp 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_jp_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_jp_2023.png",
+    "caption": "Boxplot Jp 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_jp_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_jp_2024.png",
+    "caption": "Boxplot Jp 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_jp_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4600,10 +5080,90 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_pdrb_adhk_2020.png",
+    "caption": "Boxplot Pdrb Adhk 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_pdrb_adhk_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pdrb_adhk_2021.png",
+    "caption": "Boxplot Pdrb Adhk 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_pdrb_adhk_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pdrb_adhk_2022.png",
+    "caption": "Boxplot Pdrb Adhk 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_pdrb_adhk_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pdrb_adhk_2023.png",
+    "caption": "Boxplot Pdrb Adhk 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_pdrb_adhk_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pdrb_adhk_2024.png",
+    "caption": "Boxplot Pdrb Adhk 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_pdrb_adhk_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_pkkp.png",
     "caption": "Boxplot Pkkp",
     "type": "image",
     "src": "/output_real/boxplot_pkkp.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pkkp_2020.png",
+    "caption": "Boxplot Pkkp 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_pkkp_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pkkp_2021.png",
+    "caption": "Boxplot Pkkp 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_pkkp_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pkkp_2022.png",
+    "caption": "Boxplot Pkkp 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_pkkp_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pkkp_2023.png",
+    "caption": "Boxplot Pkkp 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_pkkp_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_pkkp_2024.png",
+    "caption": "Boxplot Pkkp 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_pkkp_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4616,10 +5176,90 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_ppm_2020.png",
+    "caption": "Boxplot Ppm 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_ppm_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ppm_2021.png",
+    "caption": "Boxplot Ppm 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_ppm_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ppm_2022.png",
+    "caption": "Boxplot Ppm 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_ppm_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ppm_2023.png",
+    "caption": "Boxplot Ppm 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_ppm_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_ppm_2024.png",
+    "caption": "Boxplot Ppm 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_ppm_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_rls.png",
     "caption": "Boxplot Rls",
     "type": "image",
     "src": "/output_real/boxplot_rls.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_rls_2020.png",
+    "caption": "Boxplot Rls 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_rls_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_rls_2021.png",
+    "caption": "Boxplot Rls 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_rls_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_rls_2022.png",
+    "caption": "Boxplot Rls 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_rls_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_rls_2023.png",
+    "caption": "Boxplot Rls 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_rls_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_rls_2024.png",
+    "caption": "Boxplot Rls 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_rls_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4632,10 +5272,90 @@
     "scenario": "Shared"
   },
   {
+    "name": "boxplot_tpak_2020.png",
+    "caption": "Boxplot Tpak 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_tpak_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpak_2021.png",
+    "caption": "Boxplot Tpak 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_tpak_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpak_2022.png",
+    "caption": "Boxplot Tpak 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_tpak_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpak_2023.png",
+    "caption": "Boxplot Tpak 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_tpak_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpak_2024.png",
+    "caption": "Boxplot Tpak 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_tpak_2024.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
     "name": "boxplot_tpt.png",
     "caption": "Boxplot Tpt",
     "type": "image",
     "src": "/output_real/boxplot_tpt.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpt_2020.png",
+    "caption": "Boxplot Tpt 2020",
+    "type": "image",
+    "src": "/output_real/boxplot_tpt_2020.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpt_2021.png",
+    "caption": "Boxplot Tpt 2021",
+    "type": "image",
+    "src": "/output_real/boxplot_tpt_2021.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpt_2022.png",
+    "caption": "Boxplot Tpt 2022",
+    "type": "image",
+    "src": "/output_real/boxplot_tpt_2022.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpt_2023.png",
+    "caption": "Boxplot Tpt 2023",
+    "type": "image",
+    "src": "/output_real/boxplot_tpt_2023.png",
+    "group": "Distribusi Variabel",
+    "scenario": "Shared"
+  },
+  {
+    "name": "boxplot_tpt_2024.png",
+    "caption": "Boxplot Tpt 2024",
+    "type": "image",
+    "src": "/output_real/boxplot_tpt_2024.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -4677,6 +5397,54 @@
     "type": "image",
     "src": "/output_real/elbow_plot_2024.png",
     "group": "Elbow Plot",
+    "scenario": "Shared"
+  },
+  {
+    "name": "permutation_histogram.png",
+    "caption": "Permutation Histogram",
+    "type": "image",
+    "src": "/output_real/permutation_histogram.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Shared"
+  },
+  {
+    "name": "rv_heatmap.png",
+    "caption": "Rv Heatmap",
+    "type": "image",
+    "src": "/output_real/rv_heatmap.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Shared"
+  },
+  {
+    "name": "scree_plot.png",
+    "caption": "Scree Plot",
+    "type": "image",
+    "src": "/output_real/scree_plot.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Shared"
+  },
+  {
+    "name": "beta_trajectory.png",
+    "caption": "Beta Trajectory",
+    "type": "image",
+    "src": "/output_real/beta_trajectory.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_compromise_biplot.png",
+    "caption": "Cluster Compromise Biplot",
+    "type": "image",
+    "src": "/output_real/cluster_compromise_biplot.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_compromise_map.png",
+    "caption": "Cluster Compromise Map",
+    "type": "image",
+    "src": "/output_real/cluster_compromise_map.png",
+    "group": "Lain-lain",
     "scenario": "Shared"
   },
   {
@@ -4800,6 +5568,262 @@
     "scenario": "Shared"
   },
   {
+    "name": "matrix_F_c.tex",
+    "caption": "Matrix F C",
+    "type": "text",
+    "src": "/output_real/matrix_F_c.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_G_c.tex",
+    "caption": "Matrix G C",
+    "type": "text",
+    "src": "/output_real/matrix_G_c.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_V_c.tex",
+    "caption": "Matrix V C",
+    "type": "text",
+    "src": "/output_real/matrix_V_c.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_X_2020.tex",
+    "caption": "Matrix X 2020",
+    "type": "text",
+    "src": "/output_real/matrix_X_2020.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_X_2021.tex",
+    "caption": "Matrix X 2021",
+    "type": "text",
+    "src": "/output_real/matrix_X_2021.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_X_2022.tex",
+    "caption": "Matrix X 2022",
+    "type": "text",
+    "src": "/output_real/matrix_X_2022.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_X_2023.tex",
+    "caption": "Matrix X 2023",
+    "type": "text",
+    "src": "/output_real/matrix_X_2023.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_X_2024.tex",
+    "caption": "Matrix X 2024",
+    "type": "text",
+    "src": "/output_real/matrix_X_2024.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_Z_2020.tex",
+    "caption": "Matrix Z 2020",
+    "type": "text",
+    "src": "/output_real/matrix_Z_2020.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_Z_2021.tex",
+    "caption": "Matrix Z 2021",
+    "type": "text",
+    "src": "/output_real/matrix_Z_2021.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_Z_2022.tex",
+    "caption": "Matrix Z 2022",
+    "type": "text",
+    "src": "/output_real/matrix_Z_2022.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_Z_2023.tex",
+    "caption": "Matrix Z 2023",
+    "type": "text",
+    "src": "/output_real/matrix_Z_2023.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "matrix_Z_2024.tex",
+    "caption": "Matrix Z 2024",
+    "type": "text",
+    "src": "/output_real/matrix_Z_2024.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_core_statis.tex",
+    "caption": "Output Core Statis",
+    "type": "text",
+    "src": "/output_real/output_core_statis.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_macros.tex",
+    "caption": "Output Macros",
+    "type": "text",
+    "src": "/output_real/output_macros.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_perm_statis.tex",
+    "caption": "Output Perm Statis",
+    "type": "text",
+    "src": "/output_real/output_perm_statis.tex",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2020.png",
+    "caption": "Compare Map Biplot Vs Statis 2020",
+    "type": "image",
+    "src": "/output_real/compare_map_biplot_vs_statis_2020.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2021.png",
+    "caption": "Compare Map Biplot Vs Statis 2021",
+    "type": "image",
+    "src": "/output_real/compare_map_biplot_vs_statis_2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2022.png",
+    "caption": "Compare Map Biplot Vs Statis 2022",
+    "type": "image",
+    "src": "/output_real/compare_map_biplot_vs_statis_2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_biplot_vs_statis_2023.png",
+    "caption": "Compare Map Biplot Vs Statis 2023",
+    "type": "image",
+    "src": "/output_real/compare_map_biplot_vs_statis_2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_biplot_2020x2021.png",
+    "caption": "Compare Map Trans Biplot 2020X2021",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_biplot_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_biplot_2021x2022.png",
+    "caption": "Compare Map Trans Biplot 2021X2022",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_biplot_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_biplot_2022x2023.png",
+    "caption": "Compare Map Trans Biplot 2022X2023",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_biplot_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_biplot_2023x2024.png",
+    "caption": "Compare Map Trans Biplot 2023X2024",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_biplot_2023x2024.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_statis_2020x2021.png",
+    "caption": "Compare Map Trans Statis 2020X2021",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_statis_2020x2021.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_statis_2021x2022.png",
+    "caption": "Compare Map Trans Statis 2021X2022",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_statis_2021x2022.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "compare_map_trans_statis_2022x2023.png",
+    "caption": "Compare Map Trans Statis 2022X2023",
+    "type": "image",
+    "src": "/output_real/compare_map_trans_statis_2022x2023.png",
+    "group": "Perbandingan Bersandingan",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_2020.png",
+    "caption": "Cluster Map 2020",
+    "type": "image",
+    "src": "/output_real/cluster_map_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_2021.png",
+    "caption": "Cluster Map 2021",
+    "type": "image",
+    "src": "/output_real/cluster_map_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_2022.png",
+    "caption": "Cluster Map 2022",
+    "type": "image",
+    "src": "/output_real/cluster_map_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_2023.png",
+    "caption": "Cluster Map 2023",
+    "type": "image",
+    "src": "/output_real/cluster_map_2023.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_2024.png",
+    "caption": "Cluster Map 2024",
+    "type": "image",
+    "src": "/output_real/cluster_map_2024.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
     "name": "cluster_map_biplot_2020.png",
     "caption": "Cluster Map Biplot 2020",
     "type": "image",
@@ -4836,6 +5860,38 @@
     "caption": "Cluster Map Biplot 2024",
     "type": "image",
     "src": "/output_real/cluster_map_biplot_2024.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_statis_2020.png",
+    "caption": "Cluster Map Statis 2020",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_statis_2021.png",
+    "caption": "Cluster Map Statis 2021",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_statis_2022.png",
+    "caption": "Cluster Map Statis 2022",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Shared"
+  },
+  {
+    "name": "cluster_map_statis_2023.png",
+    "caption": "Cluster Map Statis 2023",
+    "type": "image",
+    "src": "/output_real/cluster_map_statis_2023.png",
     "group": "Peta Klaster",
     "scenario": "Shared"
   },
@@ -4880,6 +5936,14 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_alpha.tex",
+    "caption": "Output Table Alpha",
+    "type": "text",
+    "src": "/output_real/output_table_alpha.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_alpha_s.tex",
     "caption": "Output Table Alpha S",
     "type": "text",
@@ -4892,6 +5956,22 @@
     "caption": "Output Table Alpha W",
     "type": "text",
     "src": "/output_real/output_table_alpha_w.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_beta_provinsi.tex",
+    "caption": "Output Table Beta Provinsi",
+    "type": "text",
+    "src": "/output_real/output_table_beta_provinsi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_beta_vec.tex",
+    "caption": "Output Table Beta Vec",
+    "type": "text",
+    "src": "/output_real/output_table_beta_vec.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -4956,6 +6036,134 @@
     "caption": "Output Table Biplot Transition Sum 2023X2024",
     "type": "text",
     "src": "/output_real/output_table_biplot_transition_sum_2023x2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Name 2020",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_name_2021.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Name 2021",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_name_2022.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Name 2022",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_name_2023.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Name 2023",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_sum_2020.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Sum 2020",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_sum_2021.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Sum 2021",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_sum_2022.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Sum 2022",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_biplot_vs_statis_compare_sum_2023.tex",
+    "caption": "Output Table Biplot Vs Statis Compare Sum 2023",
+    "type": "text",
+    "src": "/output_real/output_table_biplot_vs_statis_compare_sum_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_name_2020.tex",
+    "caption": "Output Table Cross Matrix Name 2020",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_name_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_name_2021.tex",
+    "caption": "Output Table Cross Matrix Name 2021",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_name_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_name_2022.tex",
+    "caption": "Output Table Cross Matrix Name 2022",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_name_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_name_2023.tex",
+    "caption": "Output Table Cross Matrix Name 2023",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_name_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_sum_2020.tex",
+    "caption": "Output Table Cross Matrix Sum 2020",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_sum_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_sum_2021.tex",
+    "caption": "Output Table Cross Matrix Sum 2021",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_sum_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_sum_2022.tex",
+    "caption": "Output Table Cross Matrix Sum 2022",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_sum_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_cross_matrix_sum_2023.tex",
+    "caption": "Output Table Cross Matrix Sum 2023",
+    "type": "text",
+    "src": "/output_real/output_table_cross_matrix_sum_2023.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -5040,6 +6248,14 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_eigen.tex",
+    "caption": "Output Table Eigen",
+    "type": "text",
+    "src": "/output_real/output_table_eigen.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_hs.tex",
     "caption": "Output Table Hs",
     "type": "text",
@@ -5056,10 +6272,250 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_ipm_matrix_name_2020x2021.tex",
+    "caption": "Output Table Ipm Matrix Name 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_name_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_name_2021x2022.tex",
+    "caption": "Output Table Ipm Matrix Name 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_name_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_name_2022x2023.tex",
+    "caption": "Output Table Ipm Matrix Name 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_name_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_name_2023x2024.tex",
+    "caption": "Output Table Ipm Matrix Name 2023X2024",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_name_2023x2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_sum_2020x2021.tex",
+    "caption": "Output Table Ipm Matrix Sum 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_sum_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_sum_2021x2022.tex",
+    "caption": "Output Table Ipm Matrix Sum 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_sum_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_sum_2022x2023.tex",
+    "caption": "Output Table Ipm Matrix Sum 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_sum_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_ipm_matrix_sum_2023x2024.tex",
+    "caption": "Output Table Ipm Matrix Sum 2023X2024",
+    "type": "text",
+    "src": "/output_real/output_table_ipm_matrix_sum_2023x2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_2020.tex",
+    "caption": "Output Table Jarak Loading 2020",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_2021.tex",
+    "caption": "Output Table Jarak Loading 2021",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_2022.tex",
+    "caption": "Output Table Jarak Loading 2022",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_2023.tex",
+    "caption": "Output Table Jarak Loading 2023",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_2024.tex",
+    "caption": "Output Table Jarak Loading 2024",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_2020.tex",
+    "caption": "Output Table Jarak Skor 2020",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_skor_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_2021.tex",
+    "caption": "Output Table Jarak Skor 2021",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_skor_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_2022.tex",
+    "caption": "Output Table Jarak Skor 2022",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_skor_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_2023.tex",
+    "caption": "Output Table Jarak Skor 2023",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_skor_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_2024.tex",
+    "caption": "Output Table Jarak Skor 2024",
+    "type": "text",
+    "src": "/output_real/output_table_jarak_skor_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_kmo_bartlett.tex",
     "caption": "Output Table Kmo Bartlett",
     "type": "text",
     "src": "/output_real/output_table_kmo_bartlett.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_loading_intra_2020.tex",
+    "caption": "Output Table Loading Intra 2020",
+    "type": "text",
+    "src": "/output_real/output_table_loading_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_loading_intra_2021.tex",
+    "caption": "Output Table Loading Intra 2021",
+    "type": "text",
+    "src": "/output_real/output_table_loading_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_loading_intra_2022.tex",
+    "caption": "Output Table Loading Intra 2022",
+    "type": "text",
+    "src": "/output_real/output_table_loading_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_loading_intra_2023.tex",
+    "caption": "Output Table Loading Intra 2023",
+    "type": "text",
+    "src": "/output_real/output_table_loading_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_loading_intra_2024.tex",
+    "caption": "Output Table Loading Intra 2024",
+    "type": "text",
+    "src": "/output_real/output_table_loading_intra_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2020.tex",
+    "caption": "Output Table Matriks Intra Loading 2020",
+    "type": "text",
+    "src": "/output_real/output_table_matriks_intra_loading_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2021.tex",
+    "caption": "Output Table Matriks Intra Loading 2021",
+    "type": "text",
+    "src": "/output_real/output_table_matriks_intra_loading_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2022.tex",
+    "caption": "Output Table Matriks Intra Loading 2022",
+    "type": "text",
+    "src": "/output_real/output_table_matriks_intra_loading_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2023.tex",
+    "caption": "Output Table Matriks Intra Loading 2023",
+    "type": "text",
+    "src": "/output_real/output_table_matriks_intra_loading_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_matriks_intra_loading_2024.tex",
+    "caption": "Output Table Matriks Intra Loading 2024",
+    "type": "text",
+    "src": "/output_real/output_table_matriks_intra_loading_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_rs.tex",
+    "caption": "Output Table Rs",
+    "type": "text",
+    "src": "/output_real/output_table_rs.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_rv.tex",
+    "caption": "Output Table Rv",
+    "type": "text",
+    "src": "/output_real/output_table_rv.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -5076,6 +6532,126 @@
     "caption": "Output Table Rv W",
     "type": "text",
     "src": "/output_real/output_table_rv_w.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_skor_intra_2020.tex",
+    "caption": "Output Table Skor Intra 2020",
+    "type": "text",
+    "src": "/output_real/output_table_skor_intra_2020.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_skor_intra_2021.tex",
+    "caption": "Output Table Skor Intra 2021",
+    "type": "text",
+    "src": "/output_real/output_table_skor_intra_2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_skor_intra_2022.tex",
+    "caption": "Output Table Skor Intra 2022",
+    "type": "text",
+    "src": "/output_real/output_table_skor_intra_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_skor_intra_2023.tex",
+    "caption": "Output Table Skor Intra 2023",
+    "type": "text",
+    "src": "/output_real/output_table_skor_intra_2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_skor_intra_2024.tex",
+    "caption": "Output Table Skor Intra 2024",
+    "type": "text",
+    "src": "/output_real/output_table_skor_intra_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_struktur_diagnostik.tex",
+    "caption": "Output Table Struktur Diagnostik",
+    "type": "text",
+    "src": "/output_real/output_table_struktur_diagnostik.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_name_2020x2021.tex",
+    "caption": "Output Table Transition Matrix Name 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_name_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_name_2021x2022.tex",
+    "caption": "Output Table Transition Matrix Name 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_name_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_name_2022x2023.tex",
+    "caption": "Output Table Transition Matrix Name 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_name_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_sum_2020x2021.tex",
+    "caption": "Output Table Transition Matrix Sum 2020X2021",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_sum_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_sum_2021x2022.tex",
+    "caption": "Output Table Transition Matrix Sum 2021X2022",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_sum_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_transition_matrix_sum_2022x2023.tex",
+    "caption": "Output Table Transition Matrix Sum 2022X2023",
+    "type": "text",
+    "src": "/output_real/output_table_transition_matrix_sum_2022x2023.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_v_s.tex",
+    "caption": "Output Table V S",
+    "type": "text",
+    "src": "/output_real/output_table_v_s.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_v_w.tex",
+    "caption": "Output Table V W",
+    "type": "text",
+    "src": "/output_real/output_table_v_w.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_vc.tex",
+    "caption": "Output Table Vc",
+    "type": "text",
+    "src": "/output_real/output_table_vc.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   }
