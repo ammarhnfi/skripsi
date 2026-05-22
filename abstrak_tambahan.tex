@@ -26,19 +26,19 @@
 
 \vspace*{0.6cm}
 
-Wilayah strategis Banten, DKI Jakarta, dan Jawa Barat merupakan pusat aglomerasi ekonomi nasional di Indonesia yang mengalami variasi struktural signifikan selama periode 2020--2024 sebagai konsekuensi dari pandemi global dan fase pemulihan setelahnya. Pendekatan multivariat tradisional sering kali menghadapi keterbatasan dalam menangkap interaksi simultan antara unit spasial, indikator sosial, dan pergeseran temporal dalam satu kerangka kerja yang terpadu. Penelitian ini menjawab tantangan tersebut dengan menerapkan metode \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}), sebuah kerangka analisis data tiga-arah yang kokoh, untuk menyintesis struktur kompromi stabil yang merepresentasikan pola pembangunan bersama di 41 kabupaten dan kota. Tujuan penelitian ini adalah untuk mengevaluasi stabilitas longitudinal dari 11 indikator pembangunan strategis dan memetakan trajektori spasio-temporal untuk membedakan resiliensi regional. Metodologi penelitian melibatkan standardisasi $Z$-score terbobot menggunakan bobot demografis, evaluasi inter-struktur melalui koefisien $RV$, dan pembentukan representasi kompromi ($\mathbf{W}_c$) melalui pembobotan spektral optimal. Uji permutasi Monte Carlo ($B=1000$) digunakan untuk memvalidasi signifikansi struktur yang ditemukan, sebagaimana diilustrasikan dalam kerangka skematik pada Bab 3.
+Wilayah strategis Banten, DKI Jakarta, dan Jawa Barat merupakan pusat aktivitas ekonomi nasional di Indonesia yang mengalami variasi struktural signifikan selama periode 2020--2024 sebagai konsekuensi dari pandemi global dan fase pemulihan setelahnya. Pendekatan multivariat tradisional sering kali menghadapi keterbatasan dalam menangkap interaksi simultan antara unit spasial, indikator sosial, dan pergeseran temporal dalam satu kerangka kerja yang terpadu. Penelitian ini menjawab tantangan tersebut dengan menerapkan metode \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}), sebuah kerangka analisis data tiga-arah yang kokoh, untuk menyintesis struktur kompromi stabil yang merepresentasikan pola pembangunan bersama di 41 kabupaten dan kota. Tujuan penelitian ini adalah untuk mengevaluasi stabilitas longitudinal dari 11 indikator pembangunan strategis dan memetakan trajektori spasio-temporal untuk membedakan resiliensi regional. Metodologi penelitian melibatkan standardisasi $Z$-score terbobot menggunakan bobot demografis, evaluasi inter-struktur melalui koefisien $RV$, dan pembentukan representasi kompromi ($\mathbf{W}_c$) melalui pembobotan spektral optimal. Uji permutasi Monte Carlo ($B=1000$) digunakan untuk memvalidasi signifikansi struktur yang ditemukan, sebagaimana diilustrasikan dalam kerangka skematik pada Bab 3.
 
-Analisis inter-struktur menunjukkan tingkat konsistensi yang sangat tinggi pada konfigurasi spasial selama periode lima tahun, dengan seluruh koefisien $RV$ melebihi $0,90$ ($p < 0,001$). Hal ini menunjukkan bahwa meskipun level ekonomi absolut mengalami fluktuasi, hierarki relatif dan hubungan struktural antar kabupaten tetap bertahan secara persisten, sebagaimana diringkas pada Tabel \ref{tab:rv_summary_id_ext}. Struktur kompromi yang dihasilkan mampu menjelaskan lebih dari $85\%$ dari total variansi melalui dua dimensi utama (Gambar \ref{fig:biplot_ext_id}). Dimensi 1 merepresentasikan sumbu utama "Kapasitas Sosio-Ekonomi," yang menunjukkan korelasi positif yang kuat dengan PDRB, IPM, dan Rata-rata Lama Sekolah. Sebaliknya, Dimensi 2 menangkap "Resiliensi Sosial dan Kesehatan," yang terutama didorong oleh variasi dalam Angka Harapan Hidup dan indikator ketahanan pangan.
+Analisis inter-struktur menunjukkan tingkat konsistensi yang sangat tinggi pada konfigurasi spasial selama periode lima tahun, dengan seluruh koefisien $RV$ melebihi $0,90$ ($p < 0,001$). Hal ini menunjukkan bahwa meskipun level ekonomi absolut mengalami fluktuasi, hierarki relatif dan hubungan struktural antar-wilayah, antar-indikator, dan lintas tahun tetap sama, sebagaimana diringkas pada Tabel \ref{tab:rv_summary_id_ext}. Struktur kompromi yang dihasilkan mampu menjelaskan lebih dari $85\%$ dari total variansi melalui dua dimensi utama (Gambar \ref{fig:biplot_ext_id}). Dimensi 1 merepresentasikan sumbu utama "Kapasitas Sosio-Ekonomi," yang menunjukkan korelasi positif yang kuat dengan PDRB, IPM, dan Rata-rata Lama Sekolah. Sebaliknya, Dimensi 2 menangkap "Resiliensi Sosial dan Kesehatan," yang terutama didorong oleh variasi dalam Angka Harapan Hidup dan indikator ketahanan pangan.
 
 \begin{table}[H]
     \centering
     \captionsetup{hypcap=false}
-    \caption{Stabilitas Inter-struktur (Koefisien RV) 2020--2024}
+    \caption{Stabilitas Inter-struktur (Koefisien RV antar Tahun) 2020--2024}
     \label{tab:rv_summary_id_ext}
     \begin{adjustbox}{max width=0.85\textwidth}
     \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    \textbf{index} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
+    \textbf{Tahun} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
     \hline
     2020 & 1.0000 & 0.9555 & 0.9429 & 0.9533 & 0.9545 \\
     2021 & 0.9555 & 1.0000 & 0.9534 & 0.9487 & 0.9396 \\
@@ -55,18 +55,18 @@ Proyeksi data tahunan ke dalam ruang kompromi melalui \f{Biplot Dinamis} mengung
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot_matplotlib.png}
-    \caption{Biplot Kompromi: Hubungan Struktural antara Wilayah dan Indikator}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot.png}
+    \caption{Biplot Kompromi Lintas Tahun: Hubungan Struktural antara Wilayah dan Indikator}
     \label{fig:biplot_ext_id}
 \end{figure}
 
-Pengelompokan tingkat lanjut menggunakan algoritma K-Means ($k=3$) pada koordinat kompromi berhasil mempartisi wilayah menjadi kelompok "Maju," "Berkembang," dan "Tertinggal." Validasi eksternal terhadap kategori normatif IPM UNDP mengonfirmasi tingkat keselarasan struktural yang tinggi, terutama untuk kelompok Maju yang secara konsisten terdiri dari wilayah dengan pembangunan manusia berkategori "Sangat Tinggi." Temuan ini menyiratkan bahwa kesenjangan regional di Jawa bagian Barat didorong oleh faktor-faktor struktural mendalam yang relatif tidak berubah terhadap dinamika jangka pendek, sehingga memerlukan intervensi kebijakan yang terarah alih-alih strategi regional yang seragam.
+Pengelompokan tingkat lanjut menggunakan algoritma K-Means ($k=3$) pada koordinat kompromi berhasil mempartisi wilayah menjadi kelompok "Maju," "Berkembang," "Tertinggal." Validasi eksternal terhadap kategori normatif IPM UNDP mengonfirmasi tingkat keselarasan struktural yang tinggi, terutama untuk kelompok Maju yang secara konsisten terdiri dari wilayah dengan pembangunan manusia berkategori "Sangat Tinggi." Temuan ini menyiratkan bahwa kesenjangan regional di Jawa bagian Barat didorong oleh faktor-faktor struktural mendalam yang relatif tidak berubah terhadap dinamika jangka pendek, sehingga memerlukan intervensi kebijakan yang terarah alih-alih strategi regional yang seragam.
 
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/statis_trajectories.png}
-    \caption{Trajektori Spasio-temporal 41 Kabupaten/Kota (2020--2024)}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/trajectory_scores.png}
+    \caption{Trajektori Spasio-temporal: Pergerakan Kondisi Sosial Ekonomi Kabupaten/Kota dari Tahun ke Tahun (2020--2024)}
     \label{fig:traj_ext_id}
 \end{figure}
 
@@ -74,8 +74,8 @@ Sebagai kesimpulan, metode STATIS memberikan perspektif longitudinal komprehensi
 
 \vspace*{0.4cm}
 
-\noindent \bo{Kata Kunci}: 
-    Analisis Data Tiga-Arah, Analisis Panel Data, Autokorelasi Spasial, Biplot Kompromi, Pembangunan Regional, Visualisasi Interaktif.
+\noindent \bo{Kata Kunci}:
+    Analisis Data Tiga Arah, Data Panel, \textit{K-Means Clustering}, PCA, Visualisasi Interaktif.
 \vfill
 \end{singlespace}
 

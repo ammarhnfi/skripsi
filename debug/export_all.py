@@ -94,9 +94,9 @@ def deduplicate_and_clean(root_path):
     SCENARIO_ONLY_PATTERNS = [
         # --- 9 Perbandingan Utama (Tabel & Plot pendukung) ---
         'biplot_transition',         # Perbandingan 1: Matriks Transisi Cluster Biplot Tahunan
-        'transition_matrix',         # Perbandingan 2: Matriks Transisi Cluster STATIS Tahunan
+        'statis_transition',         # Perbandingan 2: Matriks Transisi Cluster STATIS Tahunan
         'biplot_vs_statis_compare',  # Perbandingan 3: Perbandingan Cluster Biplot PCA vs STATIS Tahunan
-        'ipm_matrix',                # Perbandingan 4: Matriks Transisi Kategori IPM UNDP
+        'output_table_ipm_',         # Perbandingan 4: Matriks Transisi Kategori IPM UNDP
         'cross_matrix',              # Perbandingan 5: Perbandingan Cluster Biplot vs Kategori IPM
         'statis_vs_ipm',             # Perbandingan 6: Perbandingan Cluster STATIS Tahunan vs Kategori IPM
         'biplot_vs_statis',          # Perbandingan 7: Perbandingan Cluster Kompromi STATIS vs Cluster Biplot
@@ -113,16 +113,17 @@ def deduplicate_and_clean(root_path):
         'compromise_map',            # Peta Kompromi STATIS
         'scatter_statis',            # Scatter plot STATIS
         'compromise_biplot',         # Biplot kompromi
-        'variable_contribution',     # Kontribusi variabel
-        'variable_cos2',             # Cos2 variabel
+        'variable_contribution',     # Kontribusi indikator
+        'variable_cos2',             # Cos2 indikator
         'biplot_tahun_',             # Biplot tahunan per skenario
-        'statis_trajectories',       # Lintasan trajektori STATIS
         'compromise_map',            # Peta cluster STATIS
         'compromise_scatter',         # Scatter plot kompromi STATIS
         'cluster_pie_statis',        # Pie chart cluster STATIS (tahunan)
         'compromise_pie',             # Pie chart kompromi STATIS
         'elbow_plot_', 'dendrogram_', 'dendrogram_compromise', # Elbow & Dendrogram
-        'output_table_cluster_members', # Anggota cluster kompromi
+        'cluster_map_statis_',       # Peta cluster STATIS per tahun (berbeda per skenario)
+        'output_table_cluster_members',         # (legacy) Anggota cluster kompromi
+        'output_table_compromise_cluster_sum_name', # Ringkasan anggota cluster kompromi
         'beta',                      # Koefisien Beta (tabel & grafik) per skenario
         'diagnostik',                # Tabel diagnostik model regresi per skenario
         'moran',                     # Hasil uji Moran's I spasial per skenario
@@ -226,6 +227,7 @@ os.makedirs(OUT_DIR, exist_ok=True)
 def save_png(fig, filename, out_dir, width=900, height=600):
     path = os.path.join(out_dir, filename)
     try:
+        fig.update_layout(title_x=0.5)
         fig.write_image(path, width=width, height=height, scale=2)
         print(f"  [PNG] {filename}")
     except Exception as e:
@@ -331,9 +333,9 @@ def save_tex_name_table(mapping, filename, out_dir, caption, label, label_prefix
         r"\centering",
         r"\caption{" + escape_tex(caption) + r"} \label{tab:" + full_label + r"}",
         r"\begin{adjustbox}{max width=\textwidth}",
-        r"\begin{tabular}{|p{4cm}|p{10cm}|}",
+        r"\begin{tabular}{|>{\centering\arraybackslash}p{4cm}|p{10cm}|}",
         r"\hline",
-        r"\textbf{Kategori} & \textbf{Daftar Wilayah} \\",
+        r"\multicolumn{1}{|c|}{\textbf{Kategori}} & \multicolumn{1}{c|}{\textbf{Daftar Wilayah}} \\",
         r"\hline"
     ]
     for sel, names in mapping.items():
@@ -470,10 +472,10 @@ def save_moran_tex(results, filename, out_dir, label_prefix=""):
     pfx = pfx.replace("1", "One").replace("2", "Two")
     
     lines = [
-        fr"\newcommand{{\{pfx}MoranI}}{{{mi:.4f}}}",
-        fr"\newcommand{{\{pfx}MoranExp}}{{{ei:.4f}}}",
-        fr"\newcommand{{\{pfx}MoranZ}}{{{zi:.4f}}}",
-        fr"\newcommand{{\{pfx}MoranP}}{{{pi:.4f}}}",
+        fr"\newcommand{{\{pfx}MoranI}}{{{f'{mi:.4f}'.replace('.', ',')}}}",
+        fr"\newcommand{{\{pfx}MoranExp}}{{{f'{ei:.4f}'.replace('.', ',')}}}",
+        fr"\newcommand{{\{pfx}MoranZ}}{{{f'{zi:.4f}'.replace('.', ',')}}}",
+        fr"\newcommand{{\{pfx}MoranP}}{{{f'{pi:.4f}'.replace('.', ',')}}}",
         fr"\newcommand{{\{pfx}MoranInterp}}{{{interp}}}"
     ]
     with open(path, "w", encoding="utf-8") as f:
@@ -522,7 +524,7 @@ for name, df in all_sheets.items():
         pass
 
 print(f"  Sheet tersedia : {sheet_names_all}")
-print(f"  Variabel       : {all_columns_available}")
+print(f"  Indikator      : {all_columns_available}")
 print(f"  Wilayah        : {tables_raw[sheet_names_all[0]].index.tolist()}")
 print(f"  JP data ditemukan untuk tahun: {list(jp_raw.keys())}")
 
@@ -608,26 +610,26 @@ if len(selected_years) < 2:
     sys.exit(1)
 print(f"  => Tahun terpilih: {selected_years}")
 
-# --- 2. Pilih Variabel ---
+# --- 2. Pilih Indikator ---
 if is_headless:
     try:
         selected_vars = cfg.get("variables", [v for v in all_columns_available if v.upper() != 'IPM'])
-        print(f"  [HEADLESS] Variabel Analisis dari config: {selected_vars}")
+        print(f"  [HEADLESS] Indikator Analisis dari config: {selected_vars}")
     except:
         selected_vars = [v for v in all_columns_available if v.upper() != 'IPM']
 
 else:
     selected_vars = _pick_items(
-        "Pilih Variabel Analisis  (Enter = pilih SEMUA)",
+        "Pilih Indikator Analisis  (Enter = pilih SEMUA)",
         all_columns_available,
         multi=True,
         default_all=True
     )
 
 if not selected_vars:
-    print("  [ERROR] Harus memilih minimal 1 variabel!")
+    print("  [ERROR] Harus memilih minimal 1 indikator!")
     sys.exit(1)
-print(f"  => Variabel terpilih ({len(selected_vars)}): {selected_vars}")
+print(f"  => Indikator terpilih ({len(selected_vars)}): {selected_vars}")
 
 # --- 3. Jumlah Cluster ---
 n_samples = len(tables_raw[sheet_names_all[0]])
@@ -681,7 +683,7 @@ else:
     print("\n" + "="*55)
     print("  Rotasi Baseline (Semua Plot)")
     print("="*55)
-    print("  [1]  Rotasi berdasarkan Variabel (seperti 'Rotasi: Variabel' di app)")
+    print("  [1]  Rotasi berdasarkan Indikator (seperti 'Rotasi: Indikator' di app)")
     print("  [2]  Rotasi berdasarkan Kabupaten/Kota")
     print("  [3]  Tidak ada rotasi")
     _rot_type_raw = input("  Pilih tipe rotasi [1/2/3, default=3]: ").strip()
@@ -694,10 +696,10 @@ else:
 
     BASELINE_NAME = None
     if BASELINE_TYPE == 'loading':
-        print("\n  Variabel yang tersedia sebagai baseline:")
+        print("\n  Indikator yang tersedia sebagai baseline:")
         for i, v in enumerate(selected_vars, 1):
             print(f"  [{i:2d}]  {v}")
-        _braw = input("  Pilih nomor variabel > ").strip()
+        _braw = input("  Pilih nomor indikator > ").strip()
         if _braw.isdigit() and 1 <= int(_braw) <= len(selected_vars):
             BASELINE_NAME = selected_vars[int(_braw) - 1]
     elif BASELINE_TYPE == 'skor':
@@ -761,7 +763,7 @@ else:
     HIGHLIGHT_VARS = [x for x in _hl_raw if x in selected_vars]
     HIGHLIGHT_OBJECTS = [x for x in _hl_raw if x in _obs_all_tmp]
 
-print(f"  => Highlight Variabel: {HIGHLIGHT_VARS}")
+print(f"  => Highlight Indikator: {HIGHLIGHT_VARS}")
 print(f"  => Highlight Objek  : {HIGHLIGHT_OBJECTS}")
 
 # Simpan Root Out Dir karena kita akan buat subfolder
@@ -780,7 +782,7 @@ for c in all_columns_available:
     if "IPM" in c.upper() and ("TOTAL" not in c.upper() or "IPM" == c):
         ipm_col_detected = c
         break
-ipm_col = ipm_col_detected
+ipm_col: str | None = ipm_col_detected
 
 # Muat semua tabel tahunan (Shared)
 tables = {}
@@ -885,7 +887,7 @@ def compute_baseline_angle(scores, loads, obs_labels_list, vars_list, baseline_t
             vec = scores[idx].copy()
     return -np.arctan2(vec[1], vec[0]) if not np.allclose(vec, 0) else 0.0
 
-print("\n=== 2. Boxplot Variabel (Grouped by Year) ===")
+print("\n=== 2. Boxplot Indikator (Grouped by Year) ===")
 vars_for_boxplot = list(selected_vars)
 if ipm_col and ipm_col not in vars_for_boxplot:
     vars_for_boxplot.append(ipm_col)
@@ -898,7 +900,7 @@ for col in vars_for_boxplot:
         dfs_box.append(df_temp)
     df_all_years = pd.concat(dfs_box)
     
-    fig_box = px.box(df_all_years, x='Tahun', y=col, points='all',
+    fig_box = px.box(df_all_years, x='Tahun', y=col, points='outliers',
                      title=f"Distribusi {col} (Perbandingan Tahunan)",
                      color='Tahun', color_discrete_sequence=px.colors.qualitative.Safe)
     fig_box.update_layout(template='plotly_white', height=500, showlegend=False)
@@ -907,17 +909,70 @@ for col in vars_for_boxplot:
     if col in _JP_NAMES: fname = "jp"
     save_png(fig_box, f"boxplot_{fname}.png", ROOT_OUT_DIR, width=800, height=500)
 
+print("\n=== 2.1b Heatmap Korelasi Per Tahun ===")
+from scipy.stats import pearsonr as _pearsonr
+
+def _sig_stars(p: float) -> str:
+    if p < 0.001: return '***'
+    if p < 0.01:  return '**'
+    if p < 0.05:  return '*'
+    return 'ns'
+
+for _yr in sheet_names:
+    _df_c = tables[_yr][selected_vars].copy().select_dtypes(include='number').dropna(axis=1, how='all')
+    _corr_cols = _df_c.columns.tolist()
+    _nv = len(_corr_cols)
+    _zmat: list[list[float]] = [[0.0] * _nv for _ in range(_nv)]
+    _annot: list[list[str]] = [[''] * _nv for _ in range(_nv)]
+    for _i, _ci in enumerate(_corr_cols):
+        for _j, _cj in enumerate(_corr_cols):
+            if _i == _j:
+                _zmat[_i][_j] = 1.0
+                _annot[_i][_j] = f'<b>{_ci}</b>'
+            else:
+                _r, _p = _pearsonr(_df_c[_ci].values, _df_c[_cj].values)
+                _zmat[_i][_j] = _r
+                _annot[_i][_j] = f'<b>{_r:.3f}</b><br>{_sig_stars(_p)}'
+    _fig_corr = go.Figure(go.Heatmap(
+        z=_zmat, x=_corr_cols, y=_corr_cols,
+        text=_annot, texttemplate='%{text}',
+        colorscale='RdBu', zmid=0, zmin=-1, zmax=1,
+        colorbar=dict(title='r'),
+    ))
+    _fig_corr.update_layout(
+        title=f'Heatmap Korelasi Pearson Indikator Tahun {_yr}',
+        template='plotly_white',
+        width=max(600, _nv * 90 + 100),
+        height=max(500, _nv * 90 + 100),
+        yaxis=dict(autorange='reversed'),
+    )
+    save_png(_fig_corr, f'corr_heatmap_{_yr}.png', ROOT_OUT_DIR,
+             width=max(600, _nv * 90 + 100), height=max(500, _nv * 90 + 100))
+
 # 2.1 Shared Tables (Global)
 print("  Ekspor Tabel Global ke Root...")
-df_rv_w = pd.DataFrame(R_W, index=sheet_names, columns=sheet_names).reset_index()
-df_rv_s = pd.DataFrame(R_S, index=sheet_names, columns=sheet_names).reset_index()
-df_hw = pd.DataFrame(H_W, index=sheet_names, columns=sheet_names).reset_index()
-df_hs = pd.DataFrame(H_S, index=sheet_names, columns=sheet_names).reset_index()
+# Ensure index column is named 'Tahun' so reset_index() yields the correct column header
+df_rv_w = pd.DataFrame(R_W, index=sheet_names, columns=sheet_names)
+df_rv_w.index.name = 'Tahun'
+df_rv_w = df_rv_w.reset_index()
+
+df_rv_s = pd.DataFrame(R_S, index=sheet_names, columns=sheet_names)
+df_rv_s.index.name = 'Tahun'
+df_rv_s = df_rv_s.reset_index()
+
+df_hw = pd.DataFrame(H_W, index=sheet_names, columns=sheet_names)
+df_hw.index.name = 'Tahun'
+df_hw = df_hw.reset_index()
+
+df_hs = pd.DataFrame(H_S, index=sheet_names, columns=sheet_names)
+df_hs.index.name = 'Tahun'
+df_hs = df_hs.reset_index()
+
 df_alpha_w = pd.DataFrame({'Tahun': sheet_names, 'Alpha (Wilayah)': alphas_W})
 df_alpha_s = pd.DataFrame({'Tahun': sheet_names, 'Alpha (Indikator)': alphas_S})
 
-save_tex_table(df_rv_w, "output_table_rv_w.tex", ROOT_OUT_DIR, "Matriks RV Wilayah (Identik Kedua Skenario)", "rv_w", label_prefix=LABEL_PREFIX)
-save_tex_table(df_rv_s, "output_table_rv_s.tex", ROOT_OUT_DIR, "Matriks RV Indikator (Identik Kedua Skenario)", "rv_s", label_prefix=LABEL_PREFIX)
+save_tex_table(df_rv_w, "output_table_rv_w.tex", ROOT_OUT_DIR, "Koefisien RV Wilayah (Identik Kedua Skenario)", "rv_w", label_prefix=LABEL_PREFIX)
+save_tex_table(df_rv_s, "output_table_rv_s.tex", ROOT_OUT_DIR, "Koefisien RV Indikator (Identik Kedua Skenario)", "rv_s", label_prefix=LABEL_PREFIX)
 save_tex_table(df_hw, "output_table_hw.tex", ROOT_OUT_DIR, "Matriks Interstruktur H_W (Identik Kedua Skenario)", "h_w", label_prefix=LABEL_PREFIX)
 save_tex_table(df_hs, "output_table_hs.tex", ROOT_OUT_DIR, "Matriks Interstruktur H_S (Identik Kedua Skenario)", "h_s", label_prefix=LABEL_PREFIX)
 save_tex_table(df_alpha_w, "output_table_alpha_w.tex", ROOT_OUT_DIR, "Bobot Alpha (Wilayah)", "alpha_w", label_prefix=LABEL_PREFIX)
@@ -931,6 +986,7 @@ save_tex_table(df_alpha_s, "output_table_alpha_s.tex", ROOT_OUT_DIR, "Bobot Alph
 # ============================================================
 # 3. SCENARIO LOOP
 # ============================================================
+IS_FIRST: bool = False  # Akan di-set ulang di dalam loop; deklarasi awal untuk static analysis
 for current_scenario in ['scenario1', 'scenario2']:
     OUT_DIR = os.path.join(ROOT_OUT_DIR, current_scenario)
     os.makedirs(OUT_DIR, exist_ok=True)
@@ -943,6 +999,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     print("#"*70 + "\n")
 
     IS_FIRST = (current_scenario == 'scenario1')  # Flag: hanya tulis output shared saat iterasi pertama
+    ipm_col = ipm_col_detected  # Re-bind per iterasi agar Pylance dapat melacak tipe di scope loop panjang
     H_mat = H_W if SCENARIO == 'scenario1' else H_S  # Matriks interstruktur sesuai skenario
     vals_H_sorted = np.sort(np.real(np.linalg.eigvals(H_mat)))[::-1]  # Eigenvalue H terurut turun
     RV_mat = R_W if SCENARIO == 'scenario1' else R_S  # Matriks RV sesuai skenario
@@ -1022,7 +1079,6 @@ for current_scenario in ['scenario1', 'scenario2']:
         if any(neg.lower() in var.lower() for neg in negative_vars):
             Zc_proxy[:, i] *= -1
     mean_perf_c = Zc_proxy.mean(axis=1)
-    # Skor dan loading saat ini ditampilkan sesuai perhitungan SVD; tidak ada flip otomatis berdasarkan mean_perf_c.
 
     # Bangun tables_std (Z-score per tahun) untuk dipakai di KMO section
     tables_std = []
@@ -1038,9 +1094,22 @@ for current_scenario in ['scenario1', 'scenario2']:
         else:
             fk = scores_intra_list[i]
             gk = X_matrices[i].T @ D_diag_mat @ fk / sq2
-            
+
         per_year_coords[yr] = fk
         per_year_loadings[yr] = gk
+
+    # Flip PC1 agar orientasi konsisten: daerah dengan performa tinggi memiliki PC1 positif
+    # Logika: mean_perf_c sudah dikoreksi tanda negatif untuk variabel buruk (GK, TPT, dll.)
+    # Jika korelasi PC1 vs mean_perf_c negatif, berarti arah PC1 terbalik — flip konsisten.
+    _corr_pc1 = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
+    if _corr_pc1 < 0:
+        scores_raw[:, 0] *= -1
+        loadings[:, 0] *= -1
+        for _yr in list(per_year_coords.keys()):
+            per_year_coords[_yr][:, 0] *= -1
+        for _yr in list(per_year_loadings.keys()):
+            per_year_loadings[_yr][:, 0] *= -1
+        print(f"  [INFO] PC1 di-flip (corr={_corr_pc1:.3f}) agar performa tinggi = PC1 positif.")
 
     # ============================================================
     # 5. EKSPOR TABEL STATIS ({SCENARIO})
@@ -1099,11 +1168,36 @@ for current_scenario in ['scenario1', 'scenario2']:
         plot_scores, plot_loadings = plot_scores @ R_rot.T, plot_loadings @ R_rot.T
     
     per_year_coords_plot = {}
-    for yr, coords in per_year_coords.items():
-        c = coords[:, :2].copy()
-        if ROT_ANGLE != 0.0: c = c @ R_rot.T
-        if yr in MIRROR_YEARS: c[:, 1] *= -1
-        per_year_coords_plot[yr] = c
+    per_year_loadings_plot = {}
+    # --- Per-year rotation + mirror (matching app.py cb_update_statis_plots) ---
+    # Step 1: rotate & mirror each year independently using per-year baseline angle
+    _pc_list_rot, _load_list_rot = [], []
+    for yr in sheet_names:
+        _fk = per_year_coords[yr][:, :2].copy()
+        _gk = per_year_loadings[yr][:, :2].copy()
+        _angle = compute_rotation(_fk, _gk, BASELINE_TYPE, BASELINE_NAME)
+        if _angle != 0.0:
+            _Ryr = np.array([[np.cos(_angle), -np.sin(_angle)], [np.sin(_angle), np.cos(_angle)]])
+            _fk = _fk @ _Ryr.T
+            _gk = _gk @ _Ryr.T
+        if yr in MIRROR_YEARS:
+            _fk[:, 1] *= -1
+            _gk[:, 1] *= -1
+        _pc_list_rot.append(_fk)
+        _load_list_rot.append(_gk)
+    # Step 2: apply_visual_adjustments on stacked arrays (norm + scale globally, matching app.py)
+    _pc_stacked  = np.vstack(_pc_list_rot)   if _pc_list_rot   else np.zeros((0, 2))
+    _load_stacked = np.vstack(_load_list_rot) if _load_list_rot else np.zeros((0, 2))
+    if _pc_stacked.shape[0] > 0:
+        _pc_vis, _load_vis = apply_visual_adjustments(_pc_stacked, _load_stacked, norm=NORM_SCORE, scale=SCALE_LOAD)
+    else:
+        _pc_vis, _load_vis = _pc_stacked, _load_stacked
+    # Step 3: split back into per-year dicts
+    _n_obs = len(obs_labels)
+    _n_vars = len(selected_vars)
+    for _i, yr in enumerate(sheet_names):
+        per_year_coords_plot[yr] = _pc_vis[_i*_n_obs:(_i+1)*_n_obs]
+        per_year_loadings_plot[yr] = _load_vis[_i*_n_vars:(_i+1)*_n_vars]
     
     var_pct = eig_vals_c / eig_vals_c.sum() * 100
     ax_x, ax_y = f"Compromise 1 ({var_pct[0]:.2f}%)", f"Compromise 2 ({var_pct[1]:.2f}%)"
@@ -1199,13 +1293,13 @@ for current_scenario in ['scenario1', 'scenario2']:
         pca_load_adj_dict[yr] = lp_adj
         
         df_dist_loads = pd.DataFrame({
-            'Variabel': selected_vars,
+            'Indikator': selected_vars,
             'PC1 (PCA)': lp_adj[:, 0], 'PC2 (PCA)': lp_adj[:, 1],
             'PC1 (STATIS)': ls_adj[:, 0], 'PC2 (STATIS)': ls_adj[:, 1],
             'Jarak Euclidean ($d$)': dist_loads
         })
         save_tex_table(df_dist_scores, f"output_table_jarak_skor_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Skor Objek (PCA vs STATIS) Tahun {yr}", f"jarak_skor_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-        save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Loading Variabel (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Loading Indikator (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
     
         # Tabel Skor Intra (F_k)
         df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
@@ -1216,25 +1310,25 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_fk.index.name = 'Kabupaten/Kota'
         df_fk = df_fk.reset_index()
         
-        # Tabel Loading Intra (G_k) - Koordinat variabel tahun t di ruang kompromi
+        # Tabel Loading Intra (G_k) - Koordinat indikator tahun t di ruang kompromi
         df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1', 'PC2'])
         if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
             df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
             df_gk['PC1 (Disesuaikan)'] = ls_adj[:, 0]
             df_gk['PC2 (Disesuaikan)'] = ls_adj[:, 1]
-        df_gk.index.name = 'Variabel'
+        df_gk.index.name = 'Indikator'
         df_gk = df_gk.reset_index()
 
         save_tex_table(df_fk, f"output_table_skor_intra_{yr}.tex", OUT_DIR, fr"Skor Intra Tahun {yr} ($\mathbf{{F}}_{{{yr}}}$)", f"skor_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
         save_tex_table(df_gk, f"output_table_loading_intra_{yr}.tex", OUT_DIR, fr"Loading Intra Tahun {yr} ($\mathbf{{G}}_{{{yr}}}$)", f"loading_intra_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
         
-        # Matriks Intra-Loading S_k (Matriks Korelasi Terbobot Variabel - "Kebalikan" dari W_k)
+        # Matriks Intra-Loading S_k (Matriks Korelasi Terbobot Indikator - "Kebalikan" dari W_k)
         # Formula: S_k = Z_k^T * D * Z_k
         Sk = X_matrices[i].T @ np.diag(m_weights) @ X_matrices[i]
         df_sk_intra = pd.DataFrame(np.round(Sk, 6), index=selected_vars, columns=selected_vars)
-        df_sk_intra.index.name = 'Variabel'
+        df_sk_intra.index.name = 'Indikator'
         df_sk_intra = df_sk_intra.reset_index()
-        save_tex_table(df_sk_intra, f"output_table_matriks_intra_loading_{yr}.tex", OUT_DIR, fr"Matriks Korelasi Terbobot Variabel Tahun {yr} ($\mathbf{{S}}_{{{yr}}}$)", f"matriks_intra_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+        save_tex_table(df_sk_intra, f"output_table_matriks_intra_loading_{yr}.tex", OUT_DIR, fr"Matriks Korelasi Terbobot Indikator Tahun {yr} ($\mathbf{{S}}_{{{yr}}}$)", f"matriks_intra_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
     
     # Statistika Deskriptif per tahun
     print("\n=== 3b. Tabel Statistika Deskriptif ===")
@@ -1244,7 +1338,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         for col in df_y.columns:
             vals = df_y[col].dropna().values
             rows.append({
-                'Variabel': col,
+                'Indikator': col,
                 'Mean ($\\mu$)': round(float(np.mean(vals)), 4),
                 'Std Dev ($\\sigma$)': round(float(np.std(vals, ddof=0)), 4),
                 'Min': round(float(np.min(vals)), 4),
@@ -1261,7 +1355,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         path_d = os.path.join(OUT_DIR, f"output_table_deskriptif_{yr}.tex")
         # Statistik deskriptif memiliki banyak kolom (12), sehingga butuh kolom c sempit
         cols_d = df_stats.columns.tolist()
-        col_defs_d = "p{2.5cm}|" + "c|" * (len(cols_d)-1)
+        col_defs_d = r">{\centering\arraybackslash}" + "p{2.5cm}|" + "c|" * (len(cols_d)-1)
         if current_scenario == 'scenario1':
             with open(os.path.join(ROOT_OUT_DIR, f"output_table_deskriptif_{yr}.tex"), "w", encoding="utf-8") as f:
                 f.write(r"\begin{adjustbox}{max width=\textwidth}" + "\n")
@@ -1269,14 +1363,14 @@ for current_scenario in ['scenario1', 'scenario2']:
                 f.write(r"\begin{tabular}{|" + col_defs_d + "}\n")
                 f.write(r"\hline" + "\n")
                 # Header dipersingkat agar tidak terlalu lebar
-                short_headers = [escape_tex(c).replace(' (\\%)', '').replace('Skewness', 'Skew').replace('Kurtosis', 'Kurt') for c in cols_d]
+                short_headers = [escape_tex(c).replace('Skewness', 'Skew').replace('Kurtosis', 'Kurt') for c in cols_d]
                 f.write(" & ".join([f"\\textbf{{{h}}}" for h in short_headers]) + r" \\" + "\n")
                 f.write(r"\hline" + "\n")
                 for _, row in df_stats.iterrows():
                     vals = []
                     for v in row:
                         if isinstance(v, float):
-                            vals.append(f"{v:.4f}" if v < 100 else f"{v:.2f}")
+                            vals.append((f"{v:.4f}" if v < 100 else f"{v:.2f}").replace(".", ","))
                         else:
                             vals.append(escape_tex(v))
                     f.write(" & ".join([str(x) for x in vals]) + r" \\" + "\n")
@@ -1339,7 +1433,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             'Interpretasi Nilai KMO': kmo_label(kmo_val),
             r'$\chi^2$ Bartlett': round(chi_sq, 2),
             'df': df_b,
-            'P-Value Bartlett': f"{p_b:.4e}" if p_b < 0.001 else round(p_b, 4),
+            'P-Value Bartlett': float(p_b),
             'Keputusan': 'Layak' if kmo_val >= 0.5 and p_b < 0.05 else 'Periksa'
         })
     df_kmo = pd.DataFrame(kmo_rows)
@@ -1364,7 +1458,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     alpha_min_val = alpha_dict[alpha_min_yr]
     alpha_max_val = alpha_dict[alpha_max_yr]
     
-    # RV: min off-diagonal (gunakan RV_mat yang sesuai skenario, bukan variabel R lokal KMO)
+    # RV: min off-diagonal (gunakan RV_mat yang sesuai skenario, bukan R lokal KMO)
     R_off = RV_mat.copy(); np.fill_diagonal(R_off, np.nan)
     rv_min = float(np.nanmin(R_off))
     rv_max = float(np.nanmax(R_off))
@@ -1388,19 +1482,19 @@ for current_scenario in ['scenario1', 'scenario2']:
         r"% AUTO-GENERATED BY export_all.py — DO NOT EDIT MANUALLY",
         f"% Macro ini digunakan di tex dengan prefix: {LABEL_PREFIX}",
         "",
-        f"\\newcommand{{\\{get_macro_name('AlphaMin')}}}{{{alpha_min_val:.4f}}}",
-        f"\\newcommand{{\\{get_macro_name('AlphaMax')}}}{{{alpha_max_val:.4f}}}",
+        f"\\newcommand{{\\{get_macro_name('AlphaMin')}}}{{{f'{alpha_min_val:.4f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('AlphaMax')}}}{{{f'{alpha_max_val:.4f}'.replace('.', ',')}}}",
         f"\\newcommand{{\\{get_macro_name('AlphaMaxYear')}}}{{{alpha_max_yr}}}",
-        f"\\newcommand{{\\{get_macro_name('RVMin')}}}{{{rv_min:.4f}}}",
-        f"\\newcommand{{\\{get_macro_name('RVMax')}}}{{{rv_max:.4f}}}",
-        f"\\newcommand{{\\{get_macro_name('DimOnePct')}}}{{{dim1_pct:.2f}}}",
-        f"\\newcommand{{\\{get_macro_name('DimTwoPct')}}}{{{dim2_pct:.2f}}}",
-        f"\\newcommand{{\\{get_macro_name('CumTwoPct')}}}{{{cum2_pct:.2f}}}",
-        f"\\newcommand{{\\{get_macro_name('LambdaObs')}}}{{{eig_vals_c[0]:.4f}}}",
+        f"\\newcommand{{\\{get_macro_name('RVMin')}}}{{{f'{rv_min:.4f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('RVMax')}}}{{{f'{rv_max:.4f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('DimOnePct')}}}{{{f'{dim1_pct:.2f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('DimTwoPct')}}}{{{f'{dim2_pct:.2f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('CumTwoPct')}}}{{{f'{cum2_pct:.2f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('LambdaObs')}}}{{{f'{eig_vals_c[0]:.4f}'.replace('.', ',')}}}",
         f"\\newcommand{{\\{get_macro_name('PValuePerm')}}}{{0{{,}}0010}}",
-        f"\\newcommand{{\\{get_macro_name('KMOAvg')}}}{{{kmo_avg:.4f}}}",
-        f"\\newcommand{{\\{get_macro_name('KMOMin')}}}{{{kmo_min:.4f}}}",
-        f"\\newcommand{{\\{get_macro_name('KMOMax')}}}{{{kmo_max:.4f}}}",
+        f"\\newcommand{{\\{get_macro_name('KMOAvg')}}}{{{f'{kmo_avg:.4f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('KMOMin')}}}{{{f'{kmo_min:.4f}'.replace('.', ',')}}}",
+        f"\\newcommand{{\\{get_macro_name('KMOMax')}}}{{{f'{kmo_max:.4f}'.replace('.', ',')}}}",
         f"\\newcommand{{\\{get_macro_name('KMOInterpret')}}}{{{kmo_label(kmo_avg)}}}",
         "",
     ]
@@ -1452,7 +1546,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         print(f"  [WARN] Gagal memuat dari app.py: {_e_load}. Komputasi inline...")
     
         # Fallback: definisi inline ringkas agar export_all.py tetap mandiri
-        def _sv_compute(H, alphas, sheet_names, X_matrices, m_weights, obs_labels, province_map=None, scenario='scenario1'):
+        def _sv_compute(H, _alphas, sheet_names, X_matrices, m_weights, obs_labels, province_map=None, scenario='scenario1'):
+            _ = _alphas  # unused in fallback; kept for API compatibility with app.compute_structure_vector
             K = len(sheet_names)
             H = np.array(H)
             vals, vecs = np.linalg.eigh(H)
@@ -1499,7 +1594,10 @@ for current_scenario in ['scenario1', 'scenario2']:
                          r"\hline",
                          " & ".join([fr"\textbf{{{c}}}" for c in cols]) + r" \\",
                          r"\hline"]
-                for row in rows: lines.append(" & ".join(str(v) for v in row) + r" \\")
+                import re
+                for row in rows:
+                    row_vals = [re.sub(r'(\d)\.(\d)', r'\1,\2', str(v)) for v in row]
+                    lines.append(" & ".join(row_vals) + r" \\")
                 lines += [r"\hline", r"\end{tabular}", r"\end{table}"]
                 with open(os.path.join(output_dir, fname), "w", encoding="utf-8") as f:
                     f.write("\n".join(lines))
@@ -1520,7 +1618,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                "output_table_struktur_diagnostik.tex")
             bp = sv_res.get('beta_provinsi', {})
             if bp:
-                pns = list(bp.keys()); K = len(sn)
+                pns = list(bp.keys())
                 _w([[yr] + [f"{bp[p][ki]:.4f}" if ki < len(bp[p]) else "-"
                             for p in pns] for ki, yr in enumerate(sn)],
                    ["Tahun ($k$)"] + pns,
@@ -1615,40 +1713,6 @@ for current_scenario in ['scenario1', 'scenario2']:
     save_png(fig_scree, "scree_plot.png", OUT_DIR)
     save_png(fig_rv_heat, "rv_heatmap.png", OUT_DIR, width=700, height=600)
     
-    # --- Biplot Kompromi ---
-    fig_bi = go.Figure()
-    # 1. Objek (Skor)
-    for i, label in enumerate(obs_labels):
-        show_text = label in HIGHLIGHT_OBJECTS
-        fig_bi.add_trace(go.Scatter(
-            x=[scores_raw[i, 0]], y=[scores_raw[i, 1]],
-            mode='markers+text' if show_text else 'markers',
-            marker=dict(size=8, color='blue', opacity=0.6),
-            text=[f"{label}<br>({scores_raw[i,0]:.2f}, {scores_raw[i,1]:.2f})"] if show_text else None,
-            textposition="top center",
-            name=f"Objek: {label}",
-            showlegend=False
-        ))
-    
-    # 2. Variabel (Loadings)
-    for i, var in enumerate(selected_vars):
-        show_text = var in HIGHLIGHT_VARS
-        fig_bi.add_trace(go.Scatter(
-            x=[0, loadings[i, 0]], y=[0, loadings[i, 1]],
-            mode='lines+markers+text' if show_text else 'lines+markers',
-            line=dict(color='red', width=2),
-            marker=dict(size=6, color='red'),
-            text=[None, f"{var}<br>({loadings[i,0]:.2f}, {loadings[i,1]:.2f})"] if show_text else [None, var],
-            textposition="top center",
-            name=f"Var: {var}",
-            showlegend=False
-        ))
-    fig_bi.add_hline(y=0, line_dash='dot', line_color='gray')
-    fig_bi.add_vline(x=0, line_dash='dot', line_color='gray')
-    fig_bi.update_layout(title="Compromise STATIS (Fc + Gc)", xaxis_title=ax_x, yaxis_title=ax_y,
-                         template='plotly_white', xaxis=dict(scaleanchor='y', scaleratio=1))
-    save_png(fig_bi, "scatter_statis.png", OUT_DIR, width=800, height=800)
-    
     # --- Biplot Kompromi (Versi Matplotlib Statik untuk LaTeX) ---
     def draw_biplot_matplotlib(plot_scores, plot_loadings, obs_labels, selected_vars, ax_x_label, ax_y_label, out_path):
         import matplotlib.pyplot as plt
@@ -1688,7 +1752,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                         path_effects=[pe.withStroke(linewidth=2 if is_hl else 1.5, foreground='white')],
                         zorder=5 if is_hl else 4)
                         
-        # 3. Vektor Variabel (Loading) dengan koordinat dan pembedaan highlight
+        # 3. Vektor Indikator (Loading) dengan koordinat dan pembedaan highlight
         for i, var in enumerate(selected_vars):
             is_hl_var = var in HIGHLIGHT_VARS
             line_color = '#D81B60' if is_hl_var else '#F06292'
@@ -1700,7 +1764,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             ax.annotate('', xy=(plot_loadings[i, 0], plot_loadings[i, 1]), xytext=(0, 0),
                         arrowprops=dict(arrowstyle="->", color=line_color, lw=line_width, mutation_scale=15),
                         zorder=4)
-            # Label Variabel
+            # Label Indikator
             var_lbl = f"{var} ({plot_loadings[i, 0]:.2f}, {plot_loadings[i, 1]:.2f})" if is_hl_var else var
             ax.annotate(var_lbl, (plot_loadings[i, 0], plot_loadings[i, 1]),
                         xytext=(0, 8), textcoords='offset points',
@@ -1724,24 +1788,26 @@ for current_scenario in ['scenario1', 'scenario2']:
         print(f"  [PNG] {os.path.basename(out_path)}")
     
     draw_biplot_matplotlib(plot_scores, plot_loadings, obs_labels, selected_vars, ax_x, ax_y, 
-                           os.path.join(OUT_DIR, "compromise_biplot_matplotlib.png"))
+                           os.path.join(OUT_DIR, "compromise_biplot.png"))
     
     # --- Variable Contribution ---
     contrib = (loadings ** 2) / np.sum(loadings ** 2, axis=0)
     fig_contrib = px.bar(x=selected_vars, y=contrib[:, 0] * 100,
-                         labels={'x': 'Variabel', 'y': 'Kontribusi ke PC1 (%)'},
-                         title="Kontribusi Variabel terhadap Dimensi 1",
+                         labels={'x': 'Indikator', 'y': 'Kontribusi ke PC1 (%)'},
+                         title="Kontribusi Indikator terhadap Dimensi 1",
                          color=contrib[:, 0] * 100, color_continuous_scale='Blues')
-    fig_contrib.update_layout(template='plotly_white')
+    fig_contrib.update_traces(text=[f"{v:.2f}%" for v in contrib[:, 0] * 100], textposition='outside')
+    fig_contrib.update_layout(template='plotly_white', uniformtext_minsize=8, uniformtext_mode='hide')
     save_png(fig_contrib, "variable_contribution.png", OUT_DIR)
-    
+
     # --- Cos2 ---
     cos2 = loadings ** 2
     fig_cos2 = px.bar(x=selected_vars, y=cos2[:, 0],
-                      labels={'x': 'Variabel', 'y': 'Cos² (PC1)'},
-                      title="Kualitas Representasi Variabel (Cos²)",
+                      labels={'x': 'Indikator', 'y': 'Cos² (PC1)'},
+                      title="Kualitas Representasi Indikator (Cos²)",
                       color=cos2[:, 0], color_continuous_scale='Oranges')
-    fig_cos2.update_layout(template='plotly_white')
+    fig_cos2.update_traces(text=[f"{v:.4f}" for v in cos2[:, 0]], textposition='outside')
+    fig_cos2.update_layout(template='plotly_white', uniformtext_minsize=8, uniformtext_mode='hide')
     save_png(fig_cos2, "variable_cos2.png", OUT_DIR)
     
     # --- Inter-struktur (heatmap with bar annotation, already saved as rv_heatmap) ---
@@ -1750,7 +1816,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     for yr, coords in per_year_coords_plot.items():
         c = np.array(coords)
         df_t = pd.DataFrame(c[:, :2], columns=['PC1', 'PC2'])
-        df_t['Kab/Kota'] = obs_labels
+        df_t['Kabupaten/Kota'] = obs_labels
         df_t['Tahun'] = yr
         df_traj_list.append(df_t)
     df_traj = pd.concat(df_traj_list)
@@ -1776,212 +1842,122 @@ for current_scenario in ['scenario1', 'scenario2']:
     rank_map_t = {old_val: rank for rank, old_val in enumerate(sorted_idx_t)}
     cluster_traj = np.array([rank_map_t[l] for l in labels_traj_raw])
     
-    _hl_set = set(HIGHLIGHT_OBJECTS)
     palette_cluster = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Matching app.py colors: Red, Orange, Green, Blue, Purple
     
+    # Attach province metadata to df_traj for province-based coloring
+    province_by_obs = {}
+    if _province_map:
+        for prov, areas in _province_map.items():
+            for area in areas:
+                province_by_obs[area] = prov
+    df_traj['Provinsi'] = df_traj['Kabupaten/Kota'].map(province_by_obs).fillna('Unknown')
+
+    # Build province color palette
+    prov_names = sorted(df_traj['Provinsi'].unique())
+    prov_palette = px.colors.qualitative.Plotly
+    province_color_map = {prov: prov_palette[i % len(prov_palette)] for i, prov in enumerate(prov_names)}
+
     fig_traj = go.Figure()
+    shown_provinces = set()
     for i, obj in enumerate(obs_labels):
-        d_obj = df_traj[df_traj['Kab/Kota'] == obj].sort_values('Tahun')
-        color = palette_cluster[cluster_traj[i]]
-        show_text = obj in _hl_set
+        d_obj = df_traj[df_traj['Kabupaten/Kota'] == obj].sort_values('Tahun')
+        if d_obj.empty:
+            continue
+        prov = d_obj['Provinsi'].iloc[0]
+        color = province_color_map.get(prov, '#808080')
         symbols = ['circle'] * (len(d_obj) - 1) + ['square']
-        
+        showlegend = prov not in shown_provinces
+        shown_provinces.add(prov)
+
         fig_traj.add_trace(go.Scatter(
             x=d_obj['PC1'], y=d_obj['PC2'],
-            mode='lines+markers+text' if show_text else 'lines+markers',
-            name=obj,
-            line=dict(width=3.5 if show_text else 1.2, color=color),
-            marker=dict(size=9 if show_text else 6, symbol=symbols, color=color),
-            text=d_obj['Tahun'].apply(lambda y: f"{obj} ({y})") if show_text else None,
-            textposition="top center",
-            opacity=1.0 if show_text else 0.45,
-            showlegend=show_text
+            mode='lines+markers',
+            name=prov,
+            legendgroup=prov,
+            line=dict(width=1.8, color=color),
+            marker=dict(size=7, symbol=symbols, color=color),
+            hoverinfo='text',
+            hovertext=[f"{obj} ({y})<br>PC1: {x:.3f}<br>PC2: {y2:.3f}" for y, x, y2 in zip(d_obj['Tahun'], d_obj['PC1'], d_obj['PC2'])],
+            showlegend=showlegend
         ))
+    # Tambahkan anotasi koordinat untuk objek yang di-highlight
+    for obj_hl in HIGHLIGHT_OBJECTS:
+        d_hl = df_traj[df_traj['Kabupaten/Kota'] == obj_hl].sort_values('Tahun')
+        for _, row_hl in d_hl.iterrows():
+            fig_traj.add_annotation(
+                x=row_hl['PC1'], y=row_hl['PC2'],
+                text=f"<b>{obj_hl} ({row_hl['PC1']:.2f}, {row_hl['PC2']:.2f}) [{row_hl['Tahun']}]</b>",
+                showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=1.5,
+                ax=20, ay=-35,
+                font=dict(size=9, color='black'),
+                bgcolor='rgba(255,255,255,0.85)',
+                bordercolor='#333333', borderwidth=1, borderpad=3
+            )
     fig_traj.update_layout(
-        title='STATIS Trajectories (Proyeksi Kompromi)',
+        title='Trajectory Scores (Province-colored)',
         template='plotly_white',
         xaxis=dict(scaleanchor='y', scaleratio=1),
         xaxis_title=ax_x, yaxis_title=ax_y
     )
-    save_png(fig_traj, "statis_trajectories.png", OUT_DIR, width=900, height=800)
+    save_png(fig_traj, "trajectory_scores.png", OUT_DIR, width=900, height=800)
     
     
-    # --- STATIS Trajectories — Versi Matplotlib (Premium, Static) ---
-    def draw_traj_matplotlib(df_traj, obs_labels, sheet_names, highlight_set,
-                             ax_x_label, ax_y_label, out_path):
-        """
-        Versi matplotlib dari plot trajektori STATIS.
-        - Semua kab/kota ditampilkan sebagai garis tipis abu-abu
-        - Yang di-highlight ditampilkan tebal berwarna dengan label tahun & nama kota
-        - Panah (annotation arrow) menunjukkan arah waktu
-        """
-        import matplotlib.pyplot as plt
-        import matplotlib.patheffects as pe
-        from matplotlib.patches import FancyArrowPatch
-        import matplotlib.cm as cm
-    
-        FONT_MAIN   = 'DejaVu Sans'
-        BG_COLOR    = '#FAFAFA'
-        GRID_COLOR  = '#E0E0E0'
-        GREY_LINE   = '#BDBDBD'
-        GREY_ALPHA  = 0.35
-    
-        has_highlight = bool(highlight_set)
-    
-        # ---- Pilih warna untuk highlight objects ----
-        PALETTE = [
-            '#E53935', '#1E88E5', '#43A047', '#FB8C00',
-            '#8E24AA', '#00ACC1', '#F4511E', '#6D4C41',
-            '#546E7A', '#D81B60',
-        ]
-        hl_list = sorted(highlight_set)  # urutan konsisten
-    
-        fig, ax = plt.subplots(figsize=(13, 11))
-        fig.patch.set_facecolor(BG_COLOR)
-        ax.set_facecolor(BG_COLOR)
-    
-        # ---- Grid & sumbu tengah ----
-        ax.axhline(0, color=GRID_COLOR, linewidth=1.2, zorder=1)
-        ax.axvline(0, color=GRID_COLOR, linewidth=1.2, zorder=1)
-        ax.grid(True, color=GRID_COLOR, linewidth=0.6, linestyle='--', alpha=0.7, zorder=0)
-    
-        years_sorted = sorted(sheet_names)
-    
-        # ---- 1. Gambar SEMUA trajektori abu-abu ----
-        for i, kab in enumerate(obs_labels):
-            d = df_traj[df_traj['Kab/Kota'] == kab].sort_values('Tahun')
-            if d.empty:
+    # --- Static Trajectory Loadings Plot ---
+    print("\n=== 4a. Trajectory Loadings (Static) ===")
+    df_loadings_traj_list = []
+    for yr in sheet_names:
+        # Use per_year_loadings_plot which already has per-year rotation + mirror + visual adjustments
+        gk_vis = per_year_loadings_plot[yr]
+        df_g = pd.DataFrame(gk_vis[:, :2], index=selected_vars, columns=['PC1', 'PC2']).reset_index()
+        df_g = df_g.rename(columns={'index': 'Variabel'})
+        df_g['Tahun'] = yr
+        df_loadings_traj_list.append(df_g)
+
+    if df_loadings_traj_list:
+        df_loadings_traj = pd.concat(df_loadings_traj_list, ignore_index=True)
+        fig_load = go.Figure()
+        var_palette = px.colors.qualitative.Plotly
+        for i, var in enumerate(selected_vars):
+            d_var = df_loadings_traj[df_loadings_traj['Variabel'] == var].sort_values('Tahun')
+            if d_var.empty:
                 continue
-            xs, ys = d['PC1'].values, d['PC2'].values
-            alpha_val = GREY_ALPHA if has_highlight else 0.6
-            lw_val    = 1.0 if has_highlight else 1.4
-            
-            # Color based on cluster_traj
-            cl_idx = cluster_traj[i]
-            cl_color = palette_cluster[cl_idx]
-            
-            ax.plot(xs, ys,
-                    color=cl_color, linewidth=lw_val,
-                    alpha=alpha_val, zorder=2, solid_capstyle='round')
-            ax.scatter(xs[:-1], ys[:-1], color=cl_color, s=18, alpha=alpha_val, zorder=3)
-            # Akhir trajektori (kotak/square)
-            ax.scatter(xs[-1:], ys[-1:], color=cl_color, s=30, alpha=alpha_val, zorder=3, marker='s')
-            
-            # Tambahkan nomor wilayah di akhir trajektori
-            if not has_highlight:
-                ax.annotate(str(i+1), xy=(xs[-1], ys[-1]), fontsize=7, alpha=alpha_val)
-    
-        # ---- 2. Gambar trajektori HIGHLIGHT di atas ----
-        label_items = []  # [(x, y, text)] untuk adjustText
-        for hi, kab in enumerate(hl_list):
-            color = PALETTE[hi % len(PALETTE)]
-            d = df_traj[df_traj['Kab/Kota'] == kab].sort_values('Tahun')
-            if d.empty:
-                continue
-            xs, ys = d['PC1'].values, d['PC2'].values
-    
-            # Garis tebal dengan glow effect
-            ax.plot(xs, ys, color=color, linewidth=3.5, zorder=5,
-                    solid_capstyle='round',
-                    path_effects=[pe.withStroke(linewidth=5.5, foreground='white')])
-    
-            # Titik per tahun (awal/tengah = lingkaran)
-            ax.scatter(xs[:-1], ys[:-1], color=color, s=70, zorder=6, edgecolors='white', linewidths=1.5)
-            # Titik akhir (kotak)
-            ax.scatter(xs[-1:], ys[-1:], color=color, s=110, zorder=6, edgecolors='white', linewidths=2.0, marker='s')
-    
-            # Panah menunjukkan arah waktu (dari titik ke-n-2 ke titik ke-n-1)
-            for ti in range(len(xs) - 1):
-                dx = xs[ti+1] - xs[ti]
-                dy = ys[ti+1] - ys[ti]
-                mid_x = xs[ti] + dx * 0.55
-                mid_y = ys[ti] + dy * 0.55
-                # Hanya gambar panah jika panjang > threshold agar tidak terlalu penuh
-                dist = np.sqrt(dx**2 + dy**2)
-                if dist > 0.02:
-                    ax.annotate('', xy=(mid_x + dx*0.01, mid_y + dy*0.01),
-                                xytext=(mid_x - dx*0.01, mid_y - dy*0.01),
-                                arrowprops=dict(arrowstyle='->', color=color,
-                                               lw=2.0, mutation_scale=14),
-                                zorder=7)
-    
-            # Label TAHUN di setiap titik
-            for xi, yi, yr in zip(xs, ys, d['Tahun'].values):
-                ax.annotate(str(yr), xy=(xi, yi),
-                            xytext=(4, 6), textcoords='offset points',
-                            fontsize=7.5, color=color, fontweight='bold',
-                            path_effects=[pe.withStroke(linewidth=2.5, foreground='white')],
-                            zorder=8)
-    
-            # Label NAMA KOTA di titik terakhir (atau spesifik agar tidak overlap)
-            x_last, y_last = xs[-1], ys[-1]
-            lbl = kab.replace('Kabupaten ', 'Kab. ').replace('Kota ', 'Kota\n')
-            txt = ax.annotate(
-                lbl,
-                xy=(x_last, y_last),
-                xytext=(10, -4), textcoords='offset points',
-                fontsize=9, color=color, fontweight='bold',
-                ha='left', va='center',
-                path_effects=[pe.withStroke(linewidth=3, foreground='white')],
-                bbox=dict(boxstyle='round,pad=0.25', facecolor='white',
-                          edgecolor=color, linewidth=1.2, alpha=0.88),
-                zorder=9
-            )
-            label_items.append((x_last, y_last, lbl, color, txt))
-    
-        # ---- 3. Legend highlight (bawah kiri) ----
-        if hl_list:
-            legend_elements = [
-                plt.Line2D([0], [0], color=PALETTE[i % len(PALETTE)], linewidth=2.5,
-                           marker='o', markersize=6, label=kab)
-                for i, kab in enumerate(hl_list)
-            ]
-            ax.legend(handles=legend_elements,
-                      loc='lower left', fontsize=8.5,
-                      framealpha=0.9, edgecolor='#CCCCCC', title='Highlight',
-                      title_fontsize=9)
-    
-        # ---- 4. Label sumbu, judul ----
-        ax.set_xlabel(ax_x_label, fontsize=11, color='#333333', labelpad=8)
-        ax.set_ylabel(ax_y_label, fontsize=11, color='#333333', labelpad=8)
-        ax.set_title('Proyeksi Trajektori 2D — STATIS Kompromi',
-                     fontsize=14, fontweight='bold', color='#212121', pad=14)
-    
-        # Spine style
-        for spine in ax.spines.values():
-            spine.set_edgecolor(GRID_COLOR)
-            spine.set_linewidth(0.8)
-    
-        ax.tick_params(colors='#666666', labelsize=8)
-        plt.tight_layout(pad=1.5)
-        plt.savefig(out_path, dpi=200, bbox_inches='tight', facecolor=BG_COLOR)
-        plt.close(fig)
-        print(f"  [PNG] {os.path.basename(out_path)}")
-    
-    
-    # Build df_traj untuk matplotlib (sudah di-build di atas, reuse)
-    draw_traj_matplotlib(
-        df_traj, obs_labels, sheet_names, _hl_set,
-        ax_x, ax_y,
-        os.path.join(OUT_DIR, "statis_trajectories_highlight.png")
-    )
-    
-    
+            fig_load.add_trace(go.Scatter(
+                x=d_var['PC1'], y=d_var['PC2'],
+                mode='lines+markers',
+                name=var,
+                line=dict(width=1.8, color=var_palette[i % len(var_palette)]),
+                marker=dict(size=7, symbol='circle', color=var_palette[i % len(var_palette)]),
+                hoverinfo='text',
+                hovertext=[f"{var} ({y})<br>PC1: {x:.3f}<br>PC2: {y2:.3f}" for y, x, y2 in zip(d_var['Tahun'], d_var['PC1'], d_var['PC2'])]
+            ))
+        # Tambahkan anotasi koordinat untuk variabel yang di-highlight
+        for var_hl in HIGHLIGHT_VARS:
+            d_hl_var = df_loadings_traj[df_loadings_traj['Variabel'] == var_hl].sort_values('Tahun')
+            for _, row_hl in d_hl_var.iterrows():
+                fig_load.add_annotation(
+                    x=row_hl['PC1'], y=row_hl['PC2'],
+                    text=f"<b>{var_hl} ({row_hl['PC1']:.2f}, {row_hl['PC2']:.2f}) [{row_hl['Tahun']}]</b>",
+                    showarrow=True, arrowhead=2, arrowsize=1, arrowwidth=1.5,
+                    ax=20, ay=-35,
+                    font=dict(size=9, color='black'),
+                    bgcolor='rgba(255,255,255,0.85)',
+                    bordercolor='#333333', borderwidth=1, borderpad=3
+                )
+        fig_load.update_layout(
+            title='Trajectory Loadings (Variable-colored)',
+            template='plotly_white',
+            xaxis=dict(scaleanchor='y', scaleratio=1),
+            xaxis_title='PC1', yaxis_title='PC2'
+        )
+        save_png(fig_load, "trajectory_loadings.png", OUT_DIR, width=900, height=800)
+
     # --- Snapshot Biplot 2D per Tahun ---
     print("\n=== 4b. Snapshot Biplot per Tahun ===")
     for yr in sheet_names:
-        # Gunakan per_year_coords_plot agar rotasi & mirror sudah diterapkan
-        arr_y = per_year_coords_plot[yr]
-        
-        # Hitung loadings per tahun (G_k) untuk plot agar panah bergerak dinamis
-        # Terapkan rotasi & mirror yang sama dengan skor
-        gk_y = per_year_loadings[yr].copy()
-        if ROT_ANGLE != 0.0:
-            gk_y = gk_y @ _rotation_matrix(ROT_ANGLE).T
-        if yr in MIRROR_YEARS:
-            gk_y[:, 1] *= -1
-            
-        ps_y, pl_y = apply_visual_adjustments(arr_y, gk_y, norm=NORM_SCORE, scale=SCALE_LOAD)
+        # Gunakan per_year_coords_plot & per_year_loadings_plot:
+        # sudah ada rotasi per-tahun + mirror + apply_visual_adjustments (norm/scale)
+        ps_y = per_year_coords_plot[yr]
+        pl_y = per_year_loadings_plot[yr]
         
         # Format text and sizes for objects in yearly biplots
         obj_text = []
@@ -2118,7 +2094,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         r"% Generated by export_all.py (Permutation)",
         fr"\newcommand{{\{get_macro_name('PValuePerm')}}}{{{p_val_tex}}}",
         fr"\newcommand{{\{get_macro_name('PermInterp')}}}{{{interp_perm}}}",
-        fr"\newcommand{{\{get_macro_name('LambdaObs')}}}{{{lambda_obs:.4f}}}",
+        fr"\newcommand{{\{get_macro_name('LambdaObs')}}}{{{f'{lambda_obs:.4f}'.replace('.', ',')}}}",
     ]
     
     # Export core macros
@@ -2126,9 +2102,9 @@ for current_scenario in ['scenario1', 'scenario2']:
     core_lines = [r"% Generated by export_all.py"]
     for i, (yr, val) in enumerate(zip(sheet_names, alphas)):
         if i < len(core_labels):
-            core_lines.append(fr"\newcommand{{\statisAlphaTahun{core_labels[i]}}}{{{val:.4f}}} % {yr}")
-    core_lines.append(fr"\newcommand{{\statisEigenA}}{{{eig_vals_c[0]:.4f}}}")
-    core_lines.append(fr"\newcommand{{\statisInertiaA}}{{{var_pct[0]:.2f}}}")
+            core_lines.append(fr"\newcommand{{\statisAlphaTahun{core_labels[i]}}}{{{f'{val:.4f}'.replace('.', ',')}}} % {yr}")
+    core_lines.append(fr"\newcommand{{\statisEigenA}}{{{f'{eig_vals_c[0]:.4f}'.replace('.', ',')}}}")
+    core_lines.append(fr"\newcommand{{\statisInertiaA}}{{{f'{var_pct[0]:.2f}'.replace('.', ',')}}}")
     # Selalu tulis hasil permutasi dan core statis ke folder skenario masing-masing (Wilayah / Indikator)
     save_png(fig_perm, "permutation_histogram.png", OUT_DIR)
     with open(os.path.join(OUT_DIR, "output_perm_statis.tex"), "w", encoding="utf-8") as f:
@@ -2186,7 +2162,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     km_base.fit(base_coords)
     base_centroids = km_base.cluster_centers_
     
-    def get_ranked_labels(coords_current, labels_awal, current_centroids, base_centroids_ref, compromise_scores):
+    def get_ranked_labels(_coords_current, labels_awal, current_centroids, base_centroids_ref, compromise_scores):
         """
         Penyelarasan label menggunakan Hungarian Algorithm (Kuhn, 1955) 
         untuk konsistensi antar-tahun, diikuti perankingan otomatis berdasarkan mean PC1 Kompromi.
@@ -2211,10 +2187,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         
         final_labels = np.array([rank_map[l] for l in aligned_labels])
         return final_labels
-    
-        final_labels = np.array([rank_map[l] for l in aligned_labels])
-        return final_labels
-    
+
     cluster_per_year = {}
     for yr in sheet_names:
         coords = per_year_coords[yr][:, :2]
@@ -2262,6 +2235,17 @@ for current_scenario in ['scenario1', 'scenario2']:
             ))
         fig_sc.add_hline(y=0, line_dash='dot', line_color='gray')
         fig_sc.add_vline(x=0, line_dash='dot', line_color='gray')
+        # Tambahkan vektor loading dengan warna hitam beropasitas rendah
+        for _li, _lvar in enumerate(selected_vars):
+            fig_sc.add_trace(go.Scatter(
+                x=[0, pl_y[_li, 0]], y=[0, pl_y[_li, 1]],
+                mode='lines+text',
+                text=['', _lvar],
+                textposition='top center',
+                textfont=dict(size=8, color='rgba(0,0,0,0.45)'),
+                line=dict(color='rgba(0,0,0,0.2)', width=1.2),
+                showlegend=False, hoverinfo='skip'
+            ))
         fig_sc.update_layout(title=f"Biplot Cluster K-Means (Diberi Peringkat) — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
@@ -2509,7 +2493,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                                 columns=[get_cluster_name(j, "Cluster", f" ({t2})") for j in range(K_CLUSTERS)])
         df_trans.index.name = f"{t1}/{t2}"
         df_trans = df_trans.reset_index()
-        save_tex_table(df_trans, f"output_table_transition_matrix_sum_{pair}.tex", OUT_DIR,
+        save_tex_table(df_trans, f"output_table_statis_transition_sum_{pair}.tex", OUT_DIR,
                        f"Matriks Transisi Cluster {t1} \\(\\rightarrow\\) {t2}", f"transsum{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
         # Nama daerah
@@ -2518,7 +2502,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             for b in range(K_CLUSTERS):
                 names = [obs_labels[i] for i in range(len(obs_labels)) if lbl1[i]==a and lbl2[i]==b]
                 rows_name[f"{get_cluster_name(a, 'Cluster', f' ({t1})')} \\(\\rightarrow\\) {get_cluster_name(b, 'Cluster', f' ({t2})')}"] = ", ".join(names) if names else "-"
-        save_tex_name_table(rows_name, f"output_table_transition_matrix_name_{pair}.tex", OUT_DIR,
+        save_tex_name_table(rows_name, f"output_table_statis_transition_name_{pair}.tex", OUT_DIR,
                             f"Nama Daerah Perpindahan Cluster {t1} \\(\\rightarrow\\) {t2}", f"transname{pair}", label_prefix=CUR_LABEL_PREFIX)
     
         # IPM transition (jika ada)
@@ -2537,7 +2521,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             df_ipm = pd.DataFrame(ipm_mat, index=ipm_cats, columns=ipm_cats)
             df_ipm.index.name = f"{t1}/{t2}"
             df_ipm = df_ipm.reset_index()
-            save_tex_table(df_ipm, f"output_table_ipm_matrix_sum_{pair}.tex", OUT_DIR,
+            save_tex_table(df_ipm, f"output_table_ipm_sum_{pair}.tex", OUT_DIR,
                            f"Matriks Transisi Kategori IPM (UNDP) Tahun {t1} ke {t2}", f"ipm{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
             # Nama daerah IPM
@@ -2546,7 +2530,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 for b in ipm_cats:
                     names = [obs_labels[i] for i in range(len(obs_labels)) if ipm1[i]==a and ipm2[i]==b]
                     rows_ipm_name[f"{a} ({t1}) \\(\\rightarrow\\) {b} ({t2})"] = ", ".join(names) if names else "-"
-            save_tex_name_table(rows_ipm_name, f"output_table_ipm_matrix_name_{pair}.tex", OUT_DIR,
+            save_tex_name_table(rows_ipm_name, f"output_table_ipm_name_{pair}.tex", OUT_DIR,
                                 f"Nama Daerah Matriks Transisi Kategori IPM (UNDP) {t1} \\(\\rightarrow\\) {t2}", f"ipmname{pair}", label_prefix=CUR_LABEL_PREFIX)
     
     # Cross-tab K-Means vs IPM per tahun akhir
@@ -2603,18 +2587,42 @@ for current_scenario in ['scenario1', 'scenario2']:
         ))
     fig_traj_cl.add_hline(y=0, line_dash='dot', line_color='gray')
     fig_traj_cl.add_vline(x=0, line_dash='dot', line_color='gray')
+    # Tambahkan vektor loading dengan warna hitam beropasitas rendah
+    for _li, _lvar in enumerate(selected_vars):
+        fig_traj_cl.add_trace(go.Scatter(
+            x=[0, plot_loadings[_li, 0]], y=[0, plot_loadings[_li, 1]],
+            mode='lines+text',
+            text=['', _lvar],
+            textposition='top center',
+            textfont=dict(size=8, color='rgba(0,0,0,0.45)'),
+            line=dict(color='rgba(0,0,0,0.2)', width=1.2),
+            showlegend=False, hoverinfo='skip'
+        ))
     fig_traj_cl.update_layout(title="Scatter Plot Cluster Trajektori (Diberi Peringkat)",
                                xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                                xaxis=dict(scaleanchor='y', scaleratio=1))
     save_png(fig_traj_cl, "compromise_scatter.png", OUT_DIR, width=800, height=800)
     
-    # Tabel anggota cluster trajektori
-    df_members = pd.DataFrame({
-        'Kabupaten/Kota': obs_labels, 
-        'Cluster Trajektori': [get_cluster_name(c) for c in cluster_traj]
-    })
-    save_tex_table(df_members, "output_table_cluster_members.tex", OUT_DIR,
-                   "Anggota Cluster Trajektori Keseluruhan", "clustermembers", label_prefix=CUR_LABEL_PREFIX)
+    # Tabel ringkasan anggota cluster trajektori (grouped: Kelompok | Jumlah | Daftar)
+    from collections import defaultdict as _dd_cl
+    _cl_groups: dict = _dd_cl(list)
+    for _lbl, _ci in zip(obs_labels, cluster_traj):
+        _cl_groups[_ci].append(_lbl)
+    _cap_cl = f"Ringkasan Anggota Cluster Kompromi STATIS ({SCENARIO.replace('scenario', 'Skenario ')})"
+    _lbl_cl = f"{CUR_LABEL_PREFIX}compromclust"
+    _cl_path = os.path.join(OUT_DIR, "output_table_compromise_cluster_sum_name.tex")
+    with open(_cl_path, "w", encoding="utf-8") as _cf:
+        _cf.write("\\begin{table}[H]\n\\centering\n")
+        _cf.write(f"\\caption{{{_cap_cl}}} \\label{{tab:{_lbl_cl}}}\n")
+        _cf.write("\\begin{adjustbox}{max width=\\textwidth}\n")
+        _cf.write("\\begin{tabular}{|p{3cm}|c|p{10cm}|}\n\\hline\n")
+        _cf.write("\\textbf{Kelompok (Cluster)} & \\textbf{Jumlah Wilayah} & \\textbf{Daftar Kabupaten/Kota} \\\\\n\\hline\n")
+        for _ci in sorted(_cl_groups.keys()):
+            _cname = escape_tex(get_cluster_name(_ci))
+            _members = ", ".join(_cl_groups[_ci])
+            _cf.write(f"{_cname} & {len(_cl_groups[_ci])} & {escape_tex(_members)} \\\\\n\\hline\n")
+        _cf.write("\\end{tabular}\n\\end{adjustbox}\n\\end{table}\n")
+    print(f"  [TEX] output_table_compromise_cluster_sum_name.tex")
     
     
     # ============================================================
@@ -2887,6 +2895,18 @@ for current_scenario in ['scenario1', 'scenario2']:
             ))
         fig_sc_bp.add_hline(y=0, line_dash='dot', line_color='gray')
         fig_sc_bp.add_vline(x=0, line_dash='dot', line_color='gray')
+        # Tambahkan vektor loading dengan warna hitam beropasitas rendah
+        _lp_bp = pca_load_adj_dict[yr]
+        for _li, _lvar in enumerate(selected_vars):
+            fig_sc_bp.add_trace(go.Scatter(
+                x=[0, _lp_bp[_li, 0]], y=[0, _lp_bp[_li, 1]],
+                mode='lines+text',
+                text=['', _lvar],
+                textposition='top center',
+                textfont=dict(size=8, color='rgba(0,0,0,0.45)'),
+                line=dict(color='rgba(0,0,0,0.2)', width=1.2),
+                showlegend=False, hoverinfo='skip'
+            ))
         fig_sc_bp.update_layout(title=f"Biplot Cluster K-Means (Unweighted) — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
@@ -2925,7 +2945,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             cv_v = (sigma / mu * 100) if mu != 0 else None
             
             rows_desc.append({
-                'Variabel': col,
+                'Indikator': col,
                 'Mean ($\\mu$)': mu,
                 'Std Dev ($\\sigma$)': sigma,
                 'Min': np.min(vals),

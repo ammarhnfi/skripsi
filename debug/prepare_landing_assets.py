@@ -14,10 +14,15 @@ def get_group(fname):
     if fname.startswith('boxplot'): return 'Distribusi Variabel'
     if fname.startswith('cluster_biplot') or fname.startswith('cluster_scatter'): return 'Biplot Klaster'
     if fname.startswith('cluster_map'): return 'Peta Klaster'
+    if fname.startswith('cluster_pie'): return 'Peta Klaster'
     if fname.startswith('dendrogram'): return 'Dendrogram'
     if fname.startswith('elbow_plot'): return 'Elbow Plot'
     if fname.startswith('output_table'): return 'Tabel Hasil (.tex)'
-    if fname in ['compromise_map.png', 'loading_plot.png', 'rv_heatmap.png', 'scree_plot.png', 'statis_trajectories.png', 'variable_contribution.png', 'variable_cos2.png', 'permutation_histogram.png']:
+    if fname.startswith('corr_heatmap'): return 'Korelasi & Diagnostik'
+    if fname.startswith('ipm_map') or fname.startswith('ipm_pie'): return 'Peta & Distribusi IPM'
+    if fname in ['compromise_map.png', 'rv_heatmap.png', 'scree_plot.png', 'trajectory_scores.png', 'trajectory_loadings.png',
+                 'variable_contribution.png', 'variable_cos2.png', 'permutation_histogram.png',
+                 'beta_trajectory.png', 'compromise_biplot.png', 'compromise_scatter.png', 'compromise_pie.png']:
         return 'Hasil Utama STATIS'
     return 'Lain-lain'
 

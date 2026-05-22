@@ -162,6 +162,12 @@
     "raw": "\\label{eq:scaling_biplot}\n      \\mathbf{V}^* = \\mathbf{V} \\times \\left( \\frac{\\max(|\\mathbf{F}|)}{\\max(|\\mathbf{V}|)} \\times c \\right)"
   },
   {
+    "section": "Principal Component Analysis (PCA) dan Biplot",
+    "latex": "\\[ \\mathbf{V}^*_{\\,\\cdot\\ell} = \\mathbf{V}_{\\,\\cdot\\ell} \\times \\sigma_{\\ell} \\]",
+    "type": "equation",
+    "raw": "\\mathbf{V}^*_{\\,\\cdot\\ell} = \\mathbf{V}_{\\,\\cdot\\ell} \\times \\sigma_{\\ell}"
+  },
+  {
     "section": "Tahap 1: Intra-struktur",
     "latex": "\\[ \\mathbf{W}_k = \\mathbf{Z}_k \\mathbf{Z}_k^T \\]",
     "type": "equation",
@@ -213,25 +219,25 @@
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2}"
+    "raw": "\\label{eq:skor_kompromi_wilayah}\n            \\mathbf{F}_c = \\mathbf{D}^{-1/2} \\mathbf{P} \\mathbf{\\Lambda}_c^{1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2}"
+    "raw": "\\label{eq:skor_parsial_wilayah}\n            \\mathbf{F}_k = \\mathbf{W}_k \\mathbf{D} \\mathbf{P} \\mathbf{\\Lambda}_c^{-1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2}"
+    "raw": "\\label{eq:loading_parsial_indikator}\n            \\mathbf{G}_k = \\mathbf{Z}_k^T \\mathbf{D} \\mathbf{F}_c \\mathbf{\\Lambda}_c^{-1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k \\]",
     "type": "equation",
-    "raw": "\\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k"
+    "raw": "\\label{eq:loading_kompromi_indikator}\n            \\mathbf{G}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{G}_k"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",

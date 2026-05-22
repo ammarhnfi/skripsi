@@ -20,19 +20,19 @@
 
 \vspace*{0.6cm}
 
-The strategic regions of Banten, DKI Jakarta, and West Java constitute the core national economic agglomeration in Indonesia, which underwent significant structural variations during the 2020--2024 period as a consequence of the global pandemic and the subsequent recovery phase. Traditional multivariate approaches often encounter limitations in capturing the simultaneous interactions between spatial units, social indicators, and temporal shifts within a unified framework. This research addresses this gap by applying the \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}) method, a robust three-way data analysis framework, to synthesize a stable compromise structure that represents the common development patterns across 41 regencies and cities. The objective is to evaluate the longitudinal stability of 11 strategic development indicators and map the spatio-temporal trajectories to differentiate regional resilience. The methodology involves weighted $Z$-score standardization using demographic weights, inter-structure evaluation through $RV$ coefficients, and the construction of a compromise representation ($\mathbf{W}_c$) via optimal spectral weighting. A Monte Carlo permutation test ($B=1000$) is employed to validate the significance of the discovered structure, as illustrated in the schematic framework in Chapter 3.
+The strategic regions of Banten, DKI Jakarta, and West Java constitute the core national economic activity in Indonesia, which underwent significant structural variations during the 2020--2024 period as a consequence of the global pandemic and the subsequent recovery phase. Traditional multivariate approaches often encounter limitations in capturing the simultaneous interactions between spatial units, social indicators, and temporal shifts within a unified framework. This research addresses this gap by applying the \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}) method, a robust three-way data analysis framework, to synthesize a stable compromise structure that represents the common development patterns across 41 regencies and cities. The objective is to evaluate the longitudinal stability of 11 strategic development indicators and map the spatio-temporal trajectories to differentiate regional resilience. The methodology involves weighted $Z$-score standardization using demographic weights, inter-structure evaluation through $RV$ coefficients, and the construction of a compromise representation ($\mathbf{W}_c$) via optimal spectral weighting. A Monte Carlo permutation test ($B=1000$) is employed to validate the significance of the discovered structure, as illustrated in the schematic framework in Chapter 3.
 
-Analysis of the inter-structure reveals an exceptionally high degree of consistency in the spatial configurations across the five-year period, with all $RV$ coefficients exceeding $0.90$ ($p < 0.001$). This suggests that while absolute economic levels experienced fluctuations, the underlying relative hierarchy and structural relationships between regencies remained remarkably persistent, as summarized in Table \ref{tab:rv_summary_ext}. The resulting compromise structure accounts for over $85\%$ of the total variance through two principal dimensions (Figure \ref{fig:biplot_ext}). Dimension 1 represents the primary axis of "Socio-Economic Capacity," showing strong positive correlations with GRDP, HDI, and Mean Years of Schooling. Conversely, Dimension 2 captures "Social and Health Resilience," primarily driven by variations in Life Expectancy and food security indicators.
+Analysis of the inter-structure reveals an exceptionally high degree of consistency in the spatial configurations across the five-year period, with all $RV$ coefficients exceeding $0.90$ ($p < 0.001$). This suggests that while absolute economic levels experienced fluctuations, the underlying relative hierarchy and structural relationships between regions, between indicators, and across years remained remarkably persistent, as summarized in Table \ref{tab:rv_summary_ext}. The resulting compromise structure accounts for over $85\%$ of the total variance through two principal dimensions (Figure \ref{fig:biplot_ext}). Dimension 1 represents the primary axis of "Socio-Economic Capacity," showing strong positive correlations with GRDP, HDI, and Mean Years of Schooling. Conversely, Dimension 2 captures "Social and Health Resilience," primarily driven by variations in Life Expectancy and food security indicators.
 
 \begin{table}[H]
     \centering
     \captionsetup{hypcap=false}
-    \caption{Inter-structure Stability (RV Coefficients) 2020--2024}
+    \caption{Inter-structure Stability (Inter-year RV Coefficients) 2020--2024}
     \label{tab:rv_summary_ext}
     \begin{adjustbox}{max width=0.85\textwidth}
     \begin{tabular}{|c|c|c|c|c|c|}
     \hline
-    \textbf{index} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
+    \textbf{Year} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
     \hline
     2020 & 1.0000 & 0.9555 & 0.9429 & 0.9533 & 0.9545 \\
     2021 & 0.9555 & 1.0000 & 0.9534 & 0.9487 & 0.9396 \\
@@ -49,8 +49,8 @@ The projection of yearly data into the compromise space through a \f{Dynamic Bip
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot_matplotlib.png}
-    \caption{Compromise Biplot: Structural Relationship between Regions and Indicators}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot.png}
+    \caption{Compromise Biplot (Across Years): Structural Relationship between Regions and Indicators}
     \label{fig:biplot_ext}
 \end{figure}
 
@@ -59,8 +59,8 @@ Advanced clustering using the K-Means algorithm ($k=3$) on the compromise coordi
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/statis_trajectories.png}
-    \caption{Spatio-temporal Trajectories of 41 Regencies/Cities (2020--2024)}
+    \includegraphics[width=0.75\textwidth]{output_real/scenario1/trajectory_scores.png}
+    \caption{Spatio-temporal Trajectories: Movement of Socio-economic Conditions of Regencies/Cities from Year to Year (2020--2024)}
     \label{fig:traj_ext}
 \end{figure}
 
@@ -69,7 +69,7 @@ In conclusion, the STATIS method provides a comprehensive longitudinal perspecti
 \vspace*{0.4cm}
 
 \noindent \bo{Keywords}: 
-    Interactive Visualization, K-Means Clustering, Panel Data Analysis, Regional Development, Spatial Autocorrelation, Three-way Data Data Analysis.
+    K-Means Clustering, Panel Data Analysis, Regional Development, Spatial Autocorrelation, Three-way Data Analysis.
 \vfill
 \end{singlespace}
 

@@ -567,10 +567,17 @@
     "group": "Hasil Utama STATIS"
   },
   {
-    "name": "statis_trajectories.png",
-    "caption": "Statis Trajectories",
+    "name": "trajectory_scores.png",
+    "caption": "Trajectory Scores",
     "type": "image",
-    "src": "/output_app/statis_trajectories.png",
+    "src": "/output_app/trajectory_scores.png",
+    "group": "Hasil Utama STATIS"
+  },
+  {
+    "name": "trajectory_loadings.png",
+    "caption": "Trajectory Loadings",
+    "type": "image",
+    "src": "/output_app/trajectory_loadings.png",
     "group": "Hasil Utama STATIS"
   },
   {

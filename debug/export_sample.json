@@ -19,5 +19,5 @@
     "scale_load": true,
     "norm_score": false,
     "highlight_objects": ["Kota Jakarta Pusat"],
-    "highlight_vars": ["PPM"]
+    "highlight_vars": ["TPT"]
 }

@@ -71,14 +71,14 @@ Dokumen ini menjabarkan \textbf{setiap formula matematis} yang digunakan dalam p
 Karena 41 Kabupaten/Kota yang diamati merupakan populasi utuh (bukan sampel estimasi) dan analisis STATIS bekerja pada ruang metrik spesifik $\mathbf{D}$, maka seluruh pengukuran variabilitas secara konsisten menggunakan parameter populasi terbobot ($\mu$ dan $\sigma$).
 \begin{enumerate}
   \item \textbf{Formula Asal} --- Notasi simbolik baku
-  \item \textbf{Keterangan Variabel} --- Definisi setiap simbol
+  \item \textbf{Keterangan Indikator} --- Definisi setiap simbol
   \item \textbf{Substitusi Langkah demi Langkah} --- Nilai \emph{nyata} dari \texttt{data2.xlsx} dimasukkan
   \item \textbf{Hasil Akhir} --- Nilai komputasi sesungguhnya
 \end{enumerate}
 
-\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{12 variabel sosio-ekonomi}, periode \textbf{2020--2024} ($T = 5$ tahun).
+\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{12 indikator sosio-ekonomi}, periode \textbf{2020--2024} ($T = 5$ tahun).
 
-\subsection*{Daftar Singkatan dan Variabel}
+\subsection*{Daftar Singkatan dan Indikator}
 \begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{lll}
 \toprule
@@ -100,7 +100,7 @@ JP    & Jumlah Penduduk           & Orang \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{13 variabel sosio-ekonomi}, periode \textbf{2020--2024} ($K = 5$ studi/tahun).
+\noindent Data yang digunakan: \textbf{41 Kabupaten/Kota} (Provinsi Banten, DKI Jakarta, Jawa Barat), \textbf{13 indikator sosio-ekonomi}, periode \textbf{2020--2024} ($K = 5$ studi/tahun).
 
 \subsection*{Notasi Umum dan Matriks Metrik}
 \begin{adjustbox}{max width=\textwidth}
@@ -109,10 +109,10 @@ JP    & Jumlah Penduduk           & Orang \\
 \textbf{Notasi} & \textbf{Arti} \\
 \midrule
 $n$ & Jumlah wilayah observasi populasi target ($n = 41$) \\
-$p$ & Jumlah variabel ($p = 12$) \\
+$p$ & Jumlah indikator ($p = 12$) \\
 $K$ & Jumlah pengamatan/studi ($K = 5$: tahun 2020--2024) \\
 $i$ & Indeks wilayah ($i = 1, 2, \ldots, n$) \\
-$j$ & Indeks variabel ($j = 1, 2, \ldots, p$) \\
+$j$ & Indeks indikator ($j = 1, 2, \ldots, p$) \\
 $k$ & Indeks studi/tahun ($k = 1, 2, \ldots, K$) \\
 $m_i$ & Bobot observasi wilayah ke-$i$ (proporsi populasi) \\
 $\mathbf{D}$ & Matriks diagonal pembobot spasial berukuran $n \times n$ (elemen diagonal $m_i$) \\
@@ -122,7 +122,7 @@ $\mathbf{W}_k$ & Matriks skalar produk / kedekatan antar-wilayah ($n \times n$) 
 $\mathbf{W}_c$ & Matriks kompromi STATIS ($n \times n$) \\
 $\mathbf{F}_c$ & Matriks koordinat skor kompromi akhir ($n \times 2$) \\
 KMO & Kaiser-Meyer-Olkin Measure of Sampling Adequacy \\
-MSA & Measure of Sampling Adequacy (per variabel) \\
+MSA & Measure of Sampling Adequacy (per indikator) \\
 RV & Koefisien kemiripan antar-matriks (Escoufier) \\
 PCA & Principal Component Analysis (Analisis Komponen Utama) \\
 SVD & Singular Value Decomposition (Dekomposisi Nilai Singular) \\
@@ -135,14 +135,14 @@ STATIS & Structuration des Tableaux \`A Trois Indices de la Statistique \\
 \newpage
 
 \section{Analisis Statistika Deskriptif (Dalam Ruang Metrik \texorpdfstring{$\mathbf{D}$}{D})}
-Berdasarkan \citet{lavit94}, sebelum mengekstraksi jarak Euclidean, setiap variabel harus disentralkan terhadap titik pusat (rata-rata populasi terbobot, $\mu$) dan diskalakan dengan varians populasi terbobot ($\sigma^2$) agar matriks metrik $\mathbf{D}$ dapat digunakan secara valid.
+Berdasarkan \citet{lavit94}, sebelum mengekstraksi jarak Euclidean, setiap indikator harus disentralkan terhadap titik pusat (rata-rata populasi terbobot, $\mu$) dan diskalakan dengan varians populasi terbobot ($\sigma^2$) agar matriks metrik $\mathbf{D}$ dapat digunakan secara valid.
 \begin{tcolorbox}[formula_box, title={Bobot}] \label{kotak:bobot}
 \textbf{Formula:}
 \[
 m_i = \frac{\overline{\text{JP}}_i}{\sum_{i=1}^{n} \overline{\text{JP}}_i} \quad \text{dimana} \quad \overline{\text{JP}}_i = \frac{1}{K}\sum_{k=1}^{K} \text{JP}_{ik}
 \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
     \item $m_i$ = Bobot demografis (proporsi) untuk wilayah ke-$i$.
     \item $\overline{\text{JP}}_i$ = Rata-rata jumlah penduduk wilayah ke-$i$ selama periode observasi.
@@ -172,18 +172,18 @@ m_i \in (0, 1) \quad \text{dengan syarat} \quad \sum_{i=1}^{n} m_i = 1
 \textbf{Formula:}
 \[ \mu_{jk} = \sum_{i=1}^{n} m_i x_{ijk} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $\mu_{jk}$: Rata-rata populasi terbobot untuk variabel $j$ pada tahun $k$
+  \item $\mu_{jk}$: Rata-rata populasi terbobot untuk indikator $j$ pada tahun $k$
   \item $n$: Jumlah total wilayah populasi target (41 Kabupaten/Kota)
   \item $m_i$: Bobot observasi wilayah ke-$i$ (dengan syarat $\sum m_i = 1$) (lihat \ref{kotak:bobot})
-  \item $x_{ijk}$: Nilai variabel $j$ untuk wilayah ke-$i$ tahun $k$
+  \item $x_{ijk}$: Nilai indikator $j$ untuk wilayah ke-$i$ tahun $k$
   \item \textit{Catatan:} Notasi $\mu$ digunakan karena 41 wilayah tersebut merupakan populasi utuh target penelitian. Formula ini sejalan dengan syarat pemusatan matriks dari \citet{lavit94}.
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item Variabel: IPM, Tahun 2020, $n = 41$ wilayah
+  \item Indikator: IPM, Tahun 2020, $n = 41$ wilayah
   \item Asumsi awal menggunakan bobot spasial seragam ($m_i = \frac{1}{41}$) untuk perhitungan dasar:
   \item $\mu_{\text{IPM},2020} = \sum_{i=1}^{41} \left(\frac{1}{41}\right) x_{i,\text{IPM},2020} = \frac{1}{41} \sum_{i=1}^{41} x_{i,\text{IPM},2020}$
   \item $\mu_{\text{IPM},2020} = \frac{71.63 + 84.72 + 82.66 + \cdots}{41}$
@@ -202,14 +202,14 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \sigma_{jk} = \sqrt{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^2} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $\sigma_{jk}$: Simpangan baku populasi terbobot (akar dari varians metrik $\mathbf{D}$) variabel $j$ tahun $k$
+  \item $\sigma_{jk}$: Simpangan baku populasi terbobot (akar dari varians metrik $\mathbf{D}$) indikator $j$ tahun $k$
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item Variabel IPM, 2020: $\mu_{\text{IPM}} = 72.89707317$, bobot seragam $m_i = 1/41$
+  \item Indikator IPM, 2020: $\mu_{\text{IPM}} = 72.89707317$, bobot seragam $m_i = 1/41$
   \item $\sigma_{\text{IPM},2020}^2 = \frac{1}{41} \sum_{i=1}^{41} (x_{i,\text{IPM}} - 72.89707317)^2 = \frac{1341.0352}{41} = 32.7081$
   \item $\sigma_{\text{IPM},2020} = \sqrt{32.7081}$
 \end{enumerate}
@@ -226,13 +226,13 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ z_{ijk} = \frac{x_{ijk} - \mu_{jk}}{\sigma_{jk}} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $z_{ijk}$: Standardisasi terbobot (Weighted Z-Score) variabel $j$ pada wilayah ke-$i$ tahun $k$
-  \item $x_{ijk}$: Nilai mentah variabel $j$ pada wilayah ke-$i$ tahun $k$
+  \item $z_{ijk}$: Standardisasi terbobot (Weighted Z-Score) indikator $j$ pada wilayah ke-$i$ tahun $k$
+  \item $x_{ijk}$: Nilai mentah indikator $j$ pada wilayah ke-$i$ tahun $k$
   \item $m_i$: Bobot observasi spasial untuk wilayah ke-$i$ (lihat \ref{kotak:bobot})
-  \item $\mu_{jk}$: Rata-rata terbobot variabel $j$ (lihat \ref{kotak:mean})
-  \item $\sigma_{jk}$: Simpangan baku terbobot variabel $j$ ($\sqrt{\sum_{i}^{n} m_i (x_{ijk} - \mu_{jk})^2}$)
+  \item $\mu_{jk}$: Rata-rata terbobot indikator $j$ (lihat \ref{kotak:mean})
+  \item $\sigma_{jk}$: Simpangan baku terbobot indikator $j$ ($\sqrt{\sum_{i}^{n} m_i (x_{ijk} - \mu_{jk})^2}$)
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
@@ -248,14 +248,14 @@ Namun apabila menggunakan bobot demografis, maka:
 \[ z_{4,\text{IPM},2020} = 1.308820771 \]
 \textit{(Nilai positif: IPM Kota Jakarta Pusat di atas rata-rata)}
 
-\textbf{Penjelasan:} Transformasi ini digunakan untuk menghilangkan perbedaan satuan ukur antar-variabel sehingga data dapat diperbandingkan secara proporsional. Berbeda dengan Z-Score konvensional, metode ini menginkorporasikan bobot observasi spasial ($m_i$) dalam menghitung rata-rata ($\mu_{jk}$) dan simpangan baku ($\sigma_{jk}$). Penggunaan bobot ini memastikan bahwa wilayah dengan populasi lebih besar memberikan pengaruh yang proporsional terhadap ukuran pemusatan dan penyebaran data. Melalui standardisasi ini, matriks data akan terpusat pada nilai nol dengan varians unit, yang mana memenuhi prasyarat ruang metrik $\mathbf{D}$ \citet{lavit94}.
+\textbf{Penjelasan:} Transformasi ini digunakan untuk menghilangkan perbedaan satuan ukur antar-indikator sehingga data dapat diperbandingkan secara proporsional. Berbeda dengan Z-Score konvensional, metode ini menginkorporasikan bobot observasi spasial ($m_i$) dalam menghitung rata-rata ($\mu_{jk}$) dan simpangan baku ($\sigma_{jk}$). Penggunaan bobot ini memastikan bahwa wilayah dengan populasi lebih besar memberikan pengaruh yang proporsional terhadap ukuran pemusatan dan penyebaran data. Melalui standardisasi ini, matriks data akan terpusat pada nilai nol dengan varians unit, yang mana memenuhi prasyarat ruang metrik $\mathbf{D}$ \citet{lavit94}.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Median (Kuartil Kedua, $Q_2$)} \label{kotak:median}]
 \textbf{Formula:}
 \[ Q_2 = \begin{cases} x_{\left(\frac{n+1}{2}\right)} & n \text{ ganjil} \\ \frac{x_{\left(\frac{n}{2}\right)} + x_{\left(\frac{n}{2}+1\right)}}{2} & n \text{ genap} \end{cases} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $n = 41$ (ganjil), sehingga $Q_2 = x_{(21)}$
   \item $x_{(k)}$: Nilai ke-$k$ setelah data diurutkan naik
@@ -271,21 +271,21 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Hasil Akhir:}
 \[ Q_2 = 71.7000 \]
 
-\textbf{Penjelasan:} Nilai tengah data yang memberikan gambaran nilai tipikal wilayah yang tidak mudah terdistorsi oleh nilai ekstrem (pencilan) dalam distribusi variabel ekonomi.
+\textbf{Penjelasan:} Nilai tengah data yang memberikan gambaran nilai tipikal wilayah yang tidak mudah terdistorsi oleh nilai ekstrem (pencilan) dalam distribusi indikator ekonomi.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Nilai Minimum dan Maksimum}] \label{kotak:minmax}
 \textbf{Formula:}
 \[ x_{\min} = \min(x_1,\ldots,x_n),\quad x_{\max} = \max(x_1,\ldots,x_n) \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $x_{\min}$ dan $x_{\max}$: Nilai ekstrem dalam distribusi variabel
+  \item $x_{\min}$ dan $x_{\max}$: Nilai ekstrem dalam distribusi indikator
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item Variabel IPM, 2020 (41 wilayah)
+  \item Indikator IPM, 2020 (41 wilayah)
   \item Survey seluruh nilai: IPM terendah $= 63.91$, tertinggi $= 84.72$
 \end{enumerate}
 
@@ -299,7 +299,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ IQR = Q_3 - Q_1 \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $Q_1$: Kuartil pertama (persentil ke-25)
   \item $Q_3$: Kuartil ketiga (persentil ke-75)
@@ -307,7 +307,7 @@ Namun apabila menggunakan bobot demografis, maka:
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item Variabel IPM, 2020
+  \item Indikator IPM, 2020
   \item $Q_1 = 68.0800$ (persentil ke-25)
   \item $Q_3 = 77.8300$ (persentil ke-75)
   \item $IQR = 77.8300 - 68.0800$
@@ -323,17 +323,17 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ CV_j = \frac{\sigma_j}{\mu_j} \times 100\% \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $CV_j$ (\textit{Coefficient of Variation}): Ukuran variabilitas relatif (bebas satuan) berbasis populasi
-  \item $\sigma_j$: Simpangan baku variabel $j$
-  \item $\mu_j$: Rata-rata variabel $j$
+  \item $\sigma_j$: Simpangan baku indikator $j$
+  \item $\mu_j$: Rata-rata indikator $j$
   \item Klasifikasi menurut \citet{deptan2003}: $CV \leq 10\%$ = rendah; $10\% < CV \leq 20\%$ = sedang; $CV > 20\%$ = tinggi
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item Variabel IPM, 2020: $\sigma_{\text{IPM}} = 6.128349781$, $\mu_{\text{IPM}} = 73.36908851$
+  \item Indikator IPM, 2020: $\sigma_{\text{IPM}} = 6.128349781$, $\mu_{\text{IPM}} = 73.36908851$
   \item $CV_{\text{IPM}} = \frac{6.128349781}{73.36908851} \times 100\%$
   \item $CV_{\text{IPM}} = 0.083527681 \times 100\%$
 \end{enumerate}
@@ -341,14 +341,14 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Hasil Akhir:}
 \[ CV_{\text{IPM}} = 8.3527681\% \quad \text{(rendah ($\leq 10\%$))} \]
 
-\textbf{Penjelasan:} Rasio simpangan baku terhadap rata-rata populasi yang menunjukkan tingkat variasi relatif suatu variabel. Berdasarkan klasifikasi \citet{deptan2003}, nilai $CV \leq 10\%$ menunjukkan variabilitas rendah, yang berarti capaian indikator antar-wilayah cenderung homogen.
+\textbf{Penjelasan:} Rasio simpangan baku terhadap rata-rata populasi yang menunjukkan tingkat variasi relatif suatu indikator. Berdasarkan klasifikasi \citet{deptan2003}, nilai $CV \leq 10\%$ menunjukkan variabilitas rendah, yang berarti capaian indikator antar-wilayah cenderung homogen.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Koefisien Kemiringan (\textit{Skewness}) Populasi ($\gamma_1$)}] \label{kotak:skewness}
 \textbf{Formula:}
 \[ \gamma_1 = \frac{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^3}{\sigma_{jk}^3} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\gamma_1$: Koefisien kemiringan (momen ketiga ternormalisasi)
   \item Klasifikasi menurut \citet{bulmer1979}: $|\gamma_1| < 0.5$: simetri; $0.5 \leq |g_1| < 1$: menceng moderat; $|g_1| \geq 1$: sangat menceng
@@ -373,7 +373,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \gamma_2 = \frac{\sum_{i=1}^{n} m_i (x_{ijk} - \mu_{jk})^4}{\sigma_{jk}^4} - 3 \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\gamma_2$: Koefisien keruncingan (momen keempat ternormalisasi minus 3)
   \item Pengurangan $-3$ disebut \textit{excess kurtosis} \citet{mathworld}: kurtosis distribusi normal $= 3$, sehingga dikurangi 3 agar baseline $= 0$
@@ -403,19 +403,19 @@ Namun apabila menggunakan bobot demografis, maka:
 \[ KMO = \frac{\sum_{j \neq k} r_{jk}^2}{\sum_{j \neq k} r_{jk}^2 + \sum_{j \neq k} r_{jk.p}^2} \]
 \[ r_{jk.p} = \frac{-v_{jk}}{\sqrt{v_{jj} \times v_{kk}}} \quad \text{dimana} \quad \mathbf{V} = \mathbf{R}^{-1} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $r_{jk}$: Korelasi Pearson antara variabel $j$ dan $k$ (elemen matriks korelasi $\mathbf{R}$)
+  \item $r_{jk}$: Korelasi Pearson antara indikator $j$ dan $k$ (elemen matriks korelasi $\mathbf{R}$)
   \item $r_{jk.p}$: Korelasi Parsial antara $j$ dan $k$ (elemen matriks \textit{Anti-Image})
   \item $\mathbf{V}$: Matriks invers dari matriks korelasi ($\mathbf{R}^{-1}$), dengan elemen $v_{jk}$
-  \item $v_{jj}, v_{kk}$: Elemen diagonal utama matriks invers $\mathbf{V}$ untuk variabel $j$ dan $k$
+  \item $v_{jj}, v_{kk}$: Elemen diagonal utama matriks invers $\mathbf{V}$ untuk indikator $j$ dan $k$
   \item Klasifikasi KMO (\citet{kaiser1970}): $<0.5$ = \textit{Unacceptable}; $0.5$--$0.6$ = \textit{Miserable}; $0.6$--$0.7$ = \textit{Mediocre}; $0.7$--$0.8$ = \textit{Middling}; $0.8$--$0.9$ = \textit{Meritorious}; $>0.9$ = \textit{Marvelous}
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
   \item Hitung matriks korelasi $\mathbf{R}$ ($12 \times 12$) dan matriks inversnya $\mathbf{V} = \mathbf{R}^{-1}$.
-  \item Hitung korelasi parsial ($r_{jk.p}$) tiap pasangan variabel menggunakan elemen matriks $\mathbf{V}$.
+  \item Hitung korelasi parsial ($r_{jk.p}$) tiap pasangan indikator menggunakan elemen matriks $\mathbf{V}$.
   \item Hitung jumlah kuadrat elemen luar diagonal matriks korelasi $\mathbf{R}$: $\sum_{j\neq k} r_{jk}^2 = 32.2239$.
   \item Hitung jumlah kuadrat elemen luar diagonal matriks parsial: $\sum_{j\neq k} r_{jk.p}^2 = 8.7302$.
   \item $KMO = \frac{32.2239}{32.2239 + 8.7302} = \frac{32.2239}{40.9542}$
@@ -424,40 +424,40 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Hasil Akhir:}
 \[ KMO = 0.7868 \quad \text{(\textit{Middling}, \citet{kaiser1970})} \]
 
-\textbf{Penjelasan:} Indeks kelayakan sampling untuk melihat kecukupan korelasi antar-variabel. Nilai korelasi parsial ($r_{jk.p}$) yang didapat dari invers matriks korelasi berfungsi untuk mengukur korelasi murni dua variabel tanpa pengaruh variabel lain. Nilai KMO $0.7868$ mengindikasikan bahwa data layak dianalisis lebih lanjut menggunakan reduksi dimensi multivariat seperti STATIS.
+\textbf{Penjelasan:} Indeks kelayakan sampling untuk melihat kecukupan korelasi antar-indikator. Nilai korelasi parsial ($r_{jk.p}$) yang didapat dari invers matriks korelasi berfungsi untuk mengukur korelasi murni dua indikator tanpa pengaruh indikator lain. Nilai KMO $0.7868$ mengindikasikan bahwa data layak dianalisis lebih lanjut menggunakan reduksi dimensi multivariat seperti STATIS.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Derajat Kebebasan Uji Bartlett ($df$)}] \label{kotak:df}
 \textbf{Formula:}
 \[ df = \frac{p(p-1)}{2} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
-  \item $p$: Jumlah variabel ($p=12$)
-  \item $df$: Derajat kebebasan (\textit{degrees of freedom}), merepresentasikan jumlah pasangan korelasi unik antar-variabel.
+  \item $p$: Jumlah indikator ($p=12$)
+  \item $df$: Derajat kebebasan (\textit{degrees of freedom}), merepresentasikan jumlah pasangan korelasi unik antar-indikator.
 \end{itemize}
 
 \textbf{Substitusi (Langkah demi Langkah):}
 \begin{enumerate}
-  \item $p = 12$ variabel sosio-ekonomi
+  \item $p = 12$ indikator sosio-ekonomi
   \item $df = \frac{12 \times (12-1)}{2} = \frac{132}{2}$
 \end{enumerate}
 
 \textbf{Hasil Akhir:}
 \[ df = 66 \]
 
-\textbf{Penjelasan:} Memberikan informasi mengenai parameter bebas atau jumlah perbandingan korelasi unik antar variabel yang dievaluasi dalam uji sferisitas Bartlett.
+\textbf{Penjelasan:} Memberikan informasi mengenai parameter bebas atau jumlah perbandingan korelasi unik antar indikator yang dievaluasi dalam uji sferisitas Bartlett.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={12. Uji Sferisitas Bartlett (\textit{Bartlett's Test of Sphericity})}] \label{kotak:bartlett}
 \textbf{Formula:}
 \[ \chi^2 = -\left[n - 1 - \frac{2p+5}{6}\right] \ln|\mathbf{R}| \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\chi^2$: Nilai statistik uji berdistribusi Chi-Square
-  \item $\mathbf{R}$: Matriks korelasi berukuran $p \times p$. Dalam kerangka spasial terbobot, matriks ini dihitung dari matriks kovarians data terstandarisasi terbobot ($\mathbf{R} = \mathbf{Z}' \mathbf{S} \mathbf{Z}$), sehingga korelasi antar-variabel telah memperhitungkan proporsi populasi wilayah ($m_i$).
-  \item $|\mathbf{R}|$: Determinan matriks korelasi. Jika $|\mathbf{R}| = 1$, maka variabel saling independen ortogonal (tidak berkorelasi). Semakin mendekati $0$, multikolinieritas makin tinggi.
+  \item $\mathbf{R}$: Matriks korelasi berukuran $p \times p$. Dalam kerangka spasial terbobot, matriks ini dihitung dari matriks kovariansi data terstandarisasi terbobot ($\mathbf{R} = \mathbf{Z}' \mathbf{S} \mathbf{Z}$), sehingga korelasi antar-indikator telah memperhitungkan proporsi populasi wilayah ($m_i$).
+  \item $|\mathbf{R}|$: Determinan matriks korelasi. Jika $|\mathbf{R}| = 1$, maka indikator saling independen ortogonal (tidak berkorelasi). Semakin mendekati $0$, multikolinieritas makin tinggi.
   \item $H_0$: $\mathbf{R} = \mathbf{I}$ (Matriks korelasi adalah matriks identitas)
 \end{itemize}
 
@@ -472,9 +472,9 @@ Namun apabila menggunakan bobot demografis, maka:
 
 \textbf{Hasil Akhir:}
 \[ \chi^2 = 627.4563, \quad df = 66, \quad p < 0.001 \]
-\textit{(Tolak $H_0$: Terdapat korelasi antar-variabel yang sangat signifikan)}
+\textit{(Tolak $H_0$: Terdapat korelasi antar-indikator yang sangat signifikan)}
 
-\textbf{Penjelasan:} Uji inferensial \citet{bartlett1954} untuk memastikan apakah matriks korelasi data berbeda secara signifikan dengan matriks identitas. Hasil signifikansi $p < 0.05$ menunjukkan adanya interkorelasi antar variabel penyusun, sehingga penyederhanaan dimensi multivariat seperti metode STATIS \citep{lavit94} secara matematis sah dan valid untuk dilakukan.
+\textbf{Penjelasan:} Uji inferensial \citet{bartlett1954} untuk memastikan apakah matriks korelasi data berbeda secara signifikan dengan matriks identitas. Hasil signifikansi $p < 0.05$ menunjukkan adanya interkorelasi antar indikator penyusun, sehingga penyederhanaan dimensi multivariat seperti metode STATIS \citep{lavit94} secara matematis sah dan valid untuk dilakukan.
 \end{tcolorbox}
 
 \section{Korelasi dan Analisis Komponen Utama (PCA)}
@@ -482,7 +482,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ r_{xy} = \frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sqrt{\sum(x_i-\bar{x})^2}\cdot\sqrt{\sum(y_i-\bar{y})^2}} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $r_{xy}\in[-1,1]$: Ukuran hubungan linier
   \item $|r|>0.7$: Korelasi kuat
@@ -498,14 +498,14 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Hasil Akhir:}
 \[ r_{IPM,RLS} = 0.9627 \]
 
-\textbf{Penjelasan:} Mengukur kekuatan dan arah hubungan linier antar dua variabel sosio-ekonomi. Nilai $0.9627$ menunjukkan hubungan positif yang sangat kuat antara IPM dan Rata-rata Lama Sekolah.
+\textbf{Penjelasan:} Mengukur kekuatan dan arah hubungan linier antar dua indikator sosio-ekonomi. Nilai $0.9627$ menunjukkan hubungan positif yang sangat kuat antara IPM dan Rata-rata Lama Sekolah.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={Determinan Matriks ($|\mathbf{A}|$)}]
 \textbf{Formula:}
 \[ |\mathbf{A}| = \sum_{\sigma \in S_p} \text{sgn}(\sigma) \prod_{i=1}^{p} a_{i,\sigma(i)} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $|\mathbf{A}|$: Determinan dari matriks bujur sangkar $\mathbf{A}$
   \item $S_p$: Himpunan seluruh permutasi indeks $\{1, \dots, p\}$
@@ -522,14 +522,14 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Hasil Akhir:}
 \[ |\mathbf{R}| = 1.78e-08 \]
 
-\textbf{Penjelasan:} Determinan matriks korelasi digunakan untuk mendeteksi multikolinieritas. Semakin mendekati nol, semakin tinggi tingkat ketergantungan antar-variabel, yang memvalidasi perlunya reduksi dimensi.
+\textbf{Penjelasan:} Determinan matriks korelasi digunakan untuk mendeteksi multikolinieritas. Semakin mendekati nol, semakin tinggi tingkat ketergantungan antar-indikator, yang memvalidasi perlunya reduksi dimensi.
 \end{tcolorbox}
 
 \begin{tcolorbox}[formula_box, title={PCA ($\mathbf{F}=\mathbf{Z}\mathbf{V}$)}]
 \textbf{Formula:}
 \[ \mathbf{F} = \mathbf{Z}\mathbf{V} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{Z}$: Matriks terstandarisasi ($n\times p$)
   \item $\mathbf{V}$: Matriks eigenvector dari matriks korelasi $\mathbf{R}$
@@ -554,7 +554,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \mathbf{R}\mathbf{v}=\lambda\mathbf{v} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{R}$: Matriks korelasi data
   \item $\lambda$: Eigenvalue (besaran varians di sepanjang sumbu utama)
@@ -579,7 +579,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \theta=-\operatorname{atan2}(v_2,v_1),\; \mathbf{Q}=\begin{pmatrix}\cos\theta&-\sin\theta\\\sin\theta&\cos\theta\end{pmatrix},\; \mathbf{F}^*=\mathbf{F}\mathbf{Q} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\theta$: Sudut rotasi referensi (Contoh: untuk membuat Kep. Seribu sejajar sumbu X)
   \item $\mathbf{Q}$: Matriks rotasi ortogonal $2\times2$
@@ -605,7 +605,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \mathbf{W}_k = (\mathbf{D}^{1/2}\mathbf{Z}_k) (\mathbf{D}^{1/2}\mathbf{Z}_k)^T \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{Z}_k$: Matriks z-score terbobot ($n \times p$) tahun ke-$k$
   \item $\mathbf{D}^{1/2} = \operatorname{diag}(\sqrt{m_1}, \ldots, \sqrt{m_n})$: Matriks diagonal akar bobot demografis (metrik spasial)
@@ -631,7 +631,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ RV(\mathbf{W}_k,\mathbf{W}_{k'}) = \frac{\mathrm{Tr}(\mathbf{W}_k \mathbf{W}_{k'})}{\sqrt{\mathrm{Tr}(\mathbf{W}_k^2)} \sqrt{\mathrm{Tr}(\mathbf{W}_{k'}^2)}} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $RV \in [0,1]$: Koefisien kemiripan Hilbert-Schmidt yang dinormalkan antar dua matriks konfigurasi \citet{oliveira2024}
   \item \textbf{Alasan tidak ada $\mathbf{D}$ di Trace:} Karena $\mathbf{D}$ sudah terinkorporasi dalam $\mathbf{W}_k = (\mathbf{D}^{1/2}\mathbf{Z}_k)(\mathbf{D}^{1/2}\mathbf{Z}_k)^T$, mengalikan $\mathbf{D}$ lagi di dalam Trace akan menghasilkan \textit{double-weighting} yang salah \citet{lavit94}
@@ -656,7 +656,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \alpha_k = \frac{p_{1k}}{\sum_{k=1}^{K} p_{1k}} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{p}_1$: Eigenvector pertama dari dekomposisi matriks Inter-struktur (RV)
   \item $p_{1k}$: Komponen ke-$k$ dari eigenvector $\mathbf{p}_1$
@@ -681,7 +681,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \mathbf{W}_c = \sum_{k=1}^{K} \alpha_k \mathbf{W}_k \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{W}_c$: Matriks konsensus rata-rata tertimbang dari seluruh waktu
 \end{itemize}
@@ -702,7 +702,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ \mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{P}$: Matriks vektor eigen (eigenvector) dari $\mathbf{W}_c$, dengan $\mathbf{P}^T\mathbf{P} = \mathbf{I}$
   \item $\mathbf{\Lambda}_c^{1/2}$: Matriks diagonal akar dari nilai eigen kompromi
@@ -727,7 +727,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[p\text{-value}=\frac{\sum_{b=1}^B\mathbb{I}(\lambda_1^{(perm)} \geq \lambda_1^{(obs)})+1}{B+1}\]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\lambda_1^{(obs)}$: Eigenvalue dominan matriks $\mathbf{R}_{RV}$ asli
   \item $\lambda_1^{(perm)}$: Eigenvalue dominan dari matriks RV yang dihitung dari data yang diacak per kolom (permutasi kolom secara independen untuk setiap tahun sesuai Abdi \textit{et al.} (2012))
@@ -752,7 +752,7 @@ Namun apabila menggunakan bobot demografis, maka:
 \textbf{Formula:}
 \[ d(i,j) = \sqrt{\sum_{k=1}^{K} \|\mathbf{f}_{i,k} - \mathbf{f}_{j,k}\|^2} \]
 
-\textbf{Keterangan Variabel:}
+\textbf{Keterangan Indikator:}
 \begin{itemize}
   \item $\mathbf{f}_{i,k}$: Koordinat Principal Component wilayah $i$ pada tahun $k$
   \item $d(i,j)$: Jarak lintasan spasio-temporal antar dua wilayah

@@ -1,28 +1,29 @@
 % !TeX root = induk.tex
 \chapter{\normalsize METODOLOGI PENELITIAN}
+\raggedbottom
 
-Bab ini berisi uraian mengenai tahapan-tahapan yang dilakukan dalam penelitian, mulai dari penentuan jenis penelitian, penyusunan rancangan (desain), identifikasi populasi dan sampel, prosedur pengumpulan data, hingga teknik pengumpulan dan analisis data secara komputasional menggunakan algoritma STATIS dan analisis spasial.
+Bab ini berisi uraian mengenai tahapan-tahapan metodologi yang dilakukan dalam penelitian di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Uraian tersebut mencakup penentuan jenis dan desain penelitian, populasi dan sampel, teknik pengumpulan data, serta teknik analisis data spasio-temporal secara komputasional menggunakan algoritma STATIS dan analisis spasial.
 
 %-----------------------------------------------------------------------------%
 % --- 3.1 ---
 \section{\normalsize Statistika Deskriptif}
 %-----------------------------------------------------------------------------%
-Analisis diawali dengan ringkasan statistik untuk memberikan gambaran umum mengenai distribusi data yang menggambarkan kesejahteraan rakyat pada 41 kabupaten/kota selama periode 2020 hingga 2024. Indikator yang dimaksud dalam hal ini adalah variabel. Prosedur ini melibatkan penghitungan ukuran pemusatan dan penyebaran data sebagaimana didefinisikan pada Bab 2 yang meliputi:
+Analisis diawali dengan ringkasan statistik untuk memberikan gambaran umum mengenai distribusi data yang menggambarkan kesejahteraan rakyat pada 41 kabupaten/kota selama periode 2020 hingga 2024. Indikator yang dimaksud dalam hal ini adalah indikator. Prosedur ini melibatkan penghitungan ukuran pemusatan dan penyebaran data sebagaimana didefinisikan pada Bab 2 yang meliputi:
 \begin{enumerate}
-    \item \textbf{Rata-rata ($\bar{x}$):} Digunakan untuk melihat level umum pencapaian variabel (merujuk Persamaan \ref{eq:mean}).
+    \item \textbf{Rata-rata ($\bar{x}$):} Digunakan untuk melihat level umum pencapaian indikator (merujuk Persamaan \ref{eq:mean}).
     \item \textbf{Simpangan Baku ($s$):} Untuk mengukur tingkat kesenjangan atau variabilitas data antar wilayah (merujuk Persamaan \ref{eq:std_dev}).
-    \item \textbf{Nilai Minimum dan Maksimum:} Untuk mengidentifikasi rentang sebaran nilai variabel dengan performa ekstrim (merujuk Persamaan \ref{eq:minmax}).
+    \item \textbf{Nilai Minimum dan Maksimum:} Untuk mengidentifikasi rentang sebaran nilai indikator dengan performa ekstrim (merujuk Persamaan \ref{eq:minmax}).
     \item \textbf{Kuartil ($Q_1$ dan $Q_3$) serta Median ($Q_2$):} Untuk melihat sebaran data berdasarkan pemisahan persentase kelompok amatan (merujuk Persamaan \ref{eq:median}).
     \item \textbf{Kemiringan (\textit{Skewness}):} Untuk mengukur tingkat asimetri distribusi data (merujuk Persamaan \ref{eq:skewness}).
     \item \textbf{Keruncingan (\textit{Kurtosis}):} Untuk mengukur ketebalan ekor dan keruncingan relatif distribusi data dibandingkan distribusi normal (merujuk Persamaan \ref{eq:kurtosis}).
-    \item \textbf{Koefisien Variasi ($CV$):} Digunakan untuk membandingkan tingkat keragaman antar-variabel yang memiliki skala berbeda (merujuk Persamaan \ref{eq:cv}).
+    \item \textbf{Koefisien Variasi ($CV$):} Digunakan untuk membandingkan tingkat keragaman antar-indikator yang memiliki skala berbeda (merujuk Persamaan \ref{eq:cv}).
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
 % --- 3.2 ---
 \section{\normalsize Jenis Penelitian}
 %-----------------------------------------------------------------------------%
-Penelitian ini menggunakan pendekatan \textbf{kuantitatif} dengan jenis penelitian \textbf{dekriptif-eksplanatori}. Secara khusus, penelitian ini memanfaatkan teknik analisis multivariat lanjut (analisis tiga-arah) untuk mengeksplorasi struktur data panel indikator pembangunan manusia di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pendekatan ini dipilih karena data yang diolah berupa angka-angka statistik yang diperoleh secara sekunder dan akan dianalisis secara objektif menggunakan algoritma \textit{STATIS}, \textit{K-Means clustering}, dan analisis autokorelasi spasial untuk menarik kesimpulan mengenai stabilitas dan dinamika wilayah.
+Penelitian ini menggunakan pendekatan \textbf{kuantitatif} dengan jenis penelitian \textbf{deskriptif-eksploratif}. Secara khusus, penelitian ini memanfaatkan teknik analisis multivariat lanjut (analisis tiga-arah) untuk mengeksplorasi struktur data panel indikator pembangunan strategis di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pendekatan ini dipilih karena data yang diolah berupa data statistik sekunder dan akan dianalisis secara objektif menggunakan algoritma \textit{STATIS}, \textit{K-Means clustering}, dan analisis autokorelasi spasial untuk menarik kesimpulan mengenai stabilitas dan dinamika wilayah.
 
 %-----------------------------------------------------------------------------%
 % --- 3.3 ---
@@ -48,7 +49,7 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 
 % ---- Nodes ----
 \node (start)  [startstop]                             {Mulai};
-\node (input)  [io, below=of start]                    {Input Data\\(Upload dataset, pilih variabel \& tahun)};
+\node (input)  [io, below=of start]                    {Input Data\\(Upload dataset, pilih indikator \& tahun)};
 \node (eks)    [process, below=of input]               {Eksplorasi Data Deskriptif};
 \node (std)    [process, below=of eks]                 {Standardisasi $Z$-score per Tahun};
 \node (kmo)    [decision, below=0.9cm of std]          {Uji KMO $\geq 0.5$?};
@@ -66,7 +67,7 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 \node (selesai)[startstop, below=of peta]              {Selesai};
 
 % ---- Side nodes ----
-\node (ganti)  [process, right=2.0cm of kmo]           {Ganti/Tambah\\Variabel};
+\node (ganti)  [process, right=2.0cm of kmo]           {Ganti/Tambah\\Indikator};
 \node (tdk)    [startstop, right=2.0cm of sig]         {Struktur Tidak\\Stabil -- Selesai};
 
 % ---- Main flow ----
@@ -103,11 +104,12 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 % --- 3.4 ---
 \section{\normalsize Populasi dan Sampel}
 %-----------------------------------------------------------------------------%
-Populasi dalam penelitian ini adalah seluruh wilayah administratif setingkat kabupaten dan kota di Pulau Jawa. Namun, mengingat ketersediaan data dan fokus analisis pada wilayah metropolitan yang terintegrasi, sampel yang digunakan adalah:
+Populasi dalam penelitian ini adalah seluruh wilayah administratif setingkat kabupaten dan kota di Pulau Jawa. Mengingat ketersediaan data dan fokus analisis pada wilayah yang secara fungsional terhubung dalam koridor metropolitan Jawa bagian barat, penelitian ini mencakup seluruh kabupaten/kota di tiga provinsi berikut:
 \begin{enumerate}
-    \item \textbf{Unit Observasi ($n$):} 41 wilayah yang terdiri dari seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat.
+    \item \textbf{Unit Observasi ($n$):} 41 wilayah yang terdiri dari seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pemilihan ketiga provinsi ini didasarkan pada kelengkapan data yang dipublikasikan secara konsisten oleh BPS (\textit{purposive sampling} pada tingkat provinsi), sehingga seluruh wilayah di dalamnya tercakup secara penuh (\textit{complete enumeration}) tanpa pengambilan sampel lebih lanjut.
     \item \textbf{Jumlah Situasi ($K$):} 5 tahun pengamatan (2020 hingga 2024).
-    \item \textbf{Teknik Pengambilan Sampel:} Menggunakan \textit{purposive sampling}, di mana wilayah dipilih berdasarkan kriteria kelengkapan data indikator pembangunan manusia yang dipublikasikan secara konsisten oleh BPS selama periode penelitian.
+    \item \textbf{Jumlah Indikator ($p$):} 11 indikator kesejahteraan rakyat sebagai input analisis STATIS, ditambah 2 variabel penunjang (IPM dan JP) yang tidak dimasukkan sebagai input.
+    \item \textbf{Sampel Ilustratif (Bab~3):} Untuk keperluan rekonstruksi algoritmik dan validasi numerik pada Bagian~\ref{subsec:ilustrasi_statis}, dipilih 4 wilayah secara \textit{acak sederhana} (\textit{simple random sampling}): Kota Jakarta Pusat, Kabupaten Bandung Barat, Kota Tasikmalaya, dan Kota Cilegon. Sampel ini \textbf{tidak} digunakan untuk membangun model---melainkan semata-mata sebagai wahana ilustrasi langkah-langkah perhitungan manual STATIS dengan $n=4$ wilayah, $K=3$ tahun (2020--2022), dan $p=3$ indikator (PPM, RLS, TPT).
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
@@ -118,7 +120,7 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
 \begin{enumerate}
     \item \textbf{Sumber Data:} Website resmi BPS Pusat dan BPS Provinsi yang diperoleh melalui portal Open Data atau publikasi \textit{Provinsi Dalam Angka}. Data untuk Provinsi Banten, DKI Jakarta, dan Jawa Barat periode 2020 hingga 2024 diperoleh dari publikasi resmi BPS masing-masing provinsi \citep{bps_banten_2020, bps_banten_2021, bps_banten_2022, bps_banten_2023, bps_banten_2024, bps_dki_2020, bps_dki_2021, bps_dki_2022, bps_dki_2023, bps_dki_2024, bps_jabar_2020, bps_jabar_2021, bps_jabar_2022, bps_jabar_2023, bps_jabar_2024}.
     \item \textbf{Metode Pengumpulan Data:} Pengumpulan data dilakukan dengan mengunduh berkas metadata dan tabel statistik dalam format \textit{spreadsheet} (.xlsx dan .csv).
-    \item \textbf{Variabel Penelitian:} Variabel penelitian yang dikumpulkan terdiri dari 11 variabel sebagai berikut:
+    \item \textbf{Indikator Penelitian:} Indikator penelitian yang dikumpulkan terdiri dari 11 indikator sebagai berikut:
     \begin{itemize}
         \item \textbf{IPG:} Indeks Pembangunan Gender (0 hingga 100).
         \item \textbf{PPM:} Persentase Penduduk Miskin (\%).
@@ -134,9 +136,32 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
     \end{itemize}
     Selain itu, dikumpulkan pula data tambahan berikut yang tidak dimasukkan sebagai input analisis STATIS dan Dynamic Biplot:
     \begin{itemize}
-        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi cluster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar cluster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 variabel yang telah dijelaskan sebelumnya.
+        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi cluster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar cluster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 indikator yang telah dijelaskan sebelumnya.
         \item \textbf{JP (Jumlah Penduduk):} Banyaknya jiwa per wilayah (Orang), khusus untuk pembentukan bobot demografis ($m_i$) sesuai dengan Persamaan~\ref{eq:weighted_mean} dan Persamaan~\ref{eq:weighted_std}.
     \end{itemize}
+\end{enumerate}
+
+% ---------------------------------------------------------------------------
+\subsection{\normalsize Pra-pemrosesan Data, Penskalaan Visual, dan Parameter Analisis}
+% ---------------------------------------------------------------------------
+Dalam rangka menjamin reproduksibilitas dan ketajaman interpretasi hasil, tahapan pra-pemrosesan dan parameter analisis dilakukan sebagai berikut:
+\begin{enumerate}
+    \item \textbf{Standardisasi per-tahun (Z-score):} Setiap matriks tahunan distandardisasi secara terpisah dengan transformasi $z=(x-\bar{x})/s$ sehingga komparasi antarvariabel di dalam tahun menjadi setara. Standardisasi per-tahun dipilih agar variasi antar-wilayah pada tiap tahun tidak dipengaruhi oleh skala absolut indikator tertentu.
+    \item \textbf{Bobot demografis ($m_i$):} Untuk beberapa analisis (mis. pembentukan matriks bobot objek), dihitung bobot demografis berdasarkan jumlah penduduk tiap wilayah sesuai Persamaan~\ref{eq:weighted_mean}. Bobot ini dipakai untuk memperhitungkan kontribusi relatif populasi dalam pembentukan kompromi.
+    \item \textbf{Uji Kelayakan Multivariat:} Sebelum menerapkan STATIS, dilakukan Uji KMO dan Uji Bartlett untuk memastikan kecukupan korelasi antarvariabel; ambang batas yang digunakan adalah KMO $\geq 0{,}5$ dan Bartlett $p<0{,}05$.
+    \item \textbf{Penskalaan Loadings untuk Visualisasi:} Untuk tujuan representasi grafis (biplot/trajectory), panjang vektor loading disesuaikan mengikuti Abdi et al. (2012): setiap elemen loading intra $g_{j\ell}^{(\text{asli})}$ pada dimensi $\ell$ dikalikan dengan nilai singular kompromi $\sigma_{\ell}^{(c)} = \sqrt{\lambda_{\ell}^{(c)}}$, menghasilkan nilai \textit{visual}:
+    \begin{equation}
+        g_{j\ell}^{(\text{visual})} = g_{j\ell}^{(\text{asli})} \times \sqrt{\lambda_{\ell}^{(c)}}
+        \label{eq:loading_visual_scale}
+    \end{equation}
+    Pada data sampel, $\lambda_1^{(c)} = 2{,}3008$ sehingga $\sigma_1^{(c)} = \sqrt{2{,}3008} = 1{,}5168$. Sebagai ilustrasi, loading intra PPM untuk PC1 tahun 2020:
+    \[
+        g_{\text{PPM},1,2020}^{(\text{visual})} = 0{,}8306 \times 1{,}5168 = 1{,}2599
+    \]
+    yang sesuai dengan kolom \textit{PC1 (Visual/Dash)} pada tabel output dashboard. Skor intra $\mathbf{F}_k$ tidak mengalami penskalaan tambahan --- kolom \textit{Asli/SVD} dan \textit{Visual/Dash} untuk skor identik secara numerik pada konfigurasi default (tanpa rotasi berbasis \textit{baseline}). Penyesuaian ini hanya berlaku untuk plotting dan tidak mengubah nilai analitis atau kesimpulan inferensial.
+    \item \textbf{Uji Permutasi Stabilitas STATIS:} Untuk mengevaluasi signifikansi kestabilan struktur kompromi digunakan uji permutasi Monte Carlo terhadap matriks inter-struktur sebanyak $N_{\mathrm{perm}}$ percobaan (default $1000$). Nilai $p$ dihitung sebagai proporsi permutasi yang menghasilkan statistik lebih ekstrim daripada observasi.
+    \item \textbf{Pemilihan Jumlah Klaster:} Penentuan jumlah klaster ($k$) untuk K-Means dilakukan melalui kombinasi metode 	extit{elbow} dan skor 	extit{silhouette}; nilai default yang diuji di skrip adalah $k=2\text{--}5$ dan hasil akhir dipilih berdasarkan keseimbangan antara compactness dan interpretabilitas.
+    \item \textbf{Uji Autokorelasi Spasial:} Untuk menguji keberadaan clustering spasial pada skor kompromi, dihitung Global Moran's $I$ dengan prosedur permutasi Monte Carlo pada bobot spasial yang dibentuk dari file shapefile administratif (lihat lampiran teknis untuk detail pembentukan matriks bobot).
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
@@ -145,17 +170,24 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
 %-----------------------------------------------------------------------------%
 Karena data yang digunakan berasal dari lembaga resmi negara (BPS) yang telah memiliki protokol sensus dan survei (seperti Susenas dan Sakernas) yang terstandardisasi, validitas dan reliabilitas instrumen pengumpulan data primer dianggap sudah terpenuhi. Namun, pada tahap penelitian ini dilakukan \textbf{validasi data sekunder} melalui:
 \begin{enumerate}
-    \item \textbf{Penyelarasan Metadata:} Memastikan definisi operasional variabel tetap konsisten di seluruh provinsi dan tahun pengamatan.
-    \item \textbf{Pembersihan Data (\textit{Data Cleaning}):} Melakukan pemeriksaan terhadap anomali atau nilai yang hilang (\textit{missing values}). Wilayah atau variabel yang memiliki data tidak lengkap dikeluarkan untuk menjaga integritas matriks tiga-arah.
-    \item \textbf{Standardisasi $Z$-score Terbobot:} Mengingat indikator yang digunakan memiliki satuan yang beragam (persen, rupiah, tahun), dilakukan transformasi $Z$-score terbobot agar setiap variabel dapat diperbandingkan secara adil dan dalam ruang metrik $\mathbf{D}$ yang konsisten. Prosedur ini mengikuti Persamaan~\ref{eq:standardization} yang mengggunakan rata-rata populasi terbobot $\mu_{jk}$ (Persamaan~\ref{eq:weighted_mean}) dan simpangan baku populasi terbobot $\sigma_{jk}$ (Persamaan~\ref{eq:weighted_std}) yang diterapkan pada setiap tabel situasi $k$, sehingga setiap variabel pada setiap tahun memiliki rata-rata terbobot nol dan varians terbobot satu.
+    \item \textbf{Penyelarasan Metadata:} Memastikan definisi operasional indikator tetap konsisten di seluruh provinsi dan tahun pengamatan.
+    \item \textbf{Penataan Data (\textit{Data Wrangling}):} Data mentah yang diperoleh dari berbagai publikasi BPS direstrukturisasi ke dalam format tiga-arah yang diwajibkan oleh sistem komputasi: setiap tahun disimpan sebagai lembar (\textit{sheet}) tersendiri dalam berkas \texttt{.xlsx}, dengan baris mewakili wilayah dan kolom mewakili indikator. Seluruh 41 wilayah pada ketiga provinsi tersedia lengkap untuk semua indikator dan tahun yang diamati, sehingga tidak diperlukan penghapusan baris atau kolom. Data hasil penataan disimpan dalam berkas \texttt{Data Final.xlsx} (lihat Lampiran~\ref{app:data}) yang selanjutnya diunggah langsung ke dalam sistem \textit{dashboard} untuk diproses.
+    \item \textbf{Standardisasi $Z$-score Terbobot:} Karena indikator yang digunakan memiliki satuan yang beragam (persen, rupiah, tahun), dilakukan transformasi $Z$-score terbobot agar setiap indikator dapat dibandingkan dalam ruang metrik $\mathbf{D}$ yang konsisten. Prosedur ini mengikuti Persamaan~\ref{eq:standardization} yang mengggunakan rata-rata populasi terbobot $\mu_{jk}$ (Persamaan~\ref{eq:weighted_mean}) dan simpangan baku populasi terbobot $\sigma_{jk}$ (Persamaan~\ref{eq:weighted_std}) yang diterapkan pada setiap tabel situasi $k$, sehingga setiap indikator pada setiap tahun memiliki rata-rata terbobot nol dan varians terbobot satu.
 \end{enumerate}
 
 Untuk memastikan data layak dianalisis secara multivariat, dilakukan serangkaian pengujian kecukupan sampling dan korelasi pada setiap periode pengamatan:
 \begin{enumerate}
-    \item \textbf{Indeks Kaiser-Meyer-Olkin (KMO):} Pengujian ini dilakukan untuk menilai kecukupan sampel (\textit{sampling adequacy}) dari 11 variabel yang digunakan untuk mengukur kesejahteraan rakyat. Perhitungan KMO merujuk pada rasio korelasi sederhana dan korelasi parsial sesuai Persamaan \ref{eq:kmo}. Dalam penelitian ini, nilai KMO di atas 0,50 menjadi syarat mutlak agar himpunan variabel tersebut dianggap memiliki informasi bersama yang cukup untuk diringkas melalui analisis dimensi tiga-arah.
+    \item \textbf{Indeks Kaiser-Meyer-Olkin (KMO):} Pengujian ini dilakukan untuk menilai kecukupan sampel (\textit{sampling adequacy}) dari 11 indikator yang digunakan untuk mengukur kesejahteraan rakyat. Perhitungan KMO merujuk pada rasio korelasi sederhana dan korelasi parsial sesuai Persamaan \ref{eq:kmo}. Nilai KMO $\geq 0,50$ menjadi syarat mutlak agar indikator-indikator tersebut dianggap memiliki informasi bersama yang cukup untuk diringkas melalui analisis dimensi tiga-arah.
     
-    \item \textbf{Uji Bartlett's Test of Sphericity:} Uji ini digunakan untuk memverifikasi adanya struktur korelasi yang signifikan antar variabel (menguji hipotesis bahwa matriks korelasi bukan matriks identitas). Statistik uji $\chi^2$ dihitung berdasarkan determinan matriks korelasi sebagaimana didefinisikan pada Persamaan \ref{eq:bartlett}. Jika $p\text{-value} < 0,05$, maka indikator-indikator tersebut dikonfirmasi memiliki hubungan interdependensi yang kuat, sehingga valid untuk diproses lebih lanjut menggunakan metode STATIS guna mengekstraksi struktur kompromi lintas waktu.
+    \item \textbf{Uji Bartlett's Test of Sphericity:} Uji ini digunakan untuk memverifikasi adanya struktur korelasi yang signifikan antar indikator (menguji hipotesis bahwa matriks korelasi bukan matriks identitas). Statistik uji $\chi^2$ dihitung berdasarkan determinan matriks korelasi sebagaimana didefinisikan pada Persamaan \ref{eq:bartlett}. Jika $p\text{-value} < 0,05$, maka indikator-indikator tersebut dikonfirmasi memiliki hubungan interdependensi yang kuat, sehingga valid untuk diproses lebih lanjut menggunakan metode STATIS guna mengekstraksi struktur kompromi lintas waktu.
 \end{enumerate}
+
+Penerapan kedua uji di atas pada dataset sampel ($n=4$ wilayah, $p=3$ indikator, $K=3$ tahun) menghasilkan nilai sebagaimana dirangkum pada Tabel~\ref{tab:sample1kmo_bartlett}.
+
+\input{output_sample/output_table_kmo_bartlett.tex}
+
+\vspace{2mm}
+\noindent\textit{Catatan: Nilai KMO yang rendah ($\approx 0{,}25$--$0{,}29$) dan $p$-value Bartlett yang tidak signifikan pada dataset sampel merupakan konsekuensi langsung dari jumlah observasi ($n=4$) yang sangat terbatas relatif terhadap jumlah indikator ($p=3$). Rasio $n/p \approx 1{,}3$ ini jauh di bawah anjuran minimal $n/p \geq 5$ dalam literatur analisis faktor. Pada dataset aktual yang terdiri dari 41 kabupaten/kota dengan 11 indikator, kedua uji menghasilkan nilai yang memenuhi ambang batas yang disyaratkan, sebagaimana disajikan secara lengkap dalam Bab~4.}
 
 %-----------------------------------------------------------------------------%
 % --- 3.7 ---
@@ -163,12 +195,38 @@ Untuk memastikan data layak dianalisis secara multivariat, dilakukan serangkaian
 %-----------------------------------------------------------------------------%
 Teknik analisis data mengacu pada algoritma STATIS (\textit{Structuration des Tableaux à Trois Indices de la Statistique}) untuk mengelola kompleksitas data tiga-arah serta analisis autokorelasi spasial. Agar tidak terjadi kerancuan persepsi, penelitian ini membedakan dua konsep "tiga-arah" yang saling berkaitan:
 \begin{itemize}
-    \item \textbf{Struktur Data Tiga-Arah (\textit{Input Cube}):} Merupakan struktur data mentah yang dianalisis, yang terdiri dari 41 Kabupaten/Kota sebagai objek ($n$), 11 Indikator Kesejahteraan Rakyat sebagai variabel ($p$), dan 5 tahun pengamatan sebagai situasi waktu ($K$). Seluruh pengujian awal (KMO dan Bartlett) dilakukan pada dimensi variabel ($p$) ini.
-    \item \textbf{Visualisasi Dinamis (\textit{Output Trajectory}):} Merupakan hasil reduksi dimensi oleh STATIS, di mana 11 variabel tersebut diringkas menjadi 2 Komponen Utama (PC1 dan PC2), sementara dimensi situasi ($K$) direpresentasikan melalui pergerakan atau lintasan wilayah di dalam ruang PC1 dan PC2 tersebut. 
+    \item \textbf{Struktur Data Tiga-Arah (\textit{Input Cube}):} Merupakan struktur data mentah yang dianalisis, yang terdiri dari 41 Kabupaten/Kota sebagai objek ($n$), 11 Indikator Kesejahteraan Rakyat sebagai indikator ($p$), dan 5 tahun pengamatan sebagai situasi waktu ($K$). Seluruh pengujian awal (KMO dan Bartlett) dilakukan pada dimensi indikator ($p$) ini.
+    \item \textbf{Visualisasi Dinamis (\textit{Output Trajectory}):} Merupakan hasil reduksi dimensi oleh STATIS, di mana 11 indikator tersebut diringkas menjadi 2 Komponen Utama (PC1 dan PC2), sementara dimensi situasi ($K$) direpresentasikan melalui pergeseran atau lintasan wilayah di dalam ruang PC1 dan PC2 tersebut. 
 \end{itemize}
 \subsection{\normalsize Prosedur Komputasi dan Ilustrasi Numerik STATIS} \label{subsec:ilustrasi_statis}
 
-Bagian ini menyajikan rekonstruksi algoritmik secara sistematis dengan menyajikan ilustrasi perhitungan manual (\textit{step-by-step}) untuk memvalidasi fungsionalitas sistem komputasi yang dibangun. Ilustrasi dilakukan menggunakan dataset sampel yang terdiri dari 4 wilayah ($n=4$) selama 3 periode waktu ($K=3$) dengan 3 variabel utama ($p=3$): Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Tingkat Pengangguran Terbuka (TPT). Wilayah sampel meliputi: (1) Kota Jakarta Pusat, (2) Kabupaten Bandung Barat, (3) Kota Tasikmalaya, dan (4) Kota Cilegon.
+Bagian ini menyajikan rekonstruksi algoritmik secara sistematis dengan menyajikan ilustrasi perhitungan manual (\textit{step-by-step}) untuk memvalidasi fungsionalitas sistem komputasi yang dibangun. Ilustrasi dilakukan menggunakan dataset sampel yang terdiri dari 4 wilayah ($n=4$) selama 3 periode waktu ($K=3$) dengan 3 indikator utama ($p=3$): Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Tingkat Pengangguran Terbuka (TPT). Wilayah sampel meliputi: (1) Kota Jakarta Pusat, (2) Kabupaten Bandung Barat, (3) Kota Tasikmalaya, dan (4) Kota Cilegon. Data lengkap sampel yang digunakan dalam ilustrasi ini disajikan pada Tabel~\ref{tab:sample_raw_data}.
+
+\begin{table}[H]
+\centering
+\caption{Data Mentah Sampel Ilustratif: 4 Wilayah $\times$ 3 Tahun $\times$ 5 Variabel}
+\label{tab:sample_raw_data}
+\begin{adjustbox}{max width=\textwidth}
+\scriptsize
+\begin{tabular}{|c|p{1.6cm}|p{2.5cm}|r|r|r|r|r|r|r|r|r|r|r|r|r|r|r|}
+\hline
+\multirow{2}{*}{\textbf{No}} & \multirow{2}{*}{\textbf{Provinsi}} & \multirow{2}{*}{\textbf{Kabupaten/Kota}} & \multicolumn{5}{c|}{\textbf{2020}} & \multicolumn{5}{c|}{\textbf{2021}} & \multicolumn{5}{c|}{\textbf{2022}} \\
+\cline{4-18}
+ & & & \textbf{PPM} & \textbf{RLS} & \textbf{TPT} & \textbf{IPM} & \textbf{JP} & \textbf{PPM} & \textbf{RLS} & \textbf{TPT} & \textbf{IPM} & \textbf{JP} & \textbf{PPM} & \textbf{RLS} & \textbf{TPT} & \textbf{IPM} & \textbf{JP} \\
+\hline
+1 & DKI JAKARTA & Kota Jakarta Pusat & 4,51 & 11,38 & 10,97 & 81,39 & 1.056.896 & 4,94 & 11,39 & 7,75 & 81,79 & 1.057.465 & 4,90 & 11,53 & 5,88 & 82,13 & 1.053.482 \\ \hline
+2 & JAWA BARAT & Bandung Barat & 10,49 & 8,19 & 12,25 & 68,08 & 1.782.190 & 11,30 & 8,20 & 11,65 & 68,30 & 1.808.420 & 10,82 & 8,22 & 9,63 & 69,04 & 1.834.230 \\ \hline
+3 & JAWA BARAT & Kota Tasikmalaya & 12,97 & 9,33 & 7,99 & 72,97 & 713.670 & 13,13 & 9,52 & 7,66 & 73,20 & 723.100 & 12,72 & 9,53 & 6,62 & 73,83 & 732.480 \\ \hline
+4 & BANTEN & Kota Cilegon & 3,69 & 9,87 & 12,69 & 73,05 & 433,76 & 4,24 & 10,08 & 10,13 & 73,30 & 439,48 & 3,64 & 10,34 & 8,10 & 73,95 & 445,06 \\ \hline
+\end{tabular}
+\end{adjustbox}
+\vspace{1mm}
+
+\noindent\textit{\scriptsize Catatan: PPM = Persentase Penduduk Miskin (\%); RLS = Rata-rata Lama Sekolah (Tahun); TPT = Tingkat Pengangguran Terbuka (\%); IPM = Indeks Pembangunan Manusia; JP = Jumlah Penduduk. Analisis STATIS menggunakan tiga indikator utama: PPM, RLS, TPT.}
+\end{table}
+
+\vspace{1mm}
+\noindent\textit{\textbf{Catatan penyajian:} Seluruh objek matematis pada bagian ini---termasuk $\mathbf{W}_k$, $\mathbf{S}_k$, $\mathbf{H}$, $\mathbf{F}_c$, $\mathbf{G}_c$, $\mathbf{F}_k$, dan $\mathbf{G}_k$---merupakan matriks. Penyajian dalam format tabel di bawah ini semata-mata untuk memudahkan pembacaan nilai numerik; notasi dan sifat matriks sepenuhnya berlaku dalam konteks komputasi dan derivasi analitis.}
 
 \subsubsection{Tahap 0: Pra-pemrosesan dan Bobot Demografis}
 Analisis diawali dengan ringkasan statistik untuk periode 2020 hingga 2022 (Tabel~\ref{tab:sampledesc_uw_2020}--\ref{tab:sampledesc_uw_2022}). Statistika deskriptif tanpa bobot disajikan pada tabel berikut.
@@ -181,23 +239,26 @@ Analisis diawali dengan ringkasan statistik untuk periode 2020 hingga 2022 (Tabe
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif (Tanpa Bobot) Tahun 2021} \label{tab:sampledesc_uw_2021}
+\caption[]{Statistika Deskriptif (Tanpa Bobot) Tahun 2021} \label{tab:sampledesc_uw_2021}
 \input{output_sample/output_table_deskriptif_2021.tex}
 \end{table}
 
 \begin{table}[H]
 \centering
-\caption{Statistika Deskriptif (Tanpa Bobot) Tahun 2022} \label{tab:sampledesc_uw_2022}
+\caption[]{Statistika Deskriptif (Tanpa Bobot) Tahun 2022} \label{tab:sampledesc_uw_2022}
 \input{output_sample/output_table_deskriptif_2022.tex}
 \end{table}
 
-Selain statistika deskriptif biasa, digunakan pula statistika deskriptif \textbf{terbobot} yang memperhitungkan jumlah penduduk ($m_i$) sebagai bobot demografis (Persamaan~\ref{eq:weighted_mean} dan \ref{eq:weighted_std}). Hal ini penting karena STATIS bekerja pada ruang metrik $\mathbf{D}$.
+\vspace{2mm}
+\noindent\textit{Catatan: Koefisien Variasi (CV) menunjukkan rasio simpangan baku terhadap rata-rata, dinyatakan dalam persen; CV yang lebih tinggi mengindikasikan variasi relatif yang lebih besar antar-wilayah untuk indikator tersebut.}
+
+Selain statistika deskriptif biasa, digunakan pula statistika deskriptif \textbf{terbobot} yang memperhitungkan jumlah penduduk (JP) ($m_i$) di wilayah ke-$i$ sebagai bobot demografis (Persamaan~\ref{eq:weighted_mean} dan \ref{eq:weighted_std}). Hal ini penting karena STATIS bekerja pada ruang metrik bobot $\mathbf{D}$.
 
 \input{output_sample/output_table_descriptive_2020.tex}
 
-\input{output_sample/output_table_descriptive_2021.tex}
+{\captionsetup[table]{list=no}\input{output_sample/output_table_descriptive_2021.tex}}
 
-\input{output_sample/output_table_descriptive_2022.tex}
+{\captionsetup[table]{list=no}\input{output_sample/output_table_descriptive_2022.tex}}
 
 Data awal atau matriks data mentah $\mathbf{X}_k$ untuk setiap situasi tahun $k = 1, 2, 3$ adalah:
 \[ \mathbf{X}_{2020} = \begin{pmatrix}
@@ -221,12 +282,12 @@ Data awal atau matriks data mentah $\mathbf{X}_k$ untuk setiap situasi tahun $k 
 3,64 & 10,34 & 8,10 \\
 \end{pmatrix} \]
 
-Penghitungan bobot demografis $m_i$ untuk setiap wilayah berdasarkan data jumlah penduduk rata-rata lintas situasi tahun (2020 hingga 2022) dari dataset sampel dihitung satu per satu:
+Penghitungan bobot demografis $m_i$ untuk setiap wilayah berdasarkan data rata-rata jumlah penduduk (JP) dari dataset sampel (Tabel~\ref{tab:sampledesc_uw_2020}--\ref{tab:sampledesc_uw_2022}) dihitung satu per satu:
 \[ m_1 = \frac{\overline{JP}_1}{\sum_{i=1}^4 \overline{JP}_i} = \frac{1.055.947,67}{3.587.750,43} = 0{,}294320 \]
 \[ m_2 = \frac{\overline{JP}_2}{\sum_{i=1}^4 \overline{JP}_i} = \frac{1.808.280,00}{3.587.750,43} = 0{,}504015 \]
 \[ m_3 = \frac{\overline{JP}_3}{\sum_{i=1}^4 \overline{JP}_i} = \frac{723.083,33}{3.587.750,43} = 0{,}201542 \]
 \[ m_4 = \frac{\overline{JP}_4}{\sum_{i=1}^4 \overline{JP}_i} = \frac{439,43}{3.587.750,43} = 0{,}000122 \]
-Verifikasi total bobot: $m_1 + m_2 + m_3 + m_4 = 0{,}294320 + 0{,}504015 + 0{,}201542 + 0{,}000122 = 0{,}999999 \approx 1{,}000000$.
+Verifikasi total bobot: $m_1 + m_2 + m_3 + m_4 = 0{,}294320 + 0{,}504015 + 0{,}201542 + 0{,}000122 = 0{,}999999 \approx 1$.
 
 Matriks metrik diagonal $\mathbf{D}$ yang dihasilkan adalah:
 \[ \mathbf{D} = \text{diag}(0{,}294320,\; 0{,}504015,\; 0{,}201542,\; 0{,}000122) \]
@@ -236,7 +297,7 @@ Proses standardisasi menggunakan data mentah $\mathbf{X}_{2020}[:,1] = (4{,}51;\
 \begin{enumerate}
     \item \textbf{Rata-rata terbobot $\mu_{jk}$:}
 
-    Nilai rata-rata terbobot untuk indikator pertama pada tahun 2020 dihitung menggunakan Persamaan~\ref{eq:weighted_mean} dengan menyertakan presisi penuh sebagai berikut:
+    Nilai rata-rata terbobot untuk indikator pertama (PPM) dihitung menggunakan Persamaan~\ref{eq:weighted_mean} sebagai berikut:
     \begin{align*}
         \mu_{1,2020} &= \sum_{i=1}^{4} m_i \cdot x_{i,1,2020} \\
         &= 0{,}294320(4{,}51) + 0{,}504015(10{,}49) + 0{,}201542(12{,}97) + 0{,}000122(3{,}69) \\
@@ -245,7 +306,7 @@ Proses standardisasi menggunakan data mentah $\mathbf{X}_{2020}[:,1] = (4{,}51;\
 
     \item \textbf{Simpangan baku terbobot $\sigma_{jk}$:}
 
-    Nilai simpangan baku terbobot untuk indikator pertama pada tahun 2020 dihitung menggunakan Persamaan~\ref{eq:weighted_std} sebagai berikut:
+    Nilai simpangan baku terbobot untuk indikator pertama (PPM) dihitung menggunakan Persamaan~\ref{eq:weighted_std} sebagai berikut:
     {\small
     \begin{align*}
         \sigma_{1,2020} &= \sqrt{\sum_{i=1}^{4} m_i (x_{i,1,2020} - \mu_{1,2020})^2} \\
@@ -262,7 +323,7 @@ Proses standardisasi menggunakan data mentah $\mathbf{X}_{2020}[:,1] = (4{,}51;\
 
     \item \textbf{$Z$-score terbobot $z_{ijk}$:}
 
-    Nilai $Z$-score terbobot masing-masing wilayah untuk indikator pertama pada tahun 2020 dihitung menggunakan Persamaan~\ref{eq:standardization} sebagai berikut:
+    Nilai $Z$-score terbobot masing-masing wilayah untuk indikator pertama (PPM) dihitung menggunakan Persamaan~\ref{eq:standardization} sebagai berikut:
     \begin{align*}
         z_{1,1,2020} &= \frac{4{,}51 - 9{,}228957}{3{,}190576} = \frac{-4{,}718957}{3{,}190576} = -1{,}479024 \approx -1{,}48 \\[4pt]
         z_{2,1,2020} &= \frac{10{,}49 - 9{,}228957}{3{,}190576} = \frac{1{,}261043}{3{,}190576} = 0{,}395237 \approx 0{,}40 \\[4pt]
@@ -270,7 +331,7 @@ Proses standardisasi menggunakan data mentah $\mathbf{X}_{2020}[:,1] = (4{,}51;\
         z_{4,1,2020} &= \frac{3{,}69 - 9{,}228957}{3{,}190576} = \frac{-5{,}538957}{3{,}190576} = -1{,}736036 \approx -1{,}74
     \end{align*}
 \end{enumerate}
-Prosedur di atas diulang untuk setiap variabel dan tahun, menghasilkan matriks terstandardisasi:
+Prosedur di atas diulang untuk setiap indikator dan tahun, menghasilkan matriks terstandar:
 \[ \mathbf{Z}_{2020} = \begin{pmatrix}
 -1,48 & 1,47 & -0,03 \\
 0,40 & -0,85 & 0,76 \\
@@ -293,7 +354,7 @@ Prosedur di atas diulang untuk setiap variabel dan tahun, menghasilkan matriks t
 \end{pmatrix} \]
 
 \subsubsection{Tahap 2: Matriks Intra-struktur (\texorpdfstring{$\mathbf{W}_k$}{Wk})}
-Dari matriks terstandardisasi $\mathbf{Z}_k$, dibentuk matriks intra-struktur $\mathbf{W}_k = \mathbf{Z}_k \mathbf{Z}_k^T$. Sebagai contoh untuk tahun 2020:
+Dari matriks terstandar $\mathbf{Z}_k$, dibentuk matriks intra-struktur $\mathbf{W}_k = \mathbf{Z}_k \mathbf{Z}_k^T$. Sebagai contoh pada tahun 2020:
 {\small
 \begin{align*}
     \mathbf{W}_{2020}[1,1] &= \sum_{j=1}^{3} z_{1,j,2020}^2 \\
@@ -307,18 +368,26 @@ Dari matriks terstandardisasi $\mathbf{Z}_k$, dibentuk matriks intra-struktur $\
 }
 Matriks korelasi terbobot antar-indikator $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$ disajikan pada Tabel~\ref{tab:sample1matriks_intra_loading_2020}, Tabel~\ref{tab:sample1matriks_intra_loading_2021}, dan Tabel~\ref{tab:sample1matriks_intra_loading_2022}.
 \input{output_sample/scenario1/output_table_matriks_intra_loading_2020.tex}
-\input{output_sample/scenario1/output_table_matriks_intra_loading_2021.tex}
-\input{output_sample/scenario1/output_table_matriks_intra_loading_2022.tex}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_matriks_intra_loading_2021.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_matriks_intra_loading_2022.tex}}
 
-\subsubsection{Tahap 3: Analisis Inter-struktur (Koefisien RV)}
+Sebagai pelengkap, Gambar~\ref{fig:sample_corr_heatmap_2020} menyajikan heatmap korelasi Pearson antar-indikator untuk data sampel tahun 2020. Nilai pada diagonal menunjukkan nama variabel (korelasi sempurna = 1,00), sedangkan sel di luar diagonal memuat nilai koefisien Pearson $r$ dan bintang signifikansi (***~$p < 0{,}001$; **~$p < 0{,}01$; *~$p < 0{,}05$; ns~tidak signifikan). Warna biru tua menandakan korelasi positif kuat dan merah tua menandakan korelasi negatif kuat.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{output_sample/corr_heatmap_2020.png}
+    \caption{Heatmap Korelasi Pearson Indikator Data Sampel Tahun 2020}
+    \label{fig:sample_corr_heatmap_2020}
+\end{figure}
+
+\subsubsection{Tahap 3: Analisis Inter-struktur (Koefisien RV)} \label{subsec:rv_coef}
 Kemiripan struktural diukur menggunakan koefisien RV:
 \begin{align*}
     RV(\mathbf{W}_{2020}, \mathbf{W}_{2021}) &= \frac{\mathrm{tr}(\mathbf{W}_{2020} \mathbf{W}_{2021})}{\sqrt{\mathrm{tr}(\mathbf{W}_{2020}^2) \, \mathrm{tr}(\mathbf{W}_{2021}^2)}} \\
     &= \frac{H_{1,2}}{\sqrt{H_{1,1} \cdot H_{2,2}}} = \frac{37{,}088194}{\sqrt{43{,}468012 \times 39{,}367215}} \\
     &= \frac{37{,}088194}{41{,}367214} = 0{,}896560 \approx 0{,}896560
 \end{align*}
-Matriks RV lengkap ditampilkan pada Tabel~\ref{tab:samplerv_w}.
-\input{output_sample/output_table_rv_w.tex}
+Koefisien RV lengkap divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heat_sample}, di mana setiap sel menunjukkan nilai RV antara dua matriks intra-struktur $\mathbf{W}_k$ dan $\mathbf{W}_{k'}$. Nilai RV yang tinggi (mendekati 1) menunjukkan kemiripan struktural yang kuat antar-situasi, sedangkan nilai yang lebih rendah menunjukkan perbedaan struktural yang lebih besar. Pada dataset sampel ini, nilai RV antara tahun 2021 dan 2022 adalah sekitar 0,9964, menunjukkan bahwa struktur hubungan antar-wilayah relatif stabil antara kedua tahun tersebut. Nilai RV antara tahun 2020 dan 2021 serta antara tahun 2020 dan 2022 juga dapat dianalisis untuk menilai dinamika perubahan struktur antar-wilayah selama periode tiga tahun tersebut.
 
 \begin{figure}[H]
     \centering
@@ -384,56 +453,63 @@ Hasil dekomposisi nilai eigen untuk masing-masing skenario disajikan pada Tabel~
 Koordinat kompromi dari kedua skenario disajikan berdampingan agar perbedaan pendekatan dapat dipahami secara komprehensif.
 
 \paragraph{Skenario 1 -- Skor Wilayah ($\mathbf{F}_c^{(1)}$) dan Loading Indikator ($\mathbf{G}_c^{(1)}$):}
-Skor wilayah mencerminkan posisi relatif tiap wilayah pada ruang kompromi, sedangkan loading indikator mencerminkan arah dan kekuatan kontribusi tiap variabel.
+Skor wilayah mencerminkan posisi relatif tiap wilayah pada ruang kompromi, sedangkan loading indikator mencerminkan arah dan kekuatan kontribusi tiap indikator.
 \input{output_sample/scenario1/output_table_scores.tex}
 \input{output_sample/scenario1/output_table_loadings.tex}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.72\textwidth]{output_sample/scenario1/compromise_biplot_matplotlib.png}
+    \includegraphics[width=0.72\textwidth]{output_sample/scenario1/compromise_biplot.png}
     \caption{Compromise Biplot Skenario 1 (Host = Wilayah): Skor Wilayah dan Loading Indikator}
     \label{fig:biplot_sample_s1}
 \end{figure}
 
 \paragraph{Skenario 2 -- Skor Wilayah ($\mathbf{F}_c^{(2)}$) dan Loading Indikator ($\mathbf{G}_c^{(2)}$):}
-Pada Skenario 2, kompromi terbentuk pada ruang indikator, sehingga biplot lebih menekankan hubungan antar-variabel. Proyeksi wilayah ke ruang ini menghasilkan skor yang mencerminkan kemiripan profil indikator.
+Pada Skenario 2, kompromi terbentuk pada ruang indikator, sehingga biplot lebih menekankan hubungan antar-indikator. Proyeksi wilayah ke ruang ini menghasilkan skor yang mencerminkan kemiripan profil indikator.
 \input{output_sample/scenario2/output_table_scores.tex}
 \input{output_sample/scenario2/output_table_loadings.tex}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.72\textwidth]{output_sample/scenario2/compromise_biplot_matplotlib.png}
+    \includegraphics[width=0.72\textwidth]{output_sample/scenario2/compromise_biplot.png}
     \caption{Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}
     \label{fig:biplot_sample_s2}
 \end{figure}
 
-Dari perbandingan kedua biplot, dapat dilihat bahwa orientasi loading berbeda karena Skenario 1 memaksimalkan varians antar-wilayah sementara Skenario 2 memaksimalkan konsistensi struktur antar-indikator. Dalam praktiknya, Skenario 1 lebih cocok untuk analisis mobilitas wilayah, sedangkan Skenario 2 lebih cocok untuk analisis hubungan antar-variabel lintas waktu.
+Dari perbandingan kedua biplot, dapat dilihat bahwa orientasi loading berbeda karena Skenario 1 memaksimalkan varians antar-wilayah sementara Skenario 2 memaksimalkan konsistensi struktur antar-indikator. Dalam praktiknya, Skenario 1 lebih cocok untuk analisis hubungan antar-wilayah lintas waktu, sedangkan Skenario 2 lebih cocok untuk analisis hubungan antar-indikator lintas waktu.
 
-Lintasan pergerakan wilayah (Gambar~\ref{fig:traj_sample_s1} dan \ref{fig:traj_sample_s2}) mengilustrasikan dinamika temporal dari masing-masing skenario.
+Lintasan pergeseran wilayah (Gambar~\ref{fig:traj_sample_s1} dan \ref{fig:traj_sample_s2}) mengilustrasikan dinamika temporal dari masing-masing skenario.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/statis_trajectories.png}
+        \includegraphics[width=\textwidth]{output_sample/scenario1/trajectory_scores.png}
         \caption{Trajektori Skenario 1 (Host = Wilayah)}
         \label{fig:traj_sample_s1}
     \end{minipage} \hfill
     \begin{minipage}{0.48\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario2/statis_trajectories.png}
+        \includegraphics[width=\textwidth]{output_sample/scenario2/trajectory_scores.png}
         \caption{Trajektori Skenario 2 (Host = Indikator)}
         \label{fig:traj_sample_s2}
     \end{minipage}
 \end{figure}
 
 \subsubsection{Tahap 7: Uji Signifikansi dan Clustering}
-Signifikansi divalidasi dengan uji permutasi Monte Carlo. Langkah terakhir adalah pemetaan wilayah ke dalam cluster menggunakan K-Means.
-\input{output_sample/scenario1/output_table_cluster_members.tex}
+Sebelum melanjutkan ke tahap clustering, signifikansi struktur kompromi divalidasi menggunakan uji permutasi Monte Carlo. Uji ini mengevaluasi apakah nilai eigen pertama $\lambda_{\text{obs}}$ dari matriks inter-struktur $\mathbf{H}$ secara statistik lebih besar daripada yang diharapkan secara acak. Pada setiap permutasi $b = 1, \ldots, N_{\text{perm}}$, baris-baris matriks data $\mathbf{Z}_k$ diacak secara terpisah untuk menghancurkan korespondensi antar-tahun, kemudian $\lambda^{(b)}$ dihitung ulang. Nilai $p$ diperoleh dari:
+\[
+p = \frac{1}{N_{\text{perm}}} \sum_{b=1}^{N_{\text{perm}}} \mathbf{1}\!\left[\lambda^{(b)} \geq \lambda_{\text{obs}}\right]
+\]
+
+Pada dataset sampel dengan $N_{\text{perm}} = 1000$ permutasi, diperoleh $\lambda_{\text{obs}} = 2{,}3008$ dan $p = 0{,}5385$ (tidak signifikan). Hasil ini tidak mengejutkan mengingat dataset sampel hanya terdiri dari 4 observasi; dengan derajat kebebasan yang sangat terbatas, distribusi null hampir sepenuhnya menutupi nilai observasi. Pada dataset aktual (41 wilayah), uji permutasi menghasilkan $p < 0{,}05$ yang mengkonfirmasi bahwa struktur kompromi STATIS signifikan secara statistik.
+
+Setelah validasi signifikansi, langkah terakhir adalah pengelompokan wilayah ke dalam $K=3$ cluster menggunakan algoritma K-Means pada skor kompromi $\mathbf{F}_c$. Label cluster diurutkan berdasarkan rata-rata skor PC1 (klaster dengan skor terendah = Klaster~1, tertinggi = Klaster~3). Keanggotaan wilayah pada dataset sampel disajikan pada Tabel~\ref{tab:sample1compromclust}.
+\input{output_sample/scenario1/output_table_compromise_cluster_sum_name.tex}
 
 Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal (Tabel~\ref{tab:sample1transsum2020x2021} dan Tabel~\ref{tab:sample1transsum2021x2022}).
-\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
-\input{output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
+\input{output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex}
 
 \subsubsection{Tahap 7a: Komputasi Vektor Struktur dan Analisis Transversal-Longitudinal}
 Setelah memperoleh matriks interstruktur $\mathbf{H}_W$ (Skenario 1) dan memastikan signifikansinya melalui uji permutasi, parameter interstruktur dipadatkan ke dalam vektor struktur $\tilde{\boldsymbol{\beta}} = \lambda_1 \boldsymbol{\alpha}_1$ (Persamaan~\ref{eq:beta_vec}). 
@@ -468,10 +544,10 @@ Perbedaan pola temporal antara $\tilde{\boldsymbol{\beta}}$ gabungan yang cender
 Untuk mengevaluasi konsistensi dan dinamika hasil pengelompokan secara komprehensif, penelitian ini melaksanakan sembilan jenis analisis perbandingan yang terstruktur dalam empat kategori, sesuai dengan kerangka spasio-temporal STATIS:
 
 \begin{enumerate}
-    \item \textbf{Perbandingan 1 -- Transisi Biplot $k \to k+1$:} Matriks transisi cluster hasil K-Means Biplot PCA (Unweighted) antar-tahun berturutan, untuk memonitor mobilitas wilayah pada ruang PCA individu tanpa koreksi temporal.
-    \item \textbf{Perbandingan 2 -- Transisi STATIS $k \to k+1$:} Matriks transisi cluster hasil K-Means pada koordinat STATIS tahunan ($\mathbf{F}_k$) antar-tahun berturutan, untuk memantau mobilitas berbasis struktur kompromi terbobot.
+    \item \textbf{Perbandingan 1 -- Transisi Biplot $k \to k+1$:} Matriks transisi cluster hasil K-Means Biplot PCA (Unweighted) antar-tahun berturutan, untuk memonitor pergeseran wilayah pada ruang PCA individu tanpa koreksi temporal.
+    \item \textbf{Perbandingan 2 -- Transisi STATIS $k \to k+1$:} Matriks transisi cluster hasil K-Means pada koordinat STATIS tahunan ($\mathbf{F}_k$) antar-tahun berturutan, untuk memantau pergeseran berbasis struktur kompromi terbobot.
     \item \textbf{Perbandingan 3 -- Biplot $k$ vs STATIS $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan label cluster STATIS Tahunan ($\mathbf{F}_k$) pada tahun yang sama, untuk mengukur perbedaan struktural akibat bobot temporal.
-    \item \textbf{Perbandingan 4 -- Transisi IPM $k \to k+1$:} Matriks transisi klasifikasi kategori IPM (UNDP) antar-tahun berturutan, sebagai \textit{baseline} mobilitas normatif berbasis standar internasional.
+    \item \textbf{Perbandingan 4 -- Transisi IPM $k \to k+1$:} Matriks transisi klasifikasi kategori IPM (UNDP) antar-tahun berurutan, sebagai \textit{baseline} pergeseran normatif berbasis standar internasional.
     \item \textbf{Perbandingan 5 -- Biplot $k$ vs IPM $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode Biplot.
     \item \textbf{Perbandingan 6 -- STATIS $k$ vs IPM $k$:} Tabulasi silang antara label cluster STATIS Tahunan ($\mathbf{F}_k$) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode STATIS.
     \item \textbf{Perbandingan 7 -- Kompromi STATIS vs Biplot $k$:} Tabulasi silang antara label cluster Kompromi STATIS (hasil clustering trajektori keseluruhan) dengan label cluster Biplot PCA pada setiap tahun, untuk mengukur konsistensi posisi relatif lintas metode.
@@ -487,16 +563,16 @@ Tabel perbandingan untuk setiap jenis disajikan masing-masing satu contoh (tahun
 \input{output_sample/output_table_biplot_transition_name_2020x2021.tex}
 
 \paragraph{Contoh: Perbandingan 2 -- Transisi STATIS (Skenario 1, Tahun 2020 vs 2021):}
-\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
-\input{output_sample/scenario1/output_table_transition_matrix_name_2020x2021.tex}
+\input{output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_statis_transition_name_2020x2021.tex}
 
 \paragraph{Contoh: Perbandingan 3 -- Biplot vs STATIS (Skenario 1, Tahun 2020):}
 \input{output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex}
 \input{output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex}
 
 \paragraph{Contoh: Perbandingan 4 -- Transisi Kategori IPM (Tahun 2020 vs 2021):}
-\input{output_sample/scenario1/output_table_ipm_matrix_sum_2020x2021.tex}
-\input{output_sample/scenario1/output_table_ipm_matrix_name_2020x2021.tex}
+\input{output_sample/scenario1/output_table_ipm_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_ipm_name_2020x2021.tex}
 
 \paragraph{Contoh: Perbandingan 5 -- Biplot vs Kategori IPM (Tahun 2020):}
 \input{output_sample/scenario1/output_table_cross_matrix_sum_2020.tex}
@@ -535,28 +611,28 @@ Matriks kemiripan struktural antar-tahun dihitung menggunakan Koefisien RV dan h
 Perubahan keanggotaan wilayah antar-tahun dipantau melalui matriks transisi temporal untuk mengidentifikasi adanya pergeseran status kesejahteraan.
 
 {\renewcommand{\label}[1]{}
-\input{output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex}
-\input{output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex}
+\input{output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex}
+\input{output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex}
 }
 
 \subsubsection{Galeri Visualisasi Spasio-Temporal Intra-Tahun}
-Berikut disajikan rangkaian visualisasi snapshot tahunan yang mencakup peta sebaran cluster dan distribusi variabel melalui boxplot untuk memantau variabilitas data sampel.
+Berikut disajikan rangkaian visualisasi snapshot tahunan yang mencakup peta sebaran cluster dan distribusi indikator melalui boxplot untuk memantau variabilitas data sampel.
 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2020.png}
+        \includegraphics[width=\textwidth]{output_sample/cluster_map_statis_2020.png}
         \caption*{Peta Cluster 2020}
     \end{minipage} \hfill
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2021.png}
+        \includegraphics[width=\textwidth]{output_sample/cluster_map_statis_2021.png}
         \caption*{Peta Cluster 2021}
     \end{minipage} \hfill
     \begin{minipage}{0.32\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{output_sample/scenario1/cluster_map_statis_2022.png}
+        \includegraphics[width=\textwidth]{output_sample/cluster_map_statis_2022.png}
         \caption*{Peta Cluster 2022}
     \end{minipage}
     \caption{Dinamika Spasial Cluster Data Sampel (2020--2022)}
@@ -592,3 +668,13 @@ Berikut disajikan rangkaian visualisasi snapshot tahunan yang mencakup peta seba
 
 \subsection{\normalsize Analisis Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
 Sebagai tahap akhir metodologi, dilakukan pengujian untuk mendeteksi keberadaan dependensi spasial pada skor kompromi wilayah. Statistik Global Moran's $I$ dievaluasi menggunakan prosedur permutasi Monte Carlo untuk menjamin validitas inferensi pada jumlah amatan yang terbatas. Hasil pengujian ini menentukan apakah pola kesejahteraan yang terbentuk bersifat mengelompok (\textit{clustered}), menyebar (\textit{dispersed}), atau acak (\textit{random}) di wilayah penelitian.
+
+Global Moran's $I$ dihitung dari skor komponen pertama $f_{i,1}$ (koordinat PC1 kompromi) masing-masing wilayah $i$ dengan menggunakan matriks bobot spasial $w_{ij}$ yang mengkodekan ketetanggaan antar-wilayah. Secara formal, dengan mensubstitusi $x_i \leftarrow f_{i,1}$ pada Persamaan~\ref{eq:moran_i}:
+\[
+I = \frac{n}{\displaystyle\sum_{i}\sum_{j} w_{ij}} \cdot \frac{\displaystyle\sum_{i}\sum_{j} w_{ij}(f_{i,1}-\bar{f})(f_{j,1}-\bar{f})}{\displaystyle\sum_{i}(f_{i,1}-\bar{f})^2}
+\]
+di mana $n$ adalah jumlah wilayah, $\bar{f} = n^{-1}\sum_i f_{i,1}$ adalah rata-rata skor, dan $w_{ij}$ adalah elemen matriks bobot spasial yang dikonstruksi dari ketetanggaan \textit{queen contiguity} (wilayah $i$ dan $j$ bertetangga jika berbagi sisi atau titik batas). Nilai $I$ berkisar dari $-1$ (dispersi sempurna) hingga $+1$ (klaster sempurna), dengan nilai harapan $E[I] = -1/(n-1)$ di bawah hipotesis nol tidak ada autokorelasi spasial.
+
+Inferensi dilakukan menggunakan prosedur permutasi Monte Carlo: pada setiap dari $N_{\text{perm}}$ permutasi, label wilayah diacak sehingga diperoleh distribusi null $\{I^{(b)}\}_{b=1}^{N_{\text{perm}}}$, dan $p$-value dihitung sebagai proporsi permutasi dengan $I^{(b)} \geq I_{\text{obs}}$. Pendekatan ini lebih robust dibandingkan pendekatan analitik normal-approksimasi karena tidak bergantung pada asumsi normalitas distribusi skor.
+
+Dataset sampel dengan $n=4$ wilayah tidak memenuhi syarat komputasi minimum untuk matriks ketetanggaan \textit{queen contiguity} yang bermakna. Oleh karena itu, pengujian Moran's $I$ hanya dilaksanakan pada dataset aktual (41 kabupaten/kota di Banten, DKI Jakarta, dan Jawa Barat), dan hasilnya dilaporkan secara lengkap dalam Bab~4 beserta interpretasi substantifnya tentang pola pengelompokan spasial kesejahteraan wilayah.

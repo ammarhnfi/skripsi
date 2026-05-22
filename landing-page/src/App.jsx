@@ -528,8 +528,8 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
     mapFile = `compare_map_trans_statis_${activePeriod}.png`;
     scatterFile = `compare_scatter_trans_statis_${activePeriod}.png`;
     pieFile = `compare_pie_trans_statis_${activePeriod}.png`;
-    sumTableFile = `output_table_transition_matrix_sum_${activePeriod}.tex`;
-    nameTableFile = `output_table_transition_matrix_name_${activePeriod}.tex`;
+    sumTableFile = `output_table_statis_transition_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_statis_transition_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_3_biplot_vs_statis') {
     mapFile = `compare_map_biplot_vs_statis_${activePeriod}.png`;
     scatterFile = `compare_scatter_biplot_vs_statis_${activePeriod}.png`;
@@ -537,13 +537,13 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
     sumTableFile = `output_table_biplot_vs_statis_compare_sum_${activePeriod}.tex`;
     nameTableFile = `output_table_biplot_vs_statis_compare_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_4_trans_ipm') {
-    mapFile = `compare_map_ipm_matrix_${activePeriod}.png`;
-    pieFile = `compare_pie_ipm_matrix_${activePeriod}.png`;
-    sumTableFile = `output_table_ipm_matrix_sum_${activePeriod}.tex`;
-    nameTableFile = `output_table_ipm_matrix_name_${activePeriod}.tex`;
+    mapFile = `compare_map_ipm_${activePeriod}.png`;
+    pieFile = `compare_pie_ipm_${activePeriod}.png`;
+    sumTableFile = `output_table_ipm_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_ipm_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_5_biplot_vs_ipm') {
-    mapFile = `compare_map_cross_matrix_${activePeriod}.png`;
-    pieFile = `compare_pie_cross_matrix_${activePeriod}.png`;
+    mapFile = `compare_map_biplot_vs_ipm_${activePeriod}.png`;
+    pieFile = `compare_pie_biplot_vs_ipm_${activePeriod}.png`;
     sumTableFile = `output_table_cross_matrix_sum_${activePeriod}.tex`;
     nameTableFile = `output_table_cross_matrix_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_6_statis_vs_ipm') {
@@ -552,11 +552,11 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
     sumTableFile = `output_table_statis_vs_ipm_sum_${activePeriod}.tex`;
     nameTableFile = `output_table_statis_vs_ipm_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_7_compromise_vs_biplot') {
-    mapFile = `compare_map_biplot_vs_statis_compromise_${activePeriod}.png`;
-    scatterFile = `compare_scatter_biplot_vs_statis_compromise_${activePeriod}.png`;
-    pieFile = `compare_pie_biplot_vs_statis_compromise_${activePeriod}.png`;
-    sumTableFile = `output_table_biplot_vs_statis_sum_${activePeriod}.tex`;
-    nameTableFile = `output_table_biplot_vs_statis_name_${activePeriod}.tex`;
+    mapFile = `compare_map_compromise_vs_biplot_${activePeriod}.png`;
+    scatterFile = `compare_scatter_compromise_vs_biplot_${activePeriod}.png`;
+    pieFile = `compare_pie_compromise_vs_biplot_${activePeriod}.png`;
+    sumTableFile = `output_table_biplot_vs_compromise_sum_${activePeriod}.tex`;
+    nameTableFile = `output_table_biplot_vs_compromise_name_${activePeriod}.tex`;
   } else if (compMode === 'comp_8_compromise_vs_statis') {
     mapFile = `compare_map_compromise_vs_statis_${activePeriod}.png`;
     scatterFile = `compare_scatter_compromise_vs_statis_${activePeriod}.png`;
@@ -829,9 +829,10 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
   });
 
   // Categorize
-  const coreFilesList = ['scree_plot.png', 'loading_plot.png', 'rv_heatmap.png', 'statis_trajectories.png', 
-                         'statis_trajectories_highlight.png', 'compromise_map.png', 'compromise_biplot_matplotlib.png',
-                         'variable_contribution.png', 'variable_cos2.png', 'beta_trajectory.png'];
+  const coreFilesList = ['scree_plot.png', 'rv_heatmap.png', 'trajectory_scores.png', 'trajectory_loadings.png',
+                         'compromise_map.png', 'compromise_biplot.png', 'compromise_scatter.png', 'compromise_pie.png',
+                         'variable_contribution.png', 'variable_cos2.png', 'beta_trajectory.png',
+                         'permutation_histogram.png'];
 
   const categories = {
     core: { label: '💎 Kompromis & Trajektori (Core)', files: [] },
@@ -897,8 +898,7 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
-                transition: 'all 0.2s',
-                border: '1px solid rgba(6, 182, 212, 0.2)'
+                transition: 'all 0.2s'
               }}
               onMouseOver={e => { e.target.style.background = 'rgba(6, 182, 212, 0.15)'; e.target.style.borderColor = '#06B6D4'; }}
               onMouseOut={e => { e.target.style.background = 'rgba(255, 255, 255, 0.1)'; e.target.style.borderColor = 'rgba(6, 182, 212, 0.2)'; }}
@@ -2280,7 +2280,7 @@ function FormulasDashboard({ onBack }) {
 
   // Render a string that may contain LaTeX ($...$ or $$...$$) via MathJax.
   // We insert it as raw HTML so MathJax can process it after mount.
-  const renderLatexText = (text) => {
+  const _renderLatexText = (text) => {
     if (!text) return null;
     return (
       <span dangerouslySetInnerHTML={{ __html: formatTextHtml(text) }} />
@@ -2595,7 +2595,7 @@ function App() {
 
   const [allResultsReal, setAllResultsReal] = useState([]);
   const [allResultsSample, setAllResultsSample] = useState([]);
-  const [equations, setEquations] = useState([]);
+  const [_equations, setEquations] = useState([]);
   const [currentTime, setCurrentTime] = useState("");
   const [selectedGroup, setSelectedGroup] = useState('Shared');
   const [selectedScenario, setSelectedScenario] = useState('Shared');

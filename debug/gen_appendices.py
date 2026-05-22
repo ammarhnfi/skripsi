@@ -8,7 +8,7 @@ import pandas as pd
 import os
 import shutil
 
-TEMPLATE_DIR = r'd:\Skripsi\my\note\tugas_akhir_format_latex_v11'
+TEMPLATE_DIR = r'd:\Skripsi\my'
 XLSX_PATH    = r'd:\Skripsi\my\data\Data Final.xlsx'
 SCREENSHOT_SRC = r'd:\Skripsi\my\gambarku\screenshot_web.png'
 SCREENSHOT_DEST_NAME = 'screenshot_web.png'          # will live in pics/ subfolder
@@ -37,7 +37,7 @@ def generate_appendix_data():
         r"\chapter*{Lampiran 1 Data Penelitian}",
         r"\addcontentsline{loa}{lampiran}{Lampiran 1 Data Penelitian}",
         r"\label{app:data}",
-        r"Berikut adalah data penelitian untuk masing-masing variabel dari tahun "
+        r"Berikut adalah data penelitian untuk masing-masing indikator dari tahun "
         + sheets[0] + " hingga " + sheets[-1] + r".",
         r"\vspace{1em}"
     ]
@@ -50,7 +50,7 @@ def generate_appendix_data():
             df_var[s] = all_data[s][var].values
 
         clean_var_name = var.replace('_', r'\_')
-        tex_content.append(r"\section*{Data Variabel " + clean_var_name + r"}")
+        tex_content.append(r"\section*{Data Indikator " + clean_var_name + r"}")
 
         tex_content.append(r"\begin{spacing}{1.0}")
         tex_content.append(r"\scriptsize")

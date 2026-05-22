@@ -1,7 +1,8 @@
 % !TeX root = induk.tex
 \chapter{\normalsize LANDASAN TEORI}
+\raggedbottom
 
-Bab ini berisi uraian mengenai teori-teori dasar yang menjadi fondasi metodologi penelitian. Pembahasan dimulai dari konsep indikator kesejahteraan rakyat sebagai latar belakang substansi variabel penelitian, kemudian dilanjutkan dengan struktur data tiga arah dan konsep spasio-temporal, statistika deskriptif, standardisasi data, pemilihan variabel (Uji KMO dan Bartlett), fondasi aljabar linier beserta dekomposisi matriks (nilai eigen, dekomposisi spektral, dan Singular Value Decomposition), korelasi Pearson, \textit{Principal Component Analysis} (PCA) beserta Biplot, algoritma metode STATIS beserta uji permutasi, Dynamic Biplot dan visualisasi trajektori, metode pengelompokan (clustering), uji autokorelasi spasial Global Moran's~$I$, dan terakhir adalah media visualisasi interaktif Plotly dan Dash.
+Bab ini berisi uraian mengenai teori-teori dasar yang menjadi fondasi metodologi penelitian. Pembahasan dimulai dari konsep indikator kesejahteraan rakyat sebagai latar belakang substansi indikator penelitian, kemudian dilanjutkan dengan struktur data tiga arah dan konsep spasio-temporal, statistika deskriptif, standardisasi data, pemilihan indikator (Uji KMO dan Bartlett), fondasi aljabar linier beserta dekomposisi matriks (nilai eigen, dekomposisi spektral, dan Singular Value Decomposition), korelasi Pearson, \textit{Principal Component Analysis} (PCA) beserta Biplot, algoritma metode STATIS beserta uji permutasi, Dynamic Biplot dan visualisasi trajektori, metode pengelompokan (clustering), uji autokorelasi spasial Global Moran's~$I$, dan terakhir adalah media visualisasi interaktif Plotly dan Dash.
 
 %-----------------------------------------------------------------------------%
 % --- 2.1 ---
@@ -47,7 +48,7 @@ Indeks Pembangunan Gender (IPG) adalah rasio capaian IPM perempuan terhadap IPM 
 Gini Ratio adalah ukuran tingkat ketimpangan distribusi pengeluaran atau pendapatan penduduk. Nilai Gini Ratio berkisar antara 0 dan 1: nilai 0 berarti pemerataan sempurna (setiap orang memiliki pengeluaran yang sama), sedangkan nilai 1 berarti ketimpangan sempurna (satu orang menguasai seluruh pengeluaran). Gini Ratio yang tinggi menandakan tingginya kesenjangan ekonomi antar kelompok penduduk dalam suatu wilayah \citep{bpsikr2025}.
 
 \subsection{\normalsize Jumlah Penduduk (JP)}
-Jumlah Penduduk (JP) merupakan banyaknya jiwa yang mendiami suatu wilayah administratif pada suatu titik waktu tertentu, sebagaimana dicatat melalui Sensus Penduduk maupun estimasi antarsensus yang diselenggarakan oleh Badan Pusat Statistik \citep{bpsikr2025}. Dalam penelitian ini, JP \textbf{tidak digunakan sebagai variabel analisis} dalam metode STATIS, melainkan berperan sebagai \textbf{basis pembentukan bobot demografis} ($m_i$). Bobot ini mengintegrasikan ukuran populasi setiap wilayah ke dalam analisis multivariat sehingga wilayah dengan penduduk lebih besar memberikan kontribusi yang proporsional terhadap struktur rata-rata (kontribusi ini dinamakan kompromi), dan wilayah berpenduduk kecil tidak mengubah hasil analisis multivariat secara berlebihan \citep{lavit94}.
+Jumlah Penduduk (JP) merupakan banyaknya jiwa yang mendiami suatu wilayah administratif pada suatu titik waktu tertentu, sebagaimana dicatat melalui Sensus Penduduk maupun estimasi antarsensus yang diselenggarakan oleh Badan Pusat Statistik \citep{bpsikr2025}. Dalam penelitian ini, JP \textbf{tidak digunakan sebagai indikator analisis} dalam metode STATIS, melainkan berperan sebagai \textbf{basis pembentukan bobot demografis} ($m_i$). Bobot ini mengintegrasikan ukuran populasi setiap wilayah ke dalam analisis multivariat sehingga wilayah dengan penduduk lebih besar memberikan kontribusi yang proporsional terhadap struktur rata-rata (kontribusi ini dinamakan kompromi), dan wilayah berpenduduk kecil tidak mengubah hasil analisis multivariat secara berlebihan \citep{lavit94}.
 
 %-----------------------------------------------------------------------------%
 % --- 2.2 ---
@@ -69,21 +70,21 @@ Penelitian mengenai analisis statistik terhadap data regional di Pulau Jawa tela
 \end{tabular}
 \end{table}
 
-\citet{nuswantari2021} menunjukkan bahwa pemodelan di Pulau Jawa harus mempertimbangkan efek dinamis (waktu) dan dependensi spasial secara simultan. Hal ini diperkuat oleh \citet{ahmad2024} yang menggunakan DSDM untuk menangkap interaksi antar-wilayah lintas waktu. Di sisi lain, \citet{alfia2024} memberikan perspektif mengenai pentingnya metode pengelompokan yang mampu menangani objek dan variabel secara bersamaan untuk melihat karakteristik regional yang unik. Penelitian ini menggabungkan aspek temporal dari data tiga-arah menggunakan metode STATIS dan aspek keterkaitan spasial untuk memberikan analisis yang lebih komprehensif.
+\citet{nuswantari2021} menunjukkan bahwa pemodelan di Pulau Jawa harus mempertimbangkan efek dinamis (waktu) dan dependensi spasial secara simultan. Hal ini diperkuat oleh \citet{ahmad2024} yang menggunakan DSDM untuk menangkap interaksi antar-wilayah lintas waktu. Di sisi lain, \citet{alfia2024} memberikan perspektif mengenai pentingnya metode pengelompokan yang mampu menangani objek dan indikator secara bersamaan untuk melihat karakteristik regional yang unik. Penelitian ini menggabungkan aspek temporal dari data tiga-arah menggunakan metode STATIS dan aspek keterkaitan spasial untuk memberikan analisis yang lebih komprehensif.
 
 %-----------------------------------------------------------------------------%
 % --- 2.3 ---
 \section{\normalsize Analisis Data Tiga-Arah (\textit{Three-Way Data})}
 %-----------------------------------------------------------------------------%
 
-Dalam statistika multivariat klasik, umumnya data direpresentasikan dalam struktur dua-arah (\textit{two-way structure}), yaitu sebuah matriks $\mathbf{X}$ berukuran $n \times p$, dengan $n$ merepresentasikan jumlah objek dan $p$ merepresentasikan jumlah variabel. Struktur ini memadai untuk menganalisis kondisi statis pada satu titik waktu tertentu. Namun, dalam studi yang melibatkan pemantauan berkala, struktur data menjadi lebih kompleks dengan hadirnya dimensi ketiga, yaitu waktu atau situasi \citep{kroonenberg2008}.
+Dalam statistika multivariat klasik, umumnya data direpresentasikan dalam struktur dua-arah (\textit{two-way structure}), yaitu sebuah matriks $\mathbf{X}$ berukuran $n \times p$, dengan $n$ merepresentasikan jumlah objek dan $p$ merepresentasikan jumlah indikator. Struktur ini memadai untuk menganalisis kondisi statis pada satu titik waktu tertentu. Namun, dalam studi yang melibatkan pemantauan berkala, struktur data menjadi lebih kompleks dengan hadirnya dimensi ketiga, yaitu waktu atau situasi \citep{kroonenberg2008}.
 
 Struktur data seperti ini dikenal sebagai data tiga-arah (\textit{three-way data}) atau data panel multivariat. Secara formal, data tiga-arah dapat didefinisikan sebagai berikut:
 
 \begin{definition}[Data Tiga-Arah]
-  Misalkan terdapat $n$ objek penelitian, $p$ variabel, dan $K$ situasi (waktu). Data tiga-arah adalah sekumpulan $K$ buah matriks data $\{\mathbf{X}_1, \mathbf{X}_2, \dots, \mathbf{X}_K\}$, dengan setiap matriks $\mathbf{X}_k$ (untuk $k = 1, \dots, K$) berukuran $n \times p$.
+  Misalkan terdapat $n$ objek penelitian, $p$ indikator, dan $K$ situasi (waktu). Data tiga-arah adalah sekumpulan $K$ buah matriks data $\{\mathbf{X}_1, \mathbf{X}_2, \dots, \mathbf{X}_K\}$, dengan setiap matriks $\mathbf{X}_k$ (untuk $k = 1, \dots, K$) berukuran $n \times p$.
 
-  Elemen skalar dari data ini dinotasikan sebagai $x_{ijk}$, yang merepresentasikan nilai dari variabel ke-$j$ pada objek ke-$i$ pada situasi ke-$k$. Keseluruhan himpunan matriks ini sering diilustrasikan sebagai sebuah balok data (\textit{data cube}) dengan dimensi $n \times p \times K$.
+  Elemen skalar dari data ini dinotasikan sebagai $x_{ijk}$, yang merepresentasikan nilai dari indikator ke-$j$ pada objek ke-$i$ pada situasi ke-$k$. Keseluruhan himpunan matriks ini sering diilustrasikan sebagai sebuah balok data (\textit{data cube}) dengan dimensi $n \times p \times K$.
 \end{definition}
 
 Relevansi pendekatan tiga-arah ini semakin menguat dalam analisis data regional, di mana interaksi kompleks antara wilayah, waktu, dan indikator sosial-ekonomi sangat penting untuk dipahami \citep{biegert2023household}. Metode STATIS, yang akan dibahas selanjutnya, dirancang secara spesifik untuk mendapatkan informasi dari struktur tiga-arah $\{\mathbf{X}_k\}$ ini tanpa harus merata-ratakan data terlebih dahulu ke dalam satu matriks tunggal yang menghilangkan karakteristik temporal \citep{lavit94}.
@@ -98,7 +99,7 @@ Analisis spasio-temporal bertujuan untuk mendeskripsikan atau memodelkan variabi
 Pendekatan konvensional dalam ekonometrika biasanya melakukan pendekatan terhadap masalah ini dengan menggunakan regresi data panel atau model dinamis spasial (\textit{Spatial Dynamic Panel Data}) untuk mengetahui pengaruh antar-lokasi, dengan struktur hubungan antar-lokasi didefinisikan menggunakan matriks pembobot spasial (\textit{spatial weight matrix}, $\mathbf{W}_{spasial}$) berbasis ketetanggaan geografis yang memiliki asumsi bahwa interaksi antar-wilayah hanya terjadi melalui batas geografis fisik yang bersifat konstan sepanjang waktu \citep{baltagi2021}. Dalam pendekatan multivariat eksploratif seperti STATIS, definisi ``spasial'' dipandang dari perspektif yang berbeda.
 
 \begin{remark}[Konsep Spasial dalam STATIS]
-  Dalam kerangka STATIS, aspek spasial direpresentasikan melalui konfigurasi kemiripan antar-objek dalam ruang multivariat, bukan melalui matriks kontiguitas geografis. Struktur ``spasial'' pada situasi ke-$k$ didefinisikan oleh matriks produk skalar $\mathbf{W}_k = \mathbf{X}_k \mathbf{X}_k^T$ (berukuran $n \times n$) yang merangkum ``peta'' kemiripan antar-objek berdasarkan profil variabelnya.
+  Dalam kerangka STATIS, aspek spasial direpresentasikan melalui konfigurasi kemiripan antar-objek dalam ruang multivariat, bukan melalui matriks kontiguitas geografis. Struktur ``spasial'' pada situasi ke-$k$ didefinisikan oleh matriks produk skalar $\mathbf{W}_k = \mathbf{X}_k \mathbf{X}_k^T$ (berukuran $n \times n$) yang merangkum ``peta'' kemiripan antar-objek berdasarkan profil indikatornya.
 \end{remark}
 
 Evolusi spasio-temporal dalam pendekatan ini difokuskan pada pengamatan perubahan konfigurasi matriks $\mathbf{W}_k$ dari waktu ke waktu, untuk menjawab pertanyaan apakah pola kemiripan antar-objek berubah selama periode pengamatan \citep{lavit94}.
@@ -108,7 +109,7 @@ Evolusi spasio-temporal dalam pendekatan ini difokuskan pada pengamatan perubaha
 \section{\normalsize Standardisasi Data}
 %-----------------------------------------------------------------------------%
 
-Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (misalnya rupiah, persen, dan tahun) dapat menyebabkan bias dalam analisis multivariat sehingga perlu menyamakan skala variabilitasnya. Karena 41 wilayah yang diamati merupakan populasi utuh dengan ukuran penduduk yang sangat bervariasi, standardisasi dalam kerangka STATIS dilakukan menggunakan rata-rata dan simpangan baku \textit{terbobot} ($\mu$ dan $\sigma$) agar pusat data konsisten dengan $\mathbf{D}$ yang dijelaskan pada \ref{def:matriks_D} \citep{lavit94}. Untuk itu, terlebih dahulu didefinisikan bobot demografis dan matriks bobot berikut.
+Perbedaan nilai yang besar antar-indikator akibat perbedaan satuan pengukuran (misalnya rupiah, persen, dan tahun) dapat menyebabkan bias dalam analisis multivariat sehingga perlu menyamakan skala variabilitasnya. Karena 41 wilayah yang diamati merupakan populasi utuh dengan ukuran penduduk yang sangat bervariasi, standardisasi dalam kerangka STATIS dilakukan menggunakan rata-rata dan simpangan baku \textit{terbobot} ($\mu$ dan $\sigma$) agar pusat data konsisten dengan $\mathbf{D}$ yang dijelaskan pada \ref{def:matriks_D} \citep{lavit94}. Untuk itu, terlebih dahulu didefinisikan bobot demografis dan matriks bobot berikut.
 
 \begin{definition}[Bobot Demografis Wilayah ke-i ($m_i$)] \label{def:bobot}
   Misalkan $\overline{\mathrm{JP}}_i = \frac{1}{K}\sum_{k=1}^{K} \mathrm{JP}_{ik}$ adalah rata-rata jumlah penduduk wilayah ke-$i$ selama $K$ tahun pengamatan. Bobot demografis $m_i$ didefinisikan sebagai proporsi penduduk wilayah ke-$i$ terhadap total penduduk seluruh wilayah:
@@ -127,7 +128,7 @@ Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (mi
 \end{definition}
 
 \begin{definition}[Standardisasi $Z$-Score Terbobot] \label{def:weighted_zscore}
-  Misalkan $x_{ijk}$ adalah nilai variabel ke-$j$ pada wilayah ke-$i$ tahun ke-$k$. Rata-rata populasi terbobot dan simpangan baku populasi terbobot didefinisikan sebagai:
+  Misalkan $x_{ijk}$ adalah nilai indikator ke-$j$ pada wilayah ke-$i$ tahun ke-$k$. Rata-rata populasi terbobot dan simpangan baku populasi terbobot didefinisikan sebagai:
   \begin{align}
     \mu_{jk} &= \sum_{i=1}^{n} m_i\, x_{ijk} \label{eq:weighted_mean} \\
     \sigma_{jk} &= \sqrt{\sum_{i=1}^{n} m_i\, (x_{ijk} - \mu_{jk})^2} \label{eq:weighted_std}
@@ -139,7 +140,7 @@ Perbedaan nilai yang besar antar-variabel akibat perbedaan satuan pengukuran (mi
   Persamaan \ref{eq:standardization} memastikan bahwa $\sum_{i=1}^{n} m_i\, z_{ijk} = 0$ (pusat terbobot nol) dan $\sum_{i=1}^{n} m_i\, z_{ijk}^2 = 1$ (varians terbobot satu) \citep{lavit94}.
 \end{definition}
 
-Hasil standardisasi menghasilkan matriks data standar terbobot $\mathbf{Z}_k$ (berukuran $n \times p$) untuk setiap situasi ke-$k$. Prosedur ini memastikan bahwa tidak ada variabel yang mendominasi analisis hanya karena skala pengukurannya lebih besar, sekaligus mempertahankan konsistensi ruang bobot $\mathbf{D}$ di seluruh situasi waktu.
+Hasil standardisasi menghasilkan matriks data standar terbobot $\mathbf{Z}_k$ (berukuran $n \times p$) untuk setiap situasi ke-$k$. Prosedur ini memastikan bahwa tidak ada indikator yang mendominasi analisis hanya karena skala pengukurannya lebih besar, sekaligus mempertahankan konsistensi ruang bobot $\mathbf{D}$ di seluruh situasi waktu.
 
 %-----------------------------------------------------------------------------%
 % --- 2.5 ---
@@ -153,7 +154,7 @@ Sebelum menerapkan metode analisis multivariat, tahap awal yang penting adalah m
 Ukuran pemusatan mendeskripsikan nilai ``tengah'' dari data.
 
 \begin{definition}[Rata-Rata (Mean)]
-  Rata-rata dari $n$ pengamatan $x_1, x_2, \ldots, x_n$ suatu variabel adalah:
+  Rata-rata dari $n$ pengamatan $x_1, x_2, \ldots, x_n$ suatu indikator adalah:
   \begin{equation} \label{eq:mean}
     \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i
   \end{equation}
@@ -161,7 +162,7 @@ Ukuran pemusatan mendeskripsikan nilai ``tengah'' dari data.
 \end{definition}
 
 \begin{definition}[Median]
-  Median ($Q_2$) adalah nilai tengah dari suatu variabel setelah diurutkan dari yang terkecil hingga yang terbesar:
+  Median ($Q_2$) adalah nilai tengah dari suatu indikator setelah diurutkan dari yang terkecil hingga yang terbesar:
   \begin{equation} \label{eq:median}
     Q_2 = \begin{cases}
       x_{\left(\frac{n+1}{2}\right)} & \text{, jika } n \text{ ganjil} \\
@@ -200,7 +201,7 @@ Ukuran penyebaran mendeskripsikan seberapa jauh data bervariasi di sekitar pusat
   \begin{equation} \label{eq:cv}
     CV = \frac{s}{\bar{x}} \times 100\%
   \end{equation}
-  CV berfungsi untuk membandingkan tingkat keragaman antar-variabel yang memiliki satuan atau skala yang berbeda-beda, dan ukuran ini juga lazim digunakan dalam analisis stabilitas \citep{deptan2003}.
+  CV berfungsi untuk membandingkan tingkat keragaman antar-indikator yang memiliki satuan atau skala yang berbeda-beda, dan ukuran ini juga lazim digunakan dalam analisis stabilitas \citep{deptan2003}.
 \end{definition}
 
 \subsection{\normalsize Ukuran Bentuk Distribusi}
@@ -225,19 +226,19 @@ Ukuran bentuk memberikan informasi karakteristik bentuk simetris dan bentuk keru
 
 %-----------------------------------------------------------------------------%
 % --- 2.6 ---
-\section{\normalsize Pemilihan Variabel dalam Analisis Multivariat}
+\section{\normalsize Pemilihan Indikator dalam Analisis Multivariat}
 %-----------------------------------------------------------------------------%
 
-Keberhasilan suatu analisis multivariat berbasis reduksi dimensi sangat bergantung pada kualitas himpunan variabel yang digunakan. Variabel yang tidak memiliki hubungan satu sama lain tidak akan menghasilkan komponen yang bermakna, sedangkan variabel yang terlalu berkorelasi sempurna dapat menyebabkan matriks kovariansi menjadi singular \citep{hair2019}. Sebelum menerapkan metode analisis, perlu dilakukan serangkaian uji statistik untuk memverifikasi bahwa himpunan variabel \textit{layak} untuk dianalisis secara multivariat yang artinya terdapat struktur kovariansi yang cukup untuk diekstraksi (\textit{factorable}).
+Keberhasilan suatu analisis multivariat berbasis reduksi dimensi sangat bergantung pada kualitas himpunan indikator yang digunakan. Indikator yang tidak memiliki hubungan satu sama lain tidak akan menghasilkan komponen yang bermakna, sedangkan indikator yang terlalu berkorelasi sempurna dapat menyebabkan matriks kovariansi menjadi singular \citep{hair2019}. Sebelum menerapkan metode analisis, perlu dilakukan serangkaian uji statistik untuk memverifikasi bahwa himpunan indikator \textit{layak} untuk dianalisis secara multivariat yang artinya terdapat struktur kovariansi yang cukup untuk diekstraksi (\textit{factorable}).
 
-Dua kriteria utama yang lazim digunakan untuk mengetahui apakah data yang akan digunakan memenuhi syarat untuk dilakukan analisis multivariat adalah: (1) Uji Kaiser-Meyer-Olkin (KMO) yang menilai kecukupan (\textit{sampling adequacy}) masing-masing variabel maupun keseluruhan himpunan variabel, dan (2) Uji Bartlett tentang Spherisitas yang menguji apakah matriks korelasi antar-variabel secara keseluruhan signifikan berbeda dari matriks identitas.
+Dua kriteria utama yang lazim digunakan untuk mengetahui apakah data yang akan digunakan memenuhi syarat untuk dilakukan analisis multivariat adalah: (1) Uji Kaiser-Meyer-Olkin (KMO) yang menilai kecukupan (\textit{sampling adequacy}) masing-masing indikator maupun keseluruhan himpunan indikator, dan (2) Uji Bartlett tentang Spherisitas yang menguji apakah matriks korelasi antar-indikator secara keseluruhan signifikan berbeda dari matriks identitas.
 
 \subsection{\normalsize Uji Kaiser-Meyer-Olkin (KMO)}
 
-Statistik Kaiser-Meyer-Olkin (KMO) dikembangkan oleh \citet{kaiser1970, kaiser1974} sebagai ukuran untuk menilai kecukupan sampel (\textit{sampling adequacy}) dalam analisis faktor dan analisis komponen utama. Secara intuitif, KMO mengukur sejauh mana korelasi antar-pasang variabel dapat ``dijelaskan'' oleh variabel-variabel lainnya, suatu kondisi yang disebut korelasi parsial rendah. Apabila korelasi parsial antar-variabel rendah setelah dikontrol variabel lain, maka ada faktor laten yang mendasari struktur korelasinya, kondisi ini disyaratkan dalam analisis berbasis reduksi dimensi \citep{dziuban1974}.
+Statistik Kaiser-Meyer-Olkin (KMO) dikembangkan oleh \citet{kaiser1970, kaiser1974} sebagai ukuran untuk menilai kecukupan sampel (\textit{sampling adequacy}) dalam analisis faktor dan analisis komponen utama. Secara intuitif, KMO mengukur sejauh mana korelasi antar-pasang indikator dapat ``dijelaskan'' oleh indikator-indikator lainnya, suatu kondisi yang disebut korelasi parsial rendah. Apabila korelasi parsial antar-indikator rendah setelah dikontrol indikator lain, maka ada faktor laten yang mendasari struktur korelasinya, kondisi ini disyaratkan dalam analisis berbasis reduksi dimensi \citep{dziuban1974}.
 
 \begin{definition}[Statistik KMO]
-  Misalkan $r_{jk}$ adalah koefisien korelasi Pearson antara variabel ke-$j$ dan ke-$k$, dan $q_{jk}$ adalah elemen dari invers matriks korelasi $\mathbf{R}^{-1}$. Korelasi parsial antara variabel ke-$j$ dan ke-$k$ dihitung sebagai:
+  Misalkan $r_{jk}$ adalah koefisien korelasi Pearson antara indikator ke-$j$ dan ke-$k$, dan $q_{jk}$ adalah elemen dari invers matriks korelasi $\mathbf{R}^{-1}$. Korelasi parsial antara indikator ke-$j$ dan ke-$k$ dihitung sebagai:
   \begin{equation}
     r_{jk.\text{parsial}} = -\frac{q_{jk}}{\sqrt{q_{jj} \cdot q_{kk}}}
   \end{equation}
@@ -245,10 +246,10 @@ Statistik Kaiser-Meyer-Olkin (KMO) dikembangkan oleh \citet{kaiser1970, kaiser19
   \begin{equation} \label{eq:kmo}
     KMO = \frac{\displaystyle\sum_{j \neq k} r_{jk}^2}{\displaystyle\sum_{j \neq k} r_{jk}^2 + \displaystyle\sum_{j \neq k} r_{jk.\text{parsial}}^2}
   \end{equation}
-  Nilai KMO berkisar antara 0 dan 1. Semakin besar nilai KMO, semakin kecil jumlah kuadrat korelasi parsial (penyebut) relatif terhadap jumlah kuadrat korelasi bivariate (pembilang). Hal ini mengindikasikan bahwa variabel-variabel saling berbagi faktor laten yang kuat.
+  Nilai KMO berkisar antara 0 dan 1. Semakin besar nilai KMO, semakin kecil jumlah kuadrat korelasi parsial (penyebut) relatif terhadap jumlah kuadrat korelasi bivariate (pembilang). Hal ini mengindikasikan bahwa indikator-indikator saling berbagi faktor laten yang kuat.
 \end{definition}
 
-Selain statistik KMO keseluruhan, \citet{kaiser1974} mendefinisikan Measure of Sampling Adequacy ($MSA_j$) untuk setiap variabel ke-$j$:
+Selain statistik KMO keseluruhan, \citet{kaiser1974} mendefinisikan Measure of Sampling Adequacy ($MSA_j$) untuk setiap indikator ke-$j$:
 \begin{equation}
   MSA_j = \frac{\displaystyle\sum_{k \neq j} r_{jk}^2}{\displaystyle\sum_{k \neq j} r_{jk}^2 + \displaystyle\sum_{k \neq j} r_{jk.\text{parsial}}^2}
 \end{equation}
@@ -272,17 +273,17 @@ $KMO < 0{,}50$ & Unacceptable (Tidak diterima) \\
 \end{tabular}
 \end{table}
 
-Apabila nilai $MSA_j$ suatu variabel lebih kecil dari 0{,}50; variabel tersebut dipertimbangkan untuk dikeluarkan dari analisis dan himpunan variabel diuji ulang hingga semua variabel yang tersisa memenuhi syarat untuk dianalisis lebih lanjut \citep{hair2019, alfia2024}.
+Apabila nilai $MSA_j$ suatu indikator lebih kecil dari 0{,}50; indikator tersebut dipertimbangkan untuk dikeluarkan dari analisis dan himpunan indikator diuji ulang hingga semua indikator yang tersisa memenuhi syarat untuk dianalisis lebih lanjut \citep{hair2019, alfia2024}.
 
 \subsection{\normalsize Uji Bartlett tentang Spherisitas (\textit{Bartlett's Test of Sphericity})}
 
-Uji Bartlett tentang Spherisitas, dikembangkan oleh \citet{bartlett1954}, bertujuan menguji hipotesis nol bahwa matriks korelasi populasi adalah matriks identitas ($\mathbf{R} = \mathbf{I}$). Jika $\mathbf{R} = \mathbf{I}$, tidak ada korelasi sama sekali antar-variabel sehingga tidak ada informasi bersama yang dapat diekstraksi melalui analisis multivariat \citep{johnson2007}.
+Uji Bartlett tentang Spherisitas, dikembangkan oleh \citet{bartlett1954}, bertujuan menguji hipotesis nol bahwa matriks korelasi populasi adalah matriks identitas ($\mathbf{R} = \mathbf{I}$). Jika $\mathbf{R} = \mathbf{I}$, tidak ada korelasi sama sekali antar-indikator sehingga tidak ada informasi bersama yang dapat diekstraksi melalui analisis multivariat \citep{johnson2007}.
 
 \begin{definition}[Uji Bartlett tentang Spherisitas]
-  Diberikan matriks korelasi sampel $\mathbf{R}$ (berukuran $p \times p$, dengan $p$ adalah banyaknya variabel) dari $n$ observasi. Hipotesis uji Bartlett adalah:
+  Diberikan matriks korelasi sampel $\mathbf{R}$ (berukuran $p \times p$, dengan $p$ adalah banyaknya indikator) dari $n$ observasi. Hipotesis uji Bartlett adalah:
   \begin{itemize}
     \item $H_0$: $\boldsymbol{\Sigma} = \sigma^2 \mathbf{I}$ \quad (matriks korelasi populasi adalah matriks identitas)
-    \item $H_1$: $\boldsymbol{\Sigma} \neq \sigma^2 \mathbf{I}$ \quad (terdapat korelasi yang signifikan antar-variabel)
+    \item $H_1$: $\boldsymbol{\Sigma} \neq \sigma^2 \mathbf{I}$ \quad (terdapat korelasi yang signifikan antar-indikator)
   \end{itemize}
   Statistik uji $\chi^2$ dihitung dengan aproksimasi \citep{bartlett1954}:
   \begin{equation} \label{eq:bartlett}
@@ -295,7 +296,7 @@ Uji Bartlett tentang Spherisitas, dikembangkan oleh \citet{bartlett1954}, bertuj
 \end{definition}
 
 \begin{remark}[Logika Determinan Matriks Korelasi]
-  Apabila semua variabel saling tidak berkorelasi, maka $\mathbf{R} = \mathbf{I}$ sehingga $|\mathbf{R}| = 1$ dan $\ln(1) = 0$, sehingga nilai statistik uji $\chi^2$ bernilai nol, artinya korelasi antar variabel tidak signifikan. Sebaliknya, ketika variabel-variabel saling berkorelasi erat, $|\mathbf{R}| \to 0$ sehingga $\ln|\mathbf{R}|$ bernilai negatif dan statistik uji menjadi besar, menghasilkan $p$-value yang kecil \citep{johnson2007}.
+  Apabila semua indikator saling tidak berkorelasi, maka $\mathbf{R} = \mathbf{I}$ sehingga $|\mathbf{R}| = 1$ dan $\ln(1) = 0$, sehingga nilai statistik uji $\chi^2$ bernilai nol, artinya korelasi antar indikator tidak signifikan. Sebaliknya, ketika indikator-indikator saling berkorelasi erat, $|\mathbf{R}| \to 0$ sehingga $\ln|\mathbf{R}|$ bernilai negatif dan statistik uji menjadi besar, menghasilkan $p$-value yang kecil \citep{johnson2007}.
 \end{remark}
 
 Jika $p\text{-value} < \alpha$, maka $H_0$ ditolak, yang berarti terdapat struktur korelasi yang signifikan. Kondisi ini merupakan prasyarat yang diperlukan agar analisis reduksi dimensi dapat mengekstraksi informasi yang bermakna.
@@ -311,7 +312,7 @@ Jika $p\text{-value} < \alpha$, maka $H_0$ ditolak, yang berarti terdapat strukt
       \item $\text{sgn}(\sigma)$ adalah tanda (paritas) dari permutasi $\sigma$ (bernilai $+1$ untuk permutasi genap, dan $-1$ untuk permutasi ganjil).
       \item $a_{i,\sigma(i)}$ mewakili elemen matriks pada baris ke-$i$ dan kolom ke-$\sigma(i)$.
   \end{itemize}
-  Untuk matriks korelasi populasi $\mathbf{R}$, nilai determinan memberikan ukuran global atas keberadaan multikolinieritas antar variabel. Apabila variabel-variabel saling bebas linier (matriks korelasi membentuk matriks identitas), maka determinan bernilai maksimum, yaitu $|\mathbf{R}| = 1$. Sebaliknya, semakin tinggi korelasi linier antar variabel, nilai determinan akan semakin mengecil mendekati 0. Jika determinan bernilai mutlak 0, matriks saling berkorelasi sempurna sehingga tidak dapat diinvers \citep{johnson2007}.
+  Untuk matriks korelasi populasi $\mathbf{R}$, nilai determinan memberikan ukuran global atas keberadaan multikolinieritas antar indikator. Apabila indikator-indikator saling bebas linier (matriks korelasi membentuk matriks identitas), maka determinan bernilai maksimum, yaitu $|\mathbf{R}| = 1$. Sebaliknya, semakin tinggi korelasi linier antar indikator, nilai determinan akan semakin mengecil mendekati 0. Jika determinan bernilai mutlak 0, matriks saling berkorelasi sempurna sehingga tidak dapat diinvers \citep{johnson2007}.
 \end{definition}
 
 %-----------------------------------------------------------------------------%
@@ -380,10 +381,10 @@ sehingga $\mathbf{W}_c = \mathbf{U}\mathbf{S}\mathbf{U}^T = \mathbf{F}_c\mathbf{
 \section{\normalsize Korelasi Pearson}
 %-----------------------------------------------------------------------------%
 
-Korelasi Pearson adalah ukuran statistik yang mengkuantifikasi kekuatan dan arah hubungan linier antara dua variabel. Koefisien ini digunakan secara luas dalam analisis multivariat, khususnya pada pembentukan matriks korelasi yang merupakan fondasi Uji KMO dan Bartlett, serta pada komputasi \textit{loadings} (arah variabel dalam Biplot) \citep{johnson2007}.
+Korelasi Pearson adalah ukuran statistik yang mengkuantifikasi kekuatan dan arah hubungan linier antara dua indikator. Koefisien ini digunakan secara luas dalam analisis multivariat, khususnya pada pembentukan matriks korelasi yang merupakan fondasi Uji KMO dan Bartlett, serta pada komputasi \textit{loadings} (arah indikator dalam Biplot) \citep{johnson2007}.
 
 \begin{definition}[Koefisien Korelasi Pearson]
-  Koefisien korelasi Pearson antara dua variabel $x$ dan $y$ dari $n$ pengamatan didefinisikan sebagai:
+  Koefisien korelasi Pearson antara dua indikator $x$ dan $y$ dari $n$ pengamatan didefinisikan sebagai:
   \begin{equation}
     r_{xy} = \frac{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})^2} \cdot \sqrt{\displaystyle\sum_{i=1}^{n}(y_i - \bar{y})^2}}
   \end{equation}
@@ -396,42 +397,42 @@ Korelasi Pearson adalah ukuran statistik yang mengkuantifikasi kekuatan dan arah
 \end{definition}
 
 \begin{remark}[Matriks Korelasi]
-  Untuk $p$ variabel, koefisien Pearson antar setiap pasang variabel dapat disusun menjadi matriks korelasi simetris $\mathbf{R}$ berukuran $p \times p$, dengan elemen $(j,k)$-nya adalah $r_{jk}$. Diagonal utamanya selalu bernilai 1 ($r_{jj} = 1$). Matriks korelasi inilah yang menjadi dasar perhitungan statistik KMO dan Bartlett.
+  Untuk $p$ indikator, koefisien Pearson antar setiap pasang indikator dapat disusun menjadi matriks korelasi simetris $\mathbf{R}$ berukuran $p \times p$, dengan elemen $(j,k)$-nya adalah $r_{jk}$. Diagonal utamanya selalu bernilai 1 ($r_{jj} = 1$). Matriks korelasi inilah yang menjadi dasar perhitungan statistik KMO dan Bartlett.
 \end{remark}
 
-Dalam konteks Dynamic Biplot, loadings variabel ke-$j$ pada komponen ke-$\ell$ dihitung sebagai korelasi Pearson antara nilai rata-rata variabel tersebut lintas situasi ($\bar{x}_j$) dengan skor kompromi pada komponen ke-$\ell$ ($\mathbf{F}_c^{(\ell)}$):
+Dalam konteks Dynamic Biplot, loadings indikator ke-$j$ pada komponen ke-$\ell$ dihitung sebagai korelasi Pearson antara nilai rata-rata indikator tersebut lintas situasi ($\bar{x}_j$) dengan skor kompromi pada komponen ke-$\ell$ ($\mathbf{F}_c^{(\ell)}$):
 \begin{equation}
   g_{j\ell} = r(\bar{x}_j, \mathbf{F}_c^{(\ell)})
 \end{equation}
-Panjang vektor loading $\sqrt{g_{j1}^2 + g_{j2}^2}$ mencerminkan seberapa baik variabel tersebut direpresentasikan dalam ruang dua dimensi kompromi.
+Panjang vektor loading $\sqrt{g_{j1}^2 + g_{j2}^2}$ mencerminkan seberapa baik indikator tersebut direpresentasikan dalam ruang dua dimensi kompromi.
 
 %-----------------------------------------------------------------------------%
 % --- 2.10 ---
 \section{\normalsize \textit{Principal Component Analysis} (PCA) dan Biplot}
 %-----------------------------------------------------------------------------%
 
-\textit{Principal Component Analysis} (PCA) atau dalam bahasa Indonesia dikenal sebagai Analisis Komponen Utama merupakan metode yang pertama kali diinisiasi oleh \citet{pearson1901} melalui gagasan penyesuaian bidang pada himpunan titik, kemudian berkembang menjadi teknik reduksi dimensi data multivariat yang mentransformasi $p$ variabel asli yang saling berkorelasi menjadi $q$ variabel baru ($q < p$) yang tidak berkorelasi, disebut komponen utama (\textit{principal components}) \citep{hotelling1933}.
+\textit{Principal Component Analysis} (PCA) atau dalam bahasa Indonesia dikenal sebagai Analisis Komponen Utama merupakan metode yang pertama kali diinisiasi oleh \citet{pearson1901} melalui gagasan penyesuaian bidang pada himpunan titik, kemudian berkembang menjadi teknik reduksi dimensi data multivariat yang mentransformasi $p$ indikator asli yang saling berkorelasi menjadi $q$ indikator baru ($q < p$) yang tidak berkorelasi, disebut komponen utama (\textit{principal components}) \citep{hotelling1933}.
 
 Misalkan $\mathbf{X}$ adalah matriks data berukuran $n \times p$ yang telah distandardisasi. PCA mengekstraksi informasi dengan mendekomposisi matriks kovariansi $\mathbf{S} = \frac{1}{n-1}\mathbf{X}^T\mathbf{X}$. Berdasarkan Teorema Dekomposisi Spektral, $\mathbf{S} = \mathbf{V} \mathbf{\Lambda} \mathbf{V}^T$, menghasilkan dua elemen utama:
 \begin{enumerate}
-    \item \textbf{Matriks Loadings ($\mathbf{V}$)} adalah matriks vektor eigen yang berisi bobot kontribusi setiap variabel asli terhadap setiap komponen utama. Kolom ke-$j$ dari $\mathbf{V}$ disebut vektor loading ke-$j$.
+    \item \textbf{Matriks Loadings ($\mathbf{V}$)} adalah matriks vektor eigen yang berisi bobot kontribusi setiap indikator asli terhadap setiap komponen utama. Kolom ke-$j$ dari $\mathbf{V}$ disebut vektor loading ke-$j$.
     \item \textbf{Matriks Scores ($\mathbf{F}$)} adalah proyeksi data asli ke dalam ruang komponen utama, dihitung sebagai:
     \begin{equation}
         \mathbf{F} = \mathbf{X} \mathbf{V}
     \end{equation}
 \end{enumerate}
 
-Untuk memvisualisasikan hasil reduksi dimensi secara simultan antara objek dan variabel, digunakan teknik Biplot.
+Untuk memvisualisasikan hasil reduksi dimensi secara simultan antara objek dan indikator, digunakan teknik Biplot.
 
 \begin{definition}[Biplot]
-  Biplot adalah representasi grafis dua dimensi yang memetakan baris (objek) dan kolom (variabel) dari matriks data $\mathbf{X}$ secara bersamaan dalam satu grafik \citep{gabriel1971}. Biplot didasarkan pada aproksimasi matriks \textit{rank}-rendah:
+  Biplot adalah representasi grafis dua dimensi yang memetakan baris (objek) dan kolom (indikator) dari matriks data $\mathbf{X}$ secara bersamaan dalam satu grafik \citep{gabriel1971}. Biplot didasarkan pada aproksimasi matriks \textit{rank}-rendah:
   \begin{equation}
     \mathbf{X} \approx \mathbf{F} \mathbf{V}^T
   \end{equation}
   Dalam visualisasi ini:
   \begin{itemize}
     \item Objek ke-$i$ digambarkan sebagai titik berdasarkan baris ke-$i$ dari matriks Skor $\mathbf{F}$. Jarak Euclidean antar titik merepresentasikan kemiripan antar objek.
-    \item Variabel ke-$j$ digambarkan sebagai vektor (panah) berdasarkan baris ke-$j$ dari matriks Loadings $\mathbf{V}$. Sudut antar vektor merepresentasikan korelasi antar variabel. Sudut lancip ($< 90^\circ$) berarti korelasi positif, sedangkan sudut tumpul ($> 90^\circ$) berarti korelasi negatif.
+    \item Indikator ke-$j$ digambarkan sebagai vektor (panah) berdasarkan baris ke-$j$ dari matriks Loadings $\mathbf{V}$. Sudut antar vektor merepresentasikan korelasi antar indikator. Sudut lancip ($< 90^\circ$) berarti korelasi positif, sedangkan sudut tumpul ($> 90^\circ$) berarti korelasi negatif.
   \end{itemize}
 \end{definition}
 
@@ -443,12 +444,20 @@ Untuk memvisualisasikan hasil reduksi dimensi secara simultan antara objek dan v
 \end{figure}
 
 \begin{remark}[Skalasi Visual Biplot]
-  Dalam visualisasi biplot, seringkali terdapat perbedaan besaran (\textit{magnitude}) yang mencolok antara nilai skor objek dan loading variabel. Untuk menjamin keterbacaan grafik tanpa mengubah interpretasi statistik (sudut korelasi dan arah), dilakukan penyesuaian skala (\textit{visual scaling}) secara proporsional. Secara matematis, jika $\mathbf{F}$ adalah matriks skor dan $\mathbf{V}$ adalah matriks loading, maka koordinat visual $\mathbf{V}^*$ dihitung sebagai:
+  Dalam visualisasi biplot, seringkali terdapat perbedaan besaran (\textit{magnitude}) yang mencolok antara nilai skor objek dan loading indikator. Untuk menjamin keterbacaan grafik tanpa mengubah interpretasi statistik (sudut korelasi dan arah), dilakukan penyesuaian skala (\textit{visual scaling}) secara proporsional. Secara matematis, jika $\mathbf{F}$ adalah matriks skor dan $\mathbf{V}$ adalah matriks loading, maka koordinat visual $\mathbf{V}^*$ dihitung sebagai:
   \begin{equation}\label{eq:scaling_biplot}
       \mathbf{V}^* = \mathbf{V} \times \left( \frac{\max(|\mathbf{F}|)}{\max(|\mathbf{V}|)} \times c \right)
   \end{equation}
-  dengan $c$ adalah konstanta penyesuaian (umumnya bernilai $0{,}8$). Prosedur ini memastikan bahwa panah variabel tidak menumpuk di pusat koordinat dan dapat diobservasi secara simultan bersama titik objek dalam satu ruang tampilan \citep{gabriel1971, kroonenberg2008}.
+  dengan $c$ adalah konstanta penyesuaian (umumnya bernilai $0{,}8$). Prosedur ini memastikan bahwa panah indikator tidak menumpuk di pusat koordinat dan dapat diobservasi secara simultan bersama titik objek dalam satu ruang tampilan \citep{gabriel1971, kroonenberg2008}.
 \end{remark}
+
+% Catatan tambahan tentang penskalaan loadings sesuai literatur
+\noindent
+\textbf{Catatan literatur:} Selain skema penskalaan visual heuristik seperti Persamaan~\ref{eq:scaling_biplot}, literatur aljabar linear modern pada konteks biplot merekomendasikan pendekatan yang lebih konsisten secara matematis. Berdasarkan Abdi et al. (2012) -- yang membahas hubungan antara skor faktor dan loadings dalam konteks komponen utama dan analisis struktur tiga-arah -- salah satu prosedur yang direkomendasikan adalah mengalikan loading pada komponen ke-$\ell$ dengan \emph{nilai singular} (singular value) $\sigma_{\ell}$, di mana $\sigma_{\ell}=\sqrt{\lambda_{\ell}}$ dengan $\lambda_{\ell}$ adalah nilai eigen komponen tersebut. Secara sederhana:
+\begin{equation}
+  \mathbf{V}^*_{\,\cdot\ell} = \mathbf{V}_{\,\cdot\ell} \times \sigma_{\ell}
+\end{equation}
+Pendekatan ini membuat varians (kuadrat) dari koordinat loading pada dimensi ke-$\ell$ sepadan dengan nilai eigen dimensi tersebut, sehingga panah indikator menjadi commensurable dengan sebaran skor (tanpa mengubah arah atau sudut yang merepresentasikan korelasi). Perlu ditekankan bahwa prosedur ini bersifat representasional untuk tujuan visualisasi dan tidak merubah perhitungan statistik dasar seperti nilai eigen, skor, atau uji signifikansi (mis. permutasi). (Lihat \citet{abdi2012} untuk pembahasan teoretis dan alasan aljabar di balik transformasi ini.)
 
 PCA dan Biplot bekerja dengan baik untuk satu tabel data pada satu titik waktu. Namun, ketika data tersebar dalam $K$ matriks yang berbeda-beda seiring waktu, PCA konvensional tidak mampu menangkap dinamika evolusi struktural tersebut. Keterbatasan inilah yang mendorong pengembangan metode STATIS.
 
@@ -469,7 +478,7 @@ Tahap pertama bertujuan mentransformasi tabel data terstandardisasi terbobot set
 Elemen-elemen dalam $\mathbf{W}_k$ merepresentasikan kemiripan antar-objek pada situasi ke-$k$. Karena analisis data dilakukan dalam ruang bobot $\mathbf{D}$, maka perhitungan produk Hilbert--Schmidt dan koefisien RV pada tahap berikutnya mengikutsertakan matriks bobot diagonal $\mathbf{D}$ \citep{lavit94}.
 
 \begin{remark}[Interpretasi $\mathbf{W}_k$:]
-  Elemen $\mathbf{W}_k[i,j]$ yang bernilai besar menunjukkan bahwa objek ke-$i$ dan objek ke-$j$ memiliki profil variabel yang sangat mirip pada situasi ke-$k$, sedangkan nilai yang kecil menunjukkan perbedaan karakteristik yang mencolok.
+  Elemen $\mathbf{W}_k[i,j]$ yang bernilai besar menunjukkan bahwa objek ke-$i$ dan objek ke-$j$ memiliki profil indikator yang sangat mirip pada situasi ke-$k$, sedangkan nilai yang kecil menunjukkan perbedaan karakteristik yang mencolok.
 \end{remark}
 
 \subsection{\normalsize Tahap 2: Inter-struktur}
@@ -521,42 +530,42 @@ Hal ini menjamin bahwa dekomposisi spektral pada $\mathbf{W}_c$ akan selalu meng
 dengan $\mathbf{P}$ adalah matriks vektor eigen tergeneralisasi yang memenuhi syarat ortogonalitas terbobot $\mathbf{P}^T \mathbf{D} \mathbf{P} = \mathbf{I}$, dan $\mathbf{\Lambda}$ adalah matriks diagonal berisi nilai eigen terurut $\lambda_1 \ge \lambda_2 \ge \dots \ge 0$. Hal ini menunjukkan bahwa vektor eigen $\mathbf{P}$ dihitung dalam ruang metrik $\mathbf{D}$ untuk mengakomodasi heterogenitas objek \citep{lavit94}.
 \subsection{\normalsize Tahap 4: Ekstraksi Koordinat dan Relasi Transisi}
 
-Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan variabel dalam ruang bersama (biplot). Berdasarkan \citet{abdi2012}, terdapat dua skenario utama yang menentukan arah proyeksi koordinat (\textit{transition formulas}) berdasarkan fokus analisis (\textit{host space}):
+Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan indikator dalam ruang bersama (biplot). Berdasarkan \citet{abdi2012}, terdapat dua skenario utama yang menentukan arah proyeksi koordinat (\textit{transition formulas}) berdasarkan fokus analisis (\textit{host space}):
 
 \begin{enumerate}[label=\arabic*.]
     \item \textbf{Skenario 1: STATIS Klasik (Host = Wilayah/Objek)} \\
     Pada skenario ini, matriks produk skalar wilayah ($\mathbf{W}_c$) dijadikan fondasi utama. Karena bermula dari ruang observasi, skor kompromi wilayah ditarik langsung secara alami, sedangkan komponen lainnya diturunkan melalui proyeksi.
     \begin{itemize}
         \item \textbf{Skor Kompromi Wilayah ($\mathbf{F}_c$):} Diekstraksi langsung dari dekomposisi $\mathbf{W}_c$:
-        \begin{equation}
+        \begin{equation} \label{eq:skor_kompromi_wilayah}
             \mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2}
         \end{equation}
         \item \textbf{Skor Parsial Wilayah ($\mathbf{F}_k$):} Merujuk pada Persamaan (40) \citet{abdi2012}, skor parsial situasi $k$ dihitung dengan memproyeksikan matriks produk skalar situasi tersebut ke ruang kompromi:
-        \begin{equation}
+        \begin{equation} \label{eq:skor_parsial_wilayah}
             \mathbf{F}_k = \mathbf{W}_k \mathbf{D} \mathbf{P} \mathbf{\Lambda}_c^{-1/2}
         \end{equation}
         \item \textbf{Loading Parsial Indikator ($\mathbf{G}_k$):} Merujuk pada Persamaan (39) \citet{abdi2012}, ini merupakan relasi transisi yang memproyeksikan data ke ruang observasi:
-        \begin{equation}
+        \begin{equation} \label{eq:loading_parsial_indikator}
             \mathbf{G}_k = \mathbf{Z}_k^T \mathbf{D} \mathbf{F}_c \mathbf{\Lambda}_c^{-1/2}
         \end{equation}
         \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Pada skenario ini, loading kompromi ditarik sebagai rata-rata barisentrik dari loading parsialnya \citep{lavit94}:
-        \begin{equation}
+        \begin{equation} \label{eq:loading_kompromi_indikator}
             \mathbf{G}_c = \sum_{k=1}^K \alpha_k \mathbf{G}_k
         \end{equation}
     \end{itemize}
 
-    \item \textbf{Skenario 2: Dual STATIS / CovSTATIS (Host = Indikator/Variabel)} \\
-    Pada skenario ini, matriks korelasi indikator ($\mathbf{S}_c$) menjadi fondasi utama. Karena bermula dari ruang variabel, loading variabel ditarik secara alami, sedangkan posisi wilayah diturunkan melalui relasi transisi.
+    \item \textbf{Skenario 2: Dual STATIS / CovSTATIS (Host = Indikator/Indikator)} \\
+    Pada skenario ini, matriks korelasi indikator ($\mathbf{S}_c$) menjadi fondasi utama. Karena bermula dari ruang indikator, loading indikator ditarik secara alami, sedangkan posisi wilayah diturunkan melalui relasi transisi.
     \begin{itemize}
         \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Diekstraksi langsung dari dekomposisi $\mathbf{S}_c$:
         \begin{equation}
             \mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}
         \end{equation}
-        \item \textbf{Loading Parsial Indikator ($\mathbf{G}_k$):} Melalui hukum dualitas, matriks kovarians parsial ($\mathbf{S}_k$) diproyeksikan ke sumbu variabel \citep{lavit94}:
+        \item \textbf{Loading Parsial Indikator ($\mathbf{G}_k$):} Melalui hukum dualitas, matriks kovariansi parsial ($\mathbf{S}_k$) diproyeksikan ke sumbu indikator \citep{lavit94}:
         \begin{equation}
             \mathbf{G}_k = \mathbf{S}_k \mathbf{V}_c \mathbf{\Lambda}_s^{-1/2}
         \end{equation}
-        \item \textbf{Skor Parsial Wilayah ($\mathbf{F}_k$):} Merujuk pada Persamaan (25) \citet{abdi2012}, ini memproyeksikan data situasi $k$ ke ruang variabel:
+        \item \textbf{Skor Parsial Wilayah ($\mathbf{F}_k$):} Merujuk pada Persamaan (25) \citet{abdi2012}, ini memproyeksikan data situasi $k$ ke ruang indikator:
         \begin{equation}
             \mathbf{F}_k = \mathbf{Z}_k \mathbf{G}_c \mathbf{\Lambda}_s^{-1/2}
         \end{equation}
@@ -566,7 +575,7 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan variab
         \end{equation}
     \end{itemize}
 
-    \item \textbf{Transformasi Penyesuaian Visual Biplot:} Untuk kepentingan interpretasi praktis dan estetika grafik biplot, koordinat matematis hasil SVD murni ($\mathbf{F}_{svd}, \mathbf{G}_{svd}$) seringkali memerlukan transformasi tambahan tanpa mengubah hubungan korelasi antar-objek maupun variabel. Transformasi ini digunakan untuk menghasilkan kolom koordinat visual pada sistem:
+    \item \textbf{Transformasi Penyesuaian Visual Biplot:} Untuk kepentingan interpretasi praktis dan estetika grafik biplot, koordinat matematis hasil SVD murni ($\mathbf{F}_{svd}, \mathbf{G}_{svd}$) seringkali memerlukan transformasi tambahan tanpa mengubah hubungan korelasi antar-objek maupun indikator. Transformasi ini digunakan untuk menghasilkan kolom koordinat visual pada sistem:
     
     \begin{enumerate}[label=\alph*.]
         \item \textbf{Penyelarasan PC1 (\textit{Mirroring}):} Agar dimensi pertama (PC1) memiliki makna ekonomi yang konsisten (misalnya: nilai positif berarti wilayah lebih sejahtera), dilakukan operasi pembalikan tanda jika ditemukan korelasi negatif antara PC1 dengan indikator performa utama:
@@ -575,11 +584,11 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan variab
         \end{equation}
         di mana $\mathbf{X}$ merepresentasikan matriks $\mathbf{F}$ atau $\mathbf{G}$.
         
-        \item \textbf{Skalasi Proporsional (\textit{Scaling}):} Untuk menjaga agar panah variabel dan titik wilayah berada dalam rentang tampilan yang seimbang pada biplot, dilakukan penskalaan pada koordinat loading ($\mathbf{G}$) relatif terhadap sebaran skor ($\mathbf{F}$):
+        \item \textbf{Skalasi Proporsional (\textit{Scaling}):} Untuk menjaga agar panah indikator dan titik wilayah berada dalam rentang tampilan yang seimbang pada biplot, dilakukan penskalaan pada koordinat loading ($\mathbf{G}$) relatif terhadap sebaran skor ($\mathbf{F}$):
         \begin{equation}
             \mathbf{G}_{vis} = \mathbf{G}_{svd} \times \left( \frac{\max(|\mathbf{F}_{svd}|)}{\max(|\mathbf{G}_{svd}|)} \times 0,8 \right)
         \end{equation}
-        Faktor 0,8 digunakan untuk memastikan panah variabel tetap berada di dalam bingkai utama tanpa menutupi label wilayah.
+        Faktor 0,8 digunakan untuk memastikan panah indikator tetap berada di dalam bingkai utama tanpa menutupi label wilayah.
     \end{enumerate}
 \end{enumerate}
 
@@ -592,7 +601,7 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan variab
     \small
     \begin{tabular}{|l|c|c|}
     \hline
-    \textbf{Elemen yang Dicari} & \textbf{Skenario 1 (Host Objek)} & \textbf{Skenario 2 (Host Variabel)} \\ \hline
+    \textbf{Elemen yang Dicari} & \textbf{Skenario 1 (Host Objek)} & \textbf{Skenario 2 (Host Indikator)} \\ \hline
     Ekstraksi Utama & $\mathbf{F}_c = \mathbf{D}^{-1/2} \mathbf{P} \mathbf{\Lambda}_c^{1/2}$ & $\mathbf{G}_c = \mathbf{V}_c \mathbf{\Lambda}_s^{1/2}$ \\ \hline
     Relasi Proyeksi Sejenis & $\mathbf{F}_k = \mathbf{W}_k \mathbf{D} (\mathbf{P} \mathbf{\Lambda}_c^{-1/2})$ & $\mathbf{G}_k = \mathbf{S}_k (\mathbf{V}_c \mathbf{\Lambda}_s^{-1/2})$ \\ \hline
     Relasi Transisi Menyilang & $\mathbf{G}_k = \mathbf{Z}_k^T \mathbf{D} (\mathbf{F}_c \mathbf{\Lambda}_c^{-1/2})$ & $\mathbf{F}_k = \mathbf{Z}_k (\mathbf{G}_c \mathbf{\Lambda}_s^{-1/2})$ \\ \hline
@@ -655,7 +664,7 @@ Untuk memvalidasi hal ini, digunakan pengujian berbasis resampling, yaitu uji pe
 
 Sebagaimana diuraikan di atas, STATIS klasik \citep{lavit94} bersifat eksploratif: kesimpulan mengenai ada-tidaknya struktur bersama didasarkan semata-mata pada inspeksi grafis terhadap dekomposisi interstruktur. \citet{areia2008} memperluas kerangka ini dengan memperkenalkan formulasi model probabilistik yang memungkinkan inferensi statistik formal atas parameter interstruktur. Pengembangan ini dirangkum kembali dalam tinjauan metodologis terkini oleh \citet{oliveira2024}.
 
-\subsubsection*{Model Rank-1 dan Estimator Vektor Struktur}
+\subsubsection*{Model Rank-1 dan Estimator Vektor Struktur} \label{subsubsec:vector_struktur}
 
 Apabila titik-titik representasi situasi pada plot interstruktur cenderung terletak sepanjang sumbu eigen pertama \textit{struktur bersama derajat 1} (\textit{common structure of degree 1}) maka \citet{areia2008,mexia2007} mengajukan model berikut untuk matriks interstruktur $\mathbf{H}$:
 \begin{equation}\label{eq:model_struktur}
@@ -712,7 +721,7 @@ Konsep dasar dari visualisasi ini adalah memproyeksikan data tabel parsial (situ
 
 \subsection{\normalsize Proyeksi Lintasan (\textit{Trajectory})}
 
-Misalkan $\mathbf{Z}_k$ adalah matriks data terstandardisasi pada situasi ke-$k$ ($n \times p$) dan $\mathbf{V}_c$ (berukuran $p \times 2$) adalah matriks vektor eigen dari matriks kompromi variabel $\mathbf{S}_c$. Koordinat objek pada situasi ke-$k$, dinotasikan $\mathbf{F}_k$, dihitung melalui proyeksi linier \citep{lavit94}:
+Misalkan $\mathbf{Z}_k$ adalah matriks data terstandardisasi pada situasi ke-$k$ ($n \times p$) dan $\mathbf{V}_c$ (berukuran $p \times 2$) adalah matriks vektor eigen dari matriks kompromi indikator $\mathbf{S}_c$. Koordinat objek pada situasi ke-$k$, dinotasikan $\mathbf{F}_k$, dihitung melalui proyeksi linier \citep{lavit94}:
 \begin{equation}\label{eq:lintasan}
   \mathbf{F}_k = \mathbf{Z}_k \mathbf{V}_c
 \end{equation}
@@ -722,7 +731,7 @@ Persamaan ini memetakan kondisi setiap situasi ke dalam sistem koordinat global 
   \mathcal{T}_i = \{ \mathbf{f}_{i,1}, \mathbf{f}_{i,2}, \dots, \mathbf{f}_{i,K} \}
 \end{equation}
 
-Visualisasi trajektori menghubungkan titik-titik koordinat ini dengan garis berarah, sehingga pergeseran karakteristik objek, misalnya perpindahan dari kuadran dengan nilai variabel tertentu yang rendah menuju kuadran dengan nilai yang tinggi dapat teramati secara visual.
+Visualisasi trajektori menghubungkan titik-titik koordinat ini dengan garis berarah, sehingga perubahan karakteristik objek, misalnya perpindahan dari kuadran dengan nilai indikator tertentu yang rendah menuju kuadran dengan nilai yang tinggi dapat teramati secara visual.
 
 \subsection{\normalsize Jarak Euclidean antar Trajektori}
 
@@ -734,7 +743,7 @@ di mana $\mathbf{f}_{i,k} \in \mathbb{R}^2$ adalah koordinat proyeksi objek ke-$
 
 \subsection{\normalsize Rotasi Baseline}
 
-Solusi \textit{Principal Component Analysis} (PCA) dan Biplot bersifat invarian terhadap rotasi ortogonal, artinya rotasi sumbu koordinat tidak mengubah jarak antar-objek maupun sudut antar-variabel, namun dapat memudahkan interpretasi \citep{kroonenberg2008}. Dalam implementasi dashboard, rotasi digunakan untuk menyelaraskan suatu vektor referensi (variabel atau objek yang dipilih sebagai \textit{baseline}) dengan sumbu horizontal (PC1), sehingga perbandingan posisi relatif objek lain terhadap \textit{baseline} tersebut lebih intuitif.
+Solusi \textit{Principal Component Analysis} (PCA) dan Biplot bersifat invarian terhadap rotasi ortogonal, artinya rotasi sumbu koordinat tidak mengubah jarak antar-objek maupun sudut antar-indikator, namun dapat memudahkan interpretasi \citep{kroonenberg2008}. Dalam implementasi dashboard, rotasi digunakan untuk menyelaraskan suatu vektor referensi (indikator atau objek yang dipilih sebagai \textit{baseline}) dengan sumbu horizontal (PC1), sehingga perbandingan posisi relatif objek lain terhadap \textit{baseline} tersebut lebih intuitif.
 
 Sudut rotasi $\theta$ dihitung dari posisi vektor referensi $\mathbf{v} = (v_1, v_2)^T$ menggunakan fungsi $\operatorname{atan2}$:
 \begin{equation}
@@ -750,7 +759,7 @@ Dengan demikian, koordinat terotasi dihitung sebagai:
 \begin{equation}
     \mathbf{F}^* = \mathbf{F} \, \mathbf{Q}(\theta)
 \end{equation}
-Prosedur ini diterapkan secara seragam ke semua plot (skor, loading, dan trajektori seluruh situasi waktu) agar konsistensi referensi spasial tetap terjaga. Hal ini memungkinkan peneliti mensejajarkan variabel tertentu dengan sumbu horizontal untuk memudahkan interpretasi posisi relatif antar-objek.
+Prosedur ini diterapkan secara seragam ke semua plot (skor, loading, dan trajektori seluruh situasi waktu) agar konsistensi referensi spasial tetap terjaga. Hal ini memungkinkan peneliti mensejajarkan indikator tertentu dengan sumbu horizontal untuk memudahkan interpretasi posisi relatif antar-objek.
 
 %-----------------------------------------------------------------------------%
 % --- 2.13 ---
@@ -780,7 +789,7 @@ Jarak vertikal cabang dendrogram secara visual mengindikasikan ketidaksamaan ant
 
 \subsection{\normalsize Matriks Transisi Temporal}
 
-Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika pergeseran keanggotaan objek antar-cluster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah cluster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada cluster $x$ di situasi $k_1$ namun berpindah ke cluster $y$ di situasi $k_2$:
+Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika perubahan keanggotaan objek antar-cluster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah cluster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada cluster $x$ di situasi $k_1$ namun berpindah ke cluster $y$ di situasi $k_2$:
 \begin{equation}
     \mathbf{T} = 
     \begin{pmatrix}
@@ -805,7 +814,7 @@ Matriks jarak ini kemudian diselesaikan menggunakan \textit{Hungarian Algorithm}
 \begin{equation} \label{eq:hungarian_min}
     \min \sum_{i=1}^{k} \sum_{j=1}^{k} D(c_{1i}, c_{2j}) \cdot x_{ij}
 \end{equation}
-dengan variabel biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Cluster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
+dengan indikator biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Cluster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
 
 \subsection{\normalsize Kategorisasi dan Perankingan Cluster}
 
@@ -880,7 +889,7 @@ Plotly adalah pustaka visualisasi data deklaratif yang memungkinkan pembuatan gr
 
 % Nodes
 \node (start)  [startstop]                             {Mulai};
-\node (input)  [io, below=of start]                    {Input Pengguna \\ (Filter, Parameter \& Dropdown)};
+\node (input)  [io, below=of start]                    {Input (Filter, Parameter \& Dropdown)};
 \node (call)   [process, below=of input]               {Trigger Callback \\ (Dash Reactive Mechanism)};
 \node (comp)   [process, below=of call]                {Komputasi \& Pemrosesan Data \\ (Z-Score, STATIS Core Calculation)};
 \node (anal)   [process, below=of comp]                {Analisis Statistik Lanjut \\ (Clustering, Moran's $I$, Permutation)};

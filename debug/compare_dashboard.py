@@ -631,8 +631,8 @@ def update_dashboard(selected_folder):
     categories = {
         'core': {
             'label': '💎 Kompromis & Trajektori (Core)',
-            'files': ['scree_plot.png', 'rv_heatmap.png', 'statis_trajectories.png', 
-                      'statis_trajectories_highlight.png', 'compromise_map.png', 'compromise_biplot_matplotlib.png',
+            'files': ['scree_plot.png', 'rv_heatmap.png', 'trajectory_scores.png', 'trajectory_loadings.png',
+                      'compromise_map.png', 'compromise_biplot.png',
                       'variable_contribution.png', 'variable_cos2.png', 'beta_trajectory.png'],
             'elements': []
         },

@@ -1,13 +1,5 @@
 [
   {
-    "name": "cluster_scatter_statis.png",
-    "caption": "Cluster Scatter Statis",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_scatter_statis.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "cluster_scatter_statis_2020.png",
     "caption": "Cluster Scatter Statis 2020",
     "type": "image",
@@ -56,14 +48,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "dendrogram_compromise.png",
-    "caption": "Dendrogram Compromise",
-    "type": "image",
-    "src": "/output_sample/scenario1/dendrogram_compromise.png",
-    "group": "Dendrogram",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "elbow_plot_2020.png",
     "caption": "Elbow Plot 2020",
     "type": "image",
@@ -88,6 +72,22 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "beta_trajectory.png",
+    "caption": "Beta Trajectory",
+    "type": "image",
+    "src": "/output_sample/scenario1/beta_trajectory.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compromise_biplot.png",
+    "caption": "Compromise Biplot",
+    "type": "image",
+    "src": "/output_sample/scenario1/compromise_biplot.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "compromise_map.png",
     "caption": "Compromise Map",
     "type": "image",
@@ -96,10 +96,18 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "loading_plot.png",
-    "caption": "Loading Plot",
+    "name": "compromise_pie.png",
+    "caption": "Compromise Pie",
     "type": "image",
-    "src": "/output_sample/scenario1/loading_plot.png",
+    "src": "/output_sample/scenario1/compromise_pie.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "compromise_scatter.png",
+    "caption": "Compromise Scatter",
+    "type": "image",
+    "src": "/output_sample/scenario1/compromise_scatter.png",
     "group": "Hasil Utama STATIS",
     "scenario": "Scenario 1"
   },
@@ -128,10 +136,18 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "statis_trajectories.png",
-    "caption": "Statis Trajectories",
+    "name": "trajectory_loadings.png",
+    "caption": "Trajectory Loadings",
     "type": "image",
-    "src": "/output_sample/scenario1/statis_trajectories.png",
+    "src": "/output_sample/scenario1/trajectory_loadings.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "trajectory_scores.png",
+    "caption": "Trajectory Scores",
+    "type": "image",
+    "src": "/output_sample/scenario1/trajectory_scores.png",
     "group": "Hasil Utama STATIS",
     "scenario": "Scenario 1"
   },
@@ -149,78 +165,6 @@
     "type": "image",
     "src": "/output_sample/scenario1/variable_cos2.png",
     "group": "Hasil Utama STATIS",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "beta_trajectory.png",
-    "caption": "Beta Trajectory",
-    "type": "image",
-    "src": "/output_sample/scenario1/beta_trajectory.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_pie_statis.png",
-    "caption": "Cluster Pie Statis",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_pie_statis.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_pie_statis_2020.png",
-    "caption": "Cluster Pie Statis 2020",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_pie_statis_2020.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_pie_statis_2021.png",
-    "caption": "Cluster Pie Statis 2021",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_pie_statis_2021.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_pie_statis_2022.png",
-    "caption": "Cluster Pie Statis 2022",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_pie_statis_2022.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "compromise_biplot_matplotlib.png",
-    "caption": "Compromise Biplot Matplotlib",
-    "type": "image",
-    "src": "/output_sample/scenario1/compromise_biplot_matplotlib.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "compromise_pie.png",
-    "caption": "Compromise Pie",
-    "type": "image",
-    "src": "/output_sample/scenario1/compromise_pie.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "compromise_scatter.png",
-    "caption": "Compromise Scatter",
-    "type": "image",
-    "src": "/output_sample/scenario1/compromise_scatter.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "compromise_statis.png",
-    "caption": "Compromise Statis",
-    "type": "image",
-    "src": "/output_sample/scenario1/compromise_statis.png",
-    "group": "Lain-lain",
     "scenario": "Scenario 1"
   },
   {
@@ -268,22 +212,6 @@
     "caption": "Output Perm Statis",
     "type": "text",
     "src": "/output_sample/scenario1/output_perm_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "scatter_statis.png",
-    "caption": "Scatter Statis",
-    "type": "image",
-    "src": "/output_sample/scenario1/scatter_statis.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "statis_trajectories_highlight.png",
-    "caption": "Statis Trajectories Highlight",
-    "type": "image",
-    "src": "/output_sample/scenario1/statis_trajectories_highlight.png",
     "group": "Lain-lain",
     "scenario": "Scenario 1"
   },
@@ -776,38 +704,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "cluster_map_biplot_2020.png",
-    "caption": "Cluster Map Biplot 2020",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_map_biplot_2020.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2021.png",
-    "caption": "Cluster Map Biplot 2021",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_map_biplot_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_biplot_2022.png",
-    "caption": "Cluster Map Biplot 2022",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_map_biplot_2022.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_map_statis.png",
-    "caption": "Cluster Map Statis",
-    "type": "image",
-    "src": "/output_sample/scenario1/cluster_map_statis.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "cluster_map_statis_2020.png",
     "caption": "Cluster Map Statis 2020",
     "type": "image",
@@ -828,6 +724,30 @@
     "caption": "Cluster Map Statis 2022",
     "type": "image",
     "src": "/output_sample/scenario1/cluster_map_statis_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2020.png",
+    "caption": "Cluster Pie Statis 2020",
+    "type": "image",
+    "src": "/output_sample/scenario1/cluster_pie_statis_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2021.png",
+    "caption": "Cluster Pie Statis 2021",
+    "type": "image",
+    "src": "/output_sample/scenario1/cluster_pie_statis_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "cluster_pie_statis_2022.png",
+    "caption": "Cluster Pie Statis 2022",
+    "type": "image",
+    "src": "/output_sample/scenario1/cluster_pie_statis_2022.png",
     "group": "Peta Klaster",
     "scenario": "Scenario 1"
   },
@@ -1024,10 +944,10 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_cluster_members.tex",
-    "caption": "Output Table Cluster Members",
+    "name": "output_table_compromise_cluster_sum_name.tex",
+    "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_cluster_members.tex",
+    "src": "/output_sample/scenario1/output_table_compromise_cluster_sum_name.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1184,34 +1104,34 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_ipm_matrix_name_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Name 2020X2021",
+    "name": "output_table_ipm_name_2020x2021.tex",
+    "caption": "Output Table Ipm Name 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_ipm_matrix_name_2020x2021.tex",
+    "src": "/output_sample/scenario1/output_table_ipm_name_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_ipm_matrix_name_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Name 2021X2022",
+    "name": "output_table_ipm_name_2021x2022.tex",
+    "caption": "Output Table Ipm Name 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_ipm_matrix_name_2021x2022.tex",
+    "src": "/output_sample/scenario1/output_table_ipm_name_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_ipm_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Sum 2020X2021",
+    "name": "output_table_ipm_sum_2020x2021.tex",
+    "caption": "Output Table Ipm Sum 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_ipm_matrix_sum_2020x2021.tex",
+    "src": "/output_sample/scenario1/output_table_ipm_sum_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_ipm_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Sum 2021X2022",
+    "name": "output_table_ipm_sum_2021x2022.tex",
+    "caption": "Output Table Ipm Sum 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_ipm_matrix_sum_2021x2022.tex",
+    "src": "/output_sample/scenario1/output_table_ipm_sum_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1352,18 +1272,34 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_name.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "name": "output_table_statis_transition_name_2020x2021.tex",
+    "caption": "Output Table Statis Transition Name 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_statis_vs_ipm_avg_name.tex",
+    "src": "/output_sample/scenario1/output_table_statis_transition_name_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_sum.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "name": "output_table_statis_transition_name_2021x2022.tex",
+    "caption": "Output Table Statis Transition Name 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario1/output_table_statis_vs_ipm_avg_sum.tex",
+    "src": "/output_sample/scenario1/output_table_statis_transition_name_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_transition_sum_2020x2021.tex",
+    "caption": "Output Table Statis Transition Sum 2020X2021",
+    "type": "text",
+    "src": "/output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_statis_transition_sum_2021x2022.tex",
+    "caption": "Output Table Statis Transition Sum 2021X2022",
+    "type": "text",
+    "src": "/output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -1424,46 +1360,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_transition_matrix_name_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Name 2020X2021",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_transition_matrix_name_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_transition_matrix_name_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Name 2021X2022",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_transition_matrix_name_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Sum 2020X2021",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_transition_matrix_sum_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Sum 2021X2022",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_transition_matrix_sum_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "cluster_scatter_statis.png",
-    "caption": "Cluster Scatter Statis",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_scatter_statis.png",
-    "group": "Biplot Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "cluster_scatter_statis_2020.png",
     "caption": "Cluster Scatter Statis 2020",
     "type": "image",
@@ -1512,14 +1408,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "dendrogram_compromise.png",
-    "caption": "Dendrogram Compromise",
-    "type": "image",
-    "src": "/output_sample/scenario2/dendrogram_compromise.png",
-    "group": "Dendrogram",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "elbow_plot_2020.png",
     "caption": "Elbow Plot 2020",
     "type": "image",
@@ -1544,6 +1432,22 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "beta_trajectory.png",
+    "caption": "Beta Trajectory",
+    "type": "image",
+    "src": "/output_sample/scenario2/beta_trajectory.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compromise_biplot.png",
+    "caption": "Compromise Biplot",
+    "type": "image",
+    "src": "/output_sample/scenario2/compromise_biplot.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "compromise_map.png",
     "caption": "Compromise Map",
     "type": "image",
@@ -1552,10 +1456,18 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "loading_plot.png",
-    "caption": "Loading Plot",
+    "name": "compromise_pie.png",
+    "caption": "Compromise Pie",
     "type": "image",
-    "src": "/output_sample/scenario2/loading_plot.png",
+    "src": "/output_sample/scenario2/compromise_pie.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "compromise_scatter.png",
+    "caption": "Compromise Scatter",
+    "type": "image",
+    "src": "/output_sample/scenario2/compromise_scatter.png",
     "group": "Hasil Utama STATIS",
     "scenario": "Scenario 2"
   },
@@ -1584,10 +1496,18 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "statis_trajectories.png",
-    "caption": "Statis Trajectories",
+    "name": "trajectory_loadings.png",
+    "caption": "Trajectory Loadings",
     "type": "image",
-    "src": "/output_sample/scenario2/statis_trajectories.png",
+    "src": "/output_sample/scenario2/trajectory_loadings.png",
+    "group": "Hasil Utama STATIS",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "trajectory_scores.png",
+    "caption": "Trajectory Scores",
+    "type": "image",
+    "src": "/output_sample/scenario2/trajectory_scores.png",
     "group": "Hasil Utama STATIS",
     "scenario": "Scenario 2"
   },
@@ -1605,78 +1525,6 @@
     "type": "image",
     "src": "/output_sample/scenario2/variable_cos2.png",
     "group": "Hasil Utama STATIS",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "beta_trajectory.png",
-    "caption": "Beta Trajectory",
-    "type": "image",
-    "src": "/output_sample/scenario2/beta_trajectory.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_pie_statis.png",
-    "caption": "Cluster Pie Statis",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_pie_statis.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_pie_statis_2020.png",
-    "caption": "Cluster Pie Statis 2020",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_pie_statis_2020.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_pie_statis_2021.png",
-    "caption": "Cluster Pie Statis 2021",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_pie_statis_2021.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_pie_statis_2022.png",
-    "caption": "Cluster Pie Statis 2022",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_pie_statis_2022.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "compromise_biplot_matplotlib.png",
-    "caption": "Compromise Biplot Matplotlib",
-    "type": "image",
-    "src": "/output_sample/scenario2/compromise_biplot_matplotlib.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "compromise_pie.png",
-    "caption": "Compromise Pie",
-    "type": "image",
-    "src": "/output_sample/scenario2/compromise_pie.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "compromise_scatter.png",
-    "caption": "Compromise Scatter",
-    "type": "image",
-    "src": "/output_sample/scenario2/compromise_scatter.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "compromise_statis.png",
-    "caption": "Compromise Statis",
-    "type": "image",
-    "src": "/output_sample/scenario2/compromise_statis.png",
-    "group": "Lain-lain",
     "scenario": "Scenario 2"
   },
   {
@@ -1724,22 +1572,6 @@
     "caption": "Output Perm Statis",
     "type": "text",
     "src": "/output_sample/scenario2/output_perm_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "scatter_statis.png",
-    "caption": "Scatter Statis",
-    "type": "image",
-    "src": "/output_sample/scenario2/scatter_statis.png",
-    "group": "Lain-lain",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "statis_trajectories_highlight.png",
-    "caption": "Statis Trajectories Highlight",
-    "type": "image",
-    "src": "/output_sample/scenario2/statis_trajectories_highlight.png",
     "group": "Lain-lain",
     "scenario": "Scenario 2"
   },
@@ -2232,38 +2064,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "cluster_map_biplot_2020.png",
-    "caption": "Cluster Map Biplot 2020",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_map_biplot_2020.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2021.png",
-    "caption": "Cluster Map Biplot 2021",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_map_biplot_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_biplot_2022.png",
-    "caption": "Cluster Map Biplot 2022",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_map_biplot_2022.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_map_statis.png",
-    "caption": "Cluster Map Statis",
-    "type": "image",
-    "src": "/output_sample/scenario2/cluster_map_statis.png",
-    "group": "Peta Klaster",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "cluster_map_statis_2020.png",
     "caption": "Cluster Map Statis 2020",
     "type": "image",
@@ -2284,6 +2084,30 @@
     "caption": "Cluster Map Statis 2022",
     "type": "image",
     "src": "/output_sample/scenario2/cluster_map_statis_2022.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2020.png",
+    "caption": "Cluster Pie Statis 2020",
+    "type": "image",
+    "src": "/output_sample/scenario2/cluster_pie_statis_2020.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2021.png",
+    "caption": "Cluster Pie Statis 2021",
+    "type": "image",
+    "src": "/output_sample/scenario2/cluster_pie_statis_2021.png",
+    "group": "Peta Klaster",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "cluster_pie_statis_2022.png",
+    "caption": "Cluster Pie Statis 2022",
+    "type": "image",
+    "src": "/output_sample/scenario2/cluster_pie_statis_2022.png",
     "group": "Peta Klaster",
     "scenario": "Scenario 2"
   },
@@ -2480,10 +2304,10 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_cluster_members.tex",
-    "caption": "Output Table Cluster Members",
+    "name": "output_table_compromise_cluster_sum_name.tex",
+    "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_cluster_members.tex",
+    "src": "/output_sample/scenario2/output_table_compromise_cluster_sum_name.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2640,34 +2464,34 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_ipm_matrix_name_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Name 2020X2021",
+    "name": "output_table_ipm_name_2020x2021.tex",
+    "caption": "Output Table Ipm Name 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_ipm_matrix_name_2020x2021.tex",
+    "src": "/output_sample/scenario2/output_table_ipm_name_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_ipm_matrix_name_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Name 2021X2022",
+    "name": "output_table_ipm_name_2021x2022.tex",
+    "caption": "Output Table Ipm Name 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_ipm_matrix_name_2021x2022.tex",
+    "src": "/output_sample/scenario2/output_table_ipm_name_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_ipm_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Sum 2020X2021",
+    "name": "output_table_ipm_sum_2020x2021.tex",
+    "caption": "Output Table Ipm Sum 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_ipm_matrix_sum_2020x2021.tex",
+    "src": "/output_sample/scenario2/output_table_ipm_sum_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_ipm_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Sum 2021X2022",
+    "name": "output_table_ipm_sum_2021x2022.tex",
+    "caption": "Output Table Ipm Sum 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_ipm_matrix_sum_2021x2022.tex",
+    "src": "/output_sample/scenario2/output_table_ipm_sum_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2808,18 +2632,34 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_name.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Name",
+    "name": "output_table_statis_transition_name_2020x2021.tex",
+    "caption": "Output Table Statis Transition Name 2020X2021",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_statis_vs_ipm_avg_name.tex",
+    "src": "/output_sample/scenario2/output_table_statis_transition_name_2020x2021.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_statis_vs_ipm_avg_sum.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Sum",
+    "name": "output_table_statis_transition_name_2021x2022.tex",
+    "caption": "Output Table Statis Transition Name 2021X2022",
     "type": "text",
-    "src": "/output_sample/scenario2/output_table_statis_vs_ipm_avg_sum.tex",
+    "src": "/output_sample/scenario2/output_table_statis_transition_name_2021x2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_transition_sum_2020x2021.tex",
+    "caption": "Output Table Statis Transition Sum 2020X2021",
+    "type": "text",
+    "src": "/output_sample/scenario2/output_table_statis_transition_sum_2020x2021.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_statis_transition_sum_2021x2022.tex",
+    "caption": "Output Table Statis Transition Sum 2021X2022",
+    "type": "text",
+    "src": "/output_sample/scenario2/output_table_statis_transition_sum_2021x2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -2880,62 +2720,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_transition_matrix_name_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Name 2020X2021",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_transition_matrix_name_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_transition_matrix_name_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Name 2021X2022",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_transition_matrix_name_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Sum 2020X2021",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_transition_matrix_sum_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Sum 2021X2022",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_transition_matrix_sum_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "cluster_biplot_2020.png",
-    "caption": "Cluster Biplot 2020",
-    "type": "image",
-    "src": "/output_sample/cluster_biplot_2020.png",
-    "group": "Biplot Klaster",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_biplot_2021.png",
-    "caption": "Cluster Biplot 2021",
-    "type": "image",
-    "src": "/output_sample/cluster_biplot_2021.png",
-    "group": "Biplot Klaster",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_biplot_2022.png",
-    "caption": "Cluster Biplot 2022",
-    "type": "image",
-    "src": "/output_sample/cluster_biplot_2022.png",
-    "group": "Biplot Klaster",
-    "scenario": "Shared"
-  },
-  {
     "name": "cluster_scatter_biplot_2020.png",
     "caption": "Cluster Scatter Biplot 2020",
     "type": "image",
@@ -2992,82 +2776,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_ipm_2020.png",
-    "caption": "Boxplot Ipm 2020",
-    "type": "image",
-    "src": "/output_sample/boxplot_ipm_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2021.png",
-    "caption": "Boxplot Ipm 2021",
-    "type": "image",
-    "src": "/output_sample/boxplot_ipm_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ipm_2022.png",
-    "caption": "Boxplot Ipm 2022",
-    "type": "image",
-    "src": "/output_sample/boxplot_ipm_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2020.png",
-    "caption": "Boxplot Jp 2020",
-    "type": "image",
-    "src": "/output_sample/boxplot_jp_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2021.png",
-    "caption": "Boxplot Jp 2021",
-    "type": "image",
-    "src": "/output_sample/boxplot_jp_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_jp_2022.png",
-    "caption": "Boxplot Jp 2022",
-    "type": "image",
-    "src": "/output_sample/boxplot_jp_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_ppm.png",
     "caption": "Boxplot Ppm",
     "type": "image",
     "src": "/output_sample/boxplot_ppm.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2020.png",
-    "caption": "Boxplot Ppm 2020",
-    "type": "image",
-    "src": "/output_sample/boxplot_ppm_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2021.png",
-    "caption": "Boxplot Ppm 2021",
-    "type": "image",
-    "src": "/output_sample/boxplot_ppm_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_ppm_2022.png",
-    "caption": "Boxplot Ppm 2022",
-    "type": "image",
-    "src": "/output_sample/boxplot_ppm_2022.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -3080,58 +2792,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "boxplot_rls_2020.png",
-    "caption": "Boxplot Rls 2020",
-    "type": "image",
-    "src": "/output_sample/boxplot_rls_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2021.png",
-    "caption": "Boxplot Rls 2021",
-    "type": "image",
-    "src": "/output_sample/boxplot_rls_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_rls_2022.png",
-    "caption": "Boxplot Rls 2022",
-    "type": "image",
-    "src": "/output_sample/boxplot_rls_2022.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
     "name": "boxplot_tpt.png",
     "caption": "Boxplot Tpt",
     "type": "image",
     "src": "/output_sample/boxplot_tpt.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2020.png",
-    "caption": "Boxplot Tpt 2020",
-    "type": "image",
-    "src": "/output_sample/boxplot_tpt_2020.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2021.png",
-    "caption": "Boxplot Tpt 2021",
-    "type": "image",
-    "src": "/output_sample/boxplot_tpt_2021.png",
-    "group": "Distribusi Variabel",
-    "scenario": "Shared"
-  },
-  {
-    "name": "boxplot_tpt_2022.png",
-    "caption": "Boxplot Tpt 2022",
-    "type": "image",
-    "src": "/output_sample/boxplot_tpt_2022.png",
     "group": "Distribusi Variabel",
     "scenario": "Shared"
   },
@@ -3160,75 +2824,27 @@
     "scenario": "Shared"
   },
   {
-    "name": "permutation_histogram.png",
-    "caption": "Permutation Histogram",
+    "name": "corr_heatmap_2020.png",
+    "caption": "Corr Heatmap 2020",
     "type": "image",
-    "src": "/output_sample/permutation_histogram.png",
-    "group": "Hasil Utama STATIS",
+    "src": "/output_sample/corr_heatmap_2020.png",
+    "group": "Korelasi & Diagnostik",
     "scenario": "Shared"
   },
   {
-    "name": "rv_heatmap.png",
-    "caption": "Rv Heatmap",
+    "name": "corr_heatmap_2021.png",
+    "caption": "Corr Heatmap 2021",
     "type": "image",
-    "src": "/output_sample/rv_heatmap.png",
-    "group": "Hasil Utama STATIS",
+    "src": "/output_sample/corr_heatmap_2021.png",
+    "group": "Korelasi & Diagnostik",
     "scenario": "Shared"
   },
   {
-    "name": "scree_plot.png",
-    "caption": "Scree Plot",
+    "name": "corr_heatmap_2022.png",
+    "caption": "Corr Heatmap 2022",
     "type": "image",
-    "src": "/output_sample/scree_plot.png",
-    "group": "Hasil Utama STATIS",
-    "scenario": "Shared"
-  },
-  {
-    "name": "beta_trajectory.png",
-    "caption": "Beta Trajectory",
-    "type": "image",
-    "src": "/output_sample/beta_trajectory.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_compromise_biplot.png",
-    "caption": "Cluster Compromise Biplot",
-    "type": "image",
-    "src": "/output_sample/cluster_compromise_biplot.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_compromise_map.png",
-    "caption": "Cluster Compromise Map",
-    "type": "image",
-    "src": "/output_sample/cluster_compromise_map.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_pie_biplot_2020.png",
-    "caption": "Cluster Pie Biplot 2020",
-    "type": "image",
-    "src": "/output_sample/cluster_pie_biplot_2020.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_pie_biplot_2021.png",
-    "caption": "Cluster Pie Biplot 2021",
-    "type": "image",
-    "src": "/output_sample/cluster_pie_biplot_2021.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_pie_biplot_2022.png",
-    "caption": "Cluster Pie Biplot 2022",
-    "type": "image",
-    "src": "/output_sample/cluster_pie_biplot_2022.png",
-    "group": "Lain-lain",
+    "src": "/output_sample/corr_heatmap_2022.png",
+    "group": "Korelasi & Diagnostik",
     "scenario": "Shared"
   },
   {
@@ -3236,7 +2852,7 @@
     "caption": "Ipm Map 2020",
     "type": "image",
     "src": "/output_sample/ipm_map_2020.png",
-    "group": "Lain-lain",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3244,7 +2860,7 @@
     "caption": "Ipm Map 2021",
     "type": "image",
     "src": "/output_sample/ipm_map_2021.png",
-    "group": "Lain-lain",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3252,7 +2868,7 @@
     "caption": "Ipm Map 2022",
     "type": "image",
     "src": "/output_sample/ipm_map_2022.png",
-    "group": "Lain-lain",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3260,7 +2876,7 @@
     "caption": "Ipm Pie 2020",
     "type": "image",
     "src": "/output_sample/ipm_pie_2020.png",
-    "group": "Lain-lain",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3268,7 +2884,7 @@
     "caption": "Ipm Pie 2021",
     "type": "image",
     "src": "/output_sample/ipm_pie_2021.png",
-    "group": "Lain-lain",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3276,183 +2892,7 @@
     "caption": "Ipm Pie 2022",
     "type": "image",
     "src": "/output_sample/ipm_pie_2022.png",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_F_c.tex",
-    "caption": "Matrix F C",
-    "type": "text",
-    "src": "/output_sample/matrix_F_c.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_G_c.tex",
-    "caption": "Matrix G C",
-    "type": "text",
-    "src": "/output_sample/matrix_G_c.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_V_c.tex",
-    "caption": "Matrix V C",
-    "type": "text",
-    "src": "/output_sample/matrix_V_c.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_X_2020.tex",
-    "caption": "Matrix X 2020",
-    "type": "text",
-    "src": "/output_sample/matrix_X_2020.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_X_2021.tex",
-    "caption": "Matrix X 2021",
-    "type": "text",
-    "src": "/output_sample/matrix_X_2021.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_X_2022.tex",
-    "caption": "Matrix X 2022",
-    "type": "text",
-    "src": "/output_sample/matrix_X_2022.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_Z_2020.tex",
-    "caption": "Matrix Z 2020",
-    "type": "text",
-    "src": "/output_sample/matrix_Z_2020.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_Z_2021.tex",
-    "caption": "Matrix Z 2021",
-    "type": "text",
-    "src": "/output_sample/matrix_Z_2021.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "matrix_Z_2022.tex",
-    "caption": "Matrix Z 2022",
-    "type": "text",
-    "src": "/output_sample/matrix_Z_2022.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_core_statis.tex",
-    "caption": "Output Core Statis",
-    "type": "text",
-    "src": "/output_sample/output_core_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_macros.tex",
-    "caption": "Output Macros",
-    "type": "text",
-    "src": "/output_sample/output_macros.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_perm_statis.tex",
-    "caption": "Output Perm Statis",
-    "type": "text",
-    "src": "/output_sample/output_perm_statis.tex",
-    "group": "Lain-lain",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_biplot_vs_statis_2020.png",
-    "caption": "Compare Map Biplot Vs Statis 2020",
-    "type": "image",
-    "src": "/output_sample/compare_map_biplot_vs_statis_2020.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_biplot_vs_statis_2021.png",
-    "caption": "Compare Map Biplot Vs Statis 2021",
-    "type": "image",
-    "src": "/output_sample/compare_map_biplot_vs_statis_2021.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_biplot_vs_statis_2022.png",
-    "caption": "Compare Map Biplot Vs Statis 2022",
-    "type": "image",
-    "src": "/output_sample/compare_map_biplot_vs_statis_2022.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_trans_biplot_2020x2021.png",
-    "caption": "Compare Map Trans Biplot 2020X2021",
-    "type": "image",
-    "src": "/output_sample/compare_map_trans_biplot_2020x2021.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_trans_biplot_2021x2022.png",
-    "caption": "Compare Map Trans Biplot 2021X2022",
-    "type": "image",
-    "src": "/output_sample/compare_map_trans_biplot_2021x2022.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_trans_statis_2020x2021.png",
-    "caption": "Compare Map Trans Statis 2020X2021",
-    "type": "image",
-    "src": "/output_sample/compare_map_trans_statis_2020x2021.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "compare_map_trans_statis_2021x2022.png",
-    "caption": "Compare Map Trans Statis 2021X2022",
-    "type": "image",
-    "src": "/output_sample/compare_map_trans_statis_2021x2022.png",
-    "group": "Perbandingan Bersandingan",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_map_2020.png",
-    "caption": "Cluster Map 2020",
-    "type": "image",
-    "src": "/output_sample/cluster_map_2020.png",
-    "group": "Peta Klaster",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_map_2021.png",
-    "caption": "Cluster Map 2021",
-    "type": "image",
-    "src": "/output_sample/cluster_map_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_map_2022.png",
-    "caption": "Cluster Map 2022",
-    "type": "image",
-    "src": "/output_sample/cluster_map_2022.png",
-    "group": "Peta Klaster",
+    "group": "Peta & Distribusi IPM",
     "scenario": "Shared"
   },
   {
@@ -3480,34 +2920,26 @@
     "scenario": "Shared"
   },
   {
-    "name": "cluster_map_statis.png",
-    "caption": "Cluster Map Statis",
+    "name": "cluster_pie_biplot_2020.png",
+    "caption": "Cluster Pie Biplot 2020",
     "type": "image",
-    "src": "/output_sample/cluster_map_statis.png",
+    "src": "/output_sample/cluster_pie_biplot_2020.png",
     "group": "Peta Klaster",
     "scenario": "Shared"
   },
   {
-    "name": "cluster_map_statis_2020.png",
-    "caption": "Cluster Map Statis 2020",
+    "name": "cluster_pie_biplot_2021.png",
+    "caption": "Cluster Pie Biplot 2021",
     "type": "image",
-    "src": "/output_sample/cluster_map_statis_2020.png",
+    "src": "/output_sample/cluster_pie_biplot_2021.png",
     "group": "Peta Klaster",
     "scenario": "Shared"
   },
   {
-    "name": "cluster_map_statis_2021.png",
-    "caption": "Cluster Map Statis 2021",
+    "name": "cluster_pie_biplot_2022.png",
+    "caption": "Cluster Pie Biplot 2022",
     "type": "image",
-    "src": "/output_sample/cluster_map_statis_2021.png",
-    "group": "Peta Klaster",
-    "scenario": "Shared"
-  },
-  {
-    "name": "cluster_map_statis_2022.png",
-    "caption": "Cluster Map Statis 2022",
-    "type": "image",
-    "src": "/output_sample/cluster_map_statis_2022.png",
+    "src": "/output_sample/cluster_pie_biplot_2022.png",
     "group": "Peta Klaster",
     "scenario": "Shared"
   },
@@ -3536,14 +2968,6 @@
     "scenario": "Shared"
   },
   {
-    "name": "output_table_alpha.tex",
-    "caption": "Output Table Alpha",
-    "type": "text",
-    "src": "/output_sample/output_table_alpha.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
     "name": "output_table_alpha_s.tex",
     "caption": "Output Table Alpha S",
     "type": "text",
@@ -3556,22 +2980,6 @@
     "caption": "Output Table Alpha W",
     "type": "text",
     "src": "/output_sample/output_table_alpha_w.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_beta_provinsi.tex",
-    "caption": "Output Table Beta Provinsi",
-    "type": "text",
-    "src": "/output_sample/output_table_beta_provinsi.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_beta_vec.tex",
-    "caption": "Output Table Beta Vec",
-    "type": "text",
-    "src": "/output_sample/output_table_beta_vec.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -3604,158 +3012,6 @@
     "caption": "Output Table Biplot Transition Sum 2021X2022",
     "type": "text",
     "src": "/output_sample/output_table_biplot_transition_sum_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Name 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Name 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Name 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Sum 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Sum 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_compare_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Compare Sum 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_compare_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_biplot_vs_statis_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cluster_members.tex",
-    "caption": "Output Table Cluster Members",
-    "type": "text",
-    "src": "/output_sample/output_table_cluster_members.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_name_2020.tex",
-    "caption": "Output Table Cross Matrix Name 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_name_2021.tex",
-    "caption": "Output Table Cross Matrix Name 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_name_2022.tex",
-    "caption": "Output Table Cross Matrix Name 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_sum_2020.tex",
-    "caption": "Output Table Cross Matrix Sum 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_sum_2021.tex",
-    "caption": "Output Table Cross Matrix Sum 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_cross_matrix_sum_2022.tex",
-    "caption": "Output Table Cross Matrix Sum 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_cross_matrix_sum_2022.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -3808,14 +3064,6 @@
     "scenario": "Shared"
   },
   {
-    "name": "output_table_eigen.tex",
-    "caption": "Output Table Eigen",
-    "type": "text",
-    "src": "/output_sample/output_table_eigen.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
     "name": "output_table_hs.tex",
     "caption": "Output Table Hs",
     "type": "text",
@@ -3832,154 +3080,10 @@
     "scenario": "Shared"
   },
   {
-    "name": "output_table_ipm_matrix_name_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Name 2020X2021",
-    "type": "text",
-    "src": "/output_sample/output_table_ipm_matrix_name_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_ipm_matrix_name_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Name 2021X2022",
-    "type": "text",
-    "src": "/output_sample/output_table_ipm_matrix_name_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_ipm_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Ipm Matrix Sum 2020X2021",
-    "type": "text",
-    "src": "/output_sample/output_table_ipm_matrix_sum_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_ipm_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Ipm Matrix Sum 2021X2022",
-    "type": "text",
-    "src": "/output_sample/output_table_ipm_matrix_sum_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2020.tex",
-    "caption": "Output Table Jarak Loading 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_loading_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2021.tex",
-    "caption": "Output Table Jarak Loading 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_loading_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_loading_2022.tex",
-    "caption": "Output Table Jarak Loading 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_loading_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2020.tex",
-    "caption": "Output Table Jarak Skor 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_skor_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2021.tex",
-    "caption": "Output Table Jarak Skor 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_skor_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_jarak_skor_2022.tex",
-    "caption": "Output Table Jarak Skor 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_jarak_skor_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
     "name": "output_table_kmo_bartlett.tex",
     "caption": "Output Table Kmo Bartlett",
     "type": "text",
     "src": "/output_sample/output_table_kmo_bartlett.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2020.tex",
-    "caption": "Output Table Loading Intra 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_loading_intra_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2021.tex",
-    "caption": "Output Table Loading Intra 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_loading_intra_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_loading_intra_2022.tex",
-    "caption": "Output Table Loading Intra 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_loading_intra_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2020.tex",
-    "caption": "Output Table Matriks Intra Loading 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_matriks_intra_loading_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2021.tex",
-    "caption": "Output Table Matriks Intra Loading 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_matriks_intra_loading_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_matriks_intra_loading_2022.tex",
-    "caption": "Output Table Matriks Intra Loading 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_matriks_intra_loading_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_rs.tex",
-    "caption": "Output Table Rs",
-    "type": "text",
-    "src": "/output_sample/output_table_rs.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_rv.tex",
-    "caption": "Output Table Rv",
-    "type": "text",
-    "src": "/output_sample/output_table_rv.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },
@@ -3996,110 +3100,6 @@
     "caption": "Output Table Rv W",
     "type": "text",
     "src": "/output_sample/output_table_rv_w.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2020.tex",
-    "caption": "Output Table Skor Intra 2020",
-    "type": "text",
-    "src": "/output_sample/output_table_skor_intra_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2021.tex",
-    "caption": "Output Table Skor Intra 2021",
-    "type": "text",
-    "src": "/output_sample/output_table_skor_intra_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_skor_intra_2022.tex",
-    "caption": "Output Table Skor Intra 2022",
-    "type": "text",
-    "src": "/output_sample/output_table_skor_intra_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_statis_vs_ipm_avg_name.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Name",
-    "type": "text",
-    "src": "/output_sample/output_table_statis_vs_ipm_avg_name.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_statis_vs_ipm_avg_sum.tex",
-    "caption": "Output Table Statis Vs Ipm Avg Sum",
-    "type": "text",
-    "src": "/output_sample/output_table_statis_vs_ipm_avg_sum.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_struktur_diagnostik.tex",
-    "caption": "Output Table Struktur Diagnostik",
-    "type": "text",
-    "src": "/output_sample/output_table_struktur_diagnostik.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_transition_matrix_name_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Name 2020X2021",
-    "type": "text",
-    "src": "/output_sample/output_table_transition_matrix_name_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_transition_matrix_name_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Name 2021X2022",
-    "type": "text",
-    "src": "/output_sample/output_table_transition_matrix_name_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2020x2021.tex",
-    "caption": "Output Table Transition Matrix Sum 2020X2021",
-    "type": "text",
-    "src": "/output_sample/output_table_transition_matrix_sum_2020x2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_transition_matrix_sum_2021x2022.tex",
-    "caption": "Output Table Transition Matrix Sum 2021X2022",
-    "type": "text",
-    "src": "/output_sample/output_table_transition_matrix_sum_2021x2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_v_s.tex",
-    "caption": "Output Table V S",
-    "type": "text",
-    "src": "/output_sample/output_table_v_s.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_v_w.tex",
-    "caption": "Output Table V W",
-    "type": "text",
-    "src": "/output_sample/output_table_v_w.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Shared"
-  },
-  {
-    "name": "output_table_vc.tex",
-    "caption": "Output Table Vc",
-    "type": "text",
-    "src": "/output_sample/output_table_vc.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   }

@@ -876,26 +876,63 @@ def export_perm_latex(p_val, desc):
 # PLOT HELPERS (With Visual Scaling)
 
 # -----------------------------
-def apply_visual_adjustments(scores, loadings, norm_scores, scale_loadings):
+def apply_visual_adjustments(scores, loadings, norm_scores, scale_loadings, singular_values=None):
     """
     Melakukan scaling HANYA untuk plotting, tidak mengubah data tabel.
+
+    Jika `singular_values` diberikan, ikuti saran Abdi et al. (2012):
+    - Jika `singular_values` adalah array/iterable dengan 2 elemen, perlakukan
+      sebagai [SV_PC1, SV_PC2] global dan kalikan tiap kolom loading dengan
+      nilai tersebut.
+    - Jika `singular_values` adalah array berukuran (n_loadings, 2), lakukan
+      pengalian per-baris (berguna ketika loadings berisi data dari beberapa
+      tahun dan tiap baris punya pasangan singular values masing-masing).
+    Jika `singular_values` tidak diberikan, jatuhkan ke skema penskalaan
+    sebelumnya (rasio magnitudo maksimum) sebagai fallback.
     """
     plot_scores = scores.copy()
     plot_loadings = loadings.copy()
-    
+
     # 1. Normalize Scores (Optional)
+    max_val = None
     if norm_scores:
         max_val = np.max(np.abs(plot_scores))
-        if max_val > 0: plot_scores = plot_scores / max_val
-            
-    # 2. Scale Loadings (Visual scaling to match score magnitude)
+        if max_val > 0:
+            plot_scores = plot_scores / max_val
+
+    # 2. Scale Loadings following Abdi et al. (2012) when possible
     if scale_loadings:
-        max_score_mag = np.max(np.abs(plot_scores))
-        max_load_mag = np.max(np.abs(plot_loadings))
-        if max_load_mag > 0:
-            scale_factor = (max_score_mag / max_load_mag) * 0.8 
-            plot_loadings = plot_loadings * scale_factor
-            
+        try:
+            if singular_values is not None:
+                sv = np.array(singular_values)
+                # Case: global singular values for two components
+                if sv.ndim == 1 and sv.size >= 2:
+                    plot_loadings = plot_loadings.copy()
+                    plot_loadings[:, 0] = loadings[:, 0] * sv[0]
+                    plot_loadings[:, 1] = loadings[:, 1] * sv[1]
+                # Case: per-row singular values (n_rows x 2)
+                elif sv.ndim == 2 and sv.shape[1] >= 2 and sv.shape[0] == plot_loadings.shape[0]:
+                    plot_loadings = plot_loadings.copy()
+                    plot_loadings[:, 0] = loadings[:, 0] * sv[:, 0]
+                    plot_loadings[:, 1] = loadings[:, 1] * sv[:, 1]
+                else:
+                    # Fallback to old heuristic if shape mismatch
+                    raise ValueError("singular_values shape not recognized")
+
+                # If scores were normalized, scale loadings to same viewport
+                if norm_scores and max_val and max_val > 0:
+                    plot_loadings = plot_loadings / max_val
+            else:
+                # Original heuristic fallback: scale by ratio of maxima
+                max_score_mag = np.max(np.abs(plot_scores))
+                max_load_mag = np.max(np.abs(plot_loadings))
+                if max_load_mag > 0:
+                    scale_factor = (max_score_mag / max_load_mag) * 0.8
+                    plot_loadings = plot_loadings * scale_factor
+        except Exception:
+            # On any problem, fallback gracefully to leaving loadings unchanged
+            plot_loadings = plot_loadings
+
     return plot_scores, plot_loadings
 
 def create_biplot(scores, loadings, labels, vars, title, color=COLOR_ACCENT, show_loadings=True, show_points=True, show_arrows=True):
@@ -1766,6 +1803,17 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     style={'width': '180px'}
                 ),
             ]),
+        ]),
+
+        html.Div(style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center',
+                         'width': '100%', 'gap': '10px', 'marginBottom': '10px', 'flexWrap': 'wrap'}, children=[
+            html.Label('Exclude Variabel:', style={'fontWeight': 'bold', 'marginRight': '4px', 'whiteSpace': 'nowrap'}),
+            dcc.Dropdown(
+                id='desc-exclude-vars',
+                multi=True,
+                placeholder='Pilih variabel yang ingin dikecualikan...',
+                style={'minWidth': '280px', 'maxWidth': '600px', 'flex': '1'}
+            ),
 
             html.Button('RUN DESKRIPTIF', id='btn-run-desc', n_clicks=0,
                         style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold',
@@ -1969,7 +2017,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Loading(children=[dcc.Graph(id='statis-graph-2d-year', style={'height': '600px'})])
             ]),
             html.Div(className='six columns', children=[
-                html.H5("Proyeksi Trajektori 2D (Skor Intra STATIS)", style={'textAlign': 'center', 'color': '#2E7D32'}),
+                html.H5("Proyeksi Trajektori 2D (Trajectory Scores)", style={'textAlign': 'center', 'color': '#2E7D32'}),
                 html.P("Lintasan pergerakan objek dari tahun ke tahun", style={'textAlign':'center', 'color':'#90A4AE', 'fontSize':'12px'}),
                 dcc.Loading(children=[dcc.Graph(id='statis-graph-2d-traj', style={'height': '600px'})])
             ])
@@ -2945,6 +2993,7 @@ def cb_upload(contents, filename):
     Output('statis-year-dropdown-2d-single', 'options'), Output('statis-year-dropdown-2d-single', 'value'),
     Output('compare-year-dropdown', 'options'), Output('compare-year-dropdown', 'value'),
     Output('biplot-statis-compare-year', 'options'), Output('biplot-statis-compare-year', 'value'),
+    Output('desc-exclude-vars', 'options'),
     Input('global-data-store', 'data'), Input('baseline-type-final', 'value')
 )
 def cb_controls(data, base_type):
@@ -2972,7 +3021,8 @@ def cb_controls(data, base_type):
         trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
         trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
         y_opts, years[-1], y_opts, years[-1], f_opts, default_weight, y_opts, years[-1],
-        y_opts, years[0], y_opts, years[-1], y_opts, years[-1]
+        y_opts, years[0], y_opts, years[-1], y_opts, years[-1],
+        f_opts
     )
 
 # 2b. Sync Vector Selector with Selected Vars
@@ -3020,6 +3070,12 @@ def cb_pca_calc(n_clicks, vars, data):
         d_sc['PC1'], d_sc['PC2'] = coords[:,0], coords[:,1]
         pc_list.append(d_sc)
         d_load = pd.DataFrame(pca.components_.T, columns=['PC1', 'PC2'])
+        # Store per-year singular values (SV1, SV2) so visual scaling can follow Abdi et al. (2012)
+        try:
+            sv = np.array(pca.singular_values_)[:2]
+        except Exception:
+            sv = np.array([1.0, 1.0])
+        d_load['SV1'], d_load['SV2'] = sv[0], sv[1]
         d_load['features'], d_load['Tahun'] = vars, y
         load_list.append(d_load)
     return {'pc_scores': pd.concat(pc_list).to_json(orient='split'), 'loadings': pd.concat(load_list).to_json(orient='split')}
@@ -3228,7 +3284,15 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
             df_load_fin.loc[mask_l, 'PC2'] *= -1
 
     # Visual Scaling
-    pc_plot, load_plot = apply_visual_adjustments(df_pc_fin[['PC1','PC2']].values, df_load_fin[['PC1','PC2']].values, norm_score, scale_load)
+    # Use per-row singular values stored in PCA results (SV1, SV2)
+    sv_rows = df_load_fin[['SV1','SV2']].values if 'SV1' in df_load_fin.columns and 'SV2' in df_load_fin.columns else None
+    pc_plot, load_plot = apply_visual_adjustments(
+        df_pc_fin[['PC1','PC2']].values,
+        df_load_fin[['PC1','PC2']].values,
+        norm_score,
+        scale_load,
+        singular_values=sv_rows
+    )
     df_pc_plt = df_pc_fin.copy(); df_pc_plt[['PC1','PC2']] = pc_plot
     df_load_plt = df_load_fin.copy(); df_load_plt[['PC1','PC2']] = load_plot
 
@@ -3245,7 +3309,7 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
                     x=[y, y], y=[0, row['PC1']], z=[0, row['PC2']],
                     mode='lines+text', line=dict(color='red', width=1), opacity=0.5,
                     text=[None, str(row['features'])], textposition='top center', showlegend=False,
-                    hoverinfo='text', hovertext=f"Loading: {row['features']}<br>Raw: ({raw['PC1']:.2f}, {raw['PC2']:.2f})"
+                    hoverinfo='text', hovertext=f"Loading: {row['features']}<br>PC (Asli): ({raw['PC1']:.4f}, {raw['PC2']:.4f})<br>PC (Visual): ({row['PC1']:.4f}, {row['PC2']:.4f})"
                 ))
     if traj_sel:
         for sel in traj_sel:
@@ -3267,7 +3331,7 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
         if load_scope in ['2d', 'both']:
             for idx, r in d_l.iterrows():
                 raw = d_l_raw.loc[idx]
-                fig_2d_y.add_trace(go.Scatter(x=[0, r['PC1']], y=[0, r['PC2']], mode='lines+text', text=[None, r['features']], textposition='top center', line=dict(color='red'), showlegend=False, hoverinfo='text', hovertext=f"Var: {r['features']}<br>Raw: ({r['PC1']:.2f}, {r['PC2']:.2f})"))
+                fig_2d_y.add_trace(go.Scatter(x=[0, r['PC1']], y=[0, r['PC2']], mode='lines+text', text=[None, r['features']], textposition='top center', line=dict(color='red'), showlegend=False, hoverinfo='text', hovertext=f"Var: {r['features']}<br>PC (Asli): ({raw['PC1']:.4f}, {raw['PC2']:.4f})<br>PC (Visual): ({r['PC1']:.4f}, {r['PC2']:.4f})"))
     fig_2d_y.update_layout(title=f"Snapshot {year_2d}", xaxis=dict(scaleanchor='y', scaleratio=1), template='plotly_white')
 
     # Traj 2D
@@ -3360,8 +3424,18 @@ def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, b
             df_pc_fin.loc[mask_p, 'PC2'] *= -1
             df_load_fin.loc[mask_l, 'PC2'] *= -1
 
-    # Visual Scaling
-    pc_plot, load_plot = apply_visual_adjustments(df_pc_fin[['PC1','PC2']].values, df_load_fin[['PC1','PC2']].values, norm_score, scale_load)
+    # Visual Scaling (use compromise singular values if available)
+    try:
+        sv_comp = np.sqrt(np.array(statis_data.get('eig_vals_c', [1, 0]))[:2])
+    except Exception:
+        sv_comp = None
+    pc_plot, load_plot = apply_visual_adjustments(
+        df_pc_fin[['PC1','PC2']].values,
+        df_load_fin[['PC1','PC2']].values,
+        norm_score,
+        scale_load,
+        singular_values=sv_comp
+    )
     df_pc_plt = df_pc_fin.copy(); df_pc_plt[['PC1','PC2']] = pc_plot
     df_load_plt = df_load_fin.copy(); df_load_plt[['PC1','PC2']] = load_plot
 
@@ -3379,7 +3453,7 @@ def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, b
                     x=[y, y], y=[0, row['PC1']], z=[0, row['PC2']],
                     mode='lines+text', line=dict(color='red', width=1), opacity=0.5,
                     text=[None, str(row['features'])], textposition='top center', showlegend=False,
-                    hoverinfo='text', hovertext=f"Loading: {row['features']}<br>Raw: ({raw['PC1']:.2f}, {raw['PC2']:.2f})"
+                    hoverinfo='text', hovertext=f"Loading: {row['features']}<br>PC (Asli): ({raw['PC1']:.4f}, {raw['PC2']:.4f})<br>PC (Visual): ({row['PC1']:.4f}, {row['PC2']:.4f})"
                 ))
     if traj_sel:
         for sel in traj_sel:
@@ -3403,7 +3477,7 @@ def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, b
             for idx, r in d_l.iterrows():
                 if idx not in d_l_raw.index: continue
                 raw = d_l_raw.loc[idx]
-                fig_2d_y.add_trace(go.Scatter(x=[0, r['PC1']], y=[0, r['PC2']], mode='lines+text', text=[None, r['features']], textposition='top center', line=dict(color='red'), showlegend=False, hoverinfo='text', hovertext=f"Var: {r['features']}<br>Raw: ({r['PC1']:.2f}, {r['PC2']:.2f})"))
+                fig_2d_y.add_trace(go.Scatter(x=[0, r['PC1']], y=[0, r['PC2']], mode='lines+text', text=[None, r['features']], textposition='top center', line=dict(color='red'), showlegend=False, hoverinfo='text', hovertext=f"Var: {r['features']}<br>PC (Asli): ({raw['PC1']:.4f}, {raw['PC2']:.4f})<br>PC (Visual): ({r['PC1']:.4f}, {r['PC2']:.4f})"))
     fig_2d_y.update_layout(title=f"Snapshot 2D STATIS {year_2d}", xaxis=dict(scaleanchor='y', scaleratio=1), template='plotly_white')
 
     # Traj 2D
@@ -3473,7 +3547,14 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
             df_pc_plt.loc[mask_p, 'PC2'] *= -1
             df_load_plt.loc[mask_l, 'PC2'] *= -1
             
-    pc_p, load_p = apply_visual_adjustments(df_pc_plt[['PC1','PC2']].values, df_load_plt[['PC1','PC2']].values, norm_score, scale_load)
+    sv_u = df_load_u[['SV1','SV2']].values if 'SV1' in df_load_u.columns and 'SV2' in df_load_u.columns else None
+    pc_p, load_p = apply_visual_adjustments(
+        df_pc_plt[['PC1','PC2']].values,
+        df_load_plt[['PC1','PC2']].values,
+        norm_score,
+        scale_load,
+        singular_values=sv_u
+    )
     df_pc_u_final = df_pc_plt.copy(); df_pc_u_final[['PC1','PC2']] = pc_p
     df_load_u_final = df_load_plt.copy(); df_load_u_final[['PC1','PC2']] = load_p
     
@@ -3511,7 +3592,18 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
             df_pc_w_plt.loc[mask_p, 'PC2'] *= -1
             df_load_w_plt.loc[mask_l, 'PC2'] *= -1
             
-    pc_p_w, load_p_w = apply_visual_adjustments(df_pc_w_plt[['PC1','PC2']].values, df_load_w_plt[['PC1','PC2']].values, norm_score, scale_load)
+    sv_w = None
+    try:
+        sv_w = np.sqrt(np.array(statis_res.get('eig_vals_c', [1, 0]))[:2])
+    except Exception:
+        sv_w = None
+    pc_p_w, load_p_w = apply_visual_adjustments(
+        df_pc_w_plt[['PC1','PC2']].values,
+        df_load_w_plt[['PC1','PC2']].values,
+        norm_score,
+        scale_load,
+        singular_values=sv_w
+    )
     df_pc_w_final = df_pc_w_plt.copy(); df_pc_w_final[['PC1','PC2']] = pc_p_w
     df_load_w_final = df_load_w_plt.copy(); df_load_w_final[['PC1','PC2']] = load_p_w
     
@@ -3564,9 +3656,12 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
     Output('statis-detail-table', 'columns'), Output('table-info-display', 'children'),
     Output('formula-statis-output', 'children'),
     Input('statis-core-store', 'data'), Input('statis-table-selector', 'value'),
-    Input('visual-scaling-opts', 'value'), Input('table-page-size', 'value')
+    Input('visual-scaling-opts', 'value'), Input('table-page-size', 'value'),
+    State('mirror-year-checklist-final', 'value'),
+    State('baseline-type-final', 'value'),
+    State('baseline-name-final', 'value')
 )
-def cb_statis_viz(res, table_key, vis_opts, page_size):
+def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, base_name):
     # --- 1. SAFE EXIT: Jika data utama (res) belum ada ---
     if not res or not isinstance(res, dict):
         return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
@@ -3593,7 +3688,12 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         print(err_msg)
         return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
     
-    plot_scores, plot_loadings = apply_visual_adjustments(scores, loadings, norm_score, scale_load)
+    # Use compromise singular values (sqrt of eigenvalues) per Abdi et al. (2012)
+    try:
+        sv_comp = np.sqrt(np.array(eig_vals)[:2])
+    except Exception:
+        sv_comp = None
+    plot_scores, plot_loadings = apply_visual_adjustments(scores, loadings, norm_score, scale_load, singular_values=sv_comp)
     
     # Label Sumbu (Persentase Variansi)
     eig_vals = np.array(res.get('eig_vals_c', [1, 0]))
@@ -3678,38 +3778,105 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
         fig_sv = go.Figure().add_annotation(text=f"Error Structure Vector: {e_sv}", showarrow=False)
     
     # PLOT 6: Object Trajectory
-    coords_dict = res['per_year_coords']
-    df_traj_list = []
-    
-    for yr, coords in coords_dict.items():
-        c = np.array(coords)
-        if norm_score:
-            c = c / global_max_val
-        
-        df_t = pd.DataFrame(c[:, :2], columns=['PC1', 'PC2'])
-        df_t['Kab/Kota'] = res['obs_labels']
-        df_t['Tahun'] = yr
-        df_traj_list.append(df_t)
-        
-    df_traj = pd.concat(df_traj_list)
-    
+    # Build per-year DataFrames (raw) for scores and loadings, then compute visual versions
+    coords_dict = res.get('per_year_coords', {})
+    df_pc_list_all = []
+    df_load_list_all = []
+    for yr in res.get('sheet_names', []):
+        coords = np.array(coords_dict.get(str(yr), []))
+        if coords.size == 0:
+            continue
+        df_t = pd.DataFrame(coords[:, :2], columns=['PC1', 'PC2'])
+        df_t['Kabupaten/Kota'] = res['obs_labels']
+        df_t['Tahun'] = int(yr)
+        df_pc_list_all.append(df_t)
+
+        # loadings per-year (if present)
+        G_key = fr"Loading Intra \mathbf{{G}}_{{{yr}}}"
+        g_recs = res.get(G_key, [])
+        if g_recs:
+            df_g = pd.DataFrame(g_recs)
+            df_g = df_g.rename(columns={'Variabel': 'features'}) if 'Variabel' in df_g.columns else df_g
+            df_g['Tahun'] = int(yr)
+            df_load_list_all.append(df_g)
+
+    if df_pc_list_all:
+        df_pc_all = pd.concat(df_pc_list_all, ignore_index=True)
+    else:
+        df_pc_all = pd.DataFrame(columns=['PC1','PC2','Kabupaten/Kota','Tahun'])
+
+    if df_load_list_all:
+        df_load_all = pd.concat(df_load_list_all, ignore_index=True)
+    else:
+        df_load_all = pd.DataFrame(columns=['Variabel','PC1','PC2','Tahun'])
+
+    # Compute visual-adjusted coordinates for all per-year entries using compromise singular values
+    try:
+        sv_comp = np.sqrt(np.array(res.get('eig_vals_c', [1,0]))[:2])
+    except Exception:
+        sv_comp = None
+
+    # --- B: Apply same rotation + mirror as Dynamic Biplot page (cb_update_statis_plots) ---
+    try:
+        df_pc_fin = df_pc_all.copy()
+        df_load_fin = df_load_all.copy()
+        if not df_pc_fin.empty:
+            for _yr in sorted(df_pc_fin['Tahun'].unique()):
+                _mask_p = df_pc_fin['Tahun'] == _yr
+                _mask_l = df_load_fin['Tahun'] == _yr if not df_load_fin.empty else pd.Series(dtype=bool)
+                # Rotation (needs 'features' col in df_load; rename from 'Variabel' if needed)
+                _df_load_for_rot = df_load_fin.copy()
+                if 'Variabel' in _df_load_for_rot.columns and 'features' not in _df_load_for_rot.columns:
+                    _df_load_for_rot = _df_load_for_rot.rename(columns={'Variabel': 'features'})
+                _angle = get_rotation_angle(df_pc_fin, _df_load_for_rot, base_type, base_name, _yr) if base_name else 0.0
+                if _angle != 0:
+                    df_pc_fin.loc[_mask_p, ['PC1','PC2']] = rotate_dataframe(df_pc_fin.loc[_mask_p], _angle)[['PC1','PC2']].values
+                    if not df_load_fin.empty and _mask_l.any():
+                        df_load_fin.loc[_mask_l, ['PC1','PC2']] = rotate_dataframe(df_load_fin.loc[_mask_l], _angle)[['PC1','PC2']].values
+                # Mirror PC2
+                _mirror_list = [str(m) for m in mirror_years] if mirror_years else []
+                if str(_yr) in _mirror_list:
+                    df_pc_fin.loc[_mask_p, 'PC2'] *= -1
+                    if not df_load_fin.empty and _mask_l.any():
+                        df_load_fin.loc[_mask_l, 'PC2'] *= -1
+    except Exception as _e_rot:
+        print(f"[WARN cb_statis_viz] rotation/mirror failed: {_e_rot}")
+        df_pc_fin = df_pc_all.copy()
+        df_load_fin = df_load_all.copy()
+
+    try:
+        if not df_pc_fin.empty:
+            pc_vals = df_pc_fin[['PC1','PC2']].values
+            load_vals = df_load_fin[['PC1','PC2']].values if not df_load_fin.empty else np.zeros((pc_vals.shape[0],2))
+            pc_plot_all, load_plot_all = apply_visual_adjustments(pc_vals, load_vals, norm_score, scale_load, singular_values=sv_comp)
+            df_pc_all_vis = df_pc_fin.copy()
+            df_pc_all_vis[['PC1','PC2']] = pc_plot_all
+        else:
+            df_pc_all_vis = df_pc_fin.copy()
+
+        if not df_load_fin.empty:
+            df_load_all_vis = df_load_fin.copy()
+            df_load_all_vis[['PC1','PC2']] = load_plot_all[:len(df_load_fin)]
+        else:
+            df_load_all_vis = df_load_fin.copy()
+    except Exception:
+        df_pc_all_vis = df_pc_fin.copy()
+        df_load_all_vis = df_load_fin.copy()
+
+    # Plot Trajectory Scores (per-year visual coordinates)
     fig_traj = go.Figure()
     prov_map = res.get('prov_map', {})
     kab_idx_map = res.get('kab_index_map', {})
-    
     PROV_COLORS = {'DKI JAKARTA': '#1E88E5', 'JAWA BARAT': '#43A047', 'BANTEN': '#FB8C00'}
-    
+
     for kab in res['obs_labels']:
-        d_kab = df_traj[df_traj['Kab/Kota'] == kab].sort_values('Tahun')
+        d_kab = df_pc_all_vis[df_pc_all_vis['Kabupaten/Kota'] == kab].sort_values('Tahun')
         if d_kab.empty: continue
-        
         prov = prov_map.get(kab, 'N/A').upper()
         color = PROV_COLORS.get(prov, None)
         num = kab_idx_map.get(kab, '?')
-        
         display_label = f"{num} : {kab}"
         symbols = ['circle'] * (len(d_kab) - 1) + ['square']
-        
         fig_traj.add_trace(go.Scatter(
             x=d_kab['PC1'], y=d_kab['PC2'],
             mode='lines+markers',
@@ -3721,9 +3888,9 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
             hoverinfo='text',
             text=[f"{kab} ({y})<br>PC1: {pc1:.3f}<br>PC2: {pc2:.3f}" for y, pc1, pc2 in zip(d_kab['Tahun'], d_kab['PC1'], d_kab['PC2'])]
         ))
-    
+
     fig_traj.update_layout(
-        title='STATIS Trajectories (Warna per Provinsi, Akhir=Kotak)',
+        title='Trajectory Scores (Warna per Provinsi, Akhir=Kotak)',
         template='plotly_white', 
         xaxis=dict(scaleanchor='y', scaleratio=1), 
         xaxis_title=ax_x, yaxis_title=ax_y,
@@ -3738,18 +3905,22 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
     for vi, var in enumerate(res['selected_vars']):
         x_pts, y_pts, text_pts = [], [], []
         for yr in res['sheet_names']:
+            # Prefer visual-adjusted loadings if available
+            if not df_load_all_vis.empty:
+                feat_col = 'features' if 'features' in df_load_all_vis.columns else ('Variabel' if 'Variabel' in df_load_all_vis.columns else None)
+                if feat_col is not None:
+                    mask = (df_load_all_vis[feat_col] == var) & (df_load_all_vis['Tahun'] == int(yr))
+                    if mask.any():
+                        rvis = df_load_all_vis[mask].iloc[0]
+                        px_v, py_v = rvis['PC1'], rvis['PC2']
+                        x_pts.append(px_v); y_pts.append(py_v); text_pts.append(yr)
+                        continue
+            # Fallback to raw records in res
             gk_recs = res.get(fr"Loading Intra \mathbf{{G}}_{{{yr}}}", [])
             for rec in gk_recs:
-                if rec.get('Variabel') == var:
+                if rec.get('Variabel') == var or rec.get('features') == var:
                     px_v = rec.get('PC1', 0)
                     py_v = rec.get('PC2', 0)
-                    if scale_load:
-                        max_s = np.max(np.abs(scores)) if scores.size > 0 else 1
-                        max_l = np.max(np.abs(loadings)) if loadings.size > 0 else 1
-                        vis_factor = (max_s / max_l) * 0.8 if max_l > 0 else 1
-                        px_v = px_v * vis_factor
-                        py_v = py_v * vis_factor
-                    
                     x_pts.append(px_v)
                     y_pts.append(py_v)
                     text_pts.append(yr)
@@ -3902,22 +4073,37 @@ def cb_statis_viz(res, table_key, vis_opts, page_size):
                         pc1_asli, pc2_asli = row['PC1'], row['PC2'] # Fallback
                     
                     # 2. Nilai VISUAL (Hasil Akhir di Dash)
-                    pc1_final, pc2_final = row['PC1'], row['PC2']
-                    pc1_vis, pc2_vis = pc1_final, pc2_final
-                    
-                    # Terapkan Normalisasi/Scaling HANYA untuk kolom Visual (agar sinkron dengan plot)
-                    if norm_score and "Skor" in table_key:
-                        m1 = np.abs(scores[:, 0]).max() if scores.shape[0]>0 else 1
-                        m2 = np.abs(scores[:, 1]).max() if scores.shape[0]>0 else 1
-                        pc1_vis = pc1_vis / m1
-                        pc2_vis = pc2_vis / m2
-                    
-                    if scale_load and "Loading" in table_key:
-                        max_s = np.max(np.abs(scores)) if scores.size > 0 else 1
-                        max_l = np.max(np.abs(loadings)) if loadings.size > 0 else 1
-                        vis_factor = (max_s / max_l) * 0.8 if max_l > 0 else 1
-                        pc1_vis *= vis_factor
-                        pc2_vis *= vis_factor
+                    # Determine visual values using apply_visual_adjustments outputs
+                    pc1_vis, pc2_vis = row['PC1'], row['PC2']
+                    try:
+                        if "Kompromi" in table_key:
+                            # Use compromise visual arrays computed earlier (plot_scores / plot_loadings)
+                            if "Skor" in table_key and plot_scores is not None and idx < len(plot_scores):
+                                pc1_vis, pc2_vis = plot_scores[idx, 0], plot_scores[idx, 1]
+                            elif "Loading" in table_key and plot_loadings is not None and idx < len(plot_loadings):
+                                pc1_vis, pc2_vis = plot_loadings[idx, 0], plot_loadings[idx, 1]
+                        else:
+                            # Per-year table: find matching row in df_pc_all_vis / df_load_all_vis
+                            import re as _re
+                            m2 = _re.search(r'(\d{4})', table_key)
+                            yr2 = int(m2.group(1)) if m2 else None
+                            # label key (name column)
+                            label_key = list(row.keys())[0]
+                            if "Skor" in table_key and not df_pc_all_vis.empty and yr2 is not None:
+                                mask = (df_pc_all_vis['Kabupaten/Kota'] == row[label_key]) & (df_pc_all_vis['Tahun'] == yr2)
+                                if mask.any():
+                                    rvis = df_pc_all_vis[mask].iloc[0]
+                                    pc1_vis, pc2_vis = rvis['PC1'], rvis['PC2']
+                            if "Loading" in table_key and not df_load_all_vis.empty and yr2 is not None:
+                                # loadings may use 'features' or 'Variabel' as label
+                                feat_col = 'features' if 'features' in df_load_all_vis.columns else ('Variabel' if 'Variabel' in df_load_all_vis.columns else None)
+                                if feat_col is not None:
+                                    mask = (df_load_all_vis[feat_col] == row[label_key]) & (df_load_all_vis['Tahun'] == yr2)
+                                    if mask.any():
+                                        rvis = df_load_all_vis[mask].iloc[0]
+                                        pc1_vis, pc2_vis = rvis['PC1'], rvis['PC2']
+                    except Exception:
+                        pass
                     
                     label_key = list(row.keys())[0]
                     new_row = {
@@ -4723,9 +4909,10 @@ def dl_compromise_statis_vs_statis_tex(n_clicks, data, columns, year, mode):
     State('desc-year-dropdown', 'value'),
     State('desc-weight-mode', 'value'),
     State('desc-weight-var-dropdown', 'value'),
+    State('desc-exclude-vars', 'value'),
     State('global-data-store', 'data')
 )
-def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, data):
+def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, data):
     if not n_clicks or not data or not selected_year:
         return "", "", "", ""
 
@@ -4757,6 +4944,9 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, data):
         # Detect numeric
         df = df_clean.select_dtypes(include='number').dropna(axis=1, how='all')
         non_numeric = df_clean.select_dtypes(exclude='number').columns.tolist()
+        # Apply exclude-vars filter
+        if exclude_vars:
+            df = df.drop(columns=[v for v in exclude_vars if v in df.columns])
     except Exception as e:
         return html.P(f"Error membaca data: {e}", style={'color': 'red'}), "", "", ""
 
@@ -4873,7 +5063,7 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, data):
     # --- BOXPLOTS (one per column) ---
     figs = []
     for col in df.columns:
-        fig = px.box(df, y=col, points='all', title=col,
+        fig = px.box(df, y=col, points='outliers', title=col,
                      color_discrete_sequence=[COLOR_ACCENT])
         fig.update_layout(
             template='plotly_white', height=300,
@@ -6082,8 +6272,8 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     import os
     os.makedirs("../output_app", exist_ok=True)
     try:
-        with open(f"../output_app/output_table_ipm_matrix_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
-        with open(f"../output_app/output_table_ipm_matrix_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
+        with open(f"../output_app/output_table_ipm_sum_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_count))
+        with open(f"../output_app/output_table_ipm_name_{t1_year}x{t2_year}.tex", "w") as f: f.write("\n".join(tex_names))
     except: pass
         
     req_data = data_count if view_mode == 'count' else data_names
@@ -6384,7 +6574,7 @@ def dl_weighted_trans_tex(n_clicks, data, columns, year, mode):
     y2 = int(year)
     y1 = y2 - 1
     sfx = "name" if mode == "names" else "sum"
-    filename = f"output_table_transition_matrix_{sfx}_{y1}x{y2}.tex"
+    filename = f"output_table_statis_transition_{sfx}_{y1}x{y2}.tex"
     if mode == "names":
         caption = f"Nama Daerah Transisi Cluster STATIS Tahunan ({y1} vs {y2})"
         label = f"statis_transition_name_{y1}x{y2}"
@@ -6426,7 +6616,7 @@ def dl_ipm_tex(n_clicks, data, columns, year, mode):
     y2 = int(year)
     y1 = y2 - 1
     sfx = "name" if mode == "names" else "sum"
-    filename = f"output_table_ipm_matrix_{sfx}_{y1}x{y2}.tex"
+    filename = f"output_table_ipm_{sfx}_{y1}x{y2}.tex"
     if mode == "names":
         caption = f"Nama Daerah Transisi Kategori IPM (UNDP) ({y1} vs {y2})"
         label = f"ipm_transition_name_{y1}x{y2}"
