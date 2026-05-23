@@ -1,66 +1,61 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Biplot Kompromi Lintas Tahun: Hubungan Struktural antara Wilayah dan Indikator}}{xiii}{figure.caption.20}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Trajektori Spasio-temporal: Pergerakan Kondisi Sosial Ekonomi Kabupaten/Kota dari Tahun ke Tahun (2020--2024)}}{xiv}{figure.caption.21}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Compromise Biplot (Across Years): Structural Relationship between Regions and Indicators}}{xvi}{figure.caption.25}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Biplot Kompromi Lintas Tahun: Hubungan Struktural antar Wilayah, antar Indikator, dan antar Wilayah dan Indikator}}{xiii}{figure.caption.20}%
+\contentsline {figure}{\numberline {2}{\ignorespaces Trajektori Spasio-temporal: Pergeseran Kondisi Sosial Ekonomi Kabupaten/Kota dari Tahun ke Tahun (2020--2024)}}{xiv}{figure.caption.21}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Compromise Biplot (Across Years): Structural Relationship between Regions, between Indicators, and between Regions and Indicators}}{xvi}{figure.caption.25}%
 \contentsline {figure}{\numberline {4}{\ignorespaces Spatio-temporal Trajectories: Movement of Socio-economic Conditions of Regencies/Cities from Year to Year (2020--2024)}}{xvii}{figure.caption.26}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustrasi Komponen Biplot (Skor dan Loading)}}{24}{figure.caption.32}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Flowchart Mekanisme Interaktivitas Dash-Plotly}}{43}{figure.caption.34}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Ilustrasi Komponen Biplot (Skor dan Loading)}}{25}{figure.caption.32}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Flowchart Mekanisme Interaktivitas Dash-Plotly}}{44}{figure.caption.34}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \textit {Flowchart} Alur Metodologi Penelitian}}{47}{figure.caption.35}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \textit {Flowchart} Alur Metodologi Penelitian}}{48}{figure.caption.35}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Heatmap Korelasi Pearson Indikator Data Sampel Tahun 2020}}{59}{figure.caption.47}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Visualisasi Heatmap Matriks RV Data Sampel}}{60}{figure.caption.48}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Scree Plot Analisis Kompromi Data Sampel (Skenario 1)}}{63}{figure.caption.54}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Compromise Biplot Skenario 1 (Host = Wilayah): Skor Wilayah dan Loading Indikator}}{64}{figure.caption.57}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}}{65}{figure.caption.60}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Compromise Biplot Skenario 1 (Host = Wilayah): Skor Wilayah dan Loading Indikator}}{64}{figure.caption.55}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}}{65}{figure.caption.58}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Trajektori Skenario 1 (Host = Wilayah)}}{66}{figure.caption.61}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Trajektori Skenario 2 (Host = Indikator)}}{66}{figure.caption.61}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Dinamika Spasial Cluster Data Sampel (2020--2022)}}{76}{figure.caption.90}%
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Contoh Distribusi Boxplot Indikator IPM (Perbandingan Tahunan)}}{76}{figure.caption.91}%
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Contoh Distribusi Boxplot Indikator PPM (Perbandingan Tahunan)}}{77}{figure.caption.92}%
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Contoh Distribusi Boxplot Indikator RLS (Perbandingan Tahunan)}}{77}{figure.caption.93}%
-\contentsline {figure}{\numberline {3.13}{\ignorespaces Contoh Distribusi Boxplot Indikator TPT (Perbandingan Tahunan)}}{78}{figure.caption.94}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplot IPM (Perbandingan Tahunan 2020--2024)}}{82}{figure.caption.96}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Boxplot IPG (Perbandingan Tahunan 2020--2024)}}{83}{figure.caption.97}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Boxplot Persentase Penduduk Miskin (PPM) (Perbandingan Tahunan 2020--2024)}}{83}{figure.caption.98}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Boxplot PDRB ADHK (Perbandingan Tahunan 2020--2024)}}{84}{figure.caption.99}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Boxplot Rata-Rata Lama Sekolah (RLS) (Perbandingan Tahunan 2020--2024)}}{84}{figure.caption.100}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Boxplot Angka Harapan Hidup Laki-Laki (AHH L) (Perbandingan Tahunan 2020--2024)}}{85}{figure.caption.101}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Boxplot Angka Harapan Hidup Perempuan (AHH P) (Perbandingan Tahunan 2020--2024)}}{85}{figure.caption.102}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Boxplot Garis Kemiskinan (GK) (Perbandingan Tahunan 2020--2024)}}{86}{figure.caption.103}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Boxplot Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) (Perbandingan Tahunan 2020--2024)}}{86}{figure.caption.104}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Boxplot Tingkat Pengangguran Terbuka (TPT) (Perbandingan Tahunan 2020--2024)}}{87}{figure.caption.105}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Boxplot Tingkat Partisipasi Angkatan Kerja (TPAK) (Perbandingan Tahunan 2020--2024)}}{87}{figure.caption.106}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Boxplot Gini Ratio (GR) (Perbandingan Tahunan 2020--2024)}}{88}{figure.caption.107}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Heatmap Korelasi Pearson Antar-Indikator Tahun 2020 (41 Kabupaten/Kota)}}{89}{figure.caption.108}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Heatmap Koefisien RV Antar-Tahun (2020 hingga 2024)}}{91}{figure.caption.111}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces Scree Plot Nilai Eigen Matriks Kompromi}}{93}{figure.caption.114}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}}{95}{figure.caption.116}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Biplot Kompromi Skenario 1 (Host = Wilayah)}}{96}{figure.caption.117}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Biplot Kompromi Skenario 2 (Host = Indikator)}}{96}{figure.caption.117}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Kontribusi Indikator Dim~1 -- Skenario 1}}{100}{figure.caption.122}%
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Kontribusi Indikator Dim~1 -- Skenario 2}}{100}{figure.caption.122}%
-\contentsline {figure}{\numberline {4.21}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 1}}{100}{figure.caption.123}%
-\contentsline {figure}{\numberline {4.22}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 2}}{100}{figure.caption.123}%
-\contentsline {figure}{\numberline {4.23}{\ignorespaces Distribusi Null Uji Permutasi vs.\ Nilai Eigen Observasi ($\lambda _1^{obs}$)}}{101}{figure.caption.124}%
-\contentsline {figure}{\numberline {4.24}{\ignorespaces Lintasan Temporal Komponen Vektor Struktur $\tilde {\beta }_k$ (2020 hingga 2024)}}{104}{figure.caption.129}%
-\contentsline {figure}{\numberline {4.25}{\ignorespaces Trajektori Pergeseran 41 Kabupaten/Kota pada Ruang Kompromi (2020 hingga 2024)}}{105}{figure.caption.130}%
-\contentsline {figure}{\numberline {4.26}{\ignorespaces Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}}{107}{figure.caption.131}%
-\contentsline {figure}{\numberline {4.31}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2020}}{114}{figure.caption.150}%
-\contentsline {figure}{\numberline {4.36}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2020: Biplot (kiri) dan Peta (kanan)}}{116}{figure.caption.155}%
-\contentsline {figure}{\numberline {4.41}{\ignorespaces Perbandingan Peta Klaster STATIS Periode 2023 vs 2024 (Kiri: Tahun 2023; Kanan: Tahun 2024)}}{120}{figure.caption.164}%
-\contentsline {figure}{\numberline {4.42}{\ignorespaces Penentuan Jumlah Klaster Optimal -- Metode Elbow (Tahun 2024)}}{121}{figure.caption.165}%
-\contentsline {figure}{\numberline {4.43}{\ignorespaces Scatter Plot Klaster Trajektori pada Ruang Kompromi}}{122}{figure.caption.166}%
-\contentsline {figure}{\numberline {4.44}{\ignorespaces Peta Persebaran Klaster Trajektori Keseluruhan}}{122}{figure.caption.167}%
-\contentsline {figure}{\numberline {4.45}{\ignorespaces Distribusi Proporsi Klaster Trajektori Keseluruhan}}{123}{figure.caption.168}%
-\contentsline {figure}{\numberline {4.46}{\ignorespaces Perbandingan Peta Klaster Biplot (Unweighted): Tahun 2023 (kiri) vs 2024 (kanan)}}{125}{figure.caption.173}%
-\contentsline {figure}{\numberline {4.47}{\ignorespaces Perbandingan Peta Klaster Biplot (kiri) vs STATIS (kanan) Tahun 2024}}{128}{figure.caption.182}%
-\contentsline {figure}{\numberline {4.48}{\ignorespaces Perbandingan Peta Kategori IPM UNDP: Tahun 2023 (kiri) vs 2024 (kanan)}}{130}{figure.caption.187}%
-\contentsline {figure}{\numberline {4.49}{\ignorespaces Perbandingan Peta Klaster Biplot (kiri) vs Kategori IPM UNDP (kanan) Tahun 2024}}{132}{figure.caption.192}%
-\contentsline {figure}{\numberline {4.50}{\ignorespaces Perbandingan Peta Klaster STATIS Tahunan (kiri) vs Kategori IPM UNDP (kanan) Tahun 2024}}{134}{figure.caption.197}%
-\contentsline {figure}{\numberline {4.51}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Klaster Biplot Tahun 2024 (kanan)}}{136}{figure.caption.202}%
-\contentsline {figure}{\numberline {4.52}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Klaster STATIS Tahun 2024 (kanan)}}{137}{figure.caption.207}%
-\contentsline {figure}{\numberline {4.53}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Kategori IPM UNDP Tahun 2024 (kanan)}}{139}{figure.caption.212}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Boxplot IPM (Perbandingan Tahunan 2020--2024)}}{74}{figure.caption.74}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Boxplot IPG (Perbandingan Tahunan 2020--2024)}}{75}{figure.caption.75}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Boxplot Persentase Penduduk Miskin (PPM) (Perbandingan Tahunan 2020--2024)}}{75}{figure.caption.76}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Boxplot PDRB ADHK (Perbandingan Tahunan 2020--2024)}}{76}{figure.caption.77}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Boxplot Rata-Rata Lama Sekolah (RLS) (Perbandingan Tahunan 2020--2024)}}{76}{figure.caption.78}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Boxplot Angka Harapan Hidup Laki-Laki (AHH L) (Perbandingan Tahunan 2020--2024)}}{77}{figure.caption.79}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Boxplot Angka Harapan Hidup Perempuan (AHH P) (Perbandingan Tahunan 2020--2024)}}{77}{figure.caption.80}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Boxplot Garis Kemiskinan (GK) (Perbandingan Tahunan 2020--2024)}}{78}{figure.caption.81}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Boxplot Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) (Perbandingan Tahunan 2020--2024)}}{78}{figure.caption.82}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Boxplot Tingkat Pengangguran Terbuka (TPT) (Perbandingan Tahunan 2020--2024)}}{79}{figure.caption.83}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Boxplot Tingkat Partisipasi Angkatan Kerja (TPAK) (Perbandingan Tahunan 2020--2024)}}{79}{figure.caption.84}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Boxplot Gini Ratio (GR) (Perbandingan Tahunan 2020--2024)}}{80}{figure.caption.85}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Heatmap Korelasi Pearson Antar-Indikator Tahun 2020 (41 Kabupaten/Kota)}}{81}{figure.caption.86}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Heatmap Koefisien RV Antar-Tahun (2020 hingga 2024)}}{83}{figure.caption.89}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Scree Plot Nilai Eigen Matriks Kompromi}}{85}{figure.caption.92}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Peta Skor Kompromi 41 Kabupaten/Kota (2020 hingga 2024)}}{87}{figure.caption.94}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Biplot Kompromi Skenario 1 (Host = Wilayah)}}{88}{figure.caption.95}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Biplot Kompromi Skenario 2 (Host = Indikator)}}{88}{figure.caption.95}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Kontribusi Indikator Dim~1 -- Skenario 1}}{92}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Kontribusi Indikator Dim~1 -- Skenario 2}}{92}{figure.caption.100}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 1}}{92}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces Kualitas Representasi ($\cos ^2$) -- Skenario 2}}{92}{figure.caption.101}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces Distribusi Null Uji Permutasi vs.\ Nilai Eigen Observasi ($\lambda _1^{obs}$)}}{93}{figure.caption.102}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces Lintasan Temporal Komponen Vektor Struktur $\tilde {\beta }_k$ (2020 hingga 2024)}}{96}{figure.caption.107}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces Trajektori Pergeseran 41 Kabupaten/Kota pada Ruang Kompromi (2020 hingga 2024)}}{97}{figure.caption.108}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}}{99}{figure.caption.109}%
+\contentsline {figure}{\numberline {4.31}{\ignorespaces Kurva Elbow dan Dendrogram Tahun 2020}}{106}{figure.caption.128}%
+\contentsline {figure}{\numberline {4.36}{\ignorespaces Pengelompokan K-Means ($k=3$) Tahun 2020: Biplot (kiri) dan Peta (kanan)}}{108}{figure.caption.133}%
+\contentsline {figure}{\numberline {4.41}{\ignorespaces Perbandingan Peta Klaster STATIS Periode 2023 vs 2024 (Kiri: Tahun 2023; Kanan: Tahun 2024)}}{112}{figure.caption.142}%
+\contentsline {figure}{\numberline {4.42}{\ignorespaces Penentuan Jumlah Klaster Optimal -- Metode Elbow (Tahun 2024)}}{113}{figure.caption.143}%
+\contentsline {figure}{\numberline {4.43}{\ignorespaces Scatter Plot Klaster Trajektori pada Ruang Kompromi}}{114}{figure.caption.144}%
+\contentsline {figure}{\numberline {4.44}{\ignorespaces Peta Persebaran Klaster Trajektori Keseluruhan}}{114}{figure.caption.145}%
+\contentsline {figure}{\numberline {4.45}{\ignorespaces Distribusi Proporsi Klaster Trajektori Keseluruhan}}{115}{figure.caption.146}%
+\contentsline {figure}{\numberline {4.46}{\ignorespaces Perbandingan Peta Klaster Biplot (Unweighted): Tahun 2023 (kiri) vs 2024 (kanan)}}{117}{figure.caption.151}%
+\contentsline {figure}{\numberline {4.47}{\ignorespaces Perbandingan Peta Klaster Biplot (kiri) vs STATIS (kanan) Tahun 2024}}{120}{figure.caption.160}%
+\contentsline {figure}{\numberline {4.48}{\ignorespaces Perbandingan Peta Kategori IPM UNDP: Tahun 2023 (kiri) vs 2024 (kanan)}}{122}{figure.caption.165}%
+\contentsline {figure}{\numberline {4.49}{\ignorespaces Perbandingan Peta Klaster Biplot (kiri) vs Kategori IPM UNDP (kanan) Tahun 2024}}{124}{figure.caption.170}%
+\contentsline {figure}{\numberline {4.50}{\ignorespaces Perbandingan Peta Klaster STATIS Tahunan (kiri) vs Kategori IPM UNDP (kanan) Tahun 2024}}{126}{figure.caption.175}%
+\contentsline {figure}{\numberline {4.51}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Klaster Biplot Tahun 2024 (kanan)}}{128}{figure.caption.180}%
+\contentsline {figure}{\numberline {4.52}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Klaster STATIS Tahun 2024 (kanan)}}{130}{figure.caption.185}%
+\contentsline {figure}{\numberline {4.53}{\ignorespaces Perbandingan Peta Klaster Kompromi (kiri) vs Kategori IPM UNDP Tahun 2024 (kanan)}}{132}{figure.caption.190}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1}{\ignorespaces Tampilan Antarmuka Aplikasi Dashboard Analisis Spasio-Temporal Sosio-Ekonomi}}{165}{figure.caption.216}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Tampilan Antarmuka Aplikasi Dashboard Analisis Spasio-Temporal Sosio-Ekonomi}}{159}{figure.caption.194}%
