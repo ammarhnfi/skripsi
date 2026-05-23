@@ -1098,19 +1098,6 @@ for current_scenario in ['scenario1', 'scenario2']:
         per_year_coords[yr] = fk
         per_year_loadings[yr] = gk
 
-    # Flip PC1 agar orientasi konsisten: daerah dengan performa tinggi memiliki PC1 positif
-    # Logika: mean_perf_c sudah dikoreksi tanda negatif untuk variabel buruk (GK, TPT, dll.)
-    # Jika korelasi PC1 vs mean_perf_c negatif, berarti arah PC1 terbalik — flip konsisten.
-    _corr_pc1 = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
-    if _corr_pc1 < 0:
-        scores_raw[:, 0] *= -1
-        loadings[:, 0] *= -1
-        for _yr in list(per_year_coords.keys()):
-            per_year_coords[_yr][:, 0] *= -1
-        for _yr in list(per_year_loadings.keys()):
-            per_year_loadings[_yr][:, 0] *= -1
-        print(f"  [INFO] PC1 di-flip (corr={_corr_pc1:.3f}) agar performa tinggi = PC1 positif.")
-
     # ============================================================
     # 5. EKSPOR TABEL STATIS ({SCENARIO})
     # ============================================================
@@ -1131,13 +1118,6 @@ for current_scenario in ['scenario1', 'scenario2']:
     })
     save_tex_table(df_eigen, "output_table_eigen.tex", OUT_DIR, f"Dekomposisi Nilai Eigen ({SCENARIO})", "eigen", label_prefix=CUR_LABEL_PREFIX)
     
-    # Loadings & Skor (Scenario specific)
-    df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1', 'PC2']).reset_index()
-    save_tex_table(df_gc, "output_table_loadings.tex", OUT_DIR, f"Loadings Kompromi ({SCENARIO})", "loadings", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-    
-    df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1', 'PC2']).reset_index()
-    save_tex_table(df_fc, "output_table_scores.tex", OUT_DIR, f"Koordinat Skor Kompromi ({SCENARIO})", "scores", longtable=False, float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-
     # ------------------------------------------------------------
     # Helpers for Plots
     # ------------------------------------------------------------
@@ -1166,7 +1146,20 @@ for current_scenario in ['scenario1', 'scenario2']:
     if ROT_ANGLE != 0.0:
         R_rot = np.array([[np.cos(ROT_ANGLE), -np.sin(ROT_ANGLE)], [np.sin(ROT_ANGLE), np.cos(ROT_ANGLE)]])
         plot_scores, plot_loadings = plot_scores @ R_rot.T, plot_loadings @ R_rot.T
-    
+
+    # Loadings & Skor Kompromi (Fc, Gc) — dengan kolom Asli dan Visual
+    df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_gc['PC1 (Visual)'] = plot_loadings[:, 0]
+    df_gc['PC2 (Visual)'] = plot_loadings[:, 1]
+    df_gc = df_gc.reset_index()
+    save_tex_table(df_gc, "output_table_loadings.tex", OUT_DIR, f"Loadings Kompromi ({SCENARIO})", "loadings", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+
+    df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_fc['PC1 (Visual)'] = plot_scores[:, 0]
+    df_fc['PC2 (Visual)'] = plot_scores[:, 1]
+    df_fc = df_fc.reset_index()
+    save_tex_table(df_fc, "output_table_scores.tex", OUT_DIR, f"Koordinat Skor Kompromi ({SCENARIO})", "scores", longtable=False, float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+
     per_year_coords_plot = {}
     per_year_loadings_plot = {}
     # --- Per-year rotation + mirror (matching app.py cb_update_statis_plots) ---
@@ -1305,8 +1298,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
         if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
             df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
-            df_fk['PC1 (Disesuaikan)'] = ss_adj[:, 0]
-            df_fk['PC2 (Disesuaikan)'] = ss_adj[:, 1]
+            df_fk['PC1 (Visual)'] = ss_adj[:, 0]
+            df_fk['PC2 (Visual)'] = ss_adj[:, 1]
         df_fk.index.name = 'Kabupaten/Kota'
         df_fk = df_fk.reset_index()
         
@@ -1314,8 +1307,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1', 'PC2'])
         if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
             df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
-            df_gk['PC1 (Disesuaikan)'] = ls_adj[:, 0]
-            df_gk['PC2 (Disesuaikan)'] = ls_adj[:, 1]
+            df_gk['PC1 (Visual)'] = ls_adj[:, 0]
+            df_gk['PC2 (Visual)'] = ls_adj[:, 1]
         df_gk.index.name = 'Indikator'
         df_gk = df_gk.reset_index()
 
@@ -2962,7 +2955,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         if IS_FIRST:
             n_samples = len(df_y)
             save_tex_table(df_desc, f"output_table_descriptive_{yr}.tex", ROOT_OUT_DIR,
-                           f"Statistika Deskriptif (Dengan Bobot) Tahun {yr} (N = {n_samples})", f"desc_{yr}", float_fmt="{:.4f}", header_makecell=False, label_prefix=CUR_LABEL_PREFIX)
+                           f"Statistika Deskriptif (dengan Bobot) Tahun {yr} (N = {n_samples})", f"desc_{yr}", float_fmt="{:.4f}", header_makecell=False, label_prefix=CUR_LABEL_PREFIX)
     
 
     # ============================================================

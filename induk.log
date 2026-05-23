@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  22 MAY 2026 14:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  22 MAY 2026 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2098,26 +2098,11 @@ scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter
 _statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>]
 (output_real/scenario1/output_table_statis_transition_sum_2023x2024.tex)
 (output_real/scenario1/output_table_statis_transition_name_2023x2024.tex
-Underfull \hbox (badness 1348) in paragraph at lines 9--10
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
--
- []
-
 [118 <./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/s
 cenario1/cluster_map_statis_2024.png>])
 (output_real/scenario2/output_table_statis_transition_sum_2023x2024.tex)
-(output_real/scenario2/output_table_statis_transition_name_2023x2024.tex
-Underfull \hbox (badness 1348) in paragraph at lines 9--10
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
--
- []
-
-
-Underfull \hbox (badness 1509) in paragraph at lines 15--16
-\OT1/ptm/m/n/12 (+20) Cire-bon, Sumedang, In-dra-mayu, Sub-ang, Pur-wakarta,
- []
-
-) [119]
+(output_real/scenario2/output_table_statis_transition_name_2023x2024.tex)
+[119]
 <output_real/scenario1/compare_map_trans_statis_2023x2024.png, id=2493, 5217.49
 25pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_trans_statis_2023x2024.png Graphic file
@@ -2222,16 +2207,12 @@ Package pdftex.def Info: output_real/scenario1/compare_map_trans_biplot_2023x20
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex
 [125 <./output_real/scenario1/compare_map_trans_biplot_2023x2024.png (PNG copy)
 >]) (output_real/scenario1/output_table_biplot_vs_statis_sum_2024.tex)
-(output_real/scenario1/output_table_biplot_vs_statis_name_2024.tex) [126]
+(output_real/scenario1/output_table_biplot_vs_statis_name_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex
-Underfull \hbox (badness 1509) in paragraph at lines 15--16
-\OT1/ptm/m/n/12 (+20) Cire-bon, Sumedang, In-dra-mayu, Sub-ang, Pur-wakarta,
- []
-
-) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
-(output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex [127])
-<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=2547, 5217.492
+[126]) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex)
+<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=2543, 5217.492
 5pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
@@ -2239,7 +2220,7 @@ File: output_real/scenario1/compare_map_biplot_vs_statis_2024.png Graphic file
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_statis_202
 4.png  used on input line 889.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=2548, 5217.492
+<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=2544, 5217.492
 5pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
@@ -2247,14 +2228,14 @@ File: output_real/scenario2/compare_map_biplot_vs_statis_2024.png Graphic file
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_statis_202
 4.png  used on input line 894.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-
-[128 <./output_real/scenario1/compare_map_biplot_vs_statis_2024.png (PNG copy)>
- <./output_real/scenario2/compare_map_biplot_vs_statis_2024.png (PNG copy)>]
+ [127]
 (output_real/scenario1/output_table_ipm_sum_2023x2024.tex)
-(output_real/scenario1/output_table_ipm_name_2023x2024.tex)
+(output_real/scenario1/output_table_ipm_name_2023x2024.tex) [128 <./output_real
+/scenario1/compare_map_biplot_vs_statis_2024.png (PNG copy)> <./output_real/sce
+nario2/compare_map_biplot_vs_statis_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_ipm_sum_2023x2024.tex)
-(output_real/scenario2/output_table_ipm_name_2023x2024.tex [129])
-<output_real/scenario1/compare_map_ipm_2023x2024.png, id=2558, 5211.47pt x 1829
+(output_real/scenario2/output_table_ipm_name_2023x2024.tex)
+<output_real/scenario1/compare_map_ipm_2023x2024.png, id=2553, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario1/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
@@ -2262,7 +2243,7 @@ g)
 Package pdftex.def Info: output_real/scenario1/compare_map_ipm_2023x2024.png  u
 sed on input line 920.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
-<output_real/scenario2/compare_map_ipm_2023x2024.png, id=2559, 5211.47pt x 1829
+<output_real/scenario2/compare_map_ipm_2023x2024.png, id=2554, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario2/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
@@ -2270,24 +2251,14 @@ g)
 Package pdftex.def Info: output_real/scenario2/compare_map_ipm_2023x2024.png  u
 sed on input line 925.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
- [130 <./output_real/scenario1/compare_map_ipm_2023x2024.png (PNG copy)> <./out
-put_real/scenario2/compare_map_ipm_2023x2024.png (PNG copy)>]
+ [129]
 (output_real/scenario1/output_table_cross_matrix_sum_2024.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2024.tex)
+(output_real/scenario1/output_table_cross_matrix_name_2024.tex) [130 <./output_
+real/scenario1/compare_map_ipm_2023x2024.png (PNG copy)> <./output_real/scenari
+o2/compare_map_ipm_2023x2024.png (PNG copy)>]
 (output_real/scenario2/output_table_cross_matrix_sum_2024.tex)
-(output_real/scenario2/output_table_cross_matrix_name_2024.tex
-Underfull \hbox (badness 1348) in paragraph at lines 11--12
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
--
- []
-
-
-Underfull \hbox (badness 1881) in paragraph at lines 13--14
-[]|\OT1/ptm/m/n/12 (+20) Kep. Seribu, Bo-gor, Ban-dung, Kuningan, Cire-bon,
- []
-
-) [131]
-<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=2568, 5214.48125p
+(output_real/scenario2/output_table_cross_matrix_name_2024.tex)
+<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=2564, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
@@ -2295,7 +2266,7 @@ pe png)
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_ipm_2024.p
 ng  used on input line 951.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=2569, 5214.48125p
+<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=2565, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
@@ -2303,24 +2274,14 @@ pe png)
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_ipm_2024.p
 ng  used on input line 956.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- (output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex)
-(output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex [132 <./output_
-real/scenario1/compare_map_biplot_vs_ipm_2024.png (PNG copy)> <./output_real/sc
-enario2/compare_map_biplot_vs_ipm_2024.png (PNG copy)>])
+ [131]
+(output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex)
+(output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex) [132 <./output
+_real/scenario1/compare_map_biplot_vs_ipm_2024.png (PNG copy)> <./output_real/s
+cenario2/compare_map_biplot_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_statis_vs_ipm_sum_2024.tex)
-(output_real/scenario2/output_table_statis_vs_ipm_name_2024.tex
-Underfull \hbox (badness 1348) in paragraph at lines 11--12
-[]|\OT1/ptm/m/n/12 (+20) Cianjur, Tasik-malaya, Ma-jalengka, Pan-gan-daran, Pan
--
- []
-
-
-Underfull \hbox (badness 1881) in paragraph at lines 13--14
-[]|\OT1/ptm/m/n/12 (+20) Kep. Seribu, Bo-gor, Ban-dung, Kuningan, Cire-bon,
- []
-
-) [133]
-<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=2578, 5214.48125p
+(output_real/scenario2/output_table_statis_vs_ipm_name_2024.tex)
+<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=2574, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
@@ -2328,7 +2289,7 @@ pe png)
 Package pdftex.def Info: output_real/scenario1/compare_map_statis_vs_ipm_2024.p
 ng  used on input line 982.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=2579, 5214.48125p
+<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=2575, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario2/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
@@ -2336,14 +2297,14 @@ pe png)
 Package pdftex.def Info: output_real/scenario2/compare_map_statis_vs_ipm_2024.p
 ng  used on input line 987.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- [134 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <
-./output_real/scenario2/compare_map_statis_vs_ipm_2024.png (PNG copy)>]
+ [133]
 (output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex)
+[134 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <.
+/output_real/scenario2/compare_map_statis_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_biplot_vs_compromise_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_compromise_name_2024.tex)
-[135]
-<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=2589, 5217
+<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=2584, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
@@ -2351,7 +2312,7 @@ ile (type png)
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_biplot
 _2024.png  used on input line 1013.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=2590, 5217
+<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=2585, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
@@ -2359,14 +2320,14 @@ ile (type png)
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_biplot
 _2024.png  used on input line 1018.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
- (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
-(output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex [136 <./
+
+[135] (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
+(output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex)
+(output_real/scenario2/output_table_compromise_vs_statis_sum_2024.tex)
+(output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex [136 <./
 output_real/scenario1/compare_map_compromise_vs_biplot_2024.png (PNG copy)> <./
 output_real/scenario2/compare_map_compromise_vs_biplot_2024.png (PNG copy)>])
-(output_real/scenario2/output_table_compromise_vs_statis_sum_2024.tex)
-(output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex)
-[137]
-<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=2599, 5217
+<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=2595, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
@@ -2374,7 +2335,7 @@ ile (type png)
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_statis
 _2024.png  used on input line 1042.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=2600, 5217
+<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=2596, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
@@ -2382,13 +2343,14 @@ ile (type png)
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_statis
 _2024.png  used on input line 1047.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
- [138 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG c
-opy)> <./output_real/scenario2/compare_map_compromise_vs_statis_2024.png (PNG c
-opy)>] (output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex) (out
-put_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex)
+
+[137 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG co
+py)> <./output_real/scenario2/compare_map_compromise_vs_statis_2024.png (PNG co
+py)>] (output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex)
+(output_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_ipm_sum_2024.tex)
-(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex) [139]
-<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=2609, 5214.48
+(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex [138])
+<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=2605, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
@@ -2396,7 +2358,7 @@ File: output_real/scenario1/compare_map_compromise_vs_ipm_2024.png Graphic file
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_ipm_20
 24.png  used on input line 1073.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=2610, 5214.48
+<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=2606, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
@@ -2405,27 +2367,27 @@ Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_ipm_20
 24.png  used on input line 1078.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
 
-[140 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
+[139 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
 > <./output_real/scenario2/compare_map_compromise_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario1/output_moran.tex)
-(output_real/scenario2/output_moran.tex) [141] [142]) [143]
+(output_real/scenario2/output_moran.tex) [140] [141]) [142]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 \normalsize BAB 5.
-[144
+[143
 
 
 
 
-] [145]
+] [144]
 Underfull \hbox (badness 1038) in paragraph at lines 46--48
 []\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-boar
 d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
 is web
  []
 
-) [146] (induk.bbl
+) [145] (induk.bbl
 Underfull \hbox (badness 2293) in paragraph at lines 47--52
 []\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20)
  In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
@@ -2455,7 +2417,7 @@ Underfull \hbox (badness 2012) in paragraph at lines 67--71
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[147
+[146
 
 
 
@@ -2477,30 +2439,30 @@ Underfull \hbox (badness 2012) in paragraph at lines 85--89
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[148] [149] [150] [151]
+[147] [148] [149] [150]
 Underfull \hbox (badness 2096) in paragraph at lines 359--363
 []\OT1/ptm/m/n/12 (+20) Weisstein, Eric W. (2024).  \OT1/ptm/m/it/12 (+20) Kur-
 to-sis ex-cess\OT1/ptm/m/n/12 (+20) .  []$https : / / mathworld . wolfram . com
  /
  []
 
-) [152]
+) [151]
 \openout2 = `lampiran1.aux'.
 
- (lampiran1.tex [153
+ (lampiran1.tex [152
 
 
-] [154] [155] [156] [157] [158] [159] [160] [161]
-[162] [163] [164]) [165]
+] [153] [154] [155] [156] [157] [158] [159] [160]
+[161] [162] [163]) [164]
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
-<pics/screenshot_web.png, id=2838, 1444.64719pt x 548.80031pt>
+<pics/screenshot_web.png, id=2833, 1444.64719pt x 548.80031pt>
 File: pics/screenshot_web.png Graphic file (type png)
 <use pics/screenshot_web.png>
 Package pdftex.def Info: pics/screenshot_web.png  used on input line 16.
 (pdftex.def)             Requested size: 426.79135pt x 162.12915pt.
-) [166
+) [165
 
 
 
@@ -2520,9 +2482,9 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 34990 strings out of 467871
- 682904 string characters out of 5418376
- 1183087 words of memory out of 5000000
+ 34989 strings out of 467871
+ 682896 string characters out of 5418376
+ 1184087 words of memory out of 5000000
  61414 multiletter control sequences out of 15000+600000
  690645 words of font info for 446 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
@@ -2552,9 +2514,9 @@ ers/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:
 /Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C
 :/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C
 :/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on induk.pdf (194 pages, 20727922 bytes).
+Output written on induk.pdf (193 pages, 20719640 bytes).
 PDF statistics:
- 3545 PDF objects out of 3580 (max. 8388607)
- 810 named destinations out of 1000 (max. 500000)
+ 3541 PDF objects out of 3580 (max. 8388607)
+ 809 named destinations out of 1000 (max. 500000)
  83021 words of extra memory for PDF output out of 89155 (max. 10000000)
 

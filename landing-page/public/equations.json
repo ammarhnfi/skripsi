@@ -243,25 +243,25 @@
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
+    "raw": "\\label{eq:loading_kompromi_s2}\n            \\mathbf{G}_c = \\mathbf{V}_c \\mathbf{\\Lambda}_s^{1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2}"
+    "raw": "\\label{eq:loading_parsial_s2}\n            \\mathbf{G}_k = \\mathbf{S}_k \\mathbf{V}_c \\mathbf{\\Lambda}_s^{-1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2} \\]",
     "type": "equation",
-    "raw": "\\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2}"
+    "raw": "\\label{eq:skor_parsial_s2}\n            \\mathbf{F}_k = \\mathbf{Z}_k \\mathbf{G}_c \\mathbf{\\Lambda}_s^{-1/2}"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
     "latex": "\\[ \\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k \\]",
     "type": "equation",
-    "raw": "\\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k"
+    "raw": "\\label{eq:skor_kompromi_s2}\n            \\mathbf{F}_c = \\sum_{k=1}^K \\alpha_k \\mathbf{F}_k"
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",

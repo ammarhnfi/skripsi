@@ -140,19 +140,19 @@
 \contentsline {section}{\numberline {4.8}\normalsize Analisis Komparatif Sembilan Jenis Perbandingan Klaster}{124}{section.4.8}%
 \contentsline {subsection}{\numberline {4.8.1}\normalsize Perbandingan 1 --- Matriks Transisi Cluster Biplot Antar-Tahun}{124}{subsection.4.8.1}%
 \contentsline {subsection}{\numberline {4.8.2}\normalsize Perbandingan 3 --- Kongruensi Klaster Biplot vs STATIS per Tahun}{125}{subsection.4.8.2}%
-\contentsline {subsection}{\numberline {4.8.3}\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP}{129}{subsection.4.8.3}%
-\contentsline {subsection}{\numberline {4.8.4}\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM}{131}{subsection.4.8.4}%
+\contentsline {subsection}{\numberline {4.8.3}\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP}{128}{subsection.4.8.3}%
+\contentsline {subsection}{\numberline {4.8.4}\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM}{130}{subsection.4.8.4}%
 \contentsline {subsection}{\numberline {4.8.5}\normalsize Perbandingan 6 --- Validasi Eksternal Klaster STATIS Tahunan terhadap Kategori IPM}{132}{subsection.4.8.5}%
 \contentsline {subsection}{\numberline {4.8.6}\normalsize Perbandingan 7 --- Konsistensi Klaster Kompromi terhadap Klaster Biplot per Tahun}{134}{subsection.4.8.6}%
 \contentsline {subsection}{\numberline {4.8.7}\normalsize Perbandingan 8 --- Konsistensi Klaster Kompromi terhadap Klaster STATIS Tahunan}{136}{subsection.4.8.7}%
 \contentsline {subsection}{\numberline {4.8.8}\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM}{138}{subsection.4.8.8}%
-\contentsline {section}{\numberline {4.9}\normalsize Uji Autokorelasi Spasial (Global Moran's~$I$)}{141}{section.4.9}%
-\contentsline {section}{\numberline {4.10}\normalsize Analisis Hotspot (Local Moran's~$I$)}{141}{section.4.10}%
-\contentsline {section}{\numberline {4.11}\normalsize Ringkasan Temuan dan Implikasi Kebijakan}{142}{section.4.11}%
-\contentsline {subsection}{\numberline {4.11.1}\normalsize Pembahasan Berdasarkan Tujuan Penelitian}{142}{subsection.4.11.1}%
-\contentsline {subsection}{\numberline {4.11.2}\normalsize Kontribusi terhadap Manfaat Penelitian}{143}{subsection.4.11.2}%
-\contentsline {subsection}{\numberline {4.11.3}\normalsize Implikasi Kebijakan}{143}{subsection.4.11.3}%
-\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{144}{chapter.5}%
-\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{144}{section.5.1}%
-\contentsline {section}{\numberline {5.2}\normalsize Saran}{145}{section.5.2}%
-\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{147}{chapter*.213}%
+\contentsline {section}{\numberline {4.9}\normalsize Uji Autokorelasi Spasial (Global Moran's~$I$)}{140}{section.4.9}%
+\contentsline {section}{\numberline {4.10}\normalsize Analisis Hotspot (Local Moran's~$I$)}{140}{section.4.10}%
+\contentsline {section}{\numberline {4.11}\normalsize Ringkasan Temuan dan Implikasi Kebijakan}{141}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}\normalsize Pembahasan Berdasarkan Tujuan Penelitian}{141}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}\normalsize Kontribusi terhadap Manfaat Penelitian}{142}{subsection.4.11.2}%
+\contentsline {subsection}{\numberline {4.11.3}\normalsize Implikasi Kebijakan}{142}{subsection.4.11.3}%
+\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{143}{chapter.5}%
+\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{143}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\normalsize Saran}{144}{section.5.2}%
+\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{146}{chapter*.213}%

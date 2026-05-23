@@ -157,8 +157,8 @@ RULES = [
 # ---------------------------------------------------------------------------
 CAPTION_MAP = {
     # Shared
-    "output_table_deskriptif_":       "Statistika Deskriptif (Tanpa Bobot) Tahun {yr}",
-    "output_table_descriptive_":      "Statistika Deskriptif (Dengan Bobot) Tahun {yr}",
+    "output_table_deskriptif_":       "Statistika Deskriptif (tanpa Bobot) Tahun {yr}",
+    "output_table_descriptive_":      "Statistika Deskriptif (dengan Bobot) Tahun {yr}",
     "output_table_rv_w":              "Matriks RV Antar-Tahun (Host = Wilayah)",
     "output_table_rv_s":              "Matriks RV Antar-Tahun (Host = Indikator)",
     "output_table_hw":                "Matriks Interstruktur H_W",

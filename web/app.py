@@ -806,7 +806,7 @@ def export_tables_latex(res):
                 
                 for _, row in df.iterrows():
                     # Escape row values
-                    row_str = " & ".join([float_fmt.format(val) if isinstance(val, (int, float)) else escape_tex(val) for val in row])
+                    row_str = " & ".join([float_fmt.format(val).replace('.', ',') if isinstance(val, (int, float, np.number)) else escape_tex(val) for val in row])
                     lines.append(row_str + " \\\\")
                 
                 lines.append(r"\hline")
@@ -825,7 +825,7 @@ def export_tables_latex(res):
                 
                 for _, row in df.iterrows():
                     # Escape row values
-                    row_str = " & ".join([float_fmt.format(val) if isinstance(val, (int, float)) else escape_tex(val) for val in row])
+                    row_str = " & ".join([float_fmt.format(val).replace('.', ',') if isinstance(val, (int, float, np.number)) else escape_tex(val) for val in row])
                     lines.append(row_str + " \\\\")
                 
                 lines.append(r"\hline")
@@ -1004,7 +1004,7 @@ def calc_kmo_bartlett(df_dict, variables):
 # -----------------------------
 def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenario='scenario2'):
     """
-    Menjalankan perhitungan STATIS Lengkap (Matriks, Skor, Loading).
+    Menjalankan penghitungan STATIS Lengkap (Matriks, Skor, Loading).
     Mengembalikan data siap plot dan siap tabel.
     """
     if uploaded_content_string is None: raise Exception("File belum di-upload.")
@@ -1265,25 +1265,14 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenari
     scores_svd = scores_raw.copy()
     loadings_svd = loadings.copy()
 
-    # --- [OTOMATIS] Penyelarasan PC1 dengan Performa (Kesejahteraan) ---
-    negative_vars = ['PPM', 'TPT', 'GK', 'PKKP', 'GR', 'Gini Ratio', 'Persentase Penduduk Miskin', 'Tingkat Pengangguran Terbuka']
-    Zc = np.zeros_like(X_matrices[0])
-    for a, Zk in zip(alphas, X_matrices): Zc += a * Zk
-    Zc_proxy = Zc.copy()
-    for i, var in enumerate(selected_vars_final):
-        if any(neg.lower() in var.lower() for neg in negative_vars):
-            Zc_proxy[:, i] *= -1
-    mean_perf_c = Zc_proxy.mean(axis=1)
-    
-    # Samakan scores_raw (titik kompromi) dengan performa
-    corr_scores = np.corrcoef(scores_raw[:, 0], mean_perf_c)[0, 1]
-    
-#pentingbanget
-    # 8. Trajectories (Projecting onto Variable Compromise Space)
-    # This aligns with the "Dual" interpretation: city trajectories in variable space
+    # 8. Trajectories per year (Intra-Scores F_k)
     per_year_coords = {}
-    for year, dfstd in zip(sheet_names, tables_std):
-        per_year_coords[year] = dfstd.values @ Vc_vars
+    if scenario == 'scenario1':
+        for i, (year, Wk) in enumerate(zip(sheet_names, Ws)):
+            per_year_coords[year] = Wk @ D_sqrt @ eig_vecs_c[:, :2] / np.clip(sq2, 1e-12, None)
+    else:
+        for year, dfstd in zip(sheet_names, tables_std):
+            per_year_coords[year] = dfstd.values @ Vc_vars
 
     # Matriks & Tabel
     df_alphas = pd.DataFrame({'Tahun': sheet_names, 'Bobot (Alpha)': [round(a, 4) for a in alphas]})
@@ -1586,6 +1575,7 @@ def export_structure_vector_latex(sv_res, output_dir="../output_app", label_pref
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    import re as _re
 
     os.makedirs(output_dir, exist_ok=True)
     sheet_names  = sv_res['sheet_names']
@@ -1606,7 +1596,7 @@ def export_structure_vector_latex(sv_res, output_dir="../output_app", label_pref
         lines.append(" & ".join([fr"\textbf{{{h}}}" for h in col_headers]) + r" \\")
         lines.append(r"\hline")
         for row in rows:
-            lines.append(" & ".join([str(v) for v in row]) + r" \\")
+            lines.append(" & ".join([_re.sub(r'(\d)\.(\d)', r'\1,\2', str(v)) for v in row]) + r" \\")
         lines.append(r"\hline")
         lines.append(r"\end{tabular}")
         lines.append(r"\end{table}")
@@ -1937,13 +1927,14 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             ]),
             html.Div(className='six columns', children=[
                 html.Label('Pengaturan Skala Visual:', style={'fontWeight':'bold'}),
-                dcc.Checklist(
+                dcc.RadioItems(
                     id='visual-scaling-opts',
                     options=[
+                        {'label': 'Tanpa Skala', 'value': 'none'},
                         {'label': 'Normalisasi Skor (-1 s.d 1)', 'value': 'norm_score'},
                         {'label': 'Skala Visual Loadings (Agar sebanding)', 'value': 'scale_load'}
                     ],
-                    value=['scale_load'],
+                    value='scale_load',
                     inline=True,
                     inputStyle={"marginRight": "5px"}
                 )
@@ -3095,7 +3086,7 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario):
     if not n_clicks or not vars or not contents or not global_data: 
         raise exceptions.PreventUpdate
     try:
-        print("--- [STATIS_CORE] MEMULAI PERHITUNGAN ---")
+        print("--- [STATIS_CORE] MEMULAI PENGHITUNGAN ---")
         res = run_statis_core(contents, vars, global_data['sheet_names'], scenario=scenario)
         
         # --- [TAMBAHAN] Injeksi Metadata Provinsi & Index untuk Visualisasi ---
@@ -3196,7 +3187,7 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario):
         return res, ""
     except Exception as e:
         import traceback
-        err_msg = f"ERROR DI PERHITUNGAN CORE: {str(e)}"
+        err_msg = f"ERROR DI PENGHITUNGAN CORE: {str(e)}"
         print(err_msg)
         traceback.print_exc()
         return None, f"Terjadi kesalahan: {str(e)}"
@@ -3261,9 +3252,9 @@ def cb_diag_math(n_clicks, data_store, vars):
 def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, traj_sel, year_2d, load_scope, vis_opts, selected_vectors_to_show):
     if not pca_data or not years_filter: return {}, {}, {}, [], []
     
-    norm_score = 'norm_score' in vis_opts if vis_opts else False
-    scale_load = 'scale_load' in vis_opts if vis_opts else False
-    
+    norm_score = vis_opts == 'norm_score'
+    scale_load = vis_opts == 'scale_load'
+
     df_pc = pd.read_json(io.StringIO(pca_data['pc_scores']), orient='split')
     df_load = pd.read_json(io.StringIO(pca_data['loadings']), orient='split')
     df_pc = df_pc[df_pc['Tahun'].isin(years_filter)]
@@ -3378,9 +3369,9 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
 def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, base_name, traj_sel, year_2d, load_scope, vis_opts, selected_vectors_to_show, global_data):
     if not statis_data or not years_filter or not global_data: return {}, {}, {}, [], []
     
-    norm_score = 'norm_score' in vis_opts if vis_opts else False
-    scale_load = 'scale_load' in vis_opts if vis_opts else False
-    
+    norm_score = vis_opts == 'norm_score'
+    scale_load = vis_opts == 'scale_load'
+
     import pandas as pd
     df_global = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
     prov_map = df_global[['Kabupaten/Kota', 'Provinsi']].drop_duplicates().set_index('Kabupaten/Kota')['Provinsi'].to_dict()
@@ -3523,12 +3514,12 @@ def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, b
 def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filter, mirror_years, base_type, base_name, vis_opts, selected_vectors):
     if not compare_year or not data_type or not pca_res or not statis_res: return [], []
     
-    norm_score = 'norm_score' in vis_opts if vis_opts else False
-    scale_load = 'scale_load' in vis_opts if vis_opts else False
-    
+    norm_score = vis_opts == 'norm_score'
+    scale_load = vis_opts == 'scale_load'
+
     import pandas as pd
     import numpy as np
-    
+
     # 1. Compute PCA unweighted
     df_pc_u = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
     df_load_u = pd.read_json(io.StringIO(pca_res['loadings']), orient='split')
@@ -3667,9 +3658,8 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
         return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
     
     # --- 2. SAFE PREPARATION: Pastikan opsi dan data dasar tersedia ---
-    vis_opts = vis_opts or []
-    norm_score = 'norm_score' in vis_opts
-    scale_load = 'scale_load' in vis_opts
+    norm_score = vis_opts == 'norm_score'
+    scale_load = vis_opts == 'scale_load'
     
     # Ambil data esensial dengan try-except agar tidak crash
     try:
