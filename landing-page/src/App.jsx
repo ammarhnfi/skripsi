@@ -2108,7 +2108,7 @@ const FORMULAS_DATA = [
   {
     "id": "ref_eq_60",
     "category": "spatial",
-    "title": "61. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
+    "title": "61. Penyelarasan Label Klaster Lintas Waktu (Teori/Relasi)",
     "formula": "$$\nD(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}\n$$",
     "keterangan": [
       "$D(c_{1i}, c_{2j})$: Jarak Euclidean antara centroid klaster $i$ pada periode 1 dan centroid klaster $j$ pada periode 2.",
@@ -2125,7 +2125,7 @@ const FORMULAS_DATA = [
   {
     "id": "ref_eq_61",
     "category": "spatial",
-    "title": "62. Penyelarasan Label Cluster Lintas Waktu (Teori/Relasi)",
+    "title": "62. Penyelarasan Label Klaster Lintas Waktu (Teori/Relasi)",
     "formula": "$$\n\\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}\n$$",
     "keterangan": [
       "$x_{ij}$: Variabel keputusan biner (bernilai 1 jika klaster $i$ dipetakan ke klaster $j$, bernilai 0 jika tidak).",
@@ -2142,7 +2142,7 @@ const FORMULAS_DATA = [
   {
     "id": "ref_eq_62",
     "category": "spatial",
-    "title": "63. Kategorisasi dan Perankingan Cluster (Teori/Relasi)",
+    "title": "63. Kategorisasi dan Perankingan Klaster (Teori/Relasi)",
     "formula": "$$\n\\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}\n$$",
     "keterangan": [
       "$\\overline{\\text{PC}}_{1,k}$: Nilai rata-rata skor koordinat sumbu pertama (PC1) untuk klaster ke-$k$.",

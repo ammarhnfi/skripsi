@@ -1512,6 +1512,14 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_centroid_statis.tex",
+    "caption": "Output Table Centroid Statis",
+    "type": "text",
+    "src": "/output_real/scenario1/output_table_centroid_statis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_compromise_cluster_sum_name.tex",
     "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
@@ -1872,6 +1880,94 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_jarak_loading_ahh_l.tex",
+    "caption": "Output Table Jarak Loading Ahh L",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_ahh_l.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_ahh_p.tex",
+    "caption": "Output Table Jarak Loading Ahh P",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_ahh_p.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_gk.tex",
+    "caption": "Output Table Jarak Loading Gk",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_gk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_gr.tex",
+    "caption": "Output Table Jarak Loading Gr",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_gr.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_ipg.tex",
+    "caption": "Output Table Jarak Loading Ipg",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_ipg.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_pdrb_adhk.tex",
+    "caption": "Output Table Jarak Loading Pdrb Adhk",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_pdrb_adhk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_pkkp.tex",
+    "caption": "Output Table Jarak Loading Pkkp",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_pkkp.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_tpak.tex",
+    "caption": "Output Table Jarak Loading Tpak",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_tpak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_jarak_skor_2020.tex",
     "caption": "Output Table Jarak Skor 2020",
     "type": "text",
@@ -1908,6 +2004,334 @@
     "caption": "Output Table Jarak Skor 2024",
     "type": "text",
     "src": "/output_real/scenario1/output_table_jarak_skor_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung.tex",
+    "caption": "Output Table Jarak Skor Bandung",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_bekasi.tex",
+    "caption": "Output Table Jarak Skor Bekasi",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_bogor.tex",
+    "caption": "Output Table Jarak Skor Bogor",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_ciamis.tex",
+    "caption": "Output Table Jarak Skor Ciamis",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_ciamis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_cianjur.tex",
+    "caption": "Output Table Jarak Skor Cianjur",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_cianjur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_cirebon.tex",
+    "caption": "Output Table Jarak Skor Cirebon",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_garut.tex",
+    "caption": "Output Table Jarak Skor Garut",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_garut.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_indramayu.tex",
+    "caption": "Output Table Jarak Skor Indramayu",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_indramayu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_karawang.tex",
+    "caption": "Output Table Jarak Skor Karawang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_karawang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kep_seribu.tex",
+    "caption": "Output Table Jarak Skor Kep Seribu",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kep_seribu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bandung.tex",
+    "caption": "Output Table Jarak Skor Kota Bandung",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_banjar.tex",
+    "caption": "Output Table Jarak Skor Kota Banjar",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_banjar.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bekasi.tex",
+    "caption": "Output Table Jarak Skor Kota Bekasi",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bogor.tex",
+    "caption": "Output Table Jarak Skor Kota Bogor",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cimahi.tex",
+    "caption": "Output Table Jarak Skor Kota Cimahi",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_cimahi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cirebon.tex",
+    "caption": "Output Table Jarak Skor Kota Cirebon",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_depok.tex",
+    "caption": "Output Table Jarak Skor Kota Depok",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_depok.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_barat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Barat",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_jakarta_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Selatan",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_timur.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Timur",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_jakarta_timur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_utara.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Utara",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_jakarta_utara.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_serang.tex",
+    "caption": "Output Table Jarak Skor Kota Serang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Kota Sukabumi",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang Selatan",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kuningan.tex",
+    "caption": "Output Table Jarak Skor Kuningan",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_kuningan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_lebak.tex",
+    "caption": "Output Table Jarak Skor Lebak",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_lebak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_majalengka.tex",
+    "caption": "Output Table Jarak Skor Majalengka",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_majalengka.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_pandeglang.tex",
+    "caption": "Output Table Jarak Skor Pandeglang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_pandeglang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_pangandaran.tex",
+    "caption": "Output Table Jarak Skor Pangandaran",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_pangandaran.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_purwakarta.tex",
+    "caption": "Output Table Jarak Skor Purwakarta",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_purwakarta.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_serang.tex",
+    "caption": "Output Table Jarak Skor Serang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_subang.tex",
+    "caption": "Output Table Jarak Skor Subang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_subang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Sukabumi",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_sumedang.tex",
+    "caption": "Output Table Jarak Skor Sumedang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_sumedang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_tangerang.tex",
+    "caption": "Output Table Jarak Skor Tangerang",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/scenario1/jarak/output_table_jarak_skor_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -3712,6 +4136,14 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_centroid_statis.tex",
+    "caption": "Output Table Centroid Statis",
+    "type": "text",
+    "src": "/output_real/scenario2/output_table_centroid_statis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_compromise_cluster_sum_name.tex",
     "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
@@ -4072,6 +4504,94 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_jarak_loading_ahh_l.tex",
+    "caption": "Output Table Jarak Loading Ahh L",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_ahh_l.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_ahh_p.tex",
+    "caption": "Output Table Jarak Loading Ahh P",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_ahh_p.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_gk.tex",
+    "caption": "Output Table Jarak Loading Gk",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_gk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_gr.tex",
+    "caption": "Output Table Jarak Loading Gr",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_gr.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_ipg.tex",
+    "caption": "Output Table Jarak Loading Ipg",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_ipg.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_pdrb_adhk.tex",
+    "caption": "Output Table Jarak Loading Pdrb Adhk",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_pdrb_adhk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_pkkp.tex",
+    "caption": "Output Table Jarak Loading Pkkp",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_pkkp.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_tpak.tex",
+    "caption": "Output Table Jarak Loading Tpak",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_tpak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_jarak_skor_2020.tex",
     "caption": "Output Table Jarak Skor 2020",
     "type": "text",
@@ -4108,6 +4628,334 @@
     "caption": "Output Table Jarak Skor 2024",
     "type": "text",
     "src": "/output_real/scenario2/output_table_jarak_skor_2024.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung.tex",
+    "caption": "Output Table Jarak Skor Bandung",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_bekasi.tex",
+    "caption": "Output Table Jarak Skor Bekasi",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_bogor.tex",
+    "caption": "Output Table Jarak Skor Bogor",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_ciamis.tex",
+    "caption": "Output Table Jarak Skor Ciamis",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_ciamis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_cianjur.tex",
+    "caption": "Output Table Jarak Skor Cianjur",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_cianjur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_cirebon.tex",
+    "caption": "Output Table Jarak Skor Cirebon",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_garut.tex",
+    "caption": "Output Table Jarak Skor Garut",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_garut.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_indramayu.tex",
+    "caption": "Output Table Jarak Skor Indramayu",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_indramayu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_karawang.tex",
+    "caption": "Output Table Jarak Skor Karawang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_karawang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kep_seribu.tex",
+    "caption": "Output Table Jarak Skor Kep Seribu",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kep_seribu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bandung.tex",
+    "caption": "Output Table Jarak Skor Kota Bandung",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_banjar.tex",
+    "caption": "Output Table Jarak Skor Kota Banjar",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_banjar.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bekasi.tex",
+    "caption": "Output Table Jarak Skor Kota Bekasi",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bogor.tex",
+    "caption": "Output Table Jarak Skor Kota Bogor",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cimahi.tex",
+    "caption": "Output Table Jarak Skor Kota Cimahi",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_cimahi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cirebon.tex",
+    "caption": "Output Table Jarak Skor Kota Cirebon",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_depok.tex",
+    "caption": "Output Table Jarak Skor Kota Depok",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_depok.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_barat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Barat",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_jakarta_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Selatan",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_timur.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Timur",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_jakarta_timur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_utara.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Utara",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_jakarta_utara.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_serang.tex",
+    "caption": "Output Table Jarak Skor Kota Serang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Kota Sukabumi",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang Selatan",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kuningan.tex",
+    "caption": "Output Table Jarak Skor Kuningan",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_kuningan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_lebak.tex",
+    "caption": "Output Table Jarak Skor Lebak",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_lebak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_majalengka.tex",
+    "caption": "Output Table Jarak Skor Majalengka",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_majalengka.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_pandeglang.tex",
+    "caption": "Output Table Jarak Skor Pandeglang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_pandeglang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_pangandaran.tex",
+    "caption": "Output Table Jarak Skor Pangandaran",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_pangandaran.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_purwakarta.tex",
+    "caption": "Output Table Jarak Skor Purwakarta",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_purwakarta.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_serang.tex",
+    "caption": "Output Table Jarak Skor Serang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_subang.tex",
+    "caption": "Output Table Jarak Skor Subang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_subang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Sukabumi",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_sumedang.tex",
+    "caption": "Output Table Jarak Skor Sumedang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_sumedang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_tangerang.tex",
+    "caption": "Output Table Jarak Skor Tangerang",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/scenario2/jarak/output_table_jarak_skor_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -4936,6 +5784,14 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_centroid_pca.tex",
+    "caption": "Output Table Centroid Pca",
+    "type": "text",
+    "src": "/output_real/output_table_centroid_pca.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_descriptive_2020.tex",
     "caption": "Output Table Descriptive 2020",
     "type": "text",
@@ -5028,6 +5884,422 @@
     "caption": "Output Table Hw",
     "type": "text",
     "src": "/output_real/output_table_hw.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_ahh_l.tex",
+    "caption": "Output Table Jarak Loading Ahh L",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_ahh_l.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_ahh_p.tex",
+    "caption": "Output Table Jarak Loading Ahh P",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_ahh_p.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_gk.tex",
+    "caption": "Output Table Jarak Loading Gk",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_gk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_gr.tex",
+    "caption": "Output Table Jarak Loading Gr",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_gr.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_ipg.tex",
+    "caption": "Output Table Jarak Loading Ipg",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_ipg.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_pdrb_adhk.tex",
+    "caption": "Output Table Jarak Loading Pdrb Adhk",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_pdrb_adhk.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_pkkp.tex",
+    "caption": "Output Table Jarak Loading Pkkp",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_pkkp.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_tpak.tex",
+    "caption": "Output Table Jarak Loading Tpak",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_tpak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung.tex",
+    "caption": "Output Table Jarak Skor Bandung",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_bekasi.tex",
+    "caption": "Output Table Jarak Skor Bekasi",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_bogor.tex",
+    "caption": "Output Table Jarak Skor Bogor",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_ciamis.tex",
+    "caption": "Output Table Jarak Skor Ciamis",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_ciamis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_cianjur.tex",
+    "caption": "Output Table Jarak Skor Cianjur",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_cianjur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_cirebon.tex",
+    "caption": "Output Table Jarak Skor Cirebon",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_garut.tex",
+    "caption": "Output Table Jarak Skor Garut",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_garut.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_indramayu.tex",
+    "caption": "Output Table Jarak Skor Indramayu",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_indramayu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_karawang.tex",
+    "caption": "Output Table Jarak Skor Karawang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_karawang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kep_seribu.tex",
+    "caption": "Output Table Jarak Skor Kep Seribu",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kep_seribu.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bandung.tex",
+    "caption": "Output Table Jarak Skor Kota Bandung",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_bandung.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_banjar.tex",
+    "caption": "Output Table Jarak Skor Kota Banjar",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_banjar.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bekasi.tex",
+    "caption": "Output Table Jarak Skor Kota Bekasi",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_bekasi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_bogor.tex",
+    "caption": "Output Table Jarak Skor Kota Bogor",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_bogor.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cimahi.tex",
+    "caption": "Output Table Jarak Skor Kota Cimahi",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_cimahi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cirebon.tex",
+    "caption": "Output Table Jarak Skor Kota Cirebon",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_cirebon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_depok.tex",
+    "caption": "Output Table Jarak Skor Kota Depok",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_depok.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_barat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Barat",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_jakarta_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Selatan",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_jakarta_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_timur.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Timur",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_jakarta_timur.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_utara.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Utara",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_jakarta_utara.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_serang.tex",
+    "caption": "Output Table Jarak Skor Kota Serang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Kota Sukabumi",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "caption": "Output Table Jarak Skor Kota Tangerang Selatan",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_tangerang_selatan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kuningan.tex",
+    "caption": "Output Table Jarak Skor Kuningan",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_kuningan.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_lebak.tex",
+    "caption": "Output Table Jarak Skor Lebak",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_lebak.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_majalengka.tex",
+    "caption": "Output Table Jarak Skor Majalengka",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_majalengka.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_pandeglang.tex",
+    "caption": "Output Table Jarak Skor Pandeglang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_pandeglang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_pangandaran.tex",
+    "caption": "Output Table Jarak Skor Pangandaran",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_pangandaran.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_purwakarta.tex",
+    "caption": "Output Table Jarak Skor Purwakarta",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_purwakarta.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_serang.tex",
+    "caption": "Output Table Jarak Skor Serang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_serang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_subang.tex",
+    "caption": "Output Table Jarak Skor Subang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_subang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_sukabumi.tex",
+    "caption": "Output Table Jarak Skor Sukabumi",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_sukabumi.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_sumedang.tex",
+    "caption": "Output Table Jarak Skor Sumedang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_sumedang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_tangerang.tex",
+    "caption": "Output Table Jarak Skor Tangerang",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_tangerang.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Tasikmalaya",
+    "type": "text",
+    "src": "/output_real/jarak/output_table_jarak_skor_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },

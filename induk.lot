@@ -4,90 +4,91 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {2.1}{\ignorespaces Ringkasan Penelitian Terdahulu}}{12}{table.caption.30}%
 \contentsline {table}{\numberline {2.2}{\ignorespaces Kriteria Interpretasi Nilai KMO}}{19}{table.caption.31}%
-\contentsline {table}{\numberline {2.3}{\ignorespaces Rangkuman Dualitas Relasi Transisi STATIS}}{31}{table.caption.33}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces Rangkuman Dualitas Relasi Transisi STATIS}}{32}{table.caption.33}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Hasil Uji KMO dan Uji Bartlett per Tahun}}{53}{table.caption.36}%
-\contentsline {table}{\numberline {3.2}{\ignorespaces Data Mentah Sampel Ilustratif: 4 Wilayah $\times $ 3 Tahun $\times $ 5 Variabel}}{54}{table.caption.37}%
-\contentsline {table}{\numberline {3.3}{\ignorespaces Statistika Deskriptif (tanpa Bobot) Tahun 2020}}{55}{table.caption.38}%
-\contentsline {table}{\numberline {3.6}{\ignorespaces Statistika Deskriptif (dengan Bobot) Tahun 2020 (N = 4)}}{55}{table.caption.41}%
-\contentsline {table}{\numberline {3.9}{\ignorespaces Matriks Korelasi Terbobot Indikator Tahun 2020 ($\mathbf {S}_{2020}$)}}{58}{table.caption.44}%
-\contentsline {table}{\numberline {3.12}{\ignorespaces Bobot Alpha (Wilayah)}}{61}{table.caption.49}%
-\contentsline {table}{\numberline {3.13}{\ignorespaces Bobot Alpha (Indikator)}}{61}{table.caption.50}%
-\contentsline {table}{\numberline {3.14}{\ignorespaces Dekomposisi Nilai Eigen (scenario1)}}{62}{table.caption.51}%
-\contentsline {table}{\numberline {3.15}{\ignorespaces Dekomposisi Nilai Eigen (scenario2)}}{62}{table.caption.52}%
-\contentsline {table}{\numberline {3.16}{\ignorespaces Diagnostik Dominansi Model Rank-1 (Areia \textit {et al.}, 2008)}}{62}{table.caption.53}%
-\contentsline {table}{\numberline {3.17}{\ignorespaces Koordinat Skor Kompromi (scenario1)}}{64}{table.caption.56}%
-\contentsline {table}{\numberline {3.18}{\ignorespaces Loadings Kompromi (scenario1)}}{64}{table.caption.57}%
-\contentsline {table}{\numberline {3.19}{\ignorespaces Koordinat Skor Kompromi (scenario2)}}{65}{table.caption.59}%
-\contentsline {table}{\numberline {3.20}{\ignorespaces Loadings Kompromi (scenario2)}}{65}{table.caption.60}%
-\contentsline {table}{\numberline {3.21}{\ignorespaces Ringkasan Anggota Cluster Kompromi STATIS (Skenario 1)}}{67}{table.caption.62}%
-\contentsline {table}{\numberline {3.22}{\ignorespaces Matriks Transisi Cluster 2020 \(\rightarrow \) 2021}}{67}{table.caption.63}%
-\contentsline {table}{\numberline {3.23}{\ignorespaces Matriks Transisi Cluster 2021 \(\rightarrow \) 2022}}{67}{table.caption.64}%
-\contentsline {table}{\numberline {3.24}{\ignorespaces Komponen Vektor Struktur $\tilde {\boldsymbol {\beta }}$ per Situasi Waktu}}{68}{table.caption.65}%
-\contentsline {table}{\numberline {3.25}{\ignorespaces Komponen Vektor Struktur $\tilde {\beta }_{gk}$ per Provinsi (Analisis Transversal)}}{68}{table.caption.66}%
-\contentsline {table}{\numberline {3.26}{\ignorespaces Matriks Transisi Cluster Biplot (Unweighted) 2020 \(\rightarrow \) 2021}}{70}{table.caption.67}%
-\contentsline {table}{\numberline {3.27}{\ignorespaces Nama Daerah Transisi Cluster Biplot 2020 \(\rightarrow \) 2021}}{70}{table.caption.68}%
-\contentsline {table}{\numberline {3.28}{\ignorespaces Matriks Transisi Cluster 2020 \(\rightarrow \) 2021}}{70}{table.caption.69}%
-\contentsline {table}{\numberline {3.29}{\ignorespaces Nama Daerah Perpindahan Cluster 2020 \(\rightarrow \) 2021}}{70}{table.caption.70}%
-\contentsline {table}{\numberline {3.30}{\ignorespaces Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) (2020)}}{71}{table.caption.71}%
-\contentsline {table}{\numberline {3.31}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs STATIS (Tahunan) (2020)}}{71}{table.caption.72}%
+\contentsline {table}{\numberline {3.1}{\ignorespaces Hasil Uji KMO dan Uji Bartlett per Tahun}}{54}{table.caption.36}%
+\contentsline {table}{\numberline {3.2}{\ignorespaces Data Mentah Sampel Ilustratif: 4 Wilayah $\times $ 3 Tahun $\times $ 5 Variabel}}{55}{table.caption.37}%
+\contentsline {table}{\numberline {3.3}{\ignorespaces Statistika Deskriptif (tanpa Bobot) Tahun 2020}}{56}{table.caption.38}%
+\contentsline {table}{\numberline {3.6}{\ignorespaces Statistika Deskriptif (dengan Bobot) Tahun 2020 (N = 4)}}{56}{table.caption.41}%
+\contentsline {table}{\numberline {3.9}{\ignorespaces Matriks Korelasi Terbobot Indikator Tahun 2020 ($\mathbf {S}_{2020}$)}}{60}{table.caption.44}%
+\contentsline {table}{\numberline {3.12}{\ignorespaces Matriks Interstruktur H\_W (Identik Kedua Skenario)}}{61}{table.caption.48}%
+\contentsline {table}{\numberline {3.13}{\ignorespaces Koefisien RV Wilayah (Identik Kedua Skenario)}}{62}{table.caption.49}%
+\contentsline {table}{\numberline {3.14}{\ignorespaces Bobot Alpha (Wilayah)}}{63}{table.caption.52}%
+\contentsline {table}{\numberline {3.15}{\ignorespaces Bobot Alpha (Indikator)}}{63}{table.caption.53}%
+\contentsline {table}{\numberline {3.16}{\ignorespaces Dekomposisi Nilai Eigen (scenario1)}}{64}{table.caption.54}%
+\contentsline {table}{\numberline {3.17}{\ignorespaces Dekomposisi Nilai Eigen (scenario2)}}{65}{table.caption.55}%
+\contentsline {table}{\numberline {3.18}{\ignorespaces Diagnostik Dominansi Model Rank-1 (Areia \textit {et al.}, 2008)}}{65}{table.caption.56}%
+\contentsline {table}{\numberline {3.19}{\ignorespaces Koordinat Skor Kompromi (scenario1)}}{66}{table.caption.59}%
+\contentsline {table}{\numberline {3.26}{\ignorespaces Loadings Kompromi (scenario1)}}{69}{table.caption.68}%
+\contentsline {table}{\numberline {3.27}{\ignorespaces Koordinat Skor Kompromi (scenario2)}}{70}{table.caption.70}%
+\contentsline {table}{\numberline {3.28}{\ignorespaces Loadings Kompromi (scenario2)}}{70}{table.caption.71}%
+\contentsline {table}{\numberline {3.35}{\ignorespaces Ringkasan Anggota Klaster Kompromi STATIS (Skenario 1)}}{74}{table.caption.80}%
+\contentsline {table}{\numberline {3.36}{\ignorespaces Matriks Transisi Klaster 2020 \(\rightarrow \) 2021}}{74}{table.caption.81}%
+\contentsline {table}{\numberline {3.37}{\ignorespaces Matriks Transisi Klaster 2021 \(\rightarrow \) 2022}}{74}{table.caption.82}%
+\contentsline {table}{\numberline {3.38}{\ignorespaces Komponen Vektor Struktur $\tilde {\boldsymbol {\beta }}$ per Situasi Waktu}}{75}{table.caption.83}%
+\contentsline {table}{\numberline {3.39}{\ignorespaces Komponen Vektor Struktur $\tilde {\beta }_{gk}$ per Provinsi (Analisis Transversal)}}{75}{table.caption.84}%
+\contentsline {table}{\numberline {3.40}{\ignorespaces Matriks Transisi Klaster Biplot (Unweighted) 2020 \(\rightarrow \) 2021}}{77}{table.caption.86}%
+\contentsline {table}{\numberline {3.41}{\ignorespaces Nama Daerah Transisi Klaster Biplot 2020 \(\rightarrow \) 2021}}{78}{table.caption.87}%
+\contentsline {table}{\numberline {3.42}{\ignorespaces Nama Daerah Perpindahan Klaster 2020 \(\rightarrow \) 2021}}{78}{table.caption.88}%
+\contentsline {table}{\numberline {3.43}{\ignorespaces Matriks Perbandingan Klaster Biplot vs STATIS (Tahunan) (2020)}}{78}{table.caption.89}%
+\contentsline {table}{\numberline {3.44}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs STATIS (Tahunan) (2020)}}{79}{table.caption.90}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Statistika Deskriptif Indikator Pembangunan Manusia Tahun 2020--2024 (N = 41)}}{73}{table.caption.73}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Hasil Uji KMO dan Uji Bartlett per Tahun}}{82}{table.caption.87}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Koefisien RV Wilayah (Identik Kedua Skenario)}}{83}{table.caption.88}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Bobot Alpha (Wilayah)}}{84}{table.caption.90}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Bobot Alpha (Indikator)}}{84}{table.caption.91}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Dekomposisi Nilai Eigen (scenario1)}}{86}{table.caption.93}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Koordinat Skor Kompromi (scenario1)}}{89}{table.caption.96}%
-\contentsline {table}{\numberline {4.8}{\ignorespaces Koordinat Skor Kompromi (scenario2)}}{90}{table.caption.97}%
-\contentsline {table}{\numberline {4.9}{\ignorespaces Loadings Kompromi (scenario1)}}{91}{table.caption.98}%
-\contentsline {table}{\numberline {4.10}{\ignorespaces Loadings Kompromi (scenario2)}}{91}{table.caption.99}%
-\contentsline {table}{\numberline {4.11}{\ignorespaces Rangkuman Hasil Uji Permutasi}}{93}{table.caption.103}%
-\contentsline {table}{\numberline {4.12}{\ignorespaces Komponen Vektor Struktur $\tilde {\boldsymbol {\beta }}$ per Situasi Waktu}}{94}{table.caption.104}%
-\contentsline {table}{\numberline {4.13}{\ignorespaces Diagnostik Dominansi Model Rank-1 (Areia \textit {et al.}, 2008)}}{95}{table.caption.105}%
-\contentsline {table}{\numberline {4.14}{\ignorespaces Komponen Vektor Struktur $\tilde {\beta }_{gk}$ per Provinsi (Analisis Transversal)}}{96}{table.caption.106}%
-\contentsline {table}{\numberline {4.15}{\ignorespaces Skor Intra-Struktur Wilayah Tahun 2020 hingga 2024}}{104}{table.caption.114}%
-\contentsline {table}{\numberline {4.19}{\ignorespaces Skor Intra-Struktur Wilayah Tahun 2023 hingga 2024}}{104}{table.caption.118}%
-\contentsline {table}{\numberline {4.22}{\ignorespaces Loading Intra-Struktur Indikator Tahun 2020 hingga 2022}}{105}{table.caption.121}%
-\contentsline {table}{\numberline {4.26}{\ignorespaces Loading Intra-Struktur Indikator Tahun 2023 hingga 2024}}{105}{table.caption.125}%
-\contentsline {table}{\numberline {4.29}{\ignorespaces Matriks Transisi Cluster 2023 \(\rightarrow \) 2024}}{111}{table.caption.138}%
-\contentsline {table}{\numberline {4.30}{\ignorespaces Nama Daerah Perpindahan Cluster 2023 \(\rightarrow \) 2024}}{111}{table.caption.139}%
-\contentsline {table}{\numberline {4.31}{\ignorespaces Matriks Transisi Cluster 2023 \(\rightarrow \) 2024}}{111}{table.caption.140}%
-\contentsline {table}{\numberline {4.32}{\ignorespaces Nama Daerah Perpindahan Cluster 2023 \(\rightarrow \) 2024}}{112}{table.caption.141}%
-\contentsline {table}{\numberline {4.33}{\ignorespaces Ringkasan Anggota Cluster Kompromi STATIS (Skenario 1)}}{115}{table.caption.147}%
-\contentsline {table}{\numberline {4.34}{\ignorespaces Ringkasan Anggota Cluster Kompromi STATIS (Skenario 2)}}{116}{table.caption.148}%
-\contentsline {table}{\numberline {4.35}{\ignorespaces Matriks Transisi Cluster Biplot (Unweighted) 2023 \(\rightarrow \) 2024}}{116}{table.caption.149}%
-\contentsline {table}{\numberline {4.36}{\ignorespaces Nama Daerah Transisi Cluster Biplot 2023 \(\rightarrow \) 2024}}{117}{table.caption.150}%
-\contentsline {table}{\numberline {4.37}{\ignorespaces Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) (2024)}}{118}{table.caption.152}%
-\contentsline {table}{\numberline {4.38}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs STATIS (Tahunan) (2024)}}{118}{table.caption.153}%
-\contentsline {table}{\numberline {4.39}{\ignorespaces Matriks Perbandingan Cluster Biplot vs STATIS (vs Kompromi) (2024)}}{118}{table.caption.154}%
-\contentsline {table}{\numberline {4.40}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs STATIS (vs Kompromi) (2024)}}{119}{table.caption.155}%
-\contentsline {table}{\numberline {4.41}{\ignorespaces Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) (2024)}}{119}{table.caption.156}%
-\contentsline {table}{\numberline {4.42}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs STATIS (Tahunan) (2024)}}{119}{table.caption.157}%
-\contentsline {table}{\numberline {4.43}{\ignorespaces Matriks Perbandingan Cluster Biplot vs STATIS (vs Kompromi) (2024)}}{120}{table.caption.158}%
-\contentsline {table}{\numberline {4.44}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs STATIS (vs Kompromi) (2024)}}{120}{table.caption.159}%
-\contentsline {table}{\numberline {4.45}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2023 ke 2024}}{121}{table.caption.161}%
-\contentsline {table}{\numberline {4.46}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2023 \(\rightarrow \) 2024}}{121}{table.caption.162}%
-\contentsline {table}{\numberline {4.47}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2023 ke 2024}}{122}{table.caption.163}%
-\contentsline {table}{\numberline {4.48}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2023 \(\rightarrow \) 2024}}{122}{table.caption.164}%
-\contentsline {table}{\numberline {4.49}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{123}{table.caption.166}%
-\contentsline {table}{\numberline {4.50}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{123}{table.caption.167}%
-\contentsline {table}{\numberline {4.51}{\ignorespaces Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{124}{table.caption.168}%
-\contentsline {table}{\numberline {4.52}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) (2024)}}{124}{table.caption.169}%
-\contentsline {table}{\numberline {4.53}{\ignorespaces Perbandingan Cluster STATIS Tahunan vs Kategori IPM (UNDP) (2024)}}{125}{table.caption.171}%
-\contentsline {table}{\numberline {4.54}{\ignorespaces Nama Daerah Perbandingan Cluster STATIS Tahunan vs IPM (UNDP) (2024)}}{125}{table.caption.172}%
-\contentsline {table}{\numberline {4.55}{\ignorespaces Perbandingan Cluster STATIS Tahunan vs Kategori IPM (UNDP) (2024)}}{126}{table.caption.173}%
-\contentsline {table}{\numberline {4.56}{\ignorespaces Nama Daerah Perbandingan Cluster STATIS Tahunan vs IPM (UNDP) (2024)}}{126}{table.caption.174}%
-\contentsline {table}{\numberline {4.57}{\ignorespaces Matriks Perbandingan Cluster Biplot vs Kompromi STATIS (2024)}}{127}{table.caption.176}%
-\contentsline {table}{\numberline {4.58}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kompromi STATIS (2024)}}{127}{table.caption.177}%
-\contentsline {table}{\numberline {4.59}{\ignorespaces Matriks Perbandingan Cluster Biplot vs Kompromi STATIS (2024)}}{128}{table.caption.178}%
-\contentsline {table}{\numberline {4.60}{\ignorespaces Nama Daerah Perbandingan Cluster Biplot vs Kompromi STATIS (2024)}}{128}{table.caption.179}%
-\contentsline {table}{\numberline {4.61}{\ignorespaces Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan (2024)}}{129}{table.caption.181}%
-\contentsline {table}{\numberline {4.62}{\ignorespaces Nama Daerah Perbandingan Cluster Kompromi STATIS vs STATIS Tahunan (2024)}}{129}{table.caption.182}%
-\contentsline {table}{\numberline {4.63}{\ignorespaces Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan (2024)}}{129}{table.caption.183}%
-\contentsline {table}{\numberline {4.64}{\ignorespaces Nama Daerah Perbandingan Cluster Kompromi STATIS vs STATIS Tahunan (2024)}}{130}{table.caption.184}%
-\contentsline {table}{\numberline {4.65}{\ignorespaces Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) (2024)}}{131}{table.caption.186}%
-\contentsline {table}{\numberline {4.66}{\ignorespaces Nama Daerah Perbandingan Cluster Kompromi STATIS vs IPM (UNDP) (2024)}}{131}{table.caption.187}%
-\contentsline {table}{\numberline {4.67}{\ignorespaces Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) (2024)}}{132}{table.caption.188}%
-\contentsline {table}{\numberline {4.68}{\ignorespaces Nama Daerah Perbandingan Cluster Kompromi STATIS vs IPM (UNDP) (2024)}}{132}{table.caption.189}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Statistika Deskriptif Indikator Pembangunan Manusia Tahun 2020--2024 (N = 41)}}{81}{table.caption.91}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Hasil Uji KMO dan Uji Bartlett per Tahun}}{90}{table.caption.105}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Koefisien RV Wilayah (Identik Kedua Skenario)}}{90}{table.caption.106}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Bobot Alpha (Wilayah)}}{92}{table.caption.108}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Bobot Alpha (Indikator)}}{92}{table.caption.109}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Dekomposisi Nilai Eigen (scenario1)}}{94}{table.caption.111}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Koordinat Skor Kompromi (scenario1)}}{98}{table.caption.114}%
+\contentsline {table}{\numberline {4.8}{\ignorespaces Koordinat Skor Kompromi (scenario2)}}{99}{table.caption.115}%
+\contentsline {table}{\numberline {4.9}{\ignorespaces Loadings Kompromi (scenario1)}}{100}{table.caption.116}%
+\contentsline {table}{\numberline {4.10}{\ignorespaces Loadings Kompromi (scenario2)}}{100}{table.caption.117}%
+\contentsline {table}{\numberline {4.11}{\ignorespaces Rangkuman Hasil Uji Permutasi}}{103}{table.caption.121}%
+\contentsline {table}{\numberline {4.12}{\ignorespaces Komponen Vektor Struktur $\tilde {\boldsymbol {\beta }}$ per Situasi Waktu}}{104}{table.caption.122}%
+\contentsline {table}{\numberline {4.13}{\ignorespaces Diagnostik Dominansi Model Rank-1 (Areia \textit {et al.}, 2008)}}{104}{table.caption.123}%
+\contentsline {table}{\numberline {4.14}{\ignorespaces Komponen Vektor Struktur $\tilde {\beta }_{gk}$ per Provinsi (Analisis Transversal)}}{105}{table.caption.124}%
+\contentsline {table}{\numberline {4.15}{\ignorespaces Skor Intra-Struktur Wilayah Tahun 2020 hingga 2024}}{110}{table.caption.130}%
+\contentsline {table}{\numberline {4.19}{\ignorespaces Skor Intra-Struktur Wilayah Tahun 2023 hingga 2024}}{110}{table.caption.134}%
+\contentsline {table}{\numberline {4.22}{\ignorespaces Loading Intra-Struktur Indikator Tahun 2020 hingga 2022}}{112}{table.caption.137}%
+\contentsline {table}{\numberline {4.26}{\ignorespaces Loading Intra-Struktur Indikator Tahun 2023 hingga 2024}}{112}{table.caption.141}%
+\contentsline {table}{\numberline {4.29}{\ignorespaces Matriks Transisi Klaster 2023 \(\rightarrow \) 2024}}{118}{table.caption.154}%
+\contentsline {table}{\numberline {4.30}{\ignorespaces Nama Daerah Perpindahan Klaster 2023 \(\rightarrow \) 2024}}{119}{table.caption.155}%
+\contentsline {table}{\numberline {4.31}{\ignorespaces Matriks Transisi Klaster 2023 \(\rightarrow \) 2024}}{119}{table.caption.156}%
+\contentsline {table}{\numberline {4.32}{\ignorespaces Nama Daerah Perpindahan Klaster 2023 \(\rightarrow \) 2024}}{120}{table.caption.157}%
+\contentsline {table}{\numberline {4.33}{\ignorespaces Ringkasan Anggota Klaster Kompromi STATIS (Skenario 1)}}{124}{table.caption.162}%
+\contentsline {table}{\numberline {4.34}{\ignorespaces Ringkasan Anggota Klaster Kompromi STATIS (Skenario 2)}}{124}{table.caption.163}%
+\contentsline {table}{\numberline {4.35}{\ignorespaces Matriks Transisi Klaster Biplot (Unweighted) 2023 \(\rightarrow \) 2024}}{125}{table.caption.164}%
+\contentsline {table}{\numberline {4.36}{\ignorespaces Nama Daerah Transisi Klaster Biplot 2023 \(\rightarrow \) 2024}}{125}{table.caption.165}%
+\contentsline {table}{\numberline {4.37}{\ignorespaces Matriks Perbandingan Klaster Biplot vs STATIS (Tahunan) (2024)}}{126}{table.caption.167}%
+\contentsline {table}{\numberline {4.38}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs STATIS (Tahunan) (2024)}}{127}{table.caption.168}%
+\contentsline {table}{\numberline {4.39}{\ignorespaces Matriks Perbandingan Klaster Biplot vs STATIS (vs Kompromi) (2024)}}{127}{table.caption.169}%
+\contentsline {table}{\numberline {4.40}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs STATIS (vs Kompromi) (2024)}}{127}{table.caption.170}%
+\contentsline {table}{\numberline {4.41}{\ignorespaces Matriks Perbandingan Klaster Biplot vs STATIS (Tahunan) (2024)}}{128}{table.caption.171}%
+\contentsline {table}{\numberline {4.42}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs STATIS (Tahunan) (2024)}}{128}{table.caption.172}%
+\contentsline {table}{\numberline {4.43}{\ignorespaces Matriks Perbandingan Klaster Biplot vs STATIS (vs Kompromi) (2024)}}{128}{table.caption.173}%
+\contentsline {table}{\numberline {4.44}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs STATIS (vs Kompromi) (2024)}}{129}{table.caption.174}%
+\contentsline {table}{\numberline {4.45}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2023 ke 2024}}{130}{table.caption.176}%
+\contentsline {table}{\numberline {4.46}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2023 \(\rightarrow \) 2024}}{130}{table.caption.177}%
+\contentsline {table}{\numberline {4.47}{\ignorespaces Matriks Transisi Kategori IPM (UNDP) Tahun 2023 ke 2024}}{130}{table.caption.178}%
+\contentsline {table}{\numberline {4.48}{\ignorespaces Nama Daerah Matriks Transisi Kategori IPM (UNDP) 2023 \(\rightarrow \) 2024}}{131}{table.caption.179}%
+\contentsline {table}{\numberline {4.49}{\ignorespaces Perbandingan Klaster Biplot vs Kategori IPM (UNDP) (2024)}}{132}{table.caption.181}%
+\contentsline {table}{\numberline {4.50}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs Kategori IPM (UNDP) (2024)}}{132}{table.caption.182}%
+\contentsline {table}{\numberline {4.51}{\ignorespaces Perbandingan Klaster Biplot vs Kategori IPM (UNDP) (2024)}}{132}{table.caption.183}%
+\contentsline {table}{\numberline {4.52}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs Kategori IPM (UNDP) (2024)}}{133}{table.caption.184}%
+\contentsline {table}{\numberline {4.53}{\ignorespaces Perbandingan Klaster STATIS Tahunan vs Kategori IPM (UNDP) (2024)}}{134}{table.caption.186}%
+\contentsline {table}{\numberline {4.54}{\ignorespaces Nama Daerah Perbandingan Klaster STATIS Tahunan vs IPM (UNDP) (2024)}}{134}{table.caption.187}%
+\contentsline {table}{\numberline {4.55}{\ignorespaces Perbandingan Klaster STATIS Tahunan vs Kategori IPM (UNDP) (2024)}}{135}{table.caption.188}%
+\contentsline {table}{\numberline {4.56}{\ignorespaces Nama Daerah Perbandingan Klaster STATIS Tahunan vs IPM (UNDP) (2024)}}{135}{table.caption.189}%
+\contentsline {table}{\numberline {4.57}{\ignorespaces Matriks Perbandingan Klaster Biplot vs Kompromi STATIS (2024)}}{136}{table.caption.191}%
+\contentsline {table}{\numberline {4.58}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs Kompromi STATIS (2024)}}{136}{table.caption.192}%
+\contentsline {table}{\numberline {4.59}{\ignorespaces Matriks Perbandingan Klaster Biplot vs Kompromi STATIS (2024)}}{137}{table.caption.193}%
+\contentsline {table}{\numberline {4.60}{\ignorespaces Nama Daerah Perbandingan Klaster Biplot vs Kompromi STATIS (2024)}}{137}{table.caption.194}%
+\contentsline {table}{\numberline {4.61}{\ignorespaces Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan (2024)}}{138}{table.caption.196}%
+\contentsline {table}{\numberline {4.62}{\ignorespaces Nama Daerah Perbandingan Klaster Kompromi STATIS vs STATIS Tahunan (2024)}}{138}{table.caption.197}%
+\contentsline {table}{\numberline {4.63}{\ignorespaces Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan (2024)}}{138}{table.caption.198}%
+\contentsline {table}{\numberline {4.64}{\ignorespaces Nama Daerah Perbandingan Klaster Kompromi STATIS vs STATIS Tahunan (2024)}}{139}{table.caption.199}%
+\contentsline {table}{\numberline {4.65}{\ignorespaces Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP) (2024)}}{140}{table.caption.201}%
+\contentsline {table}{\numberline {4.66}{\ignorespaces Nama Daerah Perbandingan Klaster Kompromi STATIS vs IPM (UNDP) (2024)}}{140}{table.caption.202}%
+\contentsline {table}{\numberline {4.67}{\ignorespaces Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP) (2024)}}{141}{table.caption.203}%
+\contentsline {table}{\numberline {4.68}{\ignorespaces Nama Daerah Perbandingan Klaster Kompromi STATIS vs IPM (UNDP) (2024)}}{141}{table.caption.204}%
 \addvspace {10\p@ }

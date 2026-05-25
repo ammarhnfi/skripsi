@@ -332,7 +332,7 @@ Setelah representasi spasial $\mathbf{W}_t$ diperoleh untuk setiap tahun, langka
 	\begin{equation}
 		RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) tr(\mathbf{W}_j^2)}}
 	\end{equation}
-	Nilai $RV$ berkisar antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
+	Nilai $RV$ berada di antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
 \end{definition}
 
 Koefisien RV dihitung untuk setiap pasangan tahun, membentuk sebuah matriks inter-struktur $\mathbf{R}$ berukuran $K \times K$, dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap tahun, dilakukan dekomposisi spektral pada matriks $\mathbf{R}$:

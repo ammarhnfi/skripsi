@@ -944,6 +944,14 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_centroid_statis.tex",
+    "caption": "Output Table Centroid Statis",
+    "type": "text",
+    "src": "/output_sample/scenario1/output_table_centroid_statis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_compromise_cluster_sum_name.tex",
     "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
@@ -1160,6 +1168,30 @@
     "scenario": "Scenario 1"
   },
   {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
     "name": "output_table_jarak_skor_2020.tex",
     "caption": "Output Table Jarak Skor 2020",
     "type": "text",
@@ -1180,6 +1212,38 @@
     "caption": "Output Table Jarak Skor 2022",
     "type": "text",
     "src": "/output_sample/scenario1/output_table_jarak_skor_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 1"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_sample/scenario1/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 1"
   },
@@ -2304,6 +2368,14 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_centroid_statis.tex",
+    "caption": "Output Table Centroid Statis",
+    "type": "text",
+    "src": "/output_sample/scenario2/output_table_centroid_statis.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_compromise_cluster_sum_name.tex",
     "caption": "Output Table Compromise Cluster Sum Name",
     "type": "text",
@@ -2520,6 +2592,30 @@
     "scenario": "Scenario 2"
   },
   {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
     "name": "output_table_jarak_skor_2020.tex",
     "caption": "Output Table Jarak Skor 2020",
     "type": "text",
@@ -2540,6 +2636,38 @@
     "caption": "Output Table Jarak Skor 2022",
     "type": "text",
     "src": "/output_sample/scenario2/output_table_jarak_skor_2022.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Scenario 2"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_sample/scenario2/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Scenario 2"
   },
@@ -3016,6 +3144,14 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_centroid_pca.tex",
+    "caption": "Output Table Centroid Pca",
+    "type": "text",
+    "src": "/output_sample/output_table_centroid_pca.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_descriptive_2020.tex",
     "caption": "Output Table Descriptive 2020",
     "type": "text",
@@ -3076,6 +3212,62 @@
     "caption": "Output Table Hw",
     "type": "text",
     "src": "/output_sample/output_table_hw.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_ppm.tex",
+    "caption": "Output Table Jarak Loading Ppm",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_loading_ppm.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_rls.tex",
+    "caption": "Output Table Jarak Loading Rls",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_loading_rls.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_loading_tpt.tex",
+    "caption": "Output Table Jarak Loading Tpt",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_loading_tpt.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_bandung_barat.tex",
+    "caption": "Output Table Jarak Skor Bandung Barat",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_skor_bandung_barat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_cilegon.tex",
+    "caption": "Output Table Jarak Skor Kota Cilegon",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_skor_kota_cilegon.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "caption": "Output Table Jarak Skor Kota Jakarta Pusat",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_skor_kota_jakarta_pusat.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
+    "name": "output_table_jarak_skor_kota_tasikmalaya.tex",
+    "caption": "Output Table Jarak Skor Kota Tasikmalaya",
+    "type": "text",
+    "src": "/output_sample/jarak/output_table_jarak_skor_kota_tasikmalaya.tex",
     "group": "Tabel Hasil (.tex)",
     "scenario": "Shared"
   },

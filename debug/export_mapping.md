@@ -90,19 +90,19 @@ output_real/
 | File | Lokasi | app.py |
 |------|--------|--------|
 | `cluster_scatter_biplot_{yr}.png` | ROOT | Section 6: `cb_render_trans_plots` (L5634) |
-| `cluster_map_biplot_{yr}.png` | ROOT | Section 6: peta choropleth cluster Biplot |
-| `cluster_pie_biplot_{yr}.png` | ROOT | Section 6: pie proporsi cluster Biplot |
+| `cluster_map_biplot_{yr}.png` | ROOT | Section 6: peta choropleth klaster Biplot |
+| `cluster_pie_biplot_{yr}.png` | ROOT | Section 6: pie proporsi klaster Biplot |
 
 > Identik untuk kedua skenario (unweighted PCA). Disimpan di ROOT, bukan scenario1/2.
 
-### Evaluasi Jumlah Cluster — Unweighted (ROOT)
+### Evaluasi Jumlah Klaster — Unweighted (ROOT)
 
 | File | Lokasi | app.py |
 |------|--------|--------|
 | `elbow_plot_{yr}.png` (ROOT) | ROOT | Section 5: `cb_eval_cluster` (L5393) |
 | `dendrogram_{yr}.png` (ROOT) | ROOT | Section 5: `cb_eval_cluster` (L5403) |
 
-### Matriks Transisi Cluster Biplot (ROOT)
+### Matriks Transisi Klaster Biplot (ROOT)
 
 | File | Lokasi | app.py |
 |------|--------|--------|
@@ -170,9 +170,9 @@ output_real/
 | `scree_plot.png` | Section 4 → Scree Plot |
 | `rv_heatmap.png` | Section 4 → Interstructure RV Heatmap |
 | `compromise_biplot.png` | Section 4 → Compromise Biplot (Matplotlib hi-res) |
-| `compromise_scatter.png` | Section 7 → Scatter Cluster pada Ruang Kompromi |
-| `compromise_map.png` | Section 7 → Peta Choropleth Cluster Keseluruhan |
-| `compromise_pie.png` | Section 7 → Pie proporsi cluster kompromi |
+| `compromise_scatter.png` | Section 7 → Scatter Klaster pada Ruang Kompromi |
+| `compromise_map.png` | Section 7 → Peta Choropleth Klaster Keseluruhan |
+| `compromise_pie.png` | Section 7 → Pie proporsi klaster kompromi |
 | `variable_contribution.png` | Section 4 → Kontribusi Variabel (PC1) |
 | `variable_cos2.png` | Section 4 → Kualitas Representasi Cos² |
 | `permutation_histogram.png` | Section 4 → Histogram Distribusi Null Permutasi |
@@ -204,7 +204,7 @@ output_real/
 | `output_table_jarak_skor_{yr}.tex` (2020–2024) | Section 3C → Jarak Skor Euclidean |
 | `output_table_jarak_loading_{yr}.tex` (2020–2024) | Section 3C → Jarak Loading Euclidean |
 
-### Evaluasi Jumlah Cluster — Weighted STATIS (per skenario)
+### Evaluasi Jumlah Klaster — Weighted STATIS (per skenario)
 
 | File | app.py |
 |------|--------|
@@ -216,19 +216,19 @@ output_real/
 | File | app.py |
 |------|--------|
 | `cluster_scatter_statis_{yr}.png` (2020–2024) | Section 6B → Scatter K-Means Weighted |
-| `cluster_map_statis_{yr}.png` (2020–2024) | Section 6B → Peta Choropleth Cluster per Tahun |
-| `cluster_pie_statis_{yr}.png` (2020–2024) | Section 6B → Pie proporsi cluster STATIS per Tahun |
-| `output_table_statis_transition_sum_{pair}.tex` | Section 6B → Matriks Transisi Cluster STATIS |
+| `cluster_map_statis_{yr}.png` (2020–2024) | Section 6B → Peta Choropleth Klaster per Tahun |
+| `cluster_pie_statis_{yr}.png` (2020–2024) | Section 6B → Pie proporsi klaster STATIS per Tahun |
+| `output_table_statis_transition_sum_{pair}.tex` | Section 6B → Matriks Transisi Klaster STATIS |
 | `output_table_statis_transition_name_{pair}.tex` | Section 6B → Nama daerah per sel transisi |
 
 > `cluster_map_statis_*.png` SELALU per skenario (berbeda Fk dan Gk antar skenario).
 > Pair format: `{y1}x{y2}` (2020x2021, …, 2023x2024).
 
-### Ringkasan Anggota Cluster Kompromi
+### Ringkasan Anggota Klaster Kompromi
 
 | File | app.py | App.jsx |
 |------|--------|---------|
-| `output_table_compromise_cluster_sum_name.tex` | Section 7 → Tabel anggota cluster kompromi | Tab "Tabel Hasil (.tex)" di CompareDashboard |
+| `output_table_compromise_cluster_sum_name.tex` | Section 7 → Tabel anggota klaster kompromi | Tab "Tabel Hasil (.tex)" di CompareDashboard |
 
 > **Format tabel:** 3 kolom — Kelompok (Cluster) | Jumlah Wilayah | Daftar Kabupaten/Kota  
 > **Label LaTeX:** `tab:{prefix}compromclust` (mis. `tab:app1compromclust`, `tab:app2compromclust`)
@@ -251,11 +251,11 @@ output_real/
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_biplot_transition_sum_{pair}.tex` | ROOT | Matriks transisi cluster Biplot PCA (jumlah) |
-| `output_table_biplot_transition_name_{pair}.tex` | ROOT | Nama daerah per sel transisi cluster Biplot |
-| `compare_map_trans_biplot_{pair}.png` | SCENARIO | Peta cluster Biplot tahun t₁ dan t₂ |
-| `compare_scatter_trans_biplot_{pair}.png` | SCENARIO | Scatter cluster Biplot tahun t₁ dan t₂ |
-| `compare_pie_trans_biplot_{pair}.png` | SCENARIO | Pie proporsi cluster Biplot tahun t₁ dan t₂ |
+| `output_table_biplot_transition_sum_{pair}.tex` | ROOT | Matriks transisi klaster Biplot PCA (jumlah) |
+| `output_table_biplot_transition_name_{pair}.tex` | ROOT | Nama daerah per sel transisi klaster Biplot |
+| `compare_map_trans_biplot_{pair}.png` | SCENARIO | Peta klaster Biplot tahun t₁ dan t₂ |
+| `compare_scatter_trans_biplot_{pair}.png` | SCENARIO | Scatter klaster Biplot tahun t₁ dan t₂ |
+| `compare_pie_trans_biplot_{pair}.png` | SCENARIO | Pie proporsi klaster Biplot tahun t₁ dan t₂ |
 
 ---
 
@@ -265,15 +265,15 @@ output_real/
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_statis_transition_sum_{pair}.tex` | SCENARIO | Matriks transisi cluster STATIS berbobot (jumlah) |
-| `output_table_statis_transition_name_{pair}.tex` | SCENARIO | Nama daerah per sel transisi cluster STATIS |
-| `compare_map_trans_statis_{pair}.png` | SCENARIO | Peta cluster STATIS tahun t₁ dan t₂ |
-| `compare_scatter_trans_statis_{pair}.png` | SCENARIO | Scatter cluster STATIS tahun t₁ dan t₂ |
-| `compare_pie_trans_statis_{pair}.png` | SCENARIO | Pie proporsi cluster STATIS tahun t₁ dan t₂ |
+| `output_table_statis_transition_sum_{pair}.tex` | SCENARIO | Matriks transisi klaster STATIS berbobot (jumlah) |
+| `output_table_statis_transition_name_{pair}.tex` | SCENARIO | Nama daerah per sel transisi klaster STATIS |
+| `compare_map_trans_statis_{pair}.png` | SCENARIO | Peta klaster STATIS tahun t₁ dan t₂ |
+| `compare_scatter_trans_statis_{pair}.png` | SCENARIO | Scatter klaster STATIS tahun t₁ dan t₂ |
+| `compare_pie_trans_statis_{pair}.png` | SCENARIO | Pie proporsi klaster STATIS tahun t₁ dan t₂ |
 
 ---
 
-### Perbandingan 3 — Cluster Biplot vs STATIS Tahunan
+### Perbandingan 3 — Klaster Biplot vs STATIS Tahunan
 
 **App.jsx mode:** `comp_3_biplot_vs_statis` | **Format:** `{yr}`
 
@@ -283,7 +283,7 @@ output_real/
 | `output_table_biplot_vs_statis_compare_name_{yr}.tex` | SCENARIO | Nama daerah (matriks utama) |
 | `output_table_biplot_vs_statis_sum_{yr}.tex` | SCENARIO | Cross-tab pelengkap |
 | `output_table_biplot_vs_statis_name_{yr}.tex` | SCENARIO | Nama daerah pelengkap |
-| `compare_map_biplot_vs_statis_{yr}.png` | SCENARIO | Peta cluster Biplot (kiri) vs STATIS (kanan) |
+| `compare_map_biplot_vs_statis_{yr}.png` | SCENARIO | Peta klaster Biplot (kiri) vs STATIS (kanan) |
 | `compare_scatter_biplot_vs_statis_{yr}.png` | SCENARIO | Scatter Biplot vs STATIS |
 | `compare_pie_biplot_vs_statis_{yr}.png` | SCENARIO | Pie proporsi Biplot vs STATIS |
 
@@ -302,47 +302,47 @@ output_real/
 
 ---
 
-### Perbandingan 5 — Cluster Biplot vs Kategori IPM
+### Perbandingan 5 — Klaster Biplot vs Kategori IPM
 
 **App.jsx mode:** `comp_5_biplot_vs_ipm` | **Format:** `{yr}` | **Tanpa scatter**
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_cross_matrix_sum_{yr}.tex` | SCENARIO | Cross-tab cluster Biplot vs kategori IPM (jumlah) |
+| `output_table_cross_matrix_sum_{yr}.tex` | SCENARIO | Cross-tab klaster Biplot vs kategori IPM (jumlah) |
 | `output_table_cross_matrix_name_{yr}.tex` | SCENARIO | Nama daerah per sel |
-| `compare_map_biplot_vs_ipm_{yr}.png` | SCENARIO | Peta cluster Biplot (kiri) vs kategori IPM (kanan) |
+| `compare_map_biplot_vs_ipm_{yr}.png` | SCENARIO | Peta klaster Biplot (kiri) vs kategori IPM (kanan) |
 | `compare_pie_biplot_vs_ipm_{yr}.png` | SCENARIO | Pie proporsi Biplot vs kategori IPM |
 
 ---
 
-### Perbandingan 6 — Cluster STATIS Tahunan vs Kategori IPM
+### Perbandingan 6 — Klaster STATIS Tahunan vs Kategori IPM
 
 **App.jsx mode:** `comp_6_statis_vs_ipm` | **Format:** `{yr}` | **Tanpa scatter**
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_statis_vs_ipm_sum_{yr}.tex` | SCENARIO | Cross-tab cluster STATIS vs kategori IPM (jumlah) |
+| `output_table_statis_vs_ipm_sum_{yr}.tex` | SCENARIO | Cross-tab klaster STATIS vs kategori IPM (jumlah) |
 | `output_table_statis_vs_ipm_name_{yr}.tex` | SCENARIO | Nama daerah per sel |
-| `compare_map_statis_vs_ipm_{yr}.png` | SCENARIO | Peta cluster STATIS (kiri) vs peta IPM (kanan) |
+| `compare_map_statis_vs_ipm_{yr}.png` | SCENARIO | Peta klaster STATIS (kiri) vs peta IPM (kanan) |
 | `compare_pie_statis_vs_ipm_{yr}.png` | SCENARIO | Pie proporsi STATIS vs kategori IPM |
 
 ---
 
-### Perbandingan 7 — Cluster Kompromi STATIS vs Cluster Biplot
+### Perbandingan 7 — Klaster Kompromi STATIS vs Klaster Biplot
 
 **App.jsx mode:** `comp_7_compromise_vs_biplot` | **Format:** `{yr}`
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_biplot_vs_compromise_sum_{yr}.tex` | SCENARIO | Cross-tab Biplot PCA vs Cluster Kompromi STATIS |
+| `output_table_biplot_vs_compromise_sum_{yr}.tex` | SCENARIO | Cross-tab Biplot PCA vs Klaster Kompromi STATIS |
 | `output_table_biplot_vs_compromise_name_{yr}.tex` | SCENARIO | Nama daerah per sel |
-| `compare_map_compromise_vs_biplot_{yr}.png` | SCENARIO | Peta Kompromi STATIS (kiri) vs cluster Biplot (kanan) |
+| `compare_map_compromise_vs_biplot_{yr}.png` | SCENARIO | Peta Kompromi STATIS (kiri) vs klaster Biplot (kanan) |
 | `compare_scatter_compromise_vs_biplot_{yr}.png` | SCENARIO | Scatter Kompromi vs Biplot |
 | `compare_pie_compromise_vs_biplot_{yr}.png` | SCENARIO | Pie proporsi Kompromi vs Biplot |
 
 ---
 
-### Perbandingan 8 — Cluster Kompromi STATIS vs STATIS Tahunan
+### Perbandingan 8 — Klaster Kompromi STATIS vs STATIS Tahunan
 
 **App.jsx mode:** `comp_8_compromise_vs_statis` | **Format:** `{yr}`
 
@@ -356,13 +356,13 @@ output_real/
 
 ---
 
-### Perbandingan 9 — Cluster Kompromi STATIS vs Kategori IPM
+### Perbandingan 9 — Klaster Kompromi STATIS vs Kategori IPM
 
 **App.jsx mode:** `comp_9_compromise_vs_ipm` | **Format:** `{yr}` | **Tanpa scatter**
 
 | File | Lokasi | Keterangan |
 |------|--------|------------|
-| `output_table_compromise_vs_ipm_sum_{yr}.tex` | SCENARIO | Cross-tab Cluster Kompromi STATIS vs kategori IPM |
+| `output_table_compromise_vs_ipm_sum_{yr}.tex` | SCENARIO | Cross-tab Klaster Kompromi STATIS vs kategori IPM |
 | `output_table_compromise_vs_ipm_name_{yr}.tex` | SCENARIO | Nama daerah per sel |
 | `compare_map_compromise_vs_ipm_{yr}.png` | SCENARIO | Peta Kompromi STATIS (kiri) vs peta IPM (kanan) |
 | `compare_pie_compromise_vs_ipm_{yr}.png` | SCENARIO | Pie proporsi Kompromi vs kategori IPM |

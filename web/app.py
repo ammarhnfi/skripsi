@@ -14,6 +14,7 @@ from scipy.cluster.hierarchy import dendrogram, linkage
 from sklearn.cluster import KMeans
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import silhouette_score
 EXTERNAL_STYLESHEETS = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_scripts = [
     "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
@@ -994,7 +995,12 @@ def calc_kmo_bartlett(df_dict, variables):
             
         mean_kmo = np.mean(kmos)
         mean_p = np.mean(p_vals)
-        kmo_interp = "Excellent" if mean_kmo >= 0.9 else "Great" if mean_kmo >= 0.8 else "Good" if mean_kmo >= 0.7 else "Acceptable" if mean_kmo >= 0.5 else "Poor"
+        kmo_interp = ("Marvelous (Luar Biasa)" if mean_kmo >= 0.9 else
+                      "Meritorious (Sangat Baik)" if mean_kmo >= 0.8 else
+                      "Middling (Cukup Baik)" if mean_kmo >= 0.7 else
+                      "Mediocre (Biasa)" if mean_kmo >= 0.6 else
+                      "Miserable (Buruk, namun dapat diterima)" if mean_kmo >= 0.5 else
+                      "Unacceptable (Tidak diterima)")
         bart_interp = "Significant (Suitable)" if mean_p < 0.05 else "Not Significant (Orthogonal)"
         return mean_kmo, mean_p, kmo_interp, bart_interp, n, p, r_sq, q_sq, chi2_stat
     except: return 0.0, 1.0, "Error", "Error", 0, 0, 0, 0, 0
@@ -1991,6 +1997,46 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
                 page_size=10
             )
+        ]),
+        html.Hr(),
+        html.H6("Pergeseran Centroid Tahunan — PCA Biplot", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+        html.P("Jarak Euclidean D(c₁, c₂) antar-centroid skor biplot tahun berturutan (Persamaan ​D(c₁ᵢ, c₂ⱼ) = √Σ(c₁ᵢₕ − c₂ⱼₕ)²).", style={'textAlign': 'center', 'color': '#546E7A', 'fontSize': '12px', 'marginBottom': '10px'}),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='biplot-centroid-dist-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=20
+            )
+        ]),
+        html.Hr(),
+        html.H6("Jarak Pergeseran Per-Entitas Antar-Tahun — PCA Biplot", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+        html.P("Jarak Euclidean D(c₁ᵢ, c₂ⱼ) posisi entitas terpilih antar-tahun berturutan.", style={'textAlign': 'center', 'color': '#546E7A', 'fontSize': '12px', 'marginBottom': '10px'}),
+        html.Div(className='row', style={'marginBottom': '10px'}, children=[
+            html.Div(className='three columns', children=[
+                html.Label('Jenis Entitas:', style={'fontWeight': 'bold'}),
+                dcc.RadioItems(
+                    id='biplot-entity-type',
+                    options=[{'label': 'Kab/Kota', 'value': 'skor'}, {'label': 'Variabel', 'value': 'loading'}],
+                    value='skor',
+                    labelStyle={'display': 'inline-block', 'marginRight': '10px'}
+                )
+            ]),
+            html.Div(className='nine columns', children=[
+                dcc.Dropdown(id='biplot-entity-name', placeholder="Pilih entitas...", style={'fontSize': '14px'})
+            ])
+        ]),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='biplot-entity-dist-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=20
+            )
         ])
     ]),
 
@@ -2023,6 +2069,46 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 style_header={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold'},
                 style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
                 page_size=10
+            )
+        ]),
+        html.Hr(),
+        html.H6("Pergeseran Centroid Tahunan — STATIS (Skor Intra Fₖ)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+        html.P("Jarak Euclidean D(c₁, c₂) antar-centroid skor intra Fₖ tahun berturutan (Persamaan ​D(c₁ᵢ, c₂ⱼ) = √Σ(c₁ᵢₕ − c₂ⱼₕ)²).", style={'textAlign': 'center', 'color': '#546E7A', 'fontSize': '12px', 'marginBottom': '10px'}),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='statis-centroid-dist-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=20
+            )
+        ]),
+        html.Hr(),
+        html.H6("Jarak Pergeseran Per-Entitas Antar-Tahun — STATIS (Skor Intra Fₖ)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+        html.P("Jarak Euclidean D(c₁ᵢ, c₂ⱼ) posisi entitas terpilih antar-tahun berturutan.", style={'textAlign': 'center', 'color': '#546E7A', 'fontSize': '12px', 'marginBottom': '10px'}),
+        html.Div(className='row', style={'marginBottom': '10px'}, children=[
+            html.Div(className='three columns', children=[
+                html.Label('Jenis Entitas:', style={'fontWeight': 'bold'}),
+                dcc.RadioItems(
+                    id='statis-entity-type',
+                    options=[{'label': 'Kab/Kota', 'value': 'skor'}, {'label': 'Variabel', 'value': 'loading'}],
+                    value='skor',
+                    labelStyle={'display': 'inline-block', 'marginRight': '10px'}
+                )
+            ]),
+            html.Div(className='nine columns', children=[
+                dcc.Dropdown(id='statis-entity-name', placeholder="Pilih entitas...", style={'fontSize': '14px'})
+            ])
+        ]),
+        dcc.Loading(children=[
+            dash_table.DataTable(
+                id='statis-entity-dist-table',
+                export_format='xlsx',
+                style_table={'overflowX': 'auto'},
+                style_header={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold'},
+                style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'},
+                page_size=20
             )
         ])
     ]),
@@ -2139,8 +2225,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
         html.Hr(style={'borderColor': '#B0BEC5', 'marginTop': '40px'}),
         # --- [TAMBAHAN BARU] SECTION 5: EVALUASI JUMLAH CLUSTER (ELBOW & DENDROGRAM) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Tahap Pembantu: Evaluasi Jumlah Cluster (Visual Aids)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-            html.P("Gunakan kurva Elbow dan Dendrogram di bawah ini untuk menentukan jumlah cluster (k) yang optimal pada suatu tahun.", style={'textAlign': 'center', 'color': '#546E7A'}),
+            html.H5("Tahap Pembantu: Evaluasi Jumlah Klaster (Visual Aids)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.P("Gunakan kurva Elbow dan Dendrogram di bawah ini untuk menentukan jumlah klaster (k) yang optimal pada suatu tahun.", style={'textAlign': 'center', 'color': '#546E7A'}),
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Evaluasi Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='eval-year-dropdown', clearable=False, style={'width': '150px'})
@@ -2159,11 +2245,11 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- [TAMBAHAN BARU] SECTION 6: CLUSTERING TAHUNAN & MATRIKS TRANSISI ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Analisis Cluster Spasio-Temporal Tahunan (Berdasarkan PCA 3D Tanpa Bobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.H5("Analisis Klaster Spasio-Temporal Tahunan (Berdasarkan PCA 3D Tanpa Bobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Pasangan Tahun Transisi:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
-                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
                 html.Button("RUN CLUSTERING TAHUNAN", id='btn-run-trans', n_clicks=0, 
                             style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
@@ -2214,11 +2300,11 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- [TAMBAHAN BARU] SECTION 6B: CLUSTERING TAHUNAN & MATRIKS TRANSISI TERBOBOT (STATIS) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Analisis Cluster Spasio-Temporal Tahunan (Berdasarkan Trajektori STATIS Terbobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+            html.H5("Analisis Klaster Spasio-Temporal Tahunan (Berdasarkan Trajektori STATIS Terbobot)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Pasangan Tahun Transisi:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='weighted-trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
-                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='weighted-trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
                 html.Button("RUN CLUSTERING TERBOBOT", id='btn-run-weighted-trans', n_clicks=0, 
                             style={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
@@ -2275,7 +2361,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Pilih Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='biplot-statis-compare-year', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
-                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='biplot-statis-compare-k', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
                 html.Button("RUN PERBANDINGAN", id='btn-run-biplot-statis-compare', n_clicks=0, 
                             style={'backgroundColor': '#D84315', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
@@ -2331,7 +2417,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
-                html.Label("Jumlah Cluster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='cluster-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
                 html.Button("RUN CLUSTERING TRAJEKTORI", id='btn-run-cluster', n_clicks=0, 
                             style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 25px', 'cursor': 'pointer'})
@@ -2345,14 +2431,14 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 ]),
                 # Kanan: Pie Chart
                 html.Div(className='six columns', children=[
-                    html.H5("Proporsi Cluster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                    html.H5("Proporsi Klaster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
                     dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '800px'})])
                 ])
             ]),
 
             # --- [TAMBAHAN BARU: PETA SPASIAL] ---
             html.Hr(style={'borderColor': '#E0E0E0', 'marginTop': '20px', 'marginBottom': '20px'}),
-            html.H5("Distribusi Geografis Cluster (Peta Wilayah)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+            html.H5("Distribusi Geografis Klaster (Peta Wilayah)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
             dcc.Loading(type='cube', color=COLOR_ACCENT, children=[
                 dcc.Graph(id='cluster-map', style={'height': '500px'})
             ]),
@@ -2360,7 +2446,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
             html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'}),
             
-            # --- [NEW] Tabel Anggota Cluster ---
+            # --- [NEW] Tabel Anggota Klaster ---
             html.H6("Daftar Anggota per Kelompok (Cluster)", style={'textAlign': 'center', 'fontWeight': 'bold', 'marginTop': '30px', 'color': COLOR_ACCENT}),
             dcc.Loading(children=[
                 dash_table.DataTable(
@@ -2381,7 +2467,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
         # --- [TAMBAHAN BARU] SECTION 8: BASELINE MATRIKS TRANSISI (IPM/UNDP) ---
         html.Div(style=CARD_STYLE, children=[
             html.H5("Disclaimer & Baseline: Matriks Transisi Berdasarkan Kategori IPM (UNDP)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#E64A19'}),
-            html.P("Sebelum menentukan jumlah cluster k-means, Anda dapat melihat kondisi riil perpindahan wilayah berdasarkan 4 kategori Indeks Pembangunan Manusia (UNDP): Sangat Tinggi (≥80), Tinggi (70-79.99), Sedang (55-69.99), dan Rendah (<55).", 
+            html.P("Sebelum menentukan jumlah klaster k-means, Anda dapat melihat kondisi riil perpindahan wilayah berdasarkan 4 kategori Indeks Pembangunan Manusia (UNDP): Sangat Tinggi (≥80), Tinggi (70-79.99), Sedang (55-69.99), dan Rendah (<55).", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
@@ -2435,14 +2521,14 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- [TAMBAHAN BARU] SECTION 9: PERBANDINGAN CLUSTER VS IPM (CROSS-TABULATION) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Biplot vs Kategori IPM (UNDP)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#00695C'}),
-            html.P("Bagian ini menampilkan tabel tabulasi silang (cross-tabulation) antara cluster yang dibentuk oleh algoritma K-Means dengan pengelompokan baku dari UNDP berdasarkan skor IPM. Ini berguna untuk mengevaluasi apakah cluster data-driven sejalan dengan standar institusi global.", 
+            html.H5("Perbandingan Klaster Biplot vs Kategori IPM (UNDP)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#00695C'}),
+            html.P("Bagian ini menampilkan tabel tabulasi silang (cross-tabulation) antara klaster yang dibentuk oleh algoritma K-Means dengan pengelompokan baku dari UNDP berdasarkan skor IPM. Ini berguna untuk mengevaluasi apakah klaster data-driven sejalan dengan standar institusi global.", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='cross-year-dropdown', clearable=False, style={'width': '120px', 'marginRight': '20px'}),
-                html.Label("Jumlah Cluster K-Means (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
+                html.Label("Jumlah Klaster K-Means (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='cross-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
                 html.Button("TAMPILKAN PERBANDINGAN", id='btn-run-cross', n_clicks=0, 
                             style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
@@ -2493,7 +2579,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- SECTION: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster STATIS vs Kategori IPM (UNDP)", 
+            html.H5("Perbandingan Klaster STATIS vs Kategori IPM (UNDP)", 
                     style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#004D40'}),
             html.P("Membandingkan hasil pengelompokan wilayah berdasarkan Trajektori STATIS (Weighted) per tahun dengan Kategori IPM (UNDP).", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
@@ -2505,7 +2591,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
                 html.Div([
-                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    html.Label("Jumlah Klaster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
                     dcc.Input(id='statis-vs-ipm-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
@@ -2558,9 +2644,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- SECTION 10: PERBANDINGAN HASIL CLUSTER KOMPROMI STATIS VS IPM RATA-RATA ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP)", 
+            html.H5("Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP)", 
                     style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#01579B'}),
-            html.P("Membandingkan keanggotaan cluster hasil kompromi STATIS dengan Kategori IPM (UNDP) per tahun.", 
+            html.P("Membandingkan keanggotaan klaster hasil kompromi STATIS dengan Kategori IPM (UNDP) per tahun.", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
@@ -2570,7 +2656,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
                 html.Div([
-                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    html.Label("Jumlah Klaster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
                     dcc.Input(id='statis-vs-ipm-avg-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
@@ -2623,9 +2709,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- SECTION 11: PERBANDINGAN CLUSTER BIPLOT VS CLUSTER KOMPROMI STATIS ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Kompromi STATIS vs Cluster Biplot", 
+            html.H5("Perbandingan Klaster Kompromi STATIS vs Klaster Biplot", 
                     style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#5D4037'}),
-            html.P("Membandingkan stabilitas anggota cluster antara hasil 'Kompromi' (STATIS) dengan hasil 'Tahunan' (Statis per Tahun).", 
+            html.P("Membandingkan stabilitas anggota klaster antara hasil 'Kompromi' (STATIS) dengan hasil 'Tahunan' (Statis per Tahun).", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
@@ -2635,7 +2721,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
                 html.Div([
-                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    html.Label("Jumlah Klaster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
                     dcc.Input(id='biplot-vs-statis-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
@@ -2700,9 +2786,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
         # --- SECTION: PERBANDINGAN CLUSTER KOMPROMI STATIS VS CLUSTER STATIS TAHUNAN ---
         html.Div(style=CARD_STYLE, children=[
-            html.H5("Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan", 
+            html.H5("Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan", 
                     style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#33691E'}),
-            html.P("Membandingkan stabilitas anggota cluster antara hasil 'Kompromi' (STATIS Trajektori Keseluruhan) dengan hasil STATIS per Tahun.", 
+            html.P("Membandingkan stabilitas anggota klaster antara hasil 'Kompromi' (STATIS Trajektori Keseluruhan) dengan hasil STATIS per Tahun.", 
                    style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
             
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
@@ -2712,7 +2798,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
                 html.Div([
-                    html.Label("Jumlah Cluster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
+                    html.Label("Jumlah Klaster (k):", style={'fontWeight': 'bold', 'marginRight': '8px'}),
                     dcc.Input(id='compromise-statis-vs-statis-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
@@ -2795,12 +2881,12 @@ COLOR_BORDER = "#E2E8F0"
 
 # --- CLUSTER LABELING ---
 CLUSTER_COLOR_MAP = {
-    "Cluster 1 (Rendah)": "#EF5350",           # Merah (Rendah)
-    "Cluster 2 (Sedang)": "#FFB300",           # Kuning/Oranye (Sedang)
-    "Cluster 3 (Tinggi)": "#4CAF50",           # Hijau (Tinggi)
-    "Cluster 4 (Sangat Tinggi)": "#42A5F5"     # Biru
+    "Klaster 1 (Rendah)": "#EF5350",           # Merah (Rendah)
+    "Klaster 2 (Sedang)": "#FFB300",           # Kuning/Oranye (Sedang)
+    "Klaster 3 (Tinggi)": "#4CAF50",           # Hijau (Tinggi)
+    "Klaster 4 (Sangat Tinggi)": "#42A5F5"     # Biru
 }
-LEVEL_ORDER = ["Cluster 4 (Sangat Tinggi)", "Cluster 3 (Tinggi)", "Cluster 2 (Sedang)", "Cluster 1 (Rendah)"]
+LEVEL_ORDER = ["Klaster 4 (Sangat Tinggi)", "Klaster 3 (Tinggi)", "Klaster 2 (Sedang)", "Klaster 1 (Rendah)"]
 IPM_COLOR_MAP = {
     "Sangat Tinggi": "#1565C0",      # Biru Tua
     "Tinggi": "#4CAF50",             # Hijau
@@ -3637,6 +3723,152 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
     return table_data, cols
 
 
+@app.callback(
+    Output('biplot-centroid-dist-table', 'data'), Output('biplot-centroid-dist-table', 'columns'),
+    Input('pca-results-store', 'data'), Input('year-checklist-final', 'value')
+)
+def cb_biplot_centroid_dist(pca_data, years_filter):
+    if not pca_data or not years_filter: return [], []
+    df_pc = pd.read_json(io.StringIO(pca_data['pc_scores']), orient='split')
+    df_pc = df_pc[df_pc['Tahun'].isin(years_filter)]
+    years_sorted = sorted(df_pc['Tahun'].unique())
+    centroids = {y: (df_pc[df_pc['Tahun'] == y]['PC1'].mean(), df_pc[df_pc['Tahun'] == y]['PC2'].mean()) for y in years_sorted}
+    rows = []
+    for i, y in enumerate(years_sorted):
+        c1, c2 = centroids[y]
+        if i < len(years_sorted) - 1:
+            ny = years_sorted[i + 1]
+            nc1, nc2 = centroids[ny]
+            dist = round(np.sqrt((c1 - nc1)**2 + (c2 - nc2)**2), 4)
+        else:
+            dist = '-'
+        rows.append({'Tahun': y, 'Centroid PC1': round(c1, 4), 'Centroid PC2': round(c2, 4), 'D(cₜ, cₜ₊₁)': dist})
+    cols = [{"name": k, "id": k} for k in rows[0].keys()] if rows else []
+    return rows, cols
+
+
+@app.callback(
+    Output('statis-centroid-dist-table', 'data'), Output('statis-centroid-dist-table', 'columns'),
+    Input('statis-core-store', 'data'), Input('year-checklist-final', 'value')
+)
+def cb_statis_centroid_dist(statis_data, years_filter):
+    if not statis_data or not years_filter: return [], []
+    obs_labels = statis_data['obs_labels']
+    years_sorted = sorted([int(y) for y in statis_data['sheet_names'] if int(y) in [int(yf) for yf in years_filter]])
+    centroids = {}
+    for y in years_sorted:
+        coords = np.array(statis_data['per_year_coords'][str(y)])
+        centroids[y] = (coords[:, 0].mean(), coords[:, 1].mean())
+    rows = []
+    for i, y in enumerate(years_sorted):
+        c1, c2 = centroids[y]
+        if i < len(years_sorted) - 1:
+            ny = years_sorted[i + 1]
+            nc1, nc2 = centroids[ny]
+            dist = round(np.sqrt((c1 - nc1)**2 + (c2 - nc2)**2), 4)
+        else:
+            dist = '-'
+        rows.append({'Tahun': y, 'Centroid PC1': round(c1, 4), 'Centroid PC2': round(c2, 4), 'D(cₜ, cₜ₊₁)': dist})
+    cols = [{"name": k, "id": k} for k in rows[0].keys()] if rows else []
+    return rows, cols
+
+
+@app.callback(
+    Output('biplot-entity-name', 'options'), Output('biplot-entity-name', 'value'),
+    Input('biplot-entity-type', 'value'), Input('pca-results-store', 'data')
+)
+def cb_biplot_entity_opts(entity_type, pca_data):
+    if not pca_data: return [], None
+    if entity_type == 'skor':
+        df = pd.read_json(io.StringIO(pca_data['pc_scores']), orient='split')
+        names = sorted(df['Kabupaten/Kota'].unique())
+    else:
+        df = pd.read_json(io.StringIO(pca_data['loadings']), orient='split')
+        names = sorted(df['features'].unique())
+    return [{'label': n, 'value': n} for n in names], None
+
+
+@app.callback(
+    Output('biplot-entity-dist-table', 'data'), Output('biplot-entity-dist-table', 'columns'),
+    Input('biplot-entity-name', 'value'), Input('biplot-entity-type', 'value'),
+    Input('pca-results-store', 'data'), Input('year-checklist-final', 'value')
+)
+def cb_biplot_entity_dist(name, entity_type, pca_data, years_filter):
+    if not name or not pca_data or not years_filter: return [], []
+    if entity_type == 'skor':
+        df = pd.read_json(io.StringIO(pca_data['pc_scores']), orient='split')
+        df = df[df['Tahun'].isin(years_filter) & (df['Kabupaten/Kota'] == name)].sort_values('Tahun')
+    else:
+        df = pd.read_json(io.StringIO(pca_data['loadings']), orient='split')
+        df = df[df['Tahun'].isin(years_filter) & (df['features'] == name)].sort_values('Tahun')
+    years = df['Tahun'].tolist()
+    pc1s = df['PC1'].tolist(); pc2s = df['PC2'].tolist()
+    rows = []
+    for i, y in enumerate(years):
+        if i < len(years) - 1:
+            dist = round(np.sqrt((pc1s[i] - pc1s[i+1])**2 + (pc2s[i] - pc2s[i+1])**2), 4)
+        else:
+            dist = '-'
+        rows.append({'Tahun': y, 'PC1': round(pc1s[i], 4), 'PC2': round(pc2s[i], 4), 'D(posₜ, posₜ₊₁)': dist})
+    cols = [{"name": k, "id": k} for k in rows[0].keys()] if rows else []
+    return rows, cols
+
+
+@app.callback(
+    Output('statis-entity-name', 'options'), Output('statis-entity-name', 'value'),
+    Input('statis-entity-type', 'value'), Input('statis-core-store', 'data')
+)
+def cb_statis_entity_opts(entity_type, statis_data):
+    if not statis_data: return [], None
+    if entity_type == 'skor':
+        names = sorted(statis_data['obs_labels'])
+    else:
+        yr0 = str(statis_data['sheet_names'][0])
+        G_key = fr"Loading Intra \mathbf{{G}}_{{{yr0}}}"
+        if G_key in statis_data:
+            df = pd.DataFrame(statis_data[G_key])
+            names = sorted(df['Variabel'].unique())
+        else:
+            names = []
+    return [{'label': n, 'value': n} for n in names], None
+
+
+@app.callback(
+    Output('statis-entity-dist-table', 'data'), Output('statis-entity-dist-table', 'columns'),
+    Input('statis-entity-name', 'value'), Input('statis-entity-type', 'value'),
+    Input('statis-core-store', 'data'), Input('year-checklist-final', 'value')
+)
+def cb_statis_entity_dist(name, entity_type, statis_data, years_filter):
+    if not name or not statis_data or not years_filter: return [], []
+    years_sorted = sorted([int(y) for y in statis_data['sheet_names'] if int(y) in [int(yf) for yf in years_filter]])
+    rows = []
+    positions = []
+    if entity_type == 'skor':
+        obs_labels = statis_data['obs_labels']
+        if name not in obs_labels: return [], []
+        idx = obs_labels.index(name)
+        for y in years_sorted:
+            coords = np.array(statis_data['per_year_coords'][str(y)])
+            positions.append((y, coords[idx, 0], coords[idx, 1]))
+    else:
+        for y in years_sorted:
+            G_key = fr"Loading Intra \mathbf{{G}}_{{{y}}}"
+            if G_key not in statis_data: continue
+            df = pd.DataFrame(statis_data[G_key])
+            row = df[df['Variabel'] == name]
+            if row.empty: continue
+            positions.append((y, row.iloc[0]['PC1'], row.iloc[0]['PC2']))
+    for i, (y, p1, p2) in enumerate(positions):
+        if i < len(positions) - 1:
+            np1, np2 = positions[i+1][1], positions[i+1][2]
+            dist = round(np.sqrt((p1 - np1)**2 + (p2 - np2)**2), 4)
+        else:
+            dist = '-'
+        rows.append({'Tahun': y, 'PC1': round(p1, 4), 'PC2': round(p2, 4), 'D(posₜ, posₜ₊₁)': dist})
+    cols = [{"name": k, "id": k} for k in rows[0].keys()] if rows else []
+    return rows, cols
+
+
 # 6. STATIS PLOTS & TABLES
 @app.callback(
     Output('statis-scree', 'figure'), Output('statis-interstructure', 'figure'),
@@ -4222,7 +4454,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         from sklearn.decomposition import PCA
         from sklearn.preprocessing import StandardScaler
         
-        # A. Get STATIS Trajectory Cluster (Aligned with Section 7)
+        # A. Get STATIS Trajectory Klaster (Aligned with Section 7)
         obs_labels = statis_data['obs_labels']
         coords_dict = statis_data['per_year_coords']
         sheet_names = statis_data.get('sheet_names', sorted(list(coords_dict.keys())))
@@ -4247,9 +4479,9 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         rnk_b = np.argsort(cl_means_b)
         mp_b = {old: new for new, old in enumerate(rnk_b)}
         name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi"}
-        labels_biplot = [f"Cluster {mp_b[l]+1} ({name_map.get(mp_b[l], 'Level ' + str(mp_b[l]+1))})" for l in km_biplot.labels_]
+        labels_biplot = [f"Klaster {mp_b[l]+1} ({name_map.get(mp_b[l], 'Level ' + str(mp_b[l]+1))})" for l in km_biplot.labels_]
         
-        # B. Get Static Cluster (K-means on raw data of the selected year)
+        # B. Get Static Klaster (K-means on raw data of the selected year)
         df_all = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
         mask = df_all['Tahun'].astype(str) == str(year)
         df_year = df_all[mask].copy()
@@ -4306,7 +4538,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         cols = [{"name": str(i), "id": str(i)} for i in res_df.columns]
         
         # D. BUILD MAPS, SCATTERS, PIE
-        # Define exact color map matching between Cluster & Statis prefixes
+        # Define exact color map matching between Klaster & Statis prefixes
         BIPLOT_COLOR_MAP = {}
         for key, color in CLUSTER_COLOR_MAP.items():
             BIPLOT_COLOR_MAP[key] = color
@@ -4372,12 +4604,12 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
         
         return (
             res_df.to_dict('records'), cols,
-            f"Peta Cluster Biplot ({year})", fig_map_biplot,
-            "Peta Cluster Kompromi STATIS", fig_map_statis,
-            f"Scatter Plot Cluster Biplot ({year})", fig_scatter_biplot,
-            "Scatter Plot Cluster Kompromi STATIS", fig_scatter_statis,
-            f"Proporsi Cluster Biplot ({year})", fig_pie_biplot,
-            "Proporsi Cluster Kompromi STATIS", fig_pie_statis
+            f"Peta Klaster Biplot ({year})", fig_map_biplot,
+            "Peta Klaster Kompromi STATIS", fig_map_statis,
+            f"Scatter Plot Klaster Biplot ({year})", fig_scatter_biplot,
+            "Scatter Plot Klaster Kompromi STATIS", fig_scatter_statis,
+            f"Proporsi Klaster Biplot ({year})", fig_pie_biplot,
+            "Proporsi Klaster Kompromi STATIS", fig_pie_statis
         )
     except Exception as e:
         print(f"Error Section 10: {e}")
@@ -4408,7 +4640,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
         
     try:
         from sklearn.cluster import KMeans
-        # A. STATIS Trajectory Cluster (Aligned with Section 7)
+        # A. STATIS Trajectory Klaster (Aligned with Section 7)
         obs_labels = statis_data['obs_labels']
         coords_dict = statis_data['per_year_coords']
         sheet_names = statis_data.get('sheet_names', sorted(list(coords_dict.keys())))
@@ -4432,7 +4664,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
         rnk = np.argsort(cl_means)
         mp = {old: new for new, old in enumerate(rnk)}
         name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi"}
-        labels_statis = [f"Cluster {mp[l]+1} ({name_map.get(mp[l], 'Level ' + str(mp[l]+1))})" for l in km.labels_]
+        labels_statis = [f"Klaster {mp[l]+1} ({name_map.get(mp[l], 'Level ' + str(mp[l]+1))})" for l in km.labels_]
         
         # B. IPM for Selected Year
         df_all = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
@@ -4468,7 +4700,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
         
         ct = pd.crosstab(df_comp['IPM_Average'], df_comp['STATIS_Compromise'])
         
-        # Sort CT by Cluster Level
+        # Sort CT by Klaster Level
         ct = ct.sort_index(axis=1, ascending=True)
         
         if mode == 'names':
@@ -4531,9 +4763,9 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
         
         return (
             res_df.to_dict('records'), cols,
-            "Peta Cluster Kompromi STATIS", fig_map_statis,
+            "Peta Klaster Kompromi STATIS", fig_map_statis,
             "Peta Kategori IPM (UNDP)", fig_map_ipm,
-            "Proporsi Cluster Kompromi STATIS", fig_pie_statis,
+            "Proporsi Klaster Kompromi STATIS", fig_pie_statis,
             "Proporsi Kategori IPM (UNDP)", fig_pie_ipm
         )
     except Exception as e:
@@ -4592,7 +4824,7 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
         sorted_indices = np.argsort(cl_means)
         rank_map = {old: new for new, old in enumerate(sorted_indices)}
         name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
-        str_labels = [f"Cluster {rank_map[l]+1} ({name_map.get(rank_map[l], 'Level ' + str(rank_map[l]+1))})" for l in lbls]
+        str_labels = [f"Klaster {rank_map[l]+1} ({name_map.get(rank_map[l], 'Level ' + str(rank_map[l]+1))})" for l in lbls]
         
         # Gabung
         df_clusters = pd.DataFrame({'Cluster_Statis': str_labels}, index=obs_labels)
@@ -4600,7 +4832,7 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
         
         # Tabulasi Silang
         categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
-        target_clusters = [f"Cluster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
+        target_clusters = [f"Klaster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
         
         df_merged['IPM_Cat'] = pd.Categorical(df_merged['IPM_Cat'], categories=categories, ordered=True)
         df_merged['Cluster_Statis'] = pd.Categorical(df_merged['Cluster_Statis'], categories=target_clusters, ordered=True)
@@ -4669,9 +4901,9 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
         
         return (
             res_df.to_dict('records'), cols,
-            f"Peta Cluster STATIS ({sel_year})", fig_map_statis,
+            f"Peta Klaster STATIS ({sel_year})", fig_map_statis,
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
-            f"Proporsi Cluster STATIS ({sel_year})", fig_pie_statis,
+            f"Proporsi Klaster STATIS ({sel_year})", fig_pie_statis,
             f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
         )
     except Exception as e:
@@ -4693,10 +4925,10 @@ def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_statis_vs_ipm_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster STATIS Tahunan vs IPM (UNDP) ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster STATIS Tahunan vs IPM (UNDP) ({year})"
         label = f"statis_ipm_name_{year}"
     else:
-        caption = f"Perbandingan Cluster STATIS Tahunan vs Kategori IPM (UNDP) ({year})"
+        caption = f"Perbandingan Klaster STATIS Tahunan vs Kategori IPM (UNDP) ({year})"
         label = f"statis_ipm_{year}"
     content = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dict(content=content, filename=filename)
@@ -4730,7 +4962,7 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
     
     try:
         from sklearn.cluster import KMeans
-        # A. Get STATIS Trajectory Cluster (Compromise)
+        # A. Get STATIS Trajectory Klaster (Compromise)
         obs_labels = statis_data['obs_labels']
         coords_dict = statis_data['per_year_coords']
         sheet_names = statis_data.get('sheet_names', sorted(list(coords_dict.keys())))
@@ -4755,9 +4987,9 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         rnk_c = np.argsort(cl_means_c)
         mp_c = {old: new for new, old in enumerate(rnk_c)}
         name_map = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
-        labels_comp = [f"Cluster {mp_c[l]+1} ({name_map.get(mp_c[l], 'Level ' + str(mp_c[l]+1))})" for l in km_comp.labels_]
+        labels_comp = [f"Klaster {mp_c[l]+1} ({name_map.get(mp_c[l], 'Level ' + str(mp_c[l]+1))})" for l in km_comp.labels_]
         
-        # B. Get STATIS Tahunan Cluster (for selected year)
+        # B. Get STATIS Tahunan Klaster (for selected year)
         str_year = str(year)
         if str_year not in coords_dict:
             return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
@@ -4769,7 +5001,7 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         cl_means_y = [np.mean(X_year[km_yr.labels_ == cl, 0]) for cl in range(k)]
         rnk_y = np.argsort(cl_means_y)
         mp_y = {old: new for new, old in enumerate(rnk_y)}
-        labels_yr = [f"Cluster {mp_y[l]+1} ({name_map.get(mp_y[l], 'Level ' + str(mp_y[l]+1))})" for l in km_yr.labels_]
+        labels_yr = [f"Klaster {mp_y[l]+1} ({name_map.get(mp_y[l], 'Level ' + str(mp_y[l]+1))})" for l in km_yr.labels_]
         
         # C. Cross-tab
         df_comp = pd.DataFrame({
@@ -4778,7 +5010,7 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
             'Tahunan': labels_yr
         })
         
-        target_clusters = [f"Cluster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
+        target_clusters = [f"Klaster {i+1} ({name_map.get(i, 'Level ' + str(i+1))})" for i in range(k)]
         df_comp['Kompromi'] = pd.Categorical(df_comp['Kompromi'], categories=target_clusters, ordered=True)
         df_comp['Tahunan'] = pd.Categorical(df_comp['Tahunan'], categories=target_clusters, ordered=True)
         
@@ -4854,12 +5086,12 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         
         return (
             res_df.to_dict('records'), cols,
-            "Peta Cluster Kompromi STATIS", fig_map_comp,
-            f"Peta Cluster STATIS Tahunan ({year})", fig_map_statis,
-            "Scatter Plot Cluster Kompromi STATIS", fig_scatter_comp,
-            f"Scatter Plot Cluster STATIS Tahunan ({year})", fig_scatter_statis,
-            "Proporsi Cluster Kompromi STATIS", fig_pie_comp,
-            f"Proporsi Cluster STATIS Tahunan ({year})", fig_pie_statis
+            "Peta Klaster Kompromi STATIS", fig_map_comp,
+            f"Peta Klaster STATIS Tahunan ({year})", fig_map_statis,
+            "Scatter Plot Klaster Kompromi STATIS", fig_scatter_comp,
+            f"Scatter Plot Klaster STATIS Tahunan ({year})", fig_scatter_statis,
+            "Proporsi Klaster Kompromi STATIS", fig_pie_comp,
+            f"Proporsi Klaster STATIS Tahunan ({year})", fig_pie_statis
         )
     except Exception as e:
         print(f"Error cb_run_compromise_statis_vs_statis: {e}")
@@ -4880,10 +5112,10 @@ def dl_compromise_statis_vs_statis_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_compromise_vs_statis_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan ({year})"
         label = f"compromise_statis_name_{year}"
     else:
-        caption = f"Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ({year})"
+        caption = f"Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan ({year})"
         label = f"compromise_statis_{year}"
     content = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dict(content=content, filename=filename)
@@ -5384,17 +5616,35 @@ def cb_eval_cluster(eval_year, res):
     coords = np.array(res['per_year_coords'][str(eval_year)])
     obs_labels = res['obs_labels']
     
-    # 1. ELBOW
+    # 1. ELBOW + SILHOUETTE
     sse = []
+    sil = []
     k_range = range(1, min(11, len(coords)))
     for k in k_range:
         km = KMeans(n_clusters=k, random_state=42, n_init=10)
-        km.fit(coords)
+        labels_k = km.fit_predict(coords)
         sse.append(km.inertia_)
-    
+        if k >= 2:
+            sil.append(round(float(silhouette_score(coords, labels_k)), 4))
+
     fig_elbow = go.Figure()
-    fig_elbow.add_trace(go.Scatter(x=list(k_range), y=sse, mode='lines+markers', line=dict(color=COLOR_ACCENT, width=3), marker=dict(size=8)))
-    fig_elbow.update_layout(title=f"Metode Elbow (Tahun {eval_year})", xaxis_title="Jumlah Cluster (k)", yaxis_title="Sum of Squared Errors (SSE)", template='plotly_white')
+    fig_elbow.add_trace(go.Scatter(
+        x=list(k_range), y=sse, mode='lines+markers', name='SSE',
+        line=dict(color=COLOR_ACCENT, width=3), marker=dict(size=8)
+    ))
+    fig_elbow.add_trace(go.Scatter(
+        x=list(range(2, min(11, len(coords)))), y=sil, mode='lines+markers', name='Siluet',
+        line=dict(color='#E53935', width=2, dash='dot'), marker=dict(size=7),
+        yaxis='y2'
+    ))
+    fig_elbow.update_layout(
+        title=f"Metode Elbow & Siluet (Tahun {eval_year})",
+        xaxis_title="Jumlah Klaster (k)",
+        yaxis_title="Sum of Squared Errors (SSE)",
+        yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1]),
+        template='plotly_white',
+        legend=dict(x=0.75, y=0.95)
+    )
     import os
     os.makedirs("../output_app", exist_ok=True)
     try: fig_elbow.write_image(f"../output_app/elbow_plot_{eval_year}.png")
@@ -5470,7 +5720,7 @@ def cb_calc_trans(n_clicks, t2_year, k, pca_res, global_data):
         
         sorted_indices = np.argsort(cluster_means)
         rank_map = {old: new for new, old in enumerate(sorted_indices)}
-        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
         return [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in new_labels]
         
     str_labels_t1 = get_aligned_labels(coords_t1)
@@ -5535,7 +5785,7 @@ def cb_calc_weighted_trans(n_clicks, t2_year, k, res):
         
         sorted_indices = np.argsort(cluster_means)
         rank_map = {old: new for new, old in enumerate(sorted_indices)}
-        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
         return [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in new_labels]
         
     str_labels_t1 = get_aligned_labels(coords_t1)
@@ -5604,7 +5854,7 @@ def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
         
         sorted_indices = np.argsort(cluster_means)
         rank_map = {old: new for new, old in enumerate(sorted_indices)}
-        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+        name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
         return [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in new_labels]
         
     str_labels_biplot = get_aligned_labels(coords_biplot)
@@ -5701,12 +5951,12 @@ def cb_render_trans_plots(data):
     fig_pie_t2.update_layout(template='plotly_white')
 
     return (
-        f"Peta Sebaran Cluster ({t1_year})", fig_map_t1,
-        f"Peta Sebaran Cluster ({t2_year})", fig_map_t2,
-        f"Biplot Cluster ({t1_year})", fig_scatter_t1,
-        f"Biplot Cluster ({t2_year})", fig_scatter_t2,
-        f"Proporsi Cluster ({t1_year})", fig_pie_t1,
-        f"Proporsi Cluster ({t2_year})", fig_pie_t2
+        f"Peta Sebaran Klaster ({t1_year})", fig_map_t1,
+        f"Peta Sebaran Klaster ({t2_year})", fig_map_t2,
+        f"Biplot Klaster ({t1_year})", fig_scatter_t1,
+        f"Biplot Klaster ({t2_year})", fig_scatter_t2,
+        f"Proporsi Klaster ({t1_year})", fig_pie_t1,
+        f"Proporsi Klaster ({t2_year})", fig_pie_t2
     )
 
 # 10C. RENDERING: TABLE (INSTANT)
@@ -5810,12 +6060,12 @@ def cb_render_weighted_trans_plots(data):
     fig_pie_t2.update_layout(template='plotly_white')
 
     return (
-        f"Peta Sebaran Cluster Terbobot ({t1_year})", fig_map_t1,
-        f"Peta Sebaran Cluster Terbobot ({t2_year})", fig_map_t2,
-        f"Biplot Cluster Terbobot ({t1_year})", fig_scatter_t1,
-        f"Biplot Cluster Terbobot ({t2_year})", fig_scatter_t2,
-        f"Proporsi Cluster Terbobot ({t1_year})", fig_pie_t1,
-        f"Proporsi Cluster Terbobot ({t2_year})", fig_pie_t2
+        f"Peta Sebaran Klaster Terbobot ({t1_year})", fig_map_t1,
+        f"Peta Sebaran Klaster Terbobot ({t2_year})", fig_map_t2,
+        f"Biplot Klaster Terbobot ({t1_year})", fig_scatter_t1,
+        f"Biplot Klaster Terbobot ({t2_year})", fig_scatter_t2,
+        f"Proporsi Klaster Terbobot ({t1_year})", fig_pie_t1,
+        f"Proporsi Klaster Terbobot ({t2_year})", fig_pie_t2
     )
 
 
@@ -5920,12 +6170,12 @@ def cb_render_biplot_statis_compare_plots(data):
     fig_pie_t2.update_layout(template='plotly_white')
 
     return (
-        f"Peta Sebaran Cluster {t1_year} ({actual_year})", fig_map_t1,
-        f"Peta Sebaran Cluster {t2_year} ({actual_year})", fig_map_t2,
-        f"Cluster {t1_year} ({actual_year})", fig_scatter_t1,
-        f"Cluster {t2_year} ({actual_year})", fig_scatter_t2,
-        f"Proporsi Cluster {t1_year} ({actual_year})", fig_pie_t1,
-        f"Proporsi Cluster {t2_year} ({actual_year})", fig_pie_t2
+        f"Peta Sebaran Klaster {t1_year} ({actual_year})", fig_map_t1,
+        f"Peta Sebaran Klaster {t2_year} ({actual_year})", fig_map_t2,
+        f"Klaster {t1_year} ({actual_year})", fig_scatter_t1,
+        f"Klaster {t2_year} ({actual_year})", fig_scatter_t2,
+        f"Proporsi Klaster {t1_year} ({actual_year})", fig_pie_t1,
+        f"Proporsi Klaster {t2_year} ({actual_year})", fig_pie_t2
     )
 
 # 10C-4. RENDERING PERBANDINGAN: TABLE (INSTANT)
@@ -6000,14 +6250,14 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     
     sorted_indices = np.argsort(cluster_pc1_means)
     rank_map = {old: new for new, old in enumerate(sorted_indices)}
-    name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
+    name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
     str_labels = [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in labels]
 
     # --- 2. Scatter Plot ---
     scores_comp = np.array(res['scores'])
     fig_scatter = px.scatter(
         x=scores_comp[:, 0], y=scores_comp[:, 1], color=str_labels,
-        text=obs_labels, title="Cluster pada Ruang Kompromi",
+        text=obs_labels, title="Klaster pada Ruang Kompromi",
         color_discrete_map=CLUSTER_COLOR_MAP,
         category_orders={"color": LEVEL_ORDER}
     )
@@ -6024,7 +6274,7 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         fig_pie = px.pie(
             df_pie, 
             names='Cluster', 
-            title="Proporsi Cluster Trajektori",
+            title="Proporsi Klaster Trajektori",
             color='Cluster', 
             color_discrete_map=CLUSTER_COLOR_MAP,
             category_orders={"Cluster": LEVEL_ORDER}
@@ -6080,7 +6330,7 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
                 found_matches += 1
 
         # C. Plotting
-        title_text = f"Peta Sebaran Cluster (Cocok: {found_matches} Wilayah)"
+        title_text = f"Peta Sebaran Klaster (Cocok: {found_matches} Wilayah)"
         if found_matches == 0:
             title_text += " - PERINGATAN: Nama wilayah tidak ada yang cocok!"
 
@@ -6118,13 +6368,13 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
 
     # 5. Interpretasi
     counts = np.bincount(labels)
-    interp_text = [html.Strong("Interpretasi Cluster (Trajectory): "), html.Br()]
+    interp_text = [html.Strong("Interpretasi Klaster (Trajectory): "), html.Br()]
     if moran_text: 
         interp_text.append(html.Span(moran_text, style={'color': '#D81B60', 'fontWeight': 'bold'}))
         interp_text.append(html.Br())
         
     for i in range(len(counts)):
-        cluster_name = name_map.get(rank_map[i], f"Cluster {rank_map[i]+1}")
+        cluster_name = name_map.get(rank_map[i], f"Klaster {rank_map[i]+1}")
         interp_text.append(f"{cluster_name}: {counts[i]} Wilayah.")
         if i < len(counts)-1: interp_text.append(" | ")
     
@@ -6384,8 +6634,8 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
             
         sorted_indices = np.argsort(cluster_means)
         rank_map = {old: new for new, old in enumerate(sorted_indices)}
-        name_map = {0: "Cluster 1 (Rendah)", 1: "Cluster 2 (Sedang)", 2: "Cluster 3 (Tinggi)"}
-        str_labels = [name_map.get(rank_map[l], f"Cluster {rank_map[l]+1}") for l in lbls]
+        name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
+        str_labels = [name_map.get(rank_map[l], f"Klaster {rank_map[l]+1}") for l in lbls]
         
         # Gabung
         df_clusters = pd.DataFrame({'Cluster_KMeans': str_labels}, index=obs_labels)
@@ -6393,22 +6643,22 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
         
         # Tabulasi Silang
         categories = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
-        target_clusters = [name_map.get(i, f"Cluster {i+1}") for i in range(k)]
+        target_clusters = [name_map.get(i, f"Klaster {i+1}") for i in range(k)]
         
         def build_cross_matrix(mode):
             matrix_data, matrix_tex = [], []
             matrix_tex.append(r"% !TeX root = ../induk.tex")
             matrix_tex.append(r"\begin{table}[H]")
             matrix_tex.append(r"\centering")
-            matrix_tex.append(r"\caption{Perbandingan Cluster dengan Kategori IPM (" + str(sel_year) + r")} \label{tab:ipm_cross_" + str(sel_year) + r"}")
+            matrix_tex.append(r"\caption{Perbandingan Klaster dengan Kategori IPM (" + str(sel_year) + r")} \label{tab:ipm_cross_" + str(sel_year) + r"}")
             matrix_tex.append(r"\begin{tabular}{|c|" + "p{2cm}|"*len(categories) + "}")
             matrix_tex.append(r"\hline")
             
-            header_row = ["Cluster K-Means"] + categories
+            header_row = ["Klaster K-Means"] + categories
             matrix_tex.append(" & ".join([f"\\textbf{{{x}}}" for x in header_row]) + r" \\ \hline")
             
             for c_name in target_clusters:
-                row_dict = {"Cluster K-Means": c_name}
+                row_dict = {"Klaster K-Means": c_name}
                 tex_row = [f"\\textbf{{{c_name}}}"]
                 for cat in categories:
                     kabs = df_merged[(df_merged['Cluster_KMeans'] == c_name) & (df_merged['IPM_Cat'] == cat)].index.tolist()
@@ -6486,9 +6736,9 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
         
         return (
             req_data, cols,
-            f"Peta Cluster Biplot ({sel_year})", fig_map_biplot,
+            f"Peta Klaster Biplot ({sel_year})", fig_map_biplot,
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
-            f"Proporsi Cluster Biplot ({sel_year})", fig_pie_biplot,
+            f"Proporsi Klaster Biplot ({sel_year})", fig_pie_biplot,
             f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
         )
     except Exception as e:
@@ -6544,10 +6794,10 @@ def dl_trans_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_biplot_transition_{sfx}_{y1}x{y2}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Transisi Cluster Biplot Tahunan ({y1} vs {y2})"
+        caption = f"Nama Daerah Transisi Klaster Biplot Tahunan ({y1} vs {y2})"
         label = f"biplot_transition_name_{y1}x{y2}"
     else:
-        caption = f"Matriks Transisi Cluster Biplot Tahunan ({y1} vs {y2})"
+        caption = f"Matriks Transisi Klaster Biplot Tahunan ({y1} vs {y2})"
         label = f"biplot_transition_{y1}x{y2}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)
@@ -6566,10 +6816,10 @@ def dl_weighted_trans_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_statis_transition_{sfx}_{y1}x{y2}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Transisi Cluster STATIS Tahunan ({y1} vs {y2})"
+        caption = f"Nama Daerah Transisi Klaster STATIS Tahunan ({y1} vs {y2})"
         label = f"statis_transition_name_{y1}x{y2}"
     else:
-        caption = f"Matriks Transisi Cluster STATIS Tahunan ({y1} vs {y2})"
+        caption = f"Matriks Transisi Klaster STATIS Tahunan ({y1} vs {y2})"
         label = f"statis_transition_{y1}x{y2}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)
@@ -6586,10 +6836,10 @@ def dl_biplot_statis_compare_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_biplot_vs_statis_compare_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster Biplot vs STATIS Tahunan ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster Biplot vs STATIS Tahunan ({year})"
         label = f"biplot_statis_comp_name_{year}"
     else:
-        caption = f"Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) ({year})"
+        caption = f"Matriks Perbandingan Klaster Biplot vs STATIS (Tahunan) ({year})"
         label = f"biplot_statis_comp_{year}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)
@@ -6628,10 +6878,10 @@ def dl_cross_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_cross_matrix_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster Biplot vs IPM (UNDP) ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster Biplot vs IPM (UNDP) ({year})"
         label = f"biplot_ipm_name_{year}"
     else:
-        caption = f"Matriks Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({year})"
+        caption = f"Matriks Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({year})"
         label = f"biplot_ipm_{year}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)
@@ -6648,10 +6898,10 @@ def dl_biplot_statis_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_biplot_vs_statis_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({year})"
         label = f"biplot_statis_name_{year}"
     else:
-        caption = f"Matriks Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({year})"
+        caption = f"Matriks Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({year})"
         label = f"biplot_statis_{year}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)
@@ -6668,10 +6918,10 @@ def dl_statis_ipm_avg_tex(n_clicks, data, columns, year, mode):
     sfx = "name" if mode == "names" else "sum"
     filename = f"output_table_compromise_vs_ipm_{sfx}_{year}.tex"
     if mode == "names":
-        caption = f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs IPM (UNDP) ({year})"
+        caption = f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs IPM (UNDP) ({year})"
         label = f"compromise_ipm_name_{year}"
     else:
-        caption = f"Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) ({year})"
+        caption = f"Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP) ({year})"
         label = f"compromise_ipm_{year}"
     tex_str = ui_table_to_latex(data, columns, caption, f"tab:{label}")
     return dcc.send_string(tex_str, filename)

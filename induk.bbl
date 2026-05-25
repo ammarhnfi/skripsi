@@ -340,6 +340,13 @@ Phipson, B. \& Smyth, G.~K. (2010).
 \newblock Dokumentasi resmi kerangka kerja Dash.
 \newblock \url{https://dash.plotly.com/}
 
+\bibitem[Rousseeuw, 1987]{rousseeuw1987}
+Rousseeuw, P.~J. (1987).
+\newblock Silhouettes: A graphical aid to the interpretation and validation of
+  cluster analysis.
+\newblock {\em Journal of Computational and Applied Mathematics}, 20, 53--65.
+\newblock \url{https://doi.org/10.1016/0377-0427(87)90125-7}
+
 \bibitem[Syakur \textit{et~al.}, 2018]{syakur2018}
 Syakur, M., Khotimah, B., Rochman, E., \& Satoto, B. (2018).
 \newblock Integration k-means clustering method and elbow method for

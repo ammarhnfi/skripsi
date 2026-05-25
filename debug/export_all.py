@@ -93,15 +93,15 @@ def deduplicate_and_clean(root_path):
     # Pattern nama file yang SELALU di scenario (tidak boleh ke root) agar dapat di-load side-by-side di dashboard
     SCENARIO_ONLY_PATTERNS = [
         # --- 9 Perbandingan Utama (Tabel & Plot pendukung) ---
-        'biplot_transition',         # Perbandingan 1: Matriks Transisi Cluster Biplot Tahunan
-        'statis_transition',         # Perbandingan 2: Matriks Transisi Cluster STATIS Tahunan
-        'biplot_vs_statis_compare',  # Perbandingan 3: Perbandingan Cluster Biplot PCA vs STATIS Tahunan
+        'biplot_transition',         # Perbandingan 1: Matriks Transisi Klaster Biplot Tahunan
+        'statis_transition',         # Perbandingan 2: Matriks Transisi Klaster STATIS Tahunan
+        'biplot_vs_statis_compare',  # Perbandingan 3: Perbandingan Klaster Biplot PCA vs STATIS Tahunan
         'output_table_ipm_',         # Perbandingan 4: Matriks Transisi Kategori IPM UNDP
-        'cross_matrix',              # Perbandingan 5: Perbandingan Cluster Biplot vs Kategori IPM
-        'statis_vs_ipm',             # Perbandingan 6: Perbandingan Cluster STATIS Tahunan vs Kategori IPM
-        'biplot_vs_statis',          # Perbandingan 7: Perbandingan Cluster Kompromi STATIS vs Cluster Biplot
-        'compromise_vs_statis',      # Perbandingan 8: Perbandingan Cluster Kompromi STATIS vs STATIS Tahunan
-        'compromise_vs_ipm',         # Perbandingan 9: Perbandingan Cluster Kompromi STATIS vs Kategori IPM
+        'cross_matrix',              # Perbandingan 5: Perbandingan Klaster Biplot vs Kategori IPM
+        'statis_vs_ipm',             # Perbandingan 6: Perbandingan Klaster STATIS Tahunan vs Kategori IPM
+        'biplot_vs_statis',          # Perbandingan 7: Perbandingan Klaster Kompromi STATIS vs Klaster Biplot
+        'compromise_vs_statis',      # Perbandingan 8: Perbandingan Klaster Kompromi STATIS vs STATIS Tahunan
+        'compromise_vs_ipm',         # Perbandingan 9: Perbandingan Klaster Kompromi STATIS vs Kategori IPM
         
         # --- File Hasil STATIS & Komparasi Lainnya ---
         'compare_map_', 'compare_scatter_', 'compare_pie_', # Peta, scatter, dan pie plot perbandingan transisi/metode
@@ -116,14 +116,14 @@ def deduplicate_and_clean(root_path):
         'variable_contribution',     # Kontribusi indikator
         'variable_cos2',             # Cos2 indikator
         'biplot_tahun_',             # Biplot tahunan per skenario
-        'compromise_map',            # Peta cluster STATIS
+        'compromise_map',            # Peta klaster STATIS
         'compromise_scatter',         # Scatter plot kompromi STATIS
-        'cluster_pie_statis',        # Pie chart cluster STATIS (tahunan)
+        'cluster_pie_statis',        # Pie chart klaster STATIS (tahunan)
         'compromise_pie',             # Pie chart kompromi STATIS
         'elbow_plot_', 'dendrogram_', 'dendrogram_compromise', # Elbow & Dendrogram
-        'cluster_map_statis_',       # Peta cluster STATIS per tahun (berbeda per skenario)
-        'output_table_cluster_members',         # (legacy) Anggota cluster kompromi
-        'output_table_compromise_cluster_sum_name', # Ringkasan anggota cluster kompromi
+        'cluster_map_statis_',       # Peta klaster STATIS per tahun (berbeda per skenario)
+        'output_table_cluster_members',         # (legacy) Anggota klaster kompromi
+        'output_table_compromise_cluster_sum_name', # Ringkasan anggota klaster kompromi
         'beta',                      # Koefisien Beta (tabel & grafik) per skenario
         'diagnostik',                # Tabel diagnostik model regresi per skenario
         'moran',                     # Hasil uji Moran's I spasial per skenario
@@ -150,8 +150,10 @@ def deduplicate_and_clean(root_path):
 
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from sklearn.decomposition import PCA
+from sklearn.metrics import silhouette_score
 
-# Global Helper for Cluster Names
+# Global Helper for Klaster Names
 def get_cluster_name(idx, prefix="Cluster", suffix=""):
     if K_CLUSTERS == 3:
         desc = ["Rendah", "Sedang", "Tinggi"][idx]
@@ -631,7 +633,7 @@ if not selected_vars:
     sys.exit(1)
 print(f"  => Indikator terpilih ({len(selected_vars)}): {selected_vars}")
 
-# --- 3. Jumlah Cluster ---
+# --- 3. Jumlah Klaster ---
 n_samples = len(tables_raw[sheet_names_all[0]])
 default_k = 3 if n_samples >= 5 else 2
 
@@ -642,7 +644,7 @@ if is_headless:
         K_CLUSTERS = default_k
     print(f"  [HEADLESS] k = {K_CLUSTERS}")
 else:
-    K_CLUSTERS = _ask_int("Jumlah Cluster K-Means (k)", default=default_k)
+    K_CLUSTERS = _ask_int("Jumlah Klaster K-Means (k)", default=default_k)
 print(f"  => k = {K_CLUSTERS}")
 
 # --- 4. Skala Visual Loadings ---
@@ -1151,12 +1153,14 @@ for current_scenario in ['scenario1', 'scenario2']:
     df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
     df_gc['PC1 (Visual)'] = plot_loadings[:, 0]
     df_gc['PC2 (Visual)'] = plot_loadings[:, 1]
+    df_gc.index.name = 'Indikator'
     df_gc = df_gc.reset_index()
     save_tex_table(df_gc, "output_table_loadings.tex", OUT_DIR, f"Loadings Kompromi ({SCENARIO})", "loadings", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
 
     df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
     df_fc['PC1 (Visual)'] = plot_scores[:, 0]
     df_fc['PC2 (Visual)'] = plot_scores[:, 1]
+    df_fc.index.name = 'Kabupaten/Kota'
     df_fc = df_fc.reset_index()
     save_tex_table(df_fc, "output_table_scores.tex", OUT_DIR, f"Koordinat Skor Kompromi ({SCENARIO})", "scores", longtable=False, float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
 
@@ -1208,7 +1212,6 @@ for current_scenario in ['scenario1', 'scenario2']:
     
     pca_scores_dict = {}
     pca_loadings_dict = {}
-    from sklearn.decomposition import PCA
     for i, yr in enumerate(sheet_names):
         X = tables[yr][selected_vars].values
         X_std = StandardScaler().fit_transform(X)
@@ -1322,7 +1325,131 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_sk_intra.index.name = 'Indikator'
         df_sk_intra = df_sk_intra.reset_index()
         save_tex_table(df_sk_intra, f"output_table_matriks_intra_loading_{yr}.tex", OUT_DIR, fr"Matriks Korelasi Terbobot Indikator Tahun {yr} ($\mathbf{{S}}_{{{yr}}}$)", f"matriks_intra_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
-    
+
+    # ============================================================
+    # 3c. TABEL PERGESERAN CENTROID TAHUNAN
+    # Formula identik dengan cb_biplot_centroid_dist & cb_statis_centroid_dist di web/app.py
+    # ============================================================
+    print("\n=== 3c. Tabel Pergeseran Centroid Tahunan ===")
+
+    # --- PCA Biplot centroid (ke ROOT_OUT_DIR, hanya 1x dari scenario1) ---
+    if current_scenario == 'scenario1':
+        centroids_pca = {yr: (pca_scores_dict[yr][:, 0].mean(), pca_scores_dict[yr][:, 1].mean()) for yr in sheet_names}
+        rows_pca = []
+        for i, yr in enumerate(sheet_names):
+            c1, c2 = centroids_pca[yr]
+            if i < len(sheet_names) - 1:
+                ny = sheet_names[i + 1]
+                nc1, nc2 = centroids_pca[ny]
+                dist_val = round(float(np.sqrt((c1 - nc1)**2 + (c2 - nc2)**2)), 4)
+            else:
+                dist_val = None
+            rows_pca.append({'Tahun': yr, 'Centroid PC1': round(float(c1), 4), 'Centroid PC2': round(float(c2), 4), r'$D(c_t, c_{t+1})$': dist_val if dist_val is not None else '--'})
+        df_centroid_pca = pd.DataFrame(rows_pca)
+        save_tex_table(df_centroid_pca, "output_table_centroid_pca.tex", ROOT_OUT_DIR,
+                       r"Pergeseran Centroid Tahunan --- PCA Biplot",
+                       "centroid_pca", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+        print("  [OK] output_table_centroid_pca.tex → ROOT")
+
+    # --- STATIS Fk centroid (ke OUT_DIR, per skenario) ---
+    centroids_statis = {yr: (per_year_coords[yr][:, 0].mean(), per_year_coords[yr][:, 1].mean()) for yr in sheet_names}
+    rows_statis = []
+    for i, yr in enumerate(sheet_names):
+        c1, c2 = centroids_statis[yr]
+        if i < len(sheet_names) - 1:
+            ny = sheet_names[i + 1]
+            nc1, nc2 = centroids_statis[ny]
+            dist_val = round(float(np.sqrt((c1 - nc1)**2 + (c2 - nc2)**2)), 4)
+        else:
+            dist_val = None
+        rows_statis.append({'Tahun': yr, 'Centroid PC1': round(float(c1), 4), 'Centroid PC2': round(float(c2), 4), r'$D(c_t, c_{t+1})$': dist_val if dist_val is not None else '--'})
+    df_centroid_statis = pd.DataFrame(rows_statis)
+    save_tex_table(df_centroid_statis, "output_table_centroid_statis.tex", OUT_DIR,
+                   r"Pergeseran Centroid Tahunan --- STATIS (Skor Intra $\mathbf{F}_k$)",
+                   "centroid_statis", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+    print(f"  [OK] output_table_centroid_statis.tex → {current_scenario}")
+
+    # ============================================================
+    # 3d. TABEL JARAK PERGESERAN PER-ENTITAS
+    # Formula identik dengan cb_biplot_entity_dist & cb_statis_entity_dist di web/app.py
+    # Setiap entitas (kab/kota atau variabel) mendapat 1 file .tex
+    # ============================================================
+    print("\n=== 3d. Tabel Jarak Per-Entitas ===")
+
+    def _safe(name):
+        """Buat nama file aman dari nama entitas."""
+        return name.replace('/', '_').replace(' ', '_').replace('.', '').replace(',', '').lower()
+
+    def _entity_rows(positions):
+        """Hitung baris tabel trajektori + jarak dari list (yr, pc1, pc2)."""
+        rows = []
+        for i, (yr, p1, p2) in enumerate(positions):
+            if i < len(positions) - 1:
+                np1, np2 = positions[i+1][1], positions[i+1][2]
+                dist_val = round(float(np.sqrt((p1 - np1)**2 + (p2 - np2)**2)), 4)
+            else:
+                dist_val = None
+            rows.append({
+                'Tahun': yr,
+                'PC1': round(float(p1), 4),
+                'PC2': round(float(p2), 4),
+                r'$D(\text{pos}_t, \text{pos}_{t+1})$': dist_val if dist_val is not None else '--'
+            })
+        return rows
+
+    # --- PCA biplot entities → ROOT_OUT_DIR/jarak/ (hanya 1x dari scenario1) ---
+    if current_scenario == 'scenario1':
+        jarak_root_dir = os.path.join(ROOT_OUT_DIR, 'jarak')
+        os.makedirs(jarak_root_dir, exist_ok=True)
+
+        # Kab/Kota (skor PCA)
+        for obs in obs_labels:
+            idx = obs_labels.index(obs)
+            positions = [(yr, pca_scores_dict[yr][idx, 0], pca_scores_dict[yr][idx, 1]) for yr in sheet_names]
+            df_e = pd.DataFrame(_entity_rows(positions))
+            fname = f"output_table_jarak_skor_{_safe(obs)}.tex"
+            save_tex_table(df_e, fname, jarak_root_dir,
+                           f"Pergeseran Posisi Biplot PCA --- {obs}",
+                           f"jarak_pca_skor_{_safe(obs)}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+
+        # Variabel (loading PCA)
+        for var in selected_vars:
+            idx = list(selected_vars).index(var)
+            positions = [(yr, pca_loadings_dict[yr][idx, 0], pca_loadings_dict[yr][idx, 1]) for yr in sheet_names]
+            df_e = pd.DataFrame(_entity_rows(positions))
+            fname = f"output_table_jarak_loading_{_safe(var)}.tex"
+            save_tex_table(df_e, fname, jarak_root_dir,
+                           f"Pergeseran Posisi Biplot PCA --- {var}",
+                           f"jarak_pca_loading_{_safe(var)}", float_fmt="{:.4f}", label_prefix=LABEL_PREFIX)
+
+        print(f"  [OK] {len(obs_labels)} skor + {len(selected_vars)} loading PCA → ROOT/jarak/")
+
+    # --- STATIS entities → OUT_DIR/jarak/ (per skenario) ---
+    jarak_sc_dir = os.path.join(OUT_DIR, 'jarak')
+    os.makedirs(jarak_sc_dir, exist_ok=True)
+
+    # Kab/Kota (skor Fk STATIS)
+    for obs in obs_labels:
+        idx = obs_labels.index(obs)
+        positions = [(yr, per_year_coords[yr][idx, 0], per_year_coords[yr][idx, 1]) for yr in sheet_names]
+        df_e = pd.DataFrame(_entity_rows(positions))
+        fname = f"output_table_jarak_skor_{_safe(obs)}.tex"
+        save_tex_table(df_e, fname, jarak_sc_dir,
+                       fr"Pergeseran Posisi STATIS ($\mathbf{{F}}_k$) --- {obs}",
+                       f"jarak_statis_skor_{_safe(obs)}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+
+    # Variabel (loading Gk STATIS)
+    for var in selected_vars:
+        idx = list(selected_vars).index(var)
+        positions = [(yr, per_year_loadings[yr][idx, 0], per_year_loadings[yr][idx, 1]) for yr in sheet_names]
+        df_e = pd.DataFrame(_entity_rows(positions))
+        fname = f"output_table_jarak_loading_{_safe(var)}.tex"
+        save_tex_table(df_e, fname, jarak_sc_dir,
+                       fr"Pergeseran Posisi STATIS ($\mathbf{{G}}_k$) --- {var}",
+                       f"jarak_statis_loading_{_safe(var)}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
+
+    print(f"  [OK] {len(obs_labels)} skor + {len(selected_vars)} loading STATIS → {current_scenario}/jarak/")
+
     # Statistika Deskriptif per tahun
     print("\n=== 3b. Tabel Statistika Deskriptif ===")
     for yr in sheet_names:
@@ -1397,12 +1524,12 @@ for current_scenario in ['scenario1', 'scenario2']:
         return float(num / den) if den != 0 else 0.0
     
     def kmo_label(kmo):
-        if kmo >= 0.9: return "Sangat Baik"
-        if kmo >= 0.8: return "Baik"
-        if kmo >= 0.7: return "Cukup"
-        if kmo >= 0.6: return "Sedang"
-        if kmo >= 0.5: return "Cukup Memadai"
-        return "Tidak Memadai"
+        if kmo >= 0.9: return "Marvelous (Luar Biasa)"
+        if kmo >= 0.8: return "Meritorious (Sangat Baik)"
+        if kmo >= 0.7: return "Middling (Cukup Baik)"
+        if kmo >= 0.6: return "Mediocre (Biasa)"
+        if kmo >= 0.5: return "Miserable (Buruk, namun dapat diterima)"
+        return "Unacceptable (Tidak diterima)"
     
     def calc_bartlett(X):
         """Bartlett's test of sphericity."""
@@ -1489,6 +1616,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         f"\\newcommand{{\\{get_macro_name('KMOMin')}}}{{{f'{kmo_min:.4f}'.replace('.', ',')}}}",
         f"\\newcommand{{\\{get_macro_name('KMOMax')}}}{{{f'{kmo_max:.4f}'.replace('.', ',')}}}",
         f"\\newcommand{{\\{get_macro_name('KMOInterpret')}}}{{{kmo_label(kmo_avg)}}}",
+        f"\\newcommand{{\\{get_macro_name('SilhouetteAvg')}}}{{0{{,}}0000}}",
         "",
     ]
     # Tulis ke folder skenario masing-masing (Wilayah / Indikator)
@@ -1834,8 +1962,14 @@ for current_scenario in ['scenario1', 'scenario2']:
     sorted_idx_t = np.argsort(cluster_means_t)
     rank_map_t = {old_val: rank for rank, old_val in enumerate(sorted_idx_t)}
     cluster_traj = np.array([rank_map_t[l] for l in labels_traj_raw])
-    
-    palette_cluster = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Matching app.py colors: Red, Orange, Green, Blue, Purple
+
+    # Silhouette score on compromise space (PC1+PC2) — used for macro AppSilhouetteAvg
+    try:
+        sil_compromise = float(silhouette_score(scores_raw[:, :2], cluster_traj)) if len(np.unique(cluster_traj)) > 1 else 0.0
+    except Exception:
+        sil_compromise = 0.0
+
+    palette_klaster = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Matching app.py colors: Red, Orange, Green, Blue, Purple
     
     # Attach province metadata to df_traj for province-based coloring
     province_by_obs = {}
@@ -2047,7 +2181,8 @@ for current_scenario in ['scenario1', 'scenario2']:
     
     lambda_obs = vals_H_sorted[0]
     dist_lambdas = []
-    
+
+    np.random.seed(42)
     for _ in range(N_PERM):
         Ws_perm = []
         for X in X_matrices:
@@ -2082,7 +2217,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     fig_perm.update_layout(template='plotly_white')
     
     # Export LaTeX macro
-    p_val_tex = r"\ensuremath{<0{,}0001}" if p_value < 0.0001 else f"{p_value:.4f}".replace(".", "{,}")
+    p_val_tex = r"\ensuremath{<0,0001}" if p_value < 0.0001 else f"{p_value:.4f}".replace(".", ",")
     perm_lines = [
         r"% Generated by export_all.py (Permutation)",
         fr"\newcommand{{\{get_macro_name('PValuePerm')}}}{{{p_val_tex}}}",
@@ -2125,6 +2260,24 @@ for current_scenario in ['scenario1', 'scenario2']:
             print(f"  [TEX] Updated dynamic PValuePerm in {OUT_DIR}/output_macros.tex to {p_val_indo}")
         except Exception as e:
             print(f"  [WARN] Gagal update dynamic p-value di {OUT_DIR}/output_macros.tex: {e}")
+
+    # Update AppSilhouetteAvg di output_macros.tex
+    if os.path.exists(macro_path):
+        try:
+            import re
+            with open(macro_path, "r", encoding="utf-8") as f:
+                content = f.read()
+            sil_val_indo = f"{sil_compromise:.4f}".replace(".", ",")
+            content_new = re.sub(
+                r"\\newcommand\{\\" + get_macro_name('SilhouetteAvg') + r"\}\{.*\}",
+                fr"\\newcommand{{\\{get_macro_name('SilhouetteAvg')}}}{{{sil_val_indo}}}",
+                content
+            )
+            with open(macro_path, "w", encoding="utf-8") as f:
+                f.write(content_new)
+            print(f"  [TEX] Updated AppSilhouetteAvg in {OUT_DIR}/output_macros.tex to {sil_val_indo}")
+        except Exception as e:
+            print(f"  [WARN] Gagal update AppSilhouetteAvg di {OUT_DIR}/output_macros.tex: {e}")
     
     
     # ============================================================
@@ -2167,7 +2320,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         aligned_labels = np.array([mapping[l] for l in labels_awal])
         
         # 2. Re-ranking otomatis per tahun (berdasarkan rata-rata PC1 skor kompromi)
-        # Ini memastikan Cluster 3 (Tinggi) selalu merujuk pada performa tinggi secara global
+        # Ini memastikan Klaster 3 (Tinggi) selalu merujuk pada performa tinggi secara global
         cluster_means = []
         unique_lbls = sorted(list(set(aligned_labels)))
         for cl in unique_lbls:
@@ -2192,7 +2345,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         labels = get_ranked_labels(coords, labels_raw, curr_centroids, base_centroids, scores_raw)
         cluster_per_year[yr] = labels
         
-        # Scatter biplot Cluster per tahun
+        # Scatter biplot Klaster per tahun
         ps_y, pl_y = apply_visual_adjustments(coords, loadings, norm=NORM_SCORE, scale=SCALE_LOAD)
         # Gunakan warna dari app.py: Merah (Rendah), Jingga (Sedang), Hijau (Tinggi)
         palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
@@ -2200,13 +2353,13 @@ for current_scenario in ['scenario1', 'scenario2']:
         fig_sc = go.Figure()
         for cl in range(K_CLUSTERS):
             mask = labels == cl
-            cluster_name = f"Cluster {cl+1}"
+            cluster_name = f"Klaster {cl+1}"
             if K_CLUSTERS == 3:
                 cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
             elif K_CLUSTERS == 2:
                 cluster_name = ["Rendah", "Tinggi"][cl]
             
-            # Format text and sizes for this cluster using ps_y coordinates
+            # Format text and sizes for this klaster using ps_y coordinates
             cl_texts = []
             cl_sizes = []
             idx_list = [i for i in range(len(obs_labels)) if mask[i]]
@@ -2224,7 +2377,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 mode='markers+text', text=cl_texts,
                 textposition='top center', textfont=dict(size=9, color='black'),
                 marker=dict(size=cl_sizes, color=palette[cl]),
-                name=f'Cluster {cl+1} ({cluster_name})'
+                name=f'Klaster {cl+1} ({cluster_name})'
             ))
         fig_sc.add_hline(y=0, line_dash='dot', line_color='gray')
         fig_sc.add_vline(x=0, line_dash='dot', line_color='gray')
@@ -2239,7 +2392,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 line=dict(color='rgba(0,0,0,0.2)', width=1.2),
                 showlegend=False, hoverinfo='skip'
             ))
-        fig_sc.update_layout(title=f"Biplot Cluster K-Means (Diberi Peringkat) — Tahun {yr}",
+        fig_sc.update_layout(title=f"Biplot Klaster K-Means (Diberi Peringkat) — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
         save_png(fig_sc, f"cluster_scatter_statis_{yr}.png", OUT_DIR, width=800, height=800)
@@ -2253,16 +2406,33 @@ for current_scenario in ['scenario1', 'scenario2']:
             km_e = KMeans(n_clusters=kk, random_state=42, n_init=10)
             km_e.fit(Xc)
             inertias.append(km_e.inertia_)
+        sil_max_k = min(max_k, len(Xc))  # silhouette: kk harus < n_samples
+        sil_scores = [None]  # k=1 tidak terdefinisi
+        for kk in range(2, sil_max_k):
+            km_s = KMeans(n_clusters=kk, random_state=42, n_init=10)
+            lbl_s = km_s.fit_predict(Xc)
+            sil_scores.append(round(float(silhouette_score(Xc, lbl_s)), 4))
         fig_elbow = px.line(x=list(k_range), y=inertias, markers=True,
-                            title=f"Kurva Elbow — Tahun {yr}",
-                            labels={'x': 'Jumlah Cluster (k)', 'y': 'Inersia (SSE)'},
+                            title=f"Kurva Elbow & Siluet — Tahun {yr}",
+                            labels={'x': 'Jumlah Klaster (k)', 'y': 'Inersia (SSE)'},
                             color_discrete_sequence=['#1976D2'])
         fig_elbow.update_traces(
             text=[f"{val:,.2f}" for val in inertias],
             textposition="top center",
-            mode="lines+markers+text"
+            mode="lines+markers+text",
+            name="SSE"
         )
-        fig_elbow.update_layout(template='plotly_white')
+        fig_elbow.add_trace(go.Scatter(
+            x=list(range(2, sil_max_k)), y=sil_scores[1:],
+            mode='lines+markers', name='Siluet',
+            line=dict(color='#E53935', width=2, dash='dot'),
+            marker=dict(size=7),
+            yaxis='y2'
+        ))
+        fig_elbow.update_layout(
+            template='plotly_white',
+            yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
+        )
         save_png(fig_elbow, f"elbow_plot_{yr}.png", OUT_DIR, width=700, height=450)
     
         # Dendrogram
@@ -2283,16 +2453,33 @@ for current_scenario in ['scenario1', 'scenario2']:
                 km_e_bp = KMeans(n_clusters=kk, random_state=42, n_init=10)
                 km_e_bp.fit(Xc_bp)
                 inertias_bp.append(km_e_bp.inertia_)
+            sil_max_k_bp = min(max_k, len(Xc_bp))  # silhouette: kk harus < n_samples
+            sil_scores_bp = [None]
+            for kk in range(2, sil_max_k_bp):
+                km_s_bp = KMeans(n_clusters=kk, random_state=42, n_init=10)
+                lbl_s_bp = km_s_bp.fit_predict(Xc_bp)
+                sil_scores_bp.append(round(float(silhouette_score(Xc_bp, lbl_s_bp)), 4))
             fig_elbow_bp = px.line(x=list(k_range), y=inertias_bp, markers=True,
-                                   title=f"Kurva Elbow (Unweighted) — Tahun {yr}",
-                                   labels={'x': 'Jumlah Cluster (k)', 'y': 'Inersia (SSE)'},
+                                   title=f"Kurva Elbow & Siluet (Unweighted) — Tahun {yr}",
+                                   labels={'x': 'Jumlah Klaster (k)', 'y': 'Inersia (SSE)'},
                                    color_discrete_sequence=['#1976D2'])
             fig_elbow_bp.update_traces(
                 text=[f"{val:,.2f}" for val in inertias_bp],
                 textposition="top center",
-                mode="lines+markers+text"
+                mode="lines+markers+text",
+                name="SSE"
             )
-            fig_elbow_bp.update_layout(template='plotly_white')
+            fig_elbow_bp.add_trace(go.Scatter(
+                x=list(range(2, sil_max_k_bp)), y=sil_scores_bp[1:],
+                mode='lines+markers', name='Siluet',
+                line=dict(color='#E53935', width=2, dash='dot'),
+                marker=dict(size=7),
+                yaxis='y2'
+            ))
+            fig_elbow_bp.update_layout(
+                template='plotly_white',
+                yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
+            )
             save_png(fig_elbow_bp, f"elbow_plot_{yr}.png", ROOT_OUT_DIR, width=700, height=450)
             
             try:
@@ -2306,7 +2493,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     # ============================================================
     # 8.A PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS
     # ============================================================
-    print("\n=== 8.A Perbandingan Cluster Biplot vs Cluster Statis ===")
+    print("\n=== 8.A Perbandingan Klaster Biplot vs Klaster Statis ===")
     for yr in sheet_names:
         lbl_statis_comp = cluster_traj # Compromise (STATIS)
         lbl_biplot_yr = cluster_per_year[yr] # Yearly Biplot
@@ -2321,7 +2508,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_cross_bs.index.name = "Statis (Compromise)"
         df_cross_bs = df_cross_bs.reset_index()
         save_tex_table(df_cross_bs, f"output_table_biplot_vs_statis_sum_{yr}.tex", OUT_DIR,
-                       f"Matriks Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                       f"Matriks Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
         rows_bs_nm = {}
         for s_l in range(K_CLUSTERS):
@@ -2330,13 +2517,13 @@ for current_scenario in ['scenario1', 'scenario2']:
                          if lbl_statis_comp[i] == s_l and lbl_biplot_yr[i] == b_l]
                 rows_bs_nm[f"{get_cluster_name(s_l, 'Statis')} & {get_cluster_name(b_l, 'Biplot')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(rows_bs_nm, f"output_table_biplot_vs_statis_name_{yr}.tex", OUT_DIR,
-                            f"Nama Daerah Perbandingan Cluster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+                            f"Nama Daerah Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
     
     # ============================================================
     # 8.B PERBANDINGAN CLUSTER STATIS TAHUNAN VS IPM TAHUNAN (per tahun) [Seksi 6]
     # ============================================================
     if ipm_col:
-        print("\n=== 8.B Perbandingan Cluster STATIS Tahunan vs Kategori IPM (per tahun) ===")
+        print("\n=== 8.B Perbandingan Klaster STATIS Tahunan vs Kategori IPM (per tahun) ===")
         ipm_cats = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
         for yr in sheet_names:
             lbl_statis_yr = cluster_per_year[yr]
@@ -2349,10 +2536,10 @@ for current_scenario in ['scenario1', 'scenario2']:
             df_cross_si = pd.DataFrame(cross_mat_si,
                                        index=[get_cluster_name(i, "Cluster") for i in range(K_CLUSTERS)],
                                        columns=ipm_cats)
-            df_cross_si.index.name = "Cluster STATIS"
+            df_cross_si.index.name = "Klaster STATIS"
             df_cross_si = df_cross_si.reset_index()
             save_tex_table(df_cross_si, f"output_table_statis_vs_ipm_sum_{yr}.tex", OUT_DIR,
-                           f"Perbandingan Cluster STATIS Tahunan vs Kategori IPM (UNDP) ({yr})", f"statis_ipm_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                           f"Perbandingan Klaster STATIS Tahunan vs Kategori IPM (UNDP) ({yr})", f"statis_ipm_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
             
             rows_si_nm = {}
             for km_l in range(K_CLUSTERS):
@@ -2361,12 +2548,12 @@ for current_scenario in ['scenario1', 'scenario2']:
                              if lbl_statis_yr[i] == km_l and ipm_yr[i] == ip_l]
                     rows_si_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_si_nm, f"output_table_statis_vs_ipm_name_{yr}.tex", OUT_DIR,
-                                f"Nama Daerah Perbandingan Cluster STATIS Tahunan vs IPM (UNDP) ({yr})", f"statis_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+                                f"Nama Daerah Perbandingan Klaster STATIS Tahunan vs IPM (UNDP) ({yr})", f"statis_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
 
     # ============================================================
     # 8.C PERBANDINGAN CLUSTER KOMPROMI STATIS VS CLUSTER STATIS TAHUNAN [Seksi 8]
     # ============================================================
-    print("\n=== 8.C Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ===")
+    print("\n=== 8.C Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan ===")
     for yr in sheet_names:
         lbl_comp = cluster_traj  # Compromise STATIS (overall trajectory)
         lbl_statis_yr = cluster_per_year[yr]   # Yearly STATIS
@@ -2381,7 +2568,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_cross_cs.index.name = "Kompromi STATIS"
         df_cross_cs = df_cross_cs.reset_index()
         save_tex_table(df_cross_cs, f"output_table_compromise_vs_statis_sum_{yr}.tex", OUT_DIR,
-                       f"Perbandingan Cluster Kompromi STATIS vs Cluster STATIS Tahunan ({yr})", f"comp_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                       f"Perbandingan Klaster Kompromi STATIS vs Klaster STATIS Tahunan ({yr})", f"comp_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
         
         rows_cs_nm = {}
         for c_l in range(K_CLUSTERS):
@@ -2390,13 +2577,13 @@ for current_scenario in ['scenario1', 'scenario2']:
                          if lbl_comp[i] == c_l and lbl_statis_yr[i] == s_l]
                 rows_cs_nm[f"{get_cluster_name(c_l, 'Kompromi')} & {get_cluster_name(s_l, 'Statis')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(rows_cs_nm, f"output_table_compromise_vs_statis_name_{yr}.tex", OUT_DIR,
-                            f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs STATIS Tahunan ({yr})", f"comp_statis_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+                            f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs STATIS Tahunan ({yr})", f"comp_statis_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
 
     # ============================================================
     # 8.D PERBANDINGAN CLUSTER KOMPROMI STATIS VS KATEGORI IPM (UNDP) (per tahun) [Seksi 9]
     # ============================================================
     if ipm_col:
-        print("\n=== 8.D Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) (per tahun) ===")
+        print("\n=== 8.D Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP) (per tahun) ===")
         ipm_cats = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
         for yr in sheet_names:
             ipm_yr = [ipm_label(tables[yr].loc[o, ipm_col]) for o in obs_labels]
@@ -2411,7 +2598,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             df_cross_ci.index.name = "Kompromi STATIS"
             df_cross_ci = df_cross_ci.reset_index()
             save_tex_table(df_cross_ci, f"output_table_compromise_vs_ipm_sum_{yr}.tex", OUT_DIR,
-                           f"Perbandingan Cluster Kompromi STATIS vs Kategori IPM (UNDP) ({yr})", f"comp_ipm_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                           f"Perbandingan Klaster Kompromi STATIS vs Kategori IPM (UNDP) ({yr})", f"comp_ipm_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
             
             rows_ci_nm = {}
             for km_l in range(K_CLUSTERS):
@@ -2420,12 +2607,12 @@ for current_scenario in ['scenario1', 'scenario2']:
                              if cluster_traj[i] == km_l and ipm_yr[i] == ip_l]
                     rows_ci_nm[f"{get_cluster_name(km_l, 'Kompromi')} & {ip_l}"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_ci_nm, f"output_table_compromise_vs_ipm_name_{yr}.tex", OUT_DIR,
-                                f"Nama Daerah Perbandingan Cluster Kompromi STATIS vs IPM (UNDP) ({yr})", f"comp_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+                                f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs IPM (UNDP) ({yr})", f"comp_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
     
     # ============================================================
     # 8.E MATRIKS TRANSISI CLUSTER BIPLOT TAHUNAN (Biplot k vs Biplot k+1) [Seksi 1]
     # ============================================================
-    print("\n=== 8.E Matriks Transisi Cluster Biplot Tahunan (k vs k+1) ===")
+    print("\n=== 8.E Matriks Transisi Klaster Biplot Tahunan (k vs k+1) ===")
     # Recompute biplot labels per year using unweighted PCA coords
     biplot_per_year = {}
     for yr in sheet_names:
@@ -2461,7 +2648,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_trans_bp = df_trans_bp.reset_index()
         if IS_FIRST:
             save_tex_table(df_trans_bp, f"output_table_biplot_transition_sum_{pair}.tex", ROOT_OUT_DIR,
-                           f"Matriks Transisi Cluster Biplot (Unweighted) {t1} \\(\\rightarrow\\) {t2}", f"biplot_trans_{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                           f"Matriks Transisi Klaster Biplot (Unweighted) {t1} \\(\\rightarrow\\) {t2}", f"biplot_trans_{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
         
         rows_bp_nm = {}
         for a in range(K_CLUSTERS):
@@ -2470,9 +2657,9 @@ for current_scenario in ['scenario1', 'scenario2']:
                 rows_bp_nm[f"{get_cluster_name(a, 'Cluster', f' ({t1})')} \\(\\rightarrow\\) {get_cluster_name(b, 'Cluster', f' ({t2})')}"] = ", ".join(names) if names else "-"
         if IS_FIRST:
             save_tex_name_table(rows_bp_nm, f"output_table_biplot_transition_name_{pair}.tex", ROOT_OUT_DIR,
-                                f"Nama Daerah Transisi Cluster Biplot {t1} \\(\\rightarrow\\) {t2}", f"biplot_trans_name_{pair}", label_prefix=CUR_LABEL_PREFIX)
+                                f"Nama Daerah Transisi Klaster Biplot {t1} \\(\\rightarrow\\) {t2}", f"biplot_trans_name_{pair}", label_prefix=CUR_LABEL_PREFIX)
     
-    # Matriks Transisi Cluster (jumlah & nama)
+    # Matriks Transisi Klaster (jumlah & nama)
     year_pairs = [(sheet_names[i], sheet_names[i+1]) for i in range(len(sheet_names)-1)]
     for t1, t2 in year_pairs:
         lbl1 = cluster_per_year[t1]
@@ -2487,7 +2674,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_trans.index.name = f"{t1}/{t2}"
         df_trans = df_trans.reset_index()
         save_tex_table(df_trans, f"output_table_statis_transition_sum_{pair}.tex", OUT_DIR,
-                       f"Matriks Transisi Cluster {t1} \\(\\rightarrow\\) {t2}", f"transsum{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                       f"Matriks Transisi Klaster {t1} \\(\\rightarrow\\) {t2}", f"transsum{pair}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
         # Nama daerah
         rows_name = {}
@@ -2496,7 +2683,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 names = [obs_labels[i] for i in range(len(obs_labels)) if lbl1[i]==a and lbl2[i]==b]
                 rows_name[f"{get_cluster_name(a, 'Cluster', f' ({t1})')} \\(\\rightarrow\\) {get_cluster_name(b, 'Cluster', f' ({t2})')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(rows_name, f"output_table_statis_transition_name_{pair}.tex", OUT_DIR,
-                            f"Nama Daerah Perpindahan Cluster {t1} \\(\\rightarrow\\) {t2}", f"transname{pair}", label_prefix=CUR_LABEL_PREFIX)
+                            f"Nama Daerah Perpindahan Klaster {t1} \\(\\rightarrow\\) {t2}", f"transname{pair}", label_prefix=CUR_LABEL_PREFIX)
     
         # IPM transition (jika ada)
         if ipm_col:
@@ -2540,10 +2727,10 @@ for current_scenario in ['scenario1', 'scenario2']:
             df_cross = pd.DataFrame(cross_mat,
                                     index=[get_cluster_name(i, "Cluster") for i in range(K_CLUSTERS)],
                                     columns=ipm_cats)
-            df_cross.index.name = "Cluster K-Means"
+            df_cross.index.name = "Klaster K-Means"
             df_cross = df_cross.reset_index()
             save_tex_table(df_cross, f"output_table_cross_matrix_sum_{yr}.tex", OUT_DIR,
-                           f"Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({yr})", f"cross{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                           f"Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({yr})", f"cross{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
             # Nama daerah per sel
             rows_cross_nm = {}
@@ -2553,7 +2740,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                              if lbl_km[i] == km_l and ipm_yr[i] == ip_l]
                     rows_cross_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_cross_nm, f"output_table_cross_matrix_name_{yr}.tex", OUT_DIR,
-                                f"Nama Daerah Perbandingan Cluster Biplot vs Kategori IPM (UNDP) ({yr})", f"crossname{yr}", label_prefix=CUR_LABEL_PREFIX)
+                                f"Nama Daerah Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({yr})", f"crossname{yr}", label_prefix=CUR_LABEL_PREFIX)
     
     
     # ============================================================
@@ -2566,7 +2753,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     fig_traj_cl = go.Figure()
     for cl in range(K_CLUSTERS):
         mask = cluster_traj == cl
-        cluster_name = f"Cluster {cl+1}"
+        cluster_name = f"Klaster {cl+1}"
         if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
         elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
         
@@ -2576,7 +2763,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
             textposition='top center', textfont=dict(size=9, color='black'),
             marker=dict(size=9, color=palette[cl]),
-            name=f'Cluster {cl+1} ({cluster_name})'
+            name=f'Klaster {cl+1} ({cluster_name})'
         ))
     fig_traj_cl.add_hline(y=0, line_dash='dot', line_color='gray')
     fig_traj_cl.add_vline(x=0, line_dash='dot', line_color='gray')
@@ -2591,17 +2778,17 @@ for current_scenario in ['scenario1', 'scenario2']:
             line=dict(color='rgba(0,0,0,0.2)', width=1.2),
             showlegend=False, hoverinfo='skip'
         ))
-    fig_traj_cl.update_layout(title="Scatter Plot Cluster Trajektori (Diberi Peringkat)",
+    fig_traj_cl.update_layout(title="Scatter Plot Klaster Trajektori (Diberi Peringkat)",
                                xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                                xaxis=dict(scaleanchor='y', scaleratio=1))
     save_png(fig_traj_cl, "compromise_scatter.png", OUT_DIR, width=800, height=800)
     
-    # Tabel ringkasan anggota cluster trajektori (grouped: Kelompok | Jumlah | Daftar)
+    # Tabel ringkasan anggota klaster trajektori (grouped: Kelompok | Jumlah | Daftar)
     from collections import defaultdict as _dd_cl
     _cl_groups: dict = _dd_cl(list)
     for _lbl, _ci in zip(obs_labels, cluster_traj):
         _cl_groups[_ci].append(_lbl)
-    _cap_cl = f"Ringkasan Anggota Cluster Kompromi STATIS ({SCENARIO.replace('scenario', 'Skenario ')})"
+    _cap_cl = f"Ringkasan Anggota Klaster Kompromi STATIS ({SCENARIO.replace('scenario', 'Skenario ')})"
     _lbl_cl = f"{CUR_LABEL_PREFIX}compromclust"
     _cl_path = os.path.join(OUT_DIR, "output_table_compromise_cluster_sum_name.tex")
     with open(_cl_path, "w", encoding="utf-8") as _cf:
@@ -2621,7 +2808,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     # ============================================================
     # 8.5 PETA CHOROPLETH CLUSTER (geopandas + matplotlib)
     # ============================================================
-    print("\n=== 8.5. Peta Choropleth Cluster ===")
+    print("\n=== 8.5. Peta Choropleth Klaster ===")
     
     CLUSTER_COLORS = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA'] # Match app.py: Red, Orange, Green, Blue, Purple
     
@@ -2638,18 +2825,18 @@ for current_scenario in ['scenario1', 'scenario2']:
         # Wilayah di luar sampel → abu muda
         gdf_plot[gdf_plot['Cluster'].isna()].plot(
             ax=ax, color='#EFEFEF', edgecolor='#BBBBBB', linewidth=0.4)
-        # Tiap cluster diberi warna berbeda sesuai ranking
+        # Tiap klaster diberi warna berbeda sesuai ranking
         palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
         for cl_idx in range(n_cl):
             subset = gdf_plot[gdf_plot['Cluster'] == cl_idx]
             if not subset.empty:
-                cluster_name = f"Cluster {cl_idx + 1}"
+                cluster_name = f"Klaster {cl_idx + 1}"
                 if n_cl == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl_idx]
                 elif n_cl == 2: cluster_name = ["Rendah", "Tinggi"][cl_idx]
                 
                 subset.plot(ax=ax, color=palette[cl_idx],
                             edgecolor='white', linewidth=0.6,
-                            label=f'Cluster {cl_idx + 1} ({cluster_name})')
+                            label=f'Klaster {cl_idx + 1} ({cluster_name})')
     
         # Nama daerah di tengah tiap poligon yang cocok
         for _, row in gdf_plot.dropna(subset=['Cluster']).iterrows():
@@ -2723,11 +2910,11 @@ for current_scenario in ['scenario1', 'scenario2']:
         for yr in sheet_names:
             labels_yr = cluster_per_year[yr]
             draw_cluster_map(labels_yr, obs_labels, gdf_map,
-                             f"Peta Cluster STATIS Tahun {yr}", f"cluster_map_statis_{yr}.png")
+                             f"Peta Klaster STATIS Tahun {yr}", f"cluster_map_statis_{yr}.png")
     
         # Peta trajektori keseluruhan
         draw_cluster_map(cluster_traj, obs_labels, gdf_map,
-                         "Peta Cluster STATIS 2020-2024", "compromise_map.png")
+                         "Peta Klaster STATIS 2020-2024", "compromise_map.png")
     
     except Exception as e:
         print(f"  [WARN] Peta choropleth gagal: {e}")
@@ -2747,7 +2934,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     # ============================================================
     # 8.A-1 PERBANDINGAN CLUSTER BIPLOT (UNWEIGHTED) VS STATIS (WEIGHTED) TAHUNAN
     # ============================================================
-    print("\n=== 8.A-1 Perbandingan Cluster Biplot (Unweighted) vs Statis (Weighted) Tahunan ===")
+    print("\n=== 8.A-1 Perbandingan Klaster Biplot (Unweighted) vs Statis (Weighted) Tahunan ===")
     for yr in sheet_names:
         coords_biplot = pca_scores_dict[yr][:, :2]
         coords_statis = per_year_coords[yr][:, :2]
@@ -2809,7 +2996,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_cross_bs_yr.index.name = "Biplot (Unweighted)"
         df_cross_bs_yr = df_cross_bs_yr.reset_index()
         save_tex_table(df_cross_bs_yr, f"output_table_biplot_vs_statis_compare_sum_{yr}.tex", OUT_DIR,
-                       f"Matriks Perbandingan Cluster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
+                       f"Matriks Perbandingan Klaster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
     
         rows_bs_nm_yr = {}
         for b_l in range(K_CLUSTERS):
@@ -2818,9 +3005,9 @@ for current_scenario in ['scenario1', 'scenario2']:
                          if lbl_biplot_yr[i] == b_l and lbl_statis_yr[i] == s_l]
                 rows_bs_nm_yr[f"{get_cluster_name(b_l, 'Biplot')} & {get_cluster_name(s_l, 'Statis')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(rows_bs_nm_yr, f"output_table_biplot_vs_statis_compare_name_{yr}.tex", OUT_DIR,
-                            f"Nama Daerah Perbandingan Cluster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+                            f"Nama Daerah Perbandingan Klaster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
                             
-        # --- Comparison 7: Kompromi STATIS vs Cluster Biplot Tahunan ---
+        # --- Comparison 7: Kompromi STATIS vs Klaster Biplot Tahunan ---
         lbl_comp = cluster_traj
         cross_mat_bc = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
         for b_l, c_l in zip(lbl_biplot_yr, lbl_comp):
@@ -2835,7 +3022,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         df_cross_bc = df_cross_bc.reset_index()
         save_tex_table(
             df_cross_bc, f"output_table_biplot_vs_compromise_sum_{yr}.tex", OUT_DIR,
-            f"Matriks Perbandingan Cluster Biplot vs Kompromi STATIS ({yr})", 
+            f"Matriks Perbandingan Klaster Biplot vs Kompromi STATIS ({yr})", 
             f"biplot_comp_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX
         )
         
@@ -2847,14 +3034,14 @@ for current_scenario in ['scenario1', 'scenario2']:
                 rows_bc_nm[f"{get_cluster_name(b_l, 'Biplot')} & {get_cluster_name(c_l, 'Kompromi')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(
             rows_bc_nm, f"output_table_biplot_vs_compromise_name_{yr}.tex", OUT_DIR,
-            f"Nama Daerah Perbandingan Cluster Biplot vs Kompromi STATIS ({yr})", 
+            f"Nama Daerah Perbandingan Klaster Biplot vs Kompromi STATIS ({yr})", 
             f"biplot_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX
         )
                             
         # Draw Map for Biplot (Unweighted PCA Map - Root only)
         if 'gdf_map' in locals() and IS_FIRST:
             draw_cluster_map(lbl_biplot_yr, obs_labels, gdf_map,
-                             f"Peta Cluster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png", out_dir=ROOT_OUT_DIR)
+                             f"Peta Klaster Biplot (Unweighted) Tahun {yr}", f"cluster_map_biplot_{yr}.png", out_dir=ROOT_OUT_DIR)
                              
         # Draw Scatter for Biplot
         palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
@@ -2862,11 +3049,11 @@ for current_scenario in ['scenario1', 'scenario2']:
         sp_adj = pca_pc_adj_dict[yr] # Rotated, mirrored, scaled unweighted coordinates
         for cl in range(K_CLUSTERS):
             mask = lbl_biplot_yr == cl
-            cluster_name = f"Cluster {cl+1}"
+            cluster_name = f"Klaster {cl+1}"
             if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
             elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
             
-            # Format text and sizes for this cluster using sp_adj
+            # Format text and sizes for this klaster using sp_adj
             cl_texts_bp = []
             cl_sizes_bp = []
             idx_list = [idx for idx in range(len(obs_labels)) if mask[idx]]
@@ -2884,7 +3071,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 mode='markers+text', text=cl_texts_bp,
                 textposition='top center', textfont=dict(size=9, color='black'),
                 marker=dict(size=cl_sizes_bp, color=palette[cl]),
-                name=f'Cluster {cl+1} ({cluster_name})'
+                name=f'Klaster {cl+1} ({cluster_name})'
             ))
         fig_sc_bp.add_hline(y=0, line_dash='dot', line_color='gray')
         fig_sc_bp.add_vline(x=0, line_dash='dot', line_color='gray')
@@ -2900,7 +3087,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 line=dict(color='rgba(0,0,0,0.2)', width=1.2),
                 showlegend=False, hoverinfo='skip'
             ))
-        fig_sc_bp.update_layout(title=f"Biplot Cluster K-Means (Unweighted) — Tahun {yr}",
+        fig_sc_bp.update_layout(title=f"Biplot Klaster K-Means (Unweighted) — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
         if IS_FIRST:
@@ -2993,23 +3180,23 @@ for current_scenario in ['scenario1', 'scenario2']:
         def draw_pie_chart(labels_idx, title, out_filename, out_dir):
             try:
                 level_names = ["Rendah", "Sedang", "Tinggi"] if K_CLUSTERS == 3 else ["Rendah", "Tinggi"]
-                labels_str = [f"Cluster {l+1} ({level_names[l]})" for l in labels_idx]
+                labels_str = [f"Klaster {l+1} ({level_names[l]})" for l in labels_idx]
                 from collections import Counter
                 counts = Counter(labels_str)
                 keys = sorted(list(counts.keys()))
                 sizes = [counts[k] for k in keys]
                 
                 # Map colors based on level
-                # Cluster 1 = Red, Cluster 2 = Orange, Cluster 3 = Green
+                # Klaster 1 = Red, Klaster 2 = Orange, Klaster 3 = Green
                 color_map = {
-                    f"Cluster 1 ({level_names[0]})": '#EF5350',
-                    f"Cluster 2 ({level_names[1]})": '#FFB300',
-                    f"Cluster 3 ({level_names[2]})": '#4CAF50'
+                    f"Klaster 1 ({level_names[0]})": '#EF5350',
+                    f"Klaster 2 ({level_names[1]})": '#FFB300',
+                    f"Klaster 3 ({level_names[2]})": '#4CAF50'
                 }
                 if len(level_names) == 2:
                     color_map = {
-                        f"Cluster 1 ({level_names[0]})": '#EF5350',
-                        f"Cluster 2 ({level_names[1]})": '#4CAF50'
+                        f"Klaster 1 ({level_names[0]})": '#EF5350',
+                        f"Klaster 2 ({level_names[1]})": '#4CAF50'
                     }
                 colors = [color_map.get(k, '#8E24AA') for k in keys]
                 
@@ -3105,16 +3292,16 @@ for current_scenario in ['scenario1', 'scenario2']:
         print("  Generating individual pie charts...")
         for yr in sheet_names:
             # 1. Unweighted Biplot Pies
-            draw_pie_chart(biplot_per_year[yr], f"Proporsi Cluster Biplot Tahun {yr}", f"cluster_pie_biplot_{yr}.png", ROOT_OUT_DIR)
+            draw_pie_chart(biplot_per_year[yr], f"Proporsi Klaster Biplot Tahun {yr}", f"cluster_pie_biplot_{yr}.png", ROOT_OUT_DIR)
             # 2. Weighted STATIS Pies
-            draw_pie_chart(cluster_per_year[yr], f"Proporsi Cluster STATIS Tahun {yr}", f"cluster_pie_statis_{yr}.png", OUT_DIR)
+            draw_pie_chart(cluster_per_year[yr], f"Proporsi Klaster STATIS Tahun {yr}", f"cluster_pie_statis_{yr}.png", OUT_DIR)
             # 3. IPM Pies
             if ipm_col:
                 ipm_yr = [ipm_label(tables[yr].loc[o, ipm_col]) for o in obs_labels]
                 draw_ipm_pie_chart(ipm_yr, f"Proporsi Kategori IPM Tahun {yr}", f"ipm_pie_{yr}.png", ROOT_OUT_DIR)
                 
         # 4. Global Compromise STATIS Pie
-        draw_pie_chart(cluster_traj, "Proporsi Cluster Kompromi STATIS (Keseluruhan)", "compromise_pie.png", OUT_DIR)
+        draw_pie_chart(cluster_traj, "Proporsi Klaster Kompromi STATIS (Keseluruhan)", "compromise_pie.png", OUT_DIR)
 
         # B. GENERATE INDIVIDUAL IPM MAPS
         if ipm_col and 'gdf_map' in locals():

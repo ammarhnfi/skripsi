@@ -135,7 +135,7 @@ Seluruh prosedur analisis, mulai dari pra-pemrosesan data hingga visualisasi, di
 %-----------------------------------
 %\subsection{Latar Belakang}
 \section{Pendahuluan}
-Kawasan strategis yang meliputi Provinsi Banten, DKI Jakarta, dan Jawa Barat tidak hanya berperan sebagai mesin pertumbuhan ekonomi nasional, tetapi juga menjadi arena dinamika pembangunan manusia yang sangat kompleks dalam lima tahun terakhir. Meskipun wilayah ini memberikan kontribusi yang sangat dominan terhadap perekonomian nasional dengan rata-rata pangsa Produk Domestik Regional Bruto (PDRB) berkisar 33,8 persen dari PDRB Indonesia \citet{bpspdrb}---keberhasilan pembangunannya tidak dapat lagi diukur hanya melalui kacamata indikator makro ekonomi semata. Terdapat interaksi multidimensi yang melibatkan kualitas hidup yang tecermin dalam Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), serta tantangan kesejahteraan sosial seperti kemiskinan dan ketahanan pangan yang terus mengalami perubahan. Kompleksitas ini menuntut pembuktian empiris yang lebih mendalam untuk melihat bagaimana indikator-indikator tersebut terdistribusi secara nyata di seluruh kabupaten/kota.
+Kawasan strategis yang meliputi Provinsi Banten, DKI Jakarta, dan Jawa Barat tidak hanya berperan sebagai mesin pertumbuhan ekonomi nasional, tetapi juga menjadi arena dinamika pembangunan manusia yang sangat kompleks dalam lima tahun terakhir. Meskipun wilayah ini memberikan kontribusi yang sangat dominan terhadap perekonomian nasional dengan rata-rata pangsa Produk Domestik Regional Bruto (PDRB) sekitar 33,8 persen dari PDRB Indonesia \citet{bpspdrb}---keberhasilan pembangunannya tidak dapat lagi diukur hanya melalui kacamata indikator makro ekonomi semata. Terdapat interaksi multidimensi yang melibatkan kualitas hidup yang tecermin dalam Indeks Pembangunan Manusia (IPM), Indeks Pembangunan Gender (IPG), serta tantangan kesejahteraan sosial seperti kemiskinan dan ketahanan pangan yang terus mengalami perubahan. Kompleksitas ini menuntut pembuktian empiris yang lebih mendalam untuk melihat bagaimana indikator-indikator tersebut terdistribusi secara nyata di seluruh kabupaten/kota.
 
 Secara empiris, lanskap pembangunan di ketiga provinsi ini menunjukkan polarisasi yang tajam antara pusat-pusat pertumbuhan utama dan wilayah penyangga. Meskipun data PDRB di kota-kota besar mencatat performa ekonomi yang kuat dengan nilai mencapai 532.606,87 miliar rupiah \citet{bpspdrb}, capaian tersebut tidak serta-merta diikuti oleh pemerataan kesejahteraan. Hal ini terlihat dari variasi spasial yang signifikan pada indikator kemiskinan, di mana Persentase Penduduk Miskin (PPM) terentang lebar dari 2,29 persen hingga mencapai 15,06 persen di wilayah lainnya. Kesenjangan ini juga terkonfirmasi oleh indikator daya beli, terlihat dari perbedaan Garis Kemiskinan (GK) dan Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) yang bervariasi signifikan antarwilayah \cite{bpspkkp}. Lebih jauh lagi, disparitas kapabilitas manusia juga terlihat mencolok; Rata-rata Lama Sekolah (RLS) dan Angka Harapan Hidup (AHH) masih menunjukkan perbedaan yang nyata. Indeks Pembangunan Gender (IPG) serta Tingkat Pengangguran Terbuka (TPT) masih berada di kisaran 6,55--10,12 persen pada rentang tahun 2020--2024. Namun, persoalan ketimpangan antarwilayah ini menjadi semakin rumit ketika diletakkan dalam konteks waktu yang penuh perubahan.
 
@@ -333,7 +333,7 @@ Setelah representasi spasial $\mathbf{W}_t$ diperoleh untuk setiap tahun, langka
 	\begin{equation}
 		RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) tr(\mathbf{W}_j^2)}}
 	\end{equation}
-	Nilai $RV$ berkisar antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
+	Nilai $RV$ berada di antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
 \end{definition}
 
 Koefisien RV dihitung untuk setiap pasangan tahun, membentuk sebuah matriks inter-struktur $\mathbf{R}$ berukuran $K \times K$, dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap tahun, dilakukan dekomposisi spektral pada matriks $\mathbf{R}$:
@@ -494,7 +494,7 @@ Langkah kerja:
     \item \textbf{Melakukan uji hipotesis stabilitas struktur} menggunakan Uji Permutasi pada matriks inter-struktur STATIS \citet{kazi1995} untuk memvalidasi signifikansi perbedaan antar tahun.
 	\item Mengembangkan aplikasi berbasis web interaktif (visualisasi interaktif) menggunakan \textit{framework} Dash dan Plotly yang mengintegrasikan kedua metode analisis dan hasil uji hipotesis.
 	\item Menerapkan fitur visualisasi 2D/3D, trajektori (lintasan), dan rotasi \textit{baseline} dinamis pada aplikasi.
-	\item Menganalisis dan menginterpretasi hasil (struktur kompromi, trajektori, dan signifikansi stabilitas) untuk memahami dinamika ekonomi regional Provinsi Banten, DKI Jakarta, dan Jawa Barat tahun 2020--2024 dibantu dengan analisis lanjutan berupa \textit{Cluster Analysis}.
+	\item Menganalisis dan menginterpretasi hasil (struktur kompromi, trajektori, dan signifikansi stabilitas) untuk memahami dinamika ekonomi regional Provinsi Banten, DKI Jakarta, dan Jawa Barat tahun 2020--2024 dibantu dengan analisis lanjutan berupa \textit{Klaster Analysis}.
 	\item Menulis skripsi.
 	\item Ujian skripsi.
 \end{enumerate}
@@ -530,7 +530,7 @@ Langkah kerja:
 \node (app) [dev, below=of test] {Pengembangan Dashboard Interaktif (Dash \& Plotly)\\Fitur: Visualisasi 2D/3D, Trajektori, Rotasi \textit{Baseline}};
 
 % 8. Analisis
-\node (analisis) [process, below=of app] {Analisis \& Interpretasi Hasil\\(Struktur Kompromi + \textit{Cluster Analysis})};
+\node (analisis) [process, below=of app] {Analisis \& Interpretasi Hasil\\(Struktur Kompromi + \textit{Klaster Analysis})};
 
 % 9 & 10. Selesai
 \node (finish) [startstop, below=of analisis] {Penulisan Laporan \& Ujian Skripsi};

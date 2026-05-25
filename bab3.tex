@@ -109,7 +109,7 @@ Populasi dalam penelitian ini adalah seluruh wilayah administratif setingkat kab
     \item \textbf{Unit Observasi ($n$):} 41 wilayah yang terdiri dari seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat. Pemilihan ketiga provinsi ini didasarkan pada kelengkapan data yang dipublikasikan secara konsisten oleh BPS (\textit{purposive sampling} pada tingkat provinsi), sehingga seluruh wilayah di dalamnya tercakup secara penuh (\textit{complete enumeration}) tanpa pengambilan sampel lebih lanjut.
     \item \textbf{Jumlah Situasi ($K$):} 5 tahun pengamatan (2020 hingga 2024).
     \item \textbf{Jumlah Indikator ($p$):} 11 indikator kesejahteraan rakyat sebagai input analisis STATIS, ditambah 2 variabel penunjang (IPM dan JP) yang tidak dimasukkan sebagai input.
-    \item \textbf{Sampel Ilustratif (Bab~3):} Untuk keperluan rekonstruksi algoritmik dan validasi numerik pada Bagian~\ref{subsec:ilustrasi_statis}, dipilih 4 wilayah secara \textit{acak sederhana} (\textit{simple random sampling}): Kota Jakarta Pusat, Kabupaten Bandung Barat, Kota Tasikmalaya, dan Kota Cilegon. Sampel ini \textbf{tidak} digunakan untuk membangun model---melainkan semata-mata sebagai wahana ilustrasi langkah-langkah perhitungan manual STATIS dengan $n=4$ wilayah, $K=3$ tahun (2020--2022), dan $p=3$ indikator (PPM, RLS, TPT).
+    \item \textbf{Sampel Ilustratif (Bab~3):} Untuk keperluan rekonstruksi algoritmik dan validasi numerik pada Bagian~\ref{subsec:ilustrasi_statis}, dipilih 4 wilayah secara \textit{acak sederhana} (\textit{simple random sampling}): Kota Jakarta Pusat, Kabupaten Bandung Barat, Kota Tasikmalaya, dan Kota Cilegon. Sampel ini \textbf{tidak} digunakan untuk membangun model, melainkan semata-mata sebagai wahana ilustrasi langkah-langkah perhitungan manual STATIS dengan $n=4$ wilayah, $K=3$ tahun (2020--2022), dan $p=3$ indikator (PPM, RLS, TPT).
 \end{enumerate}
 
 %-----------------------------------------------------------------------------%
@@ -136,7 +136,7 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
     \end{itemize}
     Selain itu, dikumpulkan pula data tambahan berikut yang tidak dimasukkan sebagai input analisis STATIS dan Dynamic Biplot:
     \begin{itemize}
-        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi cluster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar cluster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 indikator yang telah dijelaskan sebelumnya.
+        \item \textbf{IPM:} Indeks Pembangunan Manusia (0 hingga 100), khusus untuk pembanding eksternal (\textit{benchmark}) untuk mengevaluasi posisi klaster tersebut terhadap standar UNDP (\textit{United Nations Development Programme}). Hal ini dilakukan agar klaster yang terbentuk murni merepresentasikan kemiripan struktur dari 11 indikator yang telah dijelaskan sebelumnya.
         \item \textbf{JP (Jumlah Penduduk):} Banyaknya jiwa per wilayah (Orang), khusus untuk pembentukan bobot demografis ($m_i$) sesuai dengan Persamaan~\ref{eq:weighted_mean} dan Persamaan~\ref{eq:weighted_std}.
     \end{itemize}
 \end{enumerate}
@@ -189,6 +189,13 @@ Penerapan kedua uji di atas pada dataset sampel ($n=4$ wilayah, $p=3$ indikator,
 \vspace{2mm}
 \noindent\textit{Catatan: Nilai KMO yang rendah ($\approx 0{,}25$--$0{,}29$) dan $p$-value Bartlett yang tidak signifikan pada dataset sampel merupakan konsekuensi langsung dari jumlah observasi ($n=4$) yang sangat terbatas relatif terhadap jumlah indikator ($p=3$). Rasio $n/p \approx 1{,}3$ ini jauh di bawah anjuran minimal $n/p \geq 5$ dalam literatur analisis faktor. Pada dataset aktual yang terdiri dari 41 kabupaten/kota dengan 11 indikator, kedua uji menghasilkan nilai yang memenuhi ambang batas yang disyaratkan, sebagaimana disajikan secara lengkap dalam Bab~4.}
 
+\medskip
+\noindent\textit{Contoh penghitungan:} Statistik Bartlett untuk tahun 2020 menggunakan Persamaan~\ref{eq:bartlett} dengan $n=4$, $p=3$. Determinan matriks korelasi $|\mathbf{R}_{2020}| = 0{,}0441$ (dihitung dari matriks $\mathbf{S}_{2020}$ pada Tabel~\ref{tab:sample1matriks_intra_loading_2020}). Substitusi ke rumus:
+\[
+  \chi^2 = -\!\left[n-1-\frac{2p+5}{6}\right]\ln|\mathbf{R}| = -\!\left[4-1-\frac{2(3)+5}{6}\right]\ln(0{,}0441) = -\!\left[3-\frac{11}{6}\right](-3{,}1179) = -(1{,}1667)(-3{,}1179) = 3{,}6300
+\]
+dengan $df = p(p-1)/2 = 3(2)/2 = 3$ dan $p\text{-value} = 0{,}3038$. Statistik KMO diperoleh dari Persamaan~\ref{eq:kmo} yang membandingkan korelasi bivariate dengan korelasi parsial antar-indikator; untuk tahun 2020 diperoleh $\mathrm{KMO}_{2020} = 0{,}2502$.
+
 %-----------------------------------------------------------------------------%
 % --- 3.7 ---
 \section{\normalsize Teknik Analisis Data}
@@ -226,7 +233,7 @@ Bagian ini menyajikan rekonstruksi algoritmik secara sistematis dengan menyajika
 \end{table}
 
 \vspace{1mm}
-\noindent\textit{\textbf{Catatan penyajian:} Seluruh objek matematis pada bagian ini---termasuk $\mathbf{W}_k$, $\mathbf{S}_k$, $\mathbf{H}$, $\mathbf{F}_c$, $\mathbf{G}_c$, $\mathbf{F}_k$, dan $\mathbf{G}_k$---merupakan matriks. Penyajian dalam format tabel di bawah ini semata-mata untuk memudahkan pembacaan nilai numerik; notasi dan sifat matriks sepenuhnya berlaku dalam konteks komputasi dan derivasi analitis.}
+\noindent\textit{\textbf{Catatan penyajian:} Seluruh objek matematis pada bagian ini, termasuk di dalamnya $\mathbf{W}_k$, $\mathbf{S}_k$, $\mathbf{H}$, $\mathbf{F}_c$, $\mathbf{G}_c$, $\mathbf{F}_k$, dan $\mathbf{G}_k$ merupakan sebuah bentuk matriks. Penyajian dalam format tabel pada penelitian ini semata-mata untuk memudahkan pembacaan nilai numerik; notasi dan sifat matriks sepenuhnya berlaku dalam konteks komputasi dan derivasi analitis.}
 
 \subsubsection{Tahap 0: Pra-pemrosesan dan Bobot Demografis}
 Analisis diawali dengan ringkasan statistik untuk periode 2020 hingga 2022 (Tabel~\ref{tab:sampledesc_uw_2020}--\ref{tab:sampledesc_uw_2022}). Statistika deskriptif tanpa bobot disajikan pada tabel berikut.
@@ -370,12 +377,12 @@ Dari matriks terstandar $\mathbf{Z}_k$, dibentuk matriks intra-struktur $\mathbf
 {\small
 \begin{align*}
     \mathbf{W}_{2020}[1,1] &= \sum_{j=1}^{3} z_{1,j,2020}^2 \\
-    &= (-1{,}479024)^2 + (1{,}468201)^2 + (-0{,}028514)^2 \\
-    &= 2{,}187512 + 2{,}155614 + 0{,}000813 \\
-    &= 4{,}343939 \\[4pt]
+    &= (-1{,}479012)^2 + (1{,}469744)^2 + (-0{,}027681)^2 \\
+    &= 2{,}187478 + 2{,}160150 + 0{,}000766 \\
+    &= 4{,}348394 \\[4pt]
     \mathbf{W}_{2020}[1,2] &= \sum_{j=1}^{3} z_{1,j,2020} \cdot z_{2,j,2020} \\
-    &= (-1{,}479024 \times 0{,}395237) + (1{,}468201 \times -0{,}848123) + (-0{,}028514 \times 0{,}759124) \\
-    &= -0{,}584564 - 1{,}245215 - 0{,}021646 = -1{,}851425
+    &= (-1{,}479012 \times 0{,}395235) + (1{,}469744 \times -0{,}849962) + (-0{,}027681 \times 0{,}764025) \\
+    &= -0{,}584558 - 1{,}249227 - 0{,}021149 = -1{,}854935
 \end{align*}
 }
 Matriks korelasi terbobot antar-indikator $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$ disajikan pada Tabel~\ref{tab:sample1matriks_intra_loading_2020}, Tabel~\ref{tab:sample1matriks_intra_loading_2021}, dan Tabel~\ref{tab:sample1matriks_intra_loading_2022}.
@@ -393,13 +400,19 @@ Sebagai pelengkap, Gambar~\ref{fig:sample_corr_heatmap_2020} menyajikan heatmap 
 \end{figure}
 
 \subsubsection{Tahap 3: Analisis Inter-struktur (Koefisien RV)} \label{subsec:rv_coef}
-Kemiripan struktural diukur menggunakan koefisien RV:
+Kemiripan struktural antar-situasi dikuantifikasi melalui matriks interstruktur $\mathbf{H}$ (Persamaan~\ref{eq:interstructure_H}) dan koefisien RV (Persamaan~\ref{eq:rv}). Elemen $H_{kk'} = \mathrm{tr}(\mathbf{W}_k\mathbf{D}\mathbf{W}_{k'}\mathbf{D})$ yang secara aljabar setara dengan $\mathrm{tr}(\mathbf{S}_k\mathbf{S}_{k'})$ di mana $\mathbf{S}_k = \mathbf{Z}_k^T\mathbf{D}\mathbf{Z}_k$. Karena setelah standardisasi terbobot diagonal $\mathbf{S}_k$ bernilai 1, elemen diagonal $H_{11}$ diturunkan sebagai berikut:
+\[
+  H_{11} = \mathrm{tr}(\mathbf{S}_{2020}^2) = 1^2+1^2+1^2 + 2\!\left[(-0{,}8141)^2+(-0{,}2781)^2+(-0{,}3313)^2\right]
+  = 3 + 2(0{,}6628+0{,}0773+0{,}1098) = 4{,}6998
+\]
+Matriks $\mathbf{H}$ lengkap disajikan pada Tabel~\ref{tab:sampleh_w} berikut.
+\input{output_sample/output_table_hw.tex}
+Substitusi nilai $H_{11}=4{,}6998$, $H_{12}=5{,}0009$, $H_{22}=6{,}3306$ ke Persamaan~\ref{eq:rv}:
 \begin{align*}
-    RV(\mathbf{W}_{2020}, \mathbf{W}_{2021}) &= \frac{\mathrm{tr}(\mathbf{W}_{2020} \mathbf{W}_{2021})}{\sqrt{\mathrm{tr}(\mathbf{W}_{2020}^2) \, \mathrm{tr}(\mathbf{W}_{2021}^2)}} \\
-    &= \frac{H_{1,2}}{\sqrt{H_{1,1} \cdot H_{2,2}}} = \frac{37{,}088194}{\sqrt{43{,}468012 \times 39{,}367215}} \\
-    &= \frac{37{,}088194}{41{,}367214} = 0{,}896560 \approx 0{,}896560
+  RV(\mathbf{W}_{2020}, \mathbf{W}_{2021}) &= \frac{H_{12}}{\sqrt{H_{11}\cdot H_{22}}} = \frac{5{,}0009}{\sqrt{4{,}6998\times 6{,}3306}} = \frac{5{,}0009}{\sqrt{29{,}7525}} = \frac{5{,}0009}{5{,}4546} = 0{,}9168
 \end{align*}
-Koefisien RV lengkap divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heat_sample}.
+Koefisien RV lengkap disajikan pada Tabel~\ref{tab:samplerv_w} dan divisualisasikan pada Gambar~\ref{fig:rv_heat_sample}.
+\input{output_sample/output_table_rv_w.tex}
 
 \begin{figure}[H]
     \centering
@@ -418,9 +431,26 @@ Langkah kritis dalam STATIS adalah penentuan bobot kompromi $\alpha_k$, yang men
 
 Dekomposisi spektral $\mathbf{H}_W \mathbf{u} = \theta \mathbf{u}$ menghasilkan vektor eigen pertama $\mathbf{u}_1$ dan bobot $\alpha_{W,k}$; demikian pula $\mathbf{H}_S \mathbf{v} = \vartheta \mathbf{v}$ menghasilkan $\alpha_{S,k}$. Kedua skema bobot disajikan pada Tabel~\ref{tab:samplealpha_w} dan Tabel~\ref{tab:samplealpha_s}.
 
-\input{output_sample/output_table_alpha_w.tex}
+\begin{table}[H]
+\centering
+\begin{minipage}[t]{0.45\textwidth}
+  \centering
+  \input{output_sample/output_table_alpha_w.tex}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.45\textwidth}
+  \centering
+  \input{output_sample/output_table_alpha_s.tex}
+\end{minipage}
+\end{table}
 
-\input{output_sample/output_table_alpha_s.tex}
+\noindent\textit{Contoh penghitungan (Skenario 1):} Matriks $\mathbf{H}_W$ (Tabel~\ref{tab:sampleh_w}) diselesaikan dengan eigendekomposisi Persamaan~\ref{eq:h_eigen}. Nilai eigen pertama adalah $\lambda_1 = 17{,}1859$ dengan vektor eigen ternormalisasi satuan $\mathbf{u}_1 = (0{,}4967;\;0{,}6038;\;0{,}6233)^T$, sehingga $\|\mathbf{u}_1\|_1 = 0{,}4967+0{,}6038+0{,}6233 = 1{,}7238$. Substitusi ke Persamaan~\ref{eq:alpha_weights}:
+\begin{align*}
+  \alpha_{2020} &= \frac{0{,}4967}{1{,}7238} = 0{,}2881, \qquad
+  \alpha_{2021} = \frac{0{,}6038}{1{,}7238} = 0{,}3503, \qquad
+  \alpha_{2022} = \frac{0{,}6233}{1{,}7238} = 0{,}3616
+\end{align*}
+sebagaimana dikonfirmasi pada Tabel~\ref{tab:samplealpha_w}.
 
 Dari kedua tabel di atas, perhatikan bahwa nilai $\alpha_{W,k}$ dan $\alpha_{S,k}$ dapat berbeda. Skenario~1 menekankan kestabilan posisi relatif antar-wilayah, sedangkan Skenario~2 menekankan konsistensi struktur hubungan antar-indikator.
 
@@ -437,6 +467,18 @@ Dekomposisi spektral $\mathbf{W}_c^{(1)} = \mathbf{P}\mathbf{\Lambda}\mathbf{P}^
     \mathbf{F}_c^{(1)} = \mathbf{D}^{-1/2}\mathbf{P}\mathbf{\Lambda}^{1/2}, \quad
     \mathbf{G}_c^{(1)} = \sum_k \alpha_{W,k}\left(\mathbf{Z}_k^T\mathbf{D}\mathbf{F}_c^{(1)}\mathbf{\Lambda}^{-1/2}\right)
 \end{equation}
+
+\noindent\textit{Contoh penghitungan:} Sebagai contoh elemen matriks kompromi $\mathbf{W}_c$ (Persamaan~\ref{eq:wc}), elemen $[1,2]$ mencerminkan kemiripan antara Kota Jakarta Pusat dan Kabupaten Bandung Barat. Terlebih dahulu dihitung $\mathbf{W}_k[1,2] = \mathbf{z}_{1,k}^T \mathbf{z}_{2,k}$ dari baris pertama dan kedua $\mathbf{Z}_k$:
+\begin{align*}
+  \mathbf{W}_{2020}[1,2] &= (-1{,}48)(0{,}40)+(1{,}47)(-0{,}85)+(-0{,}03)(0{,}76) = -0{,}592-1{,}250-0{,}023 = -1{,}864 \\
+  \mathbf{W}_{2021}[1,2] &= (-1{,}51)(0{,}47)+(1{,}44)(-0{,}88)+(-0{,}99)(0{,}99) = -0{,}710-1{,}267-0{,}980 = -2{,}957 \\
+  \mathbf{W}_{2022}[1,2] &= (-1{,}50)(0{,}45)+(1{,}45)(-0{,}87)+(-1{,}17)(0{,}98) = -0{,}675-1{,}262-1{,}147 = -3{,}083
+\end{align*}
+Kombinasi linear tertimbang menggunakan $\alpha_k$ dari Tabel~\ref{tab:samplealpha_w}:
+\[
+  \mathbf{W}_c[1,2] = 0{,}2881\times(-1{,}864)+0{,}3503\times(-2{,}957)+0{,}3616\times(-3{,}083) = -0{,}537-1{,}036-1{,}115 = -2{,}688
+\]
+Nilai eigen $\mathbf{W}_c$ disajikan pada Tabel~\ref{tab:sample1eigen}; nilai eigen pertama $\lambda_1^{(c)}=2{,}3008$ digunakan sebagai $\mathbf{\Lambda}^{1/2}$ pada persamaan di atas.
 
 \paragraph{Skenario 2 (Dual STATIS -- Host = Indikator):}
 Matriks kompromi $\mathbf{S}_c = \sum_k \alpha_{S,k}\,\mathbf{S}_k$ berukuran $p \times p$, merupakan rataan terbobot matriks korelasi antar-indikator:
@@ -463,7 +505,7 @@ Gambar~\ref{fig:scree_sample} menyajikan scree plot yang memperlihatkan dekompos
     \label{fig:scree_sample}
 \end{figure}
 
-\subsubsection{Tahap 6: Proyeksi Kompromi -- Perbandingan Skenario 1 dan Skenario 2}
+\subsubsection{Tahap 6: Proyeksi Kompromi -- Perbandingan Skenario 1 dan Skenario 2} \label{subsubsec:tahap6bab3}
 Koordinat kompromi dari kedua skenario disajikan berdampingan agar perbedaan pendekatan dapat dipahami secara komprehensif.
 
 \paragraph{Skenario 1 -- Skor Wilayah ($\mathbf{F}_c^{(1)}$) dan Loading Indikator ($\mathbf{G}_c^{(1)}$):}
@@ -474,8 +516,56 @@ Skor wilayah mencerminkan posisi relatif tiap wilayah pada ruang kompromi, sedan
     \caption{Compromise Biplot Skenario 1 (Host = Wilayah): Skor Wilayah dan Loading Indikator}
     \label{fig:biplot_sample_s1}
 \end{figure}
-dengan skor wilayah dan loading indikator yang disajikan pada Tabel~\ref{tab:sample1scores} dan Tabel~\ref{tab:sample1loadings}.
+dengan skor kompromi wilayah ($\mathbf{F}_c^{(1)}$, Persamaan~\ref{eq:skor_kompromi_wilayah}) dan loading kompromi indikator ($\mathbf{G}_c^{(1)}$, Persamaan~\ref{eq:loading_kompromi_indikator}) yang disajikan pada Tabel~\ref{tab:sample1scores} dan Tabel~\ref{tab:sample1loadings}.
 \input{output_sample/scenario1/output_table_scores.tex}
+
+Skor parsial tahunan $\mathbf{F}_k$ (Persamaan~\ref{eq:skor_parsial_wilayah}) memproyeksikan matriks intra-struktur tiap tahun ke ruang kompromi. Hasil per tahun disajikan pada tabel berikut:
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2020.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2021.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2022.tex}}
+
+Dari koordinat skor intra $\mathbf{F}_k$, pergeseran posisi rata-rata (\textit{centroid}) seluruh wilayah antar-tahun dapat dikuantifikasi menggunakan jarak \textit{Euclidean} (Persamaan~\ref{eq:dist_centroid}). Misalkan $c_k = \bigl(\overline{f_{k,1}},\,\overline{f_{k,2}}\bigr)$ adalah centroid kolom skor intra tahun $k$, maka $D(c_k, c_{k+1})$ mengukur besarnya pergeseran kolektif seluruh wilayah dalam ruang kompromi dari satu tahun ke tahun berikutnya.
+
+\phantomsection\label{par:contoh_centroid_shift}
+\noindent\textit{Contoh penghitungan jarak pergeseran kolektif:} Dengan $n=4$ wilayah dari Tabel~\ref{tab:sample1skor_intra_2020} dan~\ref{tab:sample1skor_intra_2021}, centroid masing-masing tahun diperoleh sebagai rata-rata aritmetika koordinat seluruh wilayah:
+\begin{align*}
+  c_{2020} &= \left(\frac{-1{,}7840+0{,}9296+0{,}2810+(-0{,}9879)}{4},\;\frac{-0{,}9027+(-0{,}6366)+2{,}9117+(-2{,}3239)}{4}\right) = (-0{,}3903;\;-0{,}2379)\\[4pt]
+  c_{2021} &= \left(\frac{-2{,}3610+1{,}3894+(-0{,}0260)+(-1{,}1970)}{4},\;\frac{-0{,}0858+(-0{,}4687)+1{,}2981+(-1{,}1055)}{4}\right) = (-0{,}5487;\;-0{,}0905)
+\end{align*}
+Substitusi ke Persamaan~\ref{eq:dist_centroid} dengan $p=2$:
+\[
+  D(c_{2020},\,c_{2021})
+  = \sqrt{\bigl(-0{,}3903-(-0{,}5487)\bigr)^2+\bigl(-0{,}2379-(-0{,}0905)\bigr)^2}
+  = \sqrt{(0{,}1584)^2+(-0{,}1474)^2}
+  = \sqrt{0{,}0251+0{,}0217} = \sqrt{0{,}0468} \approx 0{,}2163
+\]
+Untuk tahun 2022, $c_{2022} = (-0{,}6004;\;-0{,}1615)$, sehingga $D(c_{2021},c_{2022}) = \sqrt{(0{,}0517)^2+(0{,}0710)^2} \approx 0{,}0879$. Nilai $D(c_{2020},c_{2021})>D(c_{2021},c_{2022})$ mengindikasikan bahwa pergeseran kolektif terbesar terjadi pada transisi 2020 ke 2021.
+
+\phantomsection\label{par:contoh_entity_dist}
+\noindent\textit{Contoh penghitungan jarak pergeseran per-entitas:} Selain centroid kolektif, pergeseran posisi setiap entitas (wilayah atau indikator) secara individual antar-tahun dihitung menggunakan rumus yang sama (Persamaan~\ref{eq:dist_centroid}). Misalkan posisi Kota Jakarta Pusat pada ruang skor intra ($\mathbf{F}_k$, Skenario~1) adalah $\mathbf{p}_{2020}=(-1{,}7840;\,-0{,}9027)$ dan $\mathbf{p}_{2021}=(-2{,}3610;\,-0{,}0858)$ (dari Tabel~\ref{tab:sample1skor_intra_2020}--\ref{tab:sample1skor_intra_2021}), maka:
+\[
+  D(\mathbf{p}_{2020},\,\mathbf{p}_{2021})
+  = \sqrt{\bigl(-2{,}3610-(-1{,}7840)\bigr)^2+\bigl(-0{,}0858-(-0{,}9027)\bigr)^2}
+  = \sqrt{(-0{,}5770)^2+(0{,}8169)^2}
+  = \sqrt{0{,}3329+0{,}6673} \approx 1{,}0001
+\]
+Untuk periode 2021--2022, diperoleh $D(\mathbf{p}_{2021},\mathbf{p}_{2022})\approx 0{,}2053$, jauh lebih kecil, mengindikasikan posisi wilayah ini cenderung stabil setelah transisi 2020--2021. Nilai per-entitas untuk seluruh wilayah dan indikator tersedia pada folder \texttt{jarak/} hasil ekspor.
+
+Loading parsial tahunan $\mathbf{G}_k$ (Persamaan~\ref{eq:loading_parsial_indikator}) diperoleh dengan memproyeksikan $\mathbf{Z}_k^T$ ke ruang kompromi. \textit{Contoh penghitungan:} elemen $\mathbf{G}_{2020}[\text{PPM},\text{PC1}]$ dihitung sebagai berikut (dengan $\sqrt{\lambda_1^{(c)}}=\sqrt{2{,}3008}=1{,}5168$):
+\[
+  \mathbf{G}_{2020}[\text{PPM},1] = \frac{\displaystyle\sum_{i=1}^4 m_i\,z_{i,\text{PPM},2020}\,F_c[i,1]}{\sqrt{\lambda_1^{(c)}}}
+  = \frac{(0{,}2943)(-1{,}48)(-2{,}25)+(0{,}5040)(0{,}40)(1{,}27)+(0{,}2015)(1{,}17)(0{,}12)+(0{,}0001)(-1{,}74)(-1{,}22)}{1{,}5168}
+\]
+\[
+  = \frac{0{,}980+0{,}256+0{,}028+0{,}000}{1{,}5168} = \frac{1{,}264}{1{,}5168} \approx 0{,}8306
+\]
+Loading $\mathbf{G}_k$ untuk semua tahun disajikan pada tabel berikut, dan loading kompromi $\mathbf{G}_c = \sum_k \alpha_{W,k}\mathbf{G}_k$ (Persamaan~\ref{eq:loading_kompromi_indikator}) diperoleh dari rata-rata tertimbangnya:
+\[
+  \mathbf{G}_c[\text{PPM},1] = 0{,}2881\times 0{,}8306 + 0{,}3503\times 0{,}8732 + 0{,}3616\times 0{,}8621 = 0{,}2393+0{,}3059+0{,}3117 = 0{,}8569
+\]
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_loading_intra_2020.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_loading_intra_2021.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_loading_intra_2022.tex}}
 \input{output_sample/scenario1/output_table_loadings.tex}
 
 \paragraph{Skenario 2 -- Skor Wilayah ($\mathbf{F}_c^{(2)}$) dan Loading Indikator ($\mathbf{G}_c^{(2)}$):}
@@ -486,9 +576,35 @@ Pada Skenario 2, kompromi terbentuk pada ruang indikator, sehingga biplot lebih 
     \caption{Compromise Biplot Skenario 2 (Host = Indikator): Skor Wilayah dan Loading Indikator}
     \label{fig:biplot_sample_s2}
 \end{figure}
-dengan skor wilayah dan loading indikator yang disajikan pada Tabel~\ref{tab:sample2scores} dan Tabel~\ref{tab:sample2loadings}.
+dengan skor kompromi wilayah ($\mathbf{F}_c^{(2)}$, Persamaan~\ref{eq:skor_kompromi_s2}) dan loading kompromi indikator ($\mathbf{G}_c^{(2)}$, Persamaan~\ref{eq:loading_kompromi_s2}) yang disajikan pada Tabel~\ref{tab:sample2scores} dan Tabel~\ref{tab:sample2loadings}.
 \input{output_sample/scenario2/output_table_scores.tex}
 \input{output_sample/scenario2/output_table_loadings.tex}
+
+\textit{Contoh penghitungan (Skenario 2):} Loading kompromi diekstraksi langsung dari dekomposisi $\mathbf{S}_c$ (Persamaan~\ref{eq:loading_kompromi_s2}: $\mathbf{G}_c = \mathbf{V}_c\mathbf{\Lambda}_s^{1/2}$). Dengan vektor eigen pertama $\mathbf{V}_c[:,1] = (-0{,}5483;\;0{,}6590;\;-0{,}5149)^T$ dan $\sqrt{\lambda_{s1}}=\sqrt{2{,}2692}=1{,}5064$:
+\[
+  \mathbf{G}_c[\text{PPM},1] = (-0{,}5483)\times 1{,}5064 = -0{,}8260, \quad
+  \mathbf{G}_c[\text{RLS},1] = 0{,}6590\times 1{,}5064 = 0{,}9926, \quad
+  \mathbf{G}_c[\text{TPT},1] = (-0{,}5149)\times 1{,}5064 = -0{,}7757
+\]
+Loading parsial tahunan $\mathbf{G}_k$ (Persamaan~\ref{eq:loading_parsial_s2}: $\mathbf{G}_k = \mathbf{S}_k\mathbf{V}_c\mathbf{\Lambda}_s^{-1/2}$). Contoh elemen $\mathbf{G}_{2020}[\text{PPM},\text{PC1}]$ menggunakan $\mathbf{S}_{2020}$ dari Tabel~\ref{tab:sample1matriks_intra_loading_2020}:
+\[
+  \mathbf{G}_{2020}[\text{PPM},1] = \frac{1\times(-0{,}5483)+(-0{,}8141)\times 0{,}6590+(-0{,}2781)\times(-0{,}5149)}{1{,}5064}
+  = \frac{-0{,}5483-0{,}5365+0{,}1432}{1{,}5064} = \frac{-0{,}9416}{1{,}5064} = -0{,}6251
+\]
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_loading_intra_2020.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_loading_intra_2021.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_loading_intra_2022.tex}}
+
+Skor parsial $\mathbf{F}_k$ (Persamaan~\ref{eq:skor_parsial_s2}: $\mathbf{F}_k = \mathbf{Z}_k\mathbf{G}_c\mathbf{\Lambda}_s^{-1/2}$). Contoh elemen $\mathbf{F}_{2020}[\text{Kota Jakarta Pusat},\text{PC1}]$ dengan $\mathbf{Z}_{2020}$ baris ke-1 $= (-1{,}48;\;1{,}47;\;-0{,}03)$ dan $\mathbf{G}_c[:,1] = (-0{,}8260;\;0{,}9926;\;-0{,}7757)$:
+\[
+  \mathbf{F}_{2020}[\text{JakPus},1] = \frac{(-1{,}48)(-0{,}8260)+(1{,}47)(0{,}9926)+(-0{,}03)(-0{,}7757)}{1{,}5064}
+  = \frac{1{,}2225+1{,}4591+0{,}0233}{1{,}5064} = \frac{2{,}7049}{1{,}5064} = 1{,}7937
+\]
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_skor_intra_2020.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_skor_intra_2021.tex}}
+{\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_skor_intra_2022.tex}}
+
+Skor kompromi $\mathbf{F}_c^{(2)}$ diperoleh sebagai rata-rata barisentrik (Persamaan~\ref{eq:skor_kompromi_s2}: $\mathbf{F}_c = \sum_k\alpha_{S,k}\mathbf{F}_k$) menggunakan $\alpha_{S,k}$ dari Tabel~\ref{tab:samplealpha_s}.
 
 Dari perbandingan kedua biplot, dapat dilihat bahwa orientasi loading berbeda karena Skenario 1 memaksimalkan varians antar-wilayah sementara Skenario 2 memaksimalkan konsistensi struktur antar-indikator. Dalam praktiknya, Skenario 1 lebih cocok untuk analisis hubungan antar-wilayah lintas waktu, sedangkan Skenario 2 lebih cocok untuk analisis hubungan antar-indikator lintas waktu.
 
@@ -511,14 +627,40 @@ Lintasan pergeseran wilayah (Gambar~\ref{fig:traj_sample_s1} dan \ref{fig:traj_s
 \end{figure}
 
 \subsubsection{Tahap 7: Uji Signifikansi dan Clustering}
-Sebelum melanjutkan ke tahap clustering, signifikansi struktur kompromi divalidasi menggunakan uji permutasi Monte Carlo. Uji ini mengevaluasi apakah nilai eigen pertama $\lambda_{\text{obs}}$ dari matriks inter-struktur $\mathbf{H}$ secara statistik lebih besar daripada yang diharapkan secara acak. Pada setiap permutasi $b = 1, \ldots, N_{\text{perm}}$, baris-baris matriks data $\mathbf{Z}_k$ diacak secara terpisah untuk menghancurkan korespondensi antar-tahun, kemudian $\lambda^{(b)}$ dihitung ulang. Nilai $p$ diperoleh dari:
+Sebelum melanjutkan ke tahap clustering, signifikansi struktur kompromi divalidasi menggunakan uji permutasi Monte Carlo. Uji ini mengevaluasi apakah nilai eigen pertama $\lambda_{\text{obs}}$ dari matriks inter-struktur $\mathbf{H}$ secara statistik lebih besar daripada yang diharapkan secara acak. Pada setiap permutasi $b = 1, \ldots, N_{\text{perm}}$, baris-baris matriks data $\mathbf{Z}_k$ diacak secara terpisah untuk menghancurkan korespondensi antar-tahun, kemudian $\lambda^{(b)}$ dihitung ulang. Nilai $p$ diperoleh menggunakan koreksi \textit{pseudo-count} (Persamaan~\ref{eq:permutation}):
 \[
-p = \frac{1}{N_{\text{perm}}} \sum_{b=1}^{N_{\text{perm}}} \mathbf{1}\!\left[\lambda^{(b)} \geq \lambda_{\text{obs}}\right]
+  p\text{-value} = \frac{\displaystyle\sum_{b=1}^{B} I\!\left(\theta_1^{\pi(b)} \ge \theta_1^{\text{obs}}\right) + 1}{B + 1}
 \]
 
-Pada dataset sampel dengan $N_{\text{perm}} = 1000$ permutasi, diperoleh $\lambda_{\text{obs}} = 2{,}3008$ dan $p = 0{,}5385$ (tidak signifikan). Hasil ini tidak mengejutkan mengingat dataset sampel hanya terdiri dari 4 observasi; dengan derajat kebebasan yang sangat terbatas, distribusi null hampir sepenuhnya menutupi nilai observasi. Pada dataset aktual (41 wilayah), uji permutasi menghasilkan $p < 0{,}05$ yang mengkonfirmasi bahwa struktur kompromi STATIS signifikan secara statistik.
+Pada dataset sampel dengan $B = 1000$ permutasi, nilai eigen terobservasi adalah $\theta_1^{\text{obs}} = \lambda_1 = 17{,}1859$ (dari matriks interstruktur $\mathbf{H}$, bukan dari $\mathbf{W}_c$). Dari 1000 permutasi, terdapat 571 permutasi yang menghasilkan $\theta_1^{\pi} \ge 17{,}1859$, sehingga substitusi ke Persamaan~\ref{eq:permutation}:
+\[
+  p\text{-value} = \frac{571+1}{1000+1} = \frac{572}{1001} = 0{,}5714 \quad \text{(tidak signifikan)}
+\]
+Hasil ini tidak mengejutkan mengingat dataset sampel hanya terdiri dari 4 observasi; dengan derajat kebebasan yang sangat terbatas, distribusi null hampir sepenuhnya menutupi nilai observasi. Pada dataset aktual (41 wilayah), uji permutasi menghasilkan $p < 0{,}05$ yang mengonfirmasi bahwa struktur kompromi STATIS signifikan secara statistik.
 
-Setelah validasi signifikansi, langkah terakhir adalah pengelompokan wilayah ke dalam $K=3$ cluster menggunakan algoritma K-Means pada skor kompromi $\mathbf{F}_c$. Label cluster diurutkan berdasarkan rata-rata skor PC1 (klaster dengan skor terendah = Klaster~1, tertinggi = Klaster~3). Keanggotaan wilayah pada dataset sampel disajikan pada Tabel~\ref{tab:sample1compromclust}.
+Setelah signifikansi dikonfirmasi, jumlah klaster optimal dipilih melalui kombinasi kurva Elbow (Subbab~\ref{subsec:elbow}) dan koefisien siluet (Subbab~\ref{subsec:silhouette}). Berikut adalah contoh penghitungan koefisien siluet menggunakan $k=2$ pada skor kompromi data sampel:
+
+\phantomsection\label{par:contoh_silhouette}
+\noindent\textit{Contoh penghitungan koefisien siluet ($k=2$, data sampel, Skenario~1):} Skor kompromi empat wilayah sampel dari Tabel~\ref{tab:sample1scores} adalah: Kota Jakarta Pusat (JP) $= (-2{,}2496;\;-0{,}3712)$, Kab.\ Bandung Barat (BB) $= (1{,}2664;\;-0{,}4478)$, Kota Tasikmalaya (TK) $= (0{,}1188;\;1{,}6629)$, dan Kota Cilegon (CL) $= (-1{,}2227;\;-1{,}4783)$. Dengan $k=2$, K-Means menghasilkan dua klaster: $C_1 = \{\text{JP},\,\text{CL}\}$ dan $C_2 = \{\text{TK},\,\text{BB}\}$. Jarak Euclidean antar-pasang dihitung menggunakan Persamaan~\ref{eq:dist_centroid}:
+\begin{align*}
+  d(\text{JP},\text{CL}) &= \sqrt{(-1{,}0269)^2 + (1{,}1071)^2} \approx 1{,}510 \\
+  d(\text{TK},\text{BB}) &= \sqrt{(-1{,}1476)^2 + (2{,}1107)^2} \approx 2{,}403
+\end{align*}
+Untuk JP (di $C_1$ dengan satu anggota lain yaitu CL):
+\[
+  a(\text{JP}) = d(\text{JP},\text{CL}) = 1{,}510 \qquad
+  b(\text{JP}) = \frac{d(\text{JP},\text{TK}) + d(\text{JP},\text{BB})}{2} = \frac{3{,}122 + 3{,}517}{2} = 3{,}320
+\]
+\[
+  s(\text{JP}) = \frac{3{,}320 - 1{,}510}{\max(3{,}320;\;1{,}510)} = \frac{1{,}810}{3{,}320} \approx 0{,}545
+\]
+Dengan cara yang sama diperoleh $s(\text{CL}) \approx 0{,}506$, $s(\text{TK}) \approx 0{,}265$, dan $s(\text{BB}) \approx 0{,}226$ (lihat Persamaan~\ref{eq:silhouette_si}). Koefisien siluet rata-rata (Persamaan~\ref{eq:silhouette_sc}):
+\[
+  SC(k=2) = \frac{0{,}545 + 0{,}506 + 0{,}265 + 0{,}226}{4} = \frac{1{,}542}{4} \approx 0{,}386
+\]
+Nilai ini menunjukkan pemisahan klaster yang cukup pada data sampel. Langkah yang sama diterapkan pada data aktual (41 wilayah) untuk nilai $k = 2$ hingga $10$, dan hasilnya dikombinasikan dengan kurva Elbow untuk menetapkan $k=3$ sebagai jumlah klaster optimal (lihat Subbab~\ref{subsec:penentuan_klaster_optimal}).
+
+Setelah validasi signifikansi, langkah terakhir adalah pengelompokan wilayah ke dalam $K=3$ klaster menggunakan algoritma K-Means pada skor kompromi $\mathbf{F}_c$. Label klaster diurutkan berdasarkan rata-rata skor PC1 (klaster dengan skor terendah = Klaster~1, tertinggi = Klaster~3). Keanggotaan wilayah pada dataset sampel disajikan pada Tabel~\ref{tab:sample1compromclust}.
 \input{output_sample/scenario1/output_table_compromise_cluster_sum_name.tex}
 
 Stabilitas pengelompokan lintas tahun dipantau melalui matriks transisi temporal (Tabel~\ref{tab:sample1transsum2020x2021} dan Tabel~\ref{tab:sample1transsum2021x2022}).
@@ -530,13 +672,19 @@ Setelah memperoleh matriks interstruktur $\mathbf{H}_W$ (Skenario 1) dan memasti
 
 \begin{enumerate}
     \item \textbf{Vektor Struktur Gabungan (Global):}
-    Untuk data sampel, nilai eigen pertama dari matriks $\mathbf{H}_W$ adalah $\lambda_1 = 29{,}6278$. Vektor eigen pertama yang dinormalisasi menjadi $\boldsymbol{\alpha}$ adalah $\mathbf{u}_1 = (0{,}2881;\; 0{,}3503;\; 0{,}3616)^T$. Substitusi ke rumus menghasilkan komponen $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$:
+    Untuk data sampel, nilai eigen pertama dari matriks $\mathbf{H}_W$ adalah $\lambda_1 = 17{,}1859$ (Tabel~\ref{tab:sample1struktur_diagnostik}). Vektor eigen pertama ternormalisasi satuan adalah $\mathbf{u}_1 = (0{,}4967;\;0{,}6038;\;0{,}6233)^T$. Substitusi ke Persamaan~\ref{eq:beta_vec} menghasilkan $\tilde{\beta}_k = \lambda_1 \cdot u_{1k}$:
     \begin{align*}
-        \tilde{\beta}_{2020} &= 29{,}6278 \times 0{,}2881 = 8{,}5347 \\
-        \tilde{\beta}_{2021} &= 29{,}6278 \times 0{,}3503 = 10{,}3798 \\
-        \tilde{\beta}_{2022} &= 29{,}6278 \times 0{,}3616 = 10{,}7133
+        \tilde{\beta}_{2020} &= 17{,}1859 \times 0{,}4967 = 8{,}5347 \\
+        \tilde{\beta}_{2021} &= 17{,}1859 \times 0{,}6038 = 10{,}3798 \\
+        \tilde{\beta}_{2022} &= 17{,}1859 \times 0{,}6233 = 10{,}7133
     \end{align*}
-    Hasil komputasi ini disajikan secara lengkap pada Tabel~\ref{tab:sample1beta_vec} berikut.
+    Kegentingan model rank-1 divalidasi melalui $V$ (Persamaan~\ref{eq:ss_residual}) dan Inertia$_1$ (Persamaan~\ref{eq:prop_inertia}). Dengan $\|\mathbf{H}\|_F^2 = 295{,}7348$ dan $\mathrm{tr}(\mathbf{H}) = H_{11}+H_{22}+H_{33} = 4{,}6998+6{,}3306+6{,}7915 = 17{,}8219$:
+    \begin{align*}
+      V &= \|\mathbf{H}\|_F^2 - \lambda_1^2 = 295{,}7348 - 17{,}1859^2 = 0{,}3803 \\
+      \mathrm{Inertia}_1 &= \frac{\lambda_1}{\mathrm{tr}(\mathbf{H})} = \frac{17{,}1859}{17{,}8219} = 96{,}43\%
+    \end{align*}
+    Nilai $V/\|\mathbf{H}\|_F^2 = 0{,}3803/295{,}7348 = 0{,}0013$ dan $\lambda_1/\lambda_2 = 27{,}8833$ mengonfirmasi model rank-1 memadai.
+    Hasil komputasi disajikan secara lengkap pada Tabel~\ref{tab:sample1beta_vec} berikut.
     \input{output_sample/scenario1/output_table_beta_vec.tex}
     
     \item \textbf{Vektor Struktur Sub-populasi (Provinsi Jawa Barat):}
@@ -554,30 +702,52 @@ Setelah memperoleh matriks interstruktur $\mathbf{H}_W$ (Skenario 1) dan memasti
 
 Perbedaan pola temporal antara $\tilde{\boldsymbol{\beta}}$ gabungan yang cenderung meningkat (menunjukkan kestabilan struktur yang menguat) dengan $\tilde{\boldsymbol{\beta}}_{\text{Jabar}}$ yang menurun mencerminkan dinamika lokal sub-populasi yang berbeda dari tren global.
 
-\subsubsection{Tahap 8: Analisis Perbandingan Cluster (9 Jenis)}
-Untuk mengevaluasi konsistensi dan dinamika hasil pengelompokan secara komprehensif, penelitian ini melaksanakan sembilan jenis analisis perbandingan yang terstruktur dalam empat kategori, sesuai dengan kerangka spasio-temporal STATIS:
+\subsubsection{Tahap 8: Analisis Perbandingan Klaster (9 Jenis)} \label{subsubsec:tahap8bab3}
+Untuk mengevaluasi konsistensi dan dinamika hasil pengelompokan secara komprehensif, penelitian ini melaksanakan sembilan jenis analisis perbandingan yang terstruktur dalam empat kategori, sesuai dengan kerangka spasio-temporal STATIS. Penyelarasan label klaster antar-tahun dilakukan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955} berbasis matriks jarak \textit{centroid} (Persamaan~\ref{eq:dist_centroid}), sehingga perbandingan antar-tahun konsisten secara kombinatorial.
+
+\phantomsection\label{par:contoh_hungarian}
+\noindent\textit{Contoh penghitungan (dataset sampel, Skenario~1, 2020 vs 2021):} Hasil K-Means STATIS pada $\mathbf{F}_{2020}$ menghasilkan tiga klaster dengan keanggotaan: Klaster~1 = \{Kota Jakarta Pusat, Kota Cilegon\}, Klaster~2 = \{Kota Tasikmalaya\}, Klaster~3 = \{Bandung Barat\}. Centroid masing-masing klaster dihitung dari rata-rata koordinat anggotanya (Tabel~\ref{tab:sample1skor_intra_2020}):
+\begin{align*}
+  c_{1,2020} &= \left(\tfrac{-1{,}7840+(-0{,}9879)}{2},\;\tfrac{-0{,}9027+(-2{,}3239)}{2}\right) = (-1{,}3860;\;-1{,}6133) \\
+  c_{2,2020} &= (0{,}2810;\;2{,}9117), \qquad c_{3,2020} = (0{,}9296;\;-0{,}6366)
+\end{align*}
+Demikian pula untuk tahun 2021 (Tabel~\ref{tab:sample1skor_intra_2021}): $c_{1,2021}=(-1{,}7790;\;-0{,}5957)$, $c_{2,2021}=(-0{,}0260;\;1{,}2981)$, $c_{3,2021}=(1{,}3894;\;-0{,}4687)$. Matriks jarak $3\times3$ menggunakan Persamaan~\ref{eq:dist_centroid}:
+\[
+\mathbf{D} =
+\begin{pmatrix}
+  D(c_{1,2020},c_{1,2021}) & D(c_{1,2020},c_{2,2021}) & D(c_{1,2020},c_{3,2021}) \\
+  D(c_{2,2020},c_{1,2021}) & D(c_{2,2020},c_{2,2021}) & D(c_{2,2020},c_{3,2021}) \\
+  D(c_{3,2020},c_{1,2021}) & D(c_{3,2020},c_{2,2021}) & D(c_{3,2020},c_{3,2021})
+\end{pmatrix}
+=
+\begin{pmatrix}
+  1{,}0909 & 3{,}2134 & 3{,}0021 \\
+  4{,}0676 & 1{,}6425 & 3{,}5575 \\
+  2{,}7089 & 2{,}1578 & 0{,}4895
+\end{pmatrix}
+\]
+\textit{Hungarian Algorithm} memilih penugasan $\{1\!\to\!1,\;2\!\to\!2,\;3\!\to\!3\}$ dengan total biaya $1{,}0909+1{,}6425+0{,}4895=3{,}2229$ (minimum di antara $3!=6$ permutasi), sehingga label klaster konsisten antar-tahun dan tidak ada relabeling yang diperlukan pada dataset sampel ini.
 
 \begin{enumerate}
-    \item \textbf{Perbandingan 1 -- Transisi Biplot $k \to k+1$:} Matriks transisi cluster hasil K-Means Biplot PCA (Unweighted) antar-tahun berturutan, untuk memonitor pergeseran wilayah pada ruang PCA individu tanpa koreksi temporal.
-    \item \textbf{Perbandingan 2 -- Transisi STATIS $k \to k+1$:} Matriks transisi cluster hasil K-Means pada koordinat STATIS tahunan ($\mathbf{F}_k$) antar-tahun berturutan, untuk memantau pergeseran berbasis struktur kompromi terbobot.
-    \item \textbf{Perbandingan 3 -- Biplot $k$ vs STATIS $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan label cluster STATIS Tahunan ($\mathbf{F}_k$) pada tahun yang sama, untuk mengukur perbedaan struktural akibat bobot temporal.
+    \item \textbf{Perbandingan 1 -- Transisi Biplot $k \to k+1$:} Matriks transisi klaster hasil K-Means Biplot PCA (Unweighted) antar-tahun berturutan, untuk memonitor pergeseran wilayah pada ruang PCA individu tanpa koreksi temporal.
+    \item \textbf{Perbandingan 2 -- Transisi STATIS $k \to k+1$:} Matriks transisi klaster hasil K-Means pada koordinat STATIS tahunan ($\mathbf{F}_k$) antar-tahun berturutan, untuk memantau pergeseran berbasis struktur kompromi terbobot.
+    \item \textbf{Perbandingan 3 -- Biplot $k$ vs STATIS $k$:} Tabulasi silang antara label klaster Biplot PCA (Unweighted) dengan label klaster STATIS Tahunan ($\mathbf{F}_k$) pada tahun yang sama, untuk mengukur perbedaan struktural akibat bobot temporal.
     \item \textbf{Perbandingan 4 -- Transisi IPM $k \to k+1$:} Matriks transisi klasifikasi kategori IPM (UNDP) antar-tahun berurutan, sebagai \textit{baseline} pergeseran normatif berbasis standar internasional.
-    \item \textbf{Perbandingan 5 -- Biplot $k$ vs IPM $k$:} Tabulasi silang antara label cluster Biplot PCA (Unweighted) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode Biplot.
-    \item \textbf{Perbandingan 6 -- STATIS $k$ vs IPM $k$:} Tabulasi silang antara label cluster STATIS Tahunan ($\mathbf{F}_k$) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode STATIS.
-    \item \textbf{Perbandingan 7 -- Kompromi STATIS vs Biplot $k$:} Tabulasi silang antara label cluster Kompromi STATIS (hasil clustering trajektori keseluruhan) dengan label cluster Biplot PCA pada setiap tahun, untuk mengukur konsistensi posisi relatif lintas metode.
-    \item \textbf{Perbandingan 8 -- Kompromi STATIS vs STATIS $k$:} Tabulasi silang antara label cluster Kompromi STATIS (clustering trajektori keseluruhan) dengan label cluster STATIS Tahunan pada setiap tahun, untuk mengevaluasi seberapa representatif kompromi terhadap gambaran tahunan.
-    \item \textbf{Perbandingan 9 -- Kompromi STATIS vs IPM $k$:} Tabulasi silang antara label cluster Kompromi STATIS dengan klasifikasi Kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal final dari pengelompokan berbasis trajektori.
+    \item \textbf{Perbandingan 5 -- Biplot $k$ vs IPM $k$:} Tabulasi silang antara label klaster Biplot PCA (Unweighted) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode Biplot.
+    \item \textbf{Perbandingan 6 -- STATIS $k$ vs IPM $k$:} Tabulasi silang antara label klaster STATIS Tahunan ($\mathbf{F}_k$) dengan klasifikasi kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal metode STATIS.
+    \item \textbf{Perbandingan 7 -- Kompromi STATIS vs Biplot $k$:} Tabulasi silang antara label klaster Kompromi STATIS (hasil clustering trajektori keseluruhan) dengan label klaster Biplot PCA pada setiap tahun, untuk mengukur konsistensi posisi relatif lintas metode.
+    \item \textbf{Perbandingan 8 -- Kompromi STATIS vs STATIS $k$:} Tabulasi silang antara label klaster Kompromi STATIS (clustering trajektori keseluruhan) dengan label klaster STATIS Tahunan pada setiap tahun, untuk mengevaluasi seberapa representatif kompromi terhadap gambaran tahunan.
+    \item \textbf{Perbandingan 9 -- Kompromi STATIS vs IPM $k$:} Tabulasi silang antara label klaster Kompromi STATIS dengan klasifikasi Kategori IPM (UNDP) pada tahun yang sama, sebagai validasi eksternal final dari pengelompokan berbasis trajektori.
 \end{enumerate}
 
 Tiga contoh representatif disajikan berikut untuk mendokumentasikan format keluaran masing-masing kategori; hasil lengkap seluruh tahun tersedia pada dashboard interaktif.
 
-{\renewcommand{\label}[1]{}
+{\makeatletter\let\label\@gobble\makeatother
 \paragraph{Contoh: Perbandingan 1 -- Transisi Biplot (Tahun 2020 vs 2021):}
 \input{output_sample/output_table_biplot_transition_sum_2020x2021.tex}
 \input{output_sample/output_table_biplot_transition_name_2020x2021.tex}
 
 \paragraph{Contoh: Perbandingan 2 -- Transisi STATIS (Skenario 1, Tahun 2020 vs 2021):}
-\input{output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex}
 \input{output_sample/scenario1/output_table_statis_transition_name_2020x2021.tex}
 
 \paragraph{Contoh: Perbandingan 3 -- Biplot vs STATIS (Skenario 1, Tahun 2020):}

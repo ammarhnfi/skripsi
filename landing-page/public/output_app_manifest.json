@@ -1,35 +1,35 @@
 [
   {
     "name": "cluster_biplot_2020.png",
-    "caption": "Cluster Biplot 2020",
+    "caption": "Klaster Biplot 2020",
     "type": "image",
     "src": "/output_app/cluster_biplot_2020.png",
     "group": "Biplot Klaster"
   },
   {
     "name": "cluster_biplot_2021.png",
-    "caption": "Cluster Biplot 2021",
+    "caption": "Klaster Biplot 2021",
     "type": "image",
     "src": "/output_app/cluster_biplot_2021.png",
     "group": "Biplot Klaster"
   },
   {
     "name": "cluster_biplot_2022.png",
-    "caption": "Cluster Biplot 2022",
+    "caption": "Klaster Biplot 2022",
     "type": "image",
     "src": "/output_app/cluster_biplot_2022.png",
     "group": "Biplot Klaster"
   },
   {
     "name": "cluster_biplot_2023.png",
-    "caption": "Cluster Biplot 2023",
+    "caption": "Klaster Biplot 2023",
     "type": "image",
     "src": "/output_app/cluster_biplot_2023.png",
     "group": "Biplot Klaster"
   },
   {
     "name": "cluster_biplot_2024.png",
-    "caption": "Cluster Biplot 2024",
+    "caption": "Klaster Biplot 2024",
     "type": "image",
     "src": "/output_app/cluster_biplot_2024.png",
     "group": "Biplot Klaster"
@@ -596,14 +596,14 @@
   },
   {
     "name": "cluster_compromise_biplot.png",
-    "caption": "Cluster Compromise Biplot",
+    "caption": "Klaster Compromise Biplot",
     "type": "image",
     "src": "/output_app/cluster_compromise_biplot.png",
     "group": "Lain-lain"
   },
   {
     "name": "cluster_compromise_map.png",
-    "caption": "Cluster Compromise Map",
+    "caption": "Klaster Compromise Map",
     "type": "image",
     "src": "/output_app/cluster_compromise_map.png",
     "group": "Lain-lain"
@@ -638,35 +638,35 @@
   },
   {
     "name": "cluster_map_2020.png",
-    "caption": "Cluster Map 2020",
+    "caption": "Klaster Map 2020",
     "type": "image",
     "src": "/output_app/cluster_map_2020.png",
     "group": "Peta Klaster"
   },
   {
     "name": "cluster_map_2021.png",
-    "caption": "Cluster Map 2021",
+    "caption": "Klaster Map 2021",
     "type": "image",
     "src": "/output_app/cluster_map_2021.png",
     "group": "Peta Klaster"
   },
   {
     "name": "cluster_map_2022.png",
-    "caption": "Cluster Map 2022",
+    "caption": "Klaster Map 2022",
     "type": "image",
     "src": "/output_app/cluster_map_2022.png",
     "group": "Peta Klaster"
   },
   {
     "name": "cluster_map_2023.png",
-    "caption": "Cluster Map 2023",
+    "caption": "Klaster Map 2023",
     "type": "image",
     "src": "/output_app/cluster_map_2023.png",
     "group": "Peta Klaster"
   },
   {
     "name": "cluster_map_2024.png",
-    "caption": "Cluster Map 2024",
+    "caption": "Klaster Map 2024",
     "type": "image",
     "src": "/output_app/cluster_map_2024.png",
     "group": "Peta Klaster"
@@ -715,7 +715,7 @@
   },
   {
     "name": "output_table_cluster_members.tex",
-    "caption": "Output Table Cluster Members",
+    "caption": "Output Table Klaster Members",
     "type": "text",
     "src": "/output_app/output_table_cluster_members.tex",
     "group": "Tabel Hasil (.tex)"

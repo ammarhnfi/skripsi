@@ -174,7 +174,7 @@ Sebelum data diproses lebih lanjut menggunakan metode STATIS, dilakukan dua peng
 
 \subsection{\normalsize Hasil Uji KMO dan Bartlett}
 
-Mengacu pada formula yang disajikan pada Persamaan~(3.2) dan~(3.3) di Bab~3, hasil pengujian dirangkum sebagai berikut.
+Mengacu pada formula yang disajikan pada Persamaan~\ref{eq:kmo} (KMO) dan~\ref{eq:bartlett} (Bartlett) di Bab~2, hasil pengujian dirangkum sebagai berikut.
 
 \input{output_real/output_table_kmo_bartlett.tex}
 
@@ -187,8 +187,8 @@ Hasil uji KMO pada Tabel~\ref{tab:app1kmo_bartlett} menunjukkan bahwa nilai KMO 
 
 Tahap pertama dalam algoritma STATIS adalah analisis interstruktur, yang bertujuan mengukur tingkat kemiripan atau konsistensi struktur antarpasangan tahun. Sesuai dengan Persamaan~\ref{eq:rv} dan~\ref{eq:interstructure_H} (Bab~2), koefisien RV ($\mathbf{R}_{\mathrm{RV}}$) dan matriks $\mathbf{H}$ dibentuk dari matriks intra-struktur $\mathbf{W}_t$ dan $\mathbf{W}_{t'}$.
 
-\subsection{\normalsize Koefisien RV} \label{subsec:rv_coef}
-Selanjutnya, mengikuti prosedur yang dijelaskan pada Sub-bab~2.11.3, dihitung koefisien RV untuk seluruh pasangan tahun (2020--2024) menggunakan matriks intra-struktur $\mathbf{W}_t$ yang dibentuk dari data standar (Z-score) untuk setiap tahun. Koefisien RV ini memberikan ukuran kuantitatif tentang seberapa mirip struktur relatif antar-wilayah pada dua tahun tertentu, dengan nilai berkisar antara 0 (tidak ada kemiripan) hingga 1 (kemiripan sempurna). Berdasarkan langkah yang telah dijelaskan sebelumnya pada Subbab~\ref{subsec:rv_coef} diperoleh hasil sebagaimana yang divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heatmap}.
+\subsection{\normalsize Koefisien RV} \label{subsec:rv_coef_bab4}
+Mengikuti prosedur komputasi yang telah diilustrasikan pada Subbab~\ref{subsec:rv_coef} (Bab~3), dihitung koefisien RV untuk seluruh pasangan tahun (2020--2024) menggunakan matriks intra-struktur $\mathbf{W}_t$ yang dibentuk dari data standar (Z-score) untuk setiap tahun. Koefisien RV memberikan ukuran kuantitatif tentang seberapa mirip struktur relatif antar-wilayah pada dua tahun tertentu, dengan nilai berada di antara 0 (tidak ada kemiripan) hingga 1 (kemiripan sempurna). Hasilnya disajikan pada Tabel~\ref{tab:apprv_w} dan divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heatmap}.
 
 \input{output_real/output_table_rv_w.tex}
 % Label otomatis: \label{tab:rv_w} (sudah di dalam file .tex)
@@ -219,7 +219,7 @@ Berdasarkan nilai eigen dominan dari matriks interstruktur $\mathbf{H}_W$ dan $\
 \input{output_real/output_table_alpha_s.tex}
 % Label otomatis: \label{tab:appalpha_s}
 
-Dari Tabel~\ref{tab:appalpha_w} dan Tabel~\ref{tab:appalpha_s}, terlihat bahwa sebagian besar bobot $\alpha$ untuk kelima tahun relatif seimbang (berkisar antara $\AppAlphaMin{}$ hingga $\AppAlphaMax{}$). Hal ini menegaskan bahwa tidak ada satu tahun pun yang mendominasi atau mendistorsi gambaran rata-rata (kompromi). Tahun dengan bobot terbesar di tahun $\AppAlphaMaxYear{}$ dapat diinterpretasikan sebagai tahun paling representatif terhadap kondisi rata-rata selama 2020 hingga 2024.
+Dari Tabel~\ref{tab:appalpha_w} dan Tabel~\ref{tab:appalpha_s}, terlihat bahwa sebagian besar bobot $\alpha$ untuk kelima tahun relatif seimbang (berada di antara $\AppAlphaMin{}$ hingga $\AppAlphaMax{}$). Hal ini menegaskan bahwa tidak ada satu tahun pun yang mendominasi atau mendistorsi gambaran rata-rata (kompromi). Tahun dengan bobot terbesar di tahun $\AppAlphaMaxYear{}$ dapat diinterpretasikan sebagai tahun paling representatif terhadap kondisi rata-rata selama 2020 hingga 2024.
 
 %-----------------------------------------------------------------------------%
 % --- 4.4 ---
@@ -286,9 +286,8 @@ Untuk mendapatkan pemahaman yang lebih menyeluruh mengenai hubungan antara wilay
 Interpretasi biplot ini dapat dilakukan dengan melihat arah dan panjang vektor indikator serta posisi wilayah:
 
 \begin{enumerate}
-    \item \textbf{Dimensi~1, yaitu Kesejahteraan Ekonomi Umum:} Menjelaskan \AppDimOnePct{}\% variansi. Sumbu ini berkorelasi positif dengan indikator [IPM, PDRB, RLS, IPG] (vektor menghadap ke kanan) dan berkorelasi negatif dengan [PPM, PKKP] (vektor menghadap ke kiri). Wilayah di sisi kanan merupakan wilayah dengan kesejahteraan relatif tinggi.
-    \item \textbf{Dimensi~2, yaitu Kesehatan dan Ketahanan Pangan:} Menjelaskan \AppDimTwoPct{}\% variansi. Fokus vibrasi pada indikator Angka Harapan Hidup (AHH L dan P) serta PKKP yang mencerminkan kualitas hidup non-ekonomi.
-
+    \item \textbf{Dimensi~1:} Menjelaskan \AppDimOnePct{}\% variansi. Berdasarkan nilai loading pada Tabel~\ref{tab:app1loadings} dan Tabel~\ref{tab:app2loadings}, indikator dengan loading positif besar pada Dimensi~1 mencirikan sumbu ini sebagai representasi kemajuan pembangunan secara umum. Indikator dengan loading positif terkuat adalah Rata-rata Lama Sekolah (RLS, $0{,}9538$), Angka Harapan Hidup Laki-laki (AHH\_L, $0{,}8891$), Angka Harapan Hidup Perempuan (AHH\_P, $0{,}8831$), Garis Kemiskinan (GK, $0{,}8830$), Indeks Pemberdayaan Gender (IPG, $0{,}8248$), PDRB ADHK ($0{,}7390$), dan Gini Ratio ($0{,}6229$). Sebaliknya, Persentase Penduduk Miskin (PPM, $-0{,}8816$) dan PKKP ($-0{,}8497$) memiliki loading negatif yang kuat. Dimensi~1 diinterpretasikan sebagai \textbf{``Taraf Kemajuan Pembangunan Manusia dan Ekonomi''}: wilayah dengan skor PC1 tinggi unggul pada capaian pendidikan, kesehatan, dan produktivitas ekonomi, sekaligus memiliki angka kemiskinan yang rendah.
+    \item \textbf{Dimensi~2:} Menjelaskan \AppDimTwoPct{}\% variansi. Indikator dengan loading dominan pada Dimensi~2 adalah Tingkat Pengangguran Terbuka (TPT, $+0{,}8620$), dengan kontribusi negatif moderat dari Tingkat Partisipasi Angkatan Kerja (TPAK, $-0{,}4946$). Dimensi~2 diinterpretasikan sebagai \textbf{``Tekanan Pasar Tenaga Kerja''}: skor PC2 yang tinggi menandakan wilayah dengan pengangguran terbuka tinggi dan partisipasi kerja yang lebih rendah, sedangkan skor PC2 yang sangat negatif khas untuk wilayah agraris atau berbasis sektor informal di mana hampir seluruh angkatan kerja sudah terserap.
 \end{enumerate}
 
 Koordinat numerik dari skor kompromi dariseluruh 41 kabupaten/kota pada ruang kompromi disajikan pada Tabel~\ref{tab:app1scores} dan Tabel~\ref{tab:app2scores} berikut.
@@ -299,7 +298,7 @@ Koordinat numerik dari skor kompromi dariseluruh 41 kabupaten/kota pada ruang ko
 \input{output_real/scenario2/output_table_scores.tex}
 % Label: \label{tab:appscores_s2}
 
-Skor positif pada Dimensi~1 menunjukkan wilayah yang secara relatif lebih maju, sedangkan skor negatif menunjukkan wilayah yang tertinggal. Pada Dimensi~2, skor positif menunjukkan wilayah dengan kualitas hidup yang lebih baik, terutama dalam aspek kesehatan dan ketahanan pangan.
+Skor positif pada Dimensi~1 menunjukkan wilayah yang secara relatif lebih maju, sedangkan skor negatif menunjukkan wilayah yang tertinggal (berdasarkan arah loading pada Tabel~\ref{tab:app1loadings}). Pada Dimensi~2, skor negatif ekstrem seperti yang dimiliki Kabupaten Pangandaran (skor intra PC2 hingga $-4{,}76$, Tabel~\ref{tab:scores_intra_2023_2024}) yang mencerminkan wilayah dengan TPAK sangat tinggi dan TPT sangat rendah, khas wilayah pertanian dan ekonomi informal. Sebaliknya, skor PC2 yang positif seperti pada Kabupaten Kuningan, mencerminkan tekanan pengangguran terbuka yang lebih besar, umum ditemui pada wilayah semi-urban yang pertumbuhan angkatan kerjanya melampaui kapasitas serapan sektor formal.
 
 Tabel~\ref{tab:app1loadings} dan Tabel~\ref{tab:app2loadings} menyajikan nilai loading ($\mathbf{G}_c$) masing-masing indikator secara numerik untuk setiap skenario.
 
@@ -354,7 +353,7 @@ Dari perbandingan kedua skenario, terlihat bahwa Skenario 1 lebih menekankan sep
 \section{\normalsize Uji Stabilitas Struktur Kompromi (Permutation Test)}
 %-----------------------------------------------------------------------------%
 
-Untuk memvalidasi bahwa struktur kompromi yang diperoleh bukan merupakan artefak acak dari data, dilakukan uji permutasi sebanyak $B = 1000$ iterasi, sesuai dengan prosedur pada Sub-bab~3.6.2 dan Persamaan~\ref{eq:permutation} (Bab~2), dengan statistik $\theta_1$ dari matriks $\mathbf{H}$.
+Untuk memvalidasi bahwa struktur kompromi yang diperoleh bukan terbentuk secara kebetulan dari data, dilakukan uji permutasi sebanyak $B = 1000$ iterasi, sesuai dengan prosedur yang telah diilustrasikan pada Subbab~\ref{subsec:ilustrasi_statis} (Bab~3) dan Persamaan~\ref{eq:permutation} (Bab~2), dengan statistik $\theta_1$ dari matriks $\mathbf{H}$.
 
 \subsection{\normalsize Prosedur dan Hasil Uji Permutasi}
 
@@ -414,14 +413,14 @@ Nilai $\tilde{\beta}_k$ yang besar pada situasi ke-$k$ menunjukkan bahwa konfigu
 Validitas pendekatan rank-1 dinilai melalui dua kuantitas (Persamaan~\ref{eq:prop_inertia} dan~\ref{eq:ss_residual}):
 
 \begin{enumerate}
-  \item \textbf{Inertia Dimensi Pertama Interstruktur} ($\mathrm{Inertia}_1$): Proporsi total nilai eigen matriks $\mathbf{H}$ yang dijelaskan oleh dimensi pertama. Nilai yang tinggi (mendekati 1) mengkonfirmasi bahwa satu komponen dominan cukup untuk merangkum keseluruhan informasi interstruktur.
-  \item \textbf{Sum of Squares Residual} ($V$): Besaran $V = \|\mathbf{H}\|_F^2 - \lambda_1^2$ mengukur varians interstruktur yang \emph{tidak} dapat dijelaskan oleh model rank-1. Nilai $V$ yang kecil relatif terhadap $\|\mathbf{H}\|_F^2$ mengkonfirmasi keselarasan model.
+  \item \textbf{Inertia Dimensi Pertama Interstruktur} ($\mathrm{Inertia}_1$): Proporsi total nilai eigen matriks $\mathbf{H}$ yang dijelaskan oleh dimensi pertama. Nilai yang tinggi (mendekati 1) mengonfirmasi bahwa satu komponen dominan cukup untuk merangkum keseluruhan informasi interstruktur.
+  \item \textbf{Sum of Squares Residual} ($V$): Besaran $V = \|\mathbf{H}\|_F^2 - \lambda_1^2$ mengukur varians interstruktur yang \emph{tidak} dapat dijelaskan oleh model rank-1. Nilai $V$ yang kecil relatif terhadap $\|\mathbf{H}\|_F^2$ mengonfirmasi keselarasan model.
 \end{enumerate}
 
 \input{output_real/scenario1/output_table_struktur_diagnostik.tex}
 % Label: \label{tab:struktur_diagnostik}
 
-Berdasarkan Tabel~\ref{tab:app1struktur_diagnostik}, nilai $\mathrm{Inertia}_1$ yang mendekati 1,00 mengkonfirmasi secara kuantitatif bahwa struktur bersama derajat-1 yang diasumsikan dalam model \citet{areia2008} terpenuhi dengan baik pada data penelitian ini. Dengan demikian, estimasi $\tilde{\boldsymbol{\beta}}$ dan $\boldsymbol{\alpha}$ yang diperoleh memiliki validitas statistik yang memadai.
+Berdasarkan Tabel~\ref{tab:app1struktur_diagnostik}, nilai $\mathrm{Inertia}_1$ yang mendekati 1,00 mengonfirmasi secara kuantitatif bahwa struktur bersama derajat-1 yang diasumsikan dalam model \citet{areia2008} terpenuhi dengan baik pada data penelitian ini. Dengan demikian, estimasi $\tilde{\boldsymbol{\beta}}$ dan $\boldsymbol{\alpha}$ yang diperoleh memiliki validitas statistik yang memadai.
 
 \subsubsection*{Analisis Transversal: Perbandingan Vektor Struktur Antar-Provinsi}
 
@@ -430,7 +429,7 @@ Mengacu pada kerangka Analisis Transversal dalam \citet{oliveira2024}, data pene
 \input{output_real/scenario1/output_table_beta_provinsi.tex}
 % Label: \label{tab:beta_provinsi}
 
-Tabel~\ref{tab:app1beta_provinsi} menyajikan komponen $\tilde{\beta}_{gk}$ untuk masing-masing provinsi $g$ dan tahun $k$. Perbedaan pola komponen antar-provinsi mencerminkan heterogenitas respons temporal terhadap perubahan (terutama pandemi COVID-19 2020 hingga 2021) dari masing-masing kelompok wilayah. DKI Jakarta, sebagai wilayah dengan struktur ekonomi yang sangat berbeda (berbasis jasa dan keuangan), diharapkan menghasilkan profil $\tilde{\boldsymbol{\beta}}$ yang kontrastif dibandingkan Banten (berbasis industri manufaktur) maupun Jawa Barat (campuran pertanian-industri).
+Tabel~\ref{tab:app1beta_provinsi} menyajikan komponen $\tilde{\beta}_{gk}$ untuk masing-masing provinsi $g$ dan tahun $k$. Perbedaan pola komponen antar-provinsi mencerminkan heterogenitas respons temporal terhadap perubahan dari masing-masing kelompok wilayah. Ketiga provinsi menunjukkan heterogenitas yang signifikan: \textbf{DKI Jakarta} mencatat kenaikan konsisten dari $449{,}33$ (2020) ke $516{,}64$ (2024), dengan akselerasi terbesar $+47{,}75$ poin ($+10{,}2\%$) pada transisi 2023--2024, mencerminkan pemulihan ekonomi berbasis jasa yang kuat. \textbf{Jawa Barat} menunjukkan pola paling stabil (rentang $72{,}51$--$79{,}59$) namun mengalami penurunan ringan pada 2024 ($75{,}66$), mengindikasikan perlambatan struktural di akhir periode. \textbf{Banten} memperlihatkan fluktuasi terbesar (rentang $1.579{,}27$--$2.030{,}76$): sempat turun pada 2021--2022, kemudian melonjak drastis $+322{,}45$ poin ($+18{,}9\%$) pada 2023--2024 yang mencerminkan dinamika struktural yang paling tidak stabil, kemungkinan didorong oleh pergeseran komposisi ekonomi manufaktur dan jasa di kawasan Tangerang Raya.
 
 
 \subsubsection*{Analisis Longitudinal: Progresi Temporal Komponen Vektor Struktur}
@@ -444,7 +443,7 @@ Analisis Longitudinal \citep{areia2008,oliveira2024} mengevaluasi apakah kompone
     \label{fig:beta_trajectory}
 \end{figure}
 
-Apabila $\tilde{\beta}_k$ menunjukkan penurunan pada tahun 2020 hingga 2021 diikuti pemulihan pada 2022 hingga 2024, hal ini mengkonfirmasi bahwa gangguan pandemi secara statistik terekam dalam parameter vektor struktur, dan bukan sekadar artefak visual pada biplot. Pola yang monoton meningkat setelah 2021 dapat diinterpretasikan sebagai konsolidasi struktur multivariat wilayah yang semakin stabil dan terpola seiring pemulihan ekonomi pasca-pandemi.
+Nilai $\tilde{\beta}_k$ pada Tabel~\ref{tab:app1beta_vec} mencerminkan bobot temporal terstruktur dari masing-masing tahun dalam membentuk konsensus inter-struktur. Komponen $\tilde{\beta}_k$ menampilkan tiga fase temporal yang berbeda: (i) \textbf{Stagnasi pandemi (2020--2021):} nilai $\tilde{\beta}_{2020} = 103{,}03$ dan $\tilde{\beta}_{2021} = 102{,}98$ hampir identik (selisih hanya $0{,}05$ poin), mengindikasikan bahwa pandemi tidak menyebabkan gangguan struktural yang berarti pada hierarki relatif antar-wilayah, meskipun nilai absolut indikator mungkin mengalami kontraksi, tatanan inter-spasial tetap terjaga; (ii) \textbf{Pemulihan progresif (2022--2023):} kenaikan bertahap ke $\tilde{\beta}_{2022} = 106{,}84$ dan puncak $\tilde{\beta}_{2023} = 110{,}32$ mengonfirmasi pemulihan struktural yang nyata pasca-pandemi; (iii) \textbf{Stabilisasi (2024):} moderasi ringan ke $\tilde{\beta}_{2024} = 108{,}31$ mengindikasikan konsolidasi struktur inter-relasi antar-wilayah, bukan kemunduran.
 
 
 %-----------------------------------------------------------------------------%
@@ -479,40 +478,44 @@ Untuk memahami posisi spesifik setiap wilayah dan indikator pada tiap tahun, Gam
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2020.png}
-    \caption{Biplot Tahunan Tahun 2020 (Masa Awal Pandemi)}
-    \label{fig:biplot_2020}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/biplot_tahun_2020.png}
+        \caption{Biplot Tahunan 2020 (Masa Awal Pandemi)}
+        \label{fig:biplot_2020}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/biplot_tahun_2021.png}
+        \caption[]{Biplot Tahunan 2021}
+        \label{fig:biplot_2021}
+    \end{minipage}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2021.png}
-    \caption[]{Biplot Tahunan Tahun 2021}
-    \label{fig:biplot_2021}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/biplot_tahun_2022.png}
+        \caption[]{Biplot Tahunan 2022 (Awal Masa Pemulihan)}
+        \label{fig:biplot_2022}
+    \end{minipage} \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/scenario1/biplot_tahun_2023.png}
+        \caption[]{Biplot Tahunan 2023}
+        \label{fig:biplot_2023}
+    \end{minipage}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2022.png}
-    \caption[]{Biplot Tahunan Tahun 2022 (Awal Masa Pemulihan)}
-    \label{fig:biplot_2022}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2023.png}
-    \caption[]{Biplot Tahunan Tahun 2023}
-    \label{fig:biplot_2023}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.80\textwidth]{output_real/scenario1/biplot_tahun_2024.png}
-    \caption[]{Biplot Tahunan Tahun 2024}
+    \includegraphics[width=0.65\textwidth]{output_real/scenario1/biplot_tahun_2024.png}
+    \caption[]{Biplot Tahunan 2024}
     \label{fig:biplot_2024}
 \end{figure}
 
-Membandingkan biplot pada Gambar~\ref{fig:biplot_2020} dan~\ref{fig:biplot_2024}, terlihat pergeseran struktural yang signifikan pada beberapa wilayah. Kota Bekasi dan Kota Depok, misalnya, menunjukkan trajektori yang mengarah positif pada sumbu kesejahteraan seiring dengan periode pemulihan pasca-pandemi.
+Membandingkan biplot pada Gambar~\ref{fig:biplot_2020} dan~\ref{fig:biplot_2024}, terlihat pergeseran struktural yang signifikan pada beberapa wilayah antara tahun 2020 dan 2024. Berdasarkan koordinat skor intra pada Tabel~\ref{tab:scores_intra_2020_2022} dan~\ref{tab:scores_intra_2023_2024}, pergeseran Dimensi~1 (PC1) terbesar ke arah positif dialami oleh \textbf{Kota Tangerang Selatan} ($+0{,}85$ poin: dari $2{,}23$ ke $3{,}09$), diikuti \textbf{Kota Bekasi} ($+0{,}39$) dan \textbf{Kota Jakarta Pusat} ($+0{,}26$), mengonfirmasi pemulihan kuat pada kota-kota metropolitan berbasis jasa. Sebaliknya, pergeseran negatif terbesar dialami oleh \textbf{Kabupaten Pangandaran} ($-1{,}37$ poin: dari $-2{,}60$ ke $-3{,}97$), disusul \textbf{Kabupaten Garut} ($-0{,}61$) dan \textbf{Kabupaten Cianjur} ($-0{,}51$), mengindikasikan bahwa kabupaten pedalaman Jawa Barat bagian selatan justru mengalami penurunan posisi relatif selama periode yang sama.
 
 \subsection{\normalsize Dinamika Struktur Wilayah Tahunan}
 
@@ -552,7 +555,21 @@ analisis trajektori juga memungkinkan untuk mengamati perubahan posisi relatif a
 \label{tab:scores_intra_2023_2024}
 \end{table}
 
+\subsection{\normalsize Pergeseran Centroid Tahunan}
 
+Selain mengamati lintasan individual setiap wilayah, dinamika kolektif seluruh wilayah dapat dikuantifikasi melalui pergeseran \textit{centroid} tahunan, yaitu posisi rata-rata $c_k = \bigl(\overline{f_{k,1}},\,\overline{f_{k,2}}\bigr)$ dari seluruh skor intra $\mathbf{F}_k$ pada tahun $k$. Jarak \textit{Euclidean} antar-centroid berturutan dihitung menggunakan Persamaan~\ref{eq:dist_centroid} (lihat penurunan contoh pada dataset sampel di Subbab~\ref{subsubsec:tahap6bab3} Bab~3):
+\[
+  D(c_k,\, c_{k+1}) = \sqrt{(\bar{f}_{k,1}-\bar{f}_{k+1,1})^2 + (\bar{f}_{k,2}-\bar{f}_{k+1,2})^2}
+\]
+Nilai ini mengukur seberapa besar posisi ``pusat berat'' seluruh wilayah bergeser dalam ruang kompromi dari satu tahun ke tahun berikutnya. Hasil lengkap tersedia pada \textit{dashboard} interaktif dalam tabel \textit{Pergeseran Centroid Tahunan}.
+
+[INTERPRETASI: Nilai $D(c_k, c_{k+1})$ tersedia pada tabel \textit{Pergeseran Centroid Tahunan} di \textit{dashboard}. Berdasarkan pola pergerakan klaster yang teramati, periode dengan pergeseran centroid terbesar diperkirakan adalah 2023--2024 (periode dengan jumlah perpindahan klaster terbanyak), namun verifikasi langsung via \textit{dashboard} diperlukan untuk konfirmasi kuantitatif.]
+
+\subsection{\normalsize Jarak Pergeseran Per-Entitas Tahunan}
+
+Di samping pergeseran centroid kolektif, jarak pergeseran per-entitas mengukur seberapa jauh setiap wilayah atau indikator secara individual bergerak dalam ruang kompromi dari satu tahun ke tahun berikutnya, dihitung menggunakan Persamaan~\ref{eq:dist_centroid}. Penurunan contoh komputasinya disajikan pada Paragraf~\ref{par:contoh_entity_dist} Bab~3.
+
+[INTERPRETASI: Wilayah dan indikator dengan jarak per-entitas terbesar tersedia pada tabel \textit{Jarak Pergeseran Per-Entitas} di \textit{dashboard}. Berdasarkan analisis skor intra (Tabel~\ref{tab:scores_intra_2020_2022}--\ref{tab:scores_intra_2023_2024}), kandidat pergeseran PC1 terbesar sepanjang 2020--2024 adalah Kota Tangerang Selatan ($+0{,}85$ poin) dan Kabupaten Pangandaran ($-1{,}37$ poin); verifikasi jarak Euclidean lengkap tersedia di \textit{dashboard}.]
 
 \subsection{\normalsize Dinamika Struktur Indikator Tahunan}
 
@@ -603,9 +620,9 @@ Matriks korelasi terbobot indikator ($\mathbf{S}_k$) yang tersaji pada lampiran 
 
 Analisis klaster dilakukan dalam tiga tahap: (1) penentuan jumlah klaster optimal, (2) interpretasi pola pengelompokan dan matriks transisi, serta (3) evaluasi konsistensi klaster terhadap standar kategori IPM UNDP.
 
-\subsection{\normalsize Penentuan Jumlah Klaster Optimal}
+\subsection{\normalsize Penentuan Jumlah Klaster Optimal} \label{subsec:penentuan_klaster_optimal}
 
-Dua metode digunakan secara komplementer untuk menentukan jumlah klaster $k$ yang optimal: Metode \textit{Elbow} yang mengamati titik patahan kurva inersia (\textit{Within-Cluster Sum of Squares}/SSE) dan \textit{Agglomerative Hierarchical Clustering} (Dendrogram) yang mengamati jarak penggabungan antar-kelompok. Gambar~\ref{fig:elbow_dendro_2020} hingga Gambar~\ref{fig:elbow_dendro_2024} menyajikan hasil kedua metode tersebut untuk setiap tahun pengamatan (2020--2024).
+Dua metode digunakan secara komplementer untuk menentukan jumlah klaster $k$ yang optimal: Metode \textit{Elbow} yang mengamati titik patahan kurva inersia (\textit{Within-Klaster Sum of Squares}/SSE) dan \textit{Agglomerative Hierarchical Clustering} (Dendrogram) yang mengamati jarak penggabungan antar-kelompok. Gambar~\ref{fig:elbow_dendro_2020} hingga Gambar~\ref{fig:elbow_dendro_2024} menyajikan hasil kedua metode tersebut untuk setiap tahun pengamatan (2020--2024).
 
 \begin{figure}[H]
     \centering
@@ -647,7 +664,7 @@ Dua metode digunakan secara komplementer untuk menentukan jumlah klaster $k$ yan
     \label{fig:elbow_dendro_2024}
 \end{figure}
 
-Berdasarkan evaluasi kurva SSE pada Gambar~\ref{fig:elbow_dendro_2020} hingga~\ref{fig:elbow_dendro_2024}, titik patahan yang konsisten muncul pada $k = 3$ di seluruh tahun pengamatan. Hal ini dikonfirmasi oleh dendrogram yang menunjukkan tiga cabang utama dengan jarak penggabungan yang relatif besar. Oleh karena itu, $k = 3$ ditetapkan sebagai jumlah klaster optimal yang digunakan pada seluruh analisis selanjutnya.
+Berdasarkan evaluasi kurva SSE pada Gambar~\ref{fig:elbow_dendro_2020} hingga~\ref{fig:elbow_dendro_2024}, titik patahan yang konsisten muncul pada $k = 3$ di seluruh tahun pengamatan. Hal ini dikonfirmasi oleh dendrogram yang menunjukkan tiga cabang utama dengan jarak penggabungan yang relatif besar. Sebagai konfirmasi kuantitatif tambahan, koefisien siluet rata-rata pada skor kompromi aktual untuk $k=3$ adalah $SC = \AppSilhouetteAvg{}$ (lihat prosedur perhitungan pada Subbab~\ref{par:contoh_silhouette} dan Persamaan~\ref{eq:silhouette_sc}), yang menunjukkan pemisahan klaster yang memadai. Oleh karena itu, $k = 3$ ditetapkan sebagai jumlah klaster optimal yang digunakan pada seluruh analisis selanjutnya.
 
 \subsection{\normalsize Pola Pengelompokan Tahunan}
 
@@ -723,14 +740,14 @@ Dengan $k = 3$, algoritma K-Means diterapkan pada skor kompromi setiap tahun. Ga
     \label{fig:cluster_2024}
 \end{figure}
 
-Berdasarkan posisi sentroid klaster dan wilayah yang termasuk di dalamnya, ketiga klaster dapat diidentifikasi sebagai berikut:
+Berdasarkan posisi sentroid klaster pada Dimensi~1 kompromi (skor rata-rata PC1 terendah ke tertinggi) dan wilayah yang termasuk di dalamnya, ketiga klaster dapat diidentifikasi secara ordinal sebagai berikut. Nama deskriptif setiap klaster ditetapkan berdasarkan interpretasi terhadap profil sentroid dan keanggotaan wilayah pada Tabel~\ref{tab:app1compromclust} dan Tabel~\ref{tab:app2compromclust}.
 \begin{itemize}
-    \item \textbf{Klaster~1, yaitu Wilayah Pesisir dan Banten Selatan (Tertinggal):} Terdiri dari kabupaten di ujung barat Banten dengan indikator ekonomi dan kesehatan yang berada di bawah rata-rata regional.
-    \item \textbf{Klaster~2, yaitu Wilayah Penyangga Jawa Barat (Berkembang):} Didominasi oleh kabupaten/kota di Jawa Barat yang memiliki profil kesehatan (AHH) cukup baik namun kapasitas ekonomi masih dalam tahap pengembangan.
-    \item \textbf{Klaster~3, yaitu Wilayah Metropolitan (Maju):} Didominasi oleh wilayah-wilayah DKI Jakarta dan kota-kota besar di Jawa Barat. Dicirikan oleh nilai RLS dan PDRB yang sangat tinggi, serta tingkat kemiskinan yang rendah.
+    \item \textbf{Klaster~1 (Tertinggal):} Klaster dengan sentroid Dimensi~1 terendah, mencerminkan wilayah dengan nilai indikator pembangunan secara rata-rata paling rendah di antara ketiga kelompok. Klaster ini menghimpun 12 wilayah: Kabupaten Pandeglang, Lebak, Serang (Banten Selatan), Garut, Tasikmalaya, Cianjur, Majalengka, Indramayu, Ciamis, Pangandaran, Kota Banjar (Jawa Barat pedalaman selatan), serta Kepulauan Seribu. Profil kelompok ini dicirikan oleh nilai PPM tinggi, RLS dan AHH rendah, dengan 9 dari 12 anggota berkategori IPM ``Sedang'' menurut standar UNDP yang mengonfirmasi ketertinggalan pembangunan manusia yang persisten selama periode pengamatan.
+    \item \textbf{Klaster~2 (Berkembang):} Klaster dengan sentroid Dimensi~1 menengah, mengelompokkan wilayah-wilayah transisi yang menunjukkan profil pembangunan moderat. Klaster ini terdiri dari 16 wilayah yang membentang di koridor industri Jawa Barat bagian utara dan wilayah penyangga Banten: Bogor, Sukabumi, Bandung, Kuningan, Cirebon, Sumedang, Subang, Purwakarta, Karawang, Bandung Barat, Kota Sukabumi, Kota Cirebon, Kota Tasikmalaya, Kabupaten Tangerang, Kota Cilegon, dan Kota Serang. Sebanyak 15 dari 16 anggotanya berkategori IPM ``Tinggi'' ($70$--$79{,}99$), mencerminkan wilayah yang sedang dalam proses transisi pembangunan menuju tahap yang lebih maju.
+    \item \textbf{Klaster~3 (Maju):} Klaster dengan sentroid Dimensi~1 tertinggi, dicirikan oleh nilai skor kompromi positif yang kuat yang mencerminkan keunggulan relatif pada indikator-indikator utama. Klaster ini mengelompokkan 13 wilayah metropolitan: kelima kota administrasi DKI Jakarta, serta Kabupaten Bekasi, Kota Bogor, Kota Bandung, Kota Bekasi, Kota Depok, Kota Cimahi, Kota Tangerang, dan Kota Tangerang Selatan. Profil sentroid klaster ini unggul pada RLS, AHH, dan PDRB ADHK tertinggi, dengan PPM terendah di antara ketiga klaster. Sebelas dari 13 anggota ($84{,}6\%$) berkategori IPM ``Sangat Tinggi'' ($\geq 80$) menurut standar UNDP.
 \end{itemize}
 
-\subsection{\normalsize Matriks Transisi Klaster STATIS}
+\subsection{\normalsize Matriks Transisi Klaster STATIS} \label{subsec:trans_statis_bab4}
 
 pergeseran wilayah antar-klaster dari satu periode ke periode berikutnya dianalisis melalui matriks transisi klaster berbasis koordinat STATIS tahunan ($\mathbf{F}_k$) (lihat persamaan \ref{eq:skor_parsial_wilayah}). Berbeda dengan matriks transisi biplot yang tidak mempertimbangkan bobot temporal, matriks ini dibangun dari hasil K-Means pada ruang yang telah dipengaruhi oleh nilai $\alpha_k$ , sehingga perpindahan klaster yang terekam merupakan perpindahan yang bermakna secara struktural. Sebagai periode representatif, disajikan matriks transisi 2023 hingga 2024 untuk kedua skenario pembobotan.
 
@@ -760,29 +777,11 @@ Gambar~\ref{fig:trans_statis_map_2324} memperlihatkan perbandingan peta persebar
     \label{fig:trans_statis_map_2324}
 \end{figure}
 
-Elemen-elemen diagonal pada kedua matriks transisi memiliki nilai dominan, yang mengkonfirmasi stabilitas keanggotaan klaster yang tinggi sebagaimana diprediksikan oleh nilai koefisien RV yang besar ($>\AppRVMin{}$). Nilai koefisien RV yang tinggi antartahun (Sub-bab~\ref{subsec:rv_coef}) mengimplikasikan bahwa perubahan konfigurasi multivariate antar-wilayah bersifat inkremental, sehingga sebagian besar wilayah tetap mempertahankan posisi klasternya dari tahun ke tahun. Pergeseran lintas klaster yang teramati pada elemen off-diagonal, meskipun relatif kecil secara numerik, mencerminkan wilayah-wilayah yang mengalami transisi pembangunan yang bermakna, misalnya dampak pemulihan ekonomi pasca-pandemi pada 2022--2024 yang mendorong beberapa kabupaten di Jawa Barat bergerak dari Klaster~2 ke Klaster~3.
+Elemen-elemen diagonal pada kedua matriks transisi memiliki nilai dominan, yang mengonfirmasi stabilitas keanggotaan klaster yang tinggi sebagaimana diprediksikan oleh nilai koefisien RV yang besar ($>\AppRVMin{}$). Nilai koefisien RV yang tinggi antar-tahun (Tabel~\ref{tab:apprv_w}, Subbab~\ref{subsec:rv_coef_bab4}) mengimplikasikan bahwa perubahan konfigurasi multivariate antar-wilayah bersifat inkremental, sehingga sebagian besar wilayah tetap mempertahankan posisi klasternya dari tahun ke tahun. Periode 2023--2024 mencatat restrukturisasi klaster terbesar: \textbf{14 wilayah bergeser dari Klaster~2 ke Klaster~1} (Kepulauan Seribu, Sukabumi, Garut, Ciamis, Cirebon, Sumedang, Indramayu, Subang, Bandung Barat, Kota Tasikmalaya, Kota Banjar, Tangerang, Kota Cilegon, dan Kota Serang), serta \textbf{4 wilayah bergeser dari Klaster~3 ke Klaster~2} (Bekasi, Kota Bogor, Kota Sukabumi, dan Kota Cimahi). Sementara itu, 10 wilayah metropolitan inti (kelima kota DKI, Kota Bandung, Kota Bekasi, Kota Depok, Kota Tangerang, dan Kota Tangerang Selatan) tetap bertahan di Klaster~3, mengonfirmasi ketahanan struktural yang kokoh. Perpindahan ini mencerminkan pergeseran posisi \textit{relatif} antar-wilayah. Hal ini bukan penurunan nilai indikator yang sebenarnya, karena K-Means dijalankan ulang setiap tahun: sentroid setiap klaster dihitung ulang dari data tahun berjalan, sehingga wilayah yang capaiannya stagnan atau tumbuh lebih lambat dibanding wilayah-wilayah lain akan tergeser ke klaster yang lebih rendah meskipun kondisi aslinya tidak memburuk.
 
 \subsection{\normalsize Klaster Trajektori Keseluruhan}
 
-Selain pengelompokan tahunan, dilakukan pengelompokan berbasis trajektori keseluruhan selama 2020 hingga 2024 dengan menggunakan fitur koordinat gabungan dari semua tahun pada ruang kompromi. Pendekatan ini menghasilkan label klaster yang bersifat \textit{longitudinal}, yaitu mencerminkan posisi rata-rata dan pola pergeseran wilayah sepanjang periode pengamatan, bukan posisi pada satu tahun tertentu. Gambar~\ref{fig:dendro_compromise} menyajikan kurva elbow yang digunakan sebagai dasar penentuan jumlah klaster optimal dalam konteks trajektori keseluruhan ini.
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_real/scenario1/elbow_plot_2024.png}
-        \caption*{Elbow Plot 2024 (Skenario 1)}
-    \end{minipage} \hfill
-    \begin{minipage}{0.48\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{output_real/scenario2/elbow_plot_2024.png}
-        \caption*{Elbow Plot 2024 (Skenario 2)}
-    \end{minipage}
-    \caption{Penentuan Jumlah Klaster Optimal -- Metode Elbow (Tahun 2024)}
-    \label{fig:dendro_compromise}
-\end{figure}
-
-Dari sini terlihat bahwa jumlah klaster optimal untuk trajektori keseluruhan juga konsisten dengan hasil tahunan, yaitu $k = 3$. Dengan demikian, klaster trajektori keseluruhan dapat diinterpretasikan sebagai representasi yang lebih holistik dari pola pembangunan wilayah selama lima tahun, yang mengintegrasikan informasi temporal dan spasial secara simultan. Gambar~\ref{fig:cluster_traj} menyajikan scatter plot klaster trajektori pada ruang kompromi untuk kedua skenario.
+Selain pengelompokan tahunan, dilakukan pengelompokan berbasis trajektori keseluruhan selama 2020 hingga 2024 dengan menggunakan fitur koordinat gabungan dari semua tahun pada ruang kompromi. Pendekatan ini menghasilkan label klaster yang bersifat \textit{longitudinal}, yaitu mencerminkan posisi rata-rata dan pola pergeseran wilayah sepanjang periode pengamatan, bukan posisi pada satu tahun tertentu. Jumlah klaster optimal $k=3$ mengacu pada evaluasi kurva SSE dan dendrogram pada Subbab~\ref{subsec:penentuan_klaster_optimal}, yang menunjukkan titik patahan konsisten di $k=3$ pada seluruh tahun pengamatan. Dengan demikian, klaster trajektori keseluruhan dapat diinterpretasikan sebagai representasi yang lebih holistik dari pola pembangunan wilayah selama lima tahun, yang mengintegrasikan informasi temporal dan spasial secara simultan. Gambar~\ref{fig:cluster_traj} menyajikan scatter plot klaster trajektori pada ruang kompromi untuk kedua skenario.
 
 \begin{figure}[H]
     \centering
@@ -818,7 +817,7 @@ Dari Gambar~\ref{fig:cluster_traj} terlihat bahwa klaster trajektori keseluruhan
     \label{fig:compromise_map_traj}
 \end{figure}
 
-Kemudian dari Gambar~\ref{fig:compromise_map_traj} terlihat bahwa klaster trajektori keseluruhan memiliki distribusi geografis yang cukup konsisten dengan klaster tahunan, namun dengan beberapa wilayah yang mungkin berpindah klaster karena pola pergeseran mereka selama lima tahun. Misalnya, beberapa kabupaten di Jawa Barat yang berada di Klaster~2 pada tahun 2020 mungkin masuk ke Klaster~3 pada trajektori keseluruhan karena peningkatan yang konsisten selama periode tersebut. Distribusi proporsi wilayah pada setiap klaster divisualisasikan pada Gambar~\ref{fig:compromise_pie}.
+Kemudian dari Gambar~\ref{fig:compromise_map_traj} terlihat bahwa klaster trajektori keseluruhan memiliki distribusi geografis yang cukup konsisten dengan klaster tahunan, namun dengan beberapa perbedaan penting. Terdapat wilayah dengan klaster kompromi (trajektori) yang berbeda dari klaster STATIS tahunan 2024: \textbf{Kabupaten Bekasi, Kota Bogor, dan Kota Cimahi} termasuk Klaster~3 kompromi (berdasarkan Tabel~\ref{tab:app1compromclust}) namun bergeser ke Klaster~2 pada tahun 2024, mencerminkan moderasi kinerja pada tahun terakhir yang tidak cukup kuat untuk mengubah penilaian jangka-menengah. \textbf{Kota Sukabumi} berada di Klaster~2 kompromi meskipun sempat naik ke Klaster~3 pada 2023 sebelum kembali ke Klaster~2 di 2024, menunjukkan mobilitas naik yang bersifat temporer (Lihat Tabel~\ref{tab:app1transname2023x2024}). Perbedaan ini mengonfirmasi nilai klaster kompromi sebagai representasi holistik jangka menengah yang lebih stabil dan representatif dibandingkan klaster tahunan yang dapat terpengaruh fluktuasi satu periode. Distribusi proporsi wilayah pada setiap klaster divisualisasikan pada Gambar~\ref{fig:compromise_pie}.
 
 \begin{figure}[H]
     \centering
@@ -848,10 +847,12 @@ Tabel~\ref{tab:app1compromclust} dan Tabel~\ref{tab:app2compromclust} merinci an
 \section{\normalsize Analisis Komparatif Sembilan Jenis Perbandingan Klaster}
 %-----------------------------------------------------------------------------%
 
-Evaluasi komprehensif terhadap hasil pengelompokan dilakukan melalui sembilan jenis analisis perbandingan (\textit{comparative clustering analysis}) yang diorganisasikan dalam empat kategori: (i) pergeseran temporal berbasis metode yang berbeda (Perbandingan 1--2), (ii) kongruensi klaster antar-metode pada tahun yang sama (Perbandingan 3), (iii) validasi eksternal terhadap klasifikasi normatif IPM UNDP (Perbandingan 4--6), serta (iv) evaluasi konsistensi klaster kompromi terhadap klaster tahunan dan standar internasional (Perbandingan 7--9). Untuk setiap jenis perbandingan, disajikan satu periode representatif dari masing-masing skenario pembobotan.
+Evaluasi komprehensif terhadap hasil pengelompokan dilakukan melalui sembilan jenis analisis perbandingan (\textit{comparative clustering analysis}) yang diorganisasikan dalam empat kategori: (i) pergeseran temporal berbasis metode yang berbeda (Subbab~\ref{subsec:perb1}--\ref{subsec:trans_statis_bab4}), (ii) kongruensi klaster antar-metode pada tahun yang sama (Subbab~\ref{subsec:perb3}), (iii) validasi eksternal terhadap klasifikasi normatif IPM UNDP (Subbab~\ref{subsec:perb4}--\ref{subsec:perb6}), serta (iv) evaluasi konsistensi klaster kompromi terhadap klaster tahunan dan standar internasional (Subbab~\ref{subsec:perb7}--\ref{subsec:perb9}). Untuk setiap jenis perbandingan, disajikan satu periode representatif dari masing-masing skenario pembobotan.
+
+Sebelum menyusun matriks transisi, label klaster antar-tahun diselaraskan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955} berbasis matriks jarak \textit{centroid} (Persamaan~\ref{eq:dist_centroid}): centroid setiap klaster tahun dasar $c_{1i}$ dibandingkan dengan centroid klaster tahun uji $c_{2j}$, dan pemetaan bipartit berbobot minimum dipilih sehingga label yang diberikan konsisten antar-tahun. Penurunan contoh komputasi matriks jarak $3\times3$ beserta pemilihan penugasan optimal disajikan pada Subbab~\ref{subsubsec:tahap8bab3} Bab~3.
 
 %-------- Perbandingan 1 --------
-\subsection{\normalsize Perbandingan 1 --- Matriks Transisi Cluster Biplot Antar-Tahun}
+\subsection{\normalsize Perbandingan 1 --- Matriks Transisi Klaster Biplot Antar-Tahun} \label{subsec:perb1}
 
 Perbandingan pertama menelaah pergeseran wilayah pada ruang Biplot PCA tanpa pembobotan temporal (\textit{unweighted}), yakni berdasarkan dekomposisi $\mathbf{X}_k^T\mathbf{X}_k$ per tahun tanpa pengaruh bobot $\alpha_k$ dari analisis inter-struktur. Karena koordinat Biplot PCA bersifat skenario-bebas (tidak bergantung pada skema pembobotan wilayah atau indikator), matriks transisi ini merupakan referensi tunggal (\textit{baseline}) yang berlaku untuk kedua skenario. Hasil periode 2023--2024 disajikan sebagai representasi akhir periode pengamatan.
 
@@ -867,10 +868,10 @@ Gambar~\ref{fig:trans_biplot_map} memperlihatkan perbandingan peta klaster Biplo
     \label{fig:trans_biplot_map}
 \end{figure}
 
-Tingginya nilai elemen diagonal pada matriks transisi Biplot mengindikasikan bahwa posisi relatif wilayah dalam ruang PCA tahunan juga cukup stabil, meskipun tidak memperhitungkan struktur konsensus lintas tahun. Perbedaan antara stabilitas klaster Biplot dan klaster STATIS (Perbandingan 2) akan dikuantifikasi lebih lanjut pada Perbandingan~3.
+Tingginya nilai elemen diagonal pada matriks transisi Biplot mengindikasikan bahwa posisi relatif wilayah dalam ruang PCA tahunan juga cukup stabil, meskipun tidak memperhitungkan struktur konsensus lintas tahun. Perbedaan antara stabilitas klaster Biplot dan klaster STATIS (Subbab~\ref{subsec:trans_statis_bab4}) akan dikuantifikasi lebih lanjut pada Subbab~\ref{subsec:perb3}.
 
 %-------- Perbandingan 3 --------
-\subsection{\normalsize Perbandingan 3 --- Kongruensi Klaster Biplot vs STATIS per Tahun}
+\subsection{\normalsize Perbandingan 3 --- Kongruensi Klaster Biplot vs STATIS per Tahun} \label{subsec:perb3}
 
 Perbandingan ketiga mengukur sejauh mana label klaster yang dihasilkan oleh K-Means Biplot PCA (\textit{unweighted}) berbeda dari label klaster STATIS berbobot ($\mathbf{F}_k$) pada tahun yang sama. Perbedaan ini mencerminkan dampak kuantitatif penggabungan informasi inter-struktur ($\boldsymbol{\alpha}$) terhadap konfigurasi klaster. Disajikan tabulasi silang untuk tahun 2024 dari masing-masing skenario.
 
@@ -904,10 +905,10 @@ Gambar~\ref{fig:biplot_vs_statis_map_2024} memperlihatkan perbandingan distribus
     \label{fig:biplot_vs_statis_map_2024}
 \end{figure}
 
-Elemen-elemen diagonal yang dominan pada tabulasi silang mengindikasikan tingkat kongruensi yang tinggi antara kedua metode, mengkonfirmasi bahwa penggabungan bobot temporal oleh STATIS tidak mengubah struktur klaster secara fundamental. Perbedaan yang teramati pada elemen off-diagonal merepresentasikan wilayah-wilayah yang berada di batas pemisah antar-klaster, di mana pembobotan temporal STATIS berperan sebagai penyeimbang (\textit{stabilizer}) terhadap fluktuasi lokal tahunan.
+Elemen-elemen diagonal yang dominan pada tabulasi silang mengindikasikan tingkat kongruensi yang tinggi antara kedua metode, mengonfirmasi bahwa penggabungan bobot temporal oleh STATIS tidak mengubah struktur klaster secara fundamental. Perbedaan yang teramati pada elemen off-diagonal merepresentasikan wilayah-wilayah yang berada di batas pemisah antar-klaster, di mana pembobotan temporal STATIS berperan sebagai penyeimbang (\textit{stabilizer}) terhadap fluktuasi lokal tahunan.
 
 %-------- Perbandingan 4 --------
-\subsection{\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP}
+\subsection{\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP} \label{subsec:perb4}
 
 Perbandingan keempat merupakan \textit{baseline} normatif yang mengukur pergeseran wilayah berdasarkan klasifikasi baku UNDP: Sangat Tinggi ($\geq 80$), Tinggi ($70$--$79{,}99$), Sedang ($55$--$69{,}99$), dan Rendah ($< 55$). Matriks ini tidak bergantung pada metode klaster apapun, melainkan langsung bersumber dari nilai IPM tahunan, sehingga berfungsi sebagai acuan standar internasional. Karena nilai IPM merupakan besaran skalar yang sama untuk kedua skenario, matriks IPM untuk skenario~1 dan skenario~2 adalah ekuivalen; perbedaan antara kedua skenario hanya terletak pada format penyimpanan berkas.
 
@@ -937,10 +938,10 @@ Gambar~\ref{fig:ipm_trans_map_2324} memperlihatkan perbandingan distribusi geogr
     \label{fig:ipm_trans_map_2324}
 \end{figure}
 
-Dominasi elemen diagonal pada kedua matriks mengkonfirmasi tingginya persistensi kategori IPM, yaitu wilayah-wilayah cenderung bertahan pada kategori yang sama dari satu tahun ke tahun berikutnya. pergeseran ke arah kategori yang lebih tinggi (elemen sub-diagonal) mendominasi dibandingkan pergeseran ke arah kategori yang lebih rendah (elemen super-diagonal), yang mengindikasikan tren pembangunan manusia yang secara keseluruhan bersifat progresif selama 2020--2024.
+Dominasi elemen diagonal pada kedua matriks mengonfirmasi tingginya persistensi kategori IPM, yaitu wilayah-wilayah cenderung bertahan pada kategori yang sama dari satu tahun ke tahun berikutnya. pergeseran ke arah kategori yang lebih tinggi (elemen sub-diagonal) mendominasi dibandingkan pergeseran ke arah kategori yang lebih rendah (elemen super-diagonal), yang mengindikasikan tren pembangunan manusia yang secara keseluruhan bersifat progresif selama 2020--2024.
 
 %-------- Perbandingan 5 --------
-\subsection{\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM}
+\subsection{\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM} \label{subsec:perb5}
 
 Perbandingan kelima melaksanakan validasi eksternal (\textit{external validation}) terhadap klaster Biplot PCA dengan membandingkannya terhadap klasifikasi normatif IPM UNDP pada tahun yang sama. Tingginya kesesuaian antara klaster \textit{data-driven} dengan kategori institusional merupakan indikator validitas konstruk yang kuat. Disajikan tabulasi silang untuk tahun 2024.
 
@@ -970,12 +971,11 @@ Gambar~\ref{fig:biplot_vs_ipm_map_2024} memperlihatkan perbandingan distribusi g
     \label{fig:biplot_vs_ipm_map_2024}
 \end{figure}
 
-Korespondensi yang teramati antara Klaster~3 Biplot (maju) dengan kategori IPM ``Sangat Tinggi'' dan ``Tinggi'' merupakan bukti validitas konstruk yang mengkonfirmasi bahwa pemisahan klaster oleh PCA mencerminkan perbedaan pembangunan yang bermakna, bukan sekadar artefak matematis dari reduksi dimensi.
-
+Korespondensi antara klaster Biplot dengan kategori IPM UNDP merupakan bukti validitas konstruk yang mengonfirmasi bahwa pemisahan klaster oleh PCA mencerminkan perbedaan pembangunan yang bermakna, bukan sekadar konstruk semu dari proses reduksi dimensi. \textbf{Klaster~3 Biplot} menunjukkan kesesuaian sempurna dengan IPM ``Sangat Tinggi'': seluruh 10 anggotanya (Kota Jakarta Selatan, Timur, Pusat, Barat, Utara, Kota Bandung, Kota Bekasi, Kota Depok, Kota Tangerang, dan Kota Tangerang Selatan) berkategori IPM $\geq 80$, tanpa pengecualian. \textbf{Klaster~1 Biplot} sepenuhnya bebas dari kategori ``Sangat Tinggi'': 10 dari 21 anggotanya berkategori ``Sedang'' (Sukabumi, Cianjur, Garut, Tasikmalaya, Majalengka, Indramayu, Pangandaran, Pandeglang, Lebak, Serang) dan 11 lainnya berkategori ``Tinggi''. Korespondesi yang kuat di kedua kutub ini memvalidasi secara empiris bahwa pemisahan klaster Biplot mencerminkan perbedaan kapasitas pembangunan manusia yang nyata (Lihat Tabel~\ref{tab:app1crossname2024}).
 %-------- Perbandingan 6 --------
-\subsection{\normalsize Perbandingan 6 --- Validasi Eksternal Klaster STATIS Tahunan terhadap Kategori IPM}
+\subsection{\normalsize Perbandingan 6 --- Validasi Eksternal Klaster STATIS Tahunan terhadap Kategori IPM} \label{subsec:perb6}
 
-Perbandingan keenam melaksanakan validasi eksternal yang ekuivalen untuk klaster STATIS tahunan ($\mathbf{F}_k$), sehingga memungkinkan perbandingan langsung antara kualitas validasi eksternal metode Biplot (Perbandingan~5) dengan metode STATIS.
+Perbandingan keenam melaksanakan validasi eksternal yang ekuivalen untuk klaster STATIS tahunan ($\mathbf{F}_k$), sehingga memungkinkan perbandingan langsung antara kualitas validasi eksternal metode Biplot (Subbab~\ref{subsec:perb5}) dengan metode STATIS.
 
 \subsubsection*{Skenario 1 (Tahun 2024)}
 \input{output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex}
@@ -1003,12 +1003,12 @@ Gambar~\ref{fig:statis_vs_ipm_map_2024} memperlihatkan perbandingan distribusi g
     \label{fig:statis_vs_ipm_map_2024}
 \end{figure}
 
-Perbandingan antara Tabel Perbandingan~5 dan~6 mengindikasikan bahwa klaster STATIS, yang mengintegrasikan bobot temporal $\alpha_k$, cenderung menghasilkan kongruensi yang sedikit lebih tinggi terhadap kategori IPM dibandingkan klaster Biplot PCA. Hal ini dapat diinterpretasikan sebagai konsekuensi dari pembobotan STATIS yang meredam anomali tahun tertentu (misalnya gangguan pandemi 2020--2021), sehingga klaster yang terbentuk lebih merepresentasikan kondisi struktural jangka menengah yang lebih berkorespondensi dengan kategorisasi IPM.
+Perbandingan antara hasil pada Subbab~\ref{subsec:perb5} dan~\ref{subsec:perb6} mengindikasikan bahwa klaster STATIS, yang mengintegrasikan bobot temporal $\alpha_k$, cenderung menghasilkan kongruensi yang sedikit lebih tinggi terhadap kategori IPM dibandingkan klaster Biplot PCA. Hal ini dapat diinterpretasikan sebagai konsekuensi dari pembobotan STATIS yang meredam anomali tahun tertentu (misalnya gangguan pandemi 2020--2021), sehingga klaster yang terbentuk lebih merepresentasikan kondisi struktural jangka menengah yang lebih berkorespondensi dengan kategorisasi IPM.
 
 %-------- Perbandingan 7 --------
-\subsection{\normalsize Perbandingan 7 --- Konsistensi Klaster Kompromi terhadap Klaster Biplot per Tahun}
+\subsection{\normalsize Perbandingan 7 --- Konsistensi Klaster Kompromi terhadap Klaster Biplot per Tahun} \label{subsec:perb7}
 
-Perbandingan ketujuh mengevaluasi seberapa konsisten klaster berbasis trajektori keseluruhan (Kompromi STATIS, $k_{\text{traj}}$) dengan klaster Biplot PCA tahunan ($k_{\text{biplot},t}$). Tingginya kongruensi mengkonfirmasi bahwa klaster kompromi merupakan representasi yang stabil dari keanggotaan klaster sepanjang periode pengamatan, bukan hanya kondisi satu tahun tertentu.
+Perbandingan ketujuh mengevaluasi seberapa konsisten klaster berbasis trajektori keseluruhan (Kompromi STATIS, $k_{\text{traj}}$) dengan klaster Biplot PCA tahunan ($k_{\text{biplot},t}$). Tingginya kongruensi mengonfirmasi bahwa klaster kompromi merupakan representasi yang stabil dari keanggotaan klaster sepanjang periode pengamatan, bukan hanya kondisi satu tahun tertentu.
 
 \subsubsection*{Skenario 1 (Tahun 2024)}
 \input{output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex}
@@ -1037,7 +1037,7 @@ Gambar~\ref{fig:comp_vs_biplot_map_2024} memperlihatkan perbandingan distribusi 
 \end{figure}
 
 %-------- Perbandingan 8 --------
-\subsection{\normalsize Perbandingan 8 --- Konsistensi Klaster Kompromi terhadap Klaster STATIS Tahunan}
+\subsection{\normalsize Perbandingan 8 --- Konsistensi Klaster Kompromi terhadap Klaster STATIS Tahunan} \label{subsec:perb8}
 
 Perbandingan kedelapan merupakan analisis konsistensi yang paling fundamental dalam kerangka STATIS, yaitu evaluasi kesesuaian antara klaster kompromi (yang dibangun dari seluruh periode) dengan klaster STATIS tahunan. Nilai kongruensi yang tinggi merupakan bukti empiris bahwa struktur kompromi $\mathbf{W}_c = \sum_k \alpha_k \mathbf{W}_k$ berhasil merangkum informasi temporal secara representatif.
 
@@ -1070,7 +1070,7 @@ Gambar~\ref{fig:comp_vs_statis_map_2024} memperlihatkan perbandingan distribusi 
 Dominasi elemen diagonal memvalidasi bahwa klaster kompromi STATIS bukanlah sekadar rata-rata aritmetika temporal, melainkan representasi yang secara struktural konsisten terhadap kondisi tahunan. Ketidakkonsistenan minor pada elemen off-diagonal umumnya berasal dari wilayah-wilayah yang mengalami perubahan status klaster pada tahun tertentu, khususnya pada 2020--2021 akibat guncangan pandemi yang sempat menggeser posisi beberapa wilayah perbatasan klaster.
 
 %-------- Perbandingan 9 --------
-\subsection{\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM}
+\subsection{\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM} \label{subsec:perb9}
 
 Perbandingan kesembilan merupakan validasi eksternal final yang membandingkan klaster kompromi STATIS, sebagai representasi kondisi pembangunan manusia selama 2020--2024 secara keseluruhan, dengan kategori IPM UNDP per tahun. Korespondensi yang tinggi antara klaster longitudinal \textit{data-driven} dengan kategori institusional normatif merupakan validasi eksternal paling kuat atas relevansi substantif metode STATIS dalam konteks kebijakan pembangunan manusia.
 
@@ -1100,10 +1100,11 @@ Gambar~\ref{fig:comp_vs_ipm_map_2024} memperlihatkan perbandingan distribusi geo
     \label{fig:comp_vs_ipm_map_2024}
 \end{figure}
 
+Berdasarkan Tabel~\ref{tab:app1comp_ipm_name_2024}, pola kesesuaian antar-kelompok adalah sebagai berikut:
 \begin{itemize}
-    \item \textbf{Klaster~3 (Maju) dan Kategori ``Sangat Tinggi'':} Hampir seluruh anggota Klaster~3 kompromi berasal dari wilayah yang secara konsisten berkategori IPM ``Sangat Tinggi'' ($\geq 80$) atau ``Tinggi'' ($70$--$79{,}99$), yaitu seluruh kotamadya DKI Jakarta dan kota-kota besar di Jawa Barat (Kota Bandung, Kota Depok, Kota Bekasi). Kongruensi ini memvalidasi secara empiris bahwa pemisahan dimensi kompromi ($\mathbf{F}_c$) mencerminkan hierarki pembangunan yang konsisten dengan standar internasional.
-    \item \textbf{Klaster~1 (Tertinggal) dan Kategori ``Sedang'':} Klaster~1 kompromi didominasi oleh wilayah berstatus IPM ``Sedang'' ($55$--$69{,}99$), terutama kabupaten-kabupaten di Banten bagian selatan (Lebak, Pandeglang) dan beberapa kabupaten di Priangan Timur Jawa Barat (Garut, Ciamis, Tasikmalaya). Kesesuaian ini menunjukkan bahwa posisi klaster dalam ruang kompromi merupakan representasi yang valid secara substantif dari kondisi pembangunan struktural jangka menengah.
-    \item \textbf{Klaster~2 (Berkembang) yang Heterogen:} Klaster~2 kompromi merupakan kelompok yang paling heterogen dari perspektif kategori IPM, menghimpun wilayah dari kategori ``Tinggi'' hingga ``Sedang''. Hal ini konsisten dengan karakteristik klaster~2 sebagai kelompok transisi yang mencakup wilayah-wilayah dengan pola pertumbuhan yang beragam.
+    \item \textbf{Klaster~3 (Maju) dan Kategori IPM Atas:} Sebelas dari 13 anggota Klaster~3 kompromi berkategori IPM ``Sangat Tinggi'' ($\geq 80$): kelima kota DKI Jakarta, Kota Bandung, Kota Bekasi, Kota Depok, Kota Cimahi, Kota Tangerang, dan Kota Tangerang Selatan. Dua anggota lainnya yakni Kabupaten Bekasi dan Kota Bogor yang berkategori ``Tinggi'', ini mencerminkan wilayah urban-pinggiran dengan capaian tinggi namun belum mencapai ambang batas $\geq 80$. Presisi Klaster~3 kompromi terhadap IPM ``Sangat Tinggi'' sebesar $84{,}6\%$ (11 dari 13) merupakan bukti validitas konstruk yang sangat kuat bahwa pemisahan dimensi kompromi ($\mathbf{F}_c$) mencerminkan hierarki pembangunan yang konsisten dengan standar internasional.
+    \item \textbf{Klaster~2 (Berkembang) yang Homogen:} Klaster~2 kompromi justru bersifat cukup homogen dari sisi IPM: 15 dari 16 anggotanya berkategori IPM ``Tinggi'' ($70$--$79{,}99$), mewakili hampir seluruh koridor industri dan wilayah penyangga. Hanya Kabupaten Sukabumi yang berkategori ``Sedang'', namun profil multivariat gabungannya tetap menempatkannya lebih dekat ke kelompok berkembang daripada kelompok tertinggal. Homogenitas ini menegaskan bahwa Klaster~2 secara substantif merepresentasikan wilayah-wilayah dalam koridor IPM ``Tinggi'' yang secara struktural belum mencapai capaian wilayah metropolitan.
+    \item \textbf{Klaster~1 (Tertinggal) dan Kategori IPM Bawah:} Klaster~1 kompromi didominasi oleh 9 wilayah berkategori IPM ``Sedang'' ($55$--$69{,}99$): Cianjur, Garut, Tasikmalaya, Majalengka, Indramayu, Pangandaran, Pandeglang, Lebak, dan Serang, seluruhnya merupakan kabupaten pedalaman atau rural di Banten Selatan dan Jawa Barat Selatan. Tiga anggota lainnya, yaitu Kepulauan Seribu, Ciamis, dan Kota Banjar memiliki kategori ``Tinggi'' namun tetap terklasifikasikan ke Klaster~1 karena profil multivariat gabungan 11 indikator yang menempatkan mereka lebih dekat ke kelompok tertinggal. Kesesuaian ini menunjukkan bahwa posisi klaster dalam ruang kompromi merupakan representasi yang valid secara substantif dari kondisi pembangunan struktural jangka menengah.
 \end{itemize}
 
 Korespondensi tinggi antara klaster kompromi \textit{data-driven} dengan kategori normatif UNDP merupakan validasi eksternal yang memperkuat bahwa metode STATIS mampu mengekstrak struktur laten pembangunan manusia yang bermakna secara kebijakan dari data longitudinal multivariat.
@@ -1112,7 +1113,7 @@ Korespondensi tinggi antara klaster kompromi \textit{data-driven} dengan kategor
 \section{\normalsize Uji Autokorelasi Spasial (Global Moran's~\texorpdfstring{$I$}{I})}
 %-----------------------------------------------------------------------------%
 
-Sebagai tahap lanjutan, dilakukan uji autokorelasi spasial global menggunakan statistik Moran's~$I$ untuk mendeteksi apakah terdapat pola pengelompokan geografis yang signifikan pada skor kompromi. Penghitungan mengacu pada Persamaan~(3.7) dan~(3.8) di Bab~3.
+Sebagai tahap lanjutan, dilakukan uji autokorelasi spasial global menggunakan statistik Moran's~$I$ untuk mendeteksi apakah terdapat pola pengelompokan geografis yang signifikan pada skor kompromi. Penghitungan mengacu pada Persamaan~\ref{eq:moran_i} di Bab~2, dengan prosedur inferensi permutasi yang diuraikan pada Bab~3.
 
 \subsubsection*{Skenario 1: ACT Klasik}
 \input{output_real/scenario1/output_moran.tex}
@@ -1126,9 +1127,11 @@ Hasil penghitungan menunjukkan:
     \item \textbf{Skenario 2 (Dual STATIS):} Moran's $I = \AppTwoMoranI{}$, $p\text{-value} = \AppTwoMoranP{}$, \textit{\AppTwoMoranInterp{}}
 \end{itemize}
 
+Kedua skenario menghasilkan $p\text{-value} > 0{,}05$, sehingga \textbf{tidak terdapat autokorelasi spasial yang signifikan} pada skor kompromi PC1. Hasil ini konsisten dengan karakteristik data yang digunakan: skor kompromi mencerminkan posisi relatif kabupaten/kota dalam ruang multivariat pembangunan manusia, bukan besaran nilai geografis yang secara inheren bersifat spasial. Ketiadaan autokorelasi spasial menunjukkan bahwa kinerja pembangunan manusia di kawasan Banten--DKI Jakarta--Jawa Barat \textbf{lebih ditentukan oleh kapabilitas internal dan kebijakan sektoral masing-masing wilayah} daripada oleh efek kedekatan geografis (\textit{spillover} spasial). Pola pengelompokan yang ditemukan (Klaster Tertinggal--Berkembang--Maju) adalah kluster statistik (berbasis kemiripan profil indikator), bukan kluster geografis yang tersebar membentuk \textit{hot spot} atau \textit{cold spot} dalam pengertian autokorelasi spasial klasik \citep{anselin1988}.
+
 \section{\normalsize Analisis Hotspot (Local Moran's~\texorpdfstring{$I$}{I})}
 
-Nilai Moran's~$I$ yang positif dan signifikan ($I > E(I)$, $p < 0{,}05$) mengindikasikan bahwa terdapat \textbf{pola pengelompokan spasial positif} (\textit{positive spatial clustering}). Artinya, wilayah-wilayah dengan skor kompromi tinggi cenderung berkonsentrasi di lokasi yang berdekatan secara geografis (misalnya kawasan Jabodetabek dan Bandung Raya), demikian pula wilayah-wilayah dengan skor rendah cenderung berada di lokasi yang berdekatan (misalnya kawasan selatan Banten dan Priangan Timur). Temuan ini mengkonfirmasi bahwa faktor kedekatan geografis atau \textit{neighborhood effect} memainkan peran yang signifikan dalam menentukan kinerja pembangunan manusia suatu wilayah.
+Apabila nilai Moran's~$I$ positif dan signifikan ($I > E(I)$, $p < 0{,}05$), hal ini mengindikasikan terdapat \textbf{pola pengelompokan spasial positif} (\textit{positive spatial clustering}): wilayah dengan skor kompromi tinggi cenderung bertetangga dengan wilayah berskor tinggi, dan demikian sebaliknya. Namun, karena $p\text{-value} > 0{,}05$ pada kedua skenario, tidak terdapat bukti statistik yang cukup untuk mengklaim adanya \textit{hotspot} atau \textit{coldspot} geografis yang bermakna pada data ini. Klaster yang ditemukan (Tertinggal, Berkembang, Maju) adalah kluster statistik berbasis kesamaan profil multivariat---bukan hasil autokorelasi geografis. Oleh karena itu, analisis Local Moran's~$I$ untuk mengidentifikasi hotspot lokal tidak relevan secara inferensial, dan kebijakan intervensi sebaiknya diarahkan berdasarkan profil kapabilitas internal wilayah, bukan semata-mata kedekatan geografisnya.
 
 %-----------------------------------------------------------------------------%
 % --- 4.10 ---
@@ -1142,13 +1145,13 @@ Berdasarkan keseluruhan analisis yang telah dilakukan, berikut adalah rangkuman 
 Penelitian ini telah berhasil mencapai lima tujuan utama yang dirumuskan pada Bab~1 sebagai berikut:
 
 \begin{enumerate}
-    \item \textbf{Struktur Kompromi (Tujuan 1):} Melalui metode STATIS, telah berhasil dibentuk sebuah struktur kompromi yang merepresentasikan pola hubungan multivariat dua belas indikator pembangunan. Dimensi~1 kompromi berhasil merangkum $\AppDimOnePct{}\%$ variansi total, yang menunjukkan kontribusi dominan dari indikator ekonomi (PDRB) dan kualitas manusia (IPM). Hal ini memberikan gambaran umum yang stabil mengenai hierarki pembangunan di wilayah Banten, DKI Jakarta, dan Jawa Barat.
+    \item \textbf{Struktur Kompromi (Tujuan 1):} Melalui metode STATIS, telah berhasil dibentuk sebuah struktur kompromi yang merepresentasikan pola hubungan multivariat sebelas indikator pembangunan. Dimensi~1 kompromi berhasil merangkum $\AppDimOnePct{}\%$ variansi total, yang menunjukkan kontribusi dominan dari indikator ekonomi (PDRB) dan kualitas manusia (IPM). Hal ini memberikan gambaran umum yang stabil mengenai hierarki pembangunan di wilayah Banten, DKI Jakarta, dan Jawa Barat.
     
     \item \textbf{Keabsahan Dinamika Temporal (Tujuan 2):} Uji stabilitas melalui permutasi menunjukkan hasil yang signifikan ($p = \AppPValuePerm{}$), membuktikan bahwa meskipun terdapat fluktuasi tahunan (terutama akibat pandemi), struktur hubungan antar-indikator yang ditemukan benar-benar ada secara statistik dan tetap kokoh sebagai landasan analisis spasio-temporal.
     
-    \item \textbf{Analisis Lintasan/Trajektori (Tujuan 3):} Visualisasi \textit{Dynamic Biplot} secara efektif menggambarkan lintasan pergeseran 41 kabupaten/kota. Temuan utama menunjukkan adanya pola \textit{V-Shape Rebound} pada wilayah metropolitan, di mana terjadi penurunan pada masa krisis (2020) yang kemudian diikuti pemulihan masif menuju tahun 2024.
+    \item \textbf{Analisis Lintasan/Trajektori (Tujuan 3):} Visualisasi \textit{Dynamic Biplot} secara efektif menggambarkan lintasan pergeseran 41 kabupaten/kota selama 2020--2024 pada Gambar~\ref{fig:traj_overview}. Tiga pola dominan teridentifikasi: (i) \textbf{Pemulihan V-shape} pada wilayah Klaster~3 metropolitan seperti Kota Tangerang Selatan mencatat peningkatan PC1 terbesar ($+0{,}85$ poin antara 2020 dan 2024), diikuti Kota Bekasi ($+0{,}39$) dan Kota Jakarta Pusat ($+0{,}26$); (ii) \textbf{Progresif bertahap} pada beberapa wilayah penyangga seperti Kota Sukabumi yang berhasil naik dari Klaster~2 ke Klaster~3 pada 2023; dan (iii) \textbf{Stagnasi dan penurunan relatif} pada wilayah Klaster~1 seperti Kabupaten Pangandaran (PC1 turun $-1{,}37$ poin) dan Garut ($-0{,}61$), yang skor PC1-nya justru semakin jauh dari skor PC1 wilayah-wilayah Klaster~3. Hal ini menandakan kesenjangan pembangunan yang melebar, bukan menyempit, selama lima tahun pengamatan.
     
-    \item \textbf{Pengelompokan dan Migrasi Wilayah (Tujuan 4):} Pengelompokan berbasis \textit{Cluster} K-Means ($k=3$) dan analisis matriks transisi mengungkap adanya tiga kelompok wilayah yang sangat kontras (Maju, Berkembang, dan Tertinggal). Mayoritas wilayah menunjukkan stabilitas posisi (elemen diagonal tinggi), namun terdapat migrasi positif pada beberapa kabupaten yang berhasil naik kategori seiring masa pemulihan.
+    \item \textbf{Pengelompokan dan Migrasi Wilayah (Tujuan 4):} Pengelompokan berbasis K-Means ($k=3$) mengungkap tiga kelompok wilayah yang berbeda secara struktural (Tertinggal, Berkembang, Maju). Matriks transisi menunjukkan: nol perpindahan pada 2020--2021 (stabilitas sempurna di tahun pertama pandemi); pemulihan selektif 2022--2023 dengan 6 wilayah naik K1$\to$K2 (antara lain Garut, Ciamis, Kota Cilegon) dan 1 wilayah naik K2$\to$K3 (Kota Sukabumi); serta restrukturisasi terbesar pada 2023--2024 dengan 14 wilayah turun K2$\to$K1 (termasuk Tangerang, Kota Serang, Cirebon, Bandung Barat) dan 4 wilayah turun K3$\to$K2 (Bekasi, Kota Bogor, Kota Sukabumi, Kota Cimahi). Sementara itu, 10 wilayah metropolitan inti (5 kota DKI beserta Kota Bandung, Kota Bekasi, Kota Depok, Kota Tangerang, Kota Tangerang Selatan) tetap bertahan di Klaster~3 sepanjang 2020--2024, mengonfirmasi ketahanan struktural yang kokoh pada wilayah-wilayah tersebut.
     
     \item \textbf{Platform Eksplorasi Interaktif (Tujuan 5):} Seluruh hasil penghitungan dan visualisasi ini telah diintegrasikan ke dalam naskah bab ini, yang merupakan representasi statis dari aplikasi berbasis web (Dash/Plotly) yang dikembangkan. Dashboard tersebut memungkinkan pengguna melakukan pemantauan indikator secara mandiri dan intuitif.
 \end{enumerate}

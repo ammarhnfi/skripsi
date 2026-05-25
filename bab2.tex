@@ -45,7 +45,7 @@ Angka Harapan Hidup (AHH) perempuan adalah perkiraan rata-rata jumlah tahun hidu
 Indeks Pembangunan Gender (IPG) adalah rasio capaian IPM perempuan terhadap IPM laki-laki. IPG mengukur kesenjangan gender dalam dimensi kesehatan, pendidikan, dan standar hidup. Nilai IPG sebesar 100 menunjukkan kesetaraan sempurna antara laki-laki dan perempuan, sedangkan nilai yang lebih rendah menunjukkan adanya kesenjangan yang merugikan perempuan \citep{bpsikr2025}.
 
 \subsection{\normalsize Gini Ratio (GR)}
-Gini Ratio adalah ukuran tingkat ketimpangan distribusi pengeluaran atau pendapatan penduduk. Nilai Gini Ratio berkisar antara 0 dan 1: nilai 0 berarti pemerataan sempurna (setiap orang memiliki pengeluaran yang sama), sedangkan nilai 1 berarti ketimpangan sempurna (satu orang menguasai seluruh pengeluaran). Gini Ratio yang tinggi menandakan tingginya kesenjangan ekonomi antar kelompok penduduk dalam suatu wilayah \citep{bpsikr2025}.
+Gini Ratio adalah ukuran tingkat ketimpangan distribusi pengeluaran atau pendapatan penduduk. Nilai Gini Ratio berada di antara 0 dan 1: nilai 0 berarti pemerataan sempurna (setiap orang memiliki pengeluaran yang sama), sedangkan nilai 1 berarti ketimpangan sempurna (satu orang menguasai seluruh pengeluaran). Gini Ratio yang tinggi menandakan tingginya kesenjangan ekonomi antar kelompok penduduk dalam suatu wilayah \citep{bpsikr2025}.
 
 \subsection{\normalsize Jumlah Penduduk (JP)}
 Jumlah Penduduk (JP) merupakan banyaknya jiwa yang mendiami suatu wilayah administratif pada suatu titik waktu tertentu, sebagaimana dicatat melalui Sensus Penduduk maupun estimasi antarsensus yang diselenggarakan oleh Badan Pusat Statistik \citep{bpsikr2025}. Dalam penelitian ini, JP \textbf{tidak digunakan sebagai indikator analisis} dalam metode STATIS, melainkan berperan sebagai \textbf{basis pembentukan bobot demografis} ($m_i$). Bobot ini mengintegrasikan ukuran populasi setiap wilayah ke dalam analisis multivariat sehingga wilayah dengan penduduk lebih besar memberikan kontribusi yang proporsional terhadap struktur rata-rata (kontribusi ini dinamakan kompromi), dan wilayah berpenduduk kecil tidak mengubah hasil analisis multivariat secara berlebihan \citep{lavit94}.
@@ -246,7 +246,7 @@ Statistik Kaiser-Meyer-Olkin (KMO) dikembangkan oleh \citet{kaiser1970, kaiser19
   \begin{equation} \label{eq:kmo}
     KMO = \frac{\displaystyle\sum_{j \neq k} r_{jk}^2}{\displaystyle\sum_{j \neq k} r_{jk}^2 + \displaystyle\sum_{j \neq k} r_{jk.\text{parsial}}^2}
   \end{equation}
-  Nilai KMO berkisar antara 0 dan 1. Semakin besar nilai KMO, semakin kecil jumlah kuadrat korelasi parsial (penyebut) relatif terhadap jumlah kuadrat korelasi bivariate (pembilang). Hal ini mengindikasikan bahwa indikator-indikator saling berbagi faktor laten yang kuat.
+  Nilai KMO berada di antara 0 dan 1. Semakin besar nilai KMO, semakin kecil jumlah kuadrat korelasi parsial (penyebut) relatif terhadap jumlah kuadrat korelasi bivariate (pembilang). Hal ini mengindikasikan bahwa indikator-indikator saling berbagi faktor laten yang kuat.
 \end{definition}
 
 Selain statistik KMO keseluruhan, \citet{kaiser1974} mendefinisikan Measure of Sampling Adequacy ($MSA_j$) untuk setiap indikator ke-$j$:
@@ -261,14 +261,14 @@ Interpretasi nilai KMO dan $MSA_j$ menurut \citet{kaiser1974} dan \citet{hair201
 \caption{Kriteria Interpretasi Nilai KMO}\label{tab:kmo-interpretation}
 \begin{tabular}{|c|c|}
 \hline
-\textbf{Nilai KMO} & \textbf{Interpretasi} \\
+\textbf{Nilai KMO (x)} & \textbf{Interpretasi} \\
 \hline
-$0{,}90 \leq KMO \leq 1{,}00$ & Marvelous (Luar Biasa) \\
-$0{,}80 \leq KMO < 0{,}90$ & Meritorious (Sangat Baik) \\
-$0{,}70 \leq KMO < 0{,}80$ & Middling (Cukup Baik) \\
-$0{,}60 \leq KMO < 0{,}70$ & Mediocre (Biasa) \\
-$0{,}50 \leq KMO < 0{,}60$ & Miserable (Buruk, namun dapat diterima) \\
-$KMO < 0{,}50$ & Unacceptable (Tidak diterima) \\
+$0{,}90 \leq x \leq 1{,}00$ & Marvelous (Luar Biasa) \\
+$0{,}80 \leq x < 0{,}90$ & Meritorious (Sangat Baik) \\
+$0{,}70 \leq x < 0{,}80$ & Middling (Cukup Baik) \\
+$0{,}60 \leq x < 0{,}70$ & Mediocre (Biasa) \\
+$0{,}50 \leq x < 0{,}60$ & Miserable (Buruk, namun dapat diterima) \\
+$x < 0{,}50$ & Unacceptable (Tidak diterima) \\
 \hline
 \end{tabular}
 \end{table}
@@ -370,7 +370,11 @@ Selain dekomposisi, konsep \textit{trace} matriks juga menjadi fundamental, khus
   Untuk matriks simetris semi-definit positif $\mathbf{W}_c$ (seperti matriks kompromi STATIS), SVD setara dengan dekomposisi spektral: nilai singular $\sigma_i$ sama dengan nilai eigen $\lambda_i$ dan $\mathbf{U} = \mathbf{V}$.
 \end{definition}
 
-SVD memiliki kestabilan numerik yang lebih baik dibandingkan dekomposisi eigen langsung. Oleh karena itu lebih sering digunakan dalam implementasi komputasional. Skor kompromi STATIS ($\mathbf{F}_c$) diperoleh dari:
+\begin{remark}[Ekuivalensi SVD dan Eigendekomposisi untuk Matriks Simetris \textit{Positive Semi-Definite} (PSD)]
+  Untuk matriks simetris semi-definit positif $\mathbf{A} = \mathbf{A}^T$ dengan $\mathbf{v}^T\mathbf{A}\mathbf{v} \ge 0$ untuk semua $\mathbf{v}$, berlaku identitas: jika $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ adalah dekomposisi spektral (dengan $\boldsymbol{\Lambda} = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$, $\lambda_i \ge 0$, dan $\mathbf{Q}$ ortogonal), maka $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ sudah merupakan SVD dengan $\mathbf{U} = \mathbf{V} = \mathbf{Q}$ dan $\mathbf{\Sigma} = \boldsymbol{\Lambda}$ (nilai singular = nilai eigen). Ini karena nilai singular suatu matriks didefinisikan sebagai akar kuadrat nilai eigen dari $\mathbf{A}^T\mathbf{A} = \mathbf{A}^2$; untuk matriks PSD, $\sqrt{\lambda_i(\mathbf{A}^2)} = \sqrt{\lambda_i^2} = \lambda_i = \sigma_i$. Akibatnya, dalam implementasi komputasional penelitian ini, \texttt{numpy.linalg.eigh} (eigendekomposisi untuk matriks Hermitian/simetris) dan \texttt{numpy.linalg.svd} menghasilkan hasil yang secara aljabar identik untuk $\mathbf{W}_c$.
+\end{remark}
+
+SVD memiliki kestabilan numerik yang lebih baik dibandingkan dekomposisi eigen langsung untuk matriks nonsimetris. Untuk $\mathbf{W}_c$ yang simetris PSD, keduanya setara. Skor kompromi STATIS ($\mathbf{F}_c$) diperoleh dari:
 \begin{equation}
   \mathbf{F}_c = \mathbf{U} \sqrt{\mathbf{S}}
 \end{equation}
@@ -388,7 +392,7 @@ Korelasi Pearson adalah ukuran statistik yang mengkuantifikasi kekuatan dan arah
   \begin{equation}
     r_{xy} = \frac{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})}{\sqrt{\displaystyle\sum_{i=1}^{n}(x_i - \bar{x})^2} \cdot \sqrt{\displaystyle\sum_{i=1}^{n}(y_i - \bar{y})^2}}
   \end{equation}
-  Nilai $r_{xy}$ berkisar antara $-1$ dan $1$:
+  Nilai $r_{xy}$ berada  di antara $-1$ dan $1$:
   \begin{itemize}
     \item $r_{xy} = 1$: korelasi positif sempurna (ketika $x$ naik, $y$ naik proporsional).
     \item $r_{xy} = -1$: korelasi negatif sempurna (ketika $x$ naik, $y$ turun proporsional).
@@ -483,6 +487,14 @@ Elemen-elemen dalam $\mathbf{W}_k$ merepresentasikan kemiripan antar-objek pada 
   Elemen $\mathbf{W}_k[i,j]$ yang bernilai besar menunjukkan bahwa objek ke-$i$ dan objek ke-$j$ memiliki profil indikator yang sangat mirip pada situasi ke-$k$, sedangkan nilai yang kecil menunjukkan perbedaan karakteristik yang mencolok.
 \end{remark}
 
+\begin{remark}[Peran $\mathbf{D}$ dalam $\mathbf{W}_k$ dan Ekuivalensi Komputasional]
+  Matriks bobot $\mathbf{D}$ tidak muncul secara eksplisit dalam $\mathbf{W}_k = \mathbf{Z}_k\mathbf{Z}_k^T$ karena $\mathbf{D}$ masuk melalui produk skalar Hilbert--Schmidt pada tahap inter-struktur: $H_{kk'} = \mathrm{tr}(\mathbf{W}_k\mathbf{D}\mathbf{W}_{k'}\mathbf{D})$ \citep{lavit94}. Secara komputasional, ekspresi ini setara dengan mendefinisikan $\widetilde{\mathbf{W}}_k = \mathbf{D}^{1/2}\mathbf{Z}_k\mathbf{Z}_k^T\mathbf{D}^{1/2} = (\mathbf{D}^{1/2}\mathbf{Z}_k)(\mathbf{D}^{1/2}\mathbf{Z}_k)^T$, sehingga:
+  \[
+    \mathrm{tr}(\widetilde{\mathbf{W}}_k\,\widetilde{\mathbf{W}}_{k'}) = \mathrm{tr}(\mathbf{D}^{1/2}\mathbf{Z}_k\mathbf{Z}_k^T\mathbf{D}\,\mathbf{Z}_{k'}\mathbf{Z}_{k'}^T\mathbf{D}^{1/2}) = \mathrm{tr}(\mathbf{W}_k\mathbf{D}\mathbf{W}_{k'}\mathbf{D}) = H_{kk'}
+  \]
+  Kedua formulasi menghasilkan nilai $H_{kk'}$ yang identik. Dalam implementasi komputasional penelitian ini, digunakan bentuk $\widetilde{\mathbf{W}}_k$ karena lebih efisien secara numerik (perkalian matriks biasa tanpa perlu menyertakan $\mathbf{D}$ secara eksplisit pada setiap langkah).
+\end{remark}
+
 \subsection{\normalsize Tahap 2: Inter-struktur}
 
 Setelah representasi $\mathbf{W}_k$ diperoleh untuk setiap situasi, langkah selanjutnya adalah mengukur seberapa mirip konfigurasi antar-situasi. Secara aljabar, matriks simetris $\mathbf{W}_k$ dan $\mathbf{W}_{k'}$ dilengkapi dengan produk skalar Hilbert--Schmidt $(\mathbf{W}_k\,|\,\mathbf{W}_{k'}) = \mathrm{tr}(\mathbf{W}_k \mathbf{D} \mathbf{W}_{k'} \mathbf{D})$ \citep{lavit94,oliveira2024}. Produk ini membentuk \textbf{matriks interstruktur} berukuran $K \times K$:
@@ -498,7 +510,7 @@ Untuk interpretasi data yang telah terstandardisasi (nilai diagonal menjadi 1), 
     RV(\mathbf{W}_k, \mathbf{W}_{k'}) = \frac{\mathrm{tr}(\mathbf{W}_k \mathbf{D} \mathbf{W}_{k'} \mathbf{D})}{\sqrt{\mathrm{tr}((\mathbf{W}_k \mathbf{D})^2) \, \mathrm{tr}((\mathbf{W}_{k'} \mathbf{D})^2)}}
     = \frac{H_{kk'}}{\sqrt{H_{kk}\,H_{k'k'}}}.
   \end{equation}
-  Nilai $RV$ berkisar antara 0 dan 1. Nilai $RV$ yang mendekati 1 mengindikasikan bahwa konfigurasi antar-objek pada situasi ke-$k$ sangat mirip dengan situasi ke-$k'$. Koefisien ini secara geometris merupakan kosinus sudut antara dua matriks dalam ruang vektor matriks terbobot.
+  Nilai $RV$ berada di antara 0 dan 1. Nilai $RV$ yang mendekati 1 mengindikasikan bahwa konfigurasi antar-objek pada situasi ke-$k$ sangat mirip dengan situasi ke-$k'$. Koefisien ini secara geometris merupakan kosinus sudut antara dua matriks dalam ruang vektor matriks terbobot.
 \end{definition}
 
 Matriks $\mathbf{R}_{\mathrm{RV}}=(RV(\mathbf{W}_k,\mathbf{W}_{k'}))$ dapat digunakan untuk membuat heatmap dan untuk mengetahui jarak antar-situasi dengan rumus jarak $d^2(k,k')=2(1-RV)$ antar-situasi, namun \textbf{pembobotan kompromi} mengacu pada $\mathbf{H}$: menurut \citet{lavit94}. Koefisien $\alpha_k$ diambil sebagai komponen vektor eigen utama yang terkait dengan nilai-nilai eigen terbesar dari dekomposisi spektral matriks interstruktur. Secara eksplisit,
@@ -624,7 +636,7 @@ Dalam konteks penelitian ini, karena data yang dianalisis mencakup periode tahun
 
 \subsection{\normalsize Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)}
 
-Metode STATIS secara deskriptif menghasilkan struktur kompromi, namun tidak secara otomatis menjamin bahwa struktur tersebut signifikan secara statistik. Dapat terjadi struktur kompromi yang terbentuk hanya merupakan artefak matematika dari data yang sebenarnya acak dan tidak memiliki pola hubungan yang stabil antar-situasi.
+Metode STATIS secara deskriptif menghasilkan struktur kompromi, namun tidak secara otomatis menjamin bahwa struktur tersebut signifikan secara statistik. Dapat terjadi struktur kompromi yang terbentuk hanya merupakan konstruk semu dari data yang sebenarnya acak dan tidak memiliki pola hubungan yang stabil antar-situasi.
 
 Untuk memvalidasi hal ini, digunakan pengujian berbasis resampling, yaitu uji permutasi non-parametrik yang diadopsi dari berbagai literatur analisis multivariat \citep{kazi1995, abdi2012, legendre2012}. Uji ini tidak mensyaratkan asumsi distribusi normal pada data. Mengingat jumlah seluruh kemungkinan permutasi baris dari himpunan matriks sangat masif ($(n!)^K$), menghitung permutasi eksak secara menyeluruh sangat tidak efisien secara komputasional. Oleh karena itu, pengujian dieksekusi menggunakan pendekatan \textbf{Simulasi Monte Carlo}, dengan sampel permutasi acak dalam jumlah besar ($B$ kali iterasi) diambil untuk membangun aproksimasi numerik dari distribusi eksak.
 
@@ -692,7 +704,7 @@ Validitas model bergantung pada \textit{dominansi} eigenvalue pertama. Kuantitas
 \begin{equation}\label{eq:tau}
   \tau = \frac{\lambda^2}{\sigma^2},
 \end{equation}
-dengan $\sigma^2$ merupakan varians galat dari model pada Persamaan~\eqref{eq:model_struktur}. Nilai $\tau$ yang besar (yaitu ketika $\lambda_1 \gg \lambda_j$ untuk $j \geq 2$) mengkonfirmasi bahwa satu komponen dominan mampu menjelaskan hampir seluruh variansi interstruktur. \citet{areia2008} menunjukkan bahwa estimator $\lambda_1$ dan $\boldsymbol{\alpha}_1$ memiliki perilaku yang baik (\textit{good behaviors}) melalui simulasi. Secara empiris, dominansi ini dinilai melalui \textit{proportion of inertia} pada sumbu pertama interstruktur:
+dengan $\sigma^2$ merupakan varians galat dari model pada Persamaan~\eqref{eq:model_struktur}. Nilai $\tau$ yang besar (yaitu ketika $\lambda_1 \gg \lambda_j$ untuk $j \geq 2$) mengonfirmasi bahwa satu komponen dominan mampu menjelaskan hampir seluruh variansi interstruktur. \citet{areia2008} menunjukkan bahwa estimator $\lambda_1$ dan $\boldsymbol{\alpha}_1$ memiliki perilaku yang baik (\textit{good behaviors}) melalui simulasi. Secara empiris, dominansi ini dinilai melalui \textit{proportion of inertia} pada sumbu pertama interstruktur:
 \begin{equation}\label{eq:prop_inertia}
   \mathrm{Inertia}_1 = \frac{\lambda_1}{\displaystyle\sum_{j=1}^{K} \lambda_j},
 \end{equation}
@@ -772,18 +784,40 @@ Analisis pengelompokan (\textit{clustering}) adalah metode statistik yang bertuj
 
 \subsection{\normalsize K-Means Clustering}
 
-K-Means adalah algoritma \textit{partitioning clustering} non-hierarkis yang mempartisi $n$ objek ke dalam $k$ cluster sedemikian rupa sehingga variansi dalam cluster (\textit{within-cluster variation}) menjadi sekecil mungkin \citep{macqueen1967}. Misalkan $\mathbf{x}_i \in \mathbb{R}^p$ adalah vektor observasi objek ke-$i$. Algoritma K-Means meminimumkan fungsi objektif \textit{Sum of Squared Errors} (SSE):
+K-Means adalah algoritma \textit{partitioning clustering} non-hierarkis yang mempartisi $n$ objek ke dalam $k$ klaster sedemikian rupa sehingga variansi dalam klaster (\textit{within-klaster variation}) menjadi sekecil mungkin \citep{macqueen1967}. Misalkan $\mathbf{x}_i \in \mathbb{R}^p$ adalah vektor observasi objek ke-$i$. Algoritma K-Means meminimumkan fungsi objektif \textit{Sum of Squared Errors} (SSE):
 \begin{equation}
   SSE = \sum_{j=1}^{k} \sum_{\mathbf{x}_i \in C_j} \| \mathbf{x}_i - \boldsymbol{\mu}_j \|^2
 \end{equation}
-dengan $C_j$ adalah himpunan objek pada cluster ke-$j$ dan $\boldsymbol{\mu}_j$ adalah sentroid cluster ke-$j$. Algoritma ini bekerja secara iteratif dengan memindahkan objek ke cluster bersentriod terdekat hingga tidak ada objek yang berpindah tempat.
+dengan $C_j$ adalah himpunan objek pada klaster ke-$j$ dan $\boldsymbol{\mu}_j$ adalah sentroid klaster ke-$j$. Algoritma ini bekerja secara iteratif dengan memindahkan objek ke klaster bersentriod terdekat hingga tidak ada objek yang berpindah tempat.
 
-\subsection{\normalsize Penentuan Jumlah cluster Optimal (Metode Elbow)}
+\subsection{\normalsize Penentuan Jumlah klaster Optimal (Metode Elbow)}\label{subsec:elbow}
 
-Tantangan utama K-Means adalah penentuan jumlah cluster optimal $k$ yang bersifat apriori. Untuk menentukan $k$ optimal secara empiris, metode \textit{Elbow} digunakan sebagai panduan heuristik \citep{bholowalia2014}. Metode Elbow mengevaluasi efektivitas partisi dengan merencanakan kurva nilai inersia ($SSE$) pada sumbu Y terhadap nilai $k$ yang bervariasi (misalnya 1 hingga 10) pada sumbu X. Semakin banyak cluster, nilai SSE secara matematis akan selalu menurun karena jarak objek ke sentroidnya terdekat akan semakin memendek. Namun, pada suatu titik tertentu ($k$), penurunan drastis SSE akan mulai melandai sehingga membentuk sudut (patahan/siku). Titik patahan inilah yang menunjukkan \textit{diminishing returns} terhadap penambahan jumlah cluster yang direkomendasikan sebagai jumlah cluster optimal agar model tidak mengalami \textit{overfitting} \citep{syakur2018}.
+Tantangan utama K-Means adalah penentuan jumlah klaster optimal $k$ yang bersifat apriori. Untuk menentukan $k$ optimal secara empiris, metode \textit{Elbow} digunakan sebagai panduan heuristik \citep{bholowalia2014}. Metode Elbow mengevaluasi efektivitas partisi dengan merencanakan kurva nilai inersia ($SSE$) pada sumbu Y terhadap nilai $k$ yang bervariasi (misalnya 1 hingga 10) pada sumbu X. Semakin banyak cluster, nilai SSE secara matematis akan selalu menurun karena jarak objek ke sentroidnya terdekat akan semakin memendek. Namun, pada suatu titik tertentu ($k$), penurunan drastis SSE akan mulai melandai sehingga membentuk sudut (patahan/siku). Titik patahan inilah yang menunjukkan \textit{diminishing returns} terhadap penambahan jumlah klaster yang direkomendasikan sebagai jumlah klaster optimal agar model tidak mengalami \textit{overfitting} \citep{syakur2018}.
+
+\subsection{\normalsize Koefisien Siluet (\textit{Silhouette Score})}
+\label{subsec:silhouette}
+
+Koefisien Siluet diperkenalkan oleh \citet{rousseeuw1987} sebagai ukuran kuantitatif yang mengevaluasi kualitas partisi klaster dari dua aspek sekaligus: (1) kepadatan dalam klaster (\textit{cohesion}) dan (2) keterpisahan antar-klaster (\textit{separation}). Untuk setiap objek $i$ yang berada pada klaster $C_q$, didefinisikan rata-rata jarak intra-klaster:
+\begin{equation}\label{eq:silhouette_a}
+  a(i) = \frac{1}{|C_q|-1} \sum_{j \in C_q,\, j \neq i} d(i,j)
+\end{equation}
+dan rata-rata jarak ke klaster tetangga terdekat:
+\begin{equation}\label{eq:silhouette_b}
+  b(i) = \min_{C_r \neq C_q}\; \frac{1}{|C_r|} \sum_{j \in C_r} d(i,j)
+\end{equation}
+Nilai siluet objek ke-$i$ adalah:
+\begin{equation}\label{eq:silhouette_si}
+  s(i) = \frac{b(i) - a(i)}{\max\!\bigl(a(i),\, b(i)\bigr)}, \quad s(i) \in [-1,\,1]
+\end{equation}
+Nilai $s(i) \to +1$ menunjukkan objek terklaster dengan baik; $s(i) \approx 0$ berarti objek berada di batas antar-klaster; dan $s(i) < 0$ mengindikasikan kemungkinan salah penempatan. Koefisien Siluet rata-rata keseluruhan adalah:
+\begin{equation}\label{eq:silhouette_sc}
+  SC = \frac{1}{n} \sum_{i=1}^{n} s(i)
+\end{equation}
+Nilai $SC$ yang lebih besar (mendekati $+1$) mengindikasikan struktur klaster yang lebih koheren dan terpisah \citep{rousseeuw1987}. Dalam penelitian ini, $SC$ digunakan bersama kurva Elbow sebagai konfirmasi kuantitatif pemilihan jumlah klaster optimal.
+
 \subsection{\normalsize Agglomerative Hierarchical Clustering (Dendrogram)}
 
-Sebagai alat bantu komplementer bagi metode Elbow, pendekatan hierarkis \textit{Agglomerative Clustering} dengan metode \textit{Ward's Linkage} digunakan untuk memvisualisasikan struktur pengelompokan secara hierarkis melalui Dendrogram \citep{ward1963}. Metode Ward menggunakan pendekatan \textit{Analysis of Variance} (ANOVA) untuk mengevaluasi jarak antar-cluster. Pada setiap tahap aglomerasi, metode ini menggabungkan sepasang cluster yang meminimalkan peningkatan \textit{Error Sum of Squares} (ESS) total. Peningkatan ESS agregat saat menggabungkan cluster $A$ dan $B$ untuk membentuk $A \cup B$ dihitung sebagai:
+Sebagai alat bantu komplementer bagi metode Elbow, pendekatan hierarkis \textit{Agglomerative Clustering} dengan metode \textit{Ward's Linkage} digunakan untuk memvisualisasikan struktur pengelompokan secara hierarkis melalui Dendrogram \citep{ward1963}. Metode Ward menggunakan pendekatan \textit{Analysis of Variance} (ANOVA) untuk mengevaluasi jarak antar-cluster. Pada setiap tahap aglomerasi, metode ini menggabungkan sepasang klaster yang meminimalkan peningkatan \textit{Error Sum of Squares} (ESS) total. Peningkatan ESS agregat saat menggabungkan klaster $A$ dan $B$ untuk membentuk $A \cup B$ dihitung sebagai:
 \begin{equation}
   \Delta(A, B) = \frac{n_A n_B}{n_A + n_B} \| \boldsymbol{\mu}_A - \boldsymbol{\mu}_B \|^2
 \end{equation}
@@ -791,7 +825,7 @@ Jarak vertikal cabang dendrogram secara visual mengindikasikan ketidaksamaan ant
 
 \subsection{\normalsize Matriks Transisi Temporal}
 
-Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika perubahan keanggotaan objek antar-cluster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah cluster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada cluster $x$ di situasi $k_1$ namun berpindah ke cluster $y$ di situasi $k_2$:
+Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk menganalisis dinamika perubahan keanggotaan objek antar-cluster. Matriks transisi $\mathbf{M}$ berdimensi $k \times k$ (dengan $k$ adalah jumlah cluster) disusun untuk memetakan kondisi dari situasi $k_1$ ke situasi $k_2$. Elemen $M_{xy}$ mendeskripsikan jumlah objek yang awalnya berada pada klaster $x$ di situasi $k_1$ namun berpindah ke klaster $y$ di situasi $k_2$:
 \begin{equation}
     \mathbf{T} = 
     \begin{pmatrix}
@@ -801,13 +835,13 @@ Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk men
     M_{k,1} & M_{k,2} & \cdots & M_{k,k}
     \end{pmatrix}
 \end{equation}
-Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah cluster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan cluster antar-situasi.
+Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah klaster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan klaster antar-situasi.
 
-\subsection{\normalsize Penyelarasan Label Cluster Lintas Waktu}
+\subsection{\normalsize Penyelarasan Label Klaster Lintas Waktu}
 
-Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan cluster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas cluster 1 pada tahun 2020 bergeser menjadi cluster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Cluster Correspondence} \citep{kuhn1955}.
+Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan klaster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas klaster 1 pada tahun 2020 bergeser menjadi klaster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Klaster Correspondence} \citep{kuhn1955}.
 
-Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} cluster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} cluster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
+Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} klaster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} klaster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
 \begin{equation} \label{eq:dist_centroid}
     D(c_{1i}, c_{2j}) = \sqrt{\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}
 \end{equation}
@@ -816,17 +850,17 @@ Matriks jarak ini kemudian diselesaikan menggunakan \textit{Hungarian Algorithm}
 \begin{equation} \label{eq:hungarian_min}
     \min \sum_{i=1}^{k} \sum_{j=1}^{k} D(c_{1i}, c_{2j}) \cdot x_{ij}
 \end{equation}
-dengan indikator biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Cluster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
+dengan indikator biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Klaster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
 
 \subsection{\normalsize Kategorisasi dan Perankingan Cluster}
 
-Setelah proses penyelarasan label selesai dilakukan, cluster-cluster tersebut masih memiliki label angka yang bersifat nominal (1, 2, \dots, $K$). Untuk memberikan interpretasi yang bermakna secara ekonomi (misalnya: Rendah, Sedang, Tinggi), diperlukan kriteria pengurutan yang objektif. Dalam penelitian ini, kriteria yang digunakan adalah nilai rata-rata skor komponen utama pertama ($\text{PC}_1$) pada ruang kompromi STATIS.
+Setelah proses penyelarasan label selesai dilakukan, cluster-klaster tersebut masih memiliki label angka yang bersifat nominal (1, 2, \dots, $K$). Untuk memberikan interpretasi yang bermakna secara ekonomi (misalnya: Rendah, Sedang, Tinggi), diperlukan kriteria pengurutan yang objektif. Dalam penelitian ini, kriteria yang digunakan adalah nilai rata-rata skor komponen utama pertama ($\text{PC}_1$) pada ruang kompromi STATIS.
 
-Misalkan $\mathbf{f}_{i,1}$ adalah skor objek ke-$i$ pada komponen utama pertama dari matriks kompromi $\mathbf{F}_c$. Rata-rata skor untuk cluster ke-$k$ didefinisikan sebagai:
+Misalkan $\mathbf{f}_{i,1}$ adalah skor objek ke-$i$ pada komponen utama pertama dari matriks kompromi $\mathbf{F}_c$. Rata-rata skor untuk klaster ke-$k$ didefinisikan sebagai:
 \begin{equation}
     \overline{\text{PC}}_{1,k} = \frac{1}{n_k} \sum_{i \in C_k} \mathbf{f}_{i,1}
 \end{equation}
-dengan $C_k$ adalah himpunan indeks objek dalam Cluster ke-$k$ dan $n_k$ adalah jumlah anggotanya. Label peringkat (1 untuk Rendah, hingga $K$ untuk Tinggi) diberikan berdasarkan urutan menaik dari nilai $\overline{\text{PC}}_{1,k}$. Hal ini didasari oleh sifat $\text{PC}_1$ dalam analisis ini yang merepresentasikan dimensi utama kesejahteraan rakyat, di mana nilai skor yang lebih besar berkorespondensi dengan capaian indikator yang lebih baik secara rata-rata.
+dengan $C_k$ adalah himpunan indeks objek dalam Klaster ke-$k$ dan $n_k$ adalah jumlah anggotanya. Label peringkat (1 untuk Rendah, hingga $K$ untuk Tinggi) diberikan berdasarkan urutan menaik dari nilai $\overline{\text{PC}}_{1,k}$. Hal ini didasari oleh sifat $\text{PC}_1$ dalam analisis ini yang merepresentasikan dimensi utama kesejahteraan rakyat, di mana nilai skor yang lebih besar berkorespondensi dengan capaian indikator yang lebih baik secara rata-rata.
 
 %-----------------------------------------------------------------------------%
 % --- 2.14 ---

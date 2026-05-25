@@ -333,7 +333,7 @@ Setelah representasi spasial $\mathbf{W}_t$ diperoleh untuk setiap tahun, langka
 	\begin{equation}
 		RV(\mathbf{W}_i, \mathbf{W}_j) = \frac{tr(\mathbf{W}_i \mathbf{W}_j)}{\sqrt{tr(\mathbf{W}_i^2) tr(\mathbf{W}_j^2)}}
 	\end{equation}
-	Nilai $RV$ berkisar antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
+	Nilai $RV$ berada di antara $0$ hingga $1$. Nilai mendekati 1 mengindikasikan bahwa struktur hubungan antar-kabupaten/kota pada tahun $i$ sangat mirip dengan tahun $j$.
 \end{definition}
 
 Koefisien RV dihitung untuk setiap pasangan tahun, membentuk sebuah matriks inter-struktur $\mathbf{R}$ berukuran $K \times K$, dengan elemen $R_{ij} = RV(\mathbf{W}_i, \mathbf{W}_j)$. Untuk mendapatkan bobot kontribusi setiap tahun, dilakukan dekomposisi spektral pada matriks $\mathbf{R}$:
@@ -494,7 +494,7 @@ Langkah kerja:
     \item \textbf{Melakukan uji hipotesis stabilitas struktur} menggunakan Uji Permutasi pada matriks inter-struktur STATIS \citep{kazi1995} untuk memvalidasi signifikansi perbedaan antar tahun.
 	\item Mengembangkan aplikasi berbasis web interaktif (visualisasi interaktif) menggunakan \textit{framework} Dash dan Plotly yang mengintegrasikan kedua metode analisis dan hasil uji hipotesis.
 	\item Menerapkan fitur visualisasi 2D/3D, trajektori (lintasan), dan rotasi \textit{baseline} dinamis pada aplikasi.
-	\item Menganalisis dan menginterpretasi hasil (struktur kompromi, trajektori, dan signifikansi stabilitas) untuk memahami dinamika ekonomi regional Provinsi Banten, DKI Jakarta, dan Jawa Barat tahun 2020--2025 dibantu dengan analisis lanjutan berupa \textit{Cluster Analysis}.
+	\item Menganalisis dan menginterpretasi hasil (struktur kompromi, trajektori, dan signifikansi stabilitas) untuk memahami dinamika ekonomi regional Provinsi Banten, DKI Jakarta, dan Jawa Barat tahun 2020--2025 dibantu dengan analisis lanjutan berupa \textit{Klaster Analysis}.
 	\item Menulis skripsi.
 	\item Ujian skripsi.
 \end{enumerate}
@@ -530,7 +530,7 @@ Langkah kerja:
 \node (app) [dev, below=of test] {Pengembangan Dashboard Interaktif (Dash \& Plotly)\\Fitur: Visualisasi 2D/3D, Trajektori, Rotasi \textit{Baseline}};
 
 % 8. Analisis
-\node (analisis) [process, below=of app] {Analisis \& Interpretasi Hasil\\(Struktur Kompromi + \textit{Cluster Analysis})};
+\node (analisis) [process, below=of app] {Analisis \& Interpretasi Hasil\\(Struktur Kompromi + \textit{Klaster Analysis})};
 
 % 9 & 10. Selesai
 \node (finish) [startstop, below=of analisis] {Penulisan Laporan \& Ujian Skripsi};
