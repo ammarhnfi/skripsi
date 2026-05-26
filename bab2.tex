@@ -61,13 +61,15 @@ Penelitian mengenai analisis statistik terhadap data regional di Pulau Jawa tela
 \centering
 \small
 \caption{Ringkasan Penelitian Terdahulu}\label{tab:penelitian-terdahulu}
+\begin{adjustbox}{max width=\textwidth}
 \begin{tabular}{|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{2.2cm}|>{\centering\arraybackslash}m{3cm}|>{\raggedright\arraybackslash}m{6cm}|}
 \hline
-\textbf{Peneliti (Tahun)} & \textbf{Wilayah} & \textbf{Metode} & \textbf{Hasil Utama} \\ \hline
+\textbf{Peneliti (Tahun)} & \textbf{Wilayah} & \textbf{Metode} & \multicolumn{1}{c|}{\textbf{Hasil Utama}} \\ \hline
 \citet{nuswantari2021} & Pulau Jawa (2012-2018) & \textit{Dynamic Spatial Panel} (Model Durbin Spasial) & Model terbaik menggunakan pembobot dua tetangga terdekat. Angka melek huruf dan fasilitas kesehatan berpengaruh signifikan terhadap kemiskinan. \tabularnewline \hline
 \citet{ahmad2024} & Pulau Jawa (2017-2021) & \textit{Dynamic Spatial Durbin Model} (DSDM) & Menemukan adanya pengaruh lag temporal dan spasiotemporal yang signifikan terhadap prevalensi kusta. \tabularnewline \hline
 \citet{alfia2024} & Pulau Jawa (2022) & \textit{Biclustering Plaid Model} vs \textit{Cluster-Biplot} & \textit{Plaid model} menghasilkan kelompok wilayah yang lebih homogen dibandingkan metode biplot konvensional dalam mengelompokkan indikator kesejahteraan. \tabularnewline \hline
 \end{tabular}
+\end{adjustbox}
 \end{table}
 
 \citet{nuswantari2021} menunjukkan bahwa pemodelan di Pulau Jawa harus mempertimbangkan efek dinamis (waktu) dan dependensi spasial secara simultan. Hal ini diperkuat oleh \citet{ahmad2024} yang menggunakan DSDM untuk menangkap interaksi antar-wilayah lintas waktu. Di sisi lain, \citet{alfia2024} memberikan perspektif mengenai pentingnya metode pengelompokan yang mampu menangani objek dan indikator secara bersamaan untuk melihat karakteristik regional yang unik. Penelitian ini menggabungkan aspek temporal dari data tiga-arah menggunakan metode STATIS dan aspek keterkaitan spasial untuk memberikan analisis yang lebih komprehensif.
@@ -370,8 +372,8 @@ Selain dekomposisi, konsep \textit{trace} matriks juga menjadi fundamental, khus
   Untuk matriks simetris semi-definit positif $\mathbf{W}_c$ (seperti matriks kompromi STATIS), SVD setara dengan dekomposisi spektral: nilai singular $\sigma_i$ sama dengan nilai eigen $\lambda_i$ dan $\mathbf{U} = \mathbf{V}$.
 \end{definition}
 
-\begin{remark}[Ekuivalensi SVD dan Eigendekomposisi untuk Matriks Simetris \textit{Positive Semi-Definite} (PSD)]
-  Untuk matriks simetris semi-definit positif $\mathbf{A} = \mathbf{A}^T$ dengan $\mathbf{v}^T\mathbf{A}\mathbf{v} \ge 0$ untuk semua $\mathbf{v}$, berlaku identitas: jika $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ adalah dekomposisi spektral (dengan $\boldsymbol{\Lambda} = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$, $\lambda_i \ge 0$, dan $\mathbf{Q}$ ortogonal), maka $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ sudah merupakan SVD dengan $\mathbf{U} = \mathbf{V} = \mathbf{Q}$ dan $\mathbf{\Sigma} = \boldsymbol{\Lambda}$ (nilai singular = nilai eigen). Ini karena nilai singular suatu matriks didefinisikan sebagai akar kuadrat nilai eigen dari $\mathbf{A}^T\mathbf{A} = \mathbf{A}^2$; untuk matriks PSD, $\sqrt{\lambda_i(\mathbf{A}^2)} = \sqrt{\lambda_i^2} = \lambda_i = \sigma_i$. Akibatnya, dalam implementasi komputasional penelitian ini, \texttt{numpy.linalg.eigh} (eigendekomposisi untuk matriks Hermitian/simetris) dan \texttt{numpy.linalg.svd} menghasilkan hasil yang secara aljabar identik untuk $\mathbf{W}_c$.
+\begin{remark}[Ekuivalensi SVD dan Eigendekomposisi untuk Matriks Simetris PSD]
+  Untuk matriks simetris semi-definit positif $\mathbf{A} = \mathbf{A}^T$ dengan $\mathbf{v}^T\mathbf{A}\mathbf{v} \ge 0$ untuk semua $\mathbf{v}$, berlaku identitas: jika $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ adalah dekomposisi spektral (dengan $\boldsymbol{\Lambda} = \mathrm{diag}(\lambda_1,\ldots,\lambda_n)$, $\lambda_i \ge 0$, dan $\mathbf{Q}$ ortogonal), maka $\mathbf{A} = \mathbf{Q}\boldsymbol{\Lambda}\mathbf{Q}^T$ sudah merupakan SVD dengan $\mathbf{U} = \mathbf{V} = \mathbf{Q}$ dan $\mathbf{\Sigma} = \boldsymbol{\Lambda}$ (nilai singular = nilai eigen). Ini karena nilai singular suatu matriks didefinisikan sebagai akar kuadrat nilai eigen dari $\mathbf{A}^T\mathbf{A} = \mathbf{A}^2$; untuk matriks PSD, $\sqrt{\lambda_i(\mathbf{A}^2)} = \sqrt{\lambda_i^2} = \lambda_i = \sigma_i$. Akibatnya, dalam implementasi komputasional penelitian ini, \texttt{numpy.\allowbreak{}linalg.\allowbreak{}eigh} (eigendekomposisi untuk matriks Hermitian/simetris) dan \texttt{numpy.\allowbreak{}linalg.\allowbreak{}svd} menghasilkan hasil yang secara aljabar identik untuk $\mathbf{W}_c$.
 \end{remark}
 
 SVD memiliki kestabilan numerik yang lebih baik dibandingkan dekomposisi eigen langsung untuk matriks nonsimetris. Untuk $\mathbf{W}_c$ yang simetris PSD, keduanya setara. Skor kompromi STATIS ($\mathbf{F}_c$) diperoleh dari:
