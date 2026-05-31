@@ -51,8 +51,12 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 \node (start)  [startstop]                             {Mulai};
 \node (input)  [io, below=of start]                    {Input Data\\(Upload dataset, pilih indikator \& tahun)};
 \node (eks)    [process, below=of input]               {Eksplorasi Data Deskriptif};
-\node (std)    [process, below=of eks]                 {Standardisasi $Z$-score per Tahun};
-\node (kmo)    [decision, below=0.9cm of std]          {Uji KMO $\geq 0.5$?};
+\node (bobot)  [process, below=of eks]                 {Hitung Bobot Demografis $m_i$ \& Matriks $\mathbf{D}$};
+\node (zstd)   [process, below=0.9cm of bobot]        {\textbf{Percabangan $Z_k$:}\\
+                                                         \small STATIS: $z^{\mathrm{S}}=(x-\mu_{jk})/\sigma_{jk}$ (terbobot $m_i$)\\
+                                                         \small PCA: $z^{\mathrm{P}}=(x-\bar{x})/s$ (biasa)};
+\node (pca3d)  [process, left=2.4cm of zstd]          {Dynamic Biplot\\$Z_k^{\text{PCA}} \to$ SVD per-Tahun\\$\to \mathbf{F}_k,\,\mathbf{G}_k$ (per-tahun)};
+\node (kmo)    [decision, below=0.9cm of zstd]         {Uji KMO $\geq 0.5$?};
 \node (bart)   [decision, below=1.0cm of kmo]          {Uji Bartlett $p < 0.05$?};
 \node (statis) [process, below=1.0cm of bart]          {Analisis STATIS\\$\mathbf{W}_k \;\to\; \mathbf{H},\,RV \;\to\; \alpha_k \;\to\; \mathbf{W}_c \;\to\;$ SVD};
 \node (perm)   [process, below=of statis]              {Uji Permutasi\\(Signifikansi Stabilitas Struktur)};
@@ -73,8 +77,10 @@ Desain penelitian ini dirancang secara sistematis untuk menjawab tantangan data 
 % ---- Main flow ----
 \draw [arrow] (start)   -- (input);
 \draw [arrow] (input)   -- (eks);
-\draw [arrow] (eks)     -- (std);
-\draw [arrow] (std)     -- (kmo);
+\draw [arrow] (eks)     -- (bobot);
+\draw [arrow] (bobot)   -- (zstd);
+\draw [arrow] (zstd)    -- node[above, font=\scriptsize]{PCA}  (pca3d);
+\draw [arrow] (zstd)    -- node[left,  font=\scriptsize]{STATIS}  (kmo);
 \draw [arrow] (kmo)     -- node[left, font=\scriptsize]{Ya}    (bart);
 \draw [arrow] (bart)    -- node[left, font=\scriptsize]{Ya}    (statis);
 \draw [arrow] (statis)  -- (perm);
@@ -146,7 +152,7 @@ Data dalam penelitian ini merupakan data sekunder yang dikumpulkan melalui studi
 % ---------------------------------------------------------------------------
 Dalam rangka menjamin reproduksibilitas dan ketajaman interpretasi hasil, tahapan pra-pemrosesan dan parameter analisis dilakukan sebagai berikut:
 \begin{enumerate}
-    \item \textbf{Standardisasi per-tahun (Z-score):} Setiap matriks tahunan distandardisasi secara terpisah dengan transformasi $z=(x-\bar{x})/s$ sehingga komparasi antarvariabel di dalam tahun menjadi setara. Standardisasi per-tahun dipilih agar variasi antar-wilayah pada tiap tahun tidak dipengaruhi oleh skala absolut indikator tertentu.
+    \item \textbf{Standardisasi per-tahun ($Z$-score):} Setiap matriks tahunan distandardisasi secara terpisah sehingga komparasi antarvariabel di dalam tahun menjadi setara. Terdapat \textbf{dua skema standardisasi} yang digunakan secara paralel sesuai jalur analisis (lihat Subbagian~\ref{subsubsec:zk_fork}): (1)~$z^{\mathrm{PCA}}=(x-\bar{x})/s$ untuk Dynamic Biplot --- menggunakan mean aritmetika biasa dengan semua wilayah berbobot setara; (2)~$z^{\mathrm{STATIS}}=(x-\mu_{jk})/\sigma_{jk}$ untuk STATIS --- menggunakan mean dan simpangan baku terbobot $m_i$ agar wilayah berpenduduk besar berkontribusi proporsional.
     \item \textbf{Bobot demografis ($m_i$):} Untuk beberapa analisis (mis. pembentukan matriks bobot objek), dihitung bobot demografis berdasarkan jumlah penduduk tiap wilayah sesuai Persamaan~\ref{eq:weighted_mean}. Bobot ini dipakai untuk memperhitungkan kontribusi relatif populasi dalam pembentukan kompromi.
     \item \textbf{Uji Kelayakan Multivariat:} Sebelum menerapkan STATIS, dilakukan Uji KMO dan Uji Bartlett untuk memastikan kecukupan korelasi antarvariabel; ambang batas yang digunakan adalah KMO $\geq 0{,}5$ dan Bartlett $p<0{,}05$.
     \item \textbf{Penskalaan Loadings untuk Visualisasi:} Untuk tujuan representasi grafis (biplot/trajectory), panjang vektor loading disesuaikan mengikuti Abdi et al. (2012): setiap elemen loading intra $g_{j\ell}^{(\text{asli})}$ pada dimensi $\ell$ dikalikan dengan nilai singular kompromi $\sigma_{\ell}^{(c)} = \sqrt{\lambda_{\ell}^{(c)}}$, menghasilkan nilai \textit{visual}:
@@ -306,7 +312,38 @@ Verifikasi total bobot: $m_1 + m_2 + m_3 + m_4 = 0{,}294320 + 0{,}504015 + 0{,}2
 Matriks diagonal $\mathbf{D}$ yang dihasilkan adalah:
 \[ \mathbf{D} = \text{diag}(0{,}294320,\; 0{,}504015,\; 0{,}201542,\; 0{,}000122) \]
 
-\subsubsection{Tahap 1: Standardisasi Data (\texorpdfstring{$\mathbf{Z}_k$}{Zk})}
+\subsubsection{Percabangan Standardisasi: STATIS vs.\ Dynamic Biplot (PCA per-Tahun)}
+\label{subsubsec:zk_fork}
+
+Sebelum melanjutkan ke tahap standardisasi, perlu ditegaskan bahwa penelitian ini menggunakan \textbf{dua jalur analisis paralel} yang menghasilkan matriks $\mathbf{Z}_k$ dengan nilai numerik yang \emph{berbeda}, meskipun notasinya sama:
+
+\begin{enumerate}
+    \item \textbf{Dynamic Biplot (PCA per-Tahun)} menggunakan \emph{standardisasi biasa tanpa bobot}. Rata-rata dan simpangan baku dihitung secara aritmetika biasa, di mana setiap wilayah diperlakukan setara tanpa memperhatikan besar populasi:
+    \begin{equation}
+        \bar{x}_{jk} = \frac{1}{n}\sum_{i=1}^{n} x_{ijk},
+        \qquad
+        s_{jk} = \sqrt{\frac{1}{n}\sum_{i=1}^{n}\bigl(x_{ijk} - \bar{x}_{jk}\bigr)^2},
+        \qquad
+        z_{ijk}^{\text{PCA}} = \frac{x_{ijk} - \bar{x}_{jk}}{s_{jk}}
+        \label{eq:zk_pca}
+    \end{equation}
+    Implementasinya dalam \textit{dashboard} menggunakan \texttt{sklearn.preprocessing.StandardScaler} yang menerapkan formula di atas. Akibatnya, Kota Depok ($JP \approx 2{,}3$ juta) dan Kabupaten Kepulauan Seribu ($JP \approx 0{,}02$ juta) mendapat bobot yang setara dalam menentukan pusat distribusi.
+
+    \item \textbf{Analisis STATIS} menggunakan \emph{standardisasi terbobot} berbasis bobot demografis $m_i$ (dihitung pada Tahap~0 di atas). Rata-rata dan simpangan baku dihitung secara terbobot sehingga wilayah dengan populasi besar berkontribusi proporsional lebih besar:
+    \begin{equation}
+        \mu_{jk} = \sum_{i=1}^{n} m_i\, x_{ijk},
+        \qquad
+        \sigma_{jk} = \sqrt{\sum_{i=1}^{n} m_i\bigl(x_{ijk} - \mu_{jk}\bigr)^2},
+        \qquad
+        z_{ijk}^{\text{STATIS}} = \frac{x_{ijk} - \mu_{jk}}{\sigma_{jk}}
+        \label{eq:zk_statis}
+    \end{equation}
+    Standardisasi ini menjamin $\sum m_i z_{ijk} = 0$ dan $\sum m_i z_{ijk}^2 = 1$, sehingga skala konsisten lintas indikator dan lintas tahun dalam ruang terboboti $\mathbf{D}$.
+\end{enumerate}
+
+Perbedaan mendasar ini mengakibatkan $z_{ijk}^{\text{PCA}} \neq z_{ijk}^{\text{STATIS}}$ secara numerik, sehingga matriks kemiripan intra-struktur $\mathbf{W}_k = \mathbf{Z}_k \mathbf{Z}_k^T$ yang digunakan STATIS juga berbeda dari $\mathbf{Z}_k$ yang masuk ke SVD pada PCA per-tahun. Bagian berikut menjelaskan standardisasi terbobot secara detail dengan data sampel.
+
+\subsubsection{Tahap 1: Standardisasi Data STATIS (\texorpdfstring{$\mathbf{Z}_k$}{Zk})}
 Proses standardisasi di bawah ini dilakukan untuk setiap indikator pada setiap tahun secara terpisah, menggunakan rata-rata terbobot $\mu_{jk}$ dan simpangan baku terbobot $\sigma_{jk}$ yang dihitung berdasarkan bobot demografis $m_i$. Sebagai contoh, untuk indikator pertama (PPM) pada tahun 2020 $\mathbf{X}_{2020}[:,1] = (4{,}51;\; 10{,}49;\; 12{,}97;\; 3{,}69)^T$. Langkah-langkahnya adalah sebagai berikut:
 \begin{enumerate}
     \item \textbf{Rata-rata terbobot $\mu_{jk}$:}

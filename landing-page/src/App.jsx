@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -137,8 +137,21 @@ function LatexTable({ tex }) {
   const bodyWithEnd = tex.substring(specEnd);
   const endTagMatch = bodyWithEnd.match(/(.*?)\\end\{(?:tabular|longtable)\}/s);
   if (!endTagMatch) return <pre style={{ whiteSpace: 'pre-wrap' }}>{tex}</pre>;
-  
-  const body = endTagMatch[1];
+
+  let body = endTagMatch[1];
+
+  // Strip longtable repeat-header preamble (\endfirsthead … \endfoot)
+  // Keep everything AFTER \endfoot; if missing, keep after \endhead
+  const endFootSplit = body.match(/\\endfoot([\s\S]*)/);
+  if (endFootSplit) {
+    // Put back the header row: grab the first row from the pre-endfoot block
+    const prePart = body.substring(0, body.indexOf('\\endfoot'));
+    const firstRow = prePart.split(/\\\\/).find(r => r.trim() && !r.trim().startsWith('%') && !r.includes('\\hline') && r.trim() !== '');
+    body = (firstRow ? firstRow + ' \\\\\n' : '') + endFootSplit[1];
+  } else {
+    const endHeadSplit = body.match(/\\endhead([\s\S]*)/);
+    if (endHeadSplit) body = endHeadSplit[1];
+  }
 
   // 3. ROBUST CLEANING
   const rowsRaw = body.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
@@ -2578,10 +2591,892 @@ function FormulasDashboard({ onBack }) {
 }
 
 
+// ─── METHODOLOGY FLOW HELPERS ────────────────────────────────────────────────
+function LatexFormula({ tex, color, small, bare }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!ref.current) return;
+    // Set content directly — avoids React reconciliation interfering with
+    // MathJax's rendered SVG output, which dangerouslySetInnerHTML can reset.
+    ref.current.innerHTML = tex;
+
+    let cancelled = false;
+    function tryTypeset() {
+      if (cancelled || !ref.current) return;
+      if (window.MathJax?.typesetPromise) {
+        window.MathJax.typesetPromise([ref.current]).catch(() => {});
+      } else {
+        setTimeout(tryTypeset, 300);
+      }
+    }
+    // Small delay so the browser paints the raw text before MathJax converts it.
+    const t = setTimeout(tryTypeset, 80);
+    return () => { cancelled = true; clearTimeout(t); };
+  }, [tex]);
+
+  return (
+    <div ref={ref}
+      style={{
+        background: bare ? 'transparent' : 'rgba(0,0,0,0.30)',
+        border: bare ? 'none' : `1px solid ${color || '#e2e8f0'}30`,
+        borderRadius: bare ? '0' : '10px',
+        padding: bare ? '2px 0' : (small ? '5px 12px' : '10px 18px'),
+        color: color || '#e2e8f0',
+        fontSize: small ? '0.88rem' : '1rem',
+        lineHeight: 1.8,
+        overflowX: 'auto',
+        margin: bare ? '2px 0' : '6px 0',
+      }}
+    />
+  );
+}
+
+function OutputBadge({ icon, label, color }) {
+  return (
+    <span style={{ display:'inline-flex', alignItems:'center', gap:'5px',
+      background:`${color}12`, border:`1px solid ${color}35`, borderRadius:'12px',
+      padding:'3px 10px', fontSize:'0.7rem', color, fontWeight:'600' }}>
+      {icon} {label}
+    </span>
+  );
+}
+
+function FlowArrow({ label, fromColor, toColor }) {
+  return (
+    <div style={{ display:'flex', flexDirection:'column', alignItems:'center', padding:'2px 0' }}>
+      <div style={{ width:'2px', height:'14px', background:`linear-gradient(to bottom,${fromColor}90,${toColor}90)` }} />
+      {label && (
+        <div style={{ background:'rgba(15,23,42,0.85)', border:'1px solid rgba(255,255,255,0.08)',
+          borderRadius:'20px', padding:'3px 14px', fontSize:'0.63rem', color:'#64748b',
+          textAlign:'center', maxWidth:'480px', margin:'2px 0', letterSpacing:'0.2px' }}
+          dangerouslySetInnerHTML={{ __html: mathToHtml(label) }} />
+      )}
+      <div style={{ width:'2px', height:'14px', background:`linear-gradient(to bottom,${fromColor}90,${toColor}90)` }} />
+      <div style={{ width:0, height:0, borderLeft:'6px solid transparent', borderRight:'6px solid transparent', borderTop:`8px solid ${toColor}` }} />
+    </div>
+  );
+}
+/* Renders detail text: converts _x → <sub>x</sub>, ^x → <sup>x</sup>, Greek letters */
+// Shared math-to-HTML converter used by DetailText, StepCard titles, and FlowArrow labels.
+function mathToHtml(text) {
+  if (!text) return '';
+  return text
+    .replace(/_\{([^}]+)\}/g, '<sub>$1</sub>')
+    .replace(/_([a-zA-Z0-9*'])/g, '<sub>$1</sub>')
+    .replace(/\^\{([^}]+)\}/g, '<sup>$1</sup>')
+    .replace(/\^([a-zA-Z0-9*+-])/g, '<sup>$1</sup>')
+    .replace(/\\alpha/g, 'α').replace(/\\beta/g, 'β').replace(/\\lambda/g, 'λ')
+    .replace(/\\mu/g, 'μ').replace(/\\sigma/g, 'σ').replace(/\\tau/g, 'τ')
+    .replace(/\\theta/g, 'θ').replace(/\\eta/g, 'η').replace(/\\times/g, '×')
+    .replace(/\\cdot/g, '·').replace(/\\leq/g, '≤').replace(/\\geq/g, '≥')
+    .replace(/\\in/g, '∈').replace(/\\sum/g, '∑').replace(/\\infty/g, '∞')
+    .replace(/\\\(|\\\)/g, '').replace(/\$\$/g, '').replace(/\$/g, '')
+    .replace(/\{|\}/g, '');
+}
+
+function DetailText({ text }) {
+  if (!text) return null;
+  return <span style={{ fontSize: '0.72rem', color: '#64748b', lineHeight: 1.55 }} dangerouslySetInnerHTML={{ __html: mathToHtml(text) }} />;
+}
+
+/* Lazy-loads & renders a single output file (tex or image) from output_sample */
+function OutputFileViewer({ path, label, caption, imgHeight }) {
+  const [tex, setTex]       = useState('');
+  const [loading, setLoading] = useState(true);
+  const isImg = /\.(png|jpg|gif)$/i.test(path);
+
+  useEffect(() => {
+    if (isImg) { setLoading(false); return; }
+    let active = true;
+    setLoading(true);
+    fetch(path)
+      .then(r => r.text())
+      .then(t => { if (active) { setTex(t); setLoading(false); } })
+      .catch(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [path]);
+
+  return (
+    <div style={{ marginBottom: '10px' }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
+        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#06b6d4' }}>{label}</span>
+        {caption && <span style={{ fontSize: '0.65rem', color: '#475569', fontStyle: 'italic' }}>— {caption}</span>}
+      </div>
+      {loading ? (
+        <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div className="spinner" style={{ width: '20px', height: '20px' }} />
+        </div>
+      ) : isImg ? (
+        <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: '8px', padding: '6px', display: 'flex', justifyContent: 'center' }}>
+          <img src={path} alt={label} style={{ maxWidth: '100%', maxHeight: imgHeight || '160px', objectFit: 'contain', borderRadius: '6px' }} />
+        </div>
+      ) : (
+        <div style={{ maxHeight: '200px', overflowY: 'auto', overflowX: 'auto', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }} className="custom-scrollbar">
+          <LatexTable tex={tex} />
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── MODULE-LEVEL StepCard ────────────────────────────────────────────────────
+// Defined OUTSIDE MethodologyFlowView so React never unmounts/remounts it on
+// hover-triggered parent re-renders. Previously defined inside caused MathJax
+// formulas to flash raw LaTeX on every mouse-enter event.
+const _STEP_TYPE_LABELS = { input: 'INPUT', process: 'PROSES', decision: 'KEPUTUSAN', output: 'OUTPUT' };
+
+function StepCard({ step, num, isExpanded, isHovered, onMouseEnter, onMouseLeave, onToggle }) {
+  const hasOutput = step.outputFiles && step.outputFiles.length > 0;
+  return (
+    <div
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      style={{
+        width: '100%',
+        background: isHovered ? 'rgba(30,41,59,0.75)' : 'rgba(15,23,42,0.5)',
+        border: `1px solid ${isHovered ? step.color : step.color + '40'}`,
+        borderLeft: `4px solid ${step.color}`,
+        borderRadius: '14px', padding: '16px 20px',
+        transition: 'all 0.2s',
+        boxShadow: isHovered ? `0 4px 28px ${step.color}22` : 'none',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' }}>
+        <span style={{ background: step.color, color: '#fff', borderRadius: '50%', width: '26px', height: '26px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.7rem', fontWeight: '800', flexShrink: 0 }}>{num}</span>
+        <span style={{ fontSize: '0.62rem', fontWeight: '700', color: step.color, background: `${step.color}18`, border: `1px solid ${step.color}40`, borderRadius: '10px', padding: '2px 8px', letterSpacing: '0.5px', textTransform: 'uppercase' }}>{_STEP_TYPE_LABELS[step.type] || 'PROSES'}</span>
+        <span style={{ fontSize: '1.1rem' }}>{step.icon}</span>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontWeight: '700', fontSize: '0.92rem', color: '#f8fafc', lineHeight: 1.3 }} dangerouslySetInnerHTML={{ __html: mathToHtml(step.title) }} />
+          <div style={{ fontSize: '0.72rem', color: '#94a3b8', lineHeight: 1.3 }} dangerouslySetInnerHTML={{ __html: mathToHtml(step.subtitle) }} />
+        </div>
+      </div>
+      <LatexFormula tex={step.latex} color={step.color} />
+      <div style={{ marginBottom: '8px' }}><DetailText text={step.detail} /></div>
+      {step.outputs && (
+        <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginBottom: '6px' }}>{step.outputs}</div>
+      )}
+      {step.rejectLabel && (
+        <div style={{ background: 'rgba(248,113,113,0.08)', border: '1px dashed rgba(248,113,113,0.3)', borderRadius: '8px', padding: '6px 12px', fontSize: '0.7rem', color: '#f87171', marginTop: '6px' }}
+          dangerouslySetInnerHTML={{ __html: '↩ ' + mathToHtml(step.rejectLabel) }} />
+      )}
+      {hasOutput && (
+        <div style={{ marginTop: '10px' }}>
+          <button
+            onClick={onToggle}
+            style={{
+              background: isExpanded ? `${step.color}20` : 'rgba(15,23,42,0.6)',
+              border: `1px solid ${step.color}50`,
+              color: isExpanded ? step.color : '#64748b',
+              borderRadius: '8px', padding: '5px 14px',
+              fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '6px',
+              transition: 'all 0.15s',
+            }}
+          >
+            <span style={{ fontSize: '0.8rem' }}>{isExpanded ? '▼' : '▶'}</span>
+            {isExpanded ? 'Sembunyikan Output Sampel' : `Lihat Output Sampel (${step.outputFiles.length} tabel/gambar)`}
+          </button>
+          {isExpanded && (
+            <div style={{ marginTop: '12px', borderTop: `1px solid ${step.color}25`, paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ fontSize: '0.63rem', color: '#475569', letterSpacing: '0.5px', fontWeight: '600', textTransform: 'uppercase' }}>
+                Output dari data sampel (n=4 wilayah, K=3 tahun, p=3 indikator)
+              </div>
+              {step.outputFiles.map((f, i) => (
+                <OutputFileViewer key={i} path={f.path} label={f.label} caption={f.caption} imgHeight={f.imgHeight} />
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function MethodologyFlowView({ onBack }) {
+  const [hovered, setHovered]           = useState(null);
+  const [expandedOutputs, setExpandedOutputs] = useState({});
+  const toggleOutput = (id) => setExpandedOutputs(prev => ({ ...prev, [id]: !prev[id] }));
+
+  /* ---------- COMMON STEPS (shared by both PCA & STATIS) ---------- */
+  const BASE = '/output_sample/';
+  const SC1  = '/output_sample/scenario1/';
+
+  const COMMON = [
+    {
+      id: 'c0', color: '#10b981', icon: '📂', type: 'input',
+      title: 'Data Mentah',
+      subtitle: 'K matriks data observasi per situasi-waktu',
+      latex: `$$\\mathbf{X}_1,\\,\\mathbf{X}_2,\\,\\ldots,\\,\\mathbf{X}_K \\in \\mathbb{R}^{n \\times p}$$`,
+      detail: 'n = 41 Kab/Kota  |  p = 11 indikator kesejahteraan  |  K = 5 tahun (2020–2024)  |  Sumber: BPS RI',
+      outputs: [<OutputBadge key="o" icon="📊" label="5 sheet Excel × 41 baris × 15 kol" color="#10b981"/>],
+      outputFiles: [
+        { path: '/data_sampel_2020.tex', label: 'X₂₀₂₀ — Data Sampel (n=4)', caption: 'PPM, RLS, TPT, IPM, JP — 4 wilayah ilustratif' },
+      ],
+      arrowLabel: 'matriks X_k mentah per tahun',
+    },
+    {
+      id: 'c1', color: '#3b82f6', icon: '📈', type: 'process',
+      title: 'Eksplorasi Statistika Deskriptif',
+      subtitle: 'Ringkasan numerik tiap variabel-tahun',
+      latex: `$$\\bar{x}_j=\\frac{1}{n}\\sum_{i=1}^{n}x_{ij},\\quad s_j=\\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}(x_{ij}-\\bar{x}_j)^2},\\quad CV=\\frac{s_j}{\\bar{x}_j}\\times100\\%$$`,
+      detail: 'Ukuran pemusatan (mean, median, Q₁, Q₃) + penyebaran (s, IQR, CV) + bentuk (skewness, kurtosis)',
+      outputs: [<OutputBadge key="b" icon="📉" label="Boxplot per indikator-tahun" color="#3b82f6"/>],
+      outputFiles: [
+        { path: BASE + 'output_table_deskriptif_2020.tex', label: 'Statistika Deskriptif Tanpa Bobot 2020', caption: 'Mean, Std, Min, Q1–Q3, Max, Skew, Kurt, CV' },
+        { path: BASE + 'output_table_descriptive_2020.tex', label: 'Statistika Deskriptif Terbobot 2020', caption: 'Dengan pembobotan D — digunakan oleh STATIS' },
+        { path: BASE + 'boxplot_ppm.png', label: 'Boxplot PPM', caption: 'Distribusi Persentase Penduduk Miskin', imgHeight: '140px' },
+      ],
+      arrowLabel: 'ringkasan statistik per variabel-tahun',
+    },
+    {
+      id: 'c2', color: '#8b5cf6', icon: '⚖️', type: 'process',
+      title: 'Bobot Demografis & Matriks Bobot D',
+      subtitle: 'Pembobotan proporsional berbasis Jumlah Penduduk',
+      latex: `$$m_i=\\frac{\\overline{\\mathrm{JP}}_i}{\\displaystyle\\sum_{i'=1}^{n}\\overline{\\mathrm{JP}}_{i'}},\\quad \\mathbf{D}=\\operatorname{diag}(m_1,m_2,\\ldots,m_n),\\quad \\sum_{i=1}^{n}m_i=1$$`,
+      detail: 'JP̄ᵢ = rata-rata JP wilayah i selama K tahun  |  ⟨x,y⟩_D = xᵀDy mendefinisikan inner product terbobot yang konsisten di semua situasi',
+      outputs: [<OutputBadge key="d" icon="🔢" label="Vektor m (n×1) + Matriks D (n×n diagonal)" color="#8b5cf6"/>],
+      outputFiles: [
+        { path: BASE + 'output_table_descriptive_2020.tex', label: 'Statistika Terbobot D — 2020', caption: 'Mean & Std terbobot mᵢ per indikator (digunakan sebagai μ_{jk} dan σ_{jk})' },
+      ],
+      arrowLabel: 'rata-rata JP lintas tahun → bobot demografis mᵢ',
+    },
+    {
+      id: 'c4', color: '#f59e0b', icon: '🔬', type: 'decision',
+      title: 'Uji Kelayakan Multivariat: KMO & Bartlett',
+      subtitle: 'Verifikasi cukupan korelasi antar-indikator sebelum reduksi dimensi',
+      latex: `$$\\mathrm{KMO}=\\frac{\\displaystyle\\sum_{j\\neq k}r_{jk}^2}{\\displaystyle\\sum_{j\\neq k}r_{jk}^2+\\displaystyle\\sum_{j\\neq k}r_{jk.p}^2}\\geq 0{,}5,\\qquad \\chi^2_{\\text{Bartlett}}=-\\!\\left[n-1-\\frac{2p+5}{6}\\right]\\ln|\\mathbf{R}|,\\quad p<0{,}05$$`,
+      detail: 'r_{jk} = korelasi Pearson  |  r_{jk.p} = korelasi parsial  |  |R| = determinan matriks korelasi  |  df = p(p−1)/2',
+      outputs: [<OutputBadge key="k" icon="✅" label="Lolos → lanjut analisis dimensi" color="#f59e0b"/>, <OutputBadge key="r" icon="↩️" label="Gagal → revisi indikator" color="#f87171"/>],
+      outputFiles: [
+        { path: BASE + 'output_table_kmo_bartlett.tex', label: 'Hasil Uji KMO & Bartlett per Tahun', caption: 'Nilai KMO, χ² Bartlett, df, p-value, keputusan' },
+      ],
+      rejectLabel: '✗ KMO < 0.5 atau p-Bartlett ≥ 0.05 → revisi indikator',
+      arrowLabel: '✓ KMO ≥ 0.5  &  Bartlett p < 0.05 → lanjut ke reduksi dimensi',
+    },
+  ];
+
+  /* -------- STATIS-SPECIFIC STEPS -------- */
+  const STATIS_STEPS = [
+    {
+      id: 's0', color: '#06b6d4', icon: '🗺️', num: 6,
+      title: 'Tahap 1 — Intra-Struktur (W_k)',
+      subtitle: 'Matriks kemiripan antar-wilayah berbasis profil indikator, per tahun',
+      latex: `$$\\mathbf{W}_k = \\mathbf{Z}_k\\mathbf{Z}_k^T \\in \\mathbb{R}^{n\\times n},\\qquad w_{ij}^{(k)}=\\sum_{j=1}^{p}z_{ijk}\\,z_{jk}$$`,
+      detail: 'wᵢⱼ mencerminkan "seberapa mirip" profil indikator wilayah i dan j pada tahun k  |  simetris & semi-definit positif',
+      outputs: [<OutputBadge key="w" icon="🔢" label="K matriks W_k (n×n) per tahun" color="#06b6d4"/>],
+      outputFiles: [
+        { path: SC1 + 'output_table_matriks_intra_loading_2020.tex', label: 'S₂₀₂₀ — Matriks Intra Skenario 2 (p×p)', caption: 'Korelasi terbobot antar-indikator 2020 (Skenario Dual STATIS)' },
+        { path: SC1 + 'output_table_matriks_intra_loading_2021.tex', label: 'S₂₀₂₁ — Matriks Intra 2021', caption: 'Bandingkan dengan S₂₀₂₀ — apakah struktur stabil?' },
+      ],
+      arrowLabel: 'Z_k → produk Gram Zₖ Zₖᵀ',
+    },
+    {
+      id: 's1', color: '#06b6d4', icon: '📡', num: 7,
+      title: 'Tahap 2 — Inter-Struktur (H & Koefisien RV)',
+      subtitle: 'Mengukur seberapa konsisten pola kemiripan antar-tahun',
+      latex: `$$H_{kk'}=\\operatorname{tr}(\\mathbf{W}_k\\mathbf{D}\\mathbf{W}_{k'}\\mathbf{D}),\\qquad \\mathrm{RV}(\\mathbf{W}_k,\\mathbf{W}_{k'})=\\frac{H_{kk'}}{\\sqrt{H_{kk}\\cdot H_{k'k'}}}$$`,
+      detail: 'H ∈ ℝᴷˣᴷ — "matriks korelasi" antar-konfigurasi tahun  |  RV ∈ [0,1]: mendekati 1 berarti struktur sangat stabil lintas waktu',
+      outputs: [<OutputBadge key="h" icon="🔢" label="Matriks H (K×K) + vektor RV" color="#06b6d4"/>],
+      outputFiles: [
+        { path: BASE + 'output_table_hw.tex', label: 'Matriks H_W — Inter-Struktur Wilayah (K×K)', caption: 'Produk Hilbert-Schmidt antara setiap pasang W_k' },
+        { path: BASE + 'output_table_rv_w.tex', label: 'Koefisien RV antar-Tahun', caption: 'RV ≈ 1 → struktur sangat stabil. Dasar pembentukan bobot αₖ' },
+      ],
+      arrowLabel: 'pasangan W_k, W_k′ → Hilbert-Schmidt',
+    },
+    {
+      id: 's2', color: '#8b5cf6', icon: '🏋', num: 8,
+      title: 'Bobot Temporal Optimal (α_k)',
+      subtitle: 'Kontribusi relatif tiap tahun terhadap kompromi',
+      latex: `$$\\mathbf{H}\\mathbf{u}_1=\\theta_1\\mathbf{u}_1\\quad\\Longrightarrow\\quad\\alpha_k=\\frac{u_{1k}}{\\displaystyle\\sum_{k'=1}^{K}u_{1k'}},\\qquad \\alpha_k>0,\\;\\sum_{k=1}^{K}\\alpha_k=1$$`,
+      detail: 'u₁ = eigenvector utama H  |  α_k mengukur "seberapa representatif" tahun k terhadap pola rata-rata',
+      outputs: [<OutputBadge key="a" icon="📊" label="Vektor α (K×1) — kontribusi tiap tahun" color="#8b5cf6"/>],
+      outputFiles: [
+        { path: SC1 + 'output_table_alpha.tex', label: 'Bobot Temporal αₖ per Tahun', caption: 'Diperoleh dari u₁ (eigenvector utama H) — ∑αₖ = 1' },
+        { path: SC1 + 'output_core_statis.tex', label: 'Ringkasan Parameter Kompromi', caption: 'αₖ, λ₁ (eigenvalue), % inertia — dari output_core_statis.tex' },
+      ],
+      arrowLabel: 'eigendekomposisi H → eigenvector u₁ → α_k',
+    },
+    {
+      id: 's3', color: '#06b6d4', icon: '🤝', num: 9,
+      title: 'Tahap 3 — Matriks Kompromi (W_c)',
+      subtitle: 'Konfigurasi rata-rata optimal — representasi konsensus multi-tahun',
+      latex: `$$\\mathbf{W}_c=\\sum_{k=1}^{K}\\alpha_k\\,\\mathbf{W}_k\\in\\mathbb{R}^{n\\times n},\\qquad \\mathbf{v}^T\\mathbf{W}_c\\mathbf{v}=\\sum_{k}\\alpha_k(\\mathbf{v}^T\\mathbf{W}_k\\mathbf{v})\\geq 0$$`,
+      detail: 'W_c = kombinasi linier berbobot αₖ dari W_k → otomatis semi-definit positif  |  tr(W_c) = total inersia',
+      outputs: [<OutputBadge key="wc" icon="🔢" label="Matriks W_c (n×n) kompromi" color="#06b6d4"/>],
+      outputFiles: [
+        { path: SC1 + 'matrix_V_c.tex', label: 'V_c — Eigenvectors Kompromi (V berukuran p×r)', caption: 'Kolom = arah sumbu kompromi. Diperoleh dari SVD W_c. Isi = loading tiap indikator' },
+      ],
+      arrowLabel: 'kombinasi linier berbobot αₖ · W_k',
+    },
+    {
+      id: 's4', color: '#3b82f6', icon: '⚛', num: 10,
+      title: 'Tahap 4 — Dekomposisi Spektral W_c → F_c & G_c',
+      subtitle: 'Ekstraksi koordinat kompromi yang optimal dan konsisten lintas semua tahun',
+      latex: `$$\\mathbf{W}_c=\\mathbf{P}\\mathbf{\\Lambda}_c\\mathbf{P}^T,\\quad\\mathbf{F}_c=\\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}_c^{1/2}\\in\\mathbb{R}^{n\\times r},\\quad\\mathbf{G}_c=\\sum_k\\alpha_k\\,\\mathbf{Z}_k^T\\mathbf{D}\\mathbf{F}_c\\mathbf{\\Lambda}_c^{-1/2}$$`,
+      detail: 'F_c (n×2) = skor kompromi wilayah — posisi "rata-rata terbaik" tiap wilayah  |  G_c (p×2) = loading kompromi indikator',
+      outputs: [
+        <OutputBadge key="fc" icon="📍" label="F_c (n×2) — skor kompromi wilayah" color="#3b82f6"/>,
+        <OutputBadge key="gc" icon="➡️" label="G_c (p×2) — loading kompromi indikator" color="#8b5cf6"/>
+      ],
+      outputFiles: [
+        { path: SC1 + 'output_table_scores.tex', label: 'F_c — Koordinat Skor Kompromi Wilayah', caption: 'PC1 & PC2 tiap wilayah dalam ruang kompromi (n×2). Ini input K-Means!' },
+        { path: SC1 + 'output_table_loadings.tex', label: 'G_c — Loading Kompromi Indikator', caption: 'Kontribusi tiap indikator pada PC1 & PC2 kompromi' },
+        { path: SC1 + 'matrix_F_c.tex', label: 'Matriks F_c (format pmatrix)', caption: 'F_c = D⁻¹/² P Λc^(1/2) — nilai numerik langsung' },
+      ],
+      arrowLabel: 'P, Λ dari dekomposisi W_c → F_c, G_c',
+    },
+  ];
+
+  /* -------- DOWNSTREAM STEPS (setelah STATIS biplot) -------- */
+  const DOWN_STEPS = [
+    {
+      id: 'd0', color: '#f59e0b', icon: '🎲', type: 'decision', num: 11,
+      title: 'Uji Permutasi (Signifikansi Stabilitas)',
+      subtitle: 'Verifikasi bahwa struktur kompromi bukan artefak acak',
+      latex: `$$\\tau=\\frac{\\lambda_1^2}{\\sigma^2},\\qquad p\\text{-value}=\\frac{\\#\\{\\tau_{\\mathrm{perm}}\\geq\\tau_{\\mathrm{obs}}\\}}{N_{\\mathrm{perm}}},\\quad N_{\\mathrm{perm}}=1000$$`,
+      detail: 'Permutasi acak kolom matriks inter-struktur H  |  p < 0.05 → struktur signifikan & layak diinterpretasi',
+      outputs: [<OutputBadge key="p" icon="📊" label="p-value + histogram permutasi" color="#f59e0b"/>],
+      outputFiles: [
+        { path: SC1 + 'output_perm_statis.tex', label: 'Hasil Uji Permutasi', caption: 'p-value, λ₁ observasi, interpretasi signifikansi struktur' },
+      ],
+      rejectLabel: '✗ Struktur tidak signifikan → analisis dihentikan',
+      arrowLabel: '✓ p < 0.05 → struktur kompromi bermakna secara statistik',
+    },
+    {
+      id: 'd1', color: '#3b82f6', icon: '🔭', type: 'process', num: 12,
+      title: 'Compromise Biplot & Trajektori Temporal (F_k, G_k)',
+      subtitle: 'Visualisasi posisi wilayah & indikator — statis (F_c, G_c) & dinamis (F_k, G_k)',
+      latex: `$$\\mathbf{F}_k=\\mathbf{W}_k\\mathbf{D}\\mathbf{P}\\mathbf{\\Lambda}_c^{-1/2}\\in\\mathbb{R}^{n\\times r},\\qquad\\mathbf{G}_k=\\mathbf{Z}_k^T\\mathbf{D}\\mathbf{F}_c\\mathbf{\\Lambda}_c^{-1/2}\\in\\mathbb{R}^{p\\times r}$$`,
+      detail: 'F_k & G_k = proyeksi tiap tahun k ke RUANG KOMPROMI YANG SAMA → trajektori antar tahun geometrically comparable',
+      outputs: [
+        <OutputBadge key="t" icon="🎯" label="3D Scatter (Tahun × PC1_c × PC2_c)" color="#3b82f6"/>,
+        <OutputBadge key="b" icon="📐" label="2D Biplot kompromi + loading" color="#8b5cf6"/>
+      ],
+      outputFiles: [
+        { path: SC1 + 'output_table_skor_intra_2020.tex', label: 'F₂₀₂₀ — Skor Intra (Proyeksi 2020 ke Ruang Kompromi)', caption: 'PC1 & PC2 per wilayah di ruang kompromi untuk tahun 2020' },
+        { path: SC1 + 'output_table_loading_intra_2020.tex', label: 'G₂₀₂₀ — Loading Intra 2020', caption: 'Kontribusi indikator pada tahun 2020 di ruang kompromi' },
+        { path: BASE + 'scenario1/trajectory_scores.png', label: 'Plot Trajektori Skor', caption: 'Lintasan wilayah 2020→2022 dalam ruang PC1_c × PC2_c', imgHeight: '150px' },
+      ],
+      arrowLabel: 'F_c, G_c + per-year projection → biplot & trajectory',
+    },
+    {
+      id: 'd2', color: '#f59e0b', icon: '📏', type: 'process', num: 13,
+      title: 'Penentuan Kluster Optimal (k*)',
+      subtitle: 'Elbow Method + Silhouette Score pada skor kompromi F_c',
+      latex: `$$k^*=\\arg\\min_{k}\\mathrm{SSE}(k)\\;\\cap\\;\\arg\\max_{k}\\mathrm{Sil}(k),\\qquad k\\in\\{2,3,4,5\\},\\quad \\mathrm{SSE}=\\sum_{j}\\sum_{\\mathbf{x}_i\\in C_j}\\|\\mathbf{x}_i-\\boldsymbol{\\mu}_j\\|^2$$`,
+      detail: 'Input: skor F_c (n×2)  |  Ward dendrogram sebagai panduan awal jumlah kluster  |  Silhouette mengukur separasi antar-kluster',
+      outputs: [<OutputBadge key="e" icon="📉" label="Elbow plot + Silhouette + Dendrogram" color="#f59e0b"/>],
+      outputFiles: [
+        { path: BASE + 'elbow_plot_2020.png', label: 'Elbow Plot 2020', caption: 'SSE vs jumlah kluster k — titik siku menunjukkan k*', imgHeight: '140px' },
+        { path: BASE + 'dendrogram_2020.png', label: 'Dendrogram Hierarkis 2020', caption: 'Metode Ward — panduan awal jumlah kluster', imgHeight: '140px' },
+      ],
+      arrowLabel: 'skor F_c (n×2) → metode elbow & silhouette',
+    },
+    {
+      id: 'd3', color: '#6366f1', icon: '🧩', type: 'process', num: 14,
+      title: 'K-Means Clustering',
+      subtitle: 'Pengelompokan wilayah berdasarkan posisi dalam ruang kompromi',
+      latex: `$$\\mathrm{SSE}=\\sum_{j=1}^{k}\\sum_{\\mathbf{x}_i\\in C_j}\\|\\mathbf{x}_i-\\boldsymbol{\\mu}_j\\|^2\\to\\min,\\qquad \\boldsymbol{\\mu}_j=\\frac{1}{|C_j|}\\sum_{\\mathbf{x}_i\\in C_j}\\mathbf{x}_i$$`,
+      detail: 'Algoritma iteratif: (1) assign ke centroid terdekat → (2) update centroid → ulangi hingga konvergen  |  Input: F_c ∈ ℝⁿˣ²',
+      outputs: [<OutputBadge key="c" icon="🗺️" label="Label kluster + peta per tahun" color="#6366f1"/>],
+      outputFiles: [
+        { path: SC1 + 'output_table_compromise_cluster_sum_name.tex', label: 'Anggota Kluster Kompromi STATIS', caption: 'Kluster 1/2/3 beserta daftar wilayah anggotanya' },
+        { path: BASE + 'cluster_map_biplot_2020.png', label: 'Peta Kluster 2020', caption: 'Hasil K-Means divisualisasikan pada peta geografis', imgHeight: '150px' },
+      ],
+      arrowLabel: 'minimasi SSE iteratif → update centroid',
+    },
+    {
+      id: 'd4', color: '#8b5cf6', icon: '🔀', type: 'process', num: 15,
+      title: 'Penyelarasan Label Lintas Tahun (Hungarian Algorithm)',
+      subtitle: 'Menjamin konsistensi label kluster antar-tahun',
+      latex: `$$\\min\\sum_{i=1}^{k}\\sum_{j=1}^{k}D(\\mathbf{c}_{1i},\\mathbf{c}_{2j})\\cdot x_{ij},\\qquad D(\\mathbf{c}_{1i},\\mathbf{c}_{2j})=\\|\\mathbf{c}_{1i}-\\mathbf{c}_{2j}\\|$$`,
+      detail: 'Centroid kluster berubah tiap tahun akibat re-K-means  |  Hungarian Algorithm (Linear Assignment Problem) memetakan label optimal antar-periode',
+      outputs: [<OutputBadge key="h" icon="🔀" label="Tabel transisi kluster antar-tahun" color="#8b5cf6"/>],
+      outputFiles: [
+        { path: BASE + 'output_table_biplot_transition_name_2020x2021.tex', label: 'Transisi Kluster 2020→2021', caption: 'Wilayah mana yang berpindah kluster (output Hungarian)' },
+      ],
+      arrowLabel: 'jarak Euclidean centroid → optimal label mapping',
+    },
+    {
+      id: 'd5', color: '#22c55e', icon: '🏆', type: 'process', num: 16,
+      title: 'Perankingan Level Kluster',
+      subtitle: 'Menetapkan urutan kesejahteraan berdasarkan posisi PC1 kompromi',
+      latex: `$$\\overline{\\mathrm{PC}}_{1,k}=\\frac{1}{n_k}\\sum_{i\\in C_k}f_{i,1},\\qquad \\text{Rank}: \\overline{\\mathrm{PC}}_{1,k}\\text{ terbesar}=\\text{kluster kesejahteraan tertinggi}$$`,
+      detail: 'PC1 kompromi merangkum sebagian besar varians indikator  |  nilai PC1 tinggi = profil indikator yang lebih baik secara agregat',
+      outputs: [<OutputBadge key="r" icon="🥇" label="Label kluster terurut (Tinggi/Sedang/Rendah)" color="#22c55e"/>],
+      outputFiles: [
+        { path: SC1 + 'output_table_centroid_statis.tex', label: 'Sentroid Kluster per Tahun', caption: 'Rata-rata PC1 & PC2 per kluster — dasar perankingan level' },
+      ],
+      arrowLabel: 'rata-rata skor PC1 tiap kluster → urutan level',
+    },
+    {
+      id: 'd6', color: '#22c55e', icon: '🌍', type: 'process', num: 17,
+      title: "Global Moran's I — Autokorelasi Spasial",
+      subtitle: 'Menguji apakah wilayah dengan kluster serupa bergerombol secara geografis',
+      latex: `$$I=\\frac{N}{\\displaystyle\\sum_i\\sum_j w_{ij}}\\cdot\\frac{\\displaystyle\\sum_i\\sum_j w_{ij}(x_i-\\bar{x})(x_j-\\bar{x})}{\\displaystyle\\sum_i(x_i-\\bar{x})^2},\\quad w_{ij}=\\begin{cases}1&\\text{bertetangga}\\\\0&\\text{lainnya}\\end{cases}$$`,
+      detail: 'x_i = skor PC1 kompromi wilayah i  |  w_ij dari Queen Contiguity  |  I > E[I] → autokorelasi positif: wilayah berdekatan cenderung kluster serupa',
+      outputs: [<OutputBadge key="m" icon="🗺️" label="Nilai I + distribusi permutasi + p-value" color="#22c55e"/>],
+      outputFiles: [
+        { path: BASE + 'scenario1/ipm_map_2020.png', label: 'Peta IPM 2020 (benchmark)', caption: 'Perbandingan pola spasial IPM dengan kluster STATIS', imgHeight: '150px' },
+      ],
+      arrowLabel: 'skor PC1 × matriks bobot spasial W',
+    },
+    {
+      id: 'd7', color: '#10b981', icon: '✨', type: 'output', num: 18,
+      title: 'Hasil Akhir',
+      subtitle: 'Peta kluster kesejahteraan, trajektori wilayah, dan tabel transisi',
+      latex: `$$\\text{Output: Kluster } k^*,\\; \\text{Trajektori } \\{\\mathbf{F}_k\\}_{k=1}^{K},\\; I_{\\text{Moran}},\\; \\mathbf{T}_{\\text{transisi}}$$`,
+      detail: 'Peta tematik kluster per tahun + biplot trajektori temporal + tabel perubahan kluster antar-tahun + uji autokorelasi spasial',
+      outputs: [
+        <OutputBadge key="map" icon="🗺️" label="Peta tematik kluster" color="#10b981"/>,
+        <OutputBadge key="traj" icon="📐" label="Biplot trajektori 2D/3D" color="#3b82f6"/>,
+        <OutputBadge key="tbl" icon="📋" label="Tabel transisi kluster" color="#8b5cf6"/>
+      ],
+      outputFiles: [
+        { path: BASE + 'cluster_map_biplot_2022.png', label: 'Peta Kluster Kompromi 2022', caption: 'Visualisasi akhir hasil klusterisasi pada peta geografis', imgHeight: '160px' },
+        { path: BASE + 'output_table_biplot_transition_name_2021x2022.tex', label: 'Transisi Kluster 2021→2022', caption: 'Perubahan keanggotaan kluster antar-tahun' },
+      ],
+      arrowLabel: '',
+    },
+  ];
+
+  const ArrowDown = ({ label, fromColor, toColor }) => (
+    <FlowArrow label={label} fromColor={fromColor || '#334155'} toColor={toColor || '#334155'} />
+  );
+
+  return (
+    <div className="app-container" style={{ padding: '40px 28px', maxWidth: '1160px', margin: '0 auto', color: '#E2E8F0' }}>
+
+      <div style={{ background: 'rgba(30,41,59,0.5)', backdropFilter: 'blur(16px)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '24px', padding: '26px 32px', marginBottom: '32px', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px' }}>
+        <div>
+          <button onClick={onBack} style={{ background: 'rgba(255,255,255,0.08)', border: 'none', color: '#06B6D4', padding: '7px 16px', borderRadius: '30px', cursor: 'pointer', fontSize: '0.82rem', fontWeight: '700', marginBottom: '12px' }}>
+            {'⬅'} Kembali
+          </button>
+          <h1 style={{ margin: '0 0 6px 0', fontSize: '24px', fontWeight: '800', background: 'linear-gradient(135deg,#06B6D4,#8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+            Alur Metodologi STATIS vs PCA per-Tahun
+          </h1>
+          <p style={{ margin: 0, fontSize: '13px', color: '#94A3B8', maxWidth: '600px' }}>
+            Alur lengkap dari data mentah BPS hingga peta kluster — dengan perbandingan eksplisit terhadap PCA per-tahun yang menghasilkan plot 3D pertama di Web App.
+          </p>
+        </div>
+        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', alignSelf: 'flex-start' }}>
+          {[['INPUT','#10b981'],['PROSES','#06b6d4'],['KEPUTUSAN','#f59e0b'],['OUTPUT','#10b981']].map(([l,c]) => (
+            <span key={l} style={{ background: `${c}12`, color: c, border: `1px solid ${c}44`, borderRadius: '20px', padding: '3px 10px', fontSize: '0.65rem', fontWeight: '700', letterSpacing: '0.5px' }}>{l}</span>
+          ))}
+        </div>
+      </div>
+
+      {/* COMMON STEPS */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {COMMON.map((step, idx) => (
+          <div key={step.id} style={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div style={{ width: '100%', maxWidth: '820px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <StepCard
+                step={step} num={idx + 1}
+                isExpanded={!!expandedOutputs[step.id]}
+                isHovered={hovered === step.id}
+                onMouseEnter={() => setHovered(step.id)}
+                onMouseLeave={() => setHovered(null)}
+                onToggle={() => toggleOutput(step.id)}
+              />
+              <ArrowDown
+                label={idx === 2 ? 'bobot mᵢ tersedia → standardisasi berbeda per metode' : step.arrowLabel}
+                fromColor={step.color}
+                toColor={idx === 2 ? '#8b5cf6' : (idx + 1 < COMMON.length ? COMMON[idx + 1].color : '#f59e0b')}
+              />
+            </div>
+
+            {/* ═══ Z_K FORK — disisipkan setelah Bobot D (idx=2), sebelum KMO (idx=3) ═══ */}
+            {idx === 2 && (
+              <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 0 auto' }}>
+
+                {/* Z_K fork header */}
+                <div style={{ background: 'rgba(139,92,246,0.07)', border: '1px solid rgba(139,92,246,0.3)', borderRadius: '14px', padding: '10px 24px', textAlign: 'center', marginBottom: '12px' }}>
+                  <div style={{ fontSize: '0.78rem', fontWeight: '800', color: '#a78bfa', letterSpacing: '0.5px' }}>
+                    ⚡ PERCABANGAN Z<sub>k</sub> — Standardisasi berbeda antara STATIS dan PCA
+                  </div>
+                  <div style={{ fontSize: '0.67rem', color: '#94a3b8', marginTop: '3px' }}>
+                    Meski notasi z<sub>ijk</sub> sama, nilainya <strong style={{color:'#c4b5fd'}}>numerik berbeda</strong>:
+                    STATIS menggunakan μ dan σ <em>terbobot demografis</em> (dari bobot m<sub>i</sub>),
+                    sementara PCA menggunakan mean aritmetika dan std populasi biasa (semua wilayah setara).
+                    Akibatnya <strong style={{color:'#c4b5fd'}}>W<sub>k</sub> = Z<sub>k</sub> Z<sub>k</sub><sup>T</sup></strong> yang masuk STATIS juga berbeda dari Z<sub>k</sub> yang masuk PCA.
+                  </div>
+                </div>
+
+                {/* Split: kiri STATIS ← tengah → kanan PCA */}
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '0', alignItems: 'stretch' }}>
+
+                  {/* LEFT: STATIS Z_k terbobot */}
+                  <div style={{ background: 'rgba(6,182,212,0.04)', border: '1px solid rgba(6,182,212,0.3)', borderRadius: '16px 0 0 16px', padding: '18px 20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', borderBottom: '1px solid rgba(6,182,212,0.18)', paddingBottom: '8px' }}>
+                      <span style={{ background: 'rgba(6,182,212,0.18)', color: '#06b6d4', borderRadius: '8px', padding: '3px 10px', fontSize: '0.63rem', fontWeight: '800' }}>STATIS — Z<sub>k</sub> Terbobot</span>
+                      <span style={{ fontSize: '0.62rem', color: '#64748b', marginLeft: 'auto' }}>run_statis_core()</span>
+                    </div>
+                    <div style={{ fontSize: '0.68rem', color: '#94a3b8', lineHeight: 1.6, marginBottom: '10px' }}>
+                      Bobot demografis mᵢ (dari langkah sebelumnya) digunakan langsung untuk menghitung
+                      rata-rata dan simpangan baku <strong style={{color:'#06b6d4'}}>terbobot populasi</strong>.
+                      Ini memastikan wilayah berpenduduk besar berkontribusi proporsional lebih besar ke pusat distribusi.
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {[
+                        ['μ Terbobot', '$$\\mu_{jk} = \\sum_{i=1}^{n} m_i\\, x_{ijk}$$'],
+                        ['σ Terbobot', '$$\\sigma_{jk} = \\sqrt{\\sum_{i=1}^{n} m_i\\,(x_{ijk}-\\mu_{jk})^2}$$'],
+                        [<>Z<sub>k</sub> STATIS</>, '$$z_{ijk}^{\\text{STATIS}} = \\frac{x_{ijk}-\\mu_{jk}}{\\sigma_{jk}}$$'],
+                      ].map(([lbl, f]) => (
+                        <div key={lbl} style={{ background: 'rgba(6,182,212,0.06)', borderRadius: '8px', padding: '7px 12px', borderLeft: '3px solid rgba(6,182,212,0.5)' }}>
+                          <div style={{ fontSize: '0.6rem', color: '#06b6d4', fontWeight: '700', marginBottom: '3px' }}>{lbl}</div>
+                          <LatexFormula small bare tex={f} color="#a5f3fc" />
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: '10px', background: 'rgba(6,182,212,0.08)', border: '1px solid rgba(6,182,212,0.2)', borderRadius: '8px', padding: '8px 12px' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#06b6d4', marginBottom: '4px' }}>✓ PROPERTI TERJAMIN</div>
+                      {['∑mᵢ · zᵢⱼₖ = 0  (rata-rata terbobot nol)', '∑mᵢ · zᵢⱼₖ² = 1  (varians terbobot satu)', 'Skala konsisten lintas indikator & tahun'].map((t,i) => (
+                        <div key={i} style={{ fontSize: '0.62rem', color: '#94a3b8', display: 'flex', gap: '5px', marginBottom: '2px' }}>
+                          <span style={{ color: '#06b6d4', flexShrink: 0 }}>▸</span><span>{t}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* CENTER DIVIDER */}
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '48px', position: 'relative', zIndex: 2 }}>
+                    <div style={{ width: '2px', flex: 1, background: 'linear-gradient(to bottom, rgba(6,182,212,0.4), rgba(139,92,246,0.5), rgba(239,68,68,0.4))' }} />
+                    <div style={{ background: '#0f172a', border: '2px solid rgba(139,92,246,0.5)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.85rem', flexShrink: 0 }}>≠</div>
+                    <div style={{ width: '2px', flex: 1, background: 'linear-gradient(to bottom, rgba(139,92,246,0.5), rgba(239,68,68,0.4))' }} />
+                  </div>
+
+                  {/* RIGHT: PCA Z_k biasa */}
+                  <div style={{ background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '0 16px 16px 0', padding: '18px 20px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', borderBottom: '1px solid rgba(239,68,68,0.18)', paddingBottom: '8px' }}>
+                      <span style={{ background: 'rgba(239,68,68,0.18)', color: '#f87171', borderRadius: '8px', padding: '3px 10px', fontSize: '0.63rem', fontWeight: '800' }}>PCA — Z<sub>k</sub> Biasa (Unweighted)</span>
+                      <span style={{ fontSize: '0.62rem', color: '#64748b', marginLeft: 'auto' }}>StandardScaler()</span>
+                    </div>
+                    <div style={{ fontSize: '0.68rem', color: '#94a3b8', lineHeight: 1.6, marginBottom: '10px' }}>
+                      sklearn <code style={{color:'#f87171', fontSize:'0.65rem'}}>StandardScaler</code> menggunakan mean aritmetika biasa — semua wilayah <strong style={{color:'#f87171'}}>diperlakukan setara</strong> tanpa memperhatikan besar populasi.
+                      Kota kecil (misal 50 ribu jiwa) bobotnya sama dengan DKI Jakarta (10 juta jiwa).
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                      {[
+                        ['μ Aritmetika', '$$\\bar{x}_{j} = \\frac{1}{n}\\sum_{i=1}^{n} x_{ij}$$'],
+                        ['σ Populasi', '$$s_{j} = \\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}(x_{ij}-\\bar{x}_{j})^2}$$'],
+                        [<>Z<sub>k</sub> PCA</>, '$$z_{ij}^{\\text{PCA}} = \\frac{x_{ij}-\\bar{x}_{j}}{s_{j}}$$'],
+                      ].map(([lbl, f]) => (
+                        <div key={lbl} style={{ background: 'rgba(239,68,68,0.06)', borderRadius: '8px', padding: '7px 12px', borderLeft: '3px solid rgba(239,68,68,0.5)' }}>
+                          <div style={{ fontSize: '0.6rem', color: '#f87171', fontWeight: '700', marginBottom: '3px' }}>{lbl}</div>
+                          <LatexFormula small bare tex={f} color="#fca5a5" />
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ marginTop: '10px', background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '8px', padding: '8px 12px' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#f87171', marginBottom: '4px' }}>⚠ IMPLIKASI</div>
+                      {[
+                        '(1/n)∑zᵢⱼ = 0, (1/n)∑zᵢⱼ² = 1  (properti sampel biasa)',
+                        'Wilayah berpenduduk kecil & besar dibobot sama',
+                      ].map((t,i) => (
+                        <div key={i} style={{ fontSize: '0.62rem', color: '#94a3b8', display: 'flex', gap: '5px', marginBottom: '2px' }}>
+                          <span style={{ color: '#f87171', flexShrink: 0 }}>✗</span><span>{t}</span>
+                        </div>
+                      ))}
+                      <div style={{ fontSize: '0.62rem', color: '#94a3b8', display: 'flex', gap: '5px', marginBottom: '2px' }}>
+                        <span style={{ color: '#f87171', flexShrink: 0 }}>✗</span>
+                        <span>Z<sub>k</sub><sup>PCA</sup> ≠ Z<sub>k</sub><sup>STATIS</sup> → W<sub>k</sub><sup>PCA</sup> ≠ W<sub>k</sub><sup>STATIS</sup></span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>{/* end Z_K split grid */}
+
+                {/* Reconnect note */}
+                <div style={{ textAlign: 'center', margin: '10px 0 4px 0' }}>
+                  <div style={{ display: 'inline-block', background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: '20px', padding: '5px 16px', fontSize: '0.68rem', color: '#f59e0b', fontWeight: '600' }}>
+                    ↓ Kedua Z_k kemudian diuji kesesuaiannya via KMO &amp; Bartlett (berbasis data mentah)
+                  </div>
+                </div>
+                <ArrowDown fromColor='#8b5cf6' toColor={COMMON[3].color} label='' />
+
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* ═══ FORK: FULL-WIDTH PCA vs STATIS SPLIT ═══ */}
+      <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 0 auto' }}>
+
+        {/* Fork header */}
+        <div style={{ background: 'rgba(245,158,11,0.07)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: '14px', padding: '12px 24px', textAlign: 'center', marginBottom: '12px' }}>
+          <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#f59e0b', letterSpacing: '0.5px' }}>
+            ⚡ PERCABANGAN METODE — setelah KMO &amp; Bartlett lolos, masing-masing Z<sub>k</sub> diolah berbeda
+          </div>
+          <div style={{ fontSize: '0.68rem', color: '#94a3b8', marginTop: '3px' }}>
+            STATIS melanjutkan dengan Z<sub>k</sub> terbobot → pipeline W<sub>k</sub> → H → α → W<sub>c</sub> → F<sub>c</sub>.
+            PCA per-tahun melanjutkan dengan Z<sub>k</sub> biasa → SVD independen per tahun → F<sub>k</sub>, G<sub>k</sub> tidak kompatibel lintas tahun.
+          </div>
+        </div>
+
+        {/* Split: kiri STATIS ← label tengah → kanan PCA */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '0', alignItems: 'stretch' }}>
+
+          {/* ═══ LEFT: STATIS ═══ */}
+          <div style={{ background: 'rgba(6,182,212,0.04)', border: '1px solid rgba(6,182,212,0.3)', borderRadius: '16px 0 0 16px', padding: '20px 20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', borderBottom: '1px solid rgba(6,182,212,0.18)', paddingBottom: '10px' }}>
+              <span style={{ background: 'rgba(6,182,212,0.18)', color: '#06b6d4', borderRadius: '8px', padding: '3px 10px', fontSize: '0.63rem', fontWeight: '800', letterSpacing: '0.5px' }}>JALUR B — STATIS</span>
+              <span style={{ fontSize: '0.63rem', color: '#64748b', marginLeft: 'auto' }}>Plot 3D Kedua ↗</span>
+            </div>
+
+            {/* Deskripsi */}
+            <div style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1.65, marginBottom: '10px' }}>
+              Setiap matriks <strong style={{ color: '#06b6d4' }}>Z</strong><sub>k</sub> tidak langsung didekomposisi secara independen.
+              STATIS terlebih dahulu membangun matriks kemiripan <strong style={{ color: '#06b6d4' }}>W</strong><sub>k</sub> untuk setiap tahun,
+              lalu mengukur keterkaitan antar-tahun melalui matriks inter-struktur <strong style={{ color: '#06b6d4' }}>H</strong> dan koefisien RV.
+              Dari sana dihitung bobot optimal α<sub>k</sub> dan matriks kompromi tunggal <strong style={{ color: '#06b6d4' }}>W</strong><sub>c</sub>,
+              yang kemudian didekomposisi spektral untuk menghasilkan satu set sumbu bersama (<strong style={{ color: '#06b6d4' }}>F</strong><sub>c</sub>, <strong style={{ color: '#06b6d4' }}>G</strong><sub>c</sub>).
+            </div>
+
+            {/* Alur rumus */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '10px' }}>
+              {[
+                ['🔢', 'Intra-Struktur', '$$\\mathbf{W}_k = \\mathbf{Z}_k\\mathbf{Z}_k^T \\in \\mathbb{R}^{n\\times n}$$'],
+                ['📡', 'Inter-Struktur', '$$H_{kk\'}=\\operatorname{tr}(\\mathbf{W}_k\\mathbf{D}\\mathbf{W}_{k\'}\\mathbf{D})$$'],
+                ['⚖️', 'Bobot Temporal', '$$\\alpha_k = u_{1k}/\\textstyle\\sum u_{1k\'},\\quad\\mathbf{H}\\mathbf{u}_1=\\theta_1\\mathbf{u}_1$$'],
+                ['🤝', 'Kompromi', '$$\\mathbf{W}_c=\\textstyle\\sum_k \\alpha_k\\,\\mathbf{W}_k$$'],
+                ['⚛', 'Dekomposisi', '$$\\mathbf{F}_c=\\mathbf{D}^{-1/2}\\mathbf{P}\\mathbf{\\Lambda}_c^{1/2},\\;\\mathbf{G}_c=\\textstyle\\sum_k\\alpha_k\\mathbf{Z}_k^T\\mathbf{D}\\mathbf{F}_c\\mathbf{\\Lambda}_c^{-1/2}$$'],
+                ['🎯', 'Proyeksi Tahunan', '$$\\mathbf{F}_k=\\mathbf{W}_k\\mathbf{D}\\mathbf{P}\\mathbf{\\Lambda}_c^{-1/2} \\quad\\text{(ruang sama!)}$$'],
+              ].map(([icon, label, formula]) => (
+                <div key={label} style={{ background: 'rgba(6,182,212,0.06)', borderRadius: '8px', padding: '8px 12px', borderLeft: '3px solid rgba(6,182,212,0.5)' }}>
+                  <div style={{ fontSize: '0.62rem', color: '#06b6d4', fontWeight: '700', marginBottom: '4px' }}>{icon} {label}</div>
+                  <LatexFormula small bare tex={formula} color="#a5f3fc" />
+                </div>
+              ))}
+            </div>
+
+            {/* Keunggulan */}
+            <div style={{ background: 'rgba(6,182,212,0.08)', border: '1px solid rgba(6,182,212,0.25)', borderRadius: '10px', padding: '10px 12px' }}>
+              <div style={{ fontSize: '0.65rem', fontWeight: '800', color: '#06b6d4', marginBottom: '6px' }}>✓ KEUNGGULAN STATIS</div>
+              {[
+                'Satu set sumbu kompromi (PC1_c, PC2_c) berlaku untuk SEMUA tahun',
+                'Jarak antar-titik lintas tahun bermakna geometrically (comparable)',
+                'Bobot αₖ menangkap kontribusi proporsional tiap tahun terhadap pola rata-rata',
+                'Pengaruh outlier temporal diredam — tahun anomali mendapat bobot lebih kecil',
+                'Plot 3D: sumbu waktu × PC1_c × PC2_c — SATU REFERENSI, semua tahun',
+              ].map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: '6px', marginBottom: '4px', fontSize: '0.65rem', color: '#94a3b8', lineHeight: 1.5 }}>
+                  <span style={{ color: '#06b6d4', flexShrink: 0 }}>▸</span><span>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ marginTop: '10px', display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              <OutputBadge icon="🎯" label="Plot 3D Kedua: Tahun × PC1_c × PC2_c" color="#06b6d4" />
+              <OutputBadge icon="✅" label="Ruang kompromi konsisten" color="#22c55e" />
+            </div>
+          </div>
+
+          {/* ═══ CENTER DIVIDER ═══ */}
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '48px', position: 'relative', zIndex: 2 }}>
+            <div style={{ width: '2px', flex: 1, background: 'linear-gradient(to bottom, rgba(6,182,212,0.4), rgba(245,158,11,0.6), rgba(239,68,68,0.4))' }} />
+            <div style={{ background: '#0f172a', border: '2px solid rgba(245,158,11,0.5)', borderRadius: '50%', width: '36px', height: '36px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem', flexShrink: 0 }}>⚡</div>
+            <div style={{ width: '2px', flex: 1, background: 'linear-gradient(to bottom, rgba(245,158,11,0.6), rgba(239,68,68,0.4))' }} />
+          </div>
+
+          {/* ═══ RIGHT: PCA per-Tahun ═══ */}
+          <div style={{ background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.3)', borderRadius: '0 16px 16px 0', padding: '20px 20px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', borderBottom: '1px solid rgba(239,68,68,0.18)', paddingBottom: '10px' }}>
+              <span style={{ background: 'rgba(239,68,68,0.18)', color: '#f87171', borderRadius: '8px', padding: '3px 10px', fontSize: '0.63rem', fontWeight: '800', letterSpacing: '0.5px' }}>JALUR A — PCA per-Tahun</span>
+              <span style={{ fontSize: '0.63rem', color: '#64748b', marginLeft: 'auto' }}>Plot 3D Pertama ↗</span>
+            </div>
+
+            {/* Deskripsi */}
+            <div style={{ fontSize: '0.7rem', color: '#94a3b8', lineHeight: 1.65, marginBottom: '10px' }}>
+              Setiap matriks <strong style={{ color: '#f87171' }}>Z</strong><sub>k</sub> didekomposisi secara <strong style={{ color: '#f87171' }}>independen</strong> menggunakan SVD.
+              Setiap tahun menghasilkan set eigenvector sendiri (<strong style={{ color: '#f87171' }}>V</strong><sub>k</sub>),
+              sehingga sumbu PC1 dan PC2 memiliki orientasi berbeda di setiap tahun.
+              Skor wilayah <strong style={{ color: '#f87171' }}>F</strong><sub>k</sub> = <strong style={{ color: '#f87171' }}>Z</strong><sub>k</sub><strong style={{ color: '#f87171' }}>V</strong><sub>k</sub> dan loading
+              <strong style={{ color: '#f87171' }}>G</strong><sub>k</sub> = <strong style={{ color: '#f87171' }}>V</strong><sub>k</sub> memang valid <em>di dalam</em> tahun itu,
+              namun tidak kompatibel lintas tahun.
+            </div>
+
+            {/* Alur rumus */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '10px' }}>
+              {[
+                ['📐', 'SVD per-Tahun (independen)', '$$\\mathbf{Z}_k = \\mathbf{U}_k\\mathbf{S}_k\\mathbf{V}_k^T \\quad \\forall k$$'],
+                ['📍', 'Skor Wilayah Tahun k', '$$\\mathbf{F}_k = \\mathbf{Z}_k\\mathbf{V}_k \\quad\\text{(basis }\\mathbf{V}_k\\text{ berbeda tiap tahun)}$$'],
+                ['➡️', 'Loading Indikator Tahun k', '$$\\mathbf{G}_k = \\mathbf{V}_k \\quad\\text{(bukan kompatibel dengan }\\mathbf{V}_{k\'}\\text{)}$$'],
+              ].map(([icon, label, formula]) => (
+                <div key={label} style={{ background: 'rgba(239,68,68,0.06)', borderRadius: '8px', padding: '8px 12px', borderLeft: '3px solid rgba(239,68,68,0.5)' }}>
+                  <div style={{ fontSize: '0.62rem', color: '#f87171', fontWeight: '700', marginBottom: '4px' }}>{icon} {label}</div>
+                  <LatexFormula small bare tex={formula} color="#fca5a5" />
+                </div>
+              ))}
+            </div>
+
+            {/* Masalah utama */}
+            <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '10px', padding: '10px 12px', marginBottom: '8px' }}>
+              <div style={{ fontSize: '0.65rem', fontWeight: '800', color: '#f87171', marginBottom: '6px' }}>⚠ KETERBATASAN</div>
+              {[
+                'V₂₀₂₀ ≠ V₂₀₂₁ ≠ … — basis berbeda tiap tahun, sumbu tidak konsisten',
+                'Jarak antara F₂₀₂₀ dan F₂₀₂₄ tidak bermakna geometrically (apples vs oranges)',
+                'Tidak ada mekanisme pembobotan kontribusi temporal (semua tahun diperlakukan setara)',
+                'Pemilihan basis ortogonormal tiap tahun bersifat acak arah (sign ambiguity)',
+                'Plot 3D: posisi wilayah di PC1/PC2 berubah makna setiap tahun — hanya bisa dibandingkan intra-tahun',
+              ].map((t, i) => (
+                <div key={i} style={{ display: 'flex', gap: '6px', marginBottom: '4px', fontSize: '0.65rem', color: '#94a3b8', lineHeight: 1.5 }}>
+                  <span style={{ color: '#f87171', flexShrink: 0 }}>✗</span><span>{t}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Catatan dari induk.pdf */}
+            <div style={{ background: 'rgba(100,116,139,0.06)', border: '1px dashed rgba(100,116,139,0.2)', borderRadius: '8px', padding: '8px 10px', marginBottom: '10px' }}>
+              <div style={{ fontSize: '0.6rem', color: '#64748b', fontStyle: 'italic', lineHeight: 1.55 }}>
+                "PCA Tahunan Konvensional…memilih basis ortogonormal berbeda pada tiap tahun, sehingga jarak antar-titik lintasan antartahun tidak bermakna secara geometris." <span style={{ color: '#475569' }}>— Bab 2, Skripsi</span>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              <OutputBadge icon="📉" label="Plot 3D Pertama: Tahun × PC1_k × PC2_k" color="#f87171" />
+              <OutputBadge icon="⚠️" label="Tidak komparable lintas tahun" color="#f87171" />
+            </div>
+          </div>
+
+        </div>{/* end grid 3-col */}
+
+        {/* Bottom: STATIS continues */}
+        <div style={{ textAlign: 'center', margin: '12px 0 4px 0' }}>
+          <div style={{ display: 'inline-block', background: 'rgba(6,182,212,0.1)', border: '1px solid rgba(6,182,212,0.3)', borderRadius: '20px', padding: '6px 18px', fontSize: '0.7rem', color: '#06b6d4', fontWeight: '700' }}>
+            ↓ Penelitian ini menggunakan Jalur B (STATIS) — dilanjutkan di bawah
+          </div>
+        </div>
+
+      </div>{/* end fork wrapper */}
+
+      {/* STATIS-SPECIFIC STEPS */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {STATIS_STEPS.map((step, idx) => (
+          <div key={step.id} style={{ width: '100%', maxWidth: '820px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <ArrowDown
+              label={idx === 0 ? 'Jalur STATIS: Z_k → matriks kemiripan spasial' : undefined}
+              fromColor={idx === 0 ? '#f59e0b' : STATIS_STEPS[idx - 1].color}
+              toColor={step.color}
+            />
+            <StepCard
+              step={step} num={step.num}
+              isExpanded={!!expandedOutputs[step.id]}
+              isHovered={hovered === step.id}
+              onMouseEnter={() => setHovered(step.id)}
+              onMouseLeave={() => setHovered(null)}
+              onToggle={() => toggleOutput(step.id)}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* DOWNSTREAM STEPS */}
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        {DOWN_STEPS.map((step, idx) => (
+          <div key={step.id} style={{ width: '100%', maxWidth: '820px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <ArrowDown
+              label={idx === 0 ? 'F_c, G_c tersedia → verifikasi signifikansi' : step.arrowLabel}
+              fromColor={idx === 0 ? STATIS_STEPS[STATIS_STEPS.length - 1].color : DOWN_STEPS[idx - 1].color}
+              toColor={step.color}
+            />
+            <StepCard
+              step={step} num={step.num}
+              isExpanded={!!expandedOutputs[step.id]}
+              isHovered={hovered === step.id}
+              onMouseEnter={() => setHovered(step.id)}
+              onMouseLeave={() => setHovered(null)}
+              onToggle={() => toggleOutput(step.id)}
+            />
+          </div>
+        ))}
+      </div>
+
+      <div style={{ marginTop: '40px', textAlign: 'center', color: '#334155', fontSize: '0.72rem' }}>
+        STATIS {'—'} <em>Structuration des Tableaux {'à'} Trois Indices de la Statistique</em> (Lavit et al., 1994)
+      </div>
+    </div>
+  );
+}
+
+
+// ─── DATASET TABLE VIEW ───────────────────────────────────────────────────────
+function DatasetTableView({ defaultDataset }) {
+  const [dsType, setDsType] = useState(defaultDataset || 'real');
+  const [year, setYear] = useState('2020');
+  const [tex, setTex] = useState('');
+  const [loading, setLoading] = useState(true);
+
+  const realYears = ['2020','2021','2022','2023','2024'];
+  const sampelYears = ['2020','2021','2022'];
+  const years = dsType === 'real' ? realYears : sampelYears;
+
+  useEffect(() => {
+    if (!years.includes(year)) setYear(years[0]);
+  }, [dsType]);
+
+  useEffect(() => {
+    let active = true;
+    setLoading(true);
+    const prefix = dsType === 'real' ? 'data_final' : 'data_sampel';
+    fetch(`/${prefix}_${year}.tex`)
+      .then(r => r.text())
+      .then(t => { if (active) { setTex(t); setLoading(false); } })
+      .catch(() => { if (active) setLoading(false); });
+    return () => { active = false; };
+  }, [dsType, year]);
+
+  return (
+    <div>
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '16px', flexWrap: 'wrap' }}>
+        {[['real','Data Real (41 Wilayah, 5 Tahun)'],['sampel','Data Sampel Ilustratif (4 Wilayah, 3 Tahun)']].map(([k,l]) => (
+          <button key={k} onClick={() => setDsType(k)} style={{
+            background: dsType === k ? 'linear-gradient(135deg,#06B6D4,#3B82F6)' : 'rgba(15,23,42,0.5)',
+            color: dsType === k ? '#fff' : '#94a3b8',
+            border: `1px solid ${dsType===k?'#06b6d4':'rgba(255,255,255,0.1)'}`,
+            borderRadius: '20px', padding: '7px 16px', fontSize: '0.82rem', fontWeight: '600',
+            cursor: 'pointer', transition: 'all 0.2s' }}>
+            {l}
+          </button>
+        ))}
+      </div>
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', flexWrap: 'wrap', alignItems: 'center' }}>
+        <span style={{ color: '#64748b', fontSize: '0.8rem' }}>Tahun:</span>
+        {years.map(y => (
+          <button key={y} onClick={() => setYear(y)} style={{
+            background: year === y ? 'rgba(6,182,212,0.2)' : 'rgba(15,23,42,0.4)',
+            color: year === y ? '#e2e8f0' : '#64748b',
+            border: `1px solid ${year===y?'rgba(6,182,212,0.4)':'rgba(255,255,255,0.08)'}`,
+            borderRadius: '8px', padding: '4px 14px', fontSize: '0.8rem', fontWeight: '600',
+            cursor: 'pointer', transition: 'all 0.15s' }}>
+            {y}
+          </button>
+        ))}
+      </div>
+      <div style={{ background: 'rgba(6,182,212,0.06)', border: '1px solid rgba(6,182,212,0.15)', borderRadius: '10px', padding: '10px 14px', marginBottom: '14px', fontSize: '0.77rem', color: '#94a3b8' }}>
+        {dsType === 'real'
+          ? '📊 Data Real: 41 Kabupaten/Kota di Banten, DKI Jakarta & Jawa Barat. Kolom: Provinsi, Kab/Kota, IPM, IPG, PPM, PDRB_ADHK, RLS, AHH_L, AHH_P, GK, PKKP, TPT, TPAK, GR, JP. Sumber: BPS RI.'
+          : '🔬 Data Sampel: 4 wilayah × 3 tahun × 3 indikator (PPM, RLS, TPT) + IPM + JP — ilustrasi numerik langkah-langkah STATIS pada Bab 3 skripsi.'}
+      </div>
+      {loading ? (
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '120px' }}>
+          <div className="spinner" style={{ width: '30px', height: '30px' }}></div>
+        </div>
+      ) : (
+        <div style={{ maxHeight: '420px', overflowY: 'auto', overflowX: 'auto', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.08)' }} className="custom-scrollbar">
+          <LatexTable tex={tex} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 function App() {
   const [activeModal, setActiveModal] = useState(null);
   const [compareView, setCompareView] = useState(false);
   const [formulasView, setFormulasView] = useState(false);
+  const [flowView, setFlowView] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
@@ -2763,6 +3658,10 @@ function App() {
         <FormulasDashboard
           onBack={() => setFormulasView(false)}
         />
+      ) : flowView ? (
+        <MethodologyFlowView
+          onBack={() => setFlowView(false)}
+        />
       ) : (
         <div className="container">
           <header>
@@ -2834,8 +3733,19 @@ function App() {
             <div className="card-icon">💾</div>
             <h2>Dataset</h2>
             <p>
-              Informasi struktur data panel (41 Kabupaten/Kota, 12 variabel, 5
-              tahun).
+              Lihat tabel data real (41 Kab/Kota × 5 tahun) dan data sampel ilustratif (4 wilayah × 3 tahun) langsung dari file XLSX yang digunakan.
+            </p>
+          </div>
+
+          {/* Methodology Flow Card */}
+          <div
+            className="card glass-effect highlight"
+            onClick={() => setFlowView(true)}
+          >
+            <div className="card-icon">🔄</div>
+            <h2>Alur Metodologi</h2>
+            <p>
+              Diagram step-by-step STATIS vs PCA per-tahun — dilengkapi formula matematika dirender MathJax dan perbandingan output plot 3D.
             </p>
           </div>
         </div>
@@ -3249,37 +4159,23 @@ function App() {
           if (e.target.classList.contains('modal')) closeModal();
         }}
       >
-        <div className="modal-content glass-effect">
+        <div className="modal-content glass-effect" style={{ maxWidth: '1000px', width: '96vw' }}>
           <button className="close-btn" onClick={closeModal} title="Tutup">
             &times;
           </button>
-          <h2>Informasi Dataset</h2>
+          <h2>Dataset Penelitian</h2>
           <div className="modal-body">
-            <p>
-              Penelitian ini memanfaatkan kumpulan data empiris multivariat panel
-              (tiga-arah).
-            </p>
-            <ul>
-              <li>
-                <strong>{`Unit Observasi (\\(n = 41\\)):`}</strong> Berfokus pada
-                41 Kabupaten dan Kota yang merepresentasikan tiga provinsi signifikan:
-                Banten, DKI Jakarta, dan Jawa Barat.
-              </li>
-              <li>
-                <strong>{`Dimensi Waktu (\\(K = 5\\)):`}</strong> Pengamatan
-                berlangsung selama lima tahun sekuensial (2020, 2021, 2022, 2023,
-                2024), mencakup masa fluktuatif (pandemi hingga fase pemulihan
-                berkelanjutan).
-              </li>
-              <li>
-                <strong>{`Variabel Panel (\\(p = 12\\)):`}</strong> Terdiri atas
-                12 variabel sosio-ekonomi kritis seperti IPM, PDRB per kapita,
-                Tingkat Pengangguran Terbuka, Angka Harapan Hidup, dll.
-              </li>
-            </ul>
-            <p>
-              Data dikompilasi dari laporan resmi <b>Badan Pusat Statistik (BPS)</b>{' '}
-              Republik Indonesia.
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(150px,1fr))', gap: '10px', marginBottom: '20px' }}>
+              {[['n = 41','Kabupaten/Kota','#06b6d4'],['p = 11','Indikator Analisis','#8b5cf6'],['K = 5','Tahun (2020–2024)','#3b82f6'],['n = 4','Sampel Ilustratif','#f59e0b']].map(([v,l,c]) => (
+                <div key={v} style={{ background:`${c}0d`, border:`1px solid ${c}30`, borderRadius:'10px', padding:'10px 14px', textAlign:'center' }}>
+                  <div style={{ fontSize:'1.3rem', fontWeight:'800', color:c }}>{v}</div>
+                  <div style={{ fontSize:'0.72rem', color:'#94a3b8' }}>{l}</div>
+                </div>
+              ))}
+            </div>
+            <DatasetTableView />
+            <p style={{ marginTop:'14px', fontSize:'0.75rem', color:'#475569' }}>
+              Sumber: BPS Provinsi Banten, DKI Jakarta &amp; Jawa Barat (2020–2024). Data dikumpulkan melalui publikasi <i>Provinsi Dalam Angka</i> dan portal Open Data BPS.
             </p>
           </div>
         </div>
