@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  26 MAY 2026 07:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 JUN 2026 16:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1467,19 +1467,32 @@ Package pdftex.def Info: gambarku/ilustrasi_biplot.png  used on input line 449.
 
 
 
-] [48] [49] [50] [51] [52] [53] (output_sample/output_table_kmo_bartlett.tex) [
-54]
-Underfull \hbox (badness 10000) in paragraph at lines 225--225
+]
+Overfull \hbox (47.82141pt too wide) in paragraph at lines 104--105
+ [][] 
+ []
+
+[48]
+Overfull \vbox (70.41937pt too high) has occurred while \output is active []
+
+
+[49] [50]
+
+LaTeX Warning: Reference `subsubsec:zk_fork' on page 51 undefined on input line
+ 155.
+
+[51] [52] [53] (output_sample/output_table_kmo_bartlett.tex) [54]
+Underfull \hbox (badness 10000) in paragraph at lines 231--231
 []|\OT1/ptm/m/n/8 (+20) DKI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 226--226
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 []|\OT1/ptm/m/n/8 (+20) JAWA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 227--227
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
 []|\OT1/ptm/m/n/8 (+20) JAWA
  []
 
@@ -1488,52 +1501,64 @@ Underfull \hbox (badness 10000) in paragraph at lines 227--227
 (output_sample/output_table_deskriptif_2022.tex) [56]
 (output_sample/output_table_descriptive_2020.tex)
 (output_sample/output_table_descriptive_2021.tex)
-(output_sample/output_table_descriptive_2022.tex) [57] [58] [59]
+(output_sample/output_table_descriptive_2022.tex) [57]
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
+\OT1/ptm/m/n/12 (+20) Implementasinya dalam \OT1/ptm/m/it/12 (+20) dash-board \
+OT1/ptm/m/n/12 (+20) meng-gu-nakan
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 329--331
+\OT1/pcr/m/n/12 sklearn.preprocessing.StandardScaler \OT1/ptm/m/n/12 (+20) yang
+ men-er-ap-kan for-
+ []
+
+[58] [59] [60]
 (output_sample/scenario1/output_table_matriks_intra_loading_2020.tex)
 (output_sample/scenario1/output_table_matriks_intra_loading_2021.tex)
-(output_sample/scenario1/output_table_matriks_intra_loading_2022.tex) [60]
-<output_sample/corr_heatmap_2020.png, id=1915, 1204.5pt x 1003.75pt>
+(output_sample/scenario1/output_table_matriks_intra_loading_2022.tex) [61]
+<output_sample/corr_heatmap_2020.png, id=1923, 1204.5pt x 1003.75pt>
 File: output_sample/corr_heatmap_2020.png Graphic file (type png)
 <use output_sample/corr_heatmap_2020.png>
 Package pdftex.def Info: output_sample/corr_heatmap_2020.png  used on input lin
-e 400.
+e 437.
 (pdftex.def)             Requested size: 320.0935pt x 266.74297pt.
 
-(output_sample/output_table_hw.tex) [61 <./output_sample/corr_heatmap_2020.png>
+(output_sample/output_table_hw.tex) [62 <./output_sample/corr_heatmap_2020.png>
 ] (output_sample/output_table_rv_w.tex)
-<output_sample/scenario1/rv_heatmap.png, id=1927, 1405.25pt x 1204.5pt>
+<output_sample/scenario1/rv_heatmap.png, id=1935, 1405.25pt x 1204.5pt>
 File: output_sample/scenario1/rv_heatmap.png Graphic file (type png)
 <use output_sample/scenario1/rv_heatmap.png>
 Package pdftex.def Info: output_sample/scenario1/rv_heatmap.png  used on input 
-line 423.
+line 460.
 (pdftex.def)             Requested size: 256.07741pt x 219.48401pt.
- [62 <./output_sample/scenario1/rv_heatmap.png>] (output_sample/output_table_al
+ [63 <./output_sample/scenario1/rv_heatmap.png>] (output_sample/output_table_al
 pha_w.tex)
-(output_sample/output_table_alpha_s.tex) [63] [64]
+(output_sample/output_table_alpha_s.tex) [64] [65]
 (output_sample/scenario1/output_table_eigen.tex)
 (output_sample/scenario2/output_table_eigen.tex)
 (output_sample/scenario1/output_table_struktur_diagnostik.tex)
-<output_sample/scenario1/scree_plot.png, id=1958, 1806.75pt x 1204.5pt>
+<output_sample/scenario1/scree_plot.png, id=1966, 1806.75pt x 1204.5pt>
 File: output_sample/scenario1/scree_plot.png Graphic file (type png)
 <use output_sample/scenario1/scree_plot.png>
 Package pdftex.def Info: output_sample/scenario1/scree_plot.png  used on input 
-line 511.
+line 548.
 (pdftex.def)             Requested size: 234.73654pt x 156.48022pt.
- [65]
-<output_sample/scenario1/compromise_biplot.png, id=1965, 912.62556pt x 767.7964
+ [66]
+<output_sample/scenario1/compromise_biplot.png, id=1973, 912.62556pt x 767.7964
 8pt>
 File: output_sample/scenario1/compromise_biplot.png Graphic file (type png)
 <use output_sample/scenario1/compromise_biplot.png>
 Package pdftex.def Info: output_sample/scenario1/compromise_biplot.png  used on
- input line 523.
+ input line 560.
 (pdftex.def)             Requested size: 307.29028pt x 258.52849pt.
- [66 <./output_sample/scenario1/scree_plot.png>]
+ [67 <./output_sample/scenario1/scree_plot.png>]
 (output_sample/scenario1/output_table_scores.tex)
 (output_sample/scenario1/output_table_skor_intra_2020.tex)
 (output_sample/scenario1/output_table_skor_intra_2021.tex)
-(output_sample/scenario1/output_table_skor_intra_2022.tex [67 <./output_sample/
+(output_sample/scenario1/output_table_skor_intra_2022.tex [68 <./output_sample/
 scenario1/compromise_biplot.png>])
-Underfull \hbox (badness 1540) in paragraph at lines 551--553
+Underfull \hbox (badness 1540) in paragraph at lines 588--590
 \OT1/ptm/m/n/12 (+20) Untuk tahun 2022, $\OML/cmm/m/it/12 c[] \OT1/cmr/m/n/12 =
  (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0[]6004;  \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/
 n/12 0[]1615)$\OT1/ptm/m/n/12 (+20) , se-hingga $\OML/cmm/m/it/12 D\OT1/cmr/m/n
@@ -1541,89 +1566,84 @@ n/12 0[]1615)$\OT1/ptm/m/n/12 (+20) , se-hingga $\OML/cmm/m/it/12 D\OT1/cmr/m/n
  []
 
 
-Underfull \hbox (badness 4084) in paragraph at lines 551--553
+Underfull \hbox (badness 4084) in paragraph at lines 588--590
 [] \OMS/cmsy/m/n/12 ^^Y \OT1/cmr/m/n/12 0[]0879$\OT1/ptm/m/n/12 (+20) . Ni-lai 
 $\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c[]; c[]\OT1/cmr/m/n/12 ) 
 \OML/cmm/m/it/12 > D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c[]; c[]\OT1/cmr/m/n/12 )
 $
  []
 
-[68] (output_sample/scenario1/output_table_loading_intra_2020.tex)
-(output_sample/scenario1/output_table_loading_intra_2021.tex [69])
+[69] (output_sample/scenario1/output_table_loading_intra_2020.tex)
+(output_sample/scenario1/output_table_loading_intra_2021.tex [70])
 (output_sample/scenario1/output_table_loading_intra_2022.tex)
 (output_sample/scenario1/output_table_loadings.tex)
-<output_sample/scenario2/compromise_biplot.png, id=2005, 909.44568pt x 767.7964
+<output_sample/scenario2/compromise_biplot.png, id=2014, 909.44568pt x 767.7964
 8pt>
 File: output_sample/scenario2/compromise_biplot.png Graphic file (type png)
 <use output_sample/scenario2/compromise_biplot.png>
 Package pdftex.def Info: output_sample/scenario2/compromise_biplot.png  used on
- input line 588.
+ input line 625.
 (pdftex.def)             Requested size: 307.29028pt x 259.41887pt.
- [70]
+ [71]
 (output_sample/scenario2/output_table_scores.tex)
-(output_sample/scenario2/output_table_loadings.tex) [71 <./output_sample/scenar
+(output_sample/scenario2/output_table_loadings.tex) [72 <./output_sample/scenar
 io2/compromise_biplot.png>]
 (output_sample/scenario2/output_table_loading_intra_2020.tex)
 (output_sample/scenario2/output_table_loading_intra_2021.tex)
 (output_sample/scenario2/output_table_loading_intra_2022.tex)
-Underfull \hbox (badness 2073) in paragraph at lines 612--613
+Underfull \hbox (badness 2073) in paragraph at lines 649--650
 []\OT1/ptm/m/n/12 (+20) Skor par-sial $\OT1/cmr/bx/n/12 F[]$ \OT1/ptm/m/n/12 (+
 20) (Per-samaan []2.45[]: $\OT1/cmr/bx/n/12 F[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n
 /12 Z[]G[]^^C[]$\OT1/ptm/m/n/12 (+20) ). Con-toh el-e-men
  []
 
-[72] (output_sample/scenario2/output_table_skor_intra_2020.tex)
+[73] (output_sample/scenario2/output_table_skor_intra_2020.tex)
 (output_sample/scenario2/output_table_skor_intra_2021.tex)
 (output_sample/scenario2/output_table_skor_intra_2022.tex)
-<output_sample/scenario1/trajectory_scores.png, id=2038, 1806.75pt x 1606.0pt>
+<output_sample/scenario1/trajectory_scores.png, id=2046, 1806.75pt x 1606.0pt>
 File: output_sample/scenario1/trajectory_scores.png Graphic file (type png)
 <use output_sample/scenario1/trajectory_scores.png>
 Package pdftex.def Info: output_sample/scenario1/trajectory_scores.png  used on
- input line 632.
+ input line 669.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
-<output_sample/scenario2/trajectory_scores.png, id=2039, 1806.75pt x 1606.0pt>
+<output_sample/scenario2/trajectory_scores.png, id=2047, 1806.75pt x 1606.0pt>
 File: output_sample/scenario2/trajectory_scores.png Graphic file (type png)
 <use output_sample/scenario2/trajectory_scores.png>
 Package pdftex.def Info: output_sample/scenario2/trajectory_scores.png  used on
- input line 638.
+ input line 675.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
- [73] [74 <./output_sample/scenario1/trajectory_scores.png> <./output_sample/sc
+ [74] [75 <./output_sample/scenario1/trajectory_scores.png> <./output_sample/sc
 enario2/trajectory_scores.png>]
 (output_sample/scenario1/output_table_compromise_cluster_sum_name.tex
 Underfull \hbox (badness 3690) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 11--11
-[]|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-
- []
-
-) [75]
+) [76]
 (output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex)
 (output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex)
-Underfull \hbox (badness 3407) in paragraph at lines 685--685
+Underfull \hbox (badness 2261) in paragraph at lines 722--722
 |[]\OT1/ptm/b/n/12 (+20) Tahap 7a: Kom-putasi Vek-tor Struk-tur dan Ana-li-sis 
 Transversal-
  []
 
-[76] (output_sample/scenario1/output_table_beta_vec.tex)
-(output_sample/scenario1/output_table_beta_provinsi.tex) [77]
+[77] (output_sample/scenario1/output_table_beta_vec.tex)
+(output_sample/scenario1/output_table_beta_provinsi.tex) [78]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 7
-24.
+61.
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 724.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 761.
 
-[78] (output_sample/output_table_biplot_transition_sum_2020x2021.tex)
-(output_sample/output_table_biplot_transition_name_2020x2021.tex) [79]
+[79] (output_sample/output_table_biplot_transition_sum_2020x2021.tex)
+(output_sample/output_table_biplot_transition_name_2020x2021.tex) [80]
 (output_sample/scenario1/output_table_statis_transition_name_2020x2021.tex)
 (output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
-(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex)
-[80]) [81]
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex))
+[81] [82]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
@@ -1633,386 +1653,395 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 (output_real/output_table_deskriptif_2021.tex)
 (output_real/output_table_deskriptif_2022.tex)
 (output_real/output_table_deskriptif_2023.tex)
-(output_real/output_table_deskriptif_2024.tex) [82
+(output_real/output_table_deskriptif_2024.tex) [83
 
 
 
 
-] [83]
-<output_real/boxplot_ipm.png, id=2154, 1606.0pt x 1003.75pt>
+] [84]
+<output_real/boxplot_ipm.png, id=2163, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ipm.png Graphic file (type png)
 <use output_real/boxplot_ipm.png>
 Package pdftex.def Info: output_real/boxplot_ipm.png  used on input line 72.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_ipg.png, id=2159, 1606.0pt x 1003.75pt>
+<output_real/boxplot_ipg.png, id=2168, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ipg.png Graphic file (type png)
 <use output_real/boxplot_ipg.png>
 Package pdftex.def Info: output_real/boxplot_ipg.png  used on input line 82.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [84 <./output_real/boxplot_ipm.png>]
-<output_real/boxplot_ppm.png, id=2165, 1606.0pt x 1003.75pt>
+ [85 <./output_real/boxplot_ipm.png>]
+<output_real/boxplot_ppm.png, id=2174, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ppm.png Graphic file (type png)
 <use output_real/boxplot_ppm.png>
 Package pdftex.def Info: output_real/boxplot_ppm.png  used on input line 89.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_pdrb_adhk.png, id=2166, 1606.0pt x 1003.75pt>
+<output_real/boxplot_pdrb_adhk.png, id=2175, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_pdrb_adhk.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk.png>
 Package pdftex.def Info: output_real/boxplot_pdrb_adhk.png  used on input line 
 96.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [85 <./output_real/boxplot_ipg.png> <./output_real/boxplot_ppm.png>]
-<output_real/boxplot_rls.png, id=2173, 1606.0pt x 1003.75pt>
+ [86 <./output_real/boxplot_ipg.png> <./output_real/boxplot_ppm.png>]
+<output_real/boxplot_rls.png, id=2182, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_rls.png Graphic file (type png)
 <use output_real/boxplot_rls.png>
 Package pdftex.def Info: output_real/boxplot_rls.png  used on input line 103.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_ahh_l.png, id=2174, 1606.0pt x 1003.75pt>
+<output_real/boxplot_ahh_l.png, id=2183, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ahh_l.png Graphic file (type png)
 <use output_real/boxplot_ahh_l.png>
 Package pdftex.def Info: output_real/boxplot_ahh_l.png  used on input line 110.
 
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [86 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_rls.png>]
-<output_real/boxplot_ahh_p.png, id=2181, 1606.0pt x 1003.75pt>
+ [87 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_rls.png>]
+<output_real/boxplot_ahh_p.png, id=2190, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ahh_p.png Graphic file (type png)
 <use output_real/boxplot_ahh_p.png>
 Package pdftex.def Info: output_real/boxplot_ahh_p.png  used on input line 117.
 
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_gk.png, id=2182, 1606.0pt x 1003.75pt>
+<output_real/boxplot_gk.png, id=2191, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_gk.png Graphic file (type png)
 <use output_real/boxplot_gk.png>
 Package pdftex.def Info: output_real/boxplot_gk.png  used on input line 124.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-[87 <./output_real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
-<output_real/boxplot_pkkp.png, id=2189, 1606.0pt x 1003.75pt>
+[88 <./output_real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
+<output_real/boxplot_pkkp.png, id=2199, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_pkkp.png Graphic file (type png)
 <use output_real/boxplot_pkkp.png>
 Package pdftex.def Info: output_real/boxplot_pkkp.png  used on input line 131.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_tpt.png, id=2190, 1606.0pt x 1003.75pt>
+<output_real/boxplot_tpt.png, id=2200, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_tpt.png Graphic file (type png)
 <use output_real/boxplot_tpt.png>
 Package pdftex.def Info: output_real/boxplot_tpt.png  used on input line 138.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
 
-[88 <./output_real/boxplot_gk.png> <./output_real/boxplot_pkkp.png>]
-<output_real/boxplot_tpak.png, id=2198, 1606.0pt x 1003.75pt>
+[89 <./output_real/boxplot_gk.png> <./output_real/boxplot_pkkp.png>]
+<output_real/boxplot_tpak.png, id=2207, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_tpak.png Graphic file (type png)
 <use output_real/boxplot_tpak.png>
 Package pdftex.def Info: output_real/boxplot_tpak.png  used on input line 145.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_gr.png, id=2199, 1606.0pt x 1003.75pt>
+<output_real/boxplot_gr.png, id=2208, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_gr.png Graphic file (type png)
 <use output_real/boxplot_gr.png>
 Package pdftex.def Info: output_real/boxplot_gr.png  used on input line 152.
 (pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [89 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png>]
-<output_real/corr_heatmap_2020.png, id=2210, 2188.175pt x 2188.175pt>
+ [90 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png>]
+<output_real/corr_heatmap_2020.png, id=2219, 2188.175pt x 2188.175pt>
 File: output_real/corr_heatmap_2020.png Graphic file (type png)
 <use output_real/corr_heatmap_2020.png>
 Package pdftex.def Info: output_real/corr_heatmap_2020.png  used on input line 
 163.
 (pdftex.def)             Requested size: 362.77525pt x 362.76952pt.
- [90 <./output_real/boxplot_gr.png>] (output_real/output_table_kmo_bartlett.tex
-) [91 <./output_real/corr_heatmap_2020.png>] (output_real/output_table_rv_w.tex
+ [91 <./output_real/boxplot_gr.png>] (output_real/output_table_kmo_bartlett.tex
+) [92 <./output_real/corr_heatmap_2020.png>] (output_real/output_table_rv_w.tex
 )
-<output_real/scenario1/rv_heatmap.png, id=2229, 1405.25pt x 1204.5pt>
+<output_real/scenario1/rv_heatmap.png, id=2238, 1405.25pt x 1204.5pt>
 File: output_real/scenario1/rv_heatmap.png Graphic file (type png)
 <use output_real/scenario1/rv_heatmap.png>
 Package pdftex.def Info: output_real/scenario1/rv_heatmap.png  used on input li
 ne 198.
 (pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
- [92]
-(output_real/output_table_alpha_w.tex) [93 <./output_real/scenario1/rv_heatmap.
+ [93]
+(output_real/output_table_alpha_w.tex) [94 <./output_real/scenario1/rv_heatmap.
 png>] (output_real/output_table_alpha_s.tex)
-<output_real/scenario1/scree_plot.png, id=2248, 1806.75pt x 1204.5pt>
+<output_real/scenario1/scree_plot.png, id=2258, 1806.75pt x 1204.5pt>
 File: output_real/scenario1/scree_plot.png Graphic file (type png)
 <use output_real/scenario1/scree_plot.png>
 Package pdftex.def Info: output_real/scenario1/scree_plot.png  used on input li
 ne 241.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [94]
-(output_real/scenario1/output_table_eigen.tex) [95 <./output_real/scenario1/scr
-ee_plot.png>] [96]
-<output_real/scenario1/compromise_map.png, id=2266, 939.14865pt x 658.74104pt>
+ [95]
+(output_real/scenario1/output_table_eigen.tex) [96 <./output_real/scenario1/scr
+ee_plot.png>] [97]
+<output_real/scenario1/compromise_map.png, id=2275, 939.14865pt x 658.74104pt>
 File: output_real/scenario1/compromise_map.png Graphic file (type png)
 <use output_real/scenario1/compromise_map.png>
 Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
 t line 259.
 (pdftex.def)             Requested size: 362.77525pt x 254.45538pt.
- [97 <./output_real/scenario1/compromise_map.png>]
+ [98 <./output_real/scenario1/compromise_map.png>]
 File: output_real/scenario1/compromise_biplot.png Graphic file (type png)
 <use output_real/scenario1/compromise_biplot.png>
 Package pdftex.def Info: output_real/scenario1/compromise_biplot.png  used on i
 nput line 274.
 (pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
-<output_real/scenario2/compromise_biplot.png, id=2275, 912.91464pt x 767.79648p
+<output_real/scenario2/compromise_biplot.png, id=2284, 912.91464pt x 767.79648p
 t>
 File: output_real/scenario2/compromise_biplot.png Graphic file (type png)
 <use output_real/scenario2/compromise_biplot.png>
 Package pdftex.def Info: output_real/scenario2/compromise_biplot.png  used on i
 nput line 280.
 (pdftex.def)             Requested size: 204.85802pt x 172.28984pt.
- [98 <./output_real/scenario2/compromise_biplot.png>]
-(output_real/scenario1/output_table_scores.tex) [99]
-(output_real/scenario2/output_table_scores.tex) [100] [101]
+ [99 <./output_real/scenario2/compromise_biplot.png>]
+(output_real/scenario1/output_table_scores.tex) [100]
+(output_real/scenario2/output_table_scores.tex) [101] [102]
 (output_real/scenario1/output_table_loadings.tex)
-(output_real/scenario2/output_table_loadings.tex) [102]
-<output_real/scenario1/variable_contribution.png, id=2311, 1806.75pt x 1204.5pt
+(output_real/scenario2/output_table_loadings.tex) [103]
+<output_real/scenario1/variable_contribution.png, id=2320, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario1/variable_contribution.png Graphic file (type png)
 <use output_real/scenario1/variable_contribution.png>
 Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used 
 on input line 321.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_contribution.png, id=2312, 1806.75pt x 1204.5pt
+<output_real/scenario2/variable_contribution.png, id=2321, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario2/variable_contribution.png Graphic file (type png)
 <use output_real/scenario2/variable_contribution.png>
 Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used 
 on input line 327.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario1/variable_cos2.png, id=2313, 1806.75pt x 1204.5pt>
+<output_real/scenario1/variable_cos2.png, id=2322, 1806.75pt x 1204.5pt>
 File: output_real/scenario1/variable_cos2.png Graphic file (type png)
 <use output_real/scenario1/variable_cos2.png>
 Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input
  line 337.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_cos2.png, id=2314, 1806.75pt x 1204.5pt>
+<output_real/scenario2/variable_cos2.png, id=2323, 1806.75pt x 1204.5pt>
 File: output_real/scenario2/variable_cos2.png Graphic file (type png)
 <use output_real/scenario2/variable_cos2.png>
 Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input
  line 343.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
- [103 <./output_real/scenario1/variable_contribution.png> <./output_real/scenar
+ [104 <./output_real/scenario1/variable_contribution.png> <./output_real/scenar
 io2/variable_contribution.png> <./output_real/scenario1/variable_cos2.png> <./o
 utput_real/scenario2/variable_cos2.png>]
-<output_real/scenario1/permutation_histogram.png, id=2326, 1806.75pt x 1204.5pt
+<output_real/scenario1/permutation_histogram.png, id=2335, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario1/permutation_histogram.png Graphic file (type png)
 <use output_real/scenario1/permutation_histogram.png>
 Package pdftex.def Info: output_real/scenario1/permutation_histogram.png  used 
 on input line 364.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [104 <./output_real/scenario1/permutation_histogram.png>]
-(output_real/scenario1/output_table_beta_vec.tex) [105]
-(output_real/scenario1/output_table_struktur_diagnostik.tex) [106]
+ [105 <./output_real/scenario1/permutation_histogram.png>]
+(output_real/scenario1/output_table_beta_vec.tex) [106]
+(output_real/scenario1/output_table_struktur_diagnostik.tex) [107]
 (output_real/scenario1/output_table_beta_provinsi.tex)
-<output_real/scenario1/beta_trajectory.png, id=2365, 498.1812pt x 278.4804pt>
+<output_real/scenario1/beta_trajectory.png, id=2374, 498.1812pt x 278.4804pt>
 File: output_real/scenario1/beta_trajectory.png Graphic file (type png)
 <use output_real/scenario1/beta_trajectory.png>
 Package pdftex.def Info: output_real/scenario1/beta_trajectory.png  used on inp
 ut line 441.
 (pdftex.def)             Requested size: 320.0935pt x 178.93646pt.
- [107]
+ [108]
 File: output_real/scenario1/trajectory_scores.png Graphic file (type png)
 <use output_real/scenario1/trajectory_scores.png>
 Package pdftex.def Info: output_real/scenario1/trajectory_scores.png  used on i
 nput line 462.
 (pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
- [108 <./output_real/scenario1/beta_trajectory.png>]
-<output_real/scenario1/biplot_tahun_2020.png, id=2380, 1606.0pt x 1606.0pt>
+ [109 <./output_real/scenario1/beta_trajectory.png>]
+<output_real/scenario1/biplot_tahun_2020.png, id=2389, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2020.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2020.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on i
 nput line 483.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2021.png, id=2381, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2021.png, id=2390, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2021.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2021.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on i
 nput line 489.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
- [109]
-<output_real/scenario1/biplot_tahun_2022.png, id=2389, 1606.0pt x 1606.0pt>
+ [110]
+<output_real/scenario1/biplot_tahun_2022.png, id=2398, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2022.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2022.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on i
 nput line 499.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2023.png, id=2390, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2023.png, id=2399, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2023.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2023.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on i
 nput line 505.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2024.png, id=2391, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2024.png, id=2400, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2024.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2024.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on i
 nput line 513.
 (pdftex.def)             Requested size: 277.41176pt x 277.40288pt.
- [110 <./output_real/scenario1/biplot_tahun_2020.png> <./output_real/scenario1/
+ [111 <./output_real/scenario1/biplot_tahun_2020.png> <./output_real/scenario1/
 biplot_tahun_2021.png> <./output_real/scenario1/biplot_tahun_2022.png> <./outpu
 t_real/scenario1/biplot_tahun_2023.png>] (output_real/scenario1/output_table_sk
 or_intra_2020.tex)
 (output_real/scenario1/output_table_skor_intra_2021.tex)
-(output_real/scenario1/output_table_skor_intra_2022.tex) [111 <./output_real/sc
+(output_real/scenario1/output_table_skor_intra_2022.tex) [112 <./output_real/sc
 enario1/biplot_tahun_2024.png>]
 (output_real/scenario1/output_table_skor_intra_2023.tex)
-(output_real/scenario1/output_table_skor_intra_2024.tex) [112]
-(output_real/scenario1/output_table_loading_intra_2020.tex)
+(output_real/scenario1/output_table_skor_intra_2024.tex) [113]
+
+LaTeX Warning: Reference `tab:app1centroid_statis' on page 114 undefined on inp
+ut line 564.
+
+(output_real/scenario1/output_table_centroid_statis.tex)
+
+LaTeX Warning: Reference `tab:app1centroid_statis' on page 114 undefined on inp
+ut line 568.
+
+[114] (output_real/scenario1/output_table_loading_intra_2020.tex)
 (output_real/scenario1/output_table_loading_intra_2021.tex)
-(output_real/scenario1/output_table_loading_intra_2022.tex) [113]
+(output_real/scenario1/output_table_loading_intra_2022.tex)
 (output_real/scenario1/output_table_loading_intra_2023.tex)
-(output_real/scenario1/output_table_loading_intra_2024.tex) [114]
-<output_real/scenario1/elbow_plot_2020.png, id=2445, 1405.25pt x 903.375pt>
+(output_real/scenario1/output_table_loading_intra_2024.tex) [115]
+<output_real/scenario1/elbow_plot_2020.png, id=2453, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2020.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
-ut line 629.
+ut line 631.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2020.png, id=2446, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2020.png, id=2454, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2020.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
-ut line 630.
+ut line 632.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2021.png, id=2447, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2021.png, id=2455, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2021.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
-ut line 637.
+ut line 639.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2021.png, id=2448, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2021.png, id=2456, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2021.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on inp
-ut line 638.
+ut line 640.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2022.png, id=2449, 1405.25pt x 903.375pt>
+ [116 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/de
+ndrogram_2020.png>]
+<output_real/scenario1/elbow_plot_2022.png, id=2465, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2022.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
-ut line 645.
+ut line 647.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2022.png, id=2450, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2022.png, id=2466, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2022.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
-ut line 646.
+ut line 648.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2023.png, id=2451, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2023.png, id=2467, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2023.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
-ut line 653.
+ut line 655.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2023.png, id=2452, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2023.png, id=2468, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2023.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
-ut line 654.
+ut line 656.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [115 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/de
-ndrogram_2020.png> <./output_real/scenario1/elbow_plot_2021.png> <./output_real
-/scenario1/dendrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <
-./output_real/scenario1/dendrogram_2022.png>]
-<output_real/scenario1/elbow_plot_2024.png, id=2466, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2024.png, id=2469, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2024.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
-ut line 661.
+ut line 663.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2024.png, id=2467, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2024.png, id=2470, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2024.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on inp
-ut line 662.
+ut line 664.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/cluster_scatter_statis_2020.png, id=2474, 1606.0pt x 160
+ [117 <./output_real/scenario1/elbow_plot_2021.png> <./output_real/scenario1/de
+ndrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <./output_real
+/scenario1/dendrogram_2022.png> <./output_real/scenario1/elbow_plot_2023.png> <
+./output_real/scenario1/dendrogram_2023.png>]
+<output_real/scenario1/cluster_scatter_statis_2020.png, id=2489, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2020.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png 
- used on input line 677.
+ used on input line 679.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2020.png, id=2475, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2020.png, id=2490, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2020.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2020.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  use
-d on input line 681.
+d on input line 683.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [116 <./output_real/scenario1/elbow_plot_2023.png> <./output_real/scenario1/de
-ndrogram_2023.png> <./output_real/scenario1/elbow_plot_2024.png> <./output_real
-/scenario1/dendrogram_2024.png>]
-<output_real/scenario1/cluster_scatter_statis_2021.png, id=2486, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2021.png, id=2491, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2021.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png 
- used on input line 691.
+ used on input line 693.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2021.png, id=2487, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2021.png, id=2492, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2021.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2021.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  use
-d on input line 695.
+d on input line 697.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2022.png, id=2488, 1606.0pt x 160
+ [118 <./output_real/scenario1/elbow_plot_2024.png> <./output_real/scenario1/de
+ndrogram_2024.png> <./output_real/scenario1/cluster_scatter_statis_2020.png> <.
+/output_real/scenario1/cluster_map_statis_2020.png>]
+<output_real/scenario1/cluster_scatter_statis_2022.png, id=2504, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2022.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png 
- used on input line 705.
+ used on input line 707.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2022.png, id=2489, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2022.png, id=2505, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2022.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2022.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  use
-d on input line 709.
+d on input line 711.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [117 <./output_real/scenario1/cluster_scatter_statis_2020.png> <./output_real/
-scenario1/cluster_map_statis_2020.png> <./output_real/scenario1/cluster_scatter
-_statis_2021.png> <./output_real/scenario1/cluster_map_statis_2021.png>]
-<output_real/scenario1/cluster_scatter_statis_2023.png, id=2499, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2023.png, id=2506, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2023.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png 
- used on input line 719.
+ used on input line 721.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2023.png, id=2500, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2023.png, id=2507, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2023.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2023.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  use
-d on input line 723.
+d on input line 725.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2024.png, id=2501, 1606.0pt x 160
+ [119 <./output_real/scenario1/cluster_scatter_statis_2021.png> <./output_real/
+scenario1/cluster_map_statis_2021.png> <./output_real/scenario1/cluster_scatter
+_statis_2022.png> <./output_real/scenario1/cluster_map_statis_2022.png>]
+<output_real/scenario1/cluster_scatter_statis_2024.png, id=2518, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png 
- used on input line 733.
+ used on input line 735.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2024.png, id=2502, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2024.png, id=2519, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
-d on input line 737.
+d on input line 739.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [118 <./output_real/scenario1/cluster_scatter_statis_2022.png> <./output_real/
-scenario1/cluster_map_statis_2022.png> <./output_real/scenario1/cluster_scatter
-_statis_2023.png> <./output_real/scenario1/cluster_map_statis_2023.png>] [119 <
-./output_real/scenario1/cluster_scatter_statis_2024.png> <./output_real/scenari
-o1/cluster_map_statis_2024.png>]
+ [120 <./output_real/scenario1/cluster_scatter_statis_2023.png> <./output_real/
+scenario1/cluster_map_statis_2023.png> <./output_real/scenario1/cluster_scatter
+_statis_2024.png> <./output_real/scenario1/cluster_map_statis_2024.png>]
 (output_real/scenario1/output_table_statis_transition_sum_2023x2024.tex)
 (output_real/scenario1/output_table_statis_transition_name_2023x2024.tex
 Underfull \hbox (badness 1348) in paragraph at lines 9--10
@@ -2020,8 +2049,8 @@ Underfull \hbox (badness 1348) in paragraph at lines 9--10
 -
  []
 
-) [120] (output_real/scenario2/output_table_statis_transition_sum_2023x2024.tex
-) (output_real/scenario2/output_table_statis_transition_name_2023x2024.tex
+[121]) (output_real/scenario2/output_table_statis_transition_sum_2023x2024.tex)
+(output_real/scenario2/output_table_statis_transition_name_2023x2024.tex
 Underfull \hbox (badness 1509) in paragraph at lines 11--12
 \OT1/ptm/m/n/12 (+20) Cire-bon, Sumedang, In-dra-mayu, Sub-ang, Pur-wakarta,
  []
@@ -2032,62 +2061,62 @@ Underfull \hbox (badness 1348) in paragraph at lines 17--18
 -
  []
 
-) [121]
-<output_real/scenario1/compare_map_trans_statis_2023x2024.png, id=2532, 5217.49
+) [122]
+<output_real/scenario1/compare_map_trans_statis_2023x2024.png, id=2541, 5217.49
 25pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_trans_statis_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_trans_statis_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_trans_statis_2023x20
-24.png  used on input line 768.
+24.png  used on input line 770.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_trans_statis_2023x2024.png, id=2533, 5211.47
+<output_real/scenario2/compare_map_trans_statis_2023x2024.png, id=2542, 5211.47
 pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_trans_statis_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario2/compare_map_trans_statis_2023x2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_trans_statis_2023x20
-24.png  used on input line 773.
+24.png  used on input line 775.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
- [122 <./output_real/scenario1/compare_map_trans_statis_2023x2024.png (PNG copy
+ [123 <./output_real/scenario1/compare_map_trans_statis_2023x2024.png (PNG copy
 )> <./output_real/scenario2/compare_map_trans_statis_2023x2024.png (PNG copy)>]
-<output_real/scenario1/compromise_scatter.png, id=2542, 1606.0pt x 1606.0pt>
+<output_real/scenario1/compromise_scatter.png, id=2552, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/compromise_scatter.png Graphic file (type png)
 <use output_real/scenario1/compromise_scatter.png>
 Package pdftex.def Info: output_real/scenario1/compromise_scatter.png  used on 
-input line 790.
+input line 792.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario2/compromise_scatter.png, id=2543, 1606.0pt x 1606.0pt>
+<output_real/scenario2/compromise_scatter.png, id=2553, 1606.0pt x 1606.0pt>
 File: output_real/scenario2/compromise_scatter.png Graphic file (type png)
 <use output_real/scenario2/compromise_scatter.png>
 Package pdftex.def Info: output_real/scenario2/compromise_scatter.png  used on 
-input line 795.
+input line 797.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
- [123]
+ [124]
 File: output_real/scenario1/compromise_map.png Graphic file (type png)
 <use output_real/scenario1/compromise_map.png>
 Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
-t line 808.
+t line 810.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario2/compromise_map.png, id=2550, 939.14865pt x 658.74104pt>
+<output_real/scenario2/compromise_map.png, id=2561, 939.14865pt x 658.74104pt>
 File: output_real/scenario2/compromise_map.png Graphic file (type png)
 <use output_real/scenario2/compromise_map.png>
 Package pdftex.def Info: output_real/scenario2/compromise_map.png  used on inpu
-t line 813.
+t line 815.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [124 <./output_real/scenario1/compromise_scatter.png> <./output_real/scenario2
+ [125 <./output_real/scenario1/compromise_scatter.png> <./output_real/scenario2
 /compromise_scatter.png> <./output_real/scenario2/compromise_map.png>]
-<output_real/scenario1/compromise_pie.png, id=2563, 451.4466pt x 352.6776pt>
+<output_real/scenario1/compromise_pie.png, id=2573, 451.4466pt x 352.6776pt>
 File: output_real/scenario1/compromise_pie.png Graphic file (type png)
 <use output_real/scenario1/compromise_pie.png>
 Package pdftex.def Info: output_real/scenario1/compromise_pie.png  used on inpu
-t line 826.
+t line 828.
 (pdftex.def)             Requested size: 204.85802pt x 160.03804pt.
-<output_real/scenario2/compromise_pie.png, id=2564, 451.4466pt x 352.6776pt>
+<output_real/scenario2/compromise_pie.png, id=2574, 451.4466pt x 352.6776pt>
 File: output_real/scenario2/compromise_pie.png Graphic file (type png)
 <use output_real/scenario2/compromise_pie.png>
 Package pdftex.def Info: output_real/scenario2/compromise_pie.png  used on inpu
-t line 831.
+t line 833.
 (pdftex.def)             Requested size: 204.85802pt x 160.03804pt.
  (output_real/scenario1/output_table_compromise_cluster_sum_name.tex
 Underfull \hbox (badness 3690) in paragraph at lines 9--9
@@ -2109,22 +2138,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-
  []
 
-[125 <./output_real/scenario1/compromise_pie.png> <./output_real/scenario2/comp
-romise_pie.png>]) [126]
+[126 <./output_real/scenario1/compromise_pie.png> <./output_real/scenario2/comp
+romise_pie.png>]) [127]
 (output_real/output_table_biplot_transition_sum_2023x2024.tex)
 (output_real/output_table_biplot_transition_name_2023x2024.tex)
-<output_real/scenario1/compare_map_trans_biplot_2023x2024.png, id=2590, 5217.49
+<output_real/scenario1/compare_map_trans_biplot_2023x2024.png, id=2601, 5217.49
 25pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_trans_biplot_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_trans_biplot_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_trans_biplot_2023x20
-24.png  used on input line 866.
+24.png  used on input line 868.
 (pdftex.def)             Requested size: 298.75264pt x 104.75964pt.
- [127]
+ [128]
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex)
-(output_real/scenario1/output_table_biplot_vs_statis_sum_2024.tex [128 <./outpu
+(output_real/scenario1/output_table_biplot_vs_statis_sum_2024.tex [129 <./outpu
 t_real/scenario1/compare_map_trans_biplot_2023x2024.png (PNG copy)>])
 (output_real/scenario1/output_table_biplot_vs_statis_name_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex)
@@ -2133,50 +2162,50 @@ Underfull \hbox (badness 1509) in paragraph at lines 15--16
 \OT1/ptm/m/n/12 (+20) Cire-bon, Sumedang, In-dra-mayu, Sub-ang, Pur-wakarta,
  []
 
-[129]) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
-(output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex) [130]
-<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=2611, 5217.492
+[130]) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
+(output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex) [131]
+<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=2624, 5217.492
 5pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
 <use output_real/scenario1/compare_map_biplot_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_statis_202
-4.png  used on input line 896.
+4.png  used on input line 898.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=2612, 5214.481
+<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=2625, 5214.481
 25pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
 <use output_real/scenario2/compare_map_biplot_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_statis_202
-4.png  used on input line 901.
+4.png  used on input line 903.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
 
-[131 <./output_real/scenario1/compare_map_biplot_vs_statis_2024.png (PNG copy)>
+[132 <./output_real/scenario1/compare_map_biplot_vs_statis_2024.png (PNG copy)>
  <./output_real/scenario2/compare_map_biplot_vs_statis_2024.png (PNG copy)>]
 (output_real/scenario1/output_table_ipm_sum_2023x2024.tex)
 (output_real/scenario1/output_table_ipm_name_2023x2024.tex)
 (output_real/scenario2/output_table_ipm_sum_2023x2024.tex)
-(output_real/scenario2/output_table_ipm_name_2023x2024.tex) [132]
-<output_real/scenario1/compare_map_ipm_2023x2024.png, id=2622, 5211.47pt x 1829
+(output_real/scenario2/output_table_ipm_name_2023x2024.tex) [133]
+<output_real/scenario1/compare_map_ipm_2023x2024.png, id=2637, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario1/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
 <use output_real/scenario1/compare_map_ipm_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_ipm_2023x2024.png  u
-sed on input line 929.
+sed on input line 931.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
-<output_real/scenario2/compare_map_ipm_2023x2024.png, id=2623, 5211.47pt x 1829
+<output_real/scenario2/compare_map_ipm_2023x2024.png, id=2638, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario2/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
 <use output_real/scenario2/compare_map_ipm_2023x2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_ipm_2023x2024.png  u
-sed on input line 934.
+sed on input line 936.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
 
 (output_real/scenario1/output_table_cross_matrix_sum_2024.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2024.tex [133 <./output_r
+(output_real/scenario1/output_table_cross_matrix_name_2024.tex [134 <./output_r
 eal/scenario1/compare_map_ipm_2023x2024.png (PNG copy)> <./output_real/scenario
 2/compare_map_ipm_2023x2024.png (PNG copy)>])
 (output_real/scenario2/output_table_cross_matrix_sum_2024.tex)
@@ -2191,24 +2220,24 @@ Underfull \hbox (badness 1348) in paragraph at lines 19--20
 -
  []
 
-) [134]
-<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=2633, 5214.48125p
+) [135]
+<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=2650, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario1/compare_map_biplot_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_ipm_2024.p
-ng  used on input line 962.
+ng  used on input line 964.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=2634, 5214.48125p
+<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=2651, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario2/compare_map_biplot_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_ipm_2024.p
-ng  used on input line 967.
+ng  used on input line 969.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- [135 <./output_real/scenario1/compare_map_biplot_vs_ipm_2024.png (PNG copy)> <
+ [136 <./output_real/scenario1/compare_map_biplot_vs_ipm_2024.png (PNG copy)> <
 ./output_real/scenario2/compare_map_biplot_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex)
 (output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex)
@@ -2224,113 +2253,113 @@ Underfull \hbox (badness 1348) in paragraph at lines 19--20
 -
  []
 
-[136])
-<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=2647, 5214.48125p
+[137])
+<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=2666, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario1/compare_map_statis_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_statis_vs_ipm_2024.p
-ng  used on input line 994.
+ng  used on input line 996.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=2648, 5208.45876p
+<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=2667, 5208.45876p
 t x 1828.8325pt>
 File: output_real/scenario2/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario2/compare_map_statis_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_statis_vs_ipm_2024.p
-ng  used on input line 999.
+ng  used on input line 1001.
 (pdftex.def)             Requested size: 204.85802pt x 71.91298pt.
- [137 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <
+ [138 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <
 ./output_real/scenario2/compare_map_statis_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_compromise_sum_2024.tex)
-(output_real/scenario2/output_table_biplot_vs_compromise_name_2024.tex [138])
-<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=2660, 5217
+(output_real/scenario2/output_table_biplot_vs_compromise_name_2024.tex [139])
+<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=2681, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
 <use output_real/scenario1/compare_map_compromise_vs_biplot_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_biplot
-_2024.png  used on input line 1027.
+_2024.png  used on input line 1029.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=2661, 5217
+<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=2682, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
 <use output_real/scenario2/compare_map_compromise_vs_biplot_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_biplot
-_2024.png  used on input line 1032.
+_2024.png  used on input line 1034.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
 
-[139 <./output_real/scenario1/compare_map_compromise_vs_biplot_2024.png (PNG co
+[140 <./output_real/scenario1/compare_map_compromise_vs_biplot_2024.png (PNG co
 py)> <./output_real/scenario2/compare_map_compromise_vs_biplot_2024.png (PNG co
 py)>] (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
 (output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_statis_sum_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex)
-[140]
-<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=2671, 5217
+[141]
+<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=2694, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
 <use output_real/scenario1/compare_map_compromise_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_statis
-_2024.png  used on input line 1058.
+_2024.png  used on input line 1060.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=2672, 5214
+<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=2695, 5214
 .48125pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
 <use output_real/scenario2/compare_map_compromise_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_statis
-_2024.png  used on input line 1063.
+_2024.png  used on input line 1065.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- [141 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG c
+ [142 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG c
 opy)> <./output_real/scenario2/compare_map_compromise_vs_statis_2024.png (PNG c
 opy)>] (output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex) (out
 put_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_ipm_sum_2024.tex)
-(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex [142])
-<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=2683, 5214.48
+(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex [143])
+<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=2708, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_compromise_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_ipm_20
-24.png  used on input line 1091.
+24.png  used on input line 1093.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=2684, 5214.48
+<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=2709, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
 <use output_real/scenario2/compare_map_compromise_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_ipm_20
-24.png  used on input line 1096.
+24.png  used on input line 1098.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
 
-[143 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
+[144 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
 > <./output_real/scenario2/compare_map_compromise_vs_ipm_2024.png (PNG copy)>]
-[144] (output_real/scenario1/output_moran.tex)
-(output_real/scenario2/output_moran.tex) [145] [146]) [147] [148]
+[145] (output_real/scenario1/output_moran.tex)
+(output_real/scenario2/output_moran.tex) [146] [147]) [148] [149]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 \normalsize BAB 5.
-[149
+[150
 
 
 
 
-] [150]
+] [151]
 Underfull \hbox (badness 1038) in paragraph at lines 46--48
 []\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-boar
 d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
 is web
  []
 
-) [151] (induk.bbl
+) [152] (induk.bbl
 Underfull \hbox (badness 2293) in paragraph at lines 47--52
 []\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20)
  In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
@@ -2360,7 +2389,7 @@ Underfull \hbox (badness 2012) in paragraph at lines 67--71
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[152
+[153
 
 
 
@@ -2382,30 +2411,30 @@ Underfull \hbox (badness 2012) in paragraph at lines 85--89
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[153] [154] [155] [156]
+[154] [155] [156] [157]
 Underfull \hbox (badness 2096) in paragraph at lines 366--370
 []\OT1/ptm/m/n/12 (+20) Weisstein, Eric W. (2024).  \OT1/ptm/m/it/12 (+20) Kur-
 to-sis ex-cess\OT1/ptm/m/n/12 (+20) .  []$https : / / mathworld . wolfram . com
  /
  []
 
-) [157]
+) [158]
 \openout2 = `lampiran1.aux'.
 
- (lampiran1.tex [158
+ (lampiran1.tex [159
 
 
-] [159] [160] [161] [162] [163] [164] [165] [166]
-[167] [168] [169]) [170]
+] [160] [161] [162] [163] [164] [165] [166] [167]
+[168] [169] [170]) [171]
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
-<pics/screenshot_web.png, id=2925, 1444.64719pt x 548.80031pt>
+<pics/screenshot_web.png, id=2953, 1444.64719pt x 548.80031pt>
 File: pics/screenshot_web.png Graphic file (type png)
 <use pics/screenshot_web.png>
 Package pdftex.def Info: pics/screenshot_web.png  used on input line 16.
 (pdftex.def)             Requested size: 426.79135pt x 162.12915pt.
-) [171
+) [172
 
 
 
@@ -2419,45 +2448,140 @@ Package pdftex.def Info: pics/screenshot_web.png  used on input line 16.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 34888 strings out of 467871
- 676206 string characters out of 5418376
- 1183086 words of memory out of 5000000
- 61331 multiletter control sequences out of 15000+600000
- 689551 words of font info for 445 fonts, out of 8000000 for 9000
+ 34946 strings out of 467871
+ 677342 string characters out of 5418376
+ 1184087 words of memory out of 5000000
+ 61353 multiletter control sequences out of 15000+600000
+ 689730 words of font info for 448 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
  84i,17n,104p,1616b,836s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/User
-s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pf
-b><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/User
-s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
-0.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucr
-r8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/
-uhvb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
-utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
-/utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
-/utmri8a.pfb>
-Output written on induk.pdf (198 pages, 22434939 bytes).
+
+pdfTeX warning (dest): name{appendix*.207} has been referenced but does not exi
+st, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.209} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.205} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.200} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.195} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.190} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.185} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.180} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.175} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.166} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.158} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.144} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.201} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.196} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.191} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.186} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.181} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.176} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.167} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.162} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.154} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{chapter*.206} has been referenced but does not exis
+t, replaced by a fixed one
+
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
+ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/
+ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8
+a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uh
+vb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
+mb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
+mbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
+tmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
+tmri8a.pfb>
+Output written on induk.pdf (199 pages, 22445170 bytes).
 PDF statistics:
- 3634 PDF objects out of 4296 (max. 8388607)
- 811 named destinations out of 1000 (max. 500000)
- 80940 words of extra memory for PDF output out of 89155 (max. 10000000)
+ 3673 PDF objects out of 4296 (max. 8388607)
+ 840 named destinations out of 1000 (max. 500000)
+ 80948 words of extra memory for PDF output out of 89155 (max. 10000000)
 

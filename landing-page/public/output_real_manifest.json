@@ -6312,6 +6312,14 @@
     "scenario": "Shared"
   },
   {
+    "name": "output_table_mi_weights.tex",
+    "caption": "Output Table Mi Weights",
+    "type": "text",
+    "src": "/output_real/output_table_mi_weights.tex",
+    "group": "Tabel Hasil (.tex)",
+    "scenario": "Shared"
+  },
+  {
     "name": "output_table_rv_s.tex",
     "caption": "Output Table Rv S",
     "type": "text",

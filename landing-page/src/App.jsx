@@ -154,11 +154,11 @@ function LatexTable({ tex }) {
   }
 
   // 3. ROBUST CLEANING
-  const rowsRaw = body.split(/\\\\/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
+  const rowsRaw = body.split(/\\\\|\\\r?\n/).filter(r => r.trim().length > 0 && !r.trim().startsWith('%'));
   const rows = rowsRaw.map(rowStr => {
     let cleanRow = rowStr
       .replace(/\\rowcolor\{.*?\}/g, '')
-      .replace(/\\multicolumn\{.*?\}/g, (m) => m.match(/\{(?:[^}]*)\}\{(?:[^}]*)\}\{(.*)\}/)?.[1] || '')
+      .replace(/\\multicolumn\{[^}]*\}\{[^}]*\}\{([^}]*)\}/g, '$1')
       .replace(/\\hline/g, '').replace(/\\arraybackslash/g, '').replace(/\\raggedright/g, '').replace(/\\centering/g, '')
       .replace(/\\toprule/g, '').replace(/\\midrule/g, '').replace(/\\bottomrule/g, '')
       .replace(/\\makecell\[?.*?\]?\{(.*?)\}/sg, '$1')
@@ -2636,7 +2636,7 @@ function OutputBadge({ icon, label, color }) {
     <span style={{ display:'inline-flex', alignItems:'center', gap:'5px',
       background:`${color}12`, border:`1px solid ${color}35`, borderRadius:'12px',
       padding:'3px 10px', fontSize:'0.7rem', color, fontWeight:'600' }}>
-      {icon} {label}
+      {icon} <span dangerouslySetInnerHTML={{ __html: mathToHtml(label) }} />
     </span>
   );
 }
@@ -2681,30 +2681,39 @@ function DetailText({ text }) {
 
 /* Lazy-loads & renders a single output file (tex or image) from output_sample */
 function OutputFileViewer({ path, label, caption, imgHeight }) {
-  const [tex, setTex]       = useState('');
-  const [loading, setLoading] = useState(true);
+  const [tex, setTex]             = useState('');
+  const [loading, setLoading]     = useState(true);
+  const [unavailable, setUnavailable] = useState(false);
   const isImg = /\.(png|jpg|gif)$/i.test(path);
 
   useEffect(() => {
     if (isImg) { setLoading(false); return; }
     let active = true;
     setLoading(true);
+    setUnavailable(false);
     fetch(path)
-      .then(r => r.text())
-      .then(t => { if (active) { setTex(t); setLoading(false); } })
-      .catch(() => { if (active) setLoading(false); });
+      .then(r => {
+        if (!r.ok) { if (active) { setUnavailable(true); setLoading(false); } return; }
+        return r.text();
+      })
+      .then(t => { if (t !== undefined && active) { setTex(t); setLoading(false); } })
+      .catch(() => { if (active) { setUnavailable(true); setLoading(false); } });
     return () => { active = false; };
   }, [path]);
 
   return (
     <div style={{ marginBottom: '10px' }}>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '4px' }}>
-        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#06b6d4' }}>{label}</span>
+        <span style={{ fontSize: '0.72rem', fontWeight: '700', color: '#06b6d4' }} dangerouslySetInnerHTML={{ __html: mathToHtml(label) }} />
         {caption && <span style={{ fontSize: '0.65rem', color: '#475569', fontStyle: 'italic' }}>— {caption}</span>}
       </div>
       {loading ? (
         <div style={{ height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
           <div className="spinner" style={{ width: '20px', height: '20px' }} />
+        </div>
+      ) : unavailable ? (
+        <div style={{ padding: '12px 16px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', textAlign: 'center', color: '#64748b', fontSize: '0.75rem', border: '1px dashed rgba(255,255,255,0.08)' }}>
+          Data tidak tersedia pada output ini
         </div>
       ) : isImg ? (
         <div style={{ background: 'rgba(0,0,0,0.3)', borderRadius: '8px', padding: '6px', display: 'flex', justifyContent: 'center' }}>
@@ -2725,7 +2734,17 @@ function OutputFileViewer({ path, label, caption, imgHeight }) {
 // formulas to flash raw LaTeX on every mouse-enter event.
 const _STEP_TYPE_LABELS = { input: 'INPUT', process: 'PROSES', decision: 'KEPUTUSAN', output: 'OUTPUT' };
 
-function StepCard({ step, num, isExpanded, isHovered, onMouseEnter, onMouseLeave, onToggle }) {
+function deriveRealPaths(outputFiles) {
+  return (outputFiles || []).map(f => ({
+    ...f,
+    path: f.path
+      .replace('/output_sample/scenario1/', '/output_real/scenario1/')
+      .replace('/output_sample/', '/output_real/')
+      .replace('/data_sampel_', '/data_final_'),
+  }));
+}
+
+function StepCard({ step, num, isExpanded, isExpandedReal, isHovered, onMouseEnter, onMouseLeave, onToggle, onToggleReal }) {
   const hasOutput = step.outputFiles && step.outputFiles.length > 0;
   return (
     <div
@@ -2761,27 +2780,54 @@ function StepCard({ step, num, isExpanded, isHovered, onMouseEnter, onMouseLeave
       )}
       {hasOutput && (
         <div style={{ marginTop: '10px' }}>
-          <button
-            onClick={onToggle}
-            style={{
-              background: isExpanded ? `${step.color}20` : 'rgba(15,23,42,0.6)',
-              border: `1px solid ${step.color}50`,
-              color: isExpanded ? step.color : '#64748b',
-              borderRadius: '8px', padding: '5px 14px',
-              fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
-              display: 'flex', alignItems: 'center', gap: '6px',
-              transition: 'all 0.15s',
-            }}
-          >
-            <span style={{ fontSize: '0.8rem' }}>{isExpanded ? '▼' : '▶'}</span>
-            {isExpanded ? 'Sembunyikan Output Sampel' : `Lihat Output Sampel (${step.outputFiles.length} tabel/gambar)`}
-          </button>
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            <button
+              onClick={onToggle}
+              style={{
+                background: isExpanded ? `${step.color}20` : 'rgba(15,23,42,0.6)',
+                border: `1px solid ${step.color}50`,
+                color: isExpanded ? step.color : '#64748b',
+                borderRadius: '8px', padding: '5px 14px',
+                fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: '6px',
+                transition: 'all 0.15s',
+              }}
+            >
+              <span style={{ fontSize: '0.8rem' }}>{isExpanded ? '▼' : '▶'}</span>
+              {isExpanded ? 'Sembunyikan Output Sampel' : `Lihat Output Sampel (${step.outputFiles.length} tabel/gambar)`}
+            </button>
+            <button
+              onClick={onToggleReal}
+              style={{
+                background: isExpandedReal ? 'rgba(16,185,129,0.15)' : 'rgba(15,23,42,0.6)',
+                border: `1px solid ${isExpandedReal ? '#10b981' : 'rgba(16,185,129,0.3)'}`,
+                color: isExpandedReal ? '#10b981' : '#64748b',
+                borderRadius: '8px', padding: '5px 14px',
+                fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
+                display: 'flex', alignItems: 'center', gap: '6px',
+                transition: 'all 0.15s',
+              }}
+            >
+              <span style={{ fontSize: '0.8rem' }}>{isExpandedReal ? '▼' : '▶'}</span>
+              {isExpandedReal ? 'Sembunyikan Output Real' : `Lihat Output Real (${step.outputFiles.length} tabel/gambar)`}
+            </button>
+          </div>
           {isExpanded && (
             <div style={{ marginTop: '12px', borderTop: `1px solid ${step.color}25`, paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <div style={{ fontSize: '0.63rem', color: '#475569', letterSpacing: '0.5px', fontWeight: '600', textTransform: 'uppercase' }}>
                 Output dari data sampel (n=4 wilayah, K=3 tahun, p=3 indikator)
               </div>
               {step.outputFiles.map((f, i) => (
+                <OutputFileViewer key={i} path={f.path} label={f.label} caption={f.caption} imgHeight={f.imgHeight} />
+              ))}
+            </div>
+          )}
+          {isExpandedReal && (
+            <div style={{ marginTop: '12px', borderTop: '1px solid rgba(16,185,129,0.2)', paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <div style={{ fontSize: '0.63rem', color: '#10b981', letterSpacing: '0.5px', fontWeight: '600', textTransform: 'uppercase' }}>
+                Output dari data real (n=41 Kab/Kota, K=5 tahun, p=11 indikator)
+              </div>
+              {deriveRealPaths(step.outputFiles).map((f, i) => (
                 <OutputFileViewer key={i} path={f.path} label={f.label} caption={f.caption} imgHeight={f.imgHeight} />
               ))}
             </div>
@@ -2796,6 +2842,10 @@ function MethodologyFlowView({ onBack }) {
   const [hovered, setHovered]           = useState(null);
   const [expandedOutputs, setExpandedOutputs] = useState({});
   const toggleOutput = (id) => setExpandedOutputs(prev => ({ ...prev, [id]: !prev[id] }));
+  const [expandedOutputsReal, setExpandedOutputsReal] = useState({});
+  const toggleOutputReal = (id) => setExpandedOutputsReal(prev => ({ ...prev, [id]: !prev[id] }));
+  const [showZkDeskriptif, setShowZkDeskriptif] = useState(false);
+  const [showZkDeskriptifReal, setShowZkDeskriptifReal] = useState(false);
 
   /* ---------- COMMON STEPS (shared by both PCA & STATIS) ---------- */
   const BASE = '/output_sample/';
@@ -2815,20 +2865,6 @@ function MethodologyFlowView({ onBack }) {
       arrowLabel: 'matriks X_k mentah per tahun',
     },
     {
-      id: 'c1', color: '#3b82f6', icon: '📈', type: 'process',
-      title: 'Eksplorasi Statistika Deskriptif',
-      subtitle: 'Ringkasan numerik tiap variabel-tahun',
-      latex: `$$\\bar{x}_j=\\frac{1}{n}\\sum_{i=1}^{n}x_{ij},\\quad s_j=\\sqrt{\\frac{1}{n}\\sum_{i=1}^{n}(x_{ij}-\\bar{x}_j)^2},\\quad CV=\\frac{s_j}{\\bar{x}_j}\\times100\\%$$`,
-      detail: 'Ukuran pemusatan (mean, median, Q₁, Q₃) + penyebaran (s, IQR, CV) + bentuk (skewness, kurtosis)',
-      outputs: [<OutputBadge key="b" icon="📉" label="Boxplot per indikator-tahun" color="#3b82f6"/>],
-      outputFiles: [
-        { path: BASE + 'output_table_deskriptif_2020.tex', label: 'Statistika Deskriptif Tanpa Bobot 2020', caption: 'Mean, Std, Min, Q1–Q3, Max, Skew, Kurt, CV' },
-        { path: BASE + 'output_table_descriptive_2020.tex', label: 'Statistika Deskriptif Terbobot 2020', caption: 'Dengan pembobotan D — digunakan oleh STATIS' },
-        { path: BASE + 'boxplot_ppm.png', label: 'Boxplot PPM', caption: 'Distribusi Persentase Penduduk Miskin', imgHeight: '140px' },
-      ],
-      arrowLabel: 'ringkasan statistik per variabel-tahun',
-    },
-    {
       id: 'c2', color: '#8b5cf6', icon: '⚖️', type: 'process',
       title: 'Bobot Demografis & Matriks Bobot D',
       subtitle: 'Pembobotan proporsional berbasis Jumlah Penduduk',
@@ -2836,7 +2872,7 @@ function MethodologyFlowView({ onBack }) {
       detail: 'JP̄ᵢ = rata-rata JP wilayah i selama K tahun  |  ⟨x,y⟩_D = xᵀDy mendefinisikan inner product terbobot yang konsisten di semua situasi',
       outputs: [<OutputBadge key="d" icon="🔢" label="Vektor m (n×1) + Matriks D (n×n diagonal)" color="#8b5cf6"/>],
       outputFiles: [
-        { path: BASE + 'output_table_descriptive_2020.tex', label: 'Statistika Terbobot D — 2020', caption: 'Mean & Std terbobot mᵢ per indikator (digunakan sebagai μ_{jk} dan σ_{jk})' },
+        { path: BASE + 'output_table_mi_weights.tex', label: 'Bobot Wilayah m_i — Semua Wilayah', caption: 'mᵢ = J̄Pᵢ / Σ J̄P — bobot demografis proporsional dari JP rata-rata lintas tahun' },
       ],
       arrowLabel: 'rata-rata JP lintas tahun → bobot demografis mᵢ',
     },
@@ -2921,7 +2957,6 @@ function MethodologyFlowView({ onBack }) {
       outputFiles: [
         { path: SC1 + 'output_table_scores.tex', label: 'F_c — Koordinat Skor Kompromi Wilayah', caption: 'PC1 & PC2 tiap wilayah dalam ruang kompromi (n×2). Ini input K-Means!' },
         { path: SC1 + 'output_table_loadings.tex', label: 'G_c — Loading Kompromi Indikator', caption: 'Kontribusi tiap indikator pada PC1 & PC2 kompromi' },
-        { path: SC1 + 'matrix_F_c.tex', label: 'Matriks F_c (format pmatrix)', caption: 'F_c = D⁻¹/² P Λc^(1/2) — nilai numerik langsung' },
       ],
       arrowLabel: 'P, Λ dari dekomposisi W_c → F_c, G_c',
     },
@@ -3017,7 +3052,7 @@ function MethodologyFlowView({ onBack }) {
       detail: 'x_i = skor PC1 kompromi wilayah i  |  w_ij dari Queen Contiguity  |  I > E[I] → autokorelasi positif: wilayah berdekatan cenderung kluster serupa',
       outputs: [<OutputBadge key="m" icon="🗺️" label="Nilai I + distribusi permutasi + p-value" color="#22c55e"/>],
       outputFiles: [
-        { path: BASE + 'scenario1/ipm_map_2020.png', label: 'Peta IPM 2020 (benchmark)', caption: 'Perbandingan pola spasial IPM dengan kluster STATIS', imgHeight: '150px' },
+        { path: SC1 + 'output_moran.tex', label: 'Hasil Uji Global Moran\'s I', caption: 'Nilai I, E[I], Var[I], z-score, p-value per tahun' },
       ],
       arrowLabel: 'skor PC1 × matriks bobot spasial W',
     },
@@ -3074,20 +3109,22 @@ function MethodologyFlowView({ onBack }) {
               <StepCard
                 step={step} num={idx + 1}
                 isExpanded={!!expandedOutputs[step.id]}
+                isExpandedReal={!!expandedOutputsReal[step.id]}
                 isHovered={hovered === step.id}
                 onMouseEnter={() => setHovered(step.id)}
                 onMouseLeave={() => setHovered(null)}
                 onToggle={() => toggleOutput(step.id)}
+                onToggleReal={() => toggleOutputReal(step.id)}
               />
               <ArrowDown
-                label={idx === 2 ? 'bobot mᵢ tersedia → standardisasi berbeda per metode' : step.arrowLabel}
+                label={idx === 1 ? 'bobot mᵢ tersedia → standardisasi berbeda per metode' : step.arrowLabel}
                 fromColor={step.color}
-                toColor={idx === 2 ? '#8b5cf6' : (idx + 1 < COMMON.length ? COMMON[idx + 1].color : '#f59e0b')}
+                toColor={idx === 1 ? '#8b5cf6' : (idx + 1 < COMMON.length ? COMMON[idx + 1].color : '#f59e0b')}
               />
             </div>
 
-            {/* ═══ Z_K FORK — disisipkan setelah Bobot D (idx=2), sebelum KMO (idx=3) ═══ */}
-            {idx === 2 && (
+            {/* ═══ Z_K FORK — disisipkan setelah Bobot D (idx=1), sebelum KMO (idx=2) ═══ */}
+            {idx === 1 && (
               <div style={{ width: '100%', maxWidth: '1100px', margin: '0 auto 0 auto' }}>
 
                 {/* Z_K fork header */}
@@ -3187,13 +3224,73 @@ function MethodologyFlowView({ onBack }) {
 
                 </div>{/* end Z_K split grid */}
 
+                {/* Toggle statistika deskriptif */}
+                <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', margin: '12px 0 0 0' }}>
+                  <button
+                    onClick={() => setShowZkDeskriptif(v => !v)}
+                    style={{
+                      background: showZkDeskriptif ? 'rgba(139,92,246,0.15)' : 'rgba(15,23,42,0.6)',
+                      border: `1px solid ${showZkDeskriptif ? '#a78bfa' : 'rgba(139,92,246,0.35)'}`,
+                      color: showZkDeskriptif ? '#a78bfa' : '#94a3b8',
+                      borderRadius: '8px', padding: '5px 16px',
+                      fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
+                      display: 'inline-flex', alignItems: 'center', gap: '6px',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <span>{showZkDeskriptif ? '▼' : '▶'}</span>
+                    {showZkDeskriptif ? 'Sembunyikan Output Sampel' : 'Lihat Output Sampel'}
+                  </button>
+                  <button
+                    onClick={() => setShowZkDeskriptifReal(v => !v)}
+                    style={{
+                      background: showZkDeskriptifReal ? 'rgba(16,185,129,0.15)' : 'rgba(15,23,42,0.6)',
+                      border: `1px solid ${showZkDeskriptifReal ? '#10b981' : 'rgba(16,185,129,0.35)'}`,
+                      color: showZkDeskriptifReal ? '#10b981' : '#94a3b8',
+                      borderRadius: '8px', padding: '5px 16px',
+                      fontSize: '0.7rem', fontWeight: '700', cursor: 'pointer',
+                      display: 'inline-flex', alignItems: 'center', gap: '6px',
+                      transition: 'all 0.15s',
+                    }}
+                  >
+                    <span>{showZkDeskriptifReal ? '▼' : '▶'}</span>
+                    {showZkDeskriptifReal ? 'Sembunyikan Output Real' : 'Lihat Output Real'}
+                  </button>
+                </div>
+
+                {showZkDeskriptif && (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
+                    <div style={{ background: 'rgba(6,182,212,0.04)', border: '1px solid rgba(6,182,212,0.25)', borderRadius: '12px', padding: '14px', overflowX: 'auto' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#06b6d4', marginBottom: '8px', letterSpacing: '0.4px' }}>📋 SAMPEL — TERBOBOT (STATIS) — 2020</div>
+                      <OutputFileViewer path={BASE + 'output_table_descriptive_2020.tex'} label="Statistika Deskriptif Terbobot" caption="Mean & Std terbobot mᵢ per indikator" />
+                    </div>
+                    <div style={{ background: 'rgba(239,68,68,0.04)', border: '1px solid rgba(239,68,68,0.25)', borderRadius: '12px', padding: '14px', overflowX: 'auto' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#f87171', marginBottom: '8px', letterSpacing: '0.4px' }}>📋 SAMPEL — TANPA BOBOT (PCA) — 2020</div>
+                      <OutputFileViewer path={BASE + 'output_table_deskriptif_2020.tex'} label="Statistika Deskriptif Tanpa Bobot" caption="Mean, Std, Min, Q1–Q3, Max, Skew, Kurt, CV" />
+                    </div>
+                  </div>
+                )}
+
+                {showZkDeskriptifReal && (
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginTop: '12px' }}>
+                    <div style={{ background: 'rgba(16,185,129,0.04)', border: '1px solid rgba(16,185,129,0.25)', borderRadius: '12px', padding: '14px', overflowX: 'auto' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#10b981', marginBottom: '8px', letterSpacing: '0.4px' }}>📋 REAL — TERBOBOT (STATIS) — 2020</div>
+                      <OutputFileViewer path='/output_real/output_table_descriptive_2020.tex' label="Statistika Deskriptif Terbobot (Real)" caption="Mean & Std terbobot mᵢ per indikator — 41 Kab/Kota" />
+                    </div>
+                    <div style={{ background: 'rgba(16,185,129,0.04)', border: '1px solid rgba(16,185,129,0.2)', borderRadius: '12px', padding: '14px', overflowX: 'auto' }}>
+                      <div style={{ fontSize: '0.6rem', fontWeight: '800', color: '#10b981', marginBottom: '8px', letterSpacing: '0.4px' }}>📋 REAL — TANPA BOBOT (PCA) — 2020</div>
+                      <OutputFileViewer path='/output_real/output_table_deskriptif_2020.tex' label="Statistika Deskriptif Tanpa Bobot (Real)" caption="Mean, Std, Min, Q1–Q3, Max, Skew, Kurt, CV — 41 Kab/Kota" />
+                    </div>
+                  </div>
+                )}
+
                 {/* Reconnect note */}
                 <div style={{ textAlign: 'center', margin: '10px 0 4px 0' }}>
                   <div style={{ display: 'inline-block', background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.25)', borderRadius: '20px', padding: '5px 16px', fontSize: '0.68rem', color: '#f59e0b', fontWeight: '600' }}>
                     ↓ Kedua Z_k kemudian diuji kesesuaiannya via KMO &amp; Bartlett (berbasis data mentah)
                   </div>
                 </div>
-                <ArrowDown fromColor='#8b5cf6' toColor={COMMON[3].color} label='' />
+                <ArrowDown fromColor='#8b5cf6' toColor={COMMON[COMMON.length - 1].color} label='' />
 
               </div>
             )}
@@ -3363,10 +3460,12 @@ function MethodologyFlowView({ onBack }) {
             <StepCard
               step={step} num={step.num}
               isExpanded={!!expandedOutputs[step.id]}
+              isExpandedReal={!!expandedOutputsReal[step.id]}
               isHovered={hovered === step.id}
               onMouseEnter={() => setHovered(step.id)}
               onMouseLeave={() => setHovered(null)}
               onToggle={() => toggleOutput(step.id)}
+              onToggleReal={() => toggleOutputReal(step.id)}
             />
           </div>
         ))}
@@ -3384,10 +3483,12 @@ function MethodologyFlowView({ onBack }) {
             <StepCard
               step={step} num={step.num}
               isExpanded={!!expandedOutputs[step.id]}
+              isExpandedReal={!!expandedOutputsReal[step.id]}
               isHovered={hovered === step.id}
               onMouseEnter={() => setHovered(step.id)}
               onMouseLeave={() => setHovered(null)}
               onToggle={() => toggleOutput(step.id)}
+              onToggleReal={() => toggleOutputReal(step.id)}
             />
           </div>
         ))}

@@ -195,6 +195,7 @@ elif is_headless:
 LABEL_PREFIX = "App"
 
 cfg = {}
+_WEIGHT_VAR_CONFIG = None
 if config_path and os.path.exists(config_path):
     try:
         with open(config_path, "r", encoding="utf-8") as f:
@@ -206,6 +207,8 @@ if config_path and os.path.exists(config_path):
         if "label_prefix" in cfg:
             LABEL_PREFIX = cfg["label_prefix"]
         print(f"  [CONFIG] Loaded configuration from: {config_path}")
+        # Simpan weight_variable dari config (opsional)
+        _WEIGHT_VAR_CONFIG = cfg.get("weight_variable", None)
     except Exception as e:
         print(f"  [WARN] Gagal baca config {config_path}: {e}")
 
@@ -512,7 +515,10 @@ sheet_names_all = sorted(sheet_names_all)
 all_columns_available = tables_raw[sheet_names_all[0]].columns.tolist()
 
 # Simpan JP per tahun untuk pembentukan bobot demografis m_i (Lavit 1994)
-_JP_NAMES = ['JP', 'Jumlah Penduduk', 'jumlah_penduduk', 'Penduduk', 'Total Penduduk']
+_JP_NAMES_DEFAULT = ['JP', 'Jumlah Penduduk', 'jumlah_penduduk', 'Penduduk', 'Total Penduduk']
+_JP_NAMES = ([_WEIGHT_VAR_CONFIG] + _JP_NAMES_DEFAULT) if _WEIGHT_VAR_CONFIG else _JP_NAMES_DEFAULT
+if _WEIGHT_VAR_CONFIG:
+    print(f"  [CONFIG] Bobot demografis menggunakan kolom: {_WEIGHT_VAR_CONFIG}")
 jp_raw = {}  # {year: {wilayah: JP_value}}
 for name, df in all_sheets.items():
     try:
@@ -814,6 +820,21 @@ else:
 D_sqrt = np.diag(np.sqrt(m_weights))
 D_inv_sqrt = np.diag(1.0 / np.sqrt(m_weights))
 D_diag_mat = np.diag(m_weights)
+
+# 1.1b Export tabel bobot wilayah m_i
+_mi_lines = [
+    r'\begin{longtable}{lc}',
+    r'\hline',
+    r'\textbf{Kabupaten/Kota} & \textbf{Bobot ($m_i$)} \\',
+    r'\hline',
+]
+for _kab, _mi in zip(obs_labels, m_weights):
+    _mi_lines.append(f'{_kab} & {_mi:.6f} \\\\')
+    _mi_lines.append(r'\hline')
+_mi_lines.append(r'\end{longtable}')
+with open(os.path.join(OUT_DIR, 'output_table_mi_weights.tex'), 'w', encoding='utf-8') as _f:
+    _f.write('\n'.join(_mi_lines) + '\n')
+print(f"  [OK] output_table_mi_weights.tex  (n={len(obs_labels)}, sum={m_weights.sum():.6f})")
 
 # 1.2 Weighted Z-Score & Intra-struktur
 X_matrices, Ws, Ss = [], [], []
@@ -3187,16 +3208,16 @@ for current_scenario in ['scenario1', 'scenario2']:
                 sizes = [counts[k] for k in keys]
                 
                 # Map colors based on level
-                # Klaster 1 = Red, Klaster 2 = Orange, Klaster 3 = Green
-                color_map = {
-                    f"Klaster 1 ({level_names[0]})": '#EF5350',
-                    f"Klaster 2 ({level_names[1]})": '#FFB300',
-                    f"Klaster 3 ({level_names[2]})": '#4CAF50'
-                }
                 if len(level_names) == 2:
                     color_map = {
                         f"Klaster 1 ({level_names[0]})": '#EF5350',
                         f"Klaster 2 ({level_names[1]})": '#4CAF50'
+                    }
+                else:
+                    color_map = {
+                        f"Klaster 1 ({level_names[0]})": '#EF5350',
+                        f"Klaster 2 ({level_names[1]})": '#FFB300',
+                        f"Klaster 3 ({level_names[2]})": '#4CAF50'
                     }
                 colors = [color_map.get(k, '#8E24AA') for k in keys]
                 

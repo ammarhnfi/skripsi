@@ -5,7 +5,7 @@
     "output_dir": "D:\\Skripsi\\my\\output_sample",
     "shapefile_path": "D:\\Skripsi\\my\\web\\gadm41_IDN_2.shp",
     "n_permutations": 1000,
-    "k_clusters": 3,
+    "k_clusters": 2,
     "image_format": "png",
     "image_scale": 3,
     "image_width": 1200,
@@ -19,5 +19,6 @@
     "scale_load": true,
     "norm_score": false,
     "highlight_objects": ["Kota Jakarta Pusat"],
-    "highlight_vars": ["TPT"]
+    "highlight_vars": ["TPT"],
+    "weight_variable": "JP"
 }

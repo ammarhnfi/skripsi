@@ -19,5 +19,6 @@
     "scale_load": true,
     "norm_score": false,
     "highlight_objects": ["Kota Jakarta Pusat", "Pangandaran"],
-    "highlight_vars": ["TPAK"]
+    "highlight_vars": ["TPAK"],
+    "weight_variable": "JP"
 }

@@ -1008,7 +1008,7 @@ def calc_kmo_bartlett(df_dict, variables):
 # -----------------------------
 # STATIS Core Logic
 # -----------------------------
-def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenario='scenario2'):
+def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenario='scenario2', weight_var=None):
     """
     Menjalankan penghitungan STATIS Lengkap (Matriks, Skor, Loading).
     Mengembalikan data siap plot dan siap tabel.
@@ -1023,10 +1023,10 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenari
     except Exception as e: raise Exception(f"Error decoding file: {e}")
     
     tables = []
-    jp_columns = {}  # {sheet_name: {wilayah: JP_value}} untuk bobot demografis
+    jp_columns = {}  # {sheet_name: {wilayah: weight_var_value}} untuk bobot demografis
     _JP_NAMES = ['JP', 'Jumlah Penduduk', 'jumlah_penduduk', 'Penduduk', 'Total Penduduk']
 
-    for s in sheet_names: 
+    for s in sheet_names:
         # PENTING: Selalu seek(0) sebelum read_excel baru jika menggunakan stream yang sama
         excel_file_stream.seek(0)
         try:
@@ -1038,11 +1038,17 @@ def run_statis_core(uploaded_content_string, selected_vars, sheet_names, scenari
                 # Jika tidak ada, coba ambil kolom pertama sebagai index
                 df_s = df_s.set_index(df_s.columns[0])
 
-            # Ekstrak kolom JP jika ada (untuk bobot demografis m_i — Lavit 1994)
-            for jp_name in _JP_NAMES:
-                if jp_name in df_s.columns:
-                    jp_columns[s] = df_s[jp_name].to_dict()
-                    break  # Ambil hanya kolom JP pertama yang ditemukan
+            # Ekstrak kolom bobot: gunakan weight_var jika dipilih, fallback ke JP names
+            bobot_col = None
+            if weight_var and weight_var in df_s.columns:
+                bobot_col = weight_var
+            else:
+                for jp_name in _JP_NAMES:
+                    if jp_name in df_s.columns:
+                        bobot_col = jp_name
+                        break
+            if bobot_col:
+                jp_columns[s] = df_s[bobot_col].to_dict()
 
             vars_in_sheet = [v for v in selected_vars if v in df_s.columns]
             if vars_in_sheet:
@@ -1900,7 +1906,13 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
         html.Div(className='row', children=[
             html.Div(className='three columns', children=[
                 html.Label('Pilih Variabel Analisis:', style={'fontWeight':'bold'}),
-                dcc.Dropdown(id='variable-dropdown-final', multi=True, placeholder="Pilih variabel...", style={'fontSize': '14px'})
+                dcc.Dropdown(id='variable-dropdown-final', multi=True, placeholder="Pilih variabel...", style={'fontSize': '14px'}),
+                html.Div(id='weight-var-statis-exclude-note', style={'fontSize': '11px', 'color': '#78909C', 'marginTop': '4px'})
+            ]),
+            html.Div(className='three columns', children=[
+                html.Label('Variabel Bobot (mᵢ):', style={'fontWeight':'bold'}),
+                dcc.Dropdown(id='weight-var-statis-dropdown', multi=False, placeholder="Pilih variabel bobot...", style={'fontSize': '14px'}),
+                html.Div("Variabel ini dihitung sebagai mᵢ = ̅Vᵢ/Σ̅V dan dikecualikan dari analisis.", style={'fontSize': '11px', 'color': '#78909C', 'marginTop': '4px'})
             ]),
             html.Div(className='three columns', children=[
                 html.Label('Rotasi Baseline (Semua Plot):', style={'fontWeight':'bold'}),
@@ -3071,6 +3083,7 @@ def cb_upload(contents, filename):
     Output('compare-year-dropdown', 'options'), Output('compare-year-dropdown', 'value'),
     Output('biplot-statis-compare-year', 'options'), Output('biplot-statis-compare-year', 'value'),
     Output('desc-exclude-vars', 'options'),
+    Output('weight-var-statis-dropdown', 'options'), Output('weight-var-statis-dropdown', 'value'),
     Input('global-data-store', 'data'), Input('baseline-type-final', 'value')
 )
 def cb_controls(data, base_type):
@@ -3093,13 +3106,13 @@ def cb_controls(data, base_type):
             break
     
     return (
-        f_opts, feats, traj_opts, y_opts, years, y_opts, y_opts, y_opts, years[0], base_opts, 
-        y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
-        trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
-        trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None), 
+        f_opts, feats, traj_opts, y_opts, years, y_opts, y_opts, y_opts, years[0], base_opts,
+        y_opts, years[-1], trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None),
+        trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None),
+        trans_y_opts, (trans_y_opts[-1]['value'] if trans_y_opts else None),
         y_opts, years[-1], y_opts, years[-1], f_opts, default_weight, y_opts, years[-1],
         y_opts, years[0], y_opts, years[-1], y_opts, years[-1],
-        f_opts
+        f_opts, f_opts, default_weight
     )
 
 # 2b. Sync Vector Selector with Selected Vars
@@ -3157,6 +3170,17 @@ def cb_pca_calc(n_clicks, vars, data):
         load_list.append(d_load)
     return {'pc_scores': pd.concat(pc_list).to_json(orient='split'), 'loadings': pd.concat(load_list).to_json(orient='split')}
 
+# 4a. Update note variabel analisis ketika variabel bobot berubah
+@app.callback(
+    Output('weight-var-statis-exclude-note', 'children'),
+    Input('weight-var-statis-dropdown', 'value'),
+    prevent_initial_call=False
+)
+def cb_weight_var_note(weight_var):
+    if weight_var:
+        return f'⚠ "{weight_var}" dikecualikan dari variabel analisis.'
+    return ''
+
 # 4. STATIS Core Calculation
 @app.callback(
     Output('statis-core-store', 'data'),
@@ -3166,14 +3190,19 @@ def cb_pca_calc(n_clicks, vars, data):
     State('upload-data', 'contents'),
     State('global-data-store', 'data'),
     State('statis-scenario', 'value'),
+    State('weight-var-statis-dropdown', 'value'),
     prevent_initial_call=True
 )
-def cb_statis_calc(n_clicks, vars, contents, global_data, scenario):
-    if not n_clicks or not vars or not contents or not global_data: 
+def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var):
+    if not n_clicks or not vars or not contents or not global_data:
         raise exceptions.PreventUpdate
+    # Keluarkan variabel bobot dari variabel analisis
+    analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
+    if not analysis_vars:
+        return None, "❌ Tidak ada variabel analisis tersisa setelah variabel bobot dikecualikan."
     try:
         print("--- [STATIS_CORE] MEMULAI PENGHITUNGAN ---")
-        res = run_statis_core(contents, vars, global_data['sheet_names'], scenario=scenario)
+        res = run_statis_core(contents, analysis_vars, global_data['sheet_names'], scenario=scenario, weight_var=weight_var)
         
         # --- [TAMBAHAN] Injeksi Metadata Provinsi & Index untuk Visualisasi ---
         try:
@@ -3305,16 +3334,22 @@ def cb_show_sections(n_clicks):
     Output('formula-diag-output', 'children'),
     Input('btn-run-diag', 'n_clicks'),
     State('global-data-store', 'data'),
-    State('variable-dropdown-final', 'value')
+    State('variable-dropdown-final', 'value'),
+    State('weight-var-statis-dropdown', 'value')
 )
-def cb_diag_math(n_clicks, data_store, vars):
-    if not n_clicks or not data_store or not vars: 
+def cb_diag_math(n_clicks, data_store, vars, weight_var):
+    if not n_clicks or not data_store or not vars:
         return "Wait...", {}, "Wait...", {}, {'display': 'none'}, render_diagnostic_formulas()
-    
+
+    # Keluarkan variabel bobot dari variabel analisis KMO
+    analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
+    if not analysis_vars:
+        return "❌ Tidak ada variabel analisis.", {}, "❌ Tidak ada variabel analisis.", {}, {'display': 'none'}, render_diagnostic_formulas()
+
     # 1. Diagnostics
     df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
     df_dict = {y: df[df['Tahun'] == y] for y in data_store['years']}
-    kmo_val, p_val, kmo_int, bart_int, n, df_k, r_sq, q_sq, chi2_stat = calc_kmo_bartlett(df_dict, vars)
+    kmo_val, p_val, kmo_int, bart_int, n, df_k, r_sq, q_sq, chi2_stat = calc_kmo_bartlett(df_dict, analysis_vars)
     
     kmo_txt = f"KMO = {kmo_val:.3f} ({kmo_int})"
     bart_txt = f"P-value = {p_val} ({bart_int})" # No Rounding!
@@ -4225,7 +4260,10 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
         t = t.replace('(', '').replace(')', '')
         return t
 
+    # Bobot wilayah m_i selalu di posisi paling atas
     table_opts = []
+    if 'm_weights' in res:
+        table_opts.append({'label': polish_statis_label('m_weights'), 'value': 'm_weights'})
     for k in res.keys():
         if k not in exclude_keys:
             table_opts.append({'label': polish_statis_label(k), 'value': k})
