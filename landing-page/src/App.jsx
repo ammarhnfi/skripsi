@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+﻿import { useState, useEffect, useRef } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -133,7 +133,7 @@ function LatexTable({ tex }) {
   }
 
   const colSpec = tex.substring(specStart, specEnd - 1);
-  const expectedCols = colSpec.replace(/[| ]|{[^{}]*}/g, '').length || 2;
+  const expectedCols = colSpec.replace(/[| <>!@]/g, '').replace(/{[^{}]*}/g, '').length || 2;
   const bodyWithEnd = tex.substring(specEnd);
   const endTagMatch = bodyWithEnd.match(/(.*?)\\end\{(?:tabular|longtable)\}/s);
   if (!endTagMatch) return <pre style={{ whiteSpace: 'pre-wrap' }}>{tex}</pre>;
@@ -162,15 +162,17 @@ function LatexTable({ tex }) {
       .replace(/\\hline/g, '').replace(/\\arraybackslash/g, '').replace(/\\raggedright/g, '').replace(/\\centering/g, '')
       .replace(/\\toprule/g, '').replace(/\\midrule/g, '').replace(/\\bottomrule/g, '')
       .replace(/\\makecell\[?.*?\]?\{(.*?)\}/sg, '$1')
+      .replace(/\\&/g, '__ESC_AMP__')
       .trim();
-    
+
     if (!cleanRow || cleanRow === '}') return null;
 
     let cells = cleanRow.split('&').map(cell => {
       let content = cell.trim()
+        .replace(/__ESC_AMP__/g, '&')
         .replace(/\\textbf\{(.*?)\}/g, '$1').replace(/\\textit\{(.*?)\}/g, '<i>$1</i>')
         .replace(/\\bfseries/g, '').replace(/\\small/g, '').replace(/\\scriptsize/g, '')
-        .replace(/\\%/g, '%').replace(/\\&/g, '&').replace(/\\\$/g, '$').replace(/\\_/g, '_')
+        .replace(/\\%/g, '%').replace(/\\\$/g, '$').replace(/\\_/g, '_')
         .replace(/\\rightarrow/g, '→').replace(/\\textrightarrow/g, '→')
         .replace(/\\\(|\\\)/g, '').replace(/\\text\{(.*?)\}/g, '$1');
       

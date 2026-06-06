@@ -196,6 +196,7 @@ LABEL_PREFIX = "App"
 
 cfg = {}
 _WEIGHT_VAR_CONFIG = None
+_MIRROR_CFG: dict = {}  # mirror per skenario: {"scenario1": [], "scenario2": ["mirror_pc1"]}
 if config_path and os.path.exists(config_path):
     try:
         with open(config_path, "r", encoding="utf-8") as f:
@@ -209,6 +210,8 @@ if config_path and os.path.exists(config_path):
         print(f"  [CONFIG] Loaded configuration from: {config_path}")
         # Simpan weight_variable dari config (opsional)
         _WEIGHT_VAR_CONFIG = cfg.get("weight_variable", None)
+        # Mirror PC1/PC2 per skenario: {"scenario1": [], "scenario2": ["mirror_pc1"]}
+        _MIRROR_CFG = cfg.get("mirror", {})
     except Exception as e:
         print(f"  [WARN] Gagal baca config {config_path}: {e}")
 
@@ -1022,6 +1025,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     print("#"*70 + "\n")
 
     IS_FIRST = (current_scenario == 'scenario1')  # Flag: hanya tulis output shared saat iterasi pertama
+    MIRROR_OPTS: list = _MIRROR_CFG.get(current_scenario, [])
     ipm_col = ipm_col_detected  # Re-bind per iterasi agar Pylance dapat melacak tipe di scope loop panjang
     H_mat = H_W if SCENARIO == 'scenario1' else H_S  # Matriks interstruktur sesuai skenario
     vals_H_sorted = np.sort(np.real(np.linalg.eigvals(H_mat)))[::-1]  # Eigenvalue H terurut turun
@@ -1121,6 +1125,26 @@ for current_scenario in ['scenario1', 'scenario2']:
         per_year_coords[yr] = fk
         per_year_loadings[yr] = gk
 
+    # Simpan salinan asli (sebelum mirror) untuk kolom "Asli" di tabel
+    scores_raw_orig      = scores_raw.copy()
+    loadings_orig        = loadings.copy()
+    per_year_coords_orig  = {yr: per_year_coords[yr].copy()   for yr in per_year_coords}
+    per_year_loadings_orig = {yr: per_year_loadings[yr].copy() for yr in per_year_loadings}
+
+    # --- Terapkan Mirror PC1/PC2 dari config ---
+    _flip1 = -1.0 if 'mirror_pc1' in MIRROR_OPTS else 1.0
+    _flip2 = -1.0 if 'mirror_pc2' in MIRROR_OPTS else 1.0
+    if _flip1 != 1.0 or _flip2 != 1.0:
+        scores_raw[:, 0] *= _flip1;  scores_raw[:, 1] *= _flip2
+        loadings[:, 0]   *= _flip1;  loadings[:, 1]   *= _flip2
+        for _yr in per_year_coords:
+            per_year_coords[_yr][:, 0]   *= _flip1
+            per_year_coords[_yr][:, 1]   *= _flip2
+        for _yr in per_year_loadings:
+            per_year_loadings[_yr][:, 0] *= _flip1
+            per_year_loadings[_yr][:, 1] *= _flip2
+        print(f"  [MIRROR] PC1×{_flip1:.0f}  PC2×{_flip2:.0f}  ({current_scenario})")
+
     # ============================================================
     # 5. EKSPOR TABEL STATIS ({SCENARIO})
     # ============================================================
@@ -1144,14 +1168,19 @@ for current_scenario in ['scenario1', 'scenario2']:
     # ------------------------------------------------------------
     # Helpers for Plots
     # ------------------------------------------------------------
-    def apply_visual_adjustments(scores, loads, norm=False, scale=True):
+    def apply_visual_adjustments(scores, loads, norm=False, scale=True, singular_values=None):
         ps, pl = scores.copy(), loads.copy()
         if norm:
             max_val = np.max(np.abs(ps)) if ps.size > 0 else 1
             if max_val > 0: ps = ps / max_val
         if scale:
-            ms, ml = np.max(np.abs(ps)), np.max(np.abs(pl))
-            if ml > 0: pl = pl * (ms / ml) * 0.8
+            if singular_values is not None:
+                sv = np.array(singular_values, dtype=float)
+                pl[:, 0] = loads[:, 0] * sv[0]
+                pl[:, 1] = loads[:, 1] * sv[1]
+            else:
+                ms, ml = np.max(np.abs(ps)), np.max(np.abs(pl))
+                if ml > 0: pl = pl * (ms / ml) * 0.8
         return ps, pl
 
     def compute_rotation(scores, loads, baseline_type, baseline_name):
@@ -1164,21 +1193,22 @@ for current_scenario in ['scenario1', 'scenario2']:
         return -np.arctan2(vec[1], vec[0]) if not np.allclose(vec, 0) else 0.0
 
     ROT_ANGLE = compute_rotation(scores_raw, loadings, BASELINE_TYPE, BASELINE_NAME)
-    plot_scores, plot_loadings = apply_visual_adjustments(scores_raw, loadings, norm=NORM_SCORE, scale=SCALE_LOAD)
+    _sv_c = np.sqrt(np.clip(eig_vals_c[:2], 1e-12, None))
+    plot_scores, plot_loadings = apply_visual_adjustments(scores_raw, loadings, norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_sv_c)
     
     if ROT_ANGLE != 0.0:
         R_rot = np.array([[np.cos(ROT_ANGLE), -np.sin(ROT_ANGLE)], [np.sin(ROT_ANGLE), np.cos(ROT_ANGLE)]])
         plot_scores, plot_loadings = plot_scores @ R_rot.T, plot_loadings @ R_rot.T
 
     # Loadings & Skor Kompromi (Fc, Gc) — dengan kolom Asli dan Visual
-    df_gc = pd.DataFrame(loadings, index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_gc = pd.DataFrame(loadings_orig, index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
     df_gc['PC1 (Visual)'] = plot_loadings[:, 0]
     df_gc['PC2 (Visual)'] = plot_loadings[:, 1]
     df_gc.index.name = 'Indikator'
     df_gc = df_gc.reset_index()
     save_tex_table(df_gc, "output_table_loadings.tex", OUT_DIR, f"Loadings Kompromi ({SCENARIO})", "loadings", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
 
-    df_fc = pd.DataFrame(scores_raw, index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+    df_fc = pd.DataFrame(scores_raw_orig, index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
     df_fc['PC1 (Visual)'] = plot_scores[:, 0]
     df_fc['PC2 (Visual)'] = plot_scores[:, 1]
     df_fc.index.name = 'Kabupaten/Kota'
@@ -1207,7 +1237,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     _pc_stacked  = np.vstack(_pc_list_rot)   if _pc_list_rot   else np.zeros((0, 2))
     _load_stacked = np.vstack(_load_list_rot) if _load_list_rot else np.zeros((0, 2))
     if _pc_stacked.shape[0] > 0:
-        _pc_vis, _load_vis = apply_visual_adjustments(_pc_stacked, _load_stacked, norm=NORM_SCORE, scale=SCALE_LOAD)
+        _pc_vis, _load_vis = apply_visual_adjustments(_pc_stacked, _load_stacked, norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_sv_c)
     else:
         _pc_vis, _load_vis = _pc_stacked, _load_stacked
     # Step 3: split back into per-year dicts
@@ -1319,20 +1349,20 @@ for current_scenario in ['scenario1', 'scenario2']:
         save_tex_table(df_dist_loads, f"output_table_jarak_loading_{yr}.tex", OUT_DIR, f"Perbandingan Jarak Loading Indikator (PCA vs STATIS) Tahun {yr}", f"jarak_loading_{yr}", float_fmt="{:.4f}", label_prefix=CUR_LABEL_PREFIX)
     
         # Tabel Skor Intra (F_k)
-        df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
-        if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
-            df_fk = pd.DataFrame(per_year_coords[yr][:, :2], index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
-            df_fk['PC1 (Visual)'] = ss_adj[:, 0]
-            df_fk['PC2 (Visual)'] = ss_adj[:, 1]
+        df_fk = pd.DataFrame(per_year_coords_orig[yr][:, :2], index=obs_labels, columns=['PC1', 'PC2'])
+        if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD or _flip1 != 1.0 or _flip2 != 1.0:
+            df_fk = pd.DataFrame(per_year_coords_orig[yr][:, :2], index=obs_labels, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+            df_fk['PC1 (Visual)'] = per_year_coords_plot[yr][:, 0]
+            df_fk['PC2 (Visual)'] = per_year_coords_plot[yr][:, 1]
         df_fk.index.name = 'Kabupaten/Kota'
         df_fk = df_fk.reset_index()
-        
+
         # Tabel Loading Intra (G_k) - Koordinat indikator tahun t di ruang kompromi
-        df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1', 'PC2'])
-        if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD:
-            df_gk = pd.DataFrame(per_year_loadings[yr][:, :2], index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
-            df_gk['PC1 (Visual)'] = ls_adj[:, 0]
-            df_gk['PC2 (Visual)'] = ls_adj[:, 1]
+        df_gk = pd.DataFrame(per_year_loadings_orig[yr][:, :2], index=selected_vars, columns=['PC1', 'PC2'])
+        if ROT_ANGLE != 0.0 or yr in MIRROR_YEARS or NORM_SCORE or SCALE_LOAD or _flip1 != 1.0 or _flip2 != 1.0:
+            df_gk = pd.DataFrame(per_year_loadings_orig[yr][:, :2], index=selected_vars, columns=['PC1 (Asli)', 'PC2 (Asli)'])
+            df_gk['PC1 (Visual)'] = per_year_loadings_plot[yr][:, 0]
+            df_gk['PC2 (Visual)'] = per_year_loadings_plot[yr][:, 1]
         df_gk.index.name = 'Indikator'
         df_gk = df_gk.reset_index()
 
@@ -1976,10 +2006,22 @@ for current_scenario in ['scenario1', 'scenario2']:
     km_traj = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
     labels_traj_raw = km_traj.fit_predict(X_traj)
     
-    # Re-ranking otomatis untuk trajektori (berdasarkan rata-rata PC1 skor kompromi)
+    # Re-ranking otomatis untuk trajektori (berdasarkan rata-rata PC1 skor kompromi).
+    # Koreksi tanda: PC1 harus berarah "lebih baik = lebih tinggi".
+    # Variabel negatif (PPM, TPT, dst) harus berloading negatif → jika tidak, PC1 terbalik.
+    _sign_score_t = 0.0
+    for _i_s, _v_s in enumerate(selected_vars):
+        if _i_s < len(loadings):
+            _pc1_l = float(loadings[_i_s, 0])
+            if any(neg.lower() in _v_s.lower() for neg in negative_vars):
+                _sign_score_t -= _pc1_l
+            else:
+                _sign_score_t += _pc1_l
+    _pc1_sign_t = 1.0 if _sign_score_t >= 0 else -1.0
+
     cluster_means_t = []
     for cl in range(K_CLUSTERS):
-        cluster_means_t.append(np.mean(scores_raw[labels_traj_raw == cl, 0]))
+        cluster_means_t.append(np.mean(_pc1_sign_t * scores_raw[labels_traj_raw == cl, 0]))
     sorted_idx_t = np.argsort(cluster_means_t)
     rank_map_t = {old_val: rank for rank, old_val in enumerate(sorted_idx_t)}
     cluster_traj = np.array([rank_map_t[l] for l in labels_traj_raw])
@@ -2367,7 +2409,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         cluster_per_year[yr] = labels
         
         # Scatter biplot Klaster per tahun
-        ps_y, pl_y = apply_visual_adjustments(coords, loadings, norm=NORM_SCORE, scale=SCALE_LOAD)
+        ps_y, pl_y = apply_visual_adjustments(coords, loadings, norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_sv_c)
         # Gunakan warna dari app.py: Merah (Rendah), Jingga (Sedang), Hijau (Tinggi)
         palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
         
@@ -2771,18 +2813,21 @@ for current_scenario in ['scenario1', 'scenario2']:
     print(f"\n=== 7. Clustering Trajektori Keseluruhan ===")
     
     palette = ['#EF5350', '#FFB300', '#4CAF50', '#42A5F5', '#8E24AA']
+    # Jika tidak ada rotasi (BASELINE_NAME kosong), terapkan koreksi tanda PC1 untuk tampilan.
+    # Jika rotasi sudah diterapkan, percayakan orientasi ke rotasi itu.
+    _display_x_sign = 1.0 if ROT_ANGLE != 0.0 else _pc1_sign_t
     fig_traj_cl = go.Figure()
     for cl in range(K_CLUSTERS):
         mask = cluster_traj == cl
         cluster_name = f"Klaster {cl+1}"
         if K_CLUSTERS == 3: cluster_name = ["Rendah", "Sedang", "Tinggi"][cl]
         elif K_CLUSTERS == 2: cluster_name = ["Rendah", "Tinggi"][cl]
-        
+
         fig_traj_cl.add_trace(go.Scatter(
-            x=plot_scores[mask, 0], y=plot_scores[mask, 1],
+            x=_display_x_sign * plot_scores[mask, 0], y=plot_scores[mask, 1],
             mode='markers+text',
             text=[obs_labels[i] for i in range(len(obs_labels)) if mask[i]],
-            textposition='top center', textfont=dict(size=9, color='black'),
+            textposition='top center', textfont=dict(size=8, color='black'),
             marker=dict(size=9, color=palette[cl]),
             name=f'Klaster {cl+1} ({cluster_name})'
         ))
@@ -2791,7 +2836,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     # Tambahkan vektor loading dengan warna hitam beropasitas rendah
     for _li, _lvar in enumerate(selected_vars):
         fig_traj_cl.add_trace(go.Scatter(
-            x=[0, plot_loadings[_li, 0]], y=[0, plot_loadings[_li, 1]],
+            x=[0, _display_x_sign * plot_loadings[_li, 0]], y=[0, plot_loadings[_li, 1]],
             mode='lines+text',
             text=['', _lvar],
             textposition='top center',

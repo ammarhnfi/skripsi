@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 JUN 2026 16:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  6 JUN 2026 08:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -71,12 +71,19 @@ File: pdftex.def 2025/09/29 v1.2d Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen157
 \Gin@req@width=\dimen158
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\enumerate.sty
-Package: enumerate 2023/07/04 v3.00 enumerate extensions (DPC)
-\@enLab=\toks19
-) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty
+Package: enumitem 2025/02/06 v3.11 Customized lists
+\labelindent=\skip51
+\enit@outerparindent=\dimen159
+\enit@toks=\toks19
+\enit@inbox=\box53
+\enit@count@id=\count287
+\enitdp@description=\count288
+)
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
 Package: amsmath 2025/07/09 v2.17z AMS math features
-\@mathmargin=\skip51
+\@mathmargin=\skip52
 
 For additional information on amsmath, use the `?' option.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
@@ -85,59 +92,59 @@ Package: amstext 2024/11/17 v2.01 AMS text
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks20
-\ex@=\dimen159
+\ex@=\dimen160
 ))
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen160
+\pmbraise@=\dimen161
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
 Package: amsopn 2022/04/08 v2.04 operator names
 )
-\inf@bad=\count287
+\inf@bad=\count289
 LaTeX Info: Redefining \frac on input line 233.
-\uproot@=\count288
-\leftroot@=\count289
+\uproot@=\count290
+\leftroot@=\count291
 LaTeX Info: Redefining \overline on input line 398.
 LaTeX Info: Redefining \colon on input line 409.
-\classnum@=\count290
-\DOTSCASE@=\count291
+\classnum@=\count292
+\DOTSCASE@=\count293
 LaTeX Info: Redefining \ldots on input line 495.
 LaTeX Info: Redefining \dots on input line 498.
 LaTeX Info: Redefining \cdots on input line 619.
-\Mathstrutbox@=\box53
-\strutbox@=\box54
+\Mathstrutbox@=\box54
+\strutbox@=\box55
 LaTeX Info: Redefining \big on input line 721.
 LaTeX Info: Redefining \Big on input line 722.
 LaTeX Info: Redefining \bigg on input line 723.
 LaTeX Info: Redefining \Bigg on input line 724.
-\big@size=\dimen161
+\big@size=\dimen162
 LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
-\macc@depth=\count292
+\macc@depth=\count294
 LaTeX Info: Redefining \bmod on input line 904.
 LaTeX Info: Redefining \pmod on input line 909.
 LaTeX Info: Redefining \smash on input line 939.
 LaTeX Info: Redefining \relbar on input line 969.
 LaTeX Info: Redefining \Relbar on input line 970.
-\c@MaxMatrixCols=\count293
+\c@MaxMatrixCols=\count295
 \dotsspace@=\muskip17
-\c@parentequation=\count294
-\dspbrk@lvl=\count295
+\c@parentequation=\count296
+\dspbrk@lvl=\count297
 \tag@help=\toks21
-\row@=\count296
-\column@=\count297
-\maxfields@=\count298
+\row@=\count298
+\column@=\count299
+\maxfields@=\count300
 \andhelp@=\toks22
-\eqnshift@=\dimen162
-\alignsep@=\dimen163
-\tagshift@=\dimen164
-\tagwidth@=\dimen165
-\totwidth@=\dimen166
-\lineht@=\dimen167
+\eqnshift@=\dimen163
+\alignsep@=\dimen164
+\tagshift@=\dimen165
+\tagwidth@=\dimen166
+\totwidth@=\dimen167
+\lineht@=\dimen168
 \@envbody=\toks23
-\multlinegap=\skip52
-\multlinetaggap=\skip53
+\multlinegap=\skip53
+\multlinetaggap=\skip54
 \mathdisplay@stack=\toks24
 LaTeX Info: Redefining \[ on input line 2950.
 LaTeX Info: Redefining \] on input line 2951.
@@ -159,9 +166,9 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headfont=\toks27
 \thm@notefont=\toks28
 \thm@headpunct=\toks29
-\thm@preskip=\skip54
-\thm@postskip=\skip55
-\thm@headsep=\skip56
+\thm@preskip=\skip55
+\thm@postskip=\skip56
+\thm@headsep=\skip57
 \dth@everypar=\toks30
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/jknappen\mathrsfs.sty
@@ -173,10 +180,10 @@ Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/natbib\natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
-\bibhang=\skip57
-\bibsep=\skip58
+\bibhang=\skip58
+\bibsep=\skip59
 LaTeX Info: Redefining \cite on input line 694.
-\c@NAT@ctr=\count299
+\c@NAT@ctr=\count301
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
@@ -187,60 +194,60 @@ Package tocbibind Note: Using chapter style headings, unless overridden.
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tocloft\tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has chapter divisions on input line 51.
-\cftparskip=\skip59
-\cftbeforetoctitleskip=\skip60
-\cftaftertoctitleskip=\skip61
-\cftbeforepartskip=\skip62
-\cftpartnumwidth=\skip63
-\cftpartindent=\skip64
-\cftbeforechapskip=\skip65
-\cftchapindent=\skip66
-\cftchapnumwidth=\skip67
-\cftbeforesecskip=\skip68
-\cftsecindent=\skip69
-\cftsecnumwidth=\skip70
-\cftbeforesubsecskip=\skip71
-\cftsubsecindent=\skip72
-\cftsubsecnumwidth=\skip73
-\cftbeforesubsubsecskip=\skip74
-\cftsubsubsecindent=\skip75
-\cftsubsubsecnumwidth=\skip76
-\cftbeforeparaskip=\skip77
-\cftparaindent=\skip78
-\cftparanumwidth=\skip79
-\cftbeforesubparaskip=\skip80
-\cftsubparaindent=\skip81
-\cftsubparanumwidth=\skip82
-\cftbeforeloftitleskip=\skip83
-\cftafterloftitleskip=\skip84
-\cftbeforefigskip=\skip85
-\cftfigindent=\skip86
-\cftfignumwidth=\skip87
-\c@lofdepth=\count300
-\c@lotdepth=\count301
-\cftbeforelottitleskip=\skip88
-\cftafterlottitleskip=\skip89
-\cftbeforetabskip=\skip90
-\cfttabindent=\skip91
-\cfttabnumwidth=\skip92
+\cftparskip=\skip60
+\cftbeforetoctitleskip=\skip61
+\cftaftertoctitleskip=\skip62
+\cftbeforepartskip=\skip63
+\cftpartnumwidth=\skip64
+\cftpartindent=\skip65
+\cftbeforechapskip=\skip66
+\cftchapindent=\skip67
+\cftchapnumwidth=\skip68
+\cftbeforesecskip=\skip69
+\cftsecindent=\skip70
+\cftsecnumwidth=\skip71
+\cftbeforesubsecskip=\skip72
+\cftsubsecindent=\skip73
+\cftsubsecnumwidth=\skip74
+\cftbeforesubsubsecskip=\skip75
+\cftsubsubsecindent=\skip76
+\cftsubsubsecnumwidth=\skip77
+\cftbeforeparaskip=\skip78
+\cftparaindent=\skip79
+\cftparanumwidth=\skip80
+\cftbeforesubparaskip=\skip81
+\cftsubparaindent=\skip82
+\cftsubparanumwidth=\skip83
+\cftbeforeloftitleskip=\skip84
+\cftafterloftitleskip=\skip85
+\cftbeforefigskip=\skip86
+\cftfigindent=\skip87
+\cftfignumwidth=\skip88
+\c@lofdepth=\count302
+\c@lotdepth=\count303
+\cftbeforelottitleskip=\skip89
+\cftafterlottitleskip=\skip90
+\cftbeforetabskip=\skip91
+\cfttabindent=\skip92
+\cfttabnumwidth=\skip93
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
 Package: caption 2023/08/05 v3.6o Customizing captions (AR)
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
 Package: caption3 2023/07/31 v2.4d caption3 kernel (AR)
-\caption@tempdima=\dimen168
-\captionmargin=\dimen169
-\caption@leftmargin=\dimen170
-\caption@rightmargin=\dimen171
-\caption@width=\dimen172
-\caption@indent=\dimen173
-\caption@parindent=\dimen174
-\caption@hangindent=\dimen175
+\caption@tempdima=\dimen169
+\captionmargin=\dimen170
+\caption@leftmargin=\dimen171
+\caption@rightmargin=\dimen172
+\caption@width=\dimen173
+\caption@indent=\dimen174
+\caption@parindent=\dimen175
+\caption@hangindent=\dimen176
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count302
-\c@continuedfloat=\count303
+\c@caption@flags=\count304
+\c@continuedfloat=\count305
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/diagbox\diagbox.sty
 Package: diagbox 2020/02/09 v2.3 Making table heads with diagonal lines
@@ -258,122 +265,122 @@ Package pict2e Info: Driver file for pict2e: p2e-pdftex.def on input line 114.
 File: p2e-pdftex.def 2016/02/05 v0.1u Driver-dependant file (RN,HjG,JT)
 )
 \pIIe@GRAPH=\toks31
-\@arclen=\dimen176
-\@arcrad=\dimen177
-\pIIe@tempdima=\dimen178
-\pIIe@tempdimb=\dimen179
-\pIIe@tempdimc=\dimen180
-\pIIe@tempdimd=\dimen181
-\pIIe@tempdime=\dimen182
-\pIIe@tempdimf=\dimen183
+\@arclen=\dimen177
+\@arcrad=\dimen178
+\pIIe@tempdima=\dimen179
+\pIIe@tempdimb=\dimen180
+\pIIe@tempdimc=\dimen181
+\pIIe@tempdimd=\dimen182
+\pIIe@tempdime=\dimen183
+\pIIe@tempdimf=\dimen184
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
 Package: calc 2025/03/01 v4.3b Infix arithmetic (KKT,FJ)
-\calc@Acount=\count304
-\calc@Bcount=\count305
-\calc@Adimen=\dimen184
-\calc@Bdimen=\dimen185
-\calc@Askip=\skip93
-\calc@Bskip=\skip94
+\calc@Acount=\count306
+\calc@Bcount=\count307
+\calc@Adimen=\dimen185
+\calc@Bdimen=\dimen186
+\calc@Askip=\skip94
+\calc@Bskip=\skip95
 LaTeX Info: Redefining \setlength on input line 86.
 LaTeX Info: Redefining \addtolength on input line 87.
-\calc@Ccount=\count306
-\calc@Cskip=\skip95
+\calc@Ccount=\count308
+\calc@Cskip=\skip96
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
 Package: array 2025/09/25 v2.6n Tabular extension package (FMi)
-\col@sep=\dimen186
-\ar@mcellbox=\box55
-\extrarowheight=\dimen187
+\col@sep=\dimen187
+\ar@mcellbox=\box56
+\extrarowheight=\dimen188
 \NC@list=\toks32
-\extratabsurround=\skip96
-\backup@length=\skip97
-\ar@cellbox=\box56
+\extratabsurround=\skip97
+\backup@length=\skip98
+\ar@cellbox=\box57
 )
-\diagbox@boxa=\box57
-\diagbox@boxb=\box58
-\diagbox@boxm=\box59
-\diagbox@wd=\dimen188
-\diagbox@ht=\dimen189
-\diagbox@insepl=\dimen190
-\diagbox@insepr=\dimen191
-\diagbox@outsepl=\dimen192
-\diagbox@outsepr=\dimen193
+\diagbox@boxa=\box58
+\diagbox@boxb=\box59
+\diagbox@boxm=\box60
+\diagbox@wd=\dimen189
+\diagbox@ht=\dimen190
+\diagbox@insepl=\dimen191
+\diagbox@insepr=\dimen192
+\diagbox@outsepl=\dimen193
+\diagbox@outsepr=\dimen194
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\times.sty
 Package: times 2020/03/25 PSNFSS-v9.3 (SPQR) 
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
 Package: multirow 2024/11/12 v2.9 Span multiple rows of a table
-\multirow@colwidth=\skip98
-\multirow@cntb=\count307
-\multirow@dima=\skip99
-\bigstrutjot=\dimen194
+\multirow@colwidth=\skip99
+\multirow@cntb=\count309
+\multirow@dima=\skip100
+\bigstrutjot=\dimen195
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/subfig\subfig.sty
 Package: subfig 2005/06/28 ver: 1.3 subfig package
-\c@KVtest=\count308
-\sf@farskip=\skip100
-\sf@captopadj=\dimen195
-\sf@capskip=\skip101
-\sf@nearskip=\skip102
-\c@subfigure=\count309
-\c@subfigure@save=\count310
-\c@subtable=\count311
-\c@subtable@save=\count312
-\sf@top=\skip103
-\sf@bottom=\skip104
+\c@KVtest=\count310
+\sf@farskip=\skip101
+\sf@captopadj=\dimen196
+\sf@capskip=\skip102
+\sf@nearskip=\skip103
+\c@subfigure=\count311
+\c@subfigure@save=\count312
+\c@subtable=\count313
+\c@subtable@save=\count314
+\sf@top=\skip104
+\sf@bottom=\skip105
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/makecell\makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
-\rotheadsize=\dimen196
-\c@nlinenum=\count313
+\rotheadsize=\dimen197
+\c@nlinenum=\count315
 \TeXr@lab=\toks33
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty
 Package: longtable 2025-10-13 v4.24 Multi-page Table package (DPC)
-\LTleft=\skip105
-\LTright=\skip106
-\LTpre=\skip107
-\LTpost=\skip108
-\LTchunksize=\count314
-\LTcapwidth=\dimen197
-\LT@head=\box60
-\LT@firsthead=\box61
-\LT@foot=\box62
-\LT@lastfoot=\box63
-\LT@gbox=\box64
-\LT@cols=\count315
-\LT@rows=\count316
-\c@LT@tables=\count317
-\c@LT@chunks=\count318
+\LTleft=\skip106
+\LTright=\skip107
+\LTpre=\skip108
+\LTpost=\skip109
+\LTchunksize=\count316
+\LTcapwidth=\dimen198
+\LT@head=\box61
+\LT@firsthead=\box62
+\LT@foot=\box63
+\LT@lastfoot=\box64
+\LT@gbox=\box65
+\LT@cols=\count317
+\LT@rows=\count318
+\c@LT@tables=\count319
+\c@LT@chunks=\count320
 \LT@p@ftn=\toks34
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty
 Package: fancyhdr 2025/02/07 v5.2 Extensive control of page headers and footers
 
-\f@nch@headwidth=\skip109
-\f@nch@offset@elh=\skip110
-\f@nch@offset@erh=\skip111
-\f@nch@offset@olh=\skip112
-\f@nch@offset@orh=\skip113
-\f@nch@offset@elf=\skip114
-\f@nch@offset@erf=\skip115
-\f@nch@offset@olf=\skip116
-\f@nch@offset@orf=\skip117
-\f@nch@height=\skip118
-\f@nch@footalignment=\skip119
-\f@nch@widthL=\skip120
-\f@nch@widthC=\skip121
-\f@nch@widthR=\skip122
+\f@nch@headwidth=\skip110
+\f@nch@offset@elh=\skip111
+\f@nch@offset@erh=\skip112
+\f@nch@offset@olh=\skip113
+\f@nch@offset@orh=\skip114
+\f@nch@offset@elf=\skip115
+\f@nch@offset@erf=\skip116
+\f@nch@offset@olf=\skip117
+\f@nch@offset@orf=\skip118
+\f@nch@height=\skip119
+\f@nch@footalignment=\skip120
+\f@nch@widthL=\skip121
+\f@nch@widthC=\skip122
+\f@nch@widthR=\skip123
 \@temptokenb=\toks35
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count319
+\c@float@type=\count321
 \float@exts=\toks36
-\float@box=\box65
+\float@box=\box66
 \@float@everytoks=\toks37
-\@floatcapt=\box66
+\@floatcapt=\box67
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjustbox.sty
 Package: adjustbox 2025/02/26 v1.3c Adjusting TeX boxes (trim, clip, ...)
@@ -385,7 +392,7 @@ Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
 \XKV@toks=\toks38
 \XKV@tempa@toks=\toks39
 )
-\XKV@depth=\count320
+\XKV@depth=\count322
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 ))
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\adjcalc.sty
@@ -398,45 +405,45 @@ Package: trimclip 2025/02/21 v1.2a Trim and clip general TeX material
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/collectbox\collectbox.s
 ty
 Package: collectbox 2022/10/17 v0.4c Collect macro arguments as boxes
-\collectedbox=\box67
+\collectedbox=\box68
 )
-\tc@llx=\dimen198
-\tc@lly=\dimen199
-\tc@urx=\dimen256
-\tc@ury=\dimen257
+\tc@llx=\dimen199
+\tc@lly=\dimen256
+\tc@urx=\dimen257
+\tc@ury=\dimen258
 Package trimclip Info: Using driver 'tc-pdftex.def'.
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/adjustbox\tc-pdftex.def
 File: tc-pdftex.def 2025/02/26 v2.3 Clipping driver for pdftex
 ))
-\adjbox@Width=\dimen258
-\adjbox@Height=\dimen259
-\adjbox@Depth=\dimen260
-\adjbox@Totalheight=\dimen261
-\adjbox@pwidth=\dimen262
-\adjbox@pheight=\dimen263
-\adjbox@pdepth=\dimen264
-\adjbox@ptotalheight=\dimen265
+\adjbox@Width=\dimen259
+\adjbox@Height=\dimen260
+\adjbox@Depth=\dimen261
+\adjbox@Totalheight=\dimen262
+\adjbox@pwidth=\dimen263
+\adjbox@pheight=\dimen264
+\adjbox@pdepth=\dimen265
+\adjbox@ptotalheight=\dimen266
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/ifoddpage\ifoddpage.sty
 Package: ifoddpage 2022/10/18 v1.2 Conditionals for odd/even page detection
-\c@checkoddpage=\count321
+\c@checkoddpage=\count323
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/varwidth\varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
-\@vwid@box=\box68
-\sift@deathcycles=\count322
-\@vwid@loff=\dimen266
-\@vwid@roff=\dimen267
+\@vwid@box=\box69
+\sift@deathcycles=\count324
+\@vwid@loff=\dimen267
+\@vwid@roff=\dimen268
 )
 ==> First Aid for varwidth.sty applied!
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty
 Package: tabularx 2023/12/11 v2.12a `tabularx' package (DPC)
-\TX@col@width=\dimen268
-\TX@old@table=\dimen269
-\TX@old@col=\dimen270
-\TX@target=\dimen271
-\TX@delta=\dimen272
-\TX@cols=\count323
+\TX@col@width=\dimen269
+\TX@old@table=\dimen270
+\TX@old@col=\dimen271
+\TX@target=\dimen272
+\TX@delta=\dimen273
+\TX@cols=\count325
 \TX@ftn=\toks40
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
@@ -447,12 +454,12 @@ y
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -common.tex
 \pgfutil@everybye=\toks41
-\pgfutil@tempdima=\dimen273
-\pgfutil@tempdimb=\dimen274
+\pgfutil@tempdima=\dimen274
+\pgfutil@tempdimb=\dimen275
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
 -latex.def
-\pgfutil@abb=\box69
+\pgfutil@abb=\box70
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
 code.tex
@@ -478,26 +485,26 @@ Package: pgfsys 2025-08-29 v3.1.11a (3.1.11a)
 libraryfiltered.code.tex
 \pgfkeys@tmptoks=\toks44
 ))
-\pgf@x=\dimen275
-\pgf@y=\dimen276
-\pgf@xa=\dimen277
-\pgf@ya=\dimen278
-\pgf@xb=\dimen279
-\pgf@yb=\dimen280
-\pgf@xc=\dimen281
-\pgf@yc=\dimen282
-\pgf@xd=\dimen283
-\pgf@yd=\dimen284
+\pgf@x=\dimen276
+\pgf@y=\dimen277
+\pgf@xa=\dimen278
+\pgf@ya=\dimen279
+\pgf@xb=\dimen280
+\pgf@yb=\dimen281
+\pgf@xc=\dimen282
+\pgf@yc=\dimen283
+\pgf@xd=\dimen284
+\pgf@yd=\dimen285
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count324
-\c@pgf@countb=\count325
-\c@pgf@countc=\count326
-\c@pgf@countd=\count327
+\c@pgf@counta=\count326
+\c@pgf@countb=\count327
+\c@pgf@countc=\count328
+\c@pgf@countd=\count329
 \t@pgf@toka=\toks45
 \t@pgf@tokb=\toks46
 \t@pgf@tokc=\toks47
-\pgf@sys@id@count=\count328
+\pgf@sys@id@count=\count330
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
 fg
@@ -516,8 +523,8 @@ File: pgfsys-common-pdf.def 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 ssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfsyssoftpath@smallbuffer@items=\count329
-\pgfsyssoftpath@bigbuffer@items=\count330
+\pgfsyssoftpath@smallbuffer@items=\count331
+\pgfsyssoftpath@bigbuffer@items=\count332
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
 sprotocol.code.tex
@@ -551,9 +558,9 @@ Package: pgfcore 2025-08-29 v3.1.11a (3.1.11a)
 code.tex)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
 r.code.tex
-\pgfmath@dimen=\dimen285
-\pgfmath@count=\count331
-\pgfmath@box=\box70
+\pgfmath@dimen=\dimen286
+\pgfmath@count=\count333
+\pgfmath@box=\box71
 \pgfmath@toks=\toks48
 \pgfmath@stack@operand=\toks49
 \pgfmath@stack@operation=\toks50
@@ -580,59 +587,59 @@ ions.integerarithmetics.code.tex)
 code.tex)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
 .code.tex
-\c@pgfmathroundto@lastzeros=\count332
+\c@pgfmathroundto@lastzeros=\count334
 ))
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
 tex)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epoints.code.tex
 File: pgfcorepoints.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@picminx=\dimen286
-\pgf@picmaxx=\dimen287
-\pgf@picminy=\dimen288
-\pgf@picmaxy=\dimen289
-\pgf@pathminx=\dimen290
-\pgf@pathmaxx=\dimen291
-\pgf@pathminy=\dimen292
-\pgf@pathmaxy=\dimen293
-\pgf@xx=\dimen294
-\pgf@xy=\dimen295
-\pgf@yx=\dimen296
-\pgf@yy=\dimen297
-\pgf@zx=\dimen298
-\pgf@zy=\dimen299
+\pgf@picminx=\dimen287
+\pgf@picmaxx=\dimen288
+\pgf@picminy=\dimen289
+\pgf@picmaxy=\dimen290
+\pgf@pathminx=\dimen291
+\pgf@pathmaxx=\dimen292
+\pgf@pathminy=\dimen293
+\pgf@pathmaxy=\dimen294
+\pgf@xx=\dimen295
+\pgf@xy=\dimen296
+\pgf@yx=\dimen297
+\pgf@yy=\dimen298
+\pgf@zx=\dimen299
+\pgf@zy=\dimen300
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@path@lastx=\dimen300
-\pgf@path@lasty=\dimen301
+\pgf@path@lastx=\dimen301
+\pgf@path@lasty=\dimen302
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 epathusage.code.tex
 File: pgfcorepathusage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@shorten@end@additional=\dimen302
-\pgf@shorten@start@additional=\dimen303
+\pgf@shorten@end@additional=\dimen303
+\pgf@shorten@start@additional=\dimen304
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 escopes.code.tex
 File: pgfcorescopes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfpic=\box71
-\pgf@hbox=\box72
-\pgf@layerbox@main=\box73
-\pgf@picture@serial@count=\count333
+\pgfpic=\box72
+\pgf@hbox=\box73
+\pgf@layerbox@main=\box74
+\pgf@picture@serial@count=\count335
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 egraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgflinewidth=\dimen304
+\pgflinewidth=\dimen305
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 etransformations.code.tex
 File: pgfcoretransformations.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@pt@x=\dimen305
-\pgf@pt@y=\dimen306
-\pgf@pt@temp=\dimen307
+\pgf@pt@x=\dimen306
+\pgf@pt@y=\dimen307
+\pgf@pt@temp=\dimen308
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 equick.code.tex
@@ -649,14 +656,14 @@ File: pgfcorepathprocessing.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 earrows.code.tex
 File: pgfcorearrows.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfarrowsep=\dimen308
+\pgfarrowsep=\dimen309
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eshade.code.tex
 File: pgfcoreshade.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@max=\dimen309
-\pgf@sys@shading@range@num=\count334
-\pgf@shadingcount=\count335
+\pgf@max=\dimen310
+\pgf@sys@shading@range@num=\count336
+\pgf@shadingcount=\count337
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eimage.code.tex
@@ -665,7 +672,7 @@ File: pgfcoreimage.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 eexternal.code.tex
 File: pgfcoreexternal.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfexternal@startupbox=\box74
+\pgfexternal@startupbox=\box75
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
 elayers.code.tex
@@ -686,7 +693,7 @@ File: pgfcorerdf.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 shapes.code.tex
 File: pgfmoduleshapes.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfnodeparttextbox=\box75
+\pgfnodeparttextbox=\box76
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 plot.code.tex
@@ -695,8 +702,8 @@ File: pgfmoduleplot.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
 mp-version-0-65.sty
 Package: pgfcomp-version-0-65 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@nodesepstart=\dimen310
-\pgf@nodesepend=\dimen311
+\pgf@nodesepstart=\dimen311
+\pgf@nodesepend=\dimen312
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
 mp-version-1-18.sty
@@ -714,8 +721,8 @@ ty
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
 code.tex
 Package: pgffor 2025-08-29 v3.1.11a (3.1.11a)
-\pgffor@iter=\dimen312
-\pgffor@skip=\dimen313
+\pgffor@iter=\dimen313
+\pgffor@skip=\dimen314
 \pgffor@stack=\toks51
 \pgffor@toks=\toks52
 ))
@@ -726,34 +733,34 @@ Package: tikz 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgf@plot@mark@count=\count336
-\pgfplotmarksize=\dimen314
+\pgf@plot@mark@count=\count338
+\pgfplotmarksize=\dimen315
 )
-\tikz@lastx=\dimen315
-\tikz@lasty=\dimen316
-\tikz@lastxsaved=\dimen317
-\tikz@lastysaved=\dimen318
-\tikz@lastmovetox=\dimen319
-\tikz@lastmovetoy=\dimen320
-\tikzleveldistance=\dimen321
-\tikzsiblingdistance=\dimen322
-\tikz@figbox=\box76
-\tikz@figbox@bg=\box77
-\tikz@tempbox=\box78
-\tikz@tempbox@bg=\box79
-\tikztreelevel=\count337
-\tikznumberofchildren=\count338
-\tikznumberofcurrentchild=\count339
-\tikz@fig@count=\count340
+\tikz@lastx=\dimen316
+\tikz@lasty=\dimen317
+\tikz@lastxsaved=\dimen318
+\tikz@lastysaved=\dimen319
+\tikz@lastmovetox=\dimen320
+\tikz@lastmovetoy=\dimen321
+\tikzleveldistance=\dimen322
+\tikzsiblingdistance=\dimen323
+\tikz@figbox=\box77
+\tikz@figbox@bg=\box78
+\tikz@tempbox=\box79
+\tikz@tempbox@bg=\box80
+\tikztreelevel=\count339
+\tikznumberofchildren=\count340
+\tikznumberofcurrentchild=\count341
+\tikz@fig@count=\count342
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
 matrix.code.tex
 File: pgfmodulematrix.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfmatrixcurrentrow=\count341
-\pgfmatrixcurrentcolumn=\count342
-\pgf@matrix@numberofcolumns=\count343
+\pgfmatrixcurrentrow=\count343
+\pgfmatrixcurrentcolumn=\count344
+\pgf@matrix@numberofcolumns=\count345
 )
-\tikz@expandcount=\count344
+\tikz@expandcount=\count346
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarytopaths.code.tex
@@ -778,10 +785,10 @@ File: pgflibraryshapes.misc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
 aryarrows.meta.code.tex
 File: pgflibraryarrows.meta.code.tex 2025-08-29 v3.1.11a (3.1.11a)
-\pgfarrowinset=\dimen323
-\pgfarrowlength=\dimen324
-\pgfarrowwidth=\dimen325
-\pgfarrowlinewidth=\dimen326
+\pgfarrowinset=\dimen324
+\pgfarrowlength=\dimen325
+\pgfarrowwidth=\dimen326
+\pgfarrowlinewidth=\dimen327
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
 z/libraries\tikzlibrarypositioning.code.tex
@@ -795,20 +802,20 @@ File: tikzlibrarycalc.code.tex 2025-08-29 v3.1.11a (3.1.11a)
 Package: microtype 2026/03/01 v3.2d Micro-typographical refinements (RS)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
 Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count345
+\etb@tempcnta=\count347
 )
 \MT@toks=\toks53
-\MT@tempbox=\box80
-\MT@count=\count346
+\MT@tempbox=\box81
+\MT@count=\count348
 LaTeX Info: Redefining \noprotrusionifhmode on input line 1084.
 LaTeX Info: Redefining \leftprotrusion on input line 1085.
 \MT@prot@toks=\toks54
 LaTeX Info: Redefining \rightprotrusion on input line 1104.
 LaTeX Info: Redefining \textls on input line 1449.
-\MT@outer@kern=\dimen327
+\MT@outer@kern=\dimen328
 LaTeX Info: Redefining \microtypecontext on input line 2053.
 LaTeX Info: Redefining \textmicrotypecontext on input line 2070.
-\MT@listname@count=\count347
+\MT@listname@count=\count349
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
 tex.def
@@ -816,7 +823,7 @@ File: microtype-pdftex.def 2026/03/01 v3.2d Definitions specific to pdftex (RS)
 
 LaTeX Info: Redefining \lsstyle on input line 944.
 LaTeX Info: Redefining \lslig on input line 944.
-\MT@outer@space=\skip123
+\MT@outer@space=\skip124
 )
 Package microtype Info: Loading configuration file microtype.cfg.
 
@@ -826,27 +833,27 @@ File: microtype.cfg 2026/03/01 v3.2d microtype main configuration file (RS)
 LaTeX Info: Redefining \microtypesetup on input line 3065.
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count348
-\lst@gtempboxa=\box81
+\lst@mode=\count350
+\lst@gtempboxa=\box82
 \lst@token=\toks55
-\lst@length=\count349
-\lst@currlwidth=\dimen328
-\lst@column=\count350
-\lst@pos=\count351
-\lst@lostspace=\dimen329
-\lst@width=\dimen330
-\lst@newlines=\count352
-\lst@lineno=\count353
-\lst@maxwidth=\dimen331
+\lst@length=\count351
+\lst@currlwidth=\dimen329
+\lst@column=\count352
+\lst@pos=\count353
+\lst@lostspace=\dimen330
+\lst@width=\dimen331
+\lst@newlines=\count354
+\lst@lineno=\count355
+\lst@maxwidth=\dimen332
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstpatch.sty
 File: lstpatch.sty 2025/11/14 1.11b (Carsten Heinz)
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
 File: lstmisc.sty 2025/11/14 1.11b (Carsten Heinz)
-\c@lstnumber=\count354
-\lst@skipnumbers=\count355
-\lst@framebox=\box82
+\c@lstnumber=\count356
+\lst@skipnumbers=\count357
+\lst@framebox=\box83
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
 File: listings.cfg 2025/11/14 1.11b listings configuration
@@ -869,13 +876,13 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 Package: setspace 2011/12/19 v6.7a set line spacing
 ) (fncychap.sty
 Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
-\RW=\skip124
-\mylen=\skip125
-\myhi=\skip126
-\px=\skip127
-\py=\skip128
-\pyy=\skip129
-\pxx=\skip130
+\RW=\skip125
+\mylen=\skip126
+\myhi=\skip127
+\px=\skip128
+\py=\skip129
+\pyy=\skip130
+\pxx=\skip131
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
 Package: hyperref 2025-07-12 v7.01o Hypertext links for LaTeX
@@ -923,16 +930,16 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count356
+\c@section@level=\count358
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
 ty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
-\@linkdim=\dimen332
-\Hy@linkcounter=\count357
-\Hy@pagecounter=\count358
+\@linkdim=\dimen333
+\Hy@linkcounter=\count359
+\Hy@pagecounter=\count360
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
 File: pd1enc.def 2025-07-12 v7.01o Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
@@ -940,7 +947,7 @@ Now handling font encoding PD1 ...
 ) (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-\Hy@SavedSpaceFactor=\count359
+\Hy@SavedSpaceFactor=\count361
  (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
 File: puenc.def 2025-07-12 v7.01o Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
@@ -953,9 +960,9 @@ Package hyperref Info: Plain pages OFF on input line 4210.
 Package hyperref Info: Backreferencing OFF on input line 4215.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4462.
-\c@Hy@tempcnt=\count360
+\c@Hy@tempcnt=\count362
 LaTeX Info: Redefining \url on input line 4801.
-\XeTeXLinkMargin=\dimen333
+\XeTeXLinkMargin=\dimen334
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
@@ -965,9 +972,9 @@ Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count361
-\Field@Width=\dimen334
-\Fld@charsize=\dimen335
+\Fld@menulength=\count363
+\Field@Width=\dimen335
+\Fld@charsize=\dimen336
 Package hyperref Info: Hyper figures OFF on input line 6078.
 Package hyperref Info: Link nesting OFF on input line 6083.
 Package hyperref Info: Hyper index ON on input line 6086.
@@ -975,16 +982,16 @@ Package hyperref Info: backreferencing OFF on input line 6093.
 Package hyperref Info: Link coloring OFF on input line 6098.
 Package hyperref Info: Link coloring with OCG OFF on input line 6103.
 Package hyperref Info: PDF/A mode OFF on input line 6108.
-\Hy@abspage=\count362
-\c@Item=\count363
-\c@Hfootnote=\count364
+\Hy@abspage=\count364
+\c@Item=\count365
+\c@Hfootnote=\count366
 )
 Package hyperref Info: Driver (autodetected): hpdftex.
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
 File: hpdftex.def 2025-07-12 v7.01o Hyperref driver for pdfTeX
-\Fld@listcount=\count365
-\c@bookmark@seq@number=\count366
+\Fld@listcount=\count367
+\c@bookmark@seq@number=\count368
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
 echeck.sty
@@ -997,7 +1004,7 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 84.
 )
-\Hy@SectionHShift=\skip131
+\Hy@SectionHShift=\skip132
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
@@ -1005,23 +1012,23 @@ Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/bookmark\bkm-pdftex.def
 File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO
 )
-\BKM@id=\count367
+\BKM@id=\count369
 ))
-\c@theorem=\count368
-\c@definition=\count369
-\c@example=\count370
+\c@theorem=\count370
+\c@definition=\count371
+\c@example=\count372
 
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty
 Package: titlesec 2025/01/04 v2.17 Sectioning titles
-\ttl@box=\box83
-\beforetitleunit=\skip132
-\aftertitleunit=\skip133
-\ttl@plus=\dimen336
-\ttl@minus=\dimen337
+\ttl@box=\box84
+\beforetitleunit=\skip133
+\aftertitleunit=\skip134
+\ttl@plus=\dimen337
+\ttl@minus=\dimen338
 \ttl@toksa=\toks56
-\titlewidth=\dimen338
-\titlewidthlast=\dimen339
-\titlewidthfirst=\dimen340
+\titlewidth=\dimen339
+\titlewidthlast=\dimen340
+\titlewidthfirst=\dimen341
 )
 (laporan_setting.tex) (hype.indonesia.tex) (istilah.tex)
 LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 1
@@ -1033,7 +1040,7 @@ File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
 tex.def
 File: l3backend-pdftex.def 2025-10-09 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count371
+\l__color_backend_stack_int=\count373
 ) (induk_inti.aux (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux))
 \openout1 = `induk_inti.aux'.
 
@@ -1094,16 +1101,16 @@ LaTeX Font Info:    ... okay on input line 166.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
 ii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count372
-\scratchdimen=\dimen341
-\scratchbox=\box84
-\nofMPsegments=\count373
-\nofMParguments=\count374
+\scratchcounter=\count374
+\scratchdimen=\dimen342
+\scratchbox=\box85
+\nofMPsegments=\count375
+\nofMParguments=\count376
 \everyMPshowfont=\toks57
-\MPscratchCnt=\count375
-\MPscratchDim=\dimen342
-\MPnumerator=\count376
-\makeMPintoPDFobject=\count377
+\MPscratchCnt=\count377
+\MPscratchDim=\dimen343
+\MPnumerator=\count378
+\makeMPintoPDFobject=\count379
 \everyMPtoPDFconversion=\toks58
 )
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
@@ -1128,8 +1135,8 @@ Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
 Package microtype Info: Patching varwidth to enable character protrusion.
-\MT@vwid@leftmargin=\dimen343
-\MT@vwid@rightmargin=\dimen344
+\MT@vwid@leftmargin=\dimen344
+\MT@vwid@rightmargin=\dimen345
 LaTeX Info: Redefining \microtypecontext on input line 166.
 Package microtype Info: Applying patch `item' on input line 166.
 Package microtype Info: Applying patch `toc' on input line 166.
@@ -1151,7 +1158,7 @@ Package microtype Info: No adjustment of character kerning.
 (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-ptm.cfg
 File: mt-ptm.cfg 2006/04/20 v1.7 microtype config. file: Times (RS)
 )
-\c@lstlisting=\count378
+\c@lstlisting=\count380
 Package hyperref Info: Link coloring OFF on input line 166.
 \openout2 = `bab1.aux'.
 
@@ -1504,7 +1511,7 @@ line 420.
 Package natbib Warning: Citation `gabriel1971' on page 23 undefined on input li
 ne 434.
 
-<gambarku/ilustrasi_biplot.png, id=219, 371.13657pt x 341.02406pt>
+<gambarku/ilustrasi_biplot.png, id=221, 371.13657pt x 341.02406pt>
 File: gambarku/ilustrasi_biplot.png Graphic file (type png)
 <use gambarku/ilustrasi_biplot.png>
 Package pdftex.def Info: gambarku/ilustrasi_biplot.png  used on input line 449.
@@ -1610,6 +1617,10 @@ Package natbib Warning: Citation `lavit94' on page 29 undefined on input line 5
 
 [29]
 
+Package natbib Warning: Citation `abdi2012' on page 30 undefined on input line 
+603.
+
+
 Package natbib Warning: Citation `oliveira2024' on page 30 undefined on input l
 ine 630.
 
@@ -1631,11 +1642,11 @@ ine 643.
 Package natbib Warning: Citation `abdi2012' on page 32 undefined on input line 
 654.
 
+[32]
 
-Package natbib Warning: Citation `kazi1995' on page 32 undefined on input line 
+Package natbib Warning: Citation `kazi1995' on page 33 undefined on input line 
 668.
 
-[32]
 
 Package natbib Warning: Citation `phipson2010' on page 33 undefined on input li
 ne 674.
@@ -1677,19 +1688,19 @@ ine 695.
 Package natbib Warning: Citation `areia2008' on page 34 undefined on input line
  709.
 
+[34]
 
-Package natbib Warning: Citation `areia2008' on page 34 undefined on input line
+Package natbib Warning: Citation `areia2008' on page 35 undefined on input line
  717.
 
 
-Package natbib Warning: Citation `oliveira2024' on page 34 undefined on input l
+Package natbib Warning: Citation `oliveira2024' on page 35 undefined on input l
 ine 717.
 
 
-Package natbib Warning: Citation `oliveira2024' on page 34 undefined on input l
+Package natbib Warning: Citation `oliveira2024' on page 35 undefined on input l
 ine 717.
 
-[34]
 
 Package natbib Warning: Citation `oliveira2024' on page 35 undefined on input l
 ine 720.
@@ -1853,22 +1864,27 @@ Package natbib Warning: Citation `bps_jabar_2023' on page 48 undefined on input
 Package natbib Warning: Citation `bps_jabar_2024' on page 48 undefined on input
  line 127.
 
-[48] [49] [50]
+[48] [49]
 
-LaTeX Warning: Reference `app:data' on page 51 undefined on input line 180.
+Package natbib Warning: Citation `abdi2012' on page 50 undefined on input line 
+158.
+
+[50]
+
+LaTeX Warning: Reference `app:data' on page 51 undefined on input line 181.
 
 [51] (output_sample/output_table_kmo_bartlett.tex) [52]
-Underfull \hbox (badness 10000) in paragraph at lines 231--231
+Underfull \hbox (badness 10000) in paragraph at lines 232--232
 []|\OT1/ptm/m/n/8 (+20) DKI
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 232--232
+Underfull \hbox (badness 10000) in paragraph at lines 233--233
 []|\OT1/ptm/m/n/8 (+20) JAWA
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--233
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
 []|\OT1/ptm/m/n/8 (+20) JAWA
  []
 
@@ -1878,13 +1894,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 233--233
 (output_sample/output_table_descriptive_2020.tex)
 (output_sample/output_table_descriptive_2021.tex)
 (output_sample/output_table_descriptive_2022.tex) [55]
-Underfull \hbox (badness 10000) in paragraph at lines 329--331
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
 \OT1/ptm/m/n/12 (+20) Implementasinya dalam \OT1/ptm/m/it/12 (+20) dash-board \
 OT1/ptm/m/n/12 (+20) meng-gu-nakan
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--331
+Underfull \hbox (badness 10000) in paragraph at lines 330--332
 \OT1/pcr/m/n/12 sklearn.preprocessing.StandardScaler \OT1/ptm/m/n/12 (+20) yang
  men-er-ap-kan for-
  []
@@ -1893,25 +1909,25 @@ Underfull \hbox (badness 10000) in paragraph at lines 329--331
 (output_sample/scenario1/output_table_matriks_intra_loading_2020.tex)
 (output_sample/scenario1/output_table_matriks_intra_loading_2021.tex)
 (output_sample/scenario1/output_table_matriks_intra_loading_2022.tex) [59]
-<output_sample/corr_heatmap_2020.png, id=587, 1204.5pt x 1003.75pt>
+<output_sample/corr_heatmap_2020.png, id=601, 1204.5pt x 1003.75pt>
 File: output_sample/corr_heatmap_2020.png Graphic file (type png)
 <use output_sample/corr_heatmap_2020.png>
 Package pdftex.def Info: output_sample/corr_heatmap_2020.png  used on input lin
-e 437.
+e 438.
 (pdftex.def)             Requested size: 320.0935pt x 266.74297pt.
 
 (output_sample/output_table_hw.tex) [60 <./output_sample/corr_heatmap_2020.png>
 ] (output_sample/output_table_rv_w.tex)
-<output_sample/scenario1/rv_heatmap.png, id=602, 1405.25pt x 1204.5pt>
+<output_sample/scenario1/rv_heatmap.png, id=617, 1405.25pt x 1204.5pt>
 File: output_sample/scenario1/rv_heatmap.png Graphic file (type png)
 <use output_sample/scenario1/rv_heatmap.png>
 Package pdftex.def Info: output_sample/scenario1/rv_heatmap.png  used on input 
-line 460.
+line 461.
 (pdftex.def)             Requested size: 256.07741pt x 219.48401pt.
 
 
 Package natbib Warning: Citation `lavit94' on page 61 undefined on input line 4
-66.
+67.
 
 [61 <./output_sample/scenario1/rv_heatmap.png>]
 (output_sample/output_table_alpha_w.tex)
@@ -1919,27 +1935,27 @@ Package natbib Warning: Citation `lavit94' on page 61 undefined on input line 4
 (output_sample/scenario1/output_table_eigen.tex)
 (output_sample/scenario2/output_table_eigen.tex)
 (output_sample/scenario1/output_table_struktur_diagnostik.tex)
-<output_sample/scenario1/scree_plot.png, id=638, 1806.75pt x 1204.5pt>
+<output_sample/scenario1/scree_plot.png, id=658, 1806.75pt x 1204.5pt>
 File: output_sample/scenario1/scree_plot.png Graphic file (type png)
 <use output_sample/scenario1/scree_plot.png>
 Package pdftex.def Info: output_sample/scenario1/scree_plot.png  used on input 
-line 548.
+line 549.
 (pdftex.def)             Requested size: 234.73654pt x 156.48022pt.
  [64]
-<output_sample/scenario1/compromise_biplot.png, id=648, 912.62556pt x 767.79648
+<output_sample/scenario1/compromise_biplot.png, id=670, 909.44568pt x 767.79648
 pt>
 File: output_sample/scenario1/compromise_biplot.png Graphic file (type png)
 <use output_sample/scenario1/compromise_biplot.png>
 Package pdftex.def Info: output_sample/scenario1/compromise_biplot.png  used on
- input line 560.
-(pdftex.def)             Requested size: 307.29028pt x 258.52849pt.
+ input line 561.
+(pdftex.def)             Requested size: 307.29028pt x 259.41887pt.
  [65 <./output_sample/scenario1/scree_plot.png>]
 (output_sample/scenario1/output_table_scores.tex)
 (output_sample/scenario1/output_table_skor_intra_2020.tex)
-(output_sample/scenario1/output_table_skor_intra_2021.tex)
-(output_sample/scenario1/output_table_skor_intra_2022.tex [66 <./output_sample/
+(output_sample/scenario1/output_table_skor_intra_2021.tex [66 <./output_sample/
 scenario1/compromise_biplot.png>])
-Underfull \hbox (badness 1540) in paragraph at lines 588--590
+(output_sample/scenario1/output_table_skor_intra_2022.tex) [67]
+Underfull \hbox (badness 1540) in paragraph at lines 589--591
 \OT1/ptm/m/n/12 (+20) Untuk tahun 2022, $\OML/cmm/m/it/12 c[] \OT1/cmr/m/n/12 =
  (\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0[]6004;  \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/
 n/12 0[]1615)$\OT1/ptm/m/n/12 (+20) , se-hingga $\OML/cmm/m/it/12 D\OT1/cmr/m/n
@@ -1947,88 +1963,86 @@ n/12 0[]1615)$\OT1/ptm/m/n/12 (+20) , se-hingga $\OML/cmm/m/it/12 D\OT1/cmr/m/n
  []
 
 
-Underfull \hbox (badness 4084) in paragraph at lines 588--590
+Underfull \hbox (badness 4084) in paragraph at lines 589--591
 [] \OMS/cmsy/m/n/12 ^^Y \OT1/cmr/m/n/12 0[]0879$\OT1/ptm/m/n/12 (+20) . Ni-lai 
 $\OML/cmm/m/it/12 D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c[]; c[]\OT1/cmr/m/n/12 ) 
 \OML/cmm/m/it/12 > D\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 c[]; c[]\OT1/cmr/m/n/12 )
 $
  []
 
-[67] (output_sample/scenario1/output_table_loading_intra_2020.tex)
-(output_sample/scenario1/output_table_loading_intra_2021.tex [68])
+[68] (output_sample/scenario1/output_table_loading_intra_2020.tex)
+(output_sample/scenario1/output_table_loading_intra_2021.tex)
 (output_sample/scenario1/output_table_loading_intra_2022.tex)
-(output_sample/scenario1/output_table_loadings.tex)
-<output_sample/scenario2/compromise_biplot.png, id=693, 909.44568pt x 767.79648
+(output_sample/scenario1/output_table_loadings.tex) [69]
+<output_sample/scenario2/compromise_biplot.png, id=724, 909.44568pt x 767.79648
 pt>
 File: output_sample/scenario2/compromise_biplot.png Graphic file (type png)
 <use output_sample/scenario2/compromise_biplot.png>
 Package pdftex.def Info: output_sample/scenario2/compromise_biplot.png  used on
- input line 625.
+ input line 626.
 (pdftex.def)             Requested size: 307.29028pt x 259.41887pt.
- [69]
+
 (output_sample/scenario2/output_table_scores.tex)
 (output_sample/scenario2/output_table_loadings.tex) [70 <./output_sample/scenar
 io2/compromise_biplot.png>]
 (output_sample/scenario2/output_table_loading_intra_2020.tex)
 (output_sample/scenario2/output_table_loading_intra_2021.tex)
-(output_sample/scenario2/output_table_loading_intra_2022.tex)
-Underfull \hbox (badness 2293) in paragraph at lines 649--650
+(output_sample/scenario2/output_table_loading_intra_2022.tex) [71]
+Underfull \hbox (badness 2293) in paragraph at lines 650--651
 []\OT1/ptm/m/n/12 (+20) Skor par-sial $\OT1/cmr/bx/n/12 F[]$ \OT1/ptm/m/n/12 (+
 20) (Per-samaan []2.45[]: $\OT1/cmr/bx/n/12 F[] \OT1/cmr/m/n/12 = \OT1/cmr/bx/n
 /12 Z[]G[]^^C[]$\OT1/ptm/m/n/12 (+20) ). Con-toh el-e-men
  []
 
-[71] (output_sample/scenario2/output_table_skor_intra_2020.tex)
+(output_sample/scenario2/output_table_skor_intra_2020.tex)
 (output_sample/scenario2/output_table_skor_intra_2021.tex)
-(output_sample/scenario2/output_table_skor_intra_2022.tex)
-<output_sample/scenario1/trajectory_scores.png, id=728, 1806.75pt x 1606.0pt>
+(output_sample/scenario2/output_table_skor_intra_2022.tex) [72]
+<output_sample/scenario1/trajectory_scores.png, id=760, 1806.75pt x 1606.0pt>
 File: output_sample/scenario1/trajectory_scores.png Graphic file (type png)
 <use output_sample/scenario1/trajectory_scores.png>
 Package pdftex.def Info: output_sample/scenario1/trajectory_scores.png  used on
- input line 669.
+ input line 670.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
-<output_sample/scenario2/trajectory_scores.png, id=729, 1806.75pt x 1606.0pt>
+<output_sample/scenario2/trajectory_scores.png, id=761, 1806.75pt x 1606.0pt>
 File: output_sample/scenario2/trajectory_scores.png Graphic file (type png)
 <use output_sample/scenario2/trajectory_scores.png>
 Package pdftex.def Info: output_sample/scenario2/trajectory_scores.png  used on
- input line 675.
+ input line 676.
 (pdftex.def)             Requested size: 204.85802pt x 182.07628pt.
- [72] [73 <./output_sample/scenario1/trajectory_scores.png> <./output_sample/sc
-enario2/trajectory_scores.png>]
+ [73 <./output_sample/scenario1/trajectory_scores.png> <./output_sample/scenari
+o2/trajectory_scores.png>]
 (output_sample/scenario1/output_table_compromise_cluster_sum_name.tex
 Underfull \hbox (badness 3690) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-
  []
 
-) (output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex
-[74]) (output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex
-)
-Underfull \hbox (badness 2261) in paragraph at lines 722--722
+[74]) (output_sample/scenario1/output_table_statis_transition_sum_2020x2021.tex
+) (output_sample/scenario1/output_table_statis_transition_sum_2021x2022.tex)
+Underfull \hbox (badness 2261) in paragraph at lines 723--723
 |[]\OT1/ptm/b/n/12 (+20) Tahap 7a: Kom-putasi Vek-tor Struk-tur dan Ana-li-sis 
 Transversal-
  []
 
-(output_sample/scenario1/output_table_beta_vec.tex [75])
-(output_sample/scenario1/output_table_beta_provinsi.tex)
+[75] (output_sample/scenario1/output_table_beta_vec.tex)
+(output_sample/scenario1/output_table_beta_provinsi.tex) [76]
 
-Package natbib Warning: Citation `kuhn1955' on page 76 undefined on input line 
-758.
+Package natbib Warning: Citation `kuhn1955' on page 77 undefined on input line 
+759.
 
-[76]
 LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 7
-61.
- (C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
+62.
+(C:\Users\ammar\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 761.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 762.
 
 [77] (output_sample/output_table_biplot_transition_sum_2020x2021.tex)
-(output_sample/output_table_biplot_transition_name_2020x2021.tex) [78]
+(output_sample/output_table_biplot_transition_name_2020x2021.tex [78])
 (output_sample/scenario1/output_table_statis_transition_name_2020x2021.tex)
 (output_sample/scenario1/output_table_biplot_vs_statis_compare_sum_2020.tex)
-(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex))
-[79] [80]
+(output_sample/scenario1/output_table_biplot_vs_statis_compare_name_2020.tex)
+[79]) [80]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
@@ -2107,130 +2121,125 @@ LaTeX Warning: Reference `app:data' on page 81 undefined on input line 11.
 
 
 ] [82]
-<output_real/boxplot_ipm.png, id=843, 1606.0pt x 1003.75pt>
+<output_real/boxplot_tpt.png, id=867, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_tpt.png Graphic file (type png)
+<use output_real/boxplot_tpt.png>
+Package pdftex.def Info: output_real/boxplot_tpt.png  used on input line 74.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_tpak.png, id=868, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_tpak.png Graphic file (type png)
+<use output_real/boxplot_tpak.png>
+Package pdftex.def Info: output_real/boxplot_tpak.png  used on input line 80.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_ahh_l.png, id=871, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_ahh_l.png Graphic file (type png)
+<use output_real/boxplot_ahh_l.png>
+Package pdftex.def Info: output_real/boxplot_ahh_l.png  used on input line 92.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_ahh_p.png, id=872, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_ahh_p.png Graphic file (type png)
+<use output_real/boxplot_ahh_p.png>
+Package pdftex.def Info: output_real/boxplot_ahh_p.png  used on input line 98.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+ [83 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png> <./output
+_real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
+<output_real/boxplot_gr.png, id=887, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_gr.png Graphic file (type png)
+<use output_real/boxplot_gr.png>
+Package pdftex.def Info: output_real/boxplot_gr.png  used on input line 110.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_gk.png, id=888, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_gk.png Graphic file (type png)
+<use output_real/boxplot_gk.png>
+Package pdftex.def Info: output_real/boxplot_gk.png  used on input line 116.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_ipm.png, id=891, 2409.0pt x 1505.625pt>
 File: output_real/boxplot_ipm.png Graphic file (type png)
 <use output_real/boxplot_ipm.png>
-Package pdftex.def Info: output_real/boxplot_ipm.png  used on input line 72.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-
-
-Package natbib Warning: Citation `abdi2012' on page 83 undefined on input line 
-78.
-
-<output_real/boxplot_ipg.png, id=846, 1606.0pt x 1003.75pt>
+Package pdftex.def Info: output_real/boxplot_ipm.png  used on input line 128.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_ipg.png, id=892, 2409.0pt x 1505.625pt>
 File: output_real/boxplot_ipg.png Graphic file (type png)
 <use output_real/boxplot_ipg.png>
-Package pdftex.def Info: output_real/boxplot_ipg.png  used on input line 82.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-[83 <./output_real/boxplot_ipm.png>]
-<output_real/boxplot_ppm.png, id=855, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_ppm.png Graphic file (type png)
-<use output_real/boxplot_ppm.png>
-Package pdftex.def Info: output_real/boxplot_ppm.png  used on input line 89.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_pdrb_adhk.png, id=856, 1606.0pt x 1003.75pt>
+Package pdftex.def Info: output_real/boxplot_ipg.png  used on input line 134.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+ [84 <./output_real/boxplot_gr.png> <./output_real/boxplot_gk.png> <./output_re
+al/boxplot_ipm.png> <./output_real/boxplot_ipg.png>]
+<output_real/boxplot_pdrb_adhk.png, id=907, 2409.0pt x 1505.625pt>
 File: output_real/boxplot_pdrb_adhk.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk.png>
 Package pdftex.def Info: output_real/boxplot_pdrb_adhk.png  used on input line 
-96.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [84 <./output_real/boxplot_ipg.png> <./output_real/boxplot_ppm.png>]
-<output_real/boxplot_rls.png, id=865, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_rls.png Graphic file (type png)
-<use output_real/boxplot_rls.png>
-Package pdftex.def Info: output_real/boxplot_rls.png  used on input line 103.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_ahh_l.png, id=866, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_ahh_l.png Graphic file (type png)
-<use output_real/boxplot_ahh_l.png>
-Package pdftex.def Info: output_real/boxplot_ahh_l.png  used on input line 110.
-
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [85 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_rls.png>]
-<output_real/boxplot_ahh_p.png, id=876, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_ahh_p.png Graphic file (type png)
-<use output_real/boxplot_ahh_p.png>
-Package pdftex.def Info: output_real/boxplot_ahh_p.png  used on input line 117.
-
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_gk.png, id=877, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_gk.png Graphic file (type png)
-<use output_real/boxplot_gk.png>
-Package pdftex.def Info: output_real/boxplot_gk.png  used on input line 124.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [86 <./output_real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
-<output_real/boxplot_pkkp.png, id=886, 1606.0pt x 1003.75pt>
+146.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_pkkp.png, id=908, 2409.0pt x 1505.625pt>
 File: output_real/boxplot_pkkp.png Graphic file (type png)
 <use output_real/boxplot_pkkp.png>
-Package pdftex.def Info: output_real/boxplot_pkkp.png  used on input line 131.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_tpt.png, id=887, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_tpt.png Graphic file (type png)
-<use output_real/boxplot_tpt.png>
-Package pdftex.def Info: output_real/boxplot_tpt.png  used on input line 138.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [87 <./output_real/boxplot_gk.png> <./output_real/boxplot_pkkp.png>]
-<output_real/boxplot_tpak.png, id=896, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_tpak.png Graphic file (type png)
-<use output_real/boxplot_tpak.png>
-Package pdftex.def Info: output_real/boxplot_tpak.png  used on input line 145.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
-<output_real/boxplot_gr.png, id=897, 1606.0pt x 1003.75pt>
-File: output_real/boxplot_gr.png Graphic file (type png)
-<use output_real/boxplot_gr.png>
-Package pdftex.def Info: output_real/boxplot_gr.png  used on input line 152.
-(pdftex.def)             Requested size: 320.0935pt x 200.05722pt.
- [88 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png>]
-<output_real/corr_heatmap_2020.png, id=910, 2188.175pt x 2188.175pt>
+Package pdftex.def Info: output_real/boxplot_pkkp.png  used on input line 152.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_rls.png, id=911, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_rls.png Graphic file (type png)
+<use output_real/boxplot_rls.png>
+Package pdftex.def Info: output_real/boxplot_rls.png  used on input line 164.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+<output_real/boxplot_ppm.png, id=912, 2409.0pt x 1505.625pt>
+File: output_real/boxplot_ppm.png Graphic file (type png)
+<use output_real/boxplot_ppm.png>
+Package pdftex.def Info: output_real/boxplot_ppm.png  used on input line 170.
+(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+ [85 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_pkkp.png> <./
+output_real/boxplot_rls.png> <./output_real/boxplot_ppm.png>]
+<output_real/corr_heatmap_2020.png, id=929, 2188.175pt x 2188.175pt>
 File: output_real/corr_heatmap_2020.png Graphic file (type png)
 <use output_real/corr_heatmap_2020.png>
 Package pdftex.def Info: output_real/corr_heatmap_2020.png  used on input line 
-163.
+182.
 (pdftex.def)             Requested size: 362.77525pt x 362.76952pt.
-
-[89 <./output_real/boxplot_gr.png>] (output_real/output_table_kmo_bartlett.tex)
-[90 <./output_real/corr_heatmap_2020.png>] (output_real/output_table_rv_w.tex)
-<output_real/scenario1/rv_heatmap.png, id=932, 1405.25pt x 1204.5pt>
+ [86 <./output_real/corr_heatmap_2020.png>] (output_real/output_table_kmo_bartl
+ett.tex)
+[87] (output_real/output_table_rv_w.tex)
+<output_real/scenario1/rv_heatmap.png, id=953, 1405.25pt x 1204.5pt>
 File: output_real/scenario1/rv_heatmap.png Graphic file (type png)
 <use output_real/scenario1/rv_heatmap.png>
 Package pdftex.def Info: output_real/scenario1/rv_heatmap.png  used on input li
-ne 198.
+ne 216.
 (pdftex.def)             Requested size: 277.41176pt x 237.77127pt.
-
-[91] (output_real/output_table_alpha_w.tex) [92 <./output_real/scenario1/rv_hea
-tmap.png>] (output_real/output_table_alpha_s.tex)
-<output_real/scenario1/scree_plot.png, id=960, 1806.75pt x 1204.5pt>
+ [88 <./output_real/scenario1/rv_heatmap.png>] (output_real/output_table_alpha_
+w.tex)
+(output_real/output_table_alpha_s.tex)
+<output_real/scenario1/scree_plot.png, id=970, 1806.75pt x 1204.5pt>
 File: output_real/scenario1/scree_plot.png Graphic file (type png)
 <use output_real/scenario1/scree_plot.png>
 Package pdftex.def Info: output_real/scenario1/scree_plot.png  used on input li
-ne 241.
+ne 263.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [93]
-(output_real/scenario1/output_table_eigen.tex) [94 <./output_real/scenario1/scr
-ee_plot.png>] [95]
-<output_real/scenario1/compromise_map.png, id=981, 939.14865pt x 658.74104pt>
+ [89] [90 <./output_real/scenario1/scree_plot.png>]
+<output_real/scenario1/compromise_map.png, id=995, 939.14865pt x 658.74104pt>
 File: output_real/scenario1/compromise_map.png Graphic file (type png)
 <use output_real/scenario1/compromise_map.png>
 Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
-t line 259.
+t line 292.
 (pdftex.def)             Requested size: 362.77525pt x 254.45538pt.
- [96 <./output_real/scenario1/compromise_map.png>]
-<output_real/scenario1/compromise_biplot.png, id=992, 907.13304pt x 767.79648pt
+<output_real/scenario1/compromise_biplot.png, id=999, 907.13304pt x 767.79648pt
 >
 File: output_real/scenario1/compromise_biplot.png Graphic file (type png)
 <use output_real/scenario1/compromise_biplot.png>
 Package pdftex.def Info: output_real/scenario1/compromise_biplot.png  used on i
-nput line 274.
+nput line 307.
 (pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
-<output_real/scenario2/compromise_biplot.png, id=993, 912.91464pt x 767.79648pt
->
+<output_real/scenario2/compromise_biplot.png, id=1000, 907.13304pt x 767.79648p
+t>
 File: output_real/scenario2/compromise_biplot.png Graphic file (type png)
 <use output_real/scenario2/compromise_biplot.png>
 Package pdftex.def Info: output_real/scenario2/compromise_biplot.png  used on i
-nput line 280.
-(pdftex.def)             Requested size: 204.85802pt x 172.28984pt.
- [97 <./output_real/scenario1/compromise_biplot.png> <./output_real/scenario2/c
-ompromise_biplot.png>] (output_real/scenario1/output_table_scores.tex
+nput line 313.
+(pdftex.def)             Requested size: 204.85802pt x 173.39111pt.
+ [91 <./output_real/scenario1/compromise_map.png>]
+
+Package natbib Warning: Citation `abdi2012' on page 92 undefined on input line 
+320.
+
+[92 <./output_real/scenario1/compromise_biplot.png> <./output_real/scenario2/co
+mpromise_biplot.png>] (output_real/scenario1/output_table_scores.tex
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    >
@@ -3191,16 +3200,16 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-) [98]
+) [93]
 Overfull \vbox (491.92067pt too high) has occurred while \output is active []
 
 
-[99] (output_real/scenario2/output_table_scores.tex
+[94] (output_real/scenario2/output_table_scores.tex
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    >
 l.10 [2]
-         & -4,5772 & -1,4937 & -4,5772 & -1,4937 \\
+         & -4,5772 & -1,4937 & 4,5772 & -1,4937 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3212,7 +3221,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.10 [2]
-         & -4,5772 & -1,4937 & -4,5772 & -1,4937 \\
+         & -4,5772 & -1,4937 & 4,5772 & -1,4937 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3224,7 +3233,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.11 [3]
-         & -3,5148 & -0,3344 & -3,5148 & -0,3344 \\
+         & -3,5148 & -0,3344 & 3,5148 & -0,3344 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3236,7 +3245,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.11 [3]
-         & -3,5148 & -0,3344 & -3,5148 & -0,3344 \\
+         & -3,5148 & -0,3344 & 3,5148 & -0,3344 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3248,7 +3257,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.12 [4]
-         & -3,8494 & -1,0104 & -3,8494 & -1,0104 \\
+         & -3,8494 & -1,0104 & 3,8494 & -1,0104 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3260,7 +3269,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.12 [4]
-         & -3,8494 & -1,0104 & -3,8494 & -1,0104 \\
+         & -3,8494 & -1,0104 & 3,8494 & -1,0104 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3272,7 +3281,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.13 [5]
-         & -3,0121 & -0,5570 & -3,0121 & -0,5570 \\
+         & -3,0121 & -0,5570 & 3,0121 & -0,5570 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3284,7 +3293,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.13 [5]
-         & -3,0121 & -0,5570 & -3,0121 & -0,5570 \\
+         & -3,0121 & -0,5570 & 3,0121 & -0,5570 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3296,7 +3305,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.14 [6]
-         & -2,5775 & -0,3136 & -2,5775 & -0,3136 \\
+         & -2,5775 & -0,3136 & 2,5775 & -0,3136 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3308,7 +3317,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.14 [6]
-         & -2,5775 & -0,3136 & -2,5775 & -0,3136 \\
+         & -2,5775 & -0,3136 & 2,5775 & -0,3136 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3320,7 +3329,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.15 [7]
-         & 0,7729 & 1,4663 & 0,7729 & 1,4663 \\
+         & 0,7729 & 1,4663 & -0,7729 & 1,4663 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3332,7 +3341,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.15 [7]
-         & 0,7729 & 1,4663 & 0,7729 & 1,4663 \\
+         & 0,7729 & 1,4663 & -0,7729 & 1,4663 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3344,7 +3353,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.16 [8]
-         & 2,3818 & -0,0213 & 2,3818 & -0,0213 \\
+         & 2,3818 & -0,0213 & -2,3818 & -0,0213 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3356,7 +3365,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.16 [8]
-         & 2,3818 & -0,0213 & 2,3818 & -0,0213 \\
+         & 2,3818 & -0,0213 & -2,3818 & -0,0213 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3368,7 +3377,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.17 [9]
-         & 3,6949 & -0,4256 & 3,6949 & -0,4256 \\
+         & 3,6949 & -0,4256 & -3,6949 & -0,4256 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3380,7 +3389,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.17 [9]
-         & 3,6949 & -0,4256 & 3,6949 & -0,4256 \\
+         & 3,6949 & -0,4256 & -3,6949 & -0,4256 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3392,7 +3401,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.18 [10]
-          & -0,1756 & -0,2382 & -0,1756 & -0,2382 \\
+          & -0,1756 & -0,2382 & 0,1756 & -0,2382 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3404,7 +3413,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.18 [10]
-          & -0,1756 & -0,2382 & -0,1756 & -0,2382 \\
+          & -0,1756 & -0,2382 & 0,1756 & -0,2382 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3416,7 +3425,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.19 [11]
-          & 2,8810 & 0,0361 & 2,8810 & 0,0361 \\
+          & 2,8810 & 0,0361 & -2,8810 & 0,0361 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3428,7 +3437,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.19 [11]
-          & 2,8810 & 0,0361 & 2,8810 & 0,0361 \\
+          & 2,8810 & 0,0361 & -2,8810 & 0,0361 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3440,7 +3449,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.20 [12]
-          & 3,9765 & -1,4783 & 3,9765 & -1,4783 \\
+          & 3,9765 & -1,4783 & -3,9765 & -1,4783 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3452,7 +3461,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.20 [12]
-          & 3,9765 & -1,4783 & 3,9765 & -1,4783 \\
+          & 3,9765 & -1,4783 & -3,9765 & -1,4783 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3464,7 +3473,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.21 [13]
-          & 2,2885 & -2,2533 & 2,2885 & -2,2533 \\
+          & 2,2885 & -2,2533 & -2,2885 & -2,2533 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3476,7 +3485,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.21 [13]
-          & 2,2885 & -2,2533 & 2,2885 & -2,2533 \\
+          & 2,2885 & -2,2533 & -2,2885 & -2,2533 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3488,7 +3497,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.22 [14]
-          & 1,2332 & 1,6819 & 1,2332 & 1,6819 \\
+          & 1,2332 & 1,6819 & -1,2332 & 1,6819 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3500,7 +3509,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.22 [14]
-          & 1,2332 & 1,6819 & 1,2332 & 1,6819 \\
+          & 1,2332 & 1,6819 & -1,2332 & 1,6819 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3512,7 +3521,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.23 [15]
-          & 2,5551 & 0,7920 & 2,5551 & 0,7920 \\
+          & 2,5551 & 0,7920 & -2,5551 & 0,7920 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3524,7 +3533,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.23 [15]
-          & 2,5551 & 0,7920 & 2,5551 & 0,7920 \\
+          & 2,5551 & 0,7920 & -2,5551 & 0,7920 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3536,7 +3545,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.24 [16]
-          & 3,3673 & -1,7852 & 3,3673 & -1,7852 \\
+          & 3,3673 & -1,7852 & -3,3673 & -1,7852 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3548,7 +3557,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.24 [16]
-          & 3,3673 & -1,7852 & 3,3673 & -1,7852 \\
+          & 3,3673 & -1,7852 & -3,3673 & -1,7852 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3560,7 +3569,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.25 [17]
-          & 1,0448 & -0,6059 & 1,0448 & -0,6059 \\
+          & 1,0448 & -0,6059 & -1,0448 & -0,6059 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3572,7 +3581,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.25 [17]
-          & 1,0448 & -0,6059 & 1,0448 & -0,6059 \\
+          & 1,0448 & -0,6059 & -1,0448 & -0,6059 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3584,7 +3593,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.26 [18]
-          & 2,4535 & -0,7554 & 2,4535 & -0,7554 \\
+          & 2,4535 & -0,7554 & -2,4535 & -0,7554 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3596,7 +3605,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.26 [18]
-          & 2,4535 & -0,7554 & 2,4535 & -0,7554 \\
+          & 2,4535 & -0,7554 & -2,4535 & -0,7554 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3608,7 +3617,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.27 [19]
-          & 1,9378 & -0,5705 & 1,9378 & -0,5705 \\
+          & 1,9378 & -0,5705 & -1,9378 & -0,5705 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3620,7 +3629,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.27 [19]
-          & 1,9378 & -0,5705 & 1,9378 & -0,5705 \\
+          & 1,9378 & -0,5705 & -1,9378 & -0,5705 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3632,7 +3641,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.28 [20]
-          & 1,6094 & 1,0552 & 1,6094 & 1,0552 \\
+          & 1,6094 & 1,0552 & -1,6094 & 1,0552 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3644,7 +3653,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.28 [20]
-          & 1,6094 & 1,0552 & 1,6094 & 1,0552 \\
+          & 1,6094 & 1,0552 & -1,6094 & 1,0552 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3656,7 +3665,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.29 [21]
-          & 0,4096 & 1,0082 & 0,4096 & 1,0082 \\
+          & 0,4096 & 1,0082 & -0,4096 & 1,0082 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3668,7 +3677,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.29 [21]
-          & 0,4096 & 1,0082 & 0,4096 & 1,0082 \\
+          & 0,4096 & 1,0082 & -0,4096 & 1,0082 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3680,7 +3689,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.30 [22]
-          & -1,5566 & 0,5465 & -1,5566 & 0,5465 \\
+          & -1,5566 & 0,5465 & 1,5566 & 0,5465 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3692,7 +3701,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.30 [22]
-          & -1,5566 & 0,5465 & -1,5566 & 0,5465 \\
+          & -1,5566 & 0,5465 & 1,5566 & 0,5465 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3704,7 +3713,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.31 [23]
-          & 2,1812 & 1,7283 & 2,1812 & 1,7283 \\
+          & 2,1812 & 1,7283 & -2,1812 & 1,7283 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3716,7 +3725,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.31 [23]
-          & 2,1812 & 1,7283 & 2,1812 & 1,7283 \\
+          & 2,1812 & 1,7283 & -2,1812 & 1,7283 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3728,7 +3737,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.32 [24]
-          & 3,2029 & -5,2378 & 3,2029 & -5,2378 \\
+          & 3,2029 & -5,2378 & -3,2029 & -5,2378 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3740,7 +3749,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.32 [24]
-          & 3,2029 & -5,2378 & 3,2029 & -5,2378 \\
+          & 3,2029 & -5,2378 & -3,2029 & -5,2378 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3752,7 +3761,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.33 [25]
-          & -1,5474 & 1,5695 & -1,5474 & 1,5695 \\
+          & -1,5474 & 1,5695 & 1,5474 & 1,5695 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3764,7 +3773,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.33 [25]
-          & -1,5474 & 1,5695 & -1,5474 & 1,5695 \\
+          & -1,5474 & 1,5695 & 1,5474 & 1,5695 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3776,7 +3785,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.34 [26]
-          & -0,8481 & 1,9201 & -0,8481 & 1,9201 \\
+          & -0,8481 & 1,9201 & 0,8481 & 1,9201 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3788,7 +3797,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.34 [26]
-          & -0,8481 & 1,9201 & -0,8481 & 1,9201 \\
+          & -0,8481 & 1,9201 & 0,8481 & 1,9201 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3800,7 +3809,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.35 [27]
-          & -2,6632 & 0,1180 & -2,6632 & 0,1180 \\
+          & -2,6632 & 0,1180 & 2,6632 & 0,1180 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3812,7 +3821,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.35 [27]
-          & -2,6632 & 0,1180 & -2,6632 & 0,1180 \\
+          & -2,6632 & 0,1180 & 2,6632 & 0,1180 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3824,7 +3833,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.36 [28]
-          & -0,0478 & 0,4286 & -0,0478 & 0,4286 \\
+          & -0,0478 & 0,4286 & 0,0478 & 0,4286 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3836,7 +3845,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.36 [28]
-          & -0,0478 & 0,4286 & -0,0478 & 0,4286 \\
+          & -0,0478 & 0,4286 & 0,0478 & 0,4286 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3848,7 +3857,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.37 [29]
-          & -3,3064 & 0,0100 & -3,3064 & 0,0100 \\
+          & -3,3064 & 0,0100 & 3,3064 & 0,0100 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3860,7 +3869,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.37 [29]
-          & -3,3064 & 0,0100 & -3,3064 & 0,0100 \\
+          & -3,3064 & 0,0100 & 3,3064 & 0,0100 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3872,7 +3881,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.38 [30]
-          & -3,3049 & -0,3471 & -3,3049 & -0,3471 \\
+          & -3,3049 & -0,3471 & 3,3049 & -0,3471 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3884,7 +3893,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.38 [30]
-          & -3,3049 & -0,3471 & -3,3049 & -0,3471 \\
+          & -3,3049 & -0,3471 & 3,3049 & -0,3471 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3896,7 +3905,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.39 [31]
-          & -1,8913 & 1,1807 & -1,8913 & 1,1807 \\
+          & -1,8913 & 1,1807 & 1,8913 & 1,1807 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3908,7 +3917,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.39 [31]
-          & -1,8913 & 1,1807 & -1,8913 & 1,1807 \\
+          & -1,8913 & 1,1807 & 1,8913 & 1,1807 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3920,7 +3929,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.40 [32]
-          & 0,9906 & -0,4835 & 0,9906 & -0,4835 \\
+          & 0,9906 & -0,4835 & -0,9906 & -0,4835 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3932,7 +3941,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.40 [32]
-          & 0,9906 & -0,4835 & 0,9906 & -0,4835 \\
+          & 0,9906 & -0,4835 & -0,9906 & -0,4835 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3944,7 +3953,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.41 [33]
-          & 2,0604 & -1,1151 & 2,0604 & -1,1151 \\
+          & 2,0604 & -1,1151 & -2,0604 & -1,1151 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3956,7 +3965,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.41 [33]
-          & 2,0604 & -1,1151 & 2,0604 & -1,1151 \\
+          & 2,0604 & -1,1151 & -2,0604 & -1,1151 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3968,7 +3977,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.42 [34]
-          & 5,2527 & 0,4928 & 5,2527 & 0,4928 \\
+          & 5,2527 & 0,4928 & -5,2527 & 0,4928 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3980,7 +3989,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.42 [34]
-          & 5,2527 & 0,4928 & 5,2527 & 0,4928 \\
+          & 5,2527 & 0,4928 & -5,2527 & 0,4928 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -3992,7 +4001,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.43 [35]
-          & 4,9545 & -0,6147 & 4,9545 & -0,6147 \\
+          & 4,9545 & -0,6147 & -4,9545 & -0,6147 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4004,7 +4013,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.43 [35]
-          & 4,9545 & -0,6147 & 4,9545 & -0,6147 \\
+          & 4,9545 & -0,6147 & -4,9545 & -0,6147 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4016,7 +4025,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.44 [36]
-          & 1,1646 & -0,8936 & 1,1646 & -0,8936 \\
+          & 1,1646 & -0,8936 & -1,1646 & -0,8936 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4028,7 +4037,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.44 [36]
-          & 1,1646 & -0,8936 & 1,1646 & -0,8936 \\
+          & 1,1646 & -0,8936 & -1,1646 & -0,8936 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4040,7 +4049,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.45 [37]
-          & 3,9528 & 0,3438 & 3,9528 & 0,3438 \\
+          & 3,9528 & 0,3438 & -3,9528 & 0,3438 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4052,7 +4061,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.45 [37]
-          & 3,9528 & 0,3438 & 3,9528 & 0,3438 \\
+          & 3,9528 & 0,3438 & -3,9528 & 0,3438 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4064,7 +4073,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.46 [38]
-          & -1,3445 & -1,2020 & -1,3445 & -1,2020 \\
+          & -1,3445 & -1,2020 & 1,3445 & -1,2020 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4076,7 +4085,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.46 [38]
-          & -1,3445 & -1,2020 & -1,3445 & -1,2020 \\
+          & -1,3445 & -1,2020 & 1,3445 & -1,2020 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4088,7 +4097,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.47 [39]
-          & 1,5705 & 0,1352 & 1,5705 & 0,1352 \\
+          & 1,5705 & 0,1352 & -1,5705 & 0,1352 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4100,7 +4109,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.47 [39]
-          & 1,5705 & 0,1352 & 1,5705 & 0,1352 \\
+          & 1,5705 & 0,1352 & -1,5705 & 0,1352 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4112,7 +4121,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.48 [40]
-          & 1,8482 & -0,6380 & 1,8482 & -0,6380 \\
+          & 1,8482 & -0,6380 & -1,8482 & -0,6380 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4124,7 +4133,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.48 [40]
-          & 1,8482 & -0,6380 & 1,8482 & -0,6380 \\
+          & 1,8482 & -0,6380 & -1,8482 & -0,6380 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4136,7 +4145,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    >
 l.49 [41]
-          & -2,5328 & -0,5548 & -2,5328 & -0,5548 \\
+          & -2,5328 & -0,5548 & 2,5328 & -0,5548 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4148,7 +4157,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 <to be read again> 
                    \advance 
 l.49 [41]
-          & -2,5328 & -0,5548 & -2,5328 & -0,5548 \\
+          & -2,5328 & -0,5548 & 2,5328 & -0,5548 \\
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
 I'll assume that you meant to say pt, for printer's points.
@@ -4160,118 +4169,118 @@ two letters. (See Chapter 27 of The TeXbook.)
 Overfull \vbox (491.92067pt too high) has occurred while \output is active []
 
 
-[100] (output_real/scenario1/output_table_loadings.tex)
-(output_real/scenario2/output_table_loadings.tex) [101]
-<output_real/scenario1/variable_contribution.png, id=1035, 1806.75pt x 1204.5pt
+[95] (output_real/scenario1/output_table_loadings.tex)
+(output_real/scenario2/output_table_loadings.tex) [96]
+<output_real/scenario1/variable_contribution.png, id=1053, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario1/variable_contribution.png Graphic file (type png)
 <use output_real/scenario1/variable_contribution.png>
 Package pdftex.def Info: output_real/scenario1/variable_contribution.png  used 
-on input line 321.
+on input line 357.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_contribution.png, id=1036, 1806.75pt x 1204.5pt
+<output_real/scenario2/variable_contribution.png, id=1054, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario2/variable_contribution.png Graphic file (type png)
 <use output_real/scenario2/variable_contribution.png>
 Package pdftex.def Info: output_real/scenario2/variable_contribution.png  used 
-on input line 327.
+on input line 363.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario1/variable_cos2.png, id=1037, 1806.75pt x 1204.5pt>
+<output_real/scenario1/variable_cos2.png, id=1055, 1806.75pt x 1204.5pt>
 File: output_real/scenario1/variable_cos2.png Graphic file (type png)
 <use output_real/scenario1/variable_cos2.png>
 Package pdftex.def Info: output_real/scenario1/variable_cos2.png  used on input
- line 337.
+ line 373.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
-<output_real/scenario2/variable_cos2.png, id=1038, 1806.75pt x 1204.5pt>
+<output_real/scenario2/variable_cos2.png, id=1056, 1806.75pt x 1204.5pt>
 File: output_real/scenario2/variable_cos2.png Graphic file (type png)
 <use output_real/scenario2/variable_cos2.png>
 Package pdftex.def Info: output_real/scenario2/variable_cos2.png  used on input
- line 343.
+ line 379.
 (pdftex.def)             Requested size: 204.85802pt x 136.5572pt.
- [102 <./output_real/scenario1/variable_contribution.png> <./output_real/scenar
-io2/variable_contribution.png> <./output_real/scenario1/variable_cos2.png> <./o
-utput_real/scenario2/variable_cos2.png>]
-<output_real/scenario1/permutation_histogram.png, id=1054, 1806.75pt x 1204.5pt
+ [97 <./output_real/scenario1/variable_contribution.png> <./output_real/scenari
+o2/variable_contribution.png> <./output_real/scenario1/variable_cos2.png> <./ou
+tput_real/scenario2/variable_cos2.png>]
+<output_real/scenario1/permutation_histogram.png, id=1075, 1806.75pt x 1204.5pt
 >
 File: output_real/scenario1/permutation_histogram.png Graphic file (type png)
 <use output_real/scenario1/permutation_histogram.png>
 Package pdftex.def Info: output_real/scenario1/permutation_histogram.png  used 
-on input line 364.
+on input line 400.
 (pdftex.def)             Requested size: 341.43437pt x 227.62598pt.
- [103 <./output_real/scenario1/permutation_histogram.png>]
+ [98 <./output_real/scenario1/permutation_histogram.png>]
 
-Package natbib Warning: Citation `areia2008' on page 104 undefined on input lin
-e 396.
+Package natbib Warning: Citation `areia2008' on page 99 undefined on input line
+ 432.
 
 
-Package natbib Warning: Citation `oliveira2024' on page 104 undefined on input 
-line 396.
+Package natbib Warning: Citation `oliveira2024' on page 99 undefined on input l
+ine 432.
 
-(output_real/scenario1/output_table_beta_vec.tex) [104]
+(output_real/scenario1/output_table_beta_vec.tex) [99]
 (output_real/scenario1/output_table_struktur_diagnostik.tex)
 
-Package natbib Warning: Citation `areia2008' on page 105 undefined on input lin
-e 423.
+Package natbib Warning: Citation `areia2008' on page 100 undefined on input lin
+e 459.
 
 
-Package natbib Warning: Citation `oliveira2024' on page 105 undefined on input 
-line 427.
+Package natbib Warning: Citation `oliveira2024' on page 100 undefined on input 
+line 463.
 
-[105] (output_real/scenario1/output_table_beta_provinsi.tex)
+[100] (output_real/scenario1/output_table_beta_provinsi.tex)
 
-Package natbib Warning: Citation `areia2008' on page 106 undefined on input lin
-e 437.
+Package natbib Warning: Citation `areia2008' on page 101 undefined on input lin
+e 473.
 
 
-Package natbib Warning: Citation `oliveira2024' on page 106 undefined on input 
-line 437.
+Package natbib Warning: Citation `oliveira2024' on page 101 undefined on input 
+line 473.
 
-<output_real/scenario1/beta_trajectory.png, id=1088, 498.1812pt x 278.4804pt>
+<output_real/scenario1/beta_trajectory.png, id=1112, 498.1812pt x 278.4804pt>
 File: output_real/scenario1/beta_trajectory.png Graphic file (type png)
 <use output_real/scenario1/beta_trajectory.png>
 Package pdftex.def Info: output_real/scenario1/beta_trajectory.png  used on inp
-ut line 441.
+ut line 477.
 (pdftex.def)             Requested size: 320.0935pt x 178.93646pt.
-[106]
-<output_real/scenario1/trajectory_scores.png, id=1097, 1806.75pt x 1606.0pt>
+[101]
+<output_real/scenario1/trajectory_scores.png, id=1122, 1806.75pt x 1606.0pt>
 File: output_real/scenario1/trajectory_scores.png Graphic file (type png)
 <use output_real/scenario1/trajectory_scores.png>
 Package pdftex.def Info: output_real/scenario1/trajectory_scores.png  used on i
-nput line 462.
+nput line 498.
 (pdftex.def)             Requested size: 384.1096pt x 341.41139pt.
- [107 <./output_real/scenario1/beta_trajectory.png>]
-<output_real/scenario1/biplot_tahun_2020.png, id=1109, 1606.0pt x 1606.0pt>
+ [102 <./output_real/scenario1/beta_trajectory.png>]
+<output_real/scenario1/biplot_tahun_2020.png, id=1135, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2020.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2020.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2020.png  used on i
-nput line 483.
+nput line 519.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2021.png, id=1110, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2021.png, id=1136, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2021.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2021.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2021.png  used on i
-nput line 489.
+nput line 525.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
- [108 <./output_real/scenario1/trajectory_scores.png>]
-<output_real/scenario1/biplot_tahun_2022.png, id=1120, 1606.0pt x 1606.0pt>
+ [103 <./output_real/scenario1/trajectory_scores.png>]
+<output_real/scenario1/biplot_tahun_2022.png, id=1148, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2022.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2022.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2022.png  used on i
-nput line 499.
+nput line 535.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2023.png, id=1121, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2023.png, id=1149, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2023.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2023.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2023.png  used on i
-nput line 505.
+nput line 541.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/biplot_tahun_2024.png, id=1122, 1606.0pt x 1606.0pt>
+<output_real/scenario1/biplot_tahun_2024.png, id=1150, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/biplot_tahun_2024.png Graphic file (type png)
 <use output_real/scenario1/biplot_tahun_2024.png>
 Package pdftex.def Info: output_real/scenario1/biplot_tahun_2024.png  used on i
-nput line 513.
+nput line 549.
 (pdftex.def)             Requested size: 277.41176pt x 277.40288pt.
- [109 <./output_real/scenario1/biplot_tahun_2020.png> <./output_real/scenario1/
+ [104 <./output_real/scenario1/biplot_tahun_2020.png> <./output_real/scenario1/
 biplot_tahun_2021.png> <./output_real/scenario1/biplot_tahun_2022.png> <./outpu
 t_real/scenario1/biplot_tahun_2023.png>]
 (output_real/scenario1/output_table_skor_intra_2020.tex
@@ -7157,7 +7166,7 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-) [110 <./output_real/scenario1/biplot_tahun_2024.png>]
+) [105 <./output_real/scenario1/biplot_tahun_2024.png>]
 (output_real/scenario1/output_table_skor_intra_2023.tex
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
@@ -9080,232 +9089,232 @@ To recover gracefully from this error, it's best to
 delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
-) [111]
+) [106]
 Overfull \vbox (172.40506pt too high) has occurred while \output is active []
 
 
-[112] (output_real/scenario1/output_table_centroid_statis.tex) [113]
+[107] (output_real/scenario1/output_table_centroid_statis.tex) [108]
 (output_real/scenario1/output_table_loading_intra_2020.tex)
 (output_real/scenario1/output_table_loading_intra_2021.tex)
 (output_real/scenario1/output_table_loading_intra_2022.tex)
 (output_real/scenario1/output_table_loading_intra_2023.tex)
-(output_real/scenario1/output_table_loading_intra_2024.tex) [114]
-<output_real/scenario1/elbow_plot_2020.png, id=1190, 1405.25pt x 903.375pt>
+(output_real/scenario1/output_table_loading_intra_2024.tex) [109]
+<output_real/scenario1/elbow_plot_2020.png, id=1216, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2020.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
-ut line 631.
+ut line 667.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2020.png, id=1191, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2020.png, id=1217, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2020.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
-ut line 632.
+ut line 668.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2021.png, id=1192, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2021.png, id=1218, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2021.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
-ut line 639.
+ut line 675.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2021.png, id=1193, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2021.png, id=1219, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2021.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2021.png  used on inp
-ut line 640.
+ut line 676.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [115 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/de
+ [110 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/de
 ndrogram_2020.png>]
-<output_real/scenario1/elbow_plot_2022.png, id=1204, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2022.png, id=1230, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2022.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
-ut line 647.
+ut line 683.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2022.png, id=1205, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2022.png, id=1231, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2022.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
-ut line 648.
+ut line 684.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2023.png, id=1206, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2023.png, id=1232, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2023.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
-ut line 655.
+ut line 691.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2023.png, id=1207, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2023.png, id=1233, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2023.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
-ut line 656.
+ut line 692.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2024.png, id=1208, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2024.png, id=1234, 1405.25pt x 903.375pt>
 File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2024.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
-ut line 663.
+ut line 699.
 (pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
-<output_real/scenario1/dendrogram_2024.png, id=1209, 1606.0pt x 1104.125pt>
+<output_real/scenario1/dendrogram_2024.png, id=1235, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2024.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2024.png  used on inp
-ut line 664.
+ut line 700.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
- [116 <./output_real/scenario1/elbow_plot_2021.png> <./output_real/scenario1/de
+ [111 <./output_real/scenario1/elbow_plot_2021.png> <./output_real/scenario1/de
 ndrogram_2021.png> <./output_real/scenario1/elbow_plot_2022.png> <./output_real
 /scenario1/dendrogram_2022.png> <./output_real/scenario1/elbow_plot_2023.png> <
 ./output_real/scenario1/dendrogram_2023.png>]
-<output_real/scenario1/cluster_scatter_statis_2020.png, id=1229, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2020.png, id=1253, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2020.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2020.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2020.png 
- used on input line 679.
+ used on input line 715.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2020.png, id=1230, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2020.png, id=1254, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2020.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2020.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2020.png  use
-d on input line 683.
+d on input line 719.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2021.png, id=1231, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2021.png, id=1255, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2021.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2021.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2021.png 
- used on input line 693.
+ used on input line 729.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2021.png, id=1232, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2021.png, id=1256, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2021.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2021.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2021.png  use
-d on input line 697.
+d on input line 733.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [117 <./output_real/scenario1/elbow_plot_2024.png> <./output_real/scenario1/de
+ [112 <./output_real/scenario1/elbow_plot_2024.png> <./output_real/scenario1/de
 ndrogram_2024.png> <./output_real/scenario1/cluster_scatter_statis_2020.png> <.
 /output_real/scenario1/cluster_map_statis_2020.png>]
-<output_real/scenario1/cluster_scatter_statis_2022.png, id=1244, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2022.png, id=1270, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2022.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2022.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2022.png 
- used on input line 707.
+ used on input line 743.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2022.png, id=1245, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2022.png, id=1271, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2022.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2022.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2022.png  use
-d on input line 711.
+d on input line 747.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/cluster_scatter_statis_2023.png, id=1246, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2023.png, id=1272, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2023.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2023.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2023.png 
- used on input line 721.
+ used on input line 757.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2023.png, id=1247, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2023.png, id=1273, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2023.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2023.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2023.png  use
-d on input line 725.
+d on input line 761.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [118 <./output_real/scenario1/cluster_scatter_statis_2021.png> <./output_real/
+ [113 <./output_real/scenario1/cluster_scatter_statis_2021.png> <./output_real/
 scenario1/cluster_map_statis_2021.png> <./output_real/scenario1/cluster_scatter
 _statis_2022.png> <./output_real/scenario1/cluster_map_statis_2022.png>]
-<output_real/scenario1/cluster_scatter_statis_2024.png, id=1258, 1606.0pt x 160
+<output_real/scenario1/cluster_scatter_statis_2024.png, id=1284, 1606.0pt x 160
 6.0pt>
 File: output_real/scenario1/cluster_scatter_statis_2024.png Graphic file (type 
 png)
 <use output_real/scenario1/cluster_scatter_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/cluster_scatter_statis_2024.png 
- used on input line 735.
+ used on input line 771.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario1/cluster_map_statis_2024.png, id=1259, 939.14865pt x 658.
+<output_real/scenario1/cluster_map_statis_2024.png, id=1285, 939.14865pt x 658.
 74104pt>
 File: output_real/scenario1/cluster_map_statis_2024.png Graphic file (type png)
 
 <use output_real/scenario1/cluster_map_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/cluster_map_statis_2024.png  use
-d on input line 739.
+d on input line 775.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
- [119 <./output_real/scenario1/cluster_scatter_statis_2023.png> <./output_real/
+ [114 <./output_real/scenario1/cluster_scatter_statis_2023.png> <./output_real/
 scenario1/cluster_map_statis_2023.png> <./output_real/scenario1/cluster_scatter
 _statis_2024.png> <./output_real/scenario1/cluster_map_statis_2024.png>]
 (output_real/scenario1/output_table_statis_transition_sum_2023x2024.tex)
 (output_real/scenario1/output_table_statis_transition_name_2023x2024.tex
-[120]) (output_real/scenario2/output_table_statis_transition_sum_2023x2024.tex)
+[115]) (output_real/scenario2/output_table_statis_transition_sum_2023x2024.tex)
 (output_real/scenario2/output_table_statis_transition_name_2023x2024.tex)
-[121]
-<output_real/scenario1/compare_map_trans_statis_2023x2024.png, id=1288, 5217.49
+[116]
+<output_real/scenario1/compare_map_trans_statis_2023x2024.png, id=1314, 5217.49
 25pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_trans_statis_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_trans_statis_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_trans_statis_2023x20
-24.png  used on input line 770.
+24.png  used on input line 806.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_trans_statis_2023x2024.png, id=1289, 5211.47
-pt x 1829.83624pt>
+<output_real/scenario2/compare_map_trans_statis_2023x2024.png, id=1315, 5217.49
+25pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_trans_statis_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario2/compare_map_trans_statis_2023x2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_trans_statis_2023x20
-24.png  used on input line 775.
-(pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
- [122 <./output_real/scenario1/compare_map_trans_statis_2023x2024.png (PNG copy
+24.png  used on input line 811.
+(pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
+ [117 <./output_real/scenario1/compare_map_trans_statis_2023x2024.png (PNG copy
 )> <./output_real/scenario2/compare_map_trans_statis_2023x2024.png (PNG copy)>]
-<output_real/scenario1/compromise_scatter.png, id=1300, 1606.0pt x 1606.0pt>
+<output_real/scenario1/compromise_scatter.png, id=1327, 1606.0pt x 1606.0pt>
 File: output_real/scenario1/compromise_scatter.png Graphic file (type png)
 <use output_real/scenario1/compromise_scatter.png>
 Package pdftex.def Info: output_real/scenario1/compromise_scatter.png  used on 
-input line 792.
+input line 828.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
-<output_real/scenario2/compromise_scatter.png, id=1301, 1606.0pt x 1606.0pt>
+<output_real/scenario2/compromise_scatter.png, id=1328, 1606.0pt x 1606.0pt>
 File: output_real/scenario2/compromise_scatter.png Graphic file (type png)
 <use output_real/scenario2/compromise_scatter.png>
 Package pdftex.def Info: output_real/scenario2/compromise_scatter.png  used on 
-input line 797.
+input line 833.
 (pdftex.def)             Requested size: 204.85802pt x 204.84193pt.
- [123 <./output_real/scenario1/compromise_scatter.png> <./output_real/scenario2
+ [118 <./output_real/scenario1/compromise_scatter.png> <./output_real/scenario2
 /compromise_scatter.png>]
 File: output_real/scenario1/compromise_map.png Graphic file (type png)
 <use output_real/scenario1/compromise_map.png>
 Package pdftex.def Info: output_real/scenario1/compromise_map.png  used on inpu
-t line 810.
+t line 846.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario2/compromise_map.png, id=1312, 939.14865pt x 658.74104pt>
+<output_real/scenario2/compromise_map.png, id=1340, 939.14865pt x 658.74104pt>
 File: output_real/scenario2/compromise_map.png Graphic file (type png)
 <use output_real/scenario2/compromise_map.png>
 Package pdftex.def Info: output_real/scenario2/compromise_map.png  used on inpu
-t line 815.
+t line 851.
 (pdftex.def)             Requested size: 204.85802pt x 143.68713pt.
-<output_real/scenario1/compromise_pie.png, id=1317, 451.4466pt x 352.6776pt>
+<output_real/scenario1/compromise_pie.png, id=1345, 451.4466pt x 352.6776pt>
 File: output_real/scenario1/compromise_pie.png Graphic file (type png)
 <use output_real/scenario1/compromise_pie.png>
 Package pdftex.def Info: output_real/scenario1/compromise_pie.png  used on inpu
-t line 828.
+t line 864.
 (pdftex.def)             Requested size: 204.85802pt x 160.03804pt.
-<output_real/scenario2/compromise_pie.png, id=1318, 451.4466pt x 352.6776pt>
+<output_real/scenario2/compromise_pie.png, id=1346, 451.4466pt x 352.6776pt>
 File: output_real/scenario2/compromise_pie.png Graphic file (type png)
 <use output_real/scenario2/compromise_pie.png>
 Package pdftex.def Info: output_real/scenario2/compromise_pie.png  used on inpu
-t line 833.
+t line 869.
 (pdftex.def)             Requested size: 204.85802pt x 160.03804pt.
- [124 <./output_real/scenario2/compromise_map.png>] (output_real/scenario1/outp
+ [119 <./output_real/scenario2/compromise_map.png>] (output_real/scenario1/outp
 ut_table_compromise_cluster_sum_name.tex
 Underfull \hbox (badness 3690) in paragraph at lines 9--9
 []|\OT1/ptm/m/n/12 (+20) Cluster 1 (Ren-
@@ -9326,213 +9335,213 @@ Underfull \hbox (badness 10000) in paragraph at lines 11--11
 []|\OT1/ptm/m/n/12 (+20) Cluster 2 (Se-
  []
 
-) [125 <./output_real/scenario1/compromise_pie.png> <./output_real/scenario2/co
+) [120 <./output_real/scenario1/compromise_pie.png> <./output_real/scenario2/co
 mpromise_pie.png>]
 
-Package natbib Warning: Citation `kuhn1955' on page 126 undefined on input line
- 854.
+Package natbib Warning: Citation `kuhn1955' on page 121 undefined on input line
+ 890.
 
 (output_real/output_table_biplot_transition_sum_2023x2024.tex)
-(output_real/output_table_biplot_transition_name_2023x2024.tex) [126]
-<output_real/scenario1/compare_map_trans_biplot_2023x2024.png, id=1357, 5217.49
+(output_real/output_table_biplot_transition_name_2023x2024.tex) [121]
+<output_real/scenario1/compare_map_trans_biplot_2023x2024.png, id=1390, 5217.49
 25pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_trans_biplot_2023x2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_trans_biplot_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_trans_biplot_2023x20
-24.png  used on input line 868.
+24.png  used on input line 904.
 (pdftex.def)             Requested size: 298.75264pt x 104.75964pt.
 
 (output_real/scenario1/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_compare_name_2024.tex
-[127 <./output_real/scenario1/compare_map_trans_biplot_2023x2024.png (PNG copy)
+[122 <./output_real/scenario1/compare_map_trans_biplot_2023x2024.png (PNG copy)
 >]) (output_real/scenario1/output_table_biplot_vs_statis_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_statis_name_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_compare_name_2024.tex
-[128]) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
+[123]) (output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex)
-<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=1376, 5217.492
+<output_real/scenario1/compare_map_biplot_vs_statis_2024.png, id=1407, 5217.492
 5pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
 <use output_real/scenario1/compare_map_biplot_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_statis_202
-4.png  used on input line 898.
+4.png  used on input line 934.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=1377, 5214.481
-25pt x 1829.83624pt>
+<output_real/scenario2/compare_map_biplot_vs_statis_2024.png, id=1408, 5217.492
+5pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_statis_2024.png Graphic file 
 (type png)
 <use output_real/scenario2/compare_map_biplot_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_statis_202
-4.png  used on input line 903.
-(pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- [129]
+4.png  used on input line 939.
+(pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
+ [124]
 (output_real/scenario1/output_table_ipm_sum_2023x2024.tex)
-(output_real/scenario1/output_table_ipm_name_2023x2024.tex) [130 <./output_real
+(output_real/scenario1/output_table_ipm_name_2023x2024.tex) [125 <./output_real
 /scenario1/compare_map_biplot_vs_statis_2024.png (PNG copy)> <./output_real/sce
 nario2/compare_map_biplot_vs_statis_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_ipm_sum_2023x2024.tex)
 (output_real/scenario2/output_table_ipm_name_2023x2024.tex)
-<output_real/scenario1/compare_map_ipm_2023x2024.png, id=1393, 5211.47pt x 1829
+<output_real/scenario1/compare_map_ipm_2023x2024.png, id=1424, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario1/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
 <use output_real/scenario1/compare_map_ipm_2023x2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_ipm_2023x2024.png  u
-sed on input line 931.
+sed on input line 967.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
-<output_real/scenario2/compare_map_ipm_2023x2024.png, id=1394, 5211.47pt x 1829
+<output_real/scenario2/compare_map_ipm_2023x2024.png, id=1425, 5211.47pt x 1829
 .83624pt>
 File: output_real/scenario2/compare_map_ipm_2023x2024.png Graphic file (type pn
 g)
 <use output_real/scenario2/compare_map_ipm_2023x2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_ipm_2023x2024.png  u
-sed on input line 936.
+sed on input line 972.
 (pdftex.def)             Requested size: 204.85802pt x 71.92453pt.
- [131]
+ [126]
 (output_real/scenario1/output_table_cross_matrix_sum_2024.tex)
-(output_real/scenario1/output_table_cross_matrix_name_2024.tex) [132 <./output_
+(output_real/scenario1/output_table_cross_matrix_name_2024.tex) [127 <./output_
 real/scenario1/compare_map_ipm_2023x2024.png (PNG copy)> <./output_real/scenari
 o2/compare_map_ipm_2023x2024.png (PNG copy)>]
 (output_real/scenario2/output_table_cross_matrix_sum_2024.tex)
 (output_real/scenario2/output_table_cross_matrix_name_2024.tex)
-<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=1410, 5214.48125p
+<output_real/scenario1/compare_map_biplot_vs_ipm_2024.png, id=1443, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario1/compare_map_biplot_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_biplot_vs_ipm_2024.p
-ng  used on input line 964.
+ng  used on input line 1000.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=1411, 5214.48125p
+<output_real/scenario2/compare_map_biplot_vs_ipm_2024.png, id=1444, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario2/compare_map_biplot_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario2/compare_map_biplot_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_biplot_vs_ipm_2024.p
-ng  used on input line 969.
+ng  used on input line 1005.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
- [133]
+ [128]
 (output_real/scenario1/output_table_statis_vs_ipm_sum_2024.tex)
-(output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex) [134 <./output
+(output_real/scenario1/output_table_statis_vs_ipm_name_2024.tex) [129 <./output
 _real/scenario1/compare_map_biplot_vs_ipm_2024.png (PNG copy)> <./output_real/s
 cenario2/compare_map_biplot_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_statis_vs_ipm_sum_2024.tex)
 (output_real/scenario2/output_table_statis_vs_ipm_name_2024.tex)
-<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=1429, 5214.48125p
+<output_real/scenario1/compare_map_statis_vs_ipm_2024.png, id=1462, 5214.48125p
 t x 1829.83624pt>
 File: output_real/scenario1/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario1/compare_map_statis_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_statis_vs_ipm_2024.p
-ng  used on input line 996.
+ng  used on input line 1032.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=1430, 5208.45876p
-t x 1828.8325pt>
+<output_real/scenario2/compare_map_statis_vs_ipm_2024.png, id=1463, 5214.48125p
+t x 1829.83624pt>
 File: output_real/scenario2/compare_map_statis_vs_ipm_2024.png Graphic file (ty
 pe png)
 <use output_real/scenario2/compare_map_statis_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_statis_vs_ipm_2024.p
-ng  used on input line 1001.
-(pdftex.def)             Requested size: 204.85802pt x 71.91298pt.
- [135]
+ng  used on input line 1037.
+(pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
+ [130]
 (output_real/scenario1/output_table_biplot_vs_compromise_sum_2024.tex)
 (output_real/scenario1/output_table_biplot_vs_compromise_name_2024.tex)
-[136 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <.
+[131 <./output_real/scenario1/compare_map_statis_vs_ipm_2024.png (PNG copy)> <.
 /output_real/scenario2/compare_map_statis_vs_ipm_2024.png (PNG copy)>]
 (output_real/scenario2/output_table_biplot_vs_compromise_sum_2024.tex)
 (output_real/scenario2/output_table_biplot_vs_compromise_name_2024.tex)
-<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=1447, 5217
+<output_real/scenario1/compare_map_compromise_vs_biplot_2024.png, id=1479, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
 <use output_real/scenario1/compare_map_compromise_vs_biplot_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_biplot
-_2024.png  used on input line 1029.
+_2024.png  used on input line 1065.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=1448, 5217
+<output_real/scenario2/compare_map_compromise_vs_biplot_2024.png, id=1480, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_biplot_2024.png Graphic f
 ile (type png)
 <use output_real/scenario2/compare_map_compromise_vs_biplot_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_biplot
-_2024.png  used on input line 1034.
+_2024.png  used on input line 1070.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
 
-[137] (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
+[132] (output_real/scenario1/output_table_compromise_vs_statis_sum_2024.tex)
 (output_real/scenario1/output_table_compromise_vs_statis_name_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_statis_sum_2024.tex)
-(output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex [138 <./
+(output_real/scenario2/output_table_compromise_vs_statis_name_2024.tex [133 <./
 output_real/scenario1/compare_map_compromise_vs_biplot_2024.png (PNG copy)> <./
 output_real/scenario2/compare_map_compromise_vs_biplot_2024.png (PNG copy)>])
-<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=1465, 5217
+<output_real/scenario1/compare_map_compromise_vs_statis_2024.png, id=1497, 5217
 .4925pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
 <use output_real/scenario1/compare_map_compromise_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_statis
-_2024.png  used on input line 1060.
+_2024.png  used on input line 1096.
 (pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
-<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=1466, 5214
-.48125pt x 1829.83624pt>
+<output_real/scenario2/compare_map_compromise_vs_statis_2024.png, id=1498, 5217
+.4925pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_statis_2024.png Graphic f
 ile (type png)
 <use output_real/scenario2/compare_map_compromise_vs_statis_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_statis
-_2024.png  used on input line 1065.
-(pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
+_2024.png  used on input line 1101.
+(pdftex.def)             Requested size: 204.85802pt x 71.84077pt.
 
-[139 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG co
+[134 <./output_real/scenario1/compare_map_compromise_vs_statis_2024.png (PNG co
 py)> <./output_real/scenario2/compare_map_compromise_vs_statis_2024.png (PNG co
 py)>] (output_real/scenario1/output_table_compromise_vs_ipm_sum_2024.tex)
 (output_real/scenario1/output_table_compromise_vs_ipm_name_2024.tex)
 (output_real/scenario2/output_table_compromise_vs_ipm_sum_2024.tex)
-(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex [140])
-<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=1482, 5214.48
+(output_real/scenario2/output_table_compromise_vs_ipm_name_2024.tex [135])
+<output_real/scenario1/compare_map_compromise_vs_ipm_2024.png, id=1514, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario1/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
 <use output_real/scenario1/compare_map_compromise_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario1/compare_map_compromise_vs_ipm_20
-24.png  used on input line 1093.
+24.png  used on input line 1129.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
-<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=1483, 5214.48
+<output_real/scenario2/compare_map_compromise_vs_ipm_2024.png, id=1515, 5214.48
 125pt x 1829.83624pt>
 File: output_real/scenario2/compare_map_compromise_vs_ipm_2024.png Graphic file
  (type png)
 <use output_real/scenario2/compare_map_compromise_vs_ipm_2024.png>
 Package pdftex.def Info: output_real/scenario2/compare_map_compromise_vs_ipm_20
-24.png  used on input line 1098.
+24.png  used on input line 1134.
 (pdftex.def)             Requested size: 204.85802pt x 71.8687pt.
 
-[141 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
+[136 <./output_real/scenario1/compare_map_compromise_vs_ipm_2024.png (PNG copy)
 > <./output_real/scenario2/compare_map_compromise_vs_ipm_2024.png (PNG copy)>]
-[142] (output_real/scenario1/output_moran.tex)
+[137] (output_real/scenario1/output_moran.tex)
 (output_real/scenario2/output_moran.tex)
 
-Package natbib Warning: Citation `anselin1988' on page 143 undefined on input l
-ine 1132.
+Package natbib Warning: Citation `anselin1988' on page 138 undefined on input l
+ine 1168.
 
-[143] [144]) [145] [146]
+[138] [139]) [140] [141]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 \normalsize BAB 5.
-[147
+[142
 
 
 
 
-] [148]
+] [143]
 Underfull \hbox (badness 1038) in paragraph at lines 46--48
 []\OT1/ptm/b/n/12 (+20) Pengembangan Plat-form \OT1/ptm/b/it/12 (+20) Dash-boar
 d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
 is web
  []
 
-) [149]
+) [144]
 
 Package natbib Warning: There were undefined citations.
 
@@ -9550,42 +9559,242 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 34058 strings out of 467871
- 660536 string characters out of 5418376
- 1152102 words of memory out of 5000000
- 60790 multiletter control sequences out of 15000+600000
- 680712 words of font info for 415 fonts, out of 8000000 for 9000
+ 34391 strings out of 467871
+ 666119 string characters out of 5418376
+ 1159332 words of memory out of 5000000
+ 61087 multiletter control sequences out of 15000+600000
+ 680511 words of font info for 413 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
  84i,17n,104p,1621b,836s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/ams
-fonts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/p
-ublic/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts
-/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiK
-TeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/
-Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/
-AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/User
-s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pf
-b><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/
-cmr10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsf
-onts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/ty
-pe1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/f
-onts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs
-/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppDat
-a/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/User
-s/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm1
-0.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucr
-r8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
-b8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utm
-bi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
-mr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
-mri8a.pfb>
-Output written on induk_inti.pdf (149 pages, 21988692 bytes).
+
+pdfTeX warning (dest): name{table.caption.197} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.200} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.195} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.190} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.185} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.177} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.180} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.175} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.170} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.155} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.154} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.153} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.148} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.144} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section*.79} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.143} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.139} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{section*.64} has been referenced but does not exist
+, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.127} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.123} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.121} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.120} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.118} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.117} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.116} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.115} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.111} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.110} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.107} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.106} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.104} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.101} has been referenced but does no
+t exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.98} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.97} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.96} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.95} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.91} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.84} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.83} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.56} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.68} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.58} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.57} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.50} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.49} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.47} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{table.caption.40} has been referenced but does not 
+exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.35} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.34} has been referenced but does not
+ exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{figure.caption.32} has been referenced but does not
+ exist, replaced by a fixed one
+
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+bx10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfo
+nts/cm/cmbx12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/pub
+lic/amsfonts/cm/cmbx8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/public/amsfonts/cm/cmex10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/ammar/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ammar/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ammar/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/
+ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmib10.pfb>
+<C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cm
+r10.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfon
+ts/cm/cmr12.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/amsfonts/cm/cmr8.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ammar/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/ammar/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ammar/AppData/
+Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msam10.pfb><C:/Users/
+ammar/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.
+pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8
+a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8
+a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi
+8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr
+8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on induk_inti.pdf (144 pages, 20292328 bytes).
 PDF statistics:
- 2178 PDF objects out of 2487 (max. 8388607)
- 660 named destinations out of 1000 (max. 500000)
+ 2219 PDF objects out of 2487 (max. 8388607)
+ 699 named destinations out of 1000 (max. 500000)
  58285 words of extra memory for PDF output out of 61914 (max. 10000000)
 

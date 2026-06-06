@@ -8,7 +8,7 @@ Bab ini berisi uraian mengenai tahapan-tahapan metodologi yang dilakukan dalam p
 % --- 3.1 ---
 \section{\normalsize Statistika Deskriptif}
 %-----------------------------------------------------------------------------%
-Analisis diawali dengan ringkasan statistik untuk memberikan gambaran umum mengenai distribusi data yang menggambarkan kesejahteraan rakyat pada seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat selama periode 2020 hingga 2024. Indikator yang dimaksud dalam hal ini adalah indikator. Prosedur ini melibatkan penghitungan ukuran pemusatan dan penyebaran data sebagaimana didefinisikan pada Bab 2 yang meliputi:
+Analisis diawali dengan ringkasan statistik untuk memberikan gambaran umum mengenai distribusi data yang menggambarkan kesejahteraan rakyat pada seluruh kabupaten/kota di Provinsi Banten, DKI Jakarta, dan Jawa Barat selama periode 2020 hingga 2024. Indikator yang dimaksud dalam hal ini adalah 12 indikator kesejahteraan rakyat sebagaimana diidentifikasi pada Bagian~\ref{sec:ruang_lingkup}, yang mencakup IPM, IPG, PPM, PDRB ADHK, RLS, AHH Laki-laki, AHH Perempuan, GK, PKKP, TPT, TPAK, dan Gini Ratio. Prosedur ini melibatkan penghitungan ukuran pemusatan dan penyebaran data sebagaimana didefinisikan pada Bab 2 yang meliputi:
 \begin{enumerate}
     \item \textbf{Rata-rata ($\bar{x}$):} Digunakan untuk melihat level umum pencapaian indikator (merujuk Persamaan \ref{eq:mean}).
     \item \textbf{Simpangan Baku ($s$):} Untuk mengukur tingkat kesenjangan atau variabilitas data antar wilayah (merujuk Persamaan \ref{eq:std_dev}).
@@ -155,16 +155,17 @@ Dalam rangka menjamin reproduksibilitas dan ketajaman interpretasi hasil, tahapa
     \item \textbf{Standardisasi per-tahun ($Z$-score):} Setiap matriks tahunan distandardisasi secara terpisah sehingga komparasi antarvariabel di dalam tahun menjadi setara. Terdapat \textbf{dua skema standardisasi} yang digunakan secara paralel sesuai jalur analisis (lihat Subbagian~\ref{subsubsec:zk_fork}): (1)~$z^{\mathrm{PCA}}=(x-\bar{x})/s$ untuk Dynamic Biplot --- menggunakan mean aritmetika biasa dengan semua wilayah berbobot setara; (2)~$z^{\mathrm{STATIS}}=(x-\mu_{jk})/\sigma_{jk}$ untuk STATIS --- menggunakan mean dan simpangan baku terbobot $m_i$ agar wilayah berpenduduk besar berkontribusi proporsional.
     \item \textbf{Bobot demografis ($m_i$):} Untuk beberapa analisis (mis. pembentukan matriks bobot objek), dihitung bobot demografis berdasarkan jumlah penduduk tiap wilayah sesuai Persamaan~\ref{eq:weighted_mean}. Bobot ini dipakai untuk memperhitungkan kontribusi relatif populasi dalam pembentukan kompromi.
     \item \textbf{Uji Kelayakan Multivariat:} Sebelum menerapkan STATIS, dilakukan Uji KMO dan Uji Bartlett untuk memastikan kecukupan korelasi antarvariabel; ambang batas yang digunakan adalah KMO $\geq 0{,}5$ dan Bartlett $p<0{,}05$.
-    \item \textbf{Penskalaan Loadings untuk Visualisasi:} Untuk tujuan representasi grafis (biplot/trajectory), panjang vektor loading disesuaikan mengikuti Abdi et al. (2012): setiap elemen loading intra $g_{j\ell}^{(\text{asli})}$ pada dimensi $\ell$ dikalikan dengan nilai singular kompromi $\sigma_{\ell}^{(c)} = \sqrt{\lambda_{\ell}^{(c)}}$, menghasilkan nilai \textit{visual}:
+    \item \textbf{Penskalaan Loadings untuk Visualisasi:} Untuk tujuan representasi grafis (biplot/trajectory), panjang vektor loading disesuaikan mengikuti \citet{abdi2012} (lihat Persamaan~\ref{eq:skalasi_visual}): setiap elemen loading intra $g_{j\ell}^{(\text{asli})}$ pada dimensi $\ell$ dikalikan dengan nilai singular kompromi $\sigma_{\ell}^{(c)} = \sqrt{\lambda_{\ell}^{(c)}}$, menghasilkan nilai \textit{visual}:
     \begin{equation}
         g_{j\ell}^{(\text{visual})} = g_{j\ell}^{(\text{asli})} \times \sqrt{\lambda_{\ell}^{(c)}}
         \label{eq:loading_visual_scale}
     \end{equation}
-    Pada data sampel, $\lambda_1^{(c)} = 2{,}3008$ sehingga $\sigma_1^{(c)} = \sqrt{2{,}3008} = 1{,}5168$. Sebagai ilustrasi, loading intra PPM untuk PC1 tahun 2020:
-    \[
-        g_{\text{PPM},1,2020}^{(\text{visual})} = 0{,}8306 \times 1{,}5168 = 1{,}2599
-    \]
-    yang sesuai dengan kolom \textit{PC1 (Visual/Dash)} pada tabel output dashboard. Skor intra $\mathbf{F}_k$ tidak mengalami penskalaan tambahan --- kolom \textit{Asli/SVD} dan \textit{Visual/Dash} untuk skor identik secara numerik pada konfigurasi default (tanpa rotasi berbasis \textit{baseline}). Penyesuaian ini hanya berlaku untuk plotting dan tidak mengubah nilai analitis atau kesimpulan inferensial.
+    Pada data sampel, $\lambda_1^{(c)} = 2{,}3008$ dan $\lambda_2^{(c)} = 0{,}6992$, sehingga $\delta_1 = \sqrt{2{,}3008} = 1{,}5168$ dan $\delta_2 = \sqrt{0{,}6992} = 0{,}8362$. Sebagai ilustrasi, loading intra PPM tahun 2020 sebelum penskalaan adalah $g_{\text{PPM},1}^{(\text{asli})} = 0{,}8306$ (PC1) dan $g_{\text{PPM},2}^{(\text{asli})} = 0{,}5569$ (PC2), sehingga:
+    \begin{align*}
+        g_{\text{PPM},1,2020}^{(\text{visual})} &= 0{,}8306 \times 1{,}5168 = 1{,}2599 \\
+        g_{\text{PPM},2,2020}^{(\text{visual})} &= 0{,}5569 \times 0{,}8362 = 0{,}4657
+    \end{align*}
+    Apabila konfigurasi \textit{mirror} PC1 aktif (seperti pada Skenario 1 studi kasus ini), nilai PC1 Visual selanjutnya dinegatifkan: $g_{\text{PPM},1}^{(\text{visual})} = -1{,}2599$. Skor intra $\mathbf{F}_k$ tidak mengalami perubahan amplitudo --- hanya tanda yang dapat berubah bila \textit{mirror} aktif. Penyesuaian ini hanya berlaku untuk plotting dan tidak mengubah nilai analitis atau kesimpulan inferensial.
     \item \textbf{Uji Permutasi Stabilitas STATIS:} Untuk mengevaluasi signifikansi kestabilan struktur kompromi digunakan uji permutasi Monte Carlo terhadap matriks inter-struktur sebanyak $N_{\mathrm{perm}}$ percobaan (default $1000$). Nilai $p$ dihitung sebagai proporsi permutasi yang menghasilkan statistik lebih ekstrim daripada observasi.
     \item \textbf{Pemilihan Jumlah Klaster:} Penentuan jumlah klaster ($k$) untuk K-Means dilakukan melalui kombinasi metode 	extit{elbow} dan skor 	extit{silhouette}; nilai default yang diuji di skrip adalah $k=2\text{--}5$ dan hasil akhir dipilih berdasarkan keseimbangan antara compactness dan interpretabilitas.
     \item \textbf{Uji Autokorelasi Spasial:} Untuk menguji keberadaan clustering spasial pada skor kompromi, dihitung Global Moran's $I$ dengan prosedur permutasi Monte Carlo pada bobot spasial yang dibentuk dari file shapefile administratif (lihat lampiran teknis untuk detail pembentukan matriks bobot).
@@ -564,7 +565,7 @@ Skor wilayah mencerminkan posisi relatif tiap wilayah pada ruang kompromi, sedan
 dengan skor kompromi wilayah ($\mathbf{F}_c^{(1)}$, Persamaan~\ref{eq:skor_kompromi_wilayah}) dan loading kompromi indikator ($\mathbf{G}_c^{(1)}$, Persamaan~\ref{eq:loading_kompromi_indikator}) yang disajikan pada Tabel~\ref{tab:sample1scores} dan Tabel~\ref{tab:sample1loadings}.
 \input{output_sample/scenario1/output_table_scores.tex}
 
-Skor parsial tahunan $\mathbf{F}_k$ (Persamaan~\ref{eq:skor_parsial_wilayah}) memproyeksikan matriks intra-struktur tiap tahun ke ruang kompromi. Hasil per tahun disajikan pada tabel berikut:
+Skor parsial tahunan $\mathbf{F}_k$ (Persamaan~\ref{eq:skor_parsial_wilayah}) memproyeksikan matriks intra-struktur tiap tahun ke ruang kompromi. Tabel menyajikan dua pasang kolom: \textit{PC1/PC2 (Asli)} adalah koordinat mentah langsung dari perhitungan STATIS sebelum penyesuaian apapun, sedangkan \textit{PC1/PC2 (Visual)} adalah koordinat setelah transformasi penyesuaian visual (penyelarasan arah sumbu dan skalasi proporsional) sebagaimana diuraikan pada Poin~\ref{enum:transformasi_visual_biplot}. Hasil per tahun disajikan pada tabel berikut:
 {\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2020.tex}}
 {\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2021.tex}}
 {\captionsetup[table]{list=no}\input{output_sample/scenario1/output_table_skor_intra_2022.tex}}
@@ -608,7 +609,7 @@ Loading parsial tahunan $\mathbf{G}_k$ (Persamaan~\ref{eq:loading_parsial_indika
   &= 0{,}980+0{,}256+0{,}028+0{,}000 = 1{,}264 \\[4pt]
   \therefore\;\mathbf{G}_{2020}[\text{PPM},1] &= \frac{1{,}264}{1{,}5168} \approx 0{,}8306
 \end{align*}
-Loading $\mathbf{G}_k$ untuk semua tahun disajikan pada tabel berikut, dan loading kompromi $\mathbf{G}_c = \sum_k \alpha_{W,k}\mathbf{G}_k$ (Persamaan~\ref{eq:loading_kompromi_indikator}) diperoleh dari rata-rata tertimbangnya:
+Loading $\mathbf{G}_k$ untuk semua tahun disajikan pada tabel berikut. Serupa dengan tabel skor intra, kolom \textit{PC1/PC2 (Asli)} adalah koordinat loading mentah hasil STATIS, sedangkan \textit{PC1/PC2 (Visual)} telah melalui skalasi proporsional dan penyelarasan arah sumbu sebagaimana diuraikan pada Poin~\ref{enum:transformasi_visual_biplot}, agar panah indikator tetap sebanding dengan sebaran skor wilayah pada biplot. Loading kompromi $\mathbf{G}_c = \sum_k \alpha_{W,k}\mathbf{G}_k$ (Persamaan~\ref{eq:loading_kompromi_indikator}) diperoleh dari rata-rata tertimbangnya:
 \begin{multline*}
   \mathbf{G}_c[\text{PPM},1] = 0{,}2881\times 0{,}8306 + 0{,}3503\times 0{,}8732 + 0{,}3616\times 0{,}8621 \\
   = 0{,}2393+0{,}3059+0{,}3117 = 0{,}8569
@@ -636,7 +637,7 @@ dengan skor kompromi wilayah ($\mathbf{F}_c^{(2)}$, Persamaan~\ref{eq:skor_kompr
   \mathbf{G}_c[\text{RLS},1] &= 0{,}6590\times 1{,}5064 = 0{,}9926 \\
   \mathbf{G}_c[\text{TPT},1] &= (-0{,}5149)\times 1{,}5064 = -0{,}7757
 \end{align*}
-Loading parsial tahunan $\mathbf{G}_k$ (Persamaan~\ref{eq:loading_parsial_s2}: $\mathbf{G}_k = \mathbf{S}_k\mathbf{V}_c\mathbf{\Lambda}_s^{-1/2}$). Contoh elemen $\mathbf{G}_{2020}[\text{PPM},\text{PC1}]$ menggunakan $\mathbf{S}_{2020}$ dari Tabel~\ref{tab:sample1matriks_intra_loading_2020}:
+Loading parsial tahunan $\mathbf{G}_k$ (Persamaan~\ref{eq:loading_parsial_s2}: $\mathbf{G}_k = \mathbf{S}_k\mathbf{V}_c\mathbf{\Lambda}_s^{-1/2}$). Kolom \textit{PC1/PC2 (Asli)} adalah koordinat mentah STATIS, sedangkan \textit{PC1/PC2 (Visual)} telah melalui skalasi proporsional (Poin~\ref{enum:transformasi_visual_biplot}) agar sesuai rentang tampilan biplot. Contoh elemen $\mathbf{G}_{2020}[\text{PPM},\text{PC1}]$ menggunakan $\mathbf{S}_{2020}$ dari Tabel~\ref{tab:sample1matriks_intra_loading_2020}:
 \begin{align*}
   \text{Numerator} &= 1\times(-0{,}5483)+(-0{,}8141)\times 0{,}6590+(-0{,}2781)\times(-0{,}5149) \\
   &= -0{,}5483-0{,}5365+0{,}1432 = -0{,}9416 \\[4pt]
@@ -656,7 +657,7 @@ Skor parsial $\mathbf{F}_k$ (Persamaan~\ref{eq:skor_parsial_s2}: $\mathbf{F}_k =
 {\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_skor_intra_2021.tex}}
 {\captionsetup[table]{list=no}\input{output_sample/scenario2/output_table_skor_intra_2022.tex}}
 
-Skor kompromi $\mathbf{F}_c^{(2)}$ diperoleh sebagai rata-rata barisentrik (Persamaan~\ref{eq:skor_kompromi_s2}: $\mathbf{F}_c = \sum_k\alpha_{S,k}\mathbf{F}_k$) menggunakan $\alpha_{S,k}$ dari Tabel~\ref{tab:samplealpha_s}.
+Skor kompromi $\mathbf{F}_c^{(2)}$ diperoleh sebagai rata-rata terbobot (Persamaan~\ref{eq:skor_kompromi_s2}: $\mathbf{F}_c = \sum_k\alpha_{S,k}\mathbf{F}_k$) menggunakan $\alpha_{S,k}$ dari Tabel~\ref{tab:samplealpha_s}.
 
 Dari perbandingan kedua biplot, dapat dilihat bahwa orientasi loading berbeda karena Skenario 1 memaksimalkan varians antar-wilayah sementara Skenario 2 memaksimalkan konsistensi struktur antar-indikator. Dalam praktiknya, Skenario 1 lebih cocok untuk analisis hubungan antar-wilayah lintas waktu, sedangkan Skenario 2 lebih cocok untuk analisis hubungan antar-indikator lintas waktu.
 

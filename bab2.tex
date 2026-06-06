@@ -564,7 +564,7 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan indika
         \begin{equation} \label{eq:loading_parsial_indikator}
             \mathbf{G}_k = \mathbf{Z}_k^T \mathbf{D} \mathbf{F}_c \mathbf{\Lambda}_c^{-1/2}
         \end{equation}
-        \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Pada skenario ini, loading kompromi ditarik sebagai rata-rata barisentrik dari loading parsialnya \citep{lavit94}:
+        \item \textbf{Loading Kompromi Indikator ($\mathbf{G}_c$):} Pada skenario ini, loading kompromi dihitung sebagai rata-rata terbobot dari loading parsialnya \citep{lavit94}:
         \begin{equation} \label{eq:loading_kompromi_indikator}
             \mathbf{G}_c = \sum_{k=1}^K \alpha_k \mathbf{G}_k
         \end{equation}
@@ -585,13 +585,13 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan indika
         \begin{equation}\label{eq:skor_parsial_s2}
             \mathbf{F}_k = \mathbf{Z}_k \mathbf{G}_c \mathbf{\Lambda}_s^{-1/2}
         \end{equation}
-        \item \textbf{Skor Kompromi Wilayah ($\mathbf{F}_c$):} Berbeda dengan Skenario 1, pada skenario ini skor kompromi objek ditarik sebagai rata-rata barisentrik dari skor parsialnya \citep{lavit94}:
+        \item \textbf{Skor Kompromi Wilayah ($\mathbf{F}_c$):} Berbeda dengan Skenario 1, pada skenario ini skor kompromi objek dihitung sebagai rata-rata terbobot dari skor parsialnya \citep{lavit94}:
         \begin{equation}\label{eq:skor_kompromi_s2}
             \mathbf{F}_c = \sum_{k=1}^K \alpha_k \mathbf{F}_k
         \end{equation}
     \end{itemize}
 
-    \item \textbf{Transformasi Penyesuaian Visual Biplot:} Untuk kepentingan interpretasi praktis dan estetika grafik biplot, koordinat matematis hasil SVD murni ($\mathbf{F}_{svd}, \mathbf{G}_{svd}$) seringkali memerlukan transformasi tambahan tanpa mengubah hubungan korelasi antar-objek maupun indikator. Transformasi ini digunakan untuk menghasilkan kolom koordinat visual pada sistem:
+    \item \label{enum:transformasi_visual_biplot}\textbf{Transformasi Penyesuaian Visual Biplot:} Untuk kepentingan interpretasi praktis dan estetika grafik biplot, koordinat matematis hasil SVD murni ($\mathbf{F}_{svd}, \mathbf{G}_{svd}$) seringkali memerlukan transformasi tambahan tanpa mengubah hubungan korelasi antar-objek maupun indikator. Transformasi ini digunakan untuk menghasilkan kolom koordinat visual pada sistem:
     
     \begin{enumerate}[label=\alph*.]
         \item \textbf{Penyelarasan PC1 (\textit{Mirroring}):} Agar dimensi pertama (PC1) memiliki makna ekonomi yang konsisten (misalnya: nilai positif berarti wilayah lebih sejahtera), dilakukan operasi pembalikan tanda jika ditemukan korelasi negatif antara PC1 dengan indikator performa utama:
@@ -600,15 +600,15 @@ Tahap akhir dari metode STATIS adalah penentuan koordinat untuk objek dan indika
         \end{equation}
         di mana $\mathbf{X}$ merepresentasikan matriks $\mathbf{F}$ atau $\mathbf{G}$.
         
-        \item \textbf{Skalasi Proporsional (\textit{Scaling}):} Untuk menjaga agar panah indikator dan titik wilayah berada dalam rentang tampilan yang seimbang pada biplot, dilakukan penskalaan pada koordinat loading ($\mathbf{G}$) relatif terhadap sebaran skor ($\mathbf{F}$):
-        \begin{equation}
-            \mathbf{G}_{vis} = \mathbf{G}_{svd} \times \left( \frac{\max(|\mathbf{F}_{svd}|)}{\max(|\mathbf{G}_{svd}|)} \times 0,8 \right)
+        \item \textbf{Skalasi Berbasis Nilai Singular (\textit{Scaling}):} Agar loading indikator sebanding dengan skor objek secara geometris, koordinat loading tiap komponen $\ell$ dikalikan dengan nilai singular komponen tersebut \citep{abdi2012}:
+        \begin{equation}\label{eq:skalasi_visual}
+            \mathbf{G}_{vis}^{(\ell)} = \mathbf{G}^{(\ell)} \times \delta_\ell, \qquad \delta_\ell = \sqrt{\lambda_\ell}
         \end{equation}
-        Faktor 0,8 digunakan untuk memastikan panah indikator tetap berada di dalam bingkai utama tanpa menutupi label wilayah.
+        di mana $\lambda_\ell$ adalah nilai eigen komponen ke-$\ell$ dari dekomposisi kompromi STATIS dan $\delta_\ell$ adalah nilai singularnya. Penskalaan ini menjamin varians koordinat loading visual pada tiap dimensi setara dengan nilai singular dimensi tersebut, sehingga panah indikator dan titik objek berada dalam ruang geometris yang dapat dibandingkan.
     \end{enumerate}
 \end{enumerate}
 
-\noindent \textbf{Rangkuman Dualitas Relasi Transisi:} Sebagai ringkasan teoretis, tabel berikut menyajikan simetri aljabar antara kedua skenario STATIS yang menjamin sifat barisentrik dalam visualisasi biplot:
+\noindent \textbf{Rangkuman Dualitas Relasi Transisi:} Sebagai ringkasan teoretis, tabel berikut menyajikan simetri aljabar antara kedua skenario STATIS yang menjamin sifat rata-rata terbobot dalam visualisasi biplot:
 
 \begin{table}[H]
     \centering

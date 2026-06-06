@@ -19,6 +19,14 @@ EXTERNAL_STYLESHEETS = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 external_scripts = [
     "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
 ]
+EMPTY_FIG = go.Figure(layout=go.Layout(
+    paper_bgcolor='rgba(0,0,0,0)',
+    plot_bgcolor='rgba(0,0,0,0)',
+    xaxis={'visible': False, 'showgrid': False, 'zeroline': False},
+    yaxis={'visible': False, 'showgrid': False, 'zeroline': False},
+    margin={'l': 0, 'r': 0, 't': 0, 'b': 0},
+    height=10
+))
 
 app = Dash(
     __name__,
@@ -148,7 +156,9 @@ def render_step(title, content):
 
 
 def render_diagnostic_formulas(n=None, df_k=None, r_sq=None, q_sq=None, kmo_val=None, kmo_str="", bart_chi=None, bart_p=None, bart_str=""):
-    
+    if kmo_val is None:
+        return html.Div()
+
     # --- KMO ---
     kmo_f1 = r"""
 $$
@@ -230,7 +240,9 @@ $$
     ])
 
 def render_statis_formulas(alpha_vals=None, years=None, w_c_slice=None, inter_rv=None, t1=None, t2=None):
-    
+    if alpha_vals is None:
+        return html.Div()
+
     # -- RV --
     rv_f1 = r"""
 $$
@@ -313,8 +325,7 @@ $$
 H_{ij} = \mathrm{tr}(\mathbf{W}_i \mathbf{D} \mathbf{W}_j \mathbf{D}), \qquad \mathbf{H}\mathbf{u} = \theta \mathbf{u}, \quad \alpha_k = \frac{u_{1k}}{\sum_{k'} u_{1k'}}
 $$
 """),
-                render_step(f"3. Substitution RV (Tahun {t_a} vs {t_b})", rv_f2),
-                render_step("4. Nilai RV", rv_f3),
+                render_step("3. Nilai RV", rv_f3),
             ], style=math_style)
         ], style={'marginBottom': '10px'}),
 
@@ -347,7 +358,9 @@ $$
     ])
 
 def render_cluster_formulas(moran_i=None, moran_exp=None, n=None, sum_w=None, sum_w_dev=None, sum_dev_sq=None):
-    
+    if moran_i is None:
+        return html.Div()
+
     m_f1 = r"""
 $$
 I = \frac{N}{\sum_i \sum_j w_{ij}} \frac{\sum_i \sum_j w_{ij} (x_i - \bar{x})(x_j - \bar{x})}{\sum_i (x_i - \bar{x})^2} 
@@ -846,8 +859,8 @@ def export_tables_latex(res):
         write_single_table(res.get(r'Nilai Eigen (\Lambda_c)'), "eigen", "Dekomposisi Nilai Eigen", "eigen")
         
         # 3. Matriks H (interstruktur) dan RV
-        write_single_table(res.get(r'Matriks Interstruktur Hilbert-Schmidt (\mathbf{H})'), "H_inter", "Matriks interstruktur $\mathbf{H}$ (tr$(\mathbf{W}_i\mathbf{W}_j)$)", "H_inter")
-        write_single_table(res.get(r'Matriks Koefisien RV (\mathbf{R}_{\mathrm{RV}})'), "rv", "Koefisien RV antar-tahun ($\mathbf{R}_{\mathrm{RV}}$)", "rv")
+        write_single_table(res.get(r'Matriks Interstruktur Hilbert-Schmidt (\mathbf{H})'), "H_inter", r"Matriks interstruktur $\mathbf{H}$ (tr$(\mathbf{W}_i\mathbf{W}_j)$)", "H_inter")
+        write_single_table(res.get(r'Matriks Koefisien RV (\mathbf{R}_{\mathrm{RV}})'), "rv", r"Koefisien RV antar-tahun ($\mathbf{R}_{\mathrm{RV}}$)", "rv")
         
         # 4. Loadings
         write_single_table(res.get(r'Loadings Kompromi (G_c)'), "loadings", "Loadings Kompromi", "loadings")
@@ -1974,6 +1987,16 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             value='scenario2',
             labelStyle={'display': 'block', 'marginBottom': '5px'}
         ),
+        html.P("Orientasi Sumbu Kompromi:", style={'marginTop': '12px', 'marginBottom': '4px', 'fontWeight': 'bold', 'color': '#546E7A', 'fontSize': '0.9rem'}),
+        dcc.Checklist(
+            id='statis-mirror-opts',
+            options=[
+                {'label': ' Balik arah PC1 (Mirror Sumbu Kompromi 1)', 'value': 'mirror_pc1'},
+                {'label': ' Balik arah PC2 (Mirror Sumbu Kompromi 2)', 'value': 'mirror_pc2'}
+            ],
+            value=[],
+            labelStyle={'display': 'block', 'marginBottom': '3px', 'fontSize': '0.85rem', 'color': '#37474F'}
+        ),
         html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'width': '100%', 'marginTop': '20px', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'}),
         html.Div(id='statis-error-msg', style={'color': 'red', 'marginTop': '10px'})
     ]),
@@ -2127,8 +2150,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
 
     # --- 3C. MATRIKS JARAK & PERBANDINGAN PCA VS STATIS ---
     html.Div(id='distance-comparison-section-container', style={'display': 'none'}, children=[
-        html.H5("Analisis Jarak & Perbedaan (PCA vs STATIS Intra)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#0288D1'}),
-        html.P("Perbandingan posisi objek atau variabel antara ruang PCA Dynamic Biplot (Unweighted) dan Skor Intra STATIS (Weighted) untuk melihat pengaruh pembobotan.", style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
+        html.H5("Analisis Dampak Pembobotan STATIS terhadap Skor Objek", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#0288D1'}),
+        html.P("Perbandingan posisi objek atau variabel antara ruang PCA (Unweighted) dan Skor Intra STATIS (Weighted). Selisih posisi mencerminkan dampak pembobotan STATIS, bukan jarak geometri dalam ruang bersama.", style={'textAlign': 'center', 'color': '#546E7A', 'marginBottom': '20px'}),
         html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
             html.Label("Pilih Tahun:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
             dcc.Dropdown(id='compare-year-dropdown', clearable=False, style={'width': '150px', 'marginRight': '20px'}),
@@ -2266,47 +2289,49 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("RUN CLUSTERING TAHUNAN", id='btn-run-trans', n_clicks=0, 
                             style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-map-t1', style={'height': '500px'})])
+            html.Div(id='trans-results-container', style={'display': 'none'}, children=[
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-map-t1', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-map-t2', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-map-t2', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-scatter-t1', style={'height': '500px'})])
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-scatter-t1', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-scatter-t2', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-scatter-t2', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', style={'marginTop': '15px'}, children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-pie-t1', style={'height': '400px'})])
+                html.Div(className='row', style={'marginTop': '15px'}, children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-pie-t1', style={'height': '400px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='trans-pie-t2', style={'height': '400px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='trans-pie-t2', style={'height': '400px'})])
+                html.Hr(),
+                html.H6("Matriks Transisi (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+                html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                    dcc.RadioItems(id='trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+                ]),
+                dcc.Loading(children=[
+                    dash_table.DataTable(id='trans-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+                ]),
+                html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                    html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                    dcc.Download(id="download-trans-tex")
                 ])
-            ]),
-            html.Hr(),
-            html.H6("Matriks Transisi (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
-                dcc.RadioItems(id='trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
-            ]),
-            dcc.Loading(children=[
-                dash_table.DataTable(id='trans-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
-            ]),
-            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
-                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
-                dcc.Download(id="download-trans-tex")
             ])
         ]),
 
@@ -2321,47 +2346,49 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("RUN CLUSTERING TERBOBOT", id='btn-run-weighted-trans', n_clicks=0, 
                             style={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t1', style={'height': '500px'})])
+            html.Div(id='weighted-trans-results-container', style={'display': 'none'}, children=[
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t1', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t2', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-map-t2', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t1', style={'height': '500px'})])
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-scatter-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t1', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t2', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-scatter-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-scatter-t2', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', style={'marginTop': '15px'}, children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t1', style={'height': '400px'})])
+                html.Div(className='row', style={'marginTop': '15px'}, children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t1', style={'height': '400px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-weighted-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t2', style={'height': '400px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-weighted-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='weighted-trans-pie-t2', style={'height': '400px'})])
+                html.Hr(),
+                html.H6("Matriks Transisi Terbobot (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
+                html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                    dcc.RadioItems(id='weighted-trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+                ]),
+                dcc.Loading(children=[
+                    dash_table.DataTable(id='weighted-trans-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+                ]),
+                html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                    html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-weighted-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                    dcc.Download(id="download-weighted-trans-tex")
                 ])
-            ]),
-            html.Hr(),
-            html.H6("Matriks Transisi Terbobot (Perpindahan Kabupaten/Kota)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#2E7D32'}),
-            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
-                dcc.RadioItems(id='weighted-trans-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
-            ]),
-            dcc.Loading(children=[
-                dash_table.DataTable(id='weighted-trans-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
-            ]),
-            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
-                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-weighted-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
-                dcc.Download(id="download-weighted-trans-tex")
             ])
         ]),
 
@@ -2378,47 +2405,49 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("RUN PERBANDINGAN", id='btn-run-biplot-statis-compare', n_clicks=0, 
                             style={'backgroundColor': '#D84315', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-map-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-biplot', style={'height': '500px'})])
+            html.Div(id='biplot-statis-compare-results-container', style={'display': 'none'}, children=[
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-map-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-biplot', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-statis', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-map-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-map-statis', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-scatter-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-biplot', style={'height': '500px'})])
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-scatter-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-biplot', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-scatter-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-statis', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-scatter-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-scatter-statis', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', style={'marginTop': '15px'}, children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-pie-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-biplot', style={'height': '400px'})])
+                html.Div(className='row', style={'marginTop': '15px'}, children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-pie-biplot', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-biplot', style={'height': '400px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-biplot-statis-compare-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-statis', style={'height': '400px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-biplot-statis-compare-pie-statis', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='biplot-statis-compare-pie-statis', style={'height': '400px'})])
+                html.Hr(),
+                html.H6("Matriks Tabulasi Silang (Biplot vs STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#D84315'}),
+                html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                    dcc.RadioItems(id='biplot-statis-compare-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+                ]),
+                dcc.Loading(children=[
+                    dash_table.DataTable(id='biplot-statis-compare-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+                ]),
+                html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                    html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-biplot-statis-compare-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                    dcc.Download(id="download-biplot-statis-compare-tex")
                 ])
-            ]),
-            html.Hr(),
-            html.H6("Matriks Tabulasi Silang (Biplot vs STATIS)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': '#D84315'}),
-            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
-                dcc.RadioItems(id='biplot-statis-compare-view-mode', options=[{'label': ' Tampilkan Jumlah', 'value': 'count'}, {'label': ' Tampilkan Nama Daerah', 'value': 'names'}], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
-            ]),
-            dcc.Loading(children=[
-                dash_table.DataTable(id='biplot-statis-compare-matrix-table', export_format='xlsx', style_table={'overflowX': 'auto'}, style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
-            ]),
-            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
-                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-biplot-statis-compare-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
-                dcc.Download(id="download-biplot-statis-compare-tex")
             ])
         ]),
 
@@ -2435,45 +2464,47 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                             style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 25px', 'cursor': 'pointer'})
             ]),
 
-            html.Div(className='row', children=[
-                # Kiri: Scatter Plot
-                html.Div(className='six columns', children=[
-                    html.H5("Peta Sebaran (Scatter Plot)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='cluster-scatter', style={'height': '800px'})])
+            html.Div(id='cluster-results-container', style={'display': 'none'}, children=[
+                html.Div(className='row', children=[
+                    # Kiri: Scatter Plot
+                    html.Div(className='six columns', children=[
+                        html.H5("Peta Sebaran (Scatter Plot)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='cluster-scatter', style={'height': '800px'})])
+                    ]),
+                    # Kanan: Pie Chart
+                    html.Div(className='six columns', children=[
+                        html.H5("Proporsi Klaster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '800px'})])
+                    ])
                 ]),
-                # Kanan: Pie Chart
-                html.Div(className='six columns', children=[
-                    html.H5("Proporsi Klaster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '800px'})])
-                ])
-            ]),
 
-            # --- [TAMBAHAN BARU: PETA SPASIAL] ---
-            html.Hr(style={'borderColor': '#E0E0E0', 'marginTop': '20px', 'marginBottom': '20px'}),
-            html.H5("Distribusi Geografis Klaster (Peta Wilayah)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-            dcc.Loading(type='cube', color=COLOR_ACCENT, children=[
-                dcc.Graph(id='cluster-map', style={'height': '500px'})
-            ]),
-            # -------------------------------------
+                # --- [TAMBAHAN BARU: PETA SPASIAL] ---
+                html.Hr(style={'borderColor': '#E0E0E0', 'marginTop': '20px', 'marginBottom': '20px'}),
+                html.H5("Distribusi Geografis Klaster (Peta Wilayah)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
+                dcc.Loading(type='cube', color=COLOR_ACCENT, children=[
+                    dcc.Graph(id='cluster-map', style={'height': '500px'})
+                ]),
+                # -------------------------------------
 
-            html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'}),
-            
-            # --- [NEW] Tabel Anggota Klaster ---
-            html.H6("Daftar Anggota per Kelompok (Cluster)", style={'textAlign': 'center', 'fontWeight': 'bold', 'marginTop': '30px', 'color': COLOR_ACCENT}),
-            dcc.Loading(children=[
-                dash_table.DataTable(
-                    id='cluster-member-table',
-                    export_format='xlsx',
-                    style_table={'overflowX': 'auto', 'marginTop': '10px'},
-                    style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'},
-                    style_cell={'textAlign': 'left', 'padding': '10px', 'fontFamily': 'sans-serif', 'whiteSpace': 'normal', 'height': 'auto'},
-                    style_data_conditional=[
-                        {'if': {'row_index': 'odd'}, 'backgroundColor': '#F5F5F5'}
-                    ]
-                )
-            ]),
+                html.Div(id='cluster-interpretation', style={'marginTop': '15px', 'padding': '15px', 'backgroundColor': '#E3F2FD', 'borderRadius': '5px', 'borderLeft': '5px solid #1565C0', 'fontStyle': 'italic', 'color': '#0D47A1'}),
 
-            dcc.Loading(children=[html.Div(id='formula-cluster-output', style={'marginTop': '20px'})])
+                # --- [NEW] Tabel Anggota Klaster ---
+                html.H6("Daftar Anggota per Kelompok (Cluster)", style={'textAlign': 'center', 'fontWeight': 'bold', 'marginTop': '30px', 'color': COLOR_ACCENT}),
+                dcc.Loading(children=[
+                    dash_table.DataTable(
+                        id='cluster-member-table',
+                        export_format='xlsx',
+                        style_table={'overflowX': 'auto', 'marginTop': '10px'},
+                        style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'},
+                        style_cell={'textAlign': 'left', 'padding': '10px', 'fontFamily': 'sans-serif', 'whiteSpace': 'normal', 'height': 'auto'},
+                        style_data_conditional=[
+                            {'if': {'row_index': 'odd'}, 'backgroundColor': '#F5F5F5'}
+                        ]
+                    )
+                ]),
+
+                dcc.Loading(children=[html.Div(id='formula-cluster-output', style={'marginTop': '20px'})])
+            ])
         ]),
 
         # --- [TAMBAHAN BARU] SECTION 8: BASELINE MATRIKS TRANSISI (IPM/UNDP) ---
@@ -2489,45 +2520,47 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                             style={'backgroundColor': '#E64A19', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
             
-            html.Div(id='ipm-disclaimer-text', style={'textAlign': 'center', 'marginBottom': '20px', 'fontStyle': 'italic', 'fontWeight': 'bold'}),
-            
-            html.Div(className='row', children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-ipm-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t1', style={'height': '500px'})])
+            html.Div(id='ipm-trans-results-container', style={'display': 'none'}, children=[
+                html.Div(id='ipm-disclaimer-text', style={'textAlign': 'center', 'marginBottom': '20px', 'fontStyle': 'italic', 'fontWeight': 'bold'}),
+
+                html.Div(className='row', children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-ipm-trans-map-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t1', style={'height': '500px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-ipm-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t2', style={'height': '500px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-ipm-trans-map-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-map-t2', style={'height': '500px'})])
-                ])
-            ]),
-            html.Div(className='row', style={'marginTop': '15px'}, children=[
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-ipm-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t1', style={'height': '400px'})])
+                html.Div(className='row', style={'marginTop': '15px'}, children=[
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-ipm-trans-pie-t1', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t1', style={'height': '400px'})])
+                    ]),
+                    html.Div(className='six columns', children=[
+                        html.H6(id='title-ipm-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
+                        dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t2', style={'height': '400px'})])
+                    ])
                 ]),
-                html.Div(className='six columns', children=[
-                    html.H6(id='title-ipm-trans-pie-t2', style={'textAlign': 'center', 'fontWeight': 'bold'}),
-                    dcc.Loading(children=[dcc.Graph(id='ipm-trans-pie-t2', style={'height': '400px'})])
+                html.Hr(),
+
+                html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
+                    dcc.RadioItems(id='ipm-trans-view-mode', options=[
+                        {'label': ' Tampilkan Jumlah', 'value': 'count'},
+                        {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
+                    ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
+                ]),
+
+                dcc.Loading(children=[
+                    dash_table.DataTable(id='ipm-trans-matrix-table', style_table={'overflowX': 'auto'},
+                                         style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'},
+                                         style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
+                ]),
+                html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
+                    html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-ipm-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
+                    dcc.Download(id="download-ipm-trans-tex")
                 ])
-            ]),
-            html.Hr(),
-            
-            html.Div(style={'display': 'flex', 'justifyContent': 'center', 'marginBottom': '10px'}, children=[
-                dcc.RadioItems(id='ipm-trans-view-mode', options=[
-                    {'label': ' Tampilkan Jumlah', 'value': 'count'}, 
-                    {'label': ' Tampilkan Nama Daerah', 'value': 'names'}
-                ], value='count', inline=True, inputStyle={"marginRight": "5px", "marginLeft": "15px"})
-            ]),
-            
-            dcc.Loading(children=[
-                dash_table.DataTable(id='ipm-trans-matrix-table', style_table={'overflowX': 'auto'}, 
-                                     style_header={'backgroundColor': '#37474F', 'color': 'white', 'fontWeight': 'bold'}, 
-                                     style_cell={'textAlign': 'center', 'padding': '8px', 'fontFamily': 'sans-serif'})
-            ]),
-            html.Div(style={'textAlign': 'center', 'marginTop': '10px'}, children=[
-                html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-ipm-trans-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
-                dcc.Download(id="download-ipm-trans-tex")
             ])
         ]),
 
@@ -2546,6 +2579,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                             style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
             
+            html.Div(id='cross-results-container', style={'display': 'none'}, children=[
             # Maps Row
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
@@ -2587,6 +2621,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-cross-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-cross-tex")
             ])
+            ])  # end cross-results-container
         ]),
 
         # --- SECTION: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
@@ -2610,7 +2645,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-vs-ipm', n_clicks=0, 
                             style={'backgroundColor': '#004D40', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            
+
+            html.Div(id='statis-vs-ipm-results-container', style={'display': 'none'}, children=[
             # Maps Row
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
@@ -2652,6 +2688,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-statis-vs-ipm-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-statis-vs-ipm-tex")
             ])
+            ])  # end statis-vs-ipm-results-container
         ]),
 
         # --- SECTION 10: PERBANDINGAN HASIL CLUSTER KOMPROMI STATIS VS IPM RATA-RATA ---
@@ -2675,7 +2712,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-ipm-avg', n_clicks=0, 
                             style={'backgroundColor': '#01579B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            
+
+            html.Div(id='statis-ipm-avg-results-container', style={'display': 'none'}, children=[
             # Maps Row
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
@@ -2717,6 +2755,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-statis-ipm-avg-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-statis-ipm-avg-tex")
             ])
+            ])  # end statis-ipm-avg-results-container
         ]),
 
         # --- SECTION 11: PERBANDINGAN CLUSTER BIPLOT VS CLUSTER KOMPROMI STATIS ---
@@ -2740,7 +2779,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("BANDINGKAN CLUSTER", id='btn-run-biplot-statis', n_clicks=0, 
                             style={'backgroundColor': '#5D4037', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            
+
+            html.Div(id='biplot-vs-statis-results-container', style={'display': 'none'}, children=[
             # Maps Row
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
@@ -2794,6 +2834,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-biplot-statis-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-biplot-statis-tex")
             ])
+            ])  # end biplot-vs-statis-results-container
         ]),
 
         # --- SECTION: PERBANDINGAN CLUSTER KOMPROMI STATIS VS CLUSTER STATIS TAHUNAN ---
@@ -2817,7 +2858,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("BANDINGKAN CLUSTER", id='btn-run-compromise-statis-vs-statis', n_clicks=0, 
                             style={'backgroundColor': '#33691E', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
             ]),
-            
+
+            html.Div(id='compromise-statis-vs-statis-results-container', style={'display': 'none'}, children=[
             # Maps Row
             html.Div(className='row', children=[
                 html.Div(className='six columns', children=[
@@ -2871,6 +2913,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 html.Button("Unduh Tabel sebagai .TEX", id="btn-dl-compromise-statis-vs-statis-tex", style={'backgroundColor': '#607D8B', 'color': 'white', 'border': 'none', 'borderRadius': '3px', 'cursor': 'pointer', 'height': '32px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 15px', 'fontSize': '12px'}),
                 dcc.Download(id="download-compromise-statis-vs-statis-tex")
             ])
+            ])  # end compromise-statis-vs-statis-results-container
         ])
     ])
 ])
@@ -3140,13 +3183,16 @@ def cb_sync_new_dropdowns(data):
 
 # 3. Dynamic PCA Calculation
 @app.callback(
-    Output('pca-results-store', 'data'), 
+    Output('pca-results-store', 'data'),
     Input('btn-run-statis', 'n_clicks'),
-    State('variable-dropdown-final', 'value'), 
-    State('global-data-store', 'data')
+    State('variable-dropdown-final', 'value'),
+    State('global-data-store', 'data'),
+    State('weight-var-statis-dropdown', 'value')
 )
-def cb_pca_calc(n_clicks, vars, data):
+def cb_pca_calc(n_clicks, vars, data, weight_var):
     if not n_clicks or not vars or not data: raise exceptions.PreventUpdate
+    analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
+    if not analysis_vars: raise exceptions.PreventUpdate
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
     pca = PCA(n_components=2)
     scaler = StandardScaler()
@@ -3154,7 +3200,7 @@ def cb_pca_calc(n_clicks, vars, data):
     for y in data['years']:
         df_y = df[df['Tahun'] == y]
         if df_y.empty: continue
-        X = df_y[vars]
+        X = df_y[analysis_vars]
         coords = pca.fit_transform(scaler.fit_transform(X))
         d_sc = df_y[['Kabupaten/Kota', 'Provinsi', 'Tahun']].copy()
         d_sc['PC1'], d_sc['PC2'] = coords[:,0], coords[:,1]
@@ -3166,7 +3212,7 @@ def cb_pca_calc(n_clicks, vars, data):
         except Exception:
             sv = np.array([1.0, 1.0])
         d_load['SV1'], d_load['SV2'] = sv[0], sv[1]
-        d_load['features'], d_load['Tahun'] = vars, y
+        d_load['features'], d_load['Tahun'] = analysis_vars, y
         load_list.append(d_load)
     return {'pc_scores': pd.concat(pc_list).to_json(orient='split'), 'loadings': pd.concat(load_list).to_json(orient='split')}
 
@@ -3191,9 +3237,10 @@ def cb_weight_var_note(weight_var):
     State('global-data-store', 'data'),
     State('statis-scenario', 'value'),
     State('weight-var-statis-dropdown', 'value'),
+    State('statis-mirror-opts', 'value'),
     prevent_initial_call=True
 )
-def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var):
+def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var, mirror_opts):
     if not n_clicks or not vars or not contents or not global_data:
         raise exceptions.PreventUpdate
     # Keluarkan variabel bobot dari variabel analisis
@@ -3203,7 +3250,30 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var):
     try:
         print("--- [STATIS_CORE] MEMULAI PENGHITUNGAN ---")
         res = run_statis_core(contents, analysis_vars, global_data['sheet_names'], scenario=scenario, weight_var=weight_var)
-        
+
+        # --- Terapkan Mirror PC1/PC2 jika diminta ---
+        mirror_opts = mirror_opts or []
+        flip1 = -1.0 if 'mirror_pc1' in mirror_opts else 1.0
+        flip2 = -1.0 if 'mirror_pc2' in mirror_opts else 1.0
+        if flip1 != 1.0 or flip2 != 1.0:
+            def _flip(arr2d):
+                a = np.array(arr2d, dtype=float)
+                a[:, 0] *= flip1; a[:, 1] *= flip2
+                return a.tolist()
+            res['scores'] = _flip(res['scores'])
+            res['loadings'] = _flip(res['loadings'])
+            if 'scores_svd' in res: res['scores_svd'] = _flip(res['scores_svd'])
+            if 'loadings_svd' in res: res['loadings_svd'] = _flip(res['loadings_svd'])
+            for yr in res.get('per_year_coords', {}):
+                res['per_year_coords'][yr] = _flip(res['per_year_coords'][yr])
+            for yr in res.get('sheet_names', []):
+                gk = fr"Loading Intra \mathbf{{G}}_{{{yr}}}"
+                if gk in res:
+                    for rec in res[gk]:
+                        if 'PC1' in rec: rec['PC1'] = float(rec['PC1']) * flip1
+                        if 'PC2' in rec: rec['PC2'] = float(rec['PC2']) * flip2
+        res['mirror_opts'] = mirror_opts
+
         # --- [TAMBAHAN] Injeksi Metadata Provinsi & Index untuk Visualisasi ---
         try:
             df_full = pd.read_json(io.StringIO(global_data['df_json']), orient='split')
@@ -3371,7 +3441,7 @@ def cb_diag_math(n_clicks, data_store, vars, weight_var):
     Input('visual-scaling-opts', 'value'), Input('vector-selector-final', 'value')
 )
 def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, traj_sel, year_2d, load_scope, vis_opts, selected_vectors_to_show):
-    if not pca_data or not years_filter: return {}, {}, {}, [], []
+    if not pca_data or not years_filter: return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, [], []
     
     norm_score = vis_opts == 'norm_score'
     scale_load = vis_opts == 'scale_load'
@@ -3488,7 +3558,7 @@ def cb_update_plots(pca_data, years_filter, mirror_years, base_type, base_name, 
     State('global-data-store', 'data')
 )
 def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, base_name, traj_sel, year_2d, load_scope, vis_opts, selected_vectors_to_show, global_data):
-    if not statis_data or not years_filter or not global_data: return {}, {}, {}, [], []
+    if not statis_data or not years_filter or not global_data: return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, [], []
     
     norm_score = vis_opts == 'norm_score'
     scale_load = vis_opts == 'scale_load'
@@ -3517,7 +3587,7 @@ def cb_update_statis_plots(statis_data, years_filter, mirror_years, base_type, b
             df_gk = df_gk.rename(columns={'Variabel': 'features'})
             load_list.append(df_gk)
             
-    if not pc_list or not load_list: return {}, {}, {}, [], []
+    if not pc_list or not load_list: return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, [], []
     
     df_pc = pd.concat(pc_list, ignore_index=True)
     df_load = pd.concat(load_list, ignore_index=True)
@@ -3733,14 +3803,14 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
                 dist = np.sqrt((r_u['PC1'] - r_w['PC1'])**2 + (r_u['PC2'] - r_w['PC2'])**2)
                 table_data.append({
                     "Nama": name, "Tahun": compare_year,
-                    "PC1 (Unweighted)": round(r_u['PC1'], 4), "PC2 (Unweighted)": round(r_u['PC2'], 4),
+                    "PC1 (PCA)": round(r_u['PC1'], 4), "PC2 (PCA)": round(r_u['PC2'], 4),
                     "PC1 (STATIS)": round(r_w['PC1'], 4), "PC2 (STATIS)": round(r_w['PC2'], 4),
-                    "Jarak Euclidean": round(dist, 4)
+                    "Dampak Pembobotan": round(dist, 4)
                 })
     else:
         df_u_sub = df_load_u_final[df_load_u_final['Tahun'] == int(compare_year)]
         df_w_sub = df_load_w_final[df_load_w_final['Tahun'] == int(compare_year)]
-        
+
         for _, r_u in df_u_sub.iterrows():
             name = r_u['features']
             r_w = df_w_sub[df_w_sub['features'] == name]
@@ -3749,9 +3819,9 @@ def cb_compare_distance(compare_year, data_type, pca_res, statis_res, years_filt
                 dist = np.sqrt((r_u['PC1'] - r_w['PC1'])**2 + (r_u['PC2'] - r_w['PC2'])**2)
                 table_data.append({
                     "Nama": name, "Tahun": compare_year,
-                    "PC1 (Unweighted)": round(r_u['PC1'], 4), "PC2 (Unweighted)": round(r_u['PC2'], 4),
+                    "PC1 (PCA)": round(r_u['PC1'], 4), "PC2 (PCA)": round(r_u['PC2'], 4),
                     "PC1 (STATIS)": round(r_w['PC1'], 4), "PC2 (STATIS)": round(r_w['PC2'], 4),
-                    "Jarak Euclidean": round(dist, 4)
+                    "Dampak Pembobotan": round(dist, 4)
                 })
                 
     cols = [{"name": i, "id": i} for i in pd.DataFrame(table_data).columns] if table_data else []
@@ -3922,7 +3992,7 @@ def cb_statis_entity_dist(name, entity_type, statis_data, years_filter):
 def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, base_name):
     # --- 1. SAFE EXIT: Jika data utama (res) belum ada ---
     if not res or not isinstance(res, dict):
-        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], "Silakan RUN ANALISIS dahulu.", render_statis_formulas()
+        return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, [], [], [], "Silakan RUN ANALISIS dahulu.", html.Div()
     
     # --- 2. SAFE PREPARATION: Pastikan opsi dan data dasar tersedia ---
     norm_score = vis_opts == 'norm_score'
@@ -3943,7 +4013,7 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
         import traceback
         err_msg = f"Gagal memproses visualisasi: {str(e)} \n {traceback.format_exc()}"
         print(err_msg)
-        return {}, {}, {}, {}, {}, {}, {}, {}, [], [], [], f"❌ Error Visualisasi: {str(e)}", render_statis_formulas()
+        return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, [], [], [], f"❌ Error Visualisasi: {str(e)}", html.Div()
     
     # Use compromise singular values (sqrt of eigenvalues) per Abdi et al. (2012)
     try:
@@ -4411,8 +4481,8 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
     Input('btn-run-perm', 'n_clicks'), State('perm-n-input', 'value'), State('statis-core-store', 'data')
 )
 def cb_run_perm(n_clicks, n_perm, res):
-    if not n_clicks or not res or not isinstance(res, dict): return {}, "Tunggu data STATIS...", ""
-    if res.get("ERROR_STATUS"): return {}, f"Gagal: {res.get('MESSAGE')}", ""
+    if not n_clicks or not res or not isinstance(res, dict): return EMPTY_FIG, "Tunggu data STATIS...", ""
+    if res.get("ERROR_STATUS"): return EMPTY_FIG, f"Gagal: {res.get('MESSAGE')}", ""
     
     try:
         X_matrices = [np.array(m) for m in res['X_matrices']]
@@ -4434,7 +4504,7 @@ def cb_run_perm(n_clicks, n_perm, res):
         
         return fig, f"P-value = {p_val}. Interpretasi: {interp}", form_ui
     except Exception as e:
-        return {}, f"Error Permutasi: {str(e)}", ""
+        return EMPTY_FIG, f"Error Permutasi: {str(e)}", ""
 
 # --- FALLBACK RETURN UNTUK ERROR DI PERMUTASI ---
 @app.callback(
@@ -4446,7 +4516,7 @@ def cb_run_perm(n_clicks, n_perm, res):
 )
 def cb_handle_perm_error(res):
     if res and isinstance(res, dict) and res.get("ERROR_STATUS"):
-        return {}, f"Gagal simulasi: {res.get('MESSAGE')}", ""
+        return EMPTY_FIG, f"Gagal simulasi: {res.get('MESSAGE')}", ""
     raise exceptions.PreventUpdate
 
 
@@ -4476,6 +4546,7 @@ def cb_toggle_weight_vars(mode):
     Output('biplot-vs-statis-pie-biplot', 'figure'),
     Output('title-biplot-vs-statis-pie-statis', 'children'),
     Output('biplot-vs-statis-pie-statis', 'figure'),
+    Output('biplot-vs-statis-results-container', 'style'),
     Input('btn-run-biplot-statis', 'n_clicks'),
     State('biplot-vs-statis-year', 'value'),
     State('biplot-vs-statis-k', 'value'),
@@ -4485,7 +4556,7 @@ def cb_toggle_weight_vars(mode):
 )
 def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
     if not n or not statis_data or not global_data or not year:
-        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     try:
         from sklearn.cluster import KMeans
@@ -4558,16 +4629,16 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
             'Statis (Tahunan)': labels_static
         })
         
-        ct = pd.crosstab(df_comp['Statis (Tahunan)'], df_comp['Biplot (Kompromi)'])
-        
+        ct = pd.crosstab(df_comp['Biplot (Kompromi)'], df_comp['Statis (Tahunan)'])
+
         # Sort CT to be consistent (Lvl 1 to Lvl K)
         ct = ct.sort_index(ascending=True).sort_index(axis=1, ascending=True)
- 
+
         if mode == 'names':
             res_df = ct.copy().astype(object)
             for r in ct.index:
                 for c in ct.columns:
-                    names = df_comp[(df_comp['Statis (Tahunan)'] == r) & (df_comp['Biplot (Kompromi)'] == c)]['Kabupaten/Kota'].tolist()
+                    names = df_comp[(df_comp['Biplot (Kompromi)'] == r) & (df_comp['Statis (Tahunan)'] == c)]['Kabupaten/Kota'].tolist()
                     res_df.loc[r, c] = ", ".join(names) if names else "-"
             res_df = res_df.reset_index()
         else:
@@ -4647,11 +4718,12 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
             f"Scatter Plot Klaster Biplot ({year})", fig_scatter_biplot,
             "Scatter Plot Klaster Kompromi STATIS", fig_scatter_statis,
             f"Proporsi Klaster Biplot ({year})", fig_pie_biplot,
-            "Proporsi Klaster Kompromi STATIS", fig_pie_statis
+            "Proporsi Klaster Kompromi STATIS", fig_pie_statis,
+            {'display': 'block'}
         )
     except Exception as e:
         print(f"Error Section 10: {e}")
-        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
 
 # 11. Callback Section 11: Statis vs IPM Rata-rata
 @app.callback(
@@ -4665,6 +4737,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
     Output('statis-ipm-avg-pie-statis', 'figure'),
     Output('title-statis-ipm-avg-pie-ipm', 'children'),
     Output('statis-ipm-avg-pie-ipm', 'figure'),
+    Output('statis-ipm-avg-results-container', 'style'),
     Input('btn-run-statis-ipm-avg', 'n_clicks'),
     State('statis-vs-ipm-avg-k', 'value'),
     State('statis-vs-ipm-avg-view-mode', 'value'),
@@ -4674,7 +4747,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
 )
 def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     if not n or not statis_data or not global_data:
-        return [], [], "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
         
     try:
         from sklearn.cluster import KMeans
@@ -4713,7 +4786,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
                 break
         
         if not ipm_col:
-            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}], "", {}, "", {}, "", {}, "", {}
+            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
             
         df_year_ipm = df_all[df_all['Tahun'].astype(str) == str(year)].set_index('Kabupaten/Kota').reindex(obs_labels)
         ipm_vals = df_year_ipm[ipm_col].fillna(df_year_ipm[ipm_col].mean()).values
@@ -4736,16 +4809,16 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
         order = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
         df_comp['IPM_Average'] = pd.Categorical(df_comp['IPM_Average'], categories=[o for o in order if o in df_comp['IPM_Average'].unique()], ordered=True)
         
-        ct = pd.crosstab(df_comp['IPM_Average'], df_comp['STATIS_Compromise'])
-        
-        # Sort CT by Klaster Level
-        ct = ct.sort_index(axis=1, ascending=True)
-        
+        ct = pd.crosstab(df_comp['STATIS_Compromise'], df_comp['IPM_Average'])
+
+        # Sort CT by Klaster Level (rows = STATIS Compromise, cols = IPM)
+        ct = ct.sort_index(axis=0, ascending=True)
+
         if mode == 'names':
             res_df = ct.copy().astype(object)
             for r in ct.index:
                 for c in ct.columns:
-                    names = df_comp[(df_comp['IPM_Average'] == r) & (df_comp['STATIS_Compromise'] == c)]['Kabupaten/Kota'].tolist()
+                    names = df_comp[(df_comp['STATIS_Compromise'] == r) & (df_comp['IPM_Average'] == c)]['Kabupaten/Kota'].tolist()
                     res_df.loc[r, c] = ", ".join(names) if names else "-"
             res_df = res_df.reset_index()
         else:
@@ -4804,11 +4877,12 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
             "Peta Klaster Kompromi STATIS", fig_map_statis,
             "Peta Kategori IPM (UNDP)", fig_map_ipm,
             "Proporsi Klaster Kompromi STATIS", fig_pie_statis,
-            "Proporsi Kategori IPM (UNDP)", fig_pie_ipm
+            "Proporsi Kategori IPM (UNDP)", fig_pie_ipm,
+            {'display': 'block'}
         )
     except Exception as e:
         print(f"Error Section 11: {e}")
-        return [], [], "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
 
 
 # --- CALLBACK: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
@@ -4823,6 +4897,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     Output('statis-vs-ipm-pie-statis', 'figure'),
     Output('title-statis-vs-ipm-pie-ipm', 'children'),
     Output('statis-vs-ipm-pie-ipm', 'figure'),
+    Output('statis-vs-ipm-results-container', 'style'),
     Input('btn-run-statis-vs-ipm', 'n_clicks'),
     Input('statis-vs-ipm-view-mode', 'value'),
     State('statis-vs-ipm-year', 'value'),
@@ -4831,9 +4906,9 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     State('statis-core-store', 'data')
 )
 def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_store):
-    if not n_clicks or not sel_year or not data_store or not statis_store: 
-        return [], [], "", {}, "", {}, "", {}, "", {}
-    
+    if not n_clicks or not sel_year or not data_store or not statis_store:
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+
     try:
         from sklearn.cluster import KMeans
         # 1. Ambil IPM kategories dari data asli
@@ -4850,9 +4925,9 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
         # 2. Ambil label K-Means STATIS Tahunan dari statis store
         obs_labels = statis_store['obs_labels']
         str_year = str(sel_year)
-        if str_year not in statis_store['per_year_coords']: 
-            return [], [], "", {}, "", {}, "", {}, "", {}
-        
+        if str_year not in statis_store['per_year_coords']:
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+
         coords = np.array(statis_store['per_year_coords'][str_year])
         km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
         lbls = km_curr.fit_predict(coords)
@@ -4942,11 +5017,12 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
             f"Peta Klaster STATIS ({sel_year})", fig_map_statis,
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
             f"Proporsi Klaster STATIS ({sel_year})", fig_pie_statis,
-            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
+            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm,
+            {'display': 'block'}
         )
     except Exception as e:
         print(f"Error cb_run_statis_vs_ipm: {e}")
-        return [], [], "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
 
 
 @app.callback(
@@ -4988,6 +5064,7 @@ def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
     Output('compromise-statis-vs-statis-pie-comp', 'figure'),
     Output('title-compromise-statis-vs-statis-pie-statis', 'children'),
     Output('compromise-statis-vs-statis-pie-statis', 'figure'),
+    Output('compromise-statis-vs-statis-results-container', 'style'),
     Input('btn-run-compromise-statis-vs-statis', 'n_clicks'),
     Input('compromise-statis-vs-statis-view-mode', 'value'),
     State('compromise-statis-vs-statis-year', 'value'),
@@ -4996,7 +5073,7 @@ def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
 )
 def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data):
     if not n_clicks or not statis_data or not year:
-        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     try:
         from sklearn.cluster import KMeans
@@ -5030,7 +5107,7 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         # B. Get STATIS Tahunan Klaster (for selected year)
         str_year = str(year)
         if str_year not in coords_dict:
-            return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
         
         X_year = np.array(coords_dict[str_year])
         km_yr = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_year)
@@ -5052,14 +5129,14 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         df_comp['Kompromi'] = pd.Categorical(df_comp['Kompromi'], categories=target_clusters, ordered=True)
         df_comp['Tahunan'] = pd.Categorical(df_comp['Tahunan'], categories=target_clusters, ordered=True)
         
-        ct = pd.crosstab(df_comp['Tahunan'], df_comp['Kompromi'])
+        ct = pd.crosstab(df_comp['Kompromi'], df_comp['Tahunan'])
         ct = ct.reindex(index=target_clusters, fill_value=0).reindex(columns=target_clusters, fill_value=0)
-        
+
         if view_mode == 'names':
             res_df = ct.copy().astype(object)
             for r in ct.index:
                 for c in ct.columns:
-                    names = df_comp[(df_comp['Tahunan'] == r) & (df_comp['Kompromi'] == c)]['Kabupaten/Kota'].tolist()
+                    names = df_comp[(df_comp['Kompromi'] == r) & (df_comp['Tahunan'] == c)]['Kabupaten/Kota'].tolist()
                     res_df.loc[r, c] = ", ".join(names) if names else "-"
             res_df = res_df.reset_index()
         else:
@@ -5129,11 +5206,12 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
             "Scatter Plot Klaster Kompromi STATIS", fig_scatter_comp,
             f"Scatter Plot Klaster STATIS Tahunan ({year})", fig_scatter_statis,
             "Proporsi Klaster Kompromi STATIS", fig_pie_comp,
-            f"Proporsi Klaster STATIS Tahunan ({year})", fig_pie_statis
+            f"Proporsi Klaster STATIS Tahunan ({year})", fig_pie_statis,
+            {'display': 'block'}
         )
     except Exception as e:
         print(f"Error cb_run_compromise_statis_vs_statis: {e}")
-        return [], [], "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
 
 
 @app.callback(
@@ -5648,9 +5726,9 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
     State('statis-core-store', 'data')
 )
 def cb_eval_cluster(eval_year, res):
-    if not eval_year or not res: return {}, {}
+    if not eval_year or not res: return EMPTY_FIG, EMPTY_FIG
     if str(eval_year) not in res.get('per_year_coords', {}):
-        return {}, {}
+        return EMPTY_FIG, EMPTY_FIG
     coords = np.array(res['per_year_coords'][str(eval_year)])
     obs_labels = res['obs_labels']
     
@@ -5924,10 +6002,11 @@ def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
     Output('trans-pie-t1', 'figure'),
     Output('title-trans-pie-t2', 'children'),
     Output('trans-pie-t2', 'figure'),
+    Output('trans-results-container', 'style'),
     Input('statis-trans-store', 'data')
 )
 def cb_render_trans_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+    if not data: return "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
@@ -5994,7 +6073,8 @@ def cb_render_trans_plots(data):
         f"Biplot Klaster ({t1_year})", fig_scatter_t1,
         f"Biplot Klaster ({t2_year})", fig_scatter_t2,
         f"Proporsi Klaster ({t1_year})", fig_pie_t1,
-        f"Proporsi Klaster ({t2_year})", fig_pie_t2
+        f"Proporsi Klaster ({t2_year})", fig_pie_t2,
+        {'display': 'block'}
     )
 
 # 10C. RENDERING: TABLE (INSTANT)
@@ -6033,10 +6113,11 @@ def cb_render_trans_table(data, view_mode):
     Output('weighted-trans-pie-t1', 'figure'),
     Output('title-weighted-trans-pie-t2', 'children'),
     Output('weighted-trans-pie-t2', 'figure'),
+    Output('weighted-trans-results-container', 'style'),
     Input('weighted-trans-store', 'data')
 )
 def cb_render_weighted_trans_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+    if not data: return "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     str_labels_t1, str_labels_t2 = data['str_labels_t1'], data['str_labels_t2']
@@ -6103,7 +6184,8 @@ def cb_render_weighted_trans_plots(data):
         f"Biplot Klaster Terbobot ({t1_year})", fig_scatter_t1,
         f"Biplot Klaster Terbobot ({t2_year})", fig_scatter_t2,
         f"Proporsi Klaster Terbobot ({t1_year})", fig_pie_t1,
-        f"Proporsi Klaster Terbobot ({t2_year})", fig_pie_t2
+        f"Proporsi Klaster Terbobot ({t2_year})", fig_pie_t2,
+        {'display': 'block'}
     )
 
 
@@ -6142,10 +6224,11 @@ def cb_render_weighted_trans_table(data, view_mode):
     Output('biplot-statis-compare-pie-biplot', 'figure'),
     Output('title-biplot-statis-compare-pie-statis', 'children'),
     Output('biplot-statis-compare-pie-statis', 'figure'),
+    Output('biplot-statis-compare-results-container', 'style'),
     Input('biplot-statis-compare-store', 'data')
 )
 def cb_render_biplot_statis_compare_plots(data):
-    if not data: return "", {}, "", {}, "", {}, "", {}, "", {}, "", {}
+    if not data: return "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     t1_year, t2_year = data['t1_year'], data['t2_year']
     actual_year = data['actual_year']
@@ -6213,7 +6296,8 @@ def cb_render_biplot_statis_compare_plots(data):
         f"Klaster {t1_year} ({actual_year})", fig_scatter_t1,
         f"Klaster {t2_year} ({actual_year})", fig_scatter_t2,
         f"Proporsi Klaster {t1_year} ({actual_year})", fig_pie_t1,
-        f"Proporsi Klaster {t2_year} ({actual_year})", fig_pie_t2
+        f"Proporsi Klaster {t2_year} ({actual_year})", fig_pie_t2,
+        {'display': 'block'}
     )
 
 # 10C-4. RENDERING PERBANDINGAN: TABLE (INSTANT)
@@ -6250,13 +6334,14 @@ def cb_render_biplot_statis_compare_table(data, view_mode):
     Output('formula-cluster-output', 'children'),
     Output('cluster-member-table', 'data'),
     Output('cluster-member-table', 'columns'),
+    Output('cluster-results-container', 'style'),
     Input('btn-run-cluster', 'n_clicks'),
     State('cluster-k-input', 'value'),
     State('statis-core-store', 'data')
 )
 def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
-    if not n_clicks or not res: 
-        return {}, {}, {}, "Silakan klik tombol 'RUN CLUSTERING'.", render_cluster_formulas(), [], []
+    if not n_clicks or not res:
+        return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, "", html.Div(), [], [], {'display': 'none'}
     
     obs_labels = res['obs_labels']
     coords_dict = res['per_year_coords']
@@ -6280,26 +6365,27 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     labels = kmeans.fit_predict(X_traj)
     
     # --- [KEBARUAN] RANKING CLUSTER TRAJEKTORI BERDASARKAN PC1 KOMPROMI ---
+    # Mirror sudah diterapkan di statis-core-store oleh cb_statis_calc, jadi ranking langsung.
     scores_comp = np.array(res['scores'])
-    cluster_pc1_means = []
     unique_lbls = sorted(list(set(labels)))
-    for cl in unique_lbls:
-        cluster_pc1_means.append(np.mean(scores_comp[[i for i, l in enumerate(labels) if l == cl], 0]))
-    
+
+    cluster_pc1_means = [
+        np.mean(scores_comp[[i for i, l in enumerate(labels) if l == cl], 0])
+        for cl in unique_lbls
+    ]
     sorted_indices = np.argsort(cluster_pc1_means)
     rank_map = {old: new for new, old in enumerate(sorted_indices)}
     name_map = {0: "Klaster 1 (Rendah)", 1: "Klaster 2 (Sedang)", 2: "Klaster 3 (Tinggi)"}
     str_labels = [name_map.get(rank_map[l], f"Level {rank_map[l]+1}") for l in labels]
 
     # --- 2. Scatter Plot ---
-    scores_comp = np.array(res['scores'])
     fig_scatter = px.scatter(
         x=scores_comp[:, 0], y=scores_comp[:, 1], color=str_labels,
         text=obs_labels, title="Klaster pada Ruang Kompromi",
         color_discrete_map=CLUSTER_COLOR_MAP,
         category_orders={"color": LEVEL_ORDER}
     )
-    fig_scatter.update_traces(marker=dict(size=8), textposition='top center')
+    fig_scatter.update_traces(marker=dict(size=8), textfont=dict(size=8), textposition='top center')
     fig_scatter.update_layout(template='plotly_white', width=800, height=800)
     import os
     os.makedirs("../output_app", exist_ok=True)
@@ -6443,7 +6529,7 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     else:
         math_ui = render_cluster_formulas()
 
-    return fig_scatter, fig_pie, fig_map, interp_text, math_ui, member_data, member_cols
+    return fig_scatter, fig_pie, fig_map, interp_text, math_ui, member_data, member_cols, {'display': 'block'}
 
 # 12. IPM MATRIX CALLBACK (UNDP CATEGORIES)
 @app.callback(
@@ -6458,30 +6544,31 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     Output('ipm-trans-pie-t1', 'figure'),
     Output('title-ipm-trans-pie-t2', 'children'),
     Output('ipm-trans-pie-t2', 'figure'),
+    Output('ipm-trans-results-container', 'style'),
     Input('btn-run-ipm-trans', 'n_clicks'),
     Input('ipm-trans-view-mode', 'value'),
     State('ipm-trans-year-dropdown', 'value'),
     State('global-data-store', 'data')
 )
 def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
-    if not n_clicks or not t2_year or not data: return "", [], [], "", {}, "", {}, "", {}, "", {}
-    
+    if not n_clicks or not t2_year or not data: return "", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
     years = data['years']
-    
+
     if 'IPM' not in df.columns:
-        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], [], "", {}, "", {}, "", {}, "", {}
-        
+        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+
     t2_idx = years.index(t2_year)
-    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], [], "", {}, "", {}, "", {}, "", {}
+    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     t1_year = years[t2_idx - 1]
-    
+
     # Filter Data untuk T1 dan T2
     df_t1 = df[df['Tahun'] == t1_year].set_index('Kabupaten/Kota')
     df_t2 = df[df['Tahun'] == t2_year].set_index('Kabupaten/Kota')
-    
+
     common_kabs = df_t1.index.intersection(df_t2.index)
-    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], [], "", {}, "", {}, "", {}, "", {}
+    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     df_t1 = df_t1.loc[common_kabs]
     df_t2 = df_t2.loc[common_kabs]
@@ -6612,7 +6699,8 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
         f"Peta Sebaran IPM ({t1_year})", fig_map_t1,
         f"Peta Sebaran IPM ({t2_year})", fig_map_t2,
         f"Proporsi Kategori IPM ({t1_year})", fig_pie_t1,
-        f"Proporsi Kategori IPM ({t2_year})", fig_pie_t2
+        f"Proporsi Kategori IPM ({t2_year})", fig_pie_t2,
+        {'display': 'block'}
     )
 
 
@@ -6628,6 +6716,7 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     Output('cross-pie-biplot', 'figure'),
     Output('title-cross-pie-ipm', 'children'),
     Output('cross-pie-ipm', 'figure'),
+    Output('cross-results-container', 'style'),
     Input('btn-run-cross', 'n_clicks'),
     Input('cross-view-mode', 'value'),
     State('cross-year-dropdown', 'value'),
@@ -6636,15 +6725,15 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     State('statis-core-store', 'data')
 )
 def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store):
-    if not n_clicks or not sel_year or not data_store or not statis_store: 
-        return [], [], "", {}, "", {}, "", {}, "", {}
+    if not n_clicks or not sel_year or not data_store or not statis_store:
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
     
     try:
         # 1. Ambil IPM kategories dari data asli
         df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
-        if 'IPM' not in df.columns: 
-            return [], [], "", {}, "", {}, "", {}, "", {}
-        
+        if 'IPM' not in df.columns:
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+
         df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
         def categorize_ipm(val):
             if val >= 80: return "Sangat Tinggi"
@@ -6652,12 +6741,12 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
             elif val >= 55: return "Sedang"
             else: return "Rendah"
         df_yr['IPM_Cat'] = df_yr['IPM'].apply(categorize_ipm)
-        
+
         # 2. Ambil label K-Means dari statis store
         obs_labels = statis_store['obs_labels']
         str_year = str(sel_year)
-        if str_year not in statis_store['per_year_coords']: 
-            return [], [], "", {}, "", {}, "", {}, "", {}
+        if str_year not in statis_store['per_year_coords']:
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
         
         coords = np.array(statis_store['per_year_coords'][str_year])
         km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
@@ -6777,11 +6866,12 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
             f"Peta Klaster Biplot ({sel_year})", fig_map_biplot,
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
             f"Proporsi Klaster Biplot ({sel_year})", fig_pie_biplot,
-            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm
+            f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm,
+            {'display': 'block'}
         )
     except Exception as e:
         print(f"Error cb_run_cross_tab: {e}")
-        return [], [], "", {}, "", {}, "", {}, "", {}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
 
 # =========================================================
 # UTIL: EKSPOR TABEL UI COMPONENT KE .TEX

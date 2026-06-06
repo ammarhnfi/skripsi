@@ -20,5 +20,9 @@
     "norm_score": false,
     "highlight_objects": ["Kota Jakarta Pusat"],
     "highlight_vars": ["TPT"],
-    "weight_variable": "JP"
+    "weight_variable": "JP",
+    "mirror": {
+        "scenario1": ["mirror_pc1"],
+        "scenario2": []
+    }
 }

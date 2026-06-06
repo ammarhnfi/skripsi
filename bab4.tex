@@ -65,98 +65,117 @@ Secara keseluruhan, data menunjukkan bahwa periode 2020 hingga 2024 diwarnai ole
 
 \subsection{\normalsize Distribusi Indikator (Boxplot)}
 
-Untuk memvisualisasikan sebaran data secara lebih intuitif, termasuk mendeteksi keberadaan \textit{outlier}, Gambar~\ref{fig:boxplot_ipm} hingga Gambar~\ref{fig:boxplot_gr} menyajikan diagram kotak-garis (\textit{boxplot}) setiap indikator sebagai perbandingan tahunan 2020--2024.
+Untuk memvisualisasikan sebaran data secara lebih intuitif, termasuk mendeteksi keberadaan \textit{outlier}, berikut disajikan diagram kotak-garis (\textit{boxplot}) setiap indikator sebagai perbandingan tahunan 2020--2024 secara berpasangan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ipm.png}
-    \caption{Boxplot IPM (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_ipm}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_tpt.png}
+        \caption{Boxplot Tingkat Pengangguran Terbuka (TPT) Tahun 2020--2024}
+        \label{fig:boxplot_tpt}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_tpak.png}
+        \caption{Boxplot Tingkat Partisipasi Angkatan Kerja (TPAK) Tahun 2020--2024}
+        \label{fig:boxplot_tpak}
+    \end{minipage}
 \end{figure}
 
-\noindent
-\textbf{Catatan visualisasi:} Untuk keperluan keterbacaan gambar Biplot yang disajikan pada Gambar~\ref{fig:compromise_biplot_s1} dan Gambar~\ref{fig:compromise_biplot_s2}, panjang panah indikator (loading) telah disesuaikan secara representasional mengikuti rekomendasi \citet{abdi2012}. Secara praktis, setiap koordinat loading pada komponen ke-$\ell$ dikalikan dengan nilai singular $\sigma_{\ell}=\sqrt{\lambda_{\ell}}$ sehingga panjang panah menjadi sepadan (commensurable) dengan variansi skor pada dimensi yang sama. Penyesuaian ini bersifat visual semata — nilai skor kompromi, nilai eigen, serta hasil uji statistik tidak berubah — dan skrip yang menghasilkan gambar ini menerapkan transformasi tersebut hanya pada tahap plotting.
+Gambar~\ref{fig:boxplot_tpt} menunjukkan lonjakan nilai median TPT pada tahun 2020 akibat pandemi COVID-19, diikuti tren penurunan yang konsisten hingga 2024; penyempitan distribusi yang terlihat mengindikasikan perbaikan kondisi ketenagakerjaan yang semakin merata antar-wilayah. Gambar~\ref{fig:boxplot_tpak} memperlihatkan distribusi yang lebar dengan beberapa pencilan rendah yang mencirikan wilayah dengan sektor informal yang dominan; median yang relatif stabil antartahun menunjukkan bahwa struktur penyerapan tenaga kerja tidak mengalami perubahan fundamental selama periode pengamatan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ipg.png}
-    \caption{Boxplot IPG (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_ipg}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_ahh_l.png}
+        \caption{Boxplot Angka Harapan Hidup Laki-Laki (AHH L) Tahun 2020--2024}
+        \label{fig:boxplot_ahh_l}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_ahh_p.png}
+        \caption{Boxplot Angka Harapan Hidup Perempuan (AHH P) Tahun 2020--2024}
+        \label{fig:boxplot_ahh_p}
+    \end{minipage}
 \end{figure}
+
+Gambar~\ref{fig:boxplot_ahh_l} memperlihatkan peningkatan bertahap pada nilai median dan penyempitan rentang distribusi, mengindikasikan konvergensi kualitas kesehatan di berbagai wilayah meskipun masih terdapat beberapa pencilan pada nilai yang lebih rendah. Gambar~\ref{fig:boxplot_ahh_p} menunjukkan pola yang serupa namun secara konsisten berada pada nilai yang lebih tinggi di setiap tahun, mencerminkan keunggulan harapan hidup perempuan yang merupakan fenomena universal; tren peningkatan pada kedua indikator mengonfirmasi perbaikan layanan kesehatan yang berlangsung merata selama periode pengamatan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ppm.png}
-    \caption{Boxplot Persentase Penduduk Miskin (PPM) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_ppm}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_gr.png}
+        \caption{Boxplot Gini Ratio (GR) Tahun 2020--2024}
+        \label{fig:boxplot_gr}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_gk.png}
+        \caption{Boxplot Garis Kemiskinan (GK) Tahun 2020--2024}
+        \label{fig:boxplot_gk}
+    \end{minipage}
 \end{figure}
+
+Gambar~\ref{fig:boxplot_gr} menampilkan distribusi yang cukup terkonsentrasi dengan median yang berfluktuasi ringan, mengindikasikan bahwa tingkat ketimpangan distribusi pendapatan antar-wilayah cenderung stagnan dan belum mengalami perbaikan yang signifikan selama 2020--2024. Gambar~\ref{fig:boxplot_gk} sebaliknya menampilkan kenaikan nilai median dan pelebaran rentang distribusi yang konsisten dari tahun ke tahun, yang sebagian besar disebabkan oleh tekanan inflasi serta peningkatan standar kebutuhan hidup minimum yang ditetapkan BPS sebagai acuan penghitungan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_pdrb_adhk.png}
-    \caption{Boxplot PDRB ADHK (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_pdrb}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_ipm.png}
+        \caption{Boxplot Indeks Pembangunan Manusia (IPM) Tahun 2020--2024}
+        \label{fig:boxplot_ipm}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_ipg.png}
+        \caption{Boxplot Indeks Pemberdayaan Gender (IPG) Tahun 2020--2024}
+        \label{fig:boxplot_ipg}
+    \end{minipage}
 \end{figure}
+
+Gambar~\ref{fig:boxplot_ipm} menunjukkan bahwa nilai IPM mengalami peningkatan yang konsisten dari 2020 hingga 2024, ditandai oleh kenaikan median setiap tahunnya yang mencerminkan pemulihan dan pertumbuhan pembangunan manusia pascapandemi; rentang interkuartil yang relatif stabil mengindikasikan perbaikan yang terdistribusi cukup merata antar-wilayah. Gambar~\ref{fig:boxplot_ipg} memperlihatkan distribusi IPG yang cenderung stagnan dengan variasi antartahun yang kecil, mengindikasikan bahwa perkembangan kesetaraan gender berlangsung lambat dan belum terjadi perubahan struktural yang signifikan selama periode pengamatan.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_rls.png}
-    \caption{Boxplot Rata-Rata Lama Sekolah (RLS) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_rls}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_pdrb_adhk.png}
+        \caption{Boxplot PDRB Atas Dasar Harga Konstan (PDRB ADHK) Tahun 2020--2024}
+        \label{fig:boxplot_pdrb}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_pkkp.png}
+        \caption{Boxplot Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) Tahun 2020--2024}
+        \label{fig:boxplot_pkkp}
+    \end{minipage}
 \end{figure}
+
+Gambar~\ref{fig:boxplot_pdrb} menampilkan \textit{outlier} ekstrem yang sangat mencolok pada PDRB ADHK yang secara konsisten mewakili wilayah DKI Jakarta---kapasitas ekonominya jauh melampaui seluruh kabupaten/kota lainnya di setiap tahun pengamatan sehingga distribusi bersifat sangat menceng ke kanan. Gambar~\ref{fig:boxplot_pkkp} memperlihatkan bahwa Prevalensi Ketidakcukupan Konsumsi Pangan cenderung menurun dari 2020 hingga 2022, namun mengalami sedikit kenaikan pada 2023--2024 yang kemungkinan mencerminkan dampak tekanan harga pangan global; nilai median yang masih cukup tinggi menunjukkan masih adanya tantangan ketahanan pangan di sebagian wilayah.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ahh_l.png}
-    \caption{Boxplot Angka Harapan Hidup Laki-Laki (AHH L) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_ahh_l}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_rls.png}
+        \caption{Boxplot Rata-Rata Lama Sekolah (RLS) Tahun 2020--2024}
+        \label{fig:boxplot_rls}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{output_real/boxplot_ppm.png}
+        \caption{Boxplot Persentase Penduduk Miskin (PPM) Tahun 2020--2024}
+        \label{fig:boxplot_ppm}
+    \end{minipage}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_ahh_p.png}
-    \caption{Boxplot Angka Harapan Hidup Perempuan (AHH P) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_ahh_p}
-\end{figure}
+Gambar~\ref{fig:boxplot_rls} menunjukkan bahwa rata-rata lama sekolah memiliki distribusi yang relatif simetris dengan median yang terus meningkat, mencerminkan perbaikan akses dan capaian pendidikan yang cukup merata antar-wilayah dari tahun ke tahun. Gambar~\ref{fig:boxplot_ppm} memperlihatkan distribusi Persentase Penduduk Miskin yang menceng ke kanan (\textit{positively skewed}), di mana sebagian besar wilayah memiliki tingkat kemiskinan relatif rendah namun terdapat beberapa wilayah dengan PPM yang jauh melebihi nilai sentral; terlihat pula penurunan median secara bertahap dari 2020 ke 2024 yang mencerminkan tren pengentasan kemiskinan pascapandemi.
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_gk.png}
-    \caption{Boxplot Garis Kemiskinan (GK) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_gk}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_pkkp.png}
-    \caption{Boxplot Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_pkkp}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_tpt.png}
-    \caption{Boxplot Tingkat Pengangguran Terbuka (TPT) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_tpt}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_tpak.png}
-    \caption{Boxplot Tingkat Partisipasi Angkatan Kerja (TPAK) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_tpak}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.75\textwidth]{output_real/boxplot_gr.png}
-    \caption{Boxplot Gini Ratio (GR) (Perbandingan Tahunan 2020--2024)}
-    \label{fig:boxplot_gr}
-\end{figure}
-
-Boxplot pada Gambar~\ref{fig:boxplot_ipm} menunjukkan bahwa nilai IPM mengalami peningkatan yang konsisten dari 2020 ke 2024, terlihat dari peningkatan nilai median dari tahun ke tahun. Pada indikator PDRB ADHK (Gambar~\ref{fig:boxplot_pdrb}), tampak \textit{outlier} ekstrem yang secara konsisten mewakili wilayah DKI Jakarta yang memiliki kapasitas ekonomi jauh melampaui wilayah lainnya. Fenomena yang sama terlihat pada TPT (Gambar~\ref{fig:boxplot_tpt}) di mana terjadi lonjakan pada 2020 akibat pandemi namun berangsur-angsur menurun padatahun selanjutnya.
-
-Sebagai pelengkap eksplorasi, Gambar~\ref{fig:corr_heatmap_2020} menyajikan heatmap korelasi Pearson antar-indikator untuk tahun 2020 (representatif dari seluruh periode). Nilai diagonal menampilkan nama indikator, sedangkan sel off-diagonal memuat koefisien Pearson $r$ beserta bintang signifikansi: ***~$p{<}0{,}001$, **~$p{<}0{,}01$, *~$p{<}0{,}05$, ns~(tidak signifikan). Warna biru tua = korelasi positif kuat; merah tua = korelasi negatif kuat; putih $\approx 0$.
+Sebagai pelengkap eksplorasi, Gambar~\ref{fig:corr_heatmap_2020} menyajikan heatmap korelasi Pearson antar-indikator untuk tahun 2020 (representatif dari seluruh periode). Diagonal utama menunjukkan nama indikator, sedangkan warna di luar diagonal utama menunjukkan besarnya nilai koefisien korelasi Pearson $r$ beserta bintang signifikansi: ***~$p{<}0{,}001$, **~$p{<}0{,}01$, *~$p{<}0{,}05$, ns~(tidak signifikan). Warna biru tua = korelasi positif kuat; merah tua = korelasi negatif kuat; putih $\approx 0$ (tidak berkorelasi).
 
 \begin{figure}[H]
     \centering
@@ -191,7 +210,6 @@ Tahap pertama dalam algoritma STATIS adalah analisis interstruktur, yang bertuju
 Mengikuti prosedur komputasi yang telah diilustrasikan pada Subbab~\ref{subsec:rv_coef} (Bab~3), dihitung koefisien RV untuk seluruh pasangan tahun (2020--2024) menggunakan matriks intra-struktur $\mathbf{W}_t$ yang dibentuk dari data standar (Z-score) untuk setiap tahun. Koefisien RV memberikan ukuran kuantitatif tentang seberapa mirip struktur relatif antar-wilayah pada dua tahun tertentu, dengan nilai berada di antara 0 (tidak ada kemiripan) hingga 1 (kemiripan sempurna). Hasilnya disajikan pada Tabel~\ref{tab:apprv_w} dan divisualisasikan dalam bentuk heatmap pada Gambar~\ref{fig:rv_heatmap}.
 
 \input{output_real/output_table_rv_w.tex}
-% Label otomatis: \label{tab:rv_w} (sudah di dalam file .tex)
 
 \begin{figure}[H]
     \centering
@@ -200,7 +218,7 @@ Mengikuti prosedur komputasi yang telah diilustrasikan pada Subbab~\ref{subsec:r
     \label{fig:rv_heatmap}
 \end{figure}
 
-Berdasarkan Tabel~\ref{tab:apprv_w} dan Gambar~\ref{fig:rv_heatmap}, seluruh nilai koefisien RV berada di atas $\AppRVMin{}$, yang mengindikasikan bahwa konfigurasi relatif antar-wilayah tidak berbeda signifikan dari tahun ke tahun. Hal ini memiliki implikasi penting: meskipun terjadi perubahan akibat pandemi COVID-19 pada 2020 hingga 2021 yang mengubah nilai aktual (seperti PDRB yang turun), \textbf{hierarki} atau \textbf{struktur kemiripan} antar-wilayah tidak berubah secara drastis. Wilayah yang secara relatif lebih maju tetap berada di posisi yang lebih baik dibandingkan wilayah yang tertinggal, dan demikian pula sebaliknya.
+Berdasarkan Gambar~\ref{fig:rv_heatmap}, seluruh nilai koefisien RV berada di atas $\AppRVMin{}$, yang mengindikasikan bahwa konfigurasi relatif antar-wilayah tidak berbeda signifikan dari tahun ke tahun. Hal ini memiliki implikasi penting: meskipun terjadi perubahan akibat pandemi COVID-19 pada 2020 hingga 2021 yang mengubah nilai aktual (seperti PDRB yang turun), \textbf{hierarki} atau \textbf{struktur kemiripan} antar-wilayah tidak berubah secara drastis. Wilayah yang secara relatif lebih maju tetap berada di posisi yang lebih baik dibandingkan wilayah yang tertinggal, dan demikian pula sebaliknya.
 
 Nilai RV antara tahun 2020 hingga 2021 yang sedikit lebih rendah dibandingkan pasangan tahun lainnya mengindikasikan bahwa masa awal pandemi sempat menciptakan sedikit pergeseran struktur, yang kemudian pulih dan kembali konsisten pada 2022 hingga 2024.
 
@@ -213,11 +231,15 @@ Berdasarkan nilai eigen dominan dari matriks interstruktur $\mathbf{H}_W$ dan $\
     \item \textbf{$\boldsymbol{\alpha}_S$ (Skenario 2 -- Host Indikator):} Bobot berdasarkan kemiripan struktur korelasi antar-indikator. Tabel~\ref{tab:appalpha_s} menyajikan hasilnya.
 \end{itemize}
 
+\vspace{-4pt}
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
 \input{output_real/output_table_alpha_w.tex}
-% Label otomatis: \label{tab:appalpha_w}
-
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
 \input{output_real/output_table_alpha_s.tex}
-% Label otomatis: \label{tab:appalpha_s}
+\end{minipage}
+\medskip
 
 Dari Tabel~\ref{tab:appalpha_w} dan Tabel~\ref{tab:appalpha_s}, terlihat bahwa sebagian besar bobot $\alpha$ untuk kelima tahun relatif seimbang (berada di antara $\AppAlphaMin{}$ hingga $\AppAlphaMax{}$). Hal ini menegaskan bahwa tidak ada satu tahun pun yang mendominasi atau mendistorsi gambaran rata-rata (kompromi). Tahun dengan bobot terbesar di tahun $\AppAlphaMaxYear{}$ dapat diinterpretasikan sebagai tahun paling representatif terhadap kondisi rata-rata selama 2020 hingga 2024.
 
@@ -243,8 +265,19 @@ Gambar~\ref{fig:scree_plot} menyajikan \textit{scree plot}, yaitu grafik nilai e
     \label{fig:scree_plot}
 \end{figure}
 
-\input{output_real/scenario1/output_table_eigen.tex}
-% Label: \label{tab:eigen}
+\begin{table}[H]
+\centering
+\caption{Dekomposisi Nilai Eigen Dua Dimensi Pertama Matriks Kompromi}
+\label{tab:app1eigen}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{Dimensi} & \textbf{Eigenvalue} & \textbf{Varians (\%)} & \textbf{Kumulatif (\%)} \\
+\hline
+Dim 1 & 6{,}6934 & 60{,}8500 & 60{,}8500 \\
+Dim 2 & 1{,}2132 & 11{,}0300 & 71{,}8800 \\
+\hline
+\end{tabular}
+\end{table}
 
 Berdasarkan Gambar~\ref{fig:scree_plot} dan Tabel~\ref{tab:app1eigen}, dua dimensi pertama mampu menjelaskan $\AppCumTwoPct{}$\% kumulatif variansi total. Secara spesifik, Dimensi~1 menjelaskan $\AppDimOnePct{}$\% dan Dimensi~2 menjelaskan $\AppDimTwoPct{}$\%. Nilai ini telah melampaui ambang batas $70\%$ yang lazim digunakan dalam analisis reduksi dimensi, sehingga representasi dua dimensi dianggap sudah cukup informatif.
 
@@ -282,6 +315,9 @@ Untuk mendapatkan pemahaman yang lebih menyeluruh mengenai hubungan antara wilay
         \label{fig:compromise_biplot_s2}
     \end{minipage}
 \end{figure}
+
+\noindent
+\textbf{Catatan visualisasi:} Untuk keperluan keterbacaan gambar Biplot yang disajikan pada Gambar~\ref{fig:compromise_biplot_s1} dan Gambar~\ref{fig:compromise_biplot_s2}, panjang panah indikator (loading) telah disesuaikan secara representasional mengikuti rekomendasi \citet{abdi2012}. Secara praktis, setiap koordinat loading pada komponen ke-$\ell$ dikalikan dengan nilai singular $\sigma_{\ell}=\sqrt{\lambda_{\ell}}$ sehingga panjang panah menjadi sepadan (commensurable) dengan variansi skor pada dimensi yang sama. Penyesuaian ini bersifat visual semata --- nilai skor kompromi, nilai eigen, serta hasil uji statistik tidak berubah --- dan skrip yang menghasilkan gambar ini menerapkan transformasi tersebut hanya pada tahap plotting.
 
 Interpretasi biplot ini dapat dilakukan dengan melihat arah dan panjang vektor indikator serta posisi wilayah:
 
@@ -907,7 +943,7 @@ Gambar~\ref{fig:biplot_vs_statis_map_2024} memperlihatkan perbandingan distribus
     \label{fig:biplot_vs_statis_map_2024}
 \end{figure}
 
-Elemen-elemen diagonal yang dominan pada tabulasi silang mengindikasikan tingkat kongruensi yang tinggi antara kedua metode, mengonfirmasi bahwa penggabungan bobot temporal oleh STATIS tidak mengubah struktur klaster secara fundamental. Perbedaan yang teramati pada elemen off-diagonal merepresentasikan wilayah-wilayah yang berada di batas pemisah antar-klaster, di mana pembobotan temporal STATIS berperan sebagai penyeimbang (\textit{stabilizer}) terhadap fluktuasi lokal tahunan.
+Elemen-elemen diagonal yang dominan pada tabulasi silang mengindikasikan tingkat kongruensi yang tinggi antara kedua metode, mengonfirmasi bahwa penggabungan bobot temporal oleh STATIS tidak mengubah struktur klaster secara fundamental. Perbedaan yang teramati pada elemen di luar diagonal utama merepresentasikan wilayah-wilayah yang berada di batas pemisah antar-klaster, di mana pembobotan temporal STATIS berperan sebagai penyeimbang (\textit{stabilizer}) terhadap fluktuasi lokal tahunan.
 
 %-------- Perbandingan 4 --------
 \subsection{\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP} \label{subsec:perb4}
@@ -1069,7 +1105,7 @@ Gambar~\ref{fig:comp_vs_statis_map_2024} memperlihatkan perbandingan distribusi 
     \label{fig:comp_vs_statis_map_2024}
 \end{figure}
 
-Dominasi elemen diagonal memvalidasi bahwa klaster kompromi STATIS bukanlah sekadar rata-rata aritmetika temporal, melainkan representasi yang secara struktural konsisten terhadap kondisi tahunan. Ketidakkonsistenan minor pada elemen off-diagonal umumnya berasal dari wilayah-wilayah yang mengalami perubahan status klaster pada tahun tertentu, khususnya pada 2020--2021 akibat guncangan pandemi yang sempat menggeser posisi beberapa wilayah perbatasan klaster.
+Dominasi elemen diagonal memvalidasi bahwa klaster kompromi STATIS bukanlah sekadar rata-rata aritmetika temporal, melainkan representasi yang secara struktural konsisten terhadap kondisi tahunan. Ketidakkonsistenan minor pada elemen di luar diagonal utama umumnya berasal dari wilayah-wilayah yang mengalami perubahan status klaster pada tahun tertentu, khususnya pada 2020--2021 akibat guncangan pandemi yang sempat menggeser posisi beberapa wilayah perbatasan klaster.
 
 %-------- Perbandingan 9 --------
 \subsection{\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM} \label{subsec:perb9}

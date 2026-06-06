@@ -7,11 +7,11 @@
 \contentsline {chapter}{ABSTRAK}{x}{section*.15}%
 \contentsline {chapter}{EXTENDED ABSTRACT (BAHASA INDONESIA)}{xii}{section*.17}%
 \contentsline {chapter}{EXTENDED ABSTRACT (INDONESIA)}{xii}{chapter*.18}%
-\contentsline {chapter}{EXTENDED ABSTRACT}{xv}{section*.22}%
-\contentsline {chapter}{\normalsize DAFTAR ISI}{xviii}{section*.27}%
-\contentsline {chapter}{\normalsize DAFTAR TABEL}{xxii}{section*.28}%
-\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xxvi}{section*.29}%
-\contentsline {chapter}{DAFTAR LAMPIRAN}{1}{section*.29}%
+\contentsline {chapter}{EXTENDED ABSTRACT}{xvi}{section*.22}%
+\contentsline {chapter}{\normalsize DAFTAR ISI}{xx}{section*.27}%
+\contentsline {chapter}{\normalsize DAFTAR TABEL}{xxv}{section*.28}%
+\contentsline {chapter}{\normalsize DAFTAR GAMBAR}{xxviii}{section*.29}%
+\contentsline {chapter}{DAFTAR LAMPIRAN}{xxx}{section*.29}%
 \contentsline {chapter}{\numberline {1}\normalsize PENDAHULUAN}{2}{chapter.1}%
 \contentsline {section}{\numberline {1.1}\normalsize Latar Belakang}{2}{section.1.1}%
 \contentsline {section}{\numberline {1.2}\normalsize Rumusan Masalah}{5}{section.1.2}%
@@ -93,11 +93,11 @@
 \contentsline {paragraph}{Skenario 2 (Dual STATIS -- Host = Indikator):}{65}{equation.3.4}%
 \contentsline {subsubsection}{\numberline {3.7.1.8}Tahap 6: Proyeksi Kompromi -- Perbandingan Skenario 1 dan Skenario 2}{67}{subsubsection.3.7.1.8}%
 \contentsline {paragraph}{Skenario 1 -- Skor Wilayah ($\mathbf {F}_c^{(1)}$) dan Loading Indikator ($\mathbf {G}_c^{(1)}$):}{67}{subsubsection.3.7.1.8}%
-\contentsline {paragraph}{Skenario 2 -- Skor Wilayah ($\mathbf {F}_c^{(2)}$) dan Loading Indikator ($\mathbf {G}_c^{(2)}$):}{71}{table.caption.68}%
+\contentsline {paragraph}{Skenario 2 -- Skor Wilayah ($\mathbf {F}_c^{(2)}$) dan Loading Indikator ($\mathbf {G}_c^{(2)}$):}{72}{table.caption.68}%
 \contentsline {subsubsection}{\numberline {3.7.1.9}Tahap 7: Uji Signifikansi dan Clustering}{75}{subsubsection.3.7.1.9}%
 \contentsline {subsubsection}{\numberline {3.7.1.10}Tahap 7a: Komputasi Vektor Struktur dan Analisis Transversal-Longitudinal}{77}{subsubsection.3.7.1.10}%
 \contentsline {subsubsection}{\numberline {3.7.1.11}Tahap 8: Analisis Perbandingan Klaster (9 Jenis)}{79}{subsubsection.3.7.1.11}%
-\contentsline {paragraph}{Contoh: Perbandingan 1 -- Transisi Biplot (Tahun 2020 vs 2021):}{80}{Item.85}%
+\contentsline {paragraph}{Contoh: Perbandingan 1 -- Transisi Biplot (Tahun 2020 vs 2021):}{81}{Item.85}%
 \contentsline {paragraph}{Contoh: Perbandingan 2 -- Transisi STATIS (Skenario 1, Tahun 2020 vs 2021):}{81}{table.caption.87}%
 \contentsline {paragraph}{Contoh: Perbandingan 3 -- Biplot vs STATIS (Skenario 1, Tahun 2020):}{81}{table.caption.88}%
 \contentsline {subsection}{\numberline {3.7.2}\normalsize Analisis Autokorelasi Spasial (Global Moran's~$I$)}{82}{subsection.3.7.2}%
@@ -105,48 +105,48 @@
 \contentsline {section}{\numberline {4.1}\normalsize Eksplorasi Data Awal}{83}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}\normalsize Statistika Deskriptif}{83}{subsection.4.1.1}%
 \contentsline {subsection}{\numberline {4.1.2}\normalsize Distribusi Indikator (Boxplot)}{85}{subsection.4.1.2}%
-\contentsline {section}{\numberline {4.2}\normalsize Uji Kelayakan Data Multivariat}{92}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}\normalsize Hasil Uji KMO dan Bartlett}{92}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}\normalsize Analisis Inter-struktur}{93}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}\normalsize Koefisien RV}{93}{subsection.4.3.1}%
-\contentsline {subsection}{\numberline {4.3.2}\normalsize Vektor Bobot (Alpha) dan Representativitas Tahun}{94}{subsection.4.3.2}%
-\contentsline {section}{\numberline {4.4}\normalsize Analisis Struktur Kompromi}{95}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}\normalsize Dekomposisi Eigenvalue (Scree Plot)}{95}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}\normalsize Peta Kompromi (Skor Objek)}{98}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}\normalsize Biplot Kompromi (Skor + Loading)}{99}{subsection.4.4.3}%
-\contentsline {subsection}{\numberline {4.4.4}\normalsize Kontribusi dan Kualitas Representasi Indikator}{104}{subsection.4.4.4}%
-\contentsline {section}{\numberline {4.5}\normalsize Uji Stabilitas Struktur Kompromi (Permutation Test)}{104}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}\normalsize Prosedur dan Hasil Uji Permutasi}{105}{subsection.4.5.1}%
-\contentsline {subsection}{\numberline {4.5.2}\normalsize Interpretasi}{106}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}\normalsize Analisis Vektor Struktur ($\tilde {\boldsymbol {\beta }}$) dan Dominansi Interstruktur}{106}{subsection.4.5.3}%
-\contentsline {section}{\numberline {4.6}\normalsize Analisis Dinamika Spasio-Temporal (Trajektori)}{109}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}\normalsize Gambaran Umum Trajektori 2020 hingga 2024}{109}{subsection.4.6.1}%
-\contentsline {subsection}{\numberline {4.6.2}\normalsize Dinamika Biplot Tahunan}{111}{subsection.4.6.2}%
-\contentsline {subsection}{\numberline {4.6.3}\normalsize Dinamika Struktur Wilayah Tahunan}{112}{subsection.4.6.3}%
-\contentsline {subsection}{\numberline {4.6.4}\normalsize Pergeseran Centroid Tahunan}{114}{subsection.4.6.4}%
-\contentsline {subsection}{\numberline {4.6.5}\normalsize Jarak Pergeseran Per-Entitas Tahunan}{114}{subsection.4.6.5}%
-\contentsline {subsection}{\numberline {4.6.6}\normalsize Dinamika Struktur Indikator Tahunan}{115}{subsection.4.6.6}%
-\contentsline {section}{\numberline {4.7}\normalsize Analisis Klaster Spasio-Temporal}{116}{section.4.7}%
-\contentsline {subsection}{\numberline {4.7.1}\normalsize Penentuan Jumlah Klaster Optimal}{116}{subsection.4.7.1}%
-\contentsline {subsection}{\numberline {4.7.2}\normalsize Pola Pengelompokan Tahunan}{118}{subsection.4.7.2}%
-\contentsline {subsection}{\numberline {4.7.3}\normalsize Matriks Transisi Klaster STATIS}{121}{subsection.4.7.3}%
-\contentsline {subsection}{\numberline {4.7.4}\normalsize Klaster Trajektori Keseluruhan}{124}{subsection.4.7.4}%
-\contentsline {section}{\numberline {4.8}\normalsize Analisis Komparatif Sembilan Jenis Perbandingan Klaster}{127}{section.4.8}%
-\contentsline {subsection}{\numberline {4.8.1}\normalsize Perbandingan 1 --- Matriks Transisi Klaster Biplot Antar-Tahun}{128}{subsection.4.8.1}%
-\contentsline {subsection}{\numberline {4.8.2}\normalsize Perbandingan 3 --- Kongruensi Klaster Biplot vs STATIS per Tahun}{129}{subsection.4.8.2}%
-\contentsline {subsection}{\numberline {4.8.3}\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP}{132}{subsection.4.8.3}%
-\contentsline {subsection}{\numberline {4.8.4}\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM}{134}{subsection.4.8.4}%
-\contentsline {subsection}{\numberline {4.8.5}\normalsize Perbandingan 6 --- Validasi Eksternal Klaster STATIS Tahunan terhadap Kategori IPM}{137}{subsection.4.8.5}%
-\contentsline {subsection}{\numberline {4.8.6}\normalsize Perbandingan 7 --- Konsistensi Klaster Kompromi terhadap Klaster Biplot per Tahun}{139}{subsection.4.8.6}%
-\contentsline {subsection}{\numberline {4.8.7}\normalsize Perbandingan 8 --- Konsistensi Klaster Kompromi terhadap Klaster STATIS Tahunan}{141}{subsection.4.8.7}%
-\contentsline {subsection}{\numberline {4.8.8}\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM}{143}{subsection.4.8.8}%
-\contentsline {section}{\numberline {4.9}\normalsize Uji Autokorelasi Spasial (Global Moran's~$I$)}{146}{section.4.9}%
-\contentsline {section}{\numberline {4.10}\normalsize Analisis Hotspot (Local Moran's~$I$)}{146}{section.4.10}%
-\contentsline {section}{\numberline {4.11}\normalsize Ringkasan Temuan dan Implikasi Kebijakan}{147}{section.4.11}%
-\contentsline {subsection}{\numberline {4.11.1}\normalsize Pembahasan Berdasarkan Tujuan Penelitian}{147}{subsection.4.11.1}%
-\contentsline {subsection}{\numberline {4.11.2}\normalsize Kontribusi terhadap Manfaat Penelitian}{148}{subsection.4.11.2}%
-\contentsline {subsection}{\numberline {4.11.3}\normalsize Implikasi Kebijakan}{149}{subsection.4.11.3}%
-\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{150}{chapter.5}%
-\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{150}{section.5.1}%
-\contentsline {section}{\numberline {5.2}\normalsize Saran}{152}{section.5.2}%
-\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{153}{chapter*.207}%
+\contentsline {section}{\numberline {4.2}\normalsize Uji Kelayakan Data Multivariat}{89}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}\normalsize Hasil Uji KMO dan Bartlett}{89}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}\normalsize Analisis Inter-struktur}{89}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}\normalsize Koefisien RV}{89}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}\normalsize Vektor Bobot (Alpha) dan Representativitas Tahun}{91}{subsection.4.3.2}%
+\contentsline {section}{\numberline {4.4}\normalsize Analisis Struktur Kompromi}{91}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}\normalsize Dekomposisi Eigenvalue (Scree Plot)}{92}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}\normalsize Peta Kompromi (Skor Objek)}{93}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}\normalsize Biplot Kompromi (Skor + Loading)}{93}{subsection.4.4.3}%
+\contentsline {subsection}{\numberline {4.4.4}\normalsize Kontribusi dan Kualitas Representasi Indikator}{99}{subsection.4.4.4}%
+\contentsline {section}{\numberline {4.5}\normalsize Uji Stabilitas Struktur Kompromi (Permutation Test)}{99}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}\normalsize Prosedur dan Hasil Uji Permutasi}{100}{subsection.4.5.1}%
+\contentsline {subsection}{\numberline {4.5.2}\normalsize Interpretasi}{101}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}\normalsize Analisis Vektor Struktur ($\tilde {\boldsymbol {\beta }}$) dan Dominansi Interstruktur}{101}{subsection.4.5.3}%
+\contentsline {section}{\numberline {4.6}\normalsize Analisis Dinamika Spasio-Temporal (Trajektori)}{104}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}\normalsize Gambaran Umum Trajektori 2020 hingga 2024}{104}{subsection.4.6.1}%
+\contentsline {subsection}{\numberline {4.6.2}\normalsize Dinamika Biplot Tahunan}{106}{subsection.4.6.2}%
+\contentsline {subsection}{\numberline {4.6.3}\normalsize Dinamika Struktur Wilayah Tahunan}{107}{subsection.4.6.3}%
+\contentsline {subsection}{\numberline {4.6.4}\normalsize Pergeseran Centroid Tahunan}{109}{subsection.4.6.4}%
+\contentsline {subsection}{\numberline {4.6.5}\normalsize Jarak Pergeseran Per-Entitas Tahunan}{109}{subsection.4.6.5}%
+\contentsline {subsection}{\numberline {4.6.6}\normalsize Dinamika Struktur Indikator Tahunan}{110}{subsection.4.6.6}%
+\contentsline {section}{\numberline {4.7}\normalsize Analisis Klaster Spasio-Temporal}{111}{section.4.7}%
+\contentsline {subsection}{\numberline {4.7.1}\normalsize Penentuan Jumlah Klaster Optimal}{111}{subsection.4.7.1}%
+\contentsline {subsection}{\numberline {4.7.2}\normalsize Pola Pengelompokan Tahunan}{113}{subsection.4.7.2}%
+\contentsline {subsection}{\numberline {4.7.3}\normalsize Matriks Transisi Klaster STATIS}{116}{subsection.4.7.3}%
+\contentsline {subsection}{\numberline {4.7.4}\normalsize Klaster Trajektori Keseluruhan}{119}{subsection.4.7.4}%
+\contentsline {section}{\numberline {4.8}\normalsize Analisis Komparatif Sembilan Jenis Perbandingan Klaster}{122}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}\normalsize Perbandingan 1 --- Matriks Transisi Klaster Biplot Antar-Tahun}{123}{subsection.4.8.1}%
+\contentsline {subsection}{\numberline {4.8.2}\normalsize Perbandingan 3 --- Kongruensi Klaster Biplot vs STATIS per Tahun}{124}{subsection.4.8.2}%
+\contentsline {subsection}{\numberline {4.8.3}\normalsize Perbandingan 4 --- Matriks Transisi Kategori IPM UNDP}{127}{subsection.4.8.3}%
+\contentsline {subsection}{\numberline {4.8.4}\normalsize Perbandingan 5 --- Validasi Eksternal Klaster Biplot terhadap Kategori IPM}{129}{subsection.4.8.4}%
+\contentsline {subsection}{\numberline {4.8.5}\normalsize Perbandingan 6 --- Validasi Eksternal Klaster STATIS Tahunan terhadap Kategori IPM}{132}{subsection.4.8.5}%
+\contentsline {subsection}{\numberline {4.8.6}\normalsize Perbandingan 7 --- Konsistensi Klaster Kompromi terhadap Klaster Biplot per Tahun}{134}{subsection.4.8.6}%
+\contentsline {subsection}{\numberline {4.8.7}\normalsize Perbandingan 8 --- Konsistensi Klaster Kompromi terhadap Klaster STATIS Tahunan}{136}{subsection.4.8.7}%
+\contentsline {subsection}{\numberline {4.8.8}\normalsize Perbandingan 9 --- Validasi Eksternal Final Klaster Kompromi terhadap Kategori IPM}{138}{subsection.4.8.8}%
+\contentsline {section}{\numberline {4.9}\normalsize Uji Autokorelasi Spasial (Global Moran's~$I$)}{141}{section.4.9}%
+\contentsline {section}{\numberline {4.10}\normalsize Analisis Hotspot (Local Moran's~$I$)}{141}{section.4.10}%
+\contentsline {section}{\numberline {4.11}\normalsize Ringkasan Temuan dan Implikasi Kebijakan}{142}{section.4.11}%
+\contentsline {subsection}{\numberline {4.11.1}\normalsize Pembahasan Berdasarkan Tujuan Penelitian}{142}{subsection.4.11.1}%
+\contentsline {subsection}{\numberline {4.11.2}\normalsize Kontribusi terhadap Manfaat Penelitian}{143}{subsection.4.11.2}%
+\contentsline {subsection}{\numberline {4.11.3}\normalsize Implikasi Kebijakan}{144}{subsection.4.11.3}%
+\contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{145}{chapter.5}%
+\contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{145}{section.5.1}%
+\contentsline {section}{\numberline {5.2}\normalsize Saran}{147}{section.5.2}%
+\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{148}{chapter*.201}%

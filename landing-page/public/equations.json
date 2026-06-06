@@ -271,9 +271,9 @@
   },
   {
     "section": "Tahap 4: Ekstraksi Koordinat dan Relasi Transisi",
-    "latex": "\\[ \\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right) \\]",
+    "latex": "\\[ \\mathbf{G}_{vis}^{(\\ell)} = \\mathbf{G}^{(\\ell)} \\times \\delta_\\ell, \\qquad \\delta_\\ell = \\sqrt{\\lambda_\\ell} \\]",
     "type": "equation",
-    "raw": "\\mathbf{G}_{vis} = \\mathbf{G}_{svd} \\times \\left( \\frac{\\max(|\\mathbf{F}_{svd}|)}{\\max(|\\mathbf{G}_{svd}|)} \\times 0,8 \\right)"
+    "raw": "\\label{eq:skalasi_visual}\n            \\mathbf{G}_{vis}^{(\\ell)} = \\mathbf{G}^{(\\ell)} \\times \\delta_\\ell, \\qquad \\delta_\\ell = \\sqrt{\\lambda_\\ell}"
   },
   {
     "section": "Uji Signifikansi Stabilitas Struktur (Permutasi Monte Carlo)",
