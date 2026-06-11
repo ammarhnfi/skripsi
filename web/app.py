@@ -1746,7 +1746,27 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
     html.Div(style=CARD_STYLE, children=[
         html.H1('Dashboard Analisis Spasio-Temporal Sosio-Ekonomi', style=HEADER_STYLE),
         html.H2('(Metode STATIS & Dynamic Biplot)', style={'textAlign': 'center', 'color': '#546E7A', 'marginTop': '-10px'}),
-        html.H3("Analisis Struktur Ekonomi dan Kesejahteraan Wilayah (STATIS)", style={'textAlign': 'center', 'color': '#78909C', 'fontStyle': 'italic'})
+        html.H3("Analisis Struktur Ekonomi dan Kesejahteraan Wilayah (STATIS)", style={'textAlign': 'center', 'color': '#78909C', 'fontStyle': 'italic'}),
+        html.Div(style={'textAlign': 'center', 'marginTop': '16px'}, children=[
+            html.A(
+                '🌐 Kunjungi Landing Page Skripsi',
+                href='https://skripsi-ammarhnfi.vercel.app/',
+                target='_blank',
+                style={
+                    'display': 'inline-block',
+                    'padding': '10px 24px',
+                    'backgroundColor': '#1565C0',
+                    'color': '#ffffff',
+                    'borderRadius': '8px',
+                    'textDecoration': 'none',
+                    'fontWeight': '700',
+                    'fontSize': '14px',
+                    'letterSpacing': '0.3px',
+                    'boxShadow': '0 2px 8px rgba(21,101,192,0.3)',
+                    'transition': 'background 0.2s',
+                }
+            )
+        ])
     ]),
     
     # --- 1. DATA INPUT ---
@@ -1834,7 +1854,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                         style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold',
                                'borderRadius': '5px', 'padding': '0 20px', 'border': 'none', 'height': '38px',
                                'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center',
-                               'cursor': 'pointer', 'whiteSpace': 'nowrap'})
+                               'cursor': 'pointer', 'whiteSpace': 'nowrap'}),
+            dcc.Loading(type='circle', color='#00897B', children=html.Div(id='spinner-run-desc'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
         ]),
         dcc.Loading(children=[
             html.Div(id='desc-table-output', style={'marginTop': '15px'}),
@@ -1869,7 +1890,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                         style={'backgroundColor': '#5C6BC0', 'color': 'white', 'fontWeight': 'bold',
                                'borderRadius': '5px', 'padding': '0 15px', 'border': 'none', 'height': '38px',
                                'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center',
-                               'cursor': 'pointer', 'whiteSpace': 'nowrap'})
+                               'cursor': 'pointer', 'whiteSpace': 'nowrap'}),
+            dcc.Loading(type='circle', color='#5C6BC0', children=html.Div(id='spinner-run-desc-multi'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
         ]),
         html.Div(style={'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center',
                          'gap': '8px', 'marginBottom': '10px'}, children=[
@@ -1895,8 +1917,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
     # --- 3. DATA DIAGNOSTICS ---
     html.Div(style=CARD_STYLE, children=[
         html.H5("Diagnostic Tests (KMO & Bartlett)", style={'textAlign': 'center', 'fontWeight': 'bold', 'color': COLOR_ACCENT}),
-        html.Div(style={'textAlign': 'center', 'marginBottom': '20px'}, children=[
-            html.Button('RUN DIAGNOSTIK', id='btn-run-diag', n_clicks=0, style={'backgroundColor': '#FFB300', 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px', 'width': '200px'})
+        html.Div(style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
+            html.Button('RUN DIAGNOSTIK', id='btn-run-diag', n_clicks=0, style={'backgroundColor': '#FFB300', 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px', 'width': '200px'}),
+            dcc.Loading(type='circle', color='#FFB300', children=html.Div(id='spinner-run-diag'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
         ]),
         dcc.Loading(children=[
             html.Div(className='row', id='diag-results-container', style={'display': 'none'}, children=[
@@ -1997,7 +2020,10 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             value=[],
             labelStyle={'display': 'block', 'marginBottom': '3px', 'fontSize': '0.85rem', 'color': '#37474F'}
         ),
-        html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'width': '100%', 'marginTop': '20px', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'}),
+        html.Div(style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginTop': '20px'}, children=[
+            html.Button('RUN ANALISIS STATIS & BIPLOT', id='btn-run-statis', n_clicks=0, style={'flex': '1', 'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'}),
+            dcc.Loading(type='circle', color=COLOR_ACCENT, children=html.Div(id='spinner-run-statis'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px', 'flexShrink': '0'})
+        ]),
         html.Div(id='statis-error-msg', style={'color': 'red', 'marginTop': '10px'})
     ]),
 
@@ -2216,7 +2242,8 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(className='row', style={'display': 'flex', 'justifyContent': 'center', 'alignItems': 'center', 'marginBottom': '10px'}, children=[
                 html.Label("Jumlah Permutasi (N): ", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='perm-n-input', type='number', value=1000, min=100, step=100, style={'width': '100px', 'marginRight': '20px'}),
-                html.Button("RUN PERMUTATION TEST", id='btn-run-perm', n_clicks=0, style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'})
+                html.Button("RUN PERMUTATION TEST", id='btn-run-perm', n_clicks=0, style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'borderRadius': '5px'}),
+                dcc.Loading(type='circle', color=COLOR_ACCENT, children=html.Div(id='spinner-run-perm'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             dcc.Loading(children=[
                 dcc.Graph(id='perm-graph', style={'height': '350px'}),
@@ -2286,8 +2313,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Dropdown(id='trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
                 html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("RUN CLUSTERING TAHUNAN", id='btn-run-trans', n_clicks=0, 
-                            style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("RUN CLUSTERING TAHUNAN", id='btn-run-trans', n_clicks=0,
+                            style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color=COLOR_ACCENT, children=html.Div(id='spinner-run-trans'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             html.Div(id='trans-results-container', style={'display': 'none'}, children=[
                 html.Div(className='row', children=[
@@ -2343,8 +2371,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Dropdown(id='weighted-trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
                 html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='weighted-trans-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("RUN CLUSTERING TERBOBOT", id='btn-run-weighted-trans', n_clicks=0, 
-                            style={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("RUN CLUSTERING TERBOBOT", id='btn-run-weighted-trans', n_clicks=0,
+                            style={'backgroundColor': '#2E7D32', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#2E7D32', children=html.Div(id='spinner-run-weighted-trans'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             html.Div(id='weighted-trans-results-container', style={'display': 'none'}, children=[
                 html.Div(className='row', children=[
@@ -2402,8 +2431,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Dropdown(id='biplot-statis-compare-year', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
                 html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='biplot-statis-compare-k', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("RUN PERBANDINGAN", id='btn-run-biplot-statis-compare', n_clicks=0, 
-                            style={'backgroundColor': '#D84315', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("RUN PERBANDINGAN", id='btn-run-biplot-statis-compare', n_clicks=0,
+                            style={'backgroundColor': '#D84315', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#D84315', children=html.Div(id='spinner-run-biplot-statis-compare'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             html.Div(id='biplot-statis-compare-results-container', style={'display': 'none'}, children=[
                 html.Div(className='row', children=[
@@ -2460,8 +2490,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Jumlah Klaster (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='cluster-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("RUN CLUSTERING TRAJEKTORI", id='btn-run-cluster', n_clicks=0, 
-                            style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 25px', 'cursor': 'pointer'})
+                html.Button("RUN CLUSTERING TRAJEKTORI", id='btn-run-cluster', n_clicks=0,
+                            style={'backgroundColor': COLOR_ACCENT, 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 25px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color=COLOR_ACCENT, children=html.Div(id='spinner-run-cluster'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
 
             html.Div(id='cluster-results-container', style={'display': 'none'}, children=[
@@ -2474,7 +2505,7 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     # Kanan: Pie Chart
                     html.Div(className='six columns', children=[
                         html.H5("Proporsi Klaster (Pie Chart)", style={'textAlign': 'center', 'fontSize': '14px', 'fontWeight': 'bold'}),
-                        dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '800px'})])
+                        dcc.Loading(children=[dcc.Graph(id='cluster-pie', style={'height': '450px'})])
                     ])
                 ]),
 
@@ -2516,8 +2547,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
             html.Div(className='row', style={'display': 'flex', 'alignItems': 'center', 'justifyContent': 'center', 'marginBottom': '20px'}, children=[
                 html.Label("Pasangan Tahun Transisi IPM:", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Dropdown(id='ipm-trans-year-dropdown', clearable=False, style={'width': '200px', 'marginRight': '20px'}),
-                html.Button("TAMPILKAN BASELINE IPM", id='btn-run-ipm-trans', n_clicks=0, 
-                            style={'backgroundColor': '#E64A19', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("TAMPILKAN BASELINE IPM", id='btn-run-ipm-trans', n_clicks=0,
+                            style={'backgroundColor': '#E64A19', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#E64A19', children=html.Div(id='spinner-run-ipm-trans'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             
             html.Div(id='ipm-trans-results-container', style={'display': 'none'}, children=[
@@ -2575,8 +2607,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                 dcc.Dropdown(id='cross-year-dropdown', clearable=False, style={'width': '120px', 'marginRight': '20px'}),
                 html.Label("Jumlah Klaster K-Means (k):", style={'marginRight': '10px', 'fontWeight': 'bold'}),
                 dcc.Input(id='cross-k-input', type='number', value=3, min=2, max=10, step=1, style={'width': '60px', 'marginRight': '20px'}),
-                html.Button("TAMPILKAN PERBANDINGAN", id='btn-run-cross', n_clicks=0, 
-                            style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("TAMPILKAN PERBANDINGAN", id='btn-run-cross', n_clicks=0,
+                            style={'backgroundColor': '#00897B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#00897B', children=html.Div(id='spinner-run-cross'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
             
             html.Div(id='cross-results-container', style={'display': 'none'}, children=[
@@ -2642,8 +2675,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Input(id='statis-vs-ipm-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
-                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-vs-ipm', n_clicks=0, 
-                            style={'backgroundColor': '#004D40', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-vs-ipm', n_clicks=0,
+                            style={'backgroundColor': '#004D40', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#004D40', children=html.Div(id='spinner-run-statis-vs-ipm'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
 
             html.Div(id='statis-vs-ipm-results-container', style={'display': 'none'}, children=[
@@ -2709,8 +2743,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Input(id='statis-vs-ipm-avg-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
-                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-ipm-avg', n_clicks=0, 
-                            style={'backgroundColor': '#01579B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-statis-ipm-avg', n_clicks=0,
+                            style={'backgroundColor': '#01579B', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#01579B', children=html.Div(id='spinner-run-statis-ipm-avg'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
 
             html.Div(id='statis-ipm-avg-results-container', style={'display': 'none'}, children=[
@@ -2776,8 +2811,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Input(id='biplot-vs-statis-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
-                html.Button("BANDINGKAN CLUSTER", id='btn-run-biplot-statis', n_clicks=0, 
-                            style={'backgroundColor': '#5D4037', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-biplot-statis', n_clicks=0,
+                            style={'backgroundColor': '#5D4037', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#5D4037', children=html.Div(id='spinner-run-biplot-statis'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
 
             html.Div(id='biplot-vs-statis-results-container', style={'display': 'none'}, children=[
@@ -2855,8 +2891,9 @@ layout = html.Div(style={'backgroundColor': COLOR_BG_MAIN, 'padding': '30px', 'f
                     dcc.Input(id='compromise-statis-vs-statis-k', type='number', value=3, min=2, max=10, style={'width': '60px'})
                 ], style={'display': 'flex', 'alignItems': 'center', 'marginRight': '20px'}),
                 
-                html.Button("BANDINGKAN CLUSTER", id='btn-run-compromise-statis-vs-statis', n_clicks=0, 
-                            style={'backgroundColor': '#33691E', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'})
+                html.Button("BANDINGKAN CLUSTER", id='btn-run-compromise-statis-vs-statis', n_clicks=0,
+                            style={'backgroundColor': '#33691E', 'color': 'white', 'fontWeight': 'bold', 'border': 'none', 'borderRadius': '5px', 'height': '38px', 'display': 'inline-flex', 'alignItems': 'center', 'justifyContent': 'center', 'padding': '0 20px', 'cursor': 'pointer'}),
+                dcc.Loading(type='circle', color='#33691E', children=html.Div(id='spinner-run-compromise-statis-vs-statis'), style={'display': 'inline-block', 'marginLeft': '10px', 'verticalAlign': 'middle', 'width': '30px'})
             ]),
 
             html.Div(id='compromise-statis-vs-statis-results-container', style={'display': 'none'}, children=[
@@ -3194,19 +3231,26 @@ def cb_pca_calc(n_clicks, vars, data, weight_var):
     analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
     if not analysis_vars: raise exceptions.PreventUpdate
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
-    pca = PCA(n_components=2)
-    scaler = StandardScaler()
     pc_list, load_list = [], []
     for y in data['years']:
         df_y = df[df['Tahun'] == y]
         if df_y.empty: continue
         X = df_y[analysis_vars]
+        pca = PCA(n_components=2)
+        scaler = StandardScaler()
         coords = pca.fit_transform(scaler.fit_transform(X))
+        loadings = pca.components_.T.copy()  # shape (n_features, 2)
+        # Deterministic sign convention: largest-abs loading per PC must be positive.
+        # Fixes SVD sign indeterminacy across LAPACK/numpy versions (e.g. local vs HuggingFace).
+        for i in range(2):
+            max_idx = np.argmax(np.abs(loadings[:, i]))
+            if loadings[max_idx, i] < 0:
+                loadings[:, i] *= -1
+                coords[:, i] *= -1
         d_sc = df_y[['Kabupaten/Kota', 'Provinsi', 'Tahun']].copy()
         d_sc['PC1'], d_sc['PC2'] = coords[:,0], coords[:,1]
         pc_list.append(d_sc)
-        d_load = pd.DataFrame(pca.components_.T, columns=['PC1', 'PC2'])
-        # Store per-year singular values (SV1, SV2) so visual scaling can follow Abdi et al. (2012)
+        d_load = pd.DataFrame(loadings, columns=['PC1', 'PC2'])
         try:
             sv = np.array(pca.singular_values_)[:2]
         except Exception:
@@ -3231,6 +3275,7 @@ def cb_weight_var_note(weight_var):
 @app.callback(
     Output('statis-core-store', 'data'),
     Output('statis-error-msg', 'children'),
+    Output('spinner-run-statis', 'children'),
     Input('btn-run-statis', 'n_clicks'),
     State('variable-dropdown-final', 'value'),
     State('upload-data', 'contents'),
@@ -3246,7 +3291,7 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var, 
     # Keluarkan variabel bobot dari variabel analisis
     analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
     if not analysis_vars:
-        return None, "❌ Tidak ada variabel analisis tersisa setelah variabel bobot dikecualikan."
+        return None, "❌ Tidak ada variabel analisis tersisa setelah variabel bobot dikecualikan.", ""
     try:
         print("--- [STATIS_CORE] MEMULAI PENGHITUNGAN ---")
         res = run_statis_core(contents, analysis_vars, global_data['sheet_names'], scenario=scenario, weight_var=weight_var)
@@ -3369,13 +3414,13 @@ def cb_statis_calc(n_clicks, vars, contents, global_data, scenario, weight_var, 
             traceback.print_exc()
             
         print("--- [STATIS_CORE] BERHASIL ---")
-        return res, ""
+        return res, "", ""
     except Exception as e:
         import traceback
         err_msg = f"ERROR DI PENGHITUNGAN CORE: {str(e)}"
         print(err_msg)
         traceback.print_exc()
-        return None, f"Terjadi kesalahan: {str(e)}"
+        return None, f"Terjadi kesalahan: {str(e)}", ""
 
 # 4c. SHOW/HIDE SECTIONS CALLBACK
 @app.callback(
@@ -3402,6 +3447,7 @@ def cb_show_sections(n_clicks):
     Output('bartlett-result', 'style'),
     Output('diag-results-container', 'style'),
     Output('formula-diag-output', 'children'),
+    Output('spinner-run-diag', 'children'),
     Input('btn-run-diag', 'n_clicks'),
     State('global-data-store', 'data'),
     State('variable-dropdown-final', 'value'),
@@ -3409,27 +3455,27 @@ def cb_show_sections(n_clicks):
 )
 def cb_diag_math(n_clicks, data_store, vars, weight_var):
     if not n_clicks or not data_store or not vars:
-        return "Wait...", {}, "Wait...", {}, {'display': 'none'}, render_diagnostic_formulas()
+        return "Wait...", {}, "Wait...", {}, {'display': 'none'}, render_diagnostic_formulas(), ""
 
     # Keluarkan variabel bobot dari variabel analisis KMO
     analysis_vars = [v for v in vars if v != weight_var] if weight_var else vars
     if not analysis_vars:
-        return "❌ Tidak ada variabel analisis.", {}, "❌ Tidak ada variabel analisis.", {}, {'display': 'none'}, render_diagnostic_formulas()
+        return "❌ Tidak ada variabel analisis.", {}, "❌ Tidak ada variabel analisis.", {}, {'display': 'none'}, render_diagnostic_formulas(), ""
 
     # 1. Diagnostics
     df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
     df_dict = {y: df[df['Tahun'] == y] for y in data_store['years']}
     kmo_val, p_val, kmo_int, bart_int, n, df_k, r_sq, q_sq, chi2_stat = calc_kmo_bartlett(df_dict, analysis_vars)
-    
+
     kmo_txt = f"KMO = {kmo_val:.3f} ({kmo_int})"
     bart_txt = f"P-value = {p_val} ({bart_int})" # No Rounding!
-    
+
     kmo_style = {'fontSize': '16px', 'padding': '10px', 'borderRadius': '5px', 'backgroundColor': '#E8F5E9' if kmo_val >= 0.5 else '#FFEBEE'}
     bart_style = {'fontSize': '16px', 'padding': '10px', 'borderRadius': '5px', 'backgroundColor': '#E8F5E9' if p_val < 0.05 else '#FFEBEE'}
 
     formula_ui = render_diagnostic_formulas(n, df_k, r_sq, q_sq, kmo_val, kmo_int, chi2_stat, p_val, bart_int)
 
-    return kmo_txt, kmo_style, bart_txt, bart_style, {'display': 'flex'}, formula_ui
+    return kmo_txt, kmo_style, bart_txt, bart_style, {'display': 'flex'}, formula_ui, ""
 
 # 5. DYNAMIC BIPLOT PLOTS
 @app.callback(
@@ -4039,17 +4085,41 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
     fig_inter = px.imshow(res['R'], text_auto=True, x=res['sheet_names'], y=res['sheet_names'], 
                        color_continuous_scale='Blues', title="RV Coefficient Matrix (Heatmap)")
     
-    # PLOT 2: Scree Plot
+    # PLOT 2: Scree Plot — cap at 10 meaningful dims, dual-axis bar+cumulative
+    _n_scree = min(10, len(eig_vals))
+    _ev = eig_vals[:_n_scree]
+    _ev_pos = np.clip(_ev, 0, None)
+    _cum_pct = np.cumsum(_ev_pos) / _ev_pos.sum() * 100 if _ev_pos.sum() > 0 else np.zeros(_n_scree)
+    _dims = [f"Dim {i+1}" for i in range(_n_scree)]
+
     fig_scree = go.Figure()
-    fig_scree.add_trace(go.Scatter(
-        x=list(range(1, len(eig_vals)+1)), 
-        y=eig_vals, 
-        mode="lines+markers+text", 
-        marker=dict(color='#E91E63', size=10),
-        text=[f"{v:.4f}".replace('.', ',') for v in eig_vals],
-        textposition="top center"
+    fig_scree.add_trace(go.Bar(
+        x=_dims, y=_ev_pos,
+        name="Eigenvalue",
+        marker_color='#1565C0',
+        text=[f"{v:.4f}".replace('.', ',') for v in _ev_pos],
+        textposition="outside",
+        yaxis='y1'
     ))
-    fig_scree.update_layout(title="Scree Plot (Eigenvalue Compromise Matrix)", xaxis_title="Component", yaxis_title="Eigenvalue", template="plotly_white")
+    fig_scree.add_trace(go.Scatter(
+        x=_dims, y=_cum_pct,
+        name="Kumulatif (%)",
+        mode="lines+markers+text",
+        marker=dict(color='#E91E63', size=8),
+        line=dict(color='#E91E63', width=2),
+        text=[f"{v:.2f}%".replace('.', ',') for v in _cum_pct],
+        textposition="top center",
+        yaxis='y2'
+    ))
+    fig_scree.update_layout(
+        title="Scree Plot — Eigenvalue Matriks Kompromi",
+        xaxis_title="Dimensi",
+        yaxis=dict(title="Eigenvalue", side='left'),
+        yaxis2=dict(title="Kumulatif (%)", overlaying='y', side='right', range=[0, 110], showgrid=False),
+        legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
+        template="plotly_white",
+        bargap=0.3
+    )
     
     # PLOT 3: Contribution
     contrib = (loadings**2) / np.sum(loadings**2, axis=0) # Normalization
@@ -4478,33 +4548,34 @@ def cb_statis_viz(res, table_key, vis_opts, page_size, mirror_years, base_type, 
 @app.callback(
     Output('perm-graph', 'figure'), Output('perm-result-text', 'children'),
     Output('formula-perm-output', 'children'),
+    Output('spinner-run-perm', 'children'),
     Input('btn-run-perm', 'n_clicks'), State('perm-n-input', 'value'), State('statis-core-store', 'data')
 )
 def cb_run_perm(n_clicks, n_perm, res):
-    if not n_clicks or not res or not isinstance(res, dict): return EMPTY_FIG, "Tunggu data STATIS...", ""
-    if res.get("ERROR_STATUS"): return EMPTY_FIG, f"Gagal: {res.get('MESSAGE')}", ""
-    
+    if not n_clicks or not res or not isinstance(res, dict): return EMPTY_FIG, "Tunggu data STATIS...", "", ""
+    if res.get("ERROR_STATUS"): return EMPTY_FIG, f"Gagal: {res.get('MESSAGE')}", "", ""
+
     try:
         X_matrices = [np.array(m) for m in res['X_matrices']]
         m_weights = np.array(res['m_weights']) if 'm_weights' in res else None
         lambda_obs = res['vals_H_sorted'][0]
         dist, p_val = run_permutation_test(X_matrices, res['k'], lambda_obs, n_perm, m_weights=m_weights)
-        
+
         fig = px.histogram(x=dist, title=f"Distribusi Null (N={n_perm})", color_discrete_sequence=['#90A4AE'])
         fig.add_vline(x=lambda_obs, line_color="#D32F2F", line_dash="dash", annotation_text=f"Observed: {lambda_obs:.3f}")
         fig.update_layout(template='plotly_white')
-        
+
         interp = "Signifikan (Struktur Stabil)" if p_val < 0.05 else "Tidak Signifikan (Acak)"
-        
+
         # --- AUTO EXPORT LATEX ---
         export_perm_latex(p_val, interp)
-        
+
         # Render Result Formulas
         form_ui = render_permutation_formulas(p_val, lambda_obs, n_perm, interp)
-        
-        return fig, f"P-value = {p_val}. Interpretasi: {interp}", form_ui
+
+        return fig, f"P-value = {p_val}. Interpretasi: {interp}", form_ui, ""
     except Exception as e:
-        return EMPTY_FIG, f"Error Permutasi: {str(e)}", ""
+        return EMPTY_FIG, f"Error Permutasi: {str(e)}", "", ""
 
 # --- FALLBACK RETURN UNTUK ERROR DI PERMUTASI ---
 @app.callback(
@@ -4547,6 +4618,7 @@ def cb_toggle_weight_vars(mode):
     Output('title-biplot-vs-statis-pie-statis', 'children'),
     Output('biplot-vs-statis-pie-statis', 'figure'),
     Output('biplot-vs-statis-results-container', 'style'),
+    Output('spinner-run-biplot-statis', 'children'),
     Input('btn-run-biplot-statis', 'n_clicks'),
     State('biplot-vs-statis-year', 'value'),
     State('biplot-vs-statis-k', 'value'),
@@ -4556,7 +4628,7 @@ def cb_toggle_weight_vars(mode):
 )
 def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
     if not n or not statis_data or not global_data or not year:
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
     
     try:
         from sklearn.cluster import KMeans
@@ -4719,11 +4791,11 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
             "Scatter Plot Klaster Kompromi STATIS", fig_scatter_statis,
             f"Proporsi Klaster Biplot ({year})", fig_pie_biplot,
             "Proporsi Klaster Kompromi STATIS", fig_pie_statis,
-            {'display': 'block'}
+            {'display': 'block'}, ""
         )
     except Exception as e:
         print(f"Error Section 10: {e}")
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
 # 11. Callback Section 11: Statis vs IPM Rata-rata
 @app.callback(
@@ -4738,6 +4810,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
     Output('title-statis-ipm-avg-pie-ipm', 'children'),
     Output('statis-ipm-avg-pie-ipm', 'figure'),
     Output('statis-ipm-avg-results-container', 'style'),
+    Output('spinner-run-statis-ipm-avg', 'children'),
     Input('btn-run-statis-ipm-avg', 'n_clicks'),
     State('statis-vs-ipm-avg-k', 'value'),
     State('statis-vs-ipm-avg-view-mode', 'value'),
@@ -4747,7 +4820,7 @@ def cb_run_biplot_vs_statis(n, year, k, mode, statis_data, global_data):
 )
 def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     if not n or not statis_data or not global_data:
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
         
     try:
         from sklearn.cluster import KMeans
@@ -4786,8 +4859,8 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
                 break
         
         if not ipm_col:
-            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
-            
+            return [{'Error': 'Kolom IPM tidak ditemukan'}], [{'name': 'Error', 'id': 'Error'}], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
+
         df_year_ipm = df_all[df_all['Tahun'].astype(str) == str(year)].set_index('Kabupaten/Kota').reindex(obs_labels)
         ipm_vals = df_year_ipm[ipm_col].fillna(df_year_ipm[ipm_col].mean()).values
         
@@ -4878,11 +4951,11 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
             "Peta Kategori IPM (UNDP)", fig_map_ipm,
             "Proporsi Klaster Kompromi STATIS", fig_pie_statis,
             "Proporsi Kategori IPM (UNDP)", fig_pie_ipm,
-            {'display': 'block'}
+            {'display': 'block'}, ""
         )
     except Exception as e:
         print(f"Error Section 11: {e}")
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
 
 # --- CALLBACK: PERBANDINGAN CLUSTER STATIS VS KATEGORI IPM (UNDP) ---
@@ -4898,6 +4971,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
     Output('title-statis-vs-ipm-pie-ipm', 'children'),
     Output('statis-vs-ipm-pie-ipm', 'figure'),
     Output('statis-vs-ipm-results-container', 'style'),
+    Output('spinner-run-statis-vs-ipm', 'children'),
     Input('btn-run-statis-vs-ipm', 'n_clicks'),
     Input('statis-vs-ipm-view-mode', 'value'),
     State('statis-vs-ipm-year', 'value'),
@@ -4907,7 +4981,7 @@ def cb_run_statis_vs_ipm_avg(n, k, mode, year, statis_data, global_data):
 )
 def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_store):
     if not n_clicks or not sel_year or not data_store or not statis_store:
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
     try:
         from sklearn.cluster import KMeans
@@ -4926,7 +5000,7 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
         obs_labels = statis_store['obs_labels']
         str_year = str(sel_year)
         if str_year not in statis_store['per_year_coords']:
-            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
         coords = np.array(statis_store['per_year_coords'][str_year])
         km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
@@ -5018,11 +5092,11 @@ def cb_run_statis_vs_ipm(n_clicks, view_mode, sel_year, k, data_store, statis_st
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
             f"Proporsi Klaster STATIS ({sel_year})", fig_pie_statis,
             f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm,
-            {'display': 'block'}
+            {'display': 'block'}, ""
         )
     except Exception as e:
         print(f"Error cb_run_statis_vs_ipm: {e}")
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
 
 @app.callback(
@@ -5065,6 +5139,7 @@ def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
     Output('title-compromise-statis-vs-statis-pie-statis', 'children'),
     Output('compromise-statis-vs-statis-pie-statis', 'figure'),
     Output('compromise-statis-vs-statis-results-container', 'style'),
+    Output('spinner-run-compromise-statis-vs-statis', 'children'),
     Input('btn-run-compromise-statis-vs-statis', 'n_clicks'),
     Input('compromise-statis-vs-statis-view-mode', 'value'),
     State('compromise-statis-vs-statis-year', 'value'),
@@ -5073,7 +5148,7 @@ def dl_statis_vs_ipm_tex(n_clicks, data, columns, year, mode):
 )
 def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data):
     if not n_clicks or not statis_data or not year:
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
     
     try:
         from sklearn.cluster import KMeans
@@ -5107,8 +5182,8 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
         # B. Get STATIS Tahunan Klaster (for selected year)
         str_year = str(year)
         if str_year not in coords_dict:
-            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
-        
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
+
         X_year = np.array(coords_dict[str_year])
         km_yr = KMeans(n_clusters=k, random_state=42, n_init=10).fit(X_year)
         
@@ -5207,11 +5282,11 @@ def cb_run_compromise_statis_vs_statis(n_clicks, view_mode, year, k, statis_data
             f"Scatter Plot Klaster STATIS Tahunan ({year})", fig_scatter_statis,
             "Proporsi Klaster Kompromi STATIS", fig_pie_comp,
             f"Proporsi Klaster STATIS Tahunan ({year})", fig_pie_statis,
-            {'display': 'block'}
+            {'display': 'block'}, ""
         )
     except Exception as e:
         print(f"Error cb_run_compromise_statis_vs_statis: {e}")
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
 
 @app.callback(
@@ -5242,7 +5317,8 @@ def dl_compromise_statis_vs_statis_tex(n_clicks, data, columns, year, mode):
     Output('desc-table-output', 'children'),
     Output('desc-boxplot-output', 'children'),
     Output('desc-formula-output', 'children'),
-    Output('desc-corr-output', 'children'),  # NEW: correlation matrix
+    Output('desc-corr-output', 'children'),
+    Output('spinner-run-desc', 'children'),
     Input('btn-run-desc', 'n_clicks'),
     State('desc-year-dropdown', 'value'),
     State('desc-weight-mode', 'value'),
@@ -5252,7 +5328,7 @@ def dl_compromise_statis_vs_statis_tex(n_clicks, data, columns, year, mode):
 )
 def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, data):
     if not n_clicks or not data or not selected_year:
-        return "", "", "", ""
+        return "", "", "", "", ""
 
     try:
         df_all = pd.read_json(io.StringIO(data['df_json']), orient='split')
@@ -5286,7 +5362,7 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, 
         if exclude_vars:
             df = df.drop(columns=[v for v in exclude_vars if v in df.columns])
     except Exception as e:
-        return html.P(f"Error membaca data: {e}", style={'color': 'red'}), "", "", ""
+        return html.P(f"Error membaca data: {e}", style={'color': 'red'}), "", "", "", ""
 
     # --- Diagnostic info bar ---
     if df_year.empty:
@@ -5295,7 +5371,7 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, 
             style={'backgroundColor': '#FFF3CD', 'color': '#856404', 'padding': '10px',
                    'borderRadius': '6px', 'marginBottom': '10px', 'fontWeight': 'bold'}
         )
-        return diag, "", "", ""
+        return diag, "", "", "", ""
 
     mode_text = "Dengan Bobot" if m_weights else "Tanpa Bobot (Konvensional)"
     info_parts = [f"✅ {len(df.columns)} kolom numerik | Mode: {mode_text}"]
@@ -5310,7 +5386,7 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, 
         return html.Div([
             diag_bar,
             html.P("Tidak ada kolom numerik yang dapat dianalisis.", style={'color': 'red'})
-        ]), "", "", ""
+        ]), "", "", "", ""
 
     from scipy.stats import skew, kurtosis as kurt
     # Build summary stats
@@ -5530,7 +5606,7 @@ def cb_run_desc(n_clicks, selected_year, weight_mode, weight_var, exclude_vars, 
         dcc.Graph(figure=splom_fig)
     ])
 
-    return tbl_section, boxplot_section, formula_section, corr_section
+    return tbl_section, boxplot_section, formula_section, corr_section, ""
 
 
 # 8. Update Table Page Size
@@ -5546,6 +5622,7 @@ def update_page_size(size):
 @app.callback(
     Output('desc-multi-table-output', 'children'),
     Output('desc-multi-trend-output', 'children'),
+    Output('spinner-run-desc-multi', 'children'),
     Input('btn-run-desc-multi', 'n_clicks'),
     State('desc-multi-stat', 'value'),
     State('desc-multi-scale', 'value'),
@@ -5555,7 +5632,7 @@ def update_page_size(size):
 )
 def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, data):
     if not n_clicks or not data:
-        return "", ""
+        return "", "", ""
 
     from scipy.stats import skew, kurtosis as kurt
 
@@ -5574,7 +5651,7 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
                 m_weights = (df_weight / m_sum).to_dict()
 
     except Exception as e:
-        return html.P(f"Error: {e}", style={'color': 'red'}), ""
+        return html.P(f"Error: {e}", style={'color': 'red'}), "", ""
 
     STAT_LABELS = {
         'mean': 'Mean (Rata-rata)', 'std': 'Std Dev', 'median': 'Median',
@@ -5663,7 +5740,7 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
                 year_dfs[yr] = (s / m * 100).where(m != 0)
 
     if not year_dfs:
-        return html.P("Tidak ada data yang dapat ditampilkan.", style={'color': 'red'}), ""
+        return html.P("Tidak ada data yang dapat ditampilkan.", style={'color': 'red'}), "", ""
 
     df_pivot = pd.DataFrame(year_dfs).T
     df_pivot.index.name = 'Tahun'
@@ -5715,7 +5792,7 @@ def cb_run_desc_multi(n_clicks, stat_key, scale_mode, weight_mode, weight_var, d
         html.Div(trend_figs, style={'display': 'flex', 'flexWrap': 'wrap'})
     ])
 
-    return tbl_section, trend_section
+    return tbl_section, trend_section, ""
 
 
 # 8. Update Table Page Size
@@ -5784,6 +5861,7 @@ def cb_eval_cluster(eval_year, res):
 # 10A. CALCULATION: CLUSTERING TAHUNAN & MATRIKS TRANSISI
 @app.callback(
     Output('statis-trans-store', 'data'),
+    Output('spinner-run-trans', 'children'),
     Input('btn-run-trans', 'n_clicks'),
     State('trans-year-dropdown', 'value'),
     State('trans-k-input', 'value'),
@@ -5791,23 +5869,23 @@ def cb_eval_cluster(eval_year, res):
     State('global-data-store', 'data')
 )
 def cb_calc_trans(n_clicks, t2_year, k, pca_res, global_data):
-    if not n_clicks or not t2_year or not pca_res or not global_data: return dash.no_update
-    
+    if not n_clicks or not t2_year or not pca_res or not global_data: raise exceptions.PreventUpdate
+
     years = sorted(list(global_data['years']))
     try:
         t2_idx = years.index(int(t2_year))
-        if t2_idx == 0: return dash.no_update
+        if t2_idx == 0: raise exceptions.PreventUpdate
         t1_year = years[t2_idx - 1]
     except (ValueError, IndexError):
-        return dash.no_update
+        raise exceptions.PreventUpdate
         
     import pandas as pd
     df_scores = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
     df_t1 = df_scores[df_scores['Tahun'] == int(t1_year)]
     df_t2 = df_scores[df_scores['Tahun'] == int(t2_year)]
     
-    if df_t1.empty or df_t2.empty: return dash.no_update
-    
+    if df_t1.empty or df_t2.empty: raise exceptions.PreventUpdate
+
     coords_t1 = df_t1[['PC1', 'PC2']].to_numpy()
     coords_t2 = df_t2[['PC1', 'PC2']].to_numpy()
     obs_labels = df_t1['Kabupaten/Kota'].tolist()
@@ -5851,27 +5929,28 @@ def cb_calc_trans(n_clicks, t2_year, k, pca_res, global_data):
         'coords_t1': coords_t1.tolist(),
         'coords_t2': coords_t2.tolist(),
         'k': k
-    }
+    }, ""
 
 
 # 10A-2. CALCULATION: CLUSTERING TAHUNAN TERBOBOT & MATRIKS TRANSISI
 @app.callback(
     Output('weighted-trans-store', 'data'),
+    Output('spinner-run-weighted-trans', 'children'),
     Input('btn-run-weighted-trans', 'n_clicks'),
     State('weighted-trans-year-dropdown', 'value'),
     State('weighted-trans-k-input', 'value'),
     State('statis-core-store', 'data')
 )
 def cb_calc_weighted_trans(n_clicks, t2_year, k, res):
-    if not n_clicks or not t2_year or not res: return dash.no_update
-    
+    if not n_clicks or not t2_year or not res: raise exceptions.PreventUpdate
+
     years = sorted(list(res['per_year_coords'].keys()))
     try:
         t2_idx = years.index(str(t2_year))
-        if t2_idx == 0: return dash.no_update
+        if t2_idx == 0: raise exceptions.PreventUpdate
         t1_year = years[t2_idx - 1]
     except (ValueError, IndexError):
-        return dash.no_update
+        raise exceptions.PreventUpdate
     
     coords_t1 = np.array(res['per_year_coords'][t1_year])
     coords_t2 = np.array(res['per_year_coords'][str(t2_year)])
@@ -5916,11 +5995,12 @@ def cb_calc_weighted_trans(n_clicks, t2_year, k, res):
         'coords_t1': coords_t1.tolist(),
         'coords_t2': coords_t2.tolist(),
         'k': k
-    }
+    }, ""
 
 # 10A-3. CALCULATION: PERBANDINGAN BIPLOT VS STATIS TAHUN TERTENTU
 @app.callback(
     Output('biplot-statis-compare-store', 'data'),
+    Output('spinner-run-biplot-statis-compare', 'children'),
     Input('btn-run-biplot-statis-compare', 'n_clicks'),
     State('biplot-statis-compare-year', 'value'),
     State('biplot-statis-compare-k', 'value'),
@@ -5928,21 +6008,21 @@ def cb_calc_weighted_trans(n_clicks, t2_year, k, res):
     State('statis-core-store', 'data')
 )
 def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
-    if not n_clicks or not year or not pca_res or not statis_res: return dash.no_update
-    
+    if not n_clicks or not year or not pca_res or not statis_res: raise exceptions.PreventUpdate
+
     import pandas as pd
-    
+
     # Biplot Coordinates
     df_scores = pd.read_json(io.StringIO(pca_res['pc_scores']), orient='split')
     df_year = df_scores[df_scores['Tahun'] == int(year)]
-    if df_year.empty: return dash.no_update
+    if df_year.empty: raise exceptions.PreventUpdate
     coords_biplot = df_year[['PC1', 'PC2']].to_numpy()
-    
+
     # STATIS Coordinates
     try:
         coords_statis = np.array(statis_res['per_year_coords'][str(year)])
     except KeyError:
-        return dash.no_update
+        raise exceptions.PreventUpdate
         
     obs_labels = df_year['Kabupaten/Kota'].tolist()
     
@@ -5986,7 +6066,7 @@ def cb_calc_biplot_statis_compare(n_clicks, year, k, pca_res, statis_res):
         'coords_t1': coords_biplot.tolist(),
         'coords_t2': coords_statis.tolist(),
         'k': k
-    }
+    }, ""
 
 # 10B. RENDERING: PLOTS (FIGS)
 @app.callback(
@@ -6335,13 +6415,14 @@ def cb_render_biplot_statis_compare_table(data, view_mode):
     Output('cluster-member-table', 'data'),
     Output('cluster-member-table', 'columns'),
     Output('cluster-results-container', 'style'),
+    Output('spinner-run-cluster', 'children'),
     Input('btn-run-cluster', 'n_clicks'),
     State('cluster-k-input', 'value'),
     State('statis-core-store', 'data')
 )
 def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     if not n_clicks or not res:
-        return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, "", html.Div(), [], [], {'display': 'none'}
+        return EMPTY_FIG, EMPTY_FIG, EMPTY_FIG, "", html.Div(), [], [], {'display': 'none'}, ""
     
     obs_labels = res['obs_labels']
     coords_dict = res['per_year_coords']
@@ -6386,28 +6467,25 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
         category_orders={"color": LEVEL_ORDER}
     )
     fig_scatter.update_traces(marker=dict(size=8), textfont=dict(size=8), textposition='top center')
-    fig_scatter.update_layout(template='plotly_white', width=800, height=800)
-    import os
-    os.makedirs("../output_app", exist_ok=True)
-    try: fig_scatter.write_image("../output_app/cluster_compromise_biplot.png")
-    except: pass
+    fig_scatter.update_layout(template='plotly_white')
 
     # --- 3. Pie Chart ---
     try:
         df_pie = pd.DataFrame({'Cluster': str_labels})
         fig_pie = px.pie(
-            df_pie, 
-            names='Cluster', 
+            df_pie,
+            names='Cluster',
             title="Proporsi Klaster Trajektori",
-            color='Cluster', 
+            color='Cluster',
             color_discrete_map=CLUSTER_COLOR_MAP,
             category_orders={"Cluster": LEVEL_ORDER}
         )
-        fig_pie.update_layout(template='plotly_white', width=800, height=800)
-        import os
-        os.makedirs("../output_app", exist_ok=True)
-        try: fig_pie.write_image("../output_app/pie_compromise.png")
-        except: pass
+        fig_pie.update_traces(marker=dict(line=dict(width=0)))
+        fig_pie.update_layout(
+            template='plotly_white', margin=dict(t=40, b=10, l=10, r=10),
+            xaxis=dict(visible=False, showgrid=False, zeroline=False, showline=False),
+            yaxis=dict(visible=False, showgrid=False, zeroline=False, showline=False),
+        )
     except Exception as e:
         fig_pie = go.Figure().add_annotation(text=f"Error Pie Chart: {e}", showarrow=False)
 
@@ -6472,21 +6550,14 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
             zoom=6.5, opacity=0.7
         )
         fig_map.update_layout(title=title_text, margin={"r":0,"t":40,"l":0,"b":0})
-        # Add Text Labels
-        lon_list_c, lat_list_c, text_list_c = [], [], []
-        for _, row in df_map.iterrows():
-            area = row['Kab/Kota']
-            geom = gdf[gdf['id_cocok'] == area]
-            if not geom.empty:
-                lon_list_c.append(geom.geometry.centroid.x.values[0])
-                lat_list_c.append(geom.geometry.centroid.y.values[0])
-                text_list_c.append(area)
+        # Add Text Labels — use pre-built centroid dict for speed
+        centroid_dict = {row['id_cocok']: (row.geometry.centroid.x, row.geometry.centroid.y)
+                         for _, row in gdf.iterrows() if row['id_cocok'] in obs_labels}
+        lon_list_c = [centroid_dict[a][0] for a in obs_labels if a in centroid_dict]
+        lat_list_c = [centroid_dict[a][1] for a in obs_labels if a in centroid_dict]
+        text_list_c = [a for a in obs_labels if a in centroid_dict]
         if text_list_c:
             fig_map.add_trace(go.Scattermapbox(lon=lon_list_c, lat=lat_list_c, mode='text', text=text_list_c, textfont=dict(size=9, color='black'), showlegend=False))
-        import os
-        os.makedirs("../output_app", exist_ok=True)
-        try: fig_map.write_image("../output_app/cluster_compromise_map.png")
-        except: pass
     else:
         fig_map.add_annotation(text="Gagal memuat data GeoJSON.", showarrow=False)
 
@@ -6529,7 +6600,7 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     else:
         math_ui = render_cluster_formulas()
 
-    return fig_scatter, fig_pie, fig_map, interp_text, math_ui, member_data, member_cols, {'display': 'block'}
+    return fig_scatter, fig_pie, fig_map, interp_text, math_ui, member_data, member_cols, {'display': 'block'}, ""
 
 # 12. IPM MATRIX CALLBACK (UNDP CATEGORIES)
 @app.callback(
@@ -6545,22 +6616,23 @@ def cb_run_clustering_trajectory(n_clicks, k_clusters, res):
     Output('title-ipm-trans-pie-t2', 'children'),
     Output('ipm-trans-pie-t2', 'figure'),
     Output('ipm-trans-results-container', 'style'),
+    Output('spinner-run-ipm-trans', 'children'),
     Input('btn-run-ipm-trans', 'n_clicks'),
     Input('ipm-trans-view-mode', 'value'),
     State('ipm-trans-year-dropdown', 'value'),
     State('global-data-store', 'data')
 )
 def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
-    if not n_clicks or not t2_year or not data: return "", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+    if not n_clicks or not t2_year or not data: return "", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
     df = pd.read_json(io.StringIO(data['df_json']), orient='split')
     years = data['years']
 
     if 'IPM' not in df.columns:
-        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return "Kolom IPM tidak ditemukan pada data yang diunggah.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
     t2_idx = years.index(t2_year)
-    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+    if t2_idx == 0: return "Pilih tahun selain tahun pertama.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
     t1_year = years[t2_idx - 1]
 
     # Filter Data untuk T1 dan T2
@@ -6568,7 +6640,7 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     df_t2 = df[df['Tahun'] == t2_year].set_index('Kabupaten/Kota')
 
     common_kabs = df_t1.index.intersection(df_t2.index)
-    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+    if len(common_kabs) == 0: return "Tidak ada data Kabupaten/Kota yang cocok antara dua tahun.", [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
     
     df_t1 = df_t1.loc[common_kabs]
     df_t2 = df_t2.loc[common_kabs]
@@ -6700,7 +6772,7 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
         f"Peta Sebaran IPM ({t2_year})", fig_map_t2,
         f"Proporsi Kategori IPM ({t1_year})", fig_pie_t1,
         f"Proporsi Kategori IPM ({t2_year})", fig_pie_t2,
-        {'display': 'block'}
+        {'display': 'block'}, ""
     )
 
 
@@ -6717,6 +6789,7 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
     Output('title-cross-pie-ipm', 'children'),
     Output('cross-pie-ipm', 'figure'),
     Output('cross-results-container', 'style'),
+    Output('spinner-run-cross', 'children'),
     Input('btn-run-cross', 'n_clicks'),
     Input('cross-view-mode', 'value'),
     State('cross-year-dropdown', 'value'),
@@ -6726,13 +6799,13 @@ def cb_run_ipm_trans(n_clicks, view_mode, t2_year, data):
 )
 def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store):
     if not n_clicks or not sel_year or not data_store or not statis_store:
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
-    
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
+
     try:
         # 1. Ambil IPM kategories dari data asli
         df = pd.read_json(io.StringIO(data_store['df_json']), orient='split')
         if 'IPM' not in df.columns:
-            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
         df_yr = df[df['Tahun'] == sel_year].set_index('Kabupaten/Kota')
         def categorize_ipm(val):
@@ -6746,7 +6819,7 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
         obs_labels = statis_store['obs_labels']
         str_year = str(sel_year)
         if str_year not in statis_store['per_year_coords']:
-            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+            return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
         
         coords = np.array(statis_store['per_year_coords'][str_year])
         km_curr = KMeans(n_clusters=k, random_state=42, n_init=10)
@@ -6867,11 +6940,11 @@ def cb_run_cross_tab(n_clicks, view_mode, sel_year, k, data_store, statis_store)
             f"Peta Kategori IPM ({sel_year})", fig_map_ipm,
             f"Proporsi Klaster Biplot ({sel_year})", fig_pie_biplot,
             f"Proporsi Kategori IPM ({sel_year})", fig_pie_ipm,
-            {'display': 'block'}
+            {'display': 'block'}, ""
         )
     except Exception as e:
         print(f"Error cb_run_cross_tab: {e}")
-        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}
+        return [], [], "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, "", EMPTY_FIG, {'display': 'none'}, ""
 
 # =========================================================
 # UTIL: EKSPOR TABEL UI COMPONENT KE .TEX

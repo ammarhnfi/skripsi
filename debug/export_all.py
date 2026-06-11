@@ -1170,14 +1170,26 @@ for current_scenario in ['scenario1', 'scenario2']:
     # ------------------------------------------------------------
     def apply_visual_adjustments(scores, loads, norm=False, scale=True, singular_values=None):
         ps, pl = scores.copy(), loads.copy()
+        max_val = None
         if norm:
             max_val = np.max(np.abs(ps)) if ps.size > 0 else 1
             if max_val > 0: ps = ps / max_val
         if scale:
             if singular_values is not None:
                 sv = np.array(singular_values, dtype=float)
-                pl[:, 0] = loads[:, 0] * sv[0]
-                pl[:, 1] = loads[:, 1] * sv[1]
+                if sv.ndim == 1 and sv.size >= 2:
+                    # Global SVs: all rows scaled by same (sv[0], sv[1])
+                    pl[:, 0] = loads[:, 0] * sv[0]
+                    pl[:, 1] = loads[:, 1] * sv[1]
+                elif sv.ndim == 2 and sv.shape[1] >= 2 and sv.shape[0] == pl.shape[0]:
+                    # Per-row SVs: each loading row scaled by its own (sv_i[0], sv_i[1])
+                    pl[:, 0] = loads[:, 0] * sv[:, 0]
+                    pl[:, 1] = loads[:, 1] * sv[:, 1]
+                else:
+                    ms, ml = np.max(np.abs(ps)), np.max(np.abs(pl))
+                    if ml > 0: pl = pl * (ms / ml) * 0.8
+                if norm and max_val and max_val > 0:
+                    pl = pl / max_val
             else:
                 ms, ml = np.max(np.abs(ps)), np.max(np.abs(pl))
                 if ml > 0: pl = pl * (ms / ml) * 0.8
@@ -1263,28 +1275,23 @@ for current_scenario in ['scenario1', 'scenario2']:
     
     pca_scores_dict = {}
     pca_loadings_dict = {}
+    pca_svs_dict = {}
     for i, yr in enumerate(sheet_names):
         X = tables[yr][selected_vars].values
         X_std = StandardScaler().fit_transform(X)
         pca = PCA(n_components=2)
         scores_pca = pca.fit_transform(X_std)
-        loadings_pca = pca.components_.T
+        loadings_pca = pca.components_.T.copy()  # shape (n_features, 2)
+        # Deterministic sign convention — consistent dengan app.py
+        for _i in range(2):
+            _max_idx = np.argmax(np.abs(loadings_pca[:, _i]))
+            if loadings_pca[_max_idx, _i] < 0:
+                loadings_pca[:, _i] *= -1
+                scores_pca[:, _i] *= -1
         pca_scores_dict[yr] = scores_pca
         pca_loadings_dict[yr] = loadings_pca
-    
-    def apply_global_adjustments(pc_concat, load_concat, norm=False, scale=True):
-        ps, pl = pc_concat.copy(), load_concat.copy()
-        if norm:
-            for col in range(ps.shape[1]):
-                m_val = np.abs(ps[:, col]).max() if np.abs(ps[:, col]).max() > 0 else 1
-                ps[:, col] = ps[:, col] / m_val
-        if scale:
-            ms = np.max(np.abs(ps))
-            ml = np.max(np.abs(pl))
-            if ml > 0:
-                pl = pl * (ms / ml) * 0.8
-        return ps, pl
-    
+        pca_svs_dict[yr] = pca.singular_values_[:2].copy()
+
     pca_pc_list, pca_load_list = [], []
     statis_pc_list, statis_load_list = [], []
     for yr in sheet_names:
@@ -1299,7 +1306,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             lpca[:, 1] *= -1
         pca_pc_list.append(spca)
         pca_load_list.append(lpca)
-        
+
         sstatis = per_year_coords[yr][:,:2].copy()
         lstatis = per_year_loadings[yr][:,:2].copy()
         angle_stat = compute_baseline_angle(sstatis, lstatis, obs_labels, selected_vars, BASELINE_TYPE, BASELINE_NAME) if BASELINE_NAME else 0
@@ -1311,9 +1318,21 @@ for current_scenario in ['scenario1', 'scenario2']:
             lstatis[:, 1] *= -1
         statis_pc_list.append(sstatis)
         statis_load_list.append(lstatis)
-    
-    pca_pc_adj, pca_load_adj = apply_global_adjustments(np.vstack(pca_pc_list), np.vstack(pca_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
-    statis_pc_adj, statis_load_adj = apply_global_adjustments(np.vstack(statis_pc_list), np.vstack(statis_load_list), norm=NORM_SCORE, scale=SCALE_LOAD)
+
+    # Match app.py: PCA uses per-year SVs (Abdi 2012), STATIS uses compromise SVs.
+    # Build per-row SV array for stacked PCA loadings (each var-row inherits its year's SVs).
+    _n_vars_pca = len(selected_vars)
+    _pca_svs_stacked = np.vstack([
+        np.tile(pca_svs_dict[yr], (_n_vars_pca, 1)) for yr in sheet_names
+    ])
+    pca_pc_adj, pca_load_adj = apply_visual_adjustments(
+        np.vstack(pca_pc_list), np.vstack(pca_load_list),
+        norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_pca_svs_stacked
+    )
+    statis_pc_adj, statis_load_adj = apply_visual_adjustments(
+        np.vstack(statis_pc_list), np.vstack(statis_load_list),
+        norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_sv_c
+    )
     
     pca_pc_adj_dict = {}
     pca_load_adj_dict = {}
@@ -2481,22 +2500,25 @@ for current_scenario in ['scenario1', 'scenario2']:
                             color_discrete_sequence=['#1976D2'])
         fig_elbow.update_traces(
             text=[f"{val:,.2f}" for val in inertias],
-            textposition="top center",
+            textposition="bottom center",
             mode="lines+markers+text",
             name="SSE"
         )
         fig_elbow.add_trace(go.Scatter(
             x=list(range(2, sil_max_k)), y=sil_scores[1:],
-            mode='lines+markers', name='Siluet',
+            mode='lines+markers+text', name='Siluet',
             line=dict(color='#E53935', width=2, dash='dot'),
-            marker=dict(size=7),
+            marker=dict(size=8, color='#E53935'),
+            text=[f"{v:.3f}" for v in sil_scores[1:]],
+            textposition='top center',
+            textfont=dict(size=11, color='#E53935'),
             yaxis='y2'
         ))
         fig_elbow.update_layout(
             template='plotly_white',
             yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
         )
-        save_png(fig_elbow, f"elbow_plot_{yr}.png", OUT_DIR, width=700, height=450)
+        save_png(fig_elbow, f"elbow_plot_{yr}.png", OUT_DIR, width=800, height=500)
     
         # Dendrogram
         Z = linkage(Xc, 'ward')
@@ -2528,22 +2550,25 @@ for current_scenario in ['scenario1', 'scenario2']:
                                    color_discrete_sequence=['#1976D2'])
             fig_elbow_bp.update_traces(
                 text=[f"{val:,.2f}" for val in inertias_bp],
-                textposition="top center",
+                textposition="bottom center",
                 mode="lines+markers+text",
                 name="SSE"
             )
             fig_elbow_bp.add_trace(go.Scatter(
                 x=list(range(2, sil_max_k_bp)), y=sil_scores_bp[1:],
-                mode='lines+markers', name='Siluet',
+                mode='lines+markers+text', name='Siluet',
                 line=dict(color='#E53935', width=2, dash='dot'),
-                marker=dict(size=7),
+                marker=dict(size=8, color='#E53935'),
+                text=[f"{v:.3f}" for v in sil_scores_bp[1:]],
+                textposition='top center',
+                textfont=dict(size=11, color='#E53935'),
                 yaxis='y2'
             ))
             fig_elbow_bp.update_layout(
                 template='plotly_white',
                 yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
             )
-            save_png(fig_elbow_bp, f"elbow_plot_{yr}.png", ROOT_OUT_DIR, width=700, height=450)
+            save_png(fig_elbow_bp, f"elbow_plot_{yr}.png", ROOT_OUT_DIR, width=800, height=500)
             
             try:
                 fig_dendro_bp = ff.create_dendrogram(Xc_bp, labels=obs_labels, orientation='left')

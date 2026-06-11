@@ -114,19 +114,22 @@ def find_kab_col_files(nama_files: list) -> list:
 # ── Konversi full-text (untuk _name files) ───────────────────────────────────
 
 def nama_ke_indeks(teks: str) -> str:
-    """Ganti nama kabupaten/kota -> [indeks] di seluruh teks."""
+    """Ganti nama kabupaten/kota -> {[indeks]} di seluruh teks.
+    Dibungkus kurung kurawal agar LaTeX tidak salah baca sebagai
+    argumen opsional spasi \\[...] di awal baris tabel."""
     for nama in SORTED_NAMES:
         idx = NAME_TO_INDEX[nama]
-        teks = teks.replace(nama, f"[{idx}]")
+        teks = teks.replace(nama, f"{{[{idx}]}}")
     return teks
 
 
 def indeks_ke_nama(teks: str) -> str:
-    """Ganti [indeks] -> nama kabupaten/kota di seluruh teks."""
+    """Ganti {[indeks]} atau [indeks] -> nama kabupaten/kota."""
     def ganti(m):
         idx = int(m.group(1))
         return INDEX_TO_NAME.get(idx, m.group(0))
-    return re.sub(r"\[(\d+)\]", ganti, teks)
+    # Cocokkan {[N]} (format baru) maupun [N] (format lama)
+    return re.sub(r"\{?\[(\d+)\]\}?", ganti, teks)
 
 
 # ── Konversi kolom-pertama (untuk tabel Kabupaten/Kota) ──────────────────────

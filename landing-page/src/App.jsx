@@ -427,34 +427,19 @@ function SideBySideIntegratedTexLoader({ filename, folder, hasLeft, hasRight }) 
 
 function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, availableYears, availablePairs }) {
   const [compMode, setCompMode] = useState('comp_3_biplot_vs_statis');
-  const [selectedPeriod, setSelectedPeriod] = useState('');
+  const [selectedPeriod, setSelectedPeriod] = useState(() => availableYears[0] ?? '');
   const [compView, setCompView] = useState('map');
 
-  useEffect(() => {
-    if (availableYears.length > 0 && !selectedPeriod) {
-      setSelectedPeriod(availableYears[0]);
-    }
-  }, [availableYears]);
+  // Derived: which pool is valid for current compMode
+  const isTransition = ['comp_1_trans_biplot', 'comp_2_trans_statis', 'comp_4_trans_ipm'].includes(compMode);
+  const validPool = isTransition ? availablePairs : availableYears;
 
-  useEffect(() => {
-    const isTransition = ['comp_1_trans_biplot', 'comp_2_trans_statis', 'comp_4_trans_ipm'].includes(compMode);
-    if (isTransition) {
-      if (availablePairs.length > 0 && !availablePairs.includes(selectedPeriod)) {
-        setSelectedPeriod(availablePairs[0]);
-      }
-    } else {
-      if (availableYears.length > 0 && !availableYears.includes(selectedPeriod)) {
-        setSelectedPeriod(availableYears[0]);
-      }
-    }
-  }, [compMode, availableYears, availablePairs]);
+  // Derived: clamp selectedPeriod to the valid pool for the active mode
+  const activePeriodDerived = validPool.includes(selectedPeriod) ? selectedPeriod : (validPool[0] ?? '');
 
-  useEffect(() => {
-    const isIpmMode = ['comp_4_trans_ipm', 'comp_5_biplot_vs_ipm', 'comp_6_statis_vs_ipm', 'comp_9_compromise_vs_ipm'].includes(compMode);
-    if (isIpmMode && compView === 'scatter') {
-      setCompView('map');
-    }
-  }, [compMode, compView]);
+  // Derived: IPM modes don't support scatter view
+  const isIpmMode = ['comp_4_trans_ipm', 'comp_5_biplot_vs_ipm', 'comp_6_statis_vs_ipm', 'comp_9_compromise_vs_ipm'].includes(compMode);
+  const activeCompView = isIpmMode && compView === 'scatter' ? 'map' : compView;
 
   // Define all 9 rows dynamically (Years + Pairs)
   const rows = [
@@ -523,8 +508,7 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
     }))
   ];
 
-  // Determine active period
-  const activePeriod = selectedPeriod || (availableYears.length > 0 ? availableYears[0] : '');
+  const activePeriod = activePeriodDerived;
 
   // Determine filenames based on exact naming conventions in export_all.py
   let mapFile = '';
@@ -588,11 +572,11 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
   // Active file based on selected view
   let activeFilename = '';
   let isImage = true;
-  if (compView === 'map') { activeFilename = mapFile; isImage = true; }
-  else if (compView === 'scatter') { activeFilename = scatterFile; isImage = true; }
-  else if (compView === 'pie') { activeFilename = pieFile; isImage = true; }
-  else if (compView === 'sum') { activeFilename = sumTableFile; isImage = false; }
-  else if (compView === 'name') { activeFilename = nameTableFile; isImage = false; }
+  if (activeCompView === 'map') { activeFilename = mapFile; isImage = true; }
+  else if (activeCompView === 'scatter') { activeFilename = scatterFile; isImage = true; }
+  else if (activeCompView === 'pie') { activeFilename = pieFile; isImage = true; }
+  else if (activeCompView === 'sum') { activeFilename = sumTableFile; isImage = false; }
+  else if (activeCompView === 'name') { activeFilename = nameTableFile; isImage = false; }
 
   const isRootFile = activeFilename.startsWith('output_table_biplot_transition_');
   const hasLeft = isRootFile ? currentResults.some(f => f.name === activeFilename) : sc1Files.some(f => f.name === activeFilename);
@@ -675,7 +659,7 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
                   {/* Small version buttons (4 or 5 options dynamically) */}
                   <div style={{ display: 'grid', gridTemplateColumns: `repeat(${viewsToRender.length}, 1fr)`, gap: '4px' }}>
                     {viewsToRender.map(view => {
-                      const isActiveButton = isRowSelected && compView === view;
+                      const isActiveButton = isRowSelected && activeCompView === view;
                       let btnLabel = '';
                       let btnIcon = '';
                       if (view === 'map') { btnLabel = 'Peta'; btnIcon = '🗺️'; }
@@ -2683,25 +2667,26 @@ function DetailText({ text }) {
 
 /* Lazy-loads & renders a single output file (tex or image) from output_sample */
 function OutputFileViewer({ path, label, caption, imgHeight }) {
-  const [tex, setTex]             = useState('');
-  const [loading, setLoading]     = useState(true);
-  const [unavailable, setUnavailable] = useState(false);
   const isImg = /\.(png|jpg|gif)$/i.test(path);
+  // Single state object — all mutations happen in async callbacks, never synchronously
+  const [result, setResult] = useState({ fetchedPath: null, tex: '', unavailable: false });
+
+  const loading = !isImg && result.fetchedPath !== path;
+  const tex = result.tex;
+  const unavailable = result.unavailable;
 
   useEffect(() => {
-    if (isImg) { setLoading(false); return; }
+    if (isImg) return;
     let active = true;
-    setLoading(true);
-    setUnavailable(false);
     fetch(path)
       .then(r => {
-        if (!r.ok) { if (active) { setUnavailable(true); setLoading(false); } return; }
+        if (!r.ok) { if (active) setResult({ fetchedPath: path, tex: '', unavailable: true }); return; }
         return r.text();
       })
-      .then(t => { if (t !== undefined && active) { setTex(t); setLoading(false); } })
-      .catch(() => { if (active) { setUnavailable(true); setLoading(false); } });
+      .then(t => { if (t !== undefined && active) setResult({ fetchedPath: path, tex: t, unavailable: false }); })
+      .catch(() => { if (active) setResult({ fetchedPath: path, tex: '', unavailable: true }); });
     return () => { active = false; };
-  }, [path]);
+  }, [path, isImg]);
 
   return (
     <div style={{ marginBottom: '10px' }}>
@@ -2970,7 +2955,7 @@ function MethodologyFlowView({ onBack }) {
       id: 'd0', color: '#f59e0b', icon: '🎲', type: 'decision', num: 11,
       title: 'Uji Permutasi (Signifikansi Stabilitas)',
       subtitle: 'Verifikasi bahwa struktur kompromi bukan artefak acak',
-      latex: `$$\\tau=\\frac{\\lambda_1^2}{\\sigma^2},\\qquad p\\text{-value}=\\frac{\\#\\{\\tau_{\\mathrm{perm}}\\geq\\tau_{\\mathrm{obs}}\\}}{N_{\\mathrm{perm}}},\\quad N_{\\mathrm{perm}}=1000$$`,
+      latex: `$$p\\text{-value} = \\frac{\\displaystyle\\sum_{b=1}^{B} I\\!\\left(\\theta_1^{\\pi(b)} \\geq \\theta_1^{\\text{obs}}\\right)+1}{B+1},\\quad B=N_{\\text{perm}}=1000$$`,
       detail: 'Permutasi acak kolom matriks inter-struktur H  |  p < 0.05 → struktur signifikan & layak diinterpretasi',
       outputs: [<OutputBadge key="p" icon="📊" label="p-value + histogram permutasi" color="#f59e0b"/>],
       outputFiles: [
@@ -3508,27 +3493,29 @@ function MethodologyFlowView({ onBack }) {
 function DatasetTableView({ defaultDataset }) {
   const [dsType, setDsType] = useState(defaultDataset || 'real');
   const [year, setYear] = useState('2020');
-  const [tex, setTex] = useState('');
-  const [loading, setLoading] = useState(true);
 
   const realYears = ['2020','2021','2022','2023','2024'];
   const sampelYears = ['2020','2021','2022'];
   const years = dsType === 'real' ? realYears : sampelYears;
 
-  useEffect(() => {
-    if (!years.includes(year)) setYear(years[0]);
-  }, [dsType]);
+  // Clamp year to valid set during render — no effect needed
+  const effectiveYear = years.includes(year) ? year : years[0];
+
+  // Single state: track what was last successfully fetched
+  const [fetchResult, setFetchResult] = useState({ key: null, tex: '' });
+  const currentKey = `${dsType}_${effectiveYear}`;
+  const loading = fetchResult.key !== currentKey;
+  const tex = fetchResult.tex;
 
   useEffect(() => {
     let active = true;
-    setLoading(true);
     const prefix = dsType === 'real' ? 'data_final' : 'data_sampel';
-    fetch(`/${prefix}_${year}.tex`)
+    fetch(`/${prefix}_${effectiveYear}.tex`)
       .then(r => r.text())
-      .then(t => { if (active) { setTex(t); setLoading(false); } })
-      .catch(() => { if (active) setLoading(false); });
+      .then(t => { if (active) setFetchResult({ key: currentKey, tex: t }); })
+      .catch(() => { if (active) setFetchResult({ key: currentKey, tex: '' }); });
     return () => { active = false; };
-  }, [dsType, year]);
+  }, [dsType, effectiveYear, currentKey]);
 
   return (
     <div>
@@ -3548,9 +3535,9 @@ function DatasetTableView({ defaultDataset }) {
         <span style={{ color: '#64748b', fontSize: '0.8rem' }}>Tahun:</span>
         {years.map(y => (
           <button key={y} onClick={() => setYear(y)} style={{
-            background: year === y ? 'rgba(6,182,212,0.2)' : 'rgba(15,23,42,0.4)',
-            color: year === y ? '#e2e8f0' : '#64748b',
-            border: `1px solid ${year===y?'rgba(6,182,212,0.4)':'rgba(255,255,255,0.08)'}`,
+            background: effectiveYear === y ? 'rgba(6,182,212,0.2)' : 'rgba(15,23,42,0.4)',
+            color: effectiveYear === y ? '#e2e8f0' : '#64748b',
+            border: `1px solid ${effectiveYear===y?'rgba(6,182,212,0.4)':'rgba(255,255,255,0.08)'}`,
             borderRadius: '8px', padding: '4px 14px', fontSize: '0.8rem', fontWeight: '600',
             cursor: 'pointer', transition: 'all 0.15s' }}>
             {y}
@@ -3583,7 +3570,6 @@ function App() {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isShaking, setIsShaking] = useState(false);
-  const [iframeLoading, setIframeLoading] = useState(true);
   const [previousDocsModal, setPreviousDocsModal] = useState('docs-real');
 
   // PDF Reader State
@@ -3692,9 +3678,6 @@ function App() {
       setPageNumber(1);
       setPdfScale(1.2);
     }
-    if (id === 'web-app') {
-      setIframeLoading(true);
-    }
   };
   const closeModal = () => {
     setActiveModal(null);
@@ -3793,13 +3776,27 @@ function App() {
           {/* Web App Card */}
           <div
             className="card glass-effect highlight"
-            onClick={() => openModal('web-app')}
+            onClick={() => window.open('https://huggingface.co/spaces/ammarhnfi/skripsi', '_blank')}
+            style={{ cursor: 'pointer' }}
           >
             <div className="card-icon">🌐</div>
             <h2>Website Aplikasi</h2>
             <p>
               Jelajahi visualisasi interaktif (Trajectory, K-Means Clustering,
-              Peta Tematik) secara langsung.
+              Peta Tematik) secara langsung di HuggingFace Spaces.
+            </p>
+          </div>
+
+          {/* Presentation HTML Card */}
+          <div
+            className="card glass-effect highlight"
+            onClick={() => window.open('/sidang_skripsi.html', '_blank')}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="card-icon">🎓</div>
+            <h2>Presentasi Sidang</h2>
+            <p>
+              Buka slide presentasi sidang skripsi interaktif langsung di browser — cocok untuk tampilan dosen penguji.
             </p>
           </div>
 
@@ -4006,34 +4003,6 @@ function App() {
         </div>
       </div>
 
-      <div
-        className={`modal ${activeModal === 'web-app' ? 'active' : ''}`}
-        onClick={(e) => {
-          if (e.target.classList.contains('modal')) closeModal();
-        }}
-      >
-        <div className="modal-content glass-effect" style={{ width: '90vw', maxWidth: 'none', height: '90vh', padding: '1rem', display: 'flex', flexDirection: 'column', position: 'relative' }}>
-          <button className="close-btn" onClick={closeModal} style={{ zIndex: 10, top: '0.5rem', right: '0.5rem' }}>
-            &times;
-          </button>
-          <div style={{ flex: 1, borderRadius: '12px', overflow: 'hidden', marginTop: '1rem', background: '#fff', position: 'relative' }}>
-            {iframeLoading && (
-              <div className="spinner-container">
-                <div className="spinner"></div>
-                <p style={{ color: '#64748b', fontWeight: '500' }}>Tunggu sebentar, sedang memuat Data Engine...</p>
-              </div>
-            )}
-            {activeModal === 'web-app' && (
-              <iframe
-                src="https://ammarhnfi-skripsiv2.hf.space"
-                style={{ width: '100%', height: '100%', border: 'none' }}
-                title="Aplikasi Python Interaktif"
-                onLoad={() => setIframeLoading(false)}
-              />
-            )}
-          </div>
-        </div>
-      </div>
 
       <div
         className={`modal ${activeModal === 'docs-real' || activeModal === 'docs-sample' ? 'active' : ''}`}

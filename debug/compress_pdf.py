@@ -15,8 +15,8 @@ import io
 import subprocess
 import importlib
 
-INPUT_PDF  = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk.pdf"))
-OUTPUT_PDF = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk_compressed.pdf"))
+INPUT_PDF  = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk_inti.pdf"))
+OUTPUT_PDF = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk_inti_compressed.pdf"))
 
 
 def ensure_pkg(pip_name, import_name=None):

@@ -54,6 +54,16 @@ if %ERRORLEVEL% NEQ 0 (
 )
 echo.
 
+echo [LANGKAH 3.5] Sinkronisasi Slide Presentasi Sidang...
+copy /Y "d:\Skripsi\my\Presentation\sidang_skripsi.html" "d:\Skripsi\my\landing-page\public\sidang_skripsi.html"
+copy /Y "d:\Skripsi\my\gambarku\qr-skripsiammar.png" "d:\Skripsi\my\landing-page\public\qr-skripsiammar.png"
+if %ERRORLEVEL% NEQ 0 (
+    echo [ERROR] Gagal menyalin file presentasi.
+) else (
+    echo -- Presentasi Sidang Berhasil disinkronkan! --
+)
+echo.
+
 echo [LANGKAH 4] Menyimpan pembaruan ke Git ^& GitHub...
 cd /d "d:\Skripsi\my"
 git add .

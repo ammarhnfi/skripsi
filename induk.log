@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  6 JUN 2026 08:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  11 JUN 2026 23:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1676,71 +1676,71 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <12> not available
 
 
 ] [84]
-<output_real/boxplot_tpt.png, id=2204, 2409.0pt x 1505.625pt>
+<output_real/boxplot_tpt.png, id=2204, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_tpt.png Graphic file (type png)
 <use output_real/boxplot_tpt.png>
 Package pdftex.def Info: output_real/boxplot_tpt.png  used on input line 74.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_tpak.png, id=2205, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_tpak.png, id=2205, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_tpak.png Graphic file (type png)
 <use output_real/boxplot_tpak.png>
 Package pdftex.def Info: output_real/boxplot_tpak.png  used on input line 80.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_ahh_l.png, id=2208, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_ahh_l.png, id=2208, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ahh_l.png Graphic file (type png)
 <use output_real/boxplot_ahh_l.png>
 Package pdftex.def Info: output_real/boxplot_ahh_l.png  used on input line 92.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_ahh_p.png, id=2209, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_ahh_p.png, id=2209, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ahh_p.png Graphic file (type png)
 <use output_real/boxplot_ahh_p.png>
 Package pdftex.def Info: output_real/boxplot_ahh_p.png  used on input line 98.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
  [85 <./output_real/boxplot_tpt.png> <./output_real/boxplot_tpak.png> <./output
 _real/boxplot_ahh_l.png> <./output_real/boxplot_ahh_p.png>]
-<output_real/boxplot_gr.png, id=2223, 2409.0pt x 1505.625pt>
+<output_real/boxplot_gr.png, id=2223, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_gr.png Graphic file (type png)
 <use output_real/boxplot_gr.png>
 Package pdftex.def Info: output_real/boxplot_gr.png  used on input line 110.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_gk.png, id=2224, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_gk.png, id=2224, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_gk.png Graphic file (type png)
 <use output_real/boxplot_gk.png>
 Package pdftex.def Info: output_real/boxplot_gk.png  used on input line 116.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_ipm.png, id=2227, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_ipm.png, id=2227, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ipm.png Graphic file (type png)
 <use output_real/boxplot_ipm.png>
 Package pdftex.def Info: output_real/boxplot_ipm.png  used on input line 128.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_ipg.png, id=2228, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_ipg.png, id=2228, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ipg.png Graphic file (type png)
 <use output_real/boxplot_ipg.png>
 Package pdftex.def Info: output_real/boxplot_ipg.png  used on input line 134.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
  [86 <./output_real/boxplot_gr.png> <./output_real/boxplot_gk.png> <./output_re
 al/boxplot_ipm.png> <./output_real/boxplot_ipg.png>]
-<output_real/boxplot_pdrb_adhk.png, id=2241, 2409.0pt x 1505.625pt>
+<output_real/boxplot_pdrb_adhk.png, id=2241, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_pdrb_adhk.png Graphic file (type png)
 <use output_real/boxplot_pdrb_adhk.png>
 Package pdftex.def Info: output_real/boxplot_pdrb_adhk.png  used on input line 
 146.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_pkkp.png, id=2242, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_pkkp.png, id=2242, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_pkkp.png Graphic file (type png)
 <use output_real/boxplot_pkkp.png>
 Package pdftex.def Info: output_real/boxplot_pkkp.png  used on input line 152.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_rls.png, id=2245, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_rls.png, id=2245, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_rls.png Graphic file (type png)
 <use output_real/boxplot_rls.png>
 Package pdftex.def Info: output_real/boxplot_rls.png  used on input line 164.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
-<output_real/boxplot_ppm.png, id=2246, 2409.0pt x 1505.625pt>
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
+<output_real/boxplot_ppm.png, id=2246, 1606.0pt x 1003.75pt>
 File: output_real/boxplot_ppm.png Graphic file (type png)
 <use output_real/boxplot_ppm.png>
 Package pdftex.def Info: output_real/boxplot_ppm.png  used on input line 170.
-(pdftex.def)             Requested size: 204.85802pt x 128.03386pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
  [87 <./output_real/boxplot_pdrb_adhk.png> <./output_real/boxplot_pkkp.png> <./
 output_real/boxplot_rls.png> <./output_real/boxplot_ppm.png>]
 <output_real/corr_heatmap_2020.png, id=2260, 2188.175pt x 2188.175pt>
@@ -1891,24 +1891,24 @@ enario1/biplot_tahun_2024.png>]
 (output_real/scenario1/output_table_loading_intra_2022.tex)
 (output_real/scenario1/output_table_loading_intra_2023.tex)
 (output_real/scenario1/output_table_loading_intra_2024.tex) [110]
-<output_real/scenario1/elbow_plot_2020.png, id=2502, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2020.png, id=2502, 1606.0pt x 1003.75pt>
 File: output_real/scenario1/elbow_plot_2020.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2020.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2020.png  used on inp
 ut line 667.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
 <output_real/scenario1/dendrogram_2020.png, id=2503, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2020.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2020.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2020.png  used on inp
 ut line 668.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2021.png, id=2504, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2021.png, id=2504, 1606.0pt x 1003.75pt>
 File: output_real/scenario1/elbow_plot_2021.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2021.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2021.png  used on inp
 ut line 675.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
 <output_real/scenario1/dendrogram_2021.png, id=2505, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2021.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2021.png>
@@ -1917,36 +1917,36 @@ ut line 676.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
  [111 <./output_real/scenario1/elbow_plot_2020.png> <./output_real/scenario1/de
 ndrogram_2020.png>]
-<output_real/scenario1/elbow_plot_2022.png, id=2513, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2022.png, id=2513, 1606.0pt x 1003.75pt>
 File: output_real/scenario1/elbow_plot_2022.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2022.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2022.png  used on inp
 ut line 683.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
 <output_real/scenario1/dendrogram_2022.png, id=2514, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2022.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2022.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2022.png  used on inp
 ut line 684.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2023.png, id=2515, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2023.png, id=2515, 1606.0pt x 1003.75pt>
 File: output_real/scenario1/elbow_plot_2023.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2023.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2023.png  used on inp
 ut line 691.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
 <output_real/scenario1/dendrogram_2023.png, id=2516, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2023.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2023.png>
 Package pdftex.def Info: output_real/scenario1/dendrogram_2023.png  used on inp
 ut line 692.
 (pdftex.def)             Requested size: 204.85802pt x 140.82883pt.
-<output_real/scenario1/elbow_plot_2024.png, id=2517, 1405.25pt x 903.375pt>
+<output_real/scenario1/elbow_plot_2024.png, id=2517, 1606.0pt x 1003.75pt>
 File: output_real/scenario1/elbow_plot_2024.png Graphic file (type png)
 <use output_real/scenario1/elbow_plot_2024.png>
 Package pdftex.def Info: output_real/scenario1/elbow_plot_2024.png  used on inp
 ut line 699.
-(pdftex.def)             Requested size: 204.85802pt x 131.68213pt.
+(pdftex.def)             Requested size: 204.85802pt x 128.0262pt.
 <output_real/scenario1/dendrogram_2024.png, id=2518, 1606.0pt x 1104.125pt>
 File: output_real/scenario1/dendrogram_2024.png Graphic file (type png)
 <use output_real/scenario1/dendrogram_2024.png>
@@ -2460,7 +2460,7 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 Here is how much of TeX's memory you used:
  35271 strings out of 467871
  682687 string characters out of 5418376
- 1191317 words of memory out of 5000000
+ 1190317 words of memory out of 5000000
  61650 multiletter control sequences out of 15000+600000
  689846 words of font info for 450 fonts, out of 8000000 for 9000
  1253 hyphenation exceptions out of 8191
@@ -2712,7 +2712,7 @@ mb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/ut
 mbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/u
 tmri8a.pfb>
-Output written on induk.pdf (197 pages, 20753306 bytes).
+Output written on induk.pdf (197 pages, 20509532 bytes).
 PDF statistics:
  3719 PDF objects out of 4296 (max. 8388607)
  865 named destinations out of 1000 (max. 500000)
