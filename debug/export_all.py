@@ -232,11 +232,11 @@ os.makedirs(OUT_DIR, exist_ok=True)
 # ============================================================
 # HELPER: simpan PNG
 # ============================================================
-def save_png(fig, filename, out_dir, width=900, height=600):
+def save_png(fig, filename, out_dir, width=900, height=600, scale=2):
     path = os.path.join(out_dir, filename)
     try:
         fig.update_layout(title_x=0.5)
-        fig.write_image(path, width=width, height=height, scale=2)
+        fig.write_image(path, width=width, height=height, scale=scale)
         print(f"  [PNG] {filename}")
     except Exception as e:
         print(f"  [WARN] Gagal simpan {filename}: {e}")
@@ -929,11 +929,16 @@ for col in vars_for_boxplot:
     fig_box = px.box(df_all_years, x='Tahun', y=col, points='outliers',
                      title=f"Distribusi {col} (Perbandingan Tahunan)",
                      color='Tahun', color_discrete_sequence=px.colors.qualitative.Safe)
-    fig_box.update_layout(template='plotly_white', height=500, showlegend=False)
-    
+    fig_box.update_layout(
+        template='plotly_white', height=500, showlegend=False,
+        font=dict(size=16),
+        title_font=dict(size=18),
+        xaxis=dict(title='Tahun', title_font=dict(size=18), tickfont=dict(size=18)),
+        yaxis=dict(title=col, title_font=dict(size=18), tickfont=dict(size=16)),
+    )
     fname = col.replace('/', '-').replace(' ', '_').lower()
     if col in _JP_NAMES: fname = "jp"
-    save_png(fig_box, f"boxplot_{fname}.png", ROOT_OUT_DIR, width=800, height=500)
+    save_png(fig_box, f"boxplot_{fname}.png", ROOT_OUT_DIR, width=800, height=500, scale=3)
 
 print("\n=== 2.1b Heatmap Korelasi Per Tahun ===")
 from scipy.stats import pearsonr as _pearsonr
@@ -1008,6 +1013,95 @@ save_tex_table(df_alpha_s, "output_table_alpha_s.tex", ROOT_OUT_DIR, "Bobot Alph
 
 # 2.3 KMO & Bartlett dan 2.4 Permutation Test dikerjakan di dalam scenario loop (section 3c dan 5)
 # agar parameter yang digunakan konsisten per skenario (H_W untuk s1, H_S untuk s2).
+
+# ============================================================
+# 2.X HELPER: Profil Karakteristik Klaster (Rata-rata ± SD)
+# Dipakai di dalam scenario loop (section 9.X)
+# ============================================================
+_CMAP_PROFIL = {
+    "Klaster 1 (Rendah)":        "#EF5350",
+    "Klaster 2 (Sedang)":        "#FFB300",
+    "Klaster 3 (Tinggi)":        "#4CAF50",
+    "Klaster 4 (Sangat Tinggi)": "#42A5F5",
+}
+_IPM_CMAP_PROFIL = {
+    "Sangat Tinggi": "#1565C0", "Tinggi": "#4CAF50",
+    "Sedang": "#FFB300", "Rendah": "#EF5350",
+}
+_IPM_ORD_PROFIL = ["Rendah", "Sedang", "Tinggi", "Sangat Tinggi"]
+_sfx_k = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
+_nm_k   = {i: f"Klaster {i+1} ({_sfx_k.get(i, str(i+1))})" for i in range(max(K_CLUSTERS, 4))}
+
+
+def _bar_profil(var, clusters, means, stds, colors, title, out_path):
+    n_cl = len(clusters)
+    fig_b, ax_b = plt.subplots(figsize=(max(6, n_cl * 2.1), 6.5))
+    x_b = np.arange(n_cl)
+    ax_b.bar(x_b, means, width=0.55, color=colors, edgecolor="#37474F", linewidth=0.8, zorder=3)
+    ax_b.errorbar(x_b, means, yerr=stds, fmt="none", ecolor="#37474F",
+                  elinewidth=1.8, capsize=9, capthick=1.8, zorder=4)
+    yall_b = [m + s for m, s in zip(means, stds)] + [m - s for m, s in zip(means, stds)]
+    y_lo_b = min(min(means), min(yall_b) if yall_b else 0, 0)
+    y_hi_b = max(yall_b) if yall_b else 1
+    span_b = max(y_hi_b - y_lo_b, 1e-6)
+    for i_b, (mean_b, std_b) in enumerate(zip(means, stds)):
+        ax_b.text(x_b[i_b], mean_b + std_b + span_b * 0.04, f"{mean_b:.3f}",
+                  ha="center", va="bottom", fontsize=10, fontweight="bold", color="#1A237E")
+        y_sd_b = mean_b * 0.5 if mean_b >= 0 else mean_b - std_b * 0.5
+        inside_b = "white" if abs(mean_b) > span_b * 0.18 else "#37474F"
+        ax_b.text(x_b[i_b], y_sd_b, f"±{std_b:.3f}",
+                  ha="center", va="center", fontsize=8.5, fontweight="bold", color=inside_b)
+    xl_b = [f"{cl}\n[{m-s:.3f},\n {m+s:.3f}]" for cl, m, s in zip(clusters, means, stds)]
+    ax_b.set_xticks(x_b); ax_b.set_xticklabels(xl_b, fontsize=8.5)
+    ax_b.set_title(title, fontsize=11, fontweight="bold", pad=14)
+    ax_b.set_ylabel(f"Rata-rata {var}", fontsize=11)
+    ax_b.set_xlabel("Klaster", fontsize=11)
+    ax_b.yaxis.grid(True, linestyle="--", alpha=0.45, zorder=0)
+    ax_b.set_axisbelow(True)
+    ax_b.spines["top"].set_visible(False)
+    ax_b.spines["right"].set_visible(False)
+    pad_b = span_b * 0.20
+    ax_b.set_ylim(y_lo_b - pad_b * 0.4, y_hi_b + pad_b * 1.9)
+    patches_b = [mpatches.Patch(color=c, label=cl) for cl, c in zip(clusters, colors)]
+    ax_b.legend(handles=patches_b, fontsize=8.5, loc="upper right", framealpha=0.85)
+    plt.tight_layout()
+    fig_b.savefig(out_path, dpi=150, bbox_inches="tight")
+    plt.close(fig_b)
+
+
+def _export_profil_bar(scen_folder, yr_int, str_lbs, obs, scen_label, k_str, k_info=""):
+    folder_p = os.path.join(ROOT_OUT_DIR, "klaster", scen_folder)
+    os.makedirs(folder_p, exist_ok=True)
+    lmap_p  = dict(zip(obs, str_lbs))
+    is_ipm  = scen_folder == "ipm_cat"
+    ord_cl  = (
+        [c for c in _IPM_ORD_PROFIL if c in set(str_lbs)] if is_ipm
+        else sorted(set(str_lbs), key=lambda x: int(x.split(" ")[1])
+                    if len(x.split(" ")) > 1 and x.split(" ")[1].isdigit() else 0)
+    )
+    cmap_p  = _IPM_CMAP_PROFIL if is_ipm else _CMAP_PROFIL
+    df_yr_p = tables_raw[str(yr_int)].reindex(obs)
+    for var_p in selected_vars:
+        if var_p not in df_yr_p.columns:
+            continue
+        means_p, stds_p, colors_p = [], [], []
+        for cl_p in ord_cl:
+            vals_p = [
+                float(df_yr_p.loc[o_p, var_p])
+                for o_p in obs
+                if lmap_p.get(o_p) == cl_p and o_p in df_yr_p.index
+                and pd.notna(df_yr_p.loc[o_p, var_p])
+            ]
+            means_p.append(np.mean(vals_p) if vals_p else 0.0)
+            stds_p.append(np.std(vals_p, ddof=0) if vals_p else 0.0)
+            colors_p.append(cmap_p.get(cl_p, "#90CAF9"))
+        safe_v  = var_p.replace("/", "_").replace(" ", "_").replace("(", "").replace(")", "").replace(",", "")
+        fname_p = f"{yr_int}_{k_str}_{safe_v}.png"
+        out_p   = os.path.join(folder_p, fname_p)
+        title_p = f"{var_p}  (Tahun {yr_int})\n{scen_label}{k_info}"
+        _bar_profil(var_p, ord_cl, means_p, stds_p, colors_p, title_p, out_p)
+    print(f"    [{scen_folder}] {yr_int}: {len(selected_vars)} PNG")
+
 
 # ============================================================
 # 3. SCENARIO LOOP
@@ -2379,54 +2473,30 @@ for current_scenario in ['scenario1', 'scenario2']:
     else:
         print("  [WARN] Tidak ada kolom IPM, matriks transisi IPM dilewati.")
     
-    # Clustering per tahun dengan Base Year Anchoring (Hungarian Algorithm) + PC1 Ranking
-    from scipy.spatial.distance import cdist
-    from scipy.optimize import linear_sum_assignment
-    
-    # Gunakan per_year_coords yang sudah dihitung sebelumnya (Z @ Vc)
-    # per_year_coords[sheet_names[0]] adalah koordinat tahun pertama (base)
-    base_coords = per_year_coords[sheet_names[0]][:, :2]
-    km_base = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
-    km_base.fit(base_coords)
-    base_centroids = km_base.cluster_centers_
-    
-    def get_ranked_labels(_coords_current, labels_awal, current_centroids, base_centroids_ref, compromise_scores):
-        """
-        Penyelarasan label menggunakan Hungarian Algorithm (Kuhn, 1955) 
-        untuk konsistensi antar-tahun, diikuti perankingan otomatis berdasarkan mean PC1 Kompromi.
-        """
-        # 1. Hungarian Matching ke Base Year
-        dist_matrix = cdist(base_centroids_ref, current_centroids, metric='euclidean')
-        row_ind, col_ind = linear_sum_assignment(dist_matrix)
-        mapping = {col_ind[i]: row_ind[i] for i in range(len(col_ind))}
-        aligned_labels = np.array([mapping[l] for l in labels_awal])
-        
-        # 2. Re-ranking otomatis per tahun (berdasarkan rata-rata PC1 skor kompromi)
-        # Ini memastikan Klaster 3 (Tinggi) selalu merujuk pada performa tinggi secara global
-        cluster_means = []
-        unique_lbls = sorted(list(set(aligned_labels)))
-        for cl in unique_lbls:
-            # Gunakan skor kompromi sebagai referensi ranking (Sesuai app.py Section 11)
-            cluster_means.append(np.mean(compromise_scores[aligned_labels == cl, 0]))
-        
-        # Urutkan: mean terendah dapat indeks 0, tertinggi dapat indeks K-1
-        sorted_indices = np.argsort(cluster_means)
-        rank_map = {old_val: rank for rank, old_val in enumerate(sorted_indices)}
-        
-        final_labels = np.array([rank_map[l] for l in aligned_labels])
-        return final_labels
+    # Clustering per tahun dengan Seeded Sequential K-Means untuk konsistensi temporal.
+    # Label ditetapkan sekali di tahun dasar berdasarkan PC1 skor kompromi,
+    # kemudian dipertahankan lintas waktu via inisialisasi sentroid dari tahun sebelumnya.
+    prev_centers = None
+    base_rank_map = None   # {raw_cluster_id → ranked_cluster_id (0=Rendah,...)}
 
     cluster_per_year = {}
     for yr in sheet_names:
         coords = per_year_coords[yr][:, :2]
-        km = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
-        labels_raw = km.fit_predict(coords)
-        curr_centroids = km.cluster_centers_
-        
-        # Penyelarasan & Perankingan (Kuhn / Hungarian + PC1 Rank)
-        labels = get_ranked_labels(coords, labels_raw, curr_centroids, base_centroids, scores_raw)
+        if prev_centers is None:
+            km = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10).fit(coords)
+            labels_raw = km.labels_
+            cl_m = [np.mean(scores_raw[labels_raw == c, 0])
+                    if np.any(labels_raw == c) else 0.0 for c in range(K_CLUSTERS)]
+            sorted_idx = np.argsort(cl_m)
+            base_rank_map = {raw_c: rank for rank, raw_c in enumerate(sorted_idx)}
+        else:
+            km = KMeans(n_clusters=K_CLUSTERS, init=prev_centers,
+                        n_init=1, random_state=42).fit(coords)
+            labels_raw = km.labels_
+        prev_centers = km.cluster_centers_
+        labels = np.array([base_rank_map[r] for r in labels_raw])
         cluster_per_year[yr] = labels
-        
+
         # Scatter biplot Klaster per tahun
         ps_y, pl_y = apply_visual_adjustments(coords, loadings, norm=NORM_SCORE, scale=SCALE_LOAD, singular_values=_sv_c)
         # Gunakan warna dari app.py: Merah (Rendah), Jingga (Sedang), Hijau (Tinggi)
@@ -2502,7 +2572,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             text=[f"{val:,.2f}" for val in inertias],
             textposition="bottom center",
             mode="lines+markers+text",
-            name="SSE"
+            name="SSE",
+            textfont=dict(size=11, color='#1976D2'),
         )
         fig_elbow.add_trace(go.Scatter(
             x=list(range(2, sil_max_k)), y=sil_scores[1:],
@@ -2516,7 +2587,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         ))
         fig_elbow.update_layout(
             template='plotly_white',
-            yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
+            yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1]),
+            legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
         )
         save_png(fig_elbow, f"elbow_plot_{yr}.png", OUT_DIR, width=800, height=500)
     
@@ -2552,7 +2624,8 @@ for current_scenario in ['scenario1', 'scenario2']:
                 text=[f"{val:,.2f}" for val in inertias_bp],
                 textposition="bottom center",
                 mode="lines+markers+text",
-                name="SSE"
+                name="SSE",
+                textfont=dict(size=11, color='#1976D2'),
             )
             fig_elbow_bp.add_trace(go.Scatter(
                 x=list(range(2, sil_max_k_bp)), y=sil_scores_bp[1:],
@@ -2566,7 +2639,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             ))
             fig_elbow_bp.update_layout(
                 template='plotly_white',
-                yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1])
+                yaxis2=dict(title='Koefisien Siluet', overlaying='y', side='right', range=[0, 1]),
+                legend=dict(orientation='h', yanchor='bottom', y=1.02, xanchor='right', x=1),
             )
             save_png(fig_elbow_bp, f"elbow_plot_{yr}.png", ROOT_OUT_DIR, width=800, height=500)
             
@@ -2578,34 +2652,34 @@ for current_scenario in ['scenario1', 'scenario2']:
             except Exception as e:
                 print(f"  [WARN] Dendrogram unweighted {yr} gagal: {e}")
 
-    # ============================================================
-    # 8.A PERBANDINGAN CLUSTER BIPLOT VS CLUSTER STATIS
-    # ============================================================
-    print("\n=== 8.A Perbandingan Klaster Biplot vs Klaster Statis ===")
+    # Pre-compute biplot_per_year (dibutuhkan 8.E, 8.G, dan section 9.X)
+    from scipy.spatial.distance import cdist
+    from scipy.optimize import linear_sum_assignment
+    biplot_base_yr = sheet_names[0]
+    km_bp_base = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
+    km_bp_base.fit(pca_scores_dict[biplot_base_yr][:, :2])
+    biplot_base_centroids = km_bp_base.cluster_centers_
+    biplot_per_year = {}
     for yr in sheet_names:
-        lbl_statis_comp = cluster_traj # Compromise (STATIS)
-        lbl_biplot_yr = cluster_per_year[yr] # Yearly Biplot
-        
-        cross_mat_bs = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
-        for s_l, b_l in zip(lbl_statis_comp, lbl_biplot_yr):
-            cross_mat_bs[s_l, b_l] += 1
-            
-        df_cross_bs = pd.DataFrame(cross_mat_bs,
-                                   index=[get_cluster_name(i, "Statis") for i in range(K_CLUSTERS)],
-                                   columns=[get_cluster_name(j, "Biplot", f" ({yr})") for j in range(K_CLUSTERS)])
-        df_cross_bs.index.name = "Statis (Compromise)"
-        df_cross_bs = df_cross_bs.reset_index()
-        save_tex_table(df_cross_bs, f"output_table_biplot_vs_statis_sum_{yr}.tex", OUT_DIR,
-                       f"Matriks Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
-    
-        rows_bs_nm = {}
-        for s_l in range(K_CLUSTERS):
-            for b_l in range(K_CLUSTERS):
-                names = [obs_labels[i] for i in range(len(obs_labels))
-                         if lbl_statis_comp[i] == s_l and lbl_biplot_yr[i] == b_l]
-                rows_bs_nm[f"{get_cluster_name(s_l, 'Statis')} & {get_cluster_name(b_l, 'Biplot')}"] = ", ".join(names) if names else "-"
-        save_tex_name_table(rows_bs_nm, f"output_table_biplot_vs_statis_name_{yr}.tex", OUT_DIR,
-                            f"Nama Daerah Perbandingan Klaster Biplot vs STATIS (vs Kompromi) ({yr})", f"biplot_statis_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
+        coords_bp = pca_scores_dict[yr][:, :2]
+        km_bp = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
+        lbls_bp_raw = km_bp.fit_predict(coords_bp)
+        curr_c = km_bp.cluster_centers_
+        dist_m = cdist(biplot_base_centroids, curr_c, metric='euclidean')
+        _, col_i = linear_sum_assignment(dist_m)
+        mp_bp = {col_i[i]: i for i in range(K_CLUSTERS)}
+        aligned_bp = np.array([mp_bp[l] for l in lbls_bp_raw])
+        if ipm_col:
+            ipm_vals = tables[yr][ipm_col].values
+            cl_means_bp = [np.mean(ipm_vals[aligned_bp == cl]) for cl in range(K_CLUSTERS)]
+        else:
+            cl_means_bp = [np.mean(coords_bp[aligned_bp == cl, 0]) for cl in range(K_CLUSTERS)]
+        srt_bp = np.argsort(cl_means_bp)
+        rk_bp = {old: new for new, old in enumerate(srt_bp)}
+        biplot_per_year[yr] = np.array([rk_bp[l] for l in aligned_bp])
+
+    # (Section 8.A dihapus: output_table_biplot_vs_statis_sum/name redundant dengan
+    #  biplot_vs_compromise_sum/name yang sudah ada di 8.G; dihapus dari bab4.tex juga)
     
     # ============================================================
     # 8.B PERBANDINGAN CLUSTER STATIS TAHUNAN VS IPM TAHUNAN (per tahun) [Seksi 6]
@@ -2701,25 +2775,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     # 8.E MATRIKS TRANSISI CLUSTER BIPLOT TAHUNAN (Biplot k vs Biplot k+1) [Seksi 1]
     # ============================================================
     print("\n=== 8.E Matriks Transisi Klaster Biplot Tahunan (k vs k+1) ===")
-    # Recompute biplot labels per year using unweighted PCA coords
-    biplot_per_year = {}
-    for yr in sheet_names:
-        coords_bp = pca_scores_dict[yr][:, :2]
-        km_bp = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
-        lbls_bp_raw = km_bp.fit_predict(coords_bp)
-        curr_c = km_bp.cluster_centers_
-        dist_m = cdist(base_centroids, curr_c, metric='euclidean')
-        _, col_i = linear_sum_assignment(dist_m)
-        mp_bp = {col_i[i]: i for i in range(K_CLUSTERS)}
-        aligned_bp = np.array([mp_bp[l] for l in lbls_bp_raw])
-        if ipm_col:
-            ipm_vals = tables[yr][ipm_col].values
-            cl_means_bp = [np.mean(ipm_vals[aligned_bp == cl]) for cl in range(K_CLUSTERS)]
-        else:
-            cl_means_bp = [np.mean(coords_bp[aligned_bp == cl, 0]) for cl in range(K_CLUSTERS)]
-        srt_bp = np.argsort(cl_means_bp)
-        rk_bp = {old: new for new, old in enumerate(srt_bp)}
-        biplot_per_year[yr] = np.array([rk_bp[l] for l in aligned_bp])
+    # biplot_per_year sudah dihitung sebelum 8.A
 
     year_pairs = [(sheet_names[i], sheet_names[i+1]) for i in range(len(sheet_names)-1)]
     for t1, t2 in year_pairs:
@@ -2801,11 +2857,11 @@ for current_scenario in ['scenario1', 'scenario2']:
             save_tex_name_table(rows_ipm_name, f"output_table_ipm_name_{pair}.tex", OUT_DIR,
                                 f"Nama Daerah Matriks Transisi Kategori IPM (UNDP) {t1} \\(\\rightarrow\\) {t2}", f"ipmname{pair}", label_prefix=CUR_LABEL_PREFIX)
     
-    # Cross-tab K-Means vs IPM per tahun akhir
+    # Cross-tab Biplot (Unweighted) vs IPM per tahun
     if ipm_col:
-        print("\n=== 6b. Cross-tabulation K-Means vs IPM ===")
+        print("\n=== 6b. Cross-tabulation Biplot vs IPM ===")
         for yr in sheet_names:
-            lbl_km = cluster_per_year[yr]
+            lbl_km = biplot_per_year[yr]
             ipm_yr = [ipm_label(tables[yr].loc[o, ipm_col]) for o in obs_labels]
             ipm_cats = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
             cross_mat = np.zeros((K_CLUSTERS, 4), dtype=int)
@@ -2813,20 +2869,20 @@ for current_scenario in ['scenario1', 'scenario2']:
                 if ip_l in ipm_cats:
                     cross_mat[km_l, ipm_cats.index(ip_l)] += 1
             df_cross = pd.DataFrame(cross_mat,
-                                    index=[get_cluster_name(i, "Cluster") for i in range(K_CLUSTERS)],
+                                    index=[get_cluster_name(i, "Biplot") for i in range(K_CLUSTERS)],
                                     columns=ipm_cats)
-            df_cross.index.name = "Klaster K-Means"
+            df_cross.index.name = "Klaster Biplot"
             df_cross = df_cross.reset_index()
             save_tex_table(df_cross, f"output_table_cross_matrix_sum_{yr}.tex", OUT_DIR,
                            f"Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({yr})", f"cross{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX)
-    
+
             # Nama daerah per sel
             rows_cross_nm = {}
             for km_l in range(K_CLUSTERS):
                 for ip_l in ipm_cats:
                     names = [obs_labels[i] for i in range(len(obs_labels))
                              if lbl_km[i] == km_l and ipm_yr[i] == ip_l]
-                    rows_cross_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
+                    rows_cross_nm[f"{get_cluster_name(km_l, 'Biplot')} & {ip_l}"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_cross_nm, f"output_table_cross_matrix_name_{yr}.tex", OUT_DIR,
                                 f"Nama Daerah Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({yr})", f"crossname{yr}", label_prefix=CUR_LABEL_PREFIX)
     
@@ -3029,27 +3085,18 @@ for current_scenario in ['scenario1', 'scenario2']:
     for yr in sheet_names:
         coords_biplot = pca_scores_dict[yr][:, :2]
         coords_statis = per_year_coords[yr][:, :2]
-        
-        # 1. K-Means (Unweighted Biplot)
+
+        # Biplot: K-Means independen per tahun, align ke biplot base centroids
         km_biplot = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
         lbls_biplot_raw = km_biplot.fit_predict(coords_biplot)
         curr_centroids_bp = km_biplot.cluster_centers_
-        
-        # 1. K-Means (Weighted STATIS)
-        km_statis = KMeans(n_clusters=K_CLUSTERS, random_state=42, n_init=10)
-        lbls_statis_raw = km_statis.fit_predict(coords_statis)
-        curr_centroids_st = km_statis.cluster_centers_
-    
-        # Align to base_centroids (from STATIS base year)
-        dist_matrix_bp = cdist(base_centroids, curr_centroids_bp, metric='euclidean')
+        dist_matrix_bp = cdist(biplot_base_centroids, curr_centroids_bp, metric='euclidean')
         _, col_ind_bp = linear_sum_assignment(dist_matrix_bp)
         mapping_bp = {col_ind_bp[i]: i for i in range(K_CLUSTERS)}
         aligned_lbls_bp = np.array([mapping_bp[l] for l in lbls_biplot_raw])
-    
-        dist_matrix_st = cdist(base_centroids, curr_centroids_st, metric='euclidean')
-        _, col_ind_st = linear_sum_assignment(dist_matrix_st)
-        mapping_st = {col_ind_st[i]: i for i in range(K_CLUSTERS)}
-        aligned_lbls_st = np.array([mapping_st[l] for l in lbls_statis_raw])
+
+        # STATIS: gunakan label dari seeded K-Means yang sudah dihitung (cluster_per_year)
+        aligned_lbls_st = cluster_per_year[yr]
         
         # 2. Ranking by PC1 (Unweighted Biplot)
         # Penyelarasan Orientasi: Pastikan searah dengan kompromi
@@ -3099,33 +3146,34 @@ for current_scenario in ['scenario1', 'scenario2']:
                             f"Nama Daerah Perbandingan Klaster Biplot vs STATIS (Tahunan) ({yr})", f"biplot_statis_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
                             
         # --- Comparison 7: Kompromi STATIS vs Klaster Biplot Tahunan ---
+        # Rows = Kompromi (STATIS), Cols = Biplot (Tahunan) — sesuai app.py cb_run_biplot_vs_statis
         lbl_comp = cluster_traj
         cross_mat_bc = np.zeros((K_CLUSTERS, K_CLUSTERS), dtype=int)
         for b_l, c_l in zip(lbl_biplot_yr, lbl_comp):
-            cross_mat_bc[b_l, c_l] += 1
-            
+            cross_mat_bc[c_l, b_l] += 1
+
         df_cross_bc = pd.DataFrame(
             cross_mat_bc,
-            index=[get_cluster_name(i, "Biplot") for i in range(K_CLUSTERS)],
-            columns=[get_cluster_name(j, "Kompromi") for j in range(K_CLUSTERS)]
+            index=[get_cluster_name(i, "Kompromi") for i in range(K_CLUSTERS)],
+            columns=[get_cluster_name(j, "Biplot") for j in range(K_CLUSTERS)]
         )
-        df_cross_bc.index.name = "Biplot (Unweighted)"
+        df_cross_bc.index.name = "Statis (Kompromi)"
         df_cross_bc = df_cross_bc.reset_index()
         save_tex_table(
             df_cross_bc, f"output_table_biplot_vs_compromise_sum_{yr}.tex", OUT_DIR,
-            f"Matriks Perbandingan Klaster Biplot vs Kompromi STATIS ({yr})", 
+            f"Matriks Perbandingan Klaster Kompromi STATIS vs Biplot ({yr})",
             f"biplot_comp_{yr}", float_fmt="{:.0f}", header_makecell=True, label_prefix=CUR_LABEL_PREFIX
         )
-        
+
         rows_bc_nm = {}
-        for b_l in range(K_CLUSTERS):
-            for c_l in range(K_CLUSTERS):
+        for c_l in range(K_CLUSTERS):
+            for b_l in range(K_CLUSTERS):
                 names = [obs_labels[i] for i in range(len(obs_labels))
-                         if lbl_biplot_yr[i] == b_l and lbl_comp[i] == c_l]
-                rows_bc_nm[f"{get_cluster_name(b_l, 'Biplot')} & {get_cluster_name(c_l, 'Kompromi')}"] = ", ".join(names) if names else "-"
+                         if lbl_comp[i] == c_l and lbl_biplot_yr[i] == b_l]
+                rows_bc_nm[f"{get_cluster_name(c_l, 'Kompromi')} & {get_cluster_name(b_l, 'Biplot')}"] = ", ".join(names) if names else "-"
         save_tex_name_table(
             rows_bc_nm, f"output_table_biplot_vs_compromise_name_{yr}.tex", OUT_DIR,
-            f"Nama Daerah Perbandingan Klaster Biplot vs Kompromi STATIS ({yr})", 
+            f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs Biplot ({yr})",
             f"biplot_comp_name_{yr}", label_prefix=CUR_LABEL_PREFIX
         )
                             
@@ -3235,6 +3283,49 @@ for current_scenario in ['scenario1', 'scenario2']:
             save_tex_table(df_desc, f"output_table_descriptive_{yr}.tex", ROOT_OUT_DIR,
                            f"Statistika Deskriptif (dengan Bobot) Tahun {yr} (N = {n_samples})", f"desc_{yr}", float_fmt="{:.4f}", header_makecell=False, label_prefix=CUR_LABEL_PREFIX)
     
+
+    # ============================================================
+    # 9.X PROFIL KARAKTERISTIK KLASTER (Rata-rata ± SD per Variabel)
+    # ============================================================
+    print(f"\n=== 9.X Profil Karakteristik Klaster ({SCENARIO}) ===")
+    sc_sfx = SCENARIO.replace("scenario", "s")  # → "s1" atau "s2"
+
+    # statis_yr: label dari seeded sequential K-Means (cluster_per_year)
+    for yr_p in sheet_names:
+        raw_int_p = cluster_per_year[yr_p]
+        str_lbs_p = [_nm_k[r] for r in raw_int_p]
+        _export_profil_bar(
+            f"statis_yr_{sc_sfx}", int(yr_p), str_lbs_p, obs_labels,
+            f"STATIS Tahunan — {SCENARIO.replace('scenario', 'Skenario ')}", f"k{K_CLUSTERS}",
+            f" | k = {K_CLUSTERS}",
+        )
+
+    # kompromi: K-Means pada skor trajektori (reuse cluster_traj yang sudah dihitung)
+    str_komp = [_nm_k[r] for r in cluster_traj]
+    for yr_k2 in sheet_names:
+        _export_profil_bar(
+            f"kompromi_{sc_sfx}", int(yr_k2), str_komp, obs_labels,
+            f"Kompromi STATIS — {SCENARIO.replace('scenario', 'Skenario ')}", f"k{K_CLUSTERS}",
+            f" | k = {K_CLUSTERS}",
+        )
+
+    # biplot + ipm_cat: hanya sekali (IS_FIRST = scenario1)
+    if IS_FIRST:
+        for yr_b in sheet_names:
+            # biplot (unweighted PCA per tahun)
+            raw_bp_b = biplot_per_year[yr_b]
+            str_bp_b = [_nm_k[r] for r in raw_bp_b]
+            _export_profil_bar(
+                "biplot", int(yr_b), str_bp_b, obs_labels,
+                "Biplot PCA Tahunan", f"k{K_CLUSTERS}", f" | k = {K_CLUSTERS}",
+            )
+            # ipm_cat (kategori IPM UNDP)
+            if ipm_col:
+                ipm_lbs_b = [ipm_label(tables[yr_b].loc[o, ipm_col]) for o in obs_labels]
+                _export_profil_bar(
+                    "ipm_cat", int(yr_b), ipm_lbs_b, obs_labels,
+                    "Kategori IPM UNDP", "ipm",
+                )
 
     # ============================================================
     # 10. MENGGABUNGKAN GAMBAR PERBANDINGAN BERSANDINGAN (SIDE-BY-SIDE) FOR 9 COMPARISONS

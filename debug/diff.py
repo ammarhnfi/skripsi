@@ -1,7 +1,7 @@
 import filecmp
 
-dir1 = "D:/skripsi/my/output_sample/scenario1"
-dir2 = "D:/skripsi/my/output_sample2/scenario1"
+dir1 = "D:/skripsi/my/output_real2/scenario1"
+dir2 = "D:/skripsi/my/output_real/scenario1"
 
 perbandingan = filecmp.dircmp(dir1, dir2)
 

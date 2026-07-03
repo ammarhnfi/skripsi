@@ -137,8 +137,6 @@ RULES = [
 
     # Perbandingan Biplot vs STATIS
     ("output_table_biplot_vs_statis_compare_", "Perbandingan Biplot vs STATIS", None),
-    ("output_table_biplot_vs_statis_sum_",     "Perbandingan Biplot vs STATIS", None),
-    ("output_table_biplot_vs_statis_name_",    "Perbandingan Biplot vs STATIS", None),
     ("compare_map_biplot_vs_statis_",          "Perbandingan Biplot vs STATIS", None),
     ("compare_scatter_biplot_vs_statis_",      "Perbandingan Biplot vs STATIS", None),
     ("compare_pie_biplot_vs_statis_",          "Perbandingan Biplot vs STATIS", None),
@@ -236,10 +234,8 @@ CAPTION_MAP = {
     "compare_pie_compromise_vs_ipm_":  "Perbandingan Pie Kompromi vs IPM Tahun {yr}",
     "output_table_statis_vs_ipm_avg_sum": "Perbandingan Klaster STATIS vs IPM Rata-rata",
     "output_table_statis_vs_ipm_avg_name":"Nama Daerah: Klaster STATIS vs IPM Rata-rata",
-    "output_table_biplot_vs_statis_compare_sum_":  "Cross-tab Biplot vs STATIS (Jumlah) Tahun {yr}",
-    "output_table_biplot_vs_statis_compare_name_": "Cross-tab Biplot vs STATIS (Nama) Tahun {yr}",
-    "output_table_biplot_vs_statis_sum_":  "Perbandingan Klaster Biplot vs STATIS Tahun {yr}",
-    "output_table_biplot_vs_statis_name_": "Nama Daerah: Biplot vs STATIS Tahun {yr}",
+    "output_table_biplot_vs_statis_compare_sum_":  "Perbandingan Klaster Biplot vs STATIS Tahun {yr}",
+    "output_table_biplot_vs_statis_compare_name_": "Nama Daerah: Biplot vs STATIS Tahun {yr}",
     "compare_map_biplot_vs_statis_":  "Perbandingan Peta Biplot vs STATIS Tahun {yr}",
     "compare_scatter_biplot_vs_statis_": "Perbandingan Scatter Biplot vs STATIS Tahun {yr}",
     "compare_pie_biplot_vs_statis_":  "Perbandingan Pie Biplot vs STATIS Tahun {yr}",

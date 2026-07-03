@@ -391,6 +391,12 @@
   },
   {
     "section": "Penyelarasan Label Klaster Lintas Waktu",
+    "latex": "\\[ \\mathbf{C}_{t}^{(0)} = \\mathbf{C}_{t-1}, \\quad t = t_0+1, t_0+2, \\ldots, T \\]",
+    "type": "equation",
+    "raw": "\\label{eq:seeded_kmeans}\n    \\mathbf{C}_{t}^{(0)} = \\mathbf{C}_{t-1}, \\quad t = t_0+1, t_0+2, \\ldots, T"
+  },
+  {
+    "section": "Penyelarasan Label Klaster Lintas Waktu",
     "latex": "\\[ D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2} \\]",
     "type": "equation",
     "raw": "\\label{eq:dist_centroid}\n    D(c_{1i}, c_{2j}) = \\sqrt{\\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}"
@@ -402,10 +408,10 @@
     "raw": "\\label{eq:hungarian_min}\n    \\min \\sum_{i=1}^{k} \\sum_{j=1}^{k} D(c_{1i}, c_{2j}) \\cdot x_{ij}"
   },
   {
-    "section": "Kategorisasi dan Perankingan Cluster",
+    "section": "Kategorisasi dan Perankingan Klaster",
     "latex": "\\[ \\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1} \\]",
     "type": "equation",
-    "raw": "\\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}"
+    "raw": "\\label{eq:pc1_rank}\n    \\overline{\\text{PC}}_{1,k} = \\frac{1}{n_k} \\sum_{i \\in C_k} \\mathbf{f}_{i,1}"
   },
   {
     "section": "Matriks Pembobot Spasial",

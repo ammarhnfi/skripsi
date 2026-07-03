@@ -56,6 +56,7 @@
 \PassOptionsToPackage{hyphens}{url}
 
 \usepackage{array}
+\usepackage{booktabs}
 \usepackage{url}
 \urlstyle{same}
 
@@ -187,11 +188,6 @@
 
 \setcounter{page}{3} % nomor halaman selanjutnya adalah 2
 
-% Memuat halaman pengesahan
-\addChapter{LEMBAR PERSETUJUAN}
-\include{pengesahan} % Dilarang mengubah isi file pengesahan.tex 
-% \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
-
 % load halaman orisinalitas
 \addChapter{HALAMAN PERNYATAAN ORISINALITAS}
 \include{orisinal} % Dilarang mengubah isi file orisinal.tex
@@ -239,10 +235,6 @@
 \addChapter{ABSTRAK}
 \input{abstrak} % Abstrak dalam bahasa Indonesia. Ubah file abstrak.tex.
 % \clearpage{\thispagestyle{empty}\cleardoublepage} % agar awal section berikutnya berhalaman ganjil
-
-\addChapter{EXTENDED ABSTRACT (BAHASA INDONESIA)}
-\input{abstrak_tambahan}
-% \clearpage{\thispagestyle{empty}\cleardoublepage}
 
 % \addChapter{ABSTRACT}
 \addChapter{EXTENDED ABSTRACT}

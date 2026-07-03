@@ -443,19 +443,19 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
 
   // Define all 9 rows dynamically (Years + Pairs)
   const rows = [
-    // 1. Transisi Biplot
-    ...availablePairs.map(pr => ({
-      mode: 'comp_1_trans_biplot',
-      period: pr,
-      label: `🔄 1. Transisi Biplot ${pr.replace('x', ' ke ')}`,
-      fullLabel: `Transisi Biplot ${pr.replace('x', ' ke ')}`
-    })),
-    // 2. Transisi STATIS
+    // 1. Transisi STATIS
     ...availablePairs.map(pr => ({
       mode: 'comp_2_trans_statis',
       period: pr,
-      label: `📈 2. Transisi STATIS ${pr.replace('x', ' ke ')}`,
+      label: `📈 1. Transisi STATIS ${pr.replace('x', ' ke ')}`,
       fullLabel: `Transisi STATIS ${pr.replace('x', ' ke ')}`
+    })),
+    // 2. Transisi Biplot
+    ...availablePairs.map(pr => ({
+      mode: 'comp_1_trans_biplot',
+      period: pr,
+      label: `🔄 2. Transisi Biplot ${pr.replace('x', ' ke ')}`,
+      fullLabel: `Transisi Biplot ${pr.replace('x', ' ke ')}`
     })),
     // 3. Biplot vs STATIS
     ...availableYears.map(yr => ({

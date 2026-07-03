@@ -839,30 +839,39 @@ Setelah hasil clustering ditetapkan per situasi waktu, diperlukan alat untuk men
 \end{equation}
 Diagonal utama ($M_{j,j}$) merepresentasikan objek yang tidak berpindah klaster (stabil), sementara elemen \textit{off-diagonal} merepresentasikan objek yang mengalami perubahan keanggotaan klaster antar-situasi.
 
-\subsection{\normalsize Penyelarasan Label Klaster Lintas Waktu}
+\subsection{\normalsize Penyelarasan Label Klaster Lintas Waktu} \label{subsec:penyelarasan_label}
 
 Sifat K-Means yang non-deterministik pada proses inisialisasi awal \textit{centroid} menyebabkan pelabelan klaster bersifat arbitrer atau acak. Akibatnya, kelompok objek yang secara spasial berada pada kuadran yang sama dapat memperoleh label bilangan yang berbeda pada pengujian di tahun yang berbeda (misalnya, identitas klaster 1 pada tahun 2020 bergeser menjadi klaster 2 pada tahun 2021). Masalah ini dikenal dengan istilah \textit{Label Switching} atau \textit{Klaster Correspondence} \citep{kuhn1955}.
 
-Untuk menganalisis transisi kondisi (\textit{transition matrix}) pada data longitudinal, pencocokan label antar-periode waktu merupakan prosedur prapemrosesan yang wajib dilakukan. Pencocokan ini menggunakan optimasi kombinatorial berlandaskan jarak \textit{centroid}. Misalkan $c_{1i}$ adalah \textit{centroid} klaster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah \textit{centroid} klaster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar \textit{centroid} dapat diformulasikan sebagai:
+Terdapat dua pendekatan yang dapat digunakan untuk menjamin konsistensi label klaster lintas waktu, yaitu: (1) \textit{Seeded K-Means} yang diterapkan pada pengelompokan berbasis koordinat STATIS tahunan, dan (2) \textit{Hungarian Algorithm} yang diterapkan pada pengelompokan berbasis koordinat Biplot PCA.
+
+\textbf{Seeded K-Means (Pengelompokan Koordinat STATIS Tahunan).} Pada skenario STATIS tahunan, konsistensi label dijamin secara prospektif melalui \textit{inisialisasi sentroid berbasis tahun sebelumnya} (\textit{centroid seeding}). Prosedurnya adalah sebagai berikut: K-Means dijalankan secara normal pada tahun dasar $t_0$ untuk menghasilkan sentroid awal $\mathbf{C}_{t_0}$ beserta label yang diperingkat berdasarkan profil indikator (Subbab~\ref{subsec:kategorisasi_perankingan}). Untuk setiap tahun $t > t_0$, K-Means diinisialisasi dari sentroid tahun sebelumnya $\mathbf{C}_{t-1}$:
+\begin{equation} \label{eq:seeded_kmeans}
+    \mathbf{C}_{t}^{(0)} = \mathbf{C}_{t-1}, \quad t = t_0+1, t_0+2, \ldots, T
+\end{equation}
+K-Means kemudian dijalankan hingga konvergen dari titik awal $\mathbf{C}_{t}^{(0)}$. Karena koefisien RV antar-tahun sangat tinggi (lihat Bab~4), perpindahan sentroid antar-tahun bersifat inkremental, sehingga label klaster secara alami konsisten tanpa penyelarasan \textit{post-hoc}. Wilayah yang berpindah dari satu klaster ke klaster lain di tahun berikutnya mencerminkan \textit{migrasi wilayah} yang sesungguhnya berdasarkan perubahan profil indikatif relatif terhadap kelompok lainnya.
+
+\textbf{Hungarian Algorithm (Penyelarasan Biplot PCA).} Untuk pengelompokan berbasis koordinat Biplot PCA yang bersifat independen per tahun, penyelarasan label dilakukan secara \textit{post-hoc} menggunakan Algoritma Hungaria \citep{kuhn1955}. Misalkan $c_{1i}$ adalah sentroid klaster ke-$i$ pada tahun dasar, dan $c_{2j}$ adalah sentroid klaster ke-$j$ pada tahun uji. Jarak \textit{Euclidean} antar sentroid:
 \begin{equation} \label{eq:dist_centroid}
     D(c_{1i}, c_{2j}) = \sqrt{\sum_{h=1}^{p} (c_{1ih} - c_{2jh})^2}
 \end{equation}
-
-Matriks jarak ini kemudian diselesaikan menggunakan \textit{Hungarian Algorithm} \citep{kuhn1955} untuk menemukan kombinasi pemetaan (\textit{minimum weight bipartite matching}) sedemikian sehingga total biaya jarak atau fungsi objektif terminimisasi:
+Matriks jarak diselesaikan untuk menemukan pemetaan bipartit berbobot minimum:
 \begin{equation} \label{eq:hungarian_min}
     \min \sum_{i=1}^{k} \sum_{j=1}^{k} D(c_{1i}, c_{2j}) \cdot x_{ij}
 \end{equation}
-dengan indikator biner $x_{ij} \in \{0, 1\}$ mengindikasikan apakah \textit{centroid} $i$ dari kondisi awal dipasangkan dengan \textit{centroid} $j$ pada kondisi tujuan. Dengan metode ini, keselarasan penamaan Klaster dapat dijamin tetap konsisten untuk merepresentasikan profil kesejahteraan yang sama.
+dengan $x_{ij} \in \{0, 1\}$ adalah indikator biner penugasan sentroid. Metode ini menjamin keselarasan label antar-tahun untuk analisis komparatif lintas skenario.
 
-\subsection{\normalsize Kategorisasi dan Perankingan Cluster}
+\subsection{\normalsize Kategorisasi dan Perankingan Klaster} \label{subsec:kategorisasi_perankingan}
 
-Setelah proses penyelarasan label selesai dilakukan, cluster-klaster tersebut masih memiliki label angka yang bersifat nominal (1, 2, \dots, $K$). Untuk memberikan interpretasi yang bermakna secara ekonomi (misalnya: Rendah, Sedang, Tinggi), diperlukan kriteria pengurutan yang objektif. Dalam penelitian ini, kriteria yang digunakan adalah nilai rata-rata skor komponen utama pertama ($\text{PC}_1$) pada ruang kompromi STATIS.
+Setelah penyelarasan label lintas waktu selesai dilakukan, klaster-klaster tersebut masih memiliki label numerik yang bersifat nominal. Untuk memberikan interpretasi substantif (Rendah, Sedang, Tinggi), peringkat klaster ditetapkan melalui dua tahap yang saling mengkonfirmasi.
 
-Misalkan $\mathbf{f}_{i,1}$ adalah skor objek ke-$i$ pada komponen utama pertama dari matriks kompromi $\mathbf{F}_c$. Rata-rata skor untuk klaster ke-$k$ didefinisikan sebagai:
-\begin{equation}
+\textbf{Tahap 1 — Referensi Awal via PC$_1$ (Tahun Dasar).} Pada tahun dasar $t_0$, urutan klaster ditentukan berdasarkan rata-rata skor komponen utama pertama pada ruang kompromi STATIS:
+\begin{equation} \label{eq:pc1_rank}
     \overline{\text{PC}}_{1,k} = \frac{1}{n_k} \sum_{i \in C_k} \mathbf{f}_{i,1}
 \end{equation}
-dengan $C_k$ adalah himpunan indeks objek dalam Klaster ke-$k$ dan $n_k$ adalah jumlah anggotanya. Label peringkat (1 untuk Rendah, hingga $K$ untuk Tinggi) diberikan berdasarkan urutan menaik dari nilai $\overline{\text{PC}}_{1,k}$. Hal ini didasari oleh sifat $\text{PC}_1$ dalam analisis ini yang merepresentasikan dimensi utama kesejahteraan rakyat, di mana nilai skor yang lebih besar berkorespondensi dengan capaian indikator yang lebih baik secara rata-rata.
+dengan $\mathbf{f}_{i,1}$ adalah skor objek ke-$i$ pada komponen utama pertama dari matriks kompromi $\mathbf{F}_c$, $C_k$ adalah himpunan indeks objek dalam Klaster ke-$k$, dan $n_k$ adalah jumlah anggotanya. Klaster dengan $\overline{\text{PC}}_{1,k}$ terendah diberi peringkat 1 (Rendah), dan seterusnya hingga $K$ (Tinggi). Melalui mekanisme \textit{seeded K-Means} (Persamaan~\ref{eq:seeded_kmeans}), label ini diwariskan ke seluruh tahun pengamatan berikutnya.
+
+\textbf{Tahap 2 — Konfirmasi via Profil Indikator.} Peringkat yang diperoleh dari PC$_1$ dikonfirmasi secara empiris dengan membandingkan rata-rata indikator pembangunan utama antar-klaster pada tahun dasar, meliputi PDRB per kapita (PDRB\_ADHK), Persentase Penduduk Miskin (PPM), Rata-rata Lama Sekolah (RLS), dan Angka Harapan Hidup (AHH). Klaster yang memiliki $\overline{\text{PC}}_{1,k}$ tertinggi secara konsisten menunjukkan PDRB, RLS, dan AHH tertinggi serta PPM terendah, mengkonfirmasi bahwa urutan PC$_1$ merupakan representasi yang valid dari gradien kesejahteraan wilayah (lihat Gambar~\ref{fig:profil_klaster_2020}).
 
 %-----------------------------------------------------------------------------%
 % --- 2.14 ---

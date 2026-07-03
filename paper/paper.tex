@@ -1,75 +1,215 @@
-\documentclass[10pt, a4paper]{article}
+% ============================================================
+%  Extended Abstract — LEAF 2026
+%  Format: A4, 25 mm top/left/right, 30 mm bottom
+%          Times New Roman 11 pt, single spacing, justified
+% ============================================================
+\documentclass[11pt, a4paper]{article}
 
-% --- Packages ---
-\usepackage[a4paper, left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry} % Reduced margins to 2cm for more text space
-\usepackage{times} % Times New Roman font
-\usepackage{fancyhdr}
-\usepackage{amsmath,amssymb,amsthm}
+% ── Geometry ─────────────────────────────────────────────────
+\usepackage[a4paper,
+            top    = 25mm,
+            left   = 25mm,
+            right  = 25mm,
+            bottom = 30mm]{geometry}
+
+% ── Fonts & Encoding ─────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{times}           % Times New Roman
+
+% ── Math ─────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb}
+
+% ── Graphics & Tables ────────────────────────────────────────
 \usepackage{graphicx}
-\usepackage{array}
+\usepackage{booktabs}
+\usepackage{caption}
+\captionsetup{font=small, labelfont=bf, justification=centering}
+
+% ── Spacing & Layout ─────────────────────────────────────────
 \usepackage{setspace}
-\usepackage{hyperref}
-
-% --- Custom Command Definitions from thesis ---
-\newcommand{\f}[1]{\textit{#1}}
-\newcommand{\bi}[1]{\textbf{\textit{#1}}}
-\newcommand{\bo}[1]{\textbf{#1}}
-
-% --- Page Style & Header/Footer Configuration ---
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[L]{\small Hanafi \& Widyaningsih}
-\fancyhead[R]{\small Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal\dots}
-\fancyfoot[C]{\small Prosiding Diskusi Panel Nasional Pendidikan Matematika Universitas Indraprasta PGRI Jakarta.}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt}
-
-% --- Paragraph Indentation & Spacing ---
-\setlength{\parindent}{0cm}
 \singlespacing
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
 
+% ── Hyperlinks ───────────────────────────────────────────────
+\usepackage[hidelinks]{hyperref}
+
+% ── Enumeration ──────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[enumerate]{leftmargin=*, labelwidth=1.8em, align=left,
+                    itemsep=2pt, parsep=0pt, topsep=2pt}
+
+% ── Section: no numbering, ABSTRACT style ────────────────────
+\usepackage{titlesec}
+\titleformat{\section}[block]
+  {\normalfont\normalsize\bfseries\centering}
+  {}{0pt}{}
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% ============================================================
 \begin{document}
+\pagestyle{empty}
 
-% --- Category Header ---
-{\itshape Original Research / Literature Review / Book Review / Lecture Note}
-\vspace{0.8em}
+% ── Title ────────────────────────────────────────────────────
+\begin{center}
+  {\large\bfseries
+    STATIC and Dynamic Biplot Approaches for Socio-Economic Spatio-Temporal Analysis \\
+    (Case Studies: Province of Banten, DKI Jakarta, and West Java 2020--2024)
+  \par}
 
-% --- Title Block ---
-\begin{flushright}
-    {\fontsize{15}{18}\selectfont\bfseries Pendekatan STATIS dan Dynamic Biplot untuk Analisis\\ Spasio-Temporal Sosio-Ekonomi\\ (Studi Kasus: Provinsi Banten, DKI Jakarta, dan Jawa Barat 2020--2024)\par}
-    \vspace{0.8em}
-    {\large\bfseries Ammar Hanafi\textsuperscript{1,*)} \& Yekti Widyaningsih\textsuperscript{1)}}\par
-    \vspace{0.3em}
-    {\normalsize\itshape \textsuperscript{1}Program Studi Sarjana Statistika, Departemen Matematika,\\ Fakultas Matematika dan Ilmu Pengetahuan Alam,\\ Universitas Indonesia, Depok 16424, Indonesia\par}
-\end{flushright}
+  \vspace{10pt}
 
-\vspace{0.8em}
+  % ── Authors ────────────────────────────────────────────────
+  {\normalsize\bfseries
+    Ammar Hanafi\textsuperscript{1,*}
+    and
+    Yekti Widyaningsih\textsuperscript{1}
+  \par}
 
-% --- Info Articles Table (Single-page standard tabular, compact 9pt font) ---
+  \vspace{6pt}
+
+  % ── Affiliations ───────────────────────────────────────────
+  {\small\itshape
+    \textsuperscript{1}Department of Mathematics, Faculty of Mathematics and
+    Natural Sciences,\\
+    Universitas Indonesia, Kampus UI Depok, Depok 16424, Indonesia
+  \par}
+
+  \vspace{4pt}
+
+  {\small
+    *Corresponding author:
+    \href{mailto:ammar.hanafi@ui.ac.id}{ammar.hanafi@ui.ac.id}
+  \par}
+\end{center}
+
+\vspace{8pt}
+
+% ── Abstract ─────────────────────────────────────────────────
+\section*{ABSTRACT}
+
+This study applies the \textit{STATIS} (\textit{Structuration des Tableaux
+\`{a} Trois Indices de la Statistique}) method to jointly analyse 11
+socio-economic indicators across 41 regencies and cities in Banten, DKI
+Jakarta, and West Java over 2020--2024, capturing the structural impact of
+the COVID-19 pandemic and an uneven post-pandemic recovery.
+Demographic weights derived from population figures ensure a metrically
+consistent comparison space.
+Inter-structure evaluation via $RV$ coefficients confirms exceptionally high
+longitudinal consistency (all pairwise $RV > 0.90$; $p < 0.05$),
+demonstrating that the regional development hierarchy remained structurally
+stable despite pandemic fluctuations.
+The STATIS compromise explains $71.88\%$ of total variance: Dimension~1
+captures socio-economic capacity (correlated with GRDP and HDI), while
+Dimension~2 reflects labour-market dynamics (open unemployment rate).
+Dynamic Biplot trajectories identify three regional patterns: V-shaped
+recoveries in service-based metropolitan centres, stagnant or declining
+trajectories in southern regencies, and progressive growth in buffer-zone
+cities.
+K-Means clustering ($k=3$) partitions the 41 regions into
+\textit{Advanced} (13), \textit{Developing} (16), and
+\textit{Underdeveloped} (12) clusters, with strong alignment to UNDP HDI
+normative categories.
+These results indicate that regional inequality is structurally persistent,
+necessitating targeted rather than uniform policy intervention.
+
+\vspace{8pt}
+
+% ── Figures (side by side) ────────────────────────────────────
+\begin{minipage}[t]{0.48\linewidth}
+  \centering
+  \IfFileExists{D:/Skripsi/my/output_real/scenario1/compromise_map.png}{%
+    \includegraphics[width=\linewidth]{D:/Skripsi/my/output_real/scenario1/compromise_map.png}%
+  }{%
+    \fbox{\parbox{\linewidth}{\centering\vspace{2.8cm}
+      \small[compromise\_map.png]\vspace{2.8cm}}}%
+  }
+  \captionof{figure}{Spatial distribution of K-Means clusters ($k=3$)
+  across 41 regencies/cities ($k=3$, 2022).}
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.48\linewidth}
+  \centering
+  \IfFileExists{D:/Skripsi/my/output_real/scenario1/compromise_scatter.png}{%
+    \includegraphics[width=\linewidth]{D:/Skripsi/my/output_real/scenario1/compromise_scatter.png}%
+  }{%
+    \fbox{\parbox{\linewidth}{\centering\vspace{2.8cm}
+      \small[compromise\_scatter.png]\vspace{2.8cm}}}%
+  }
+  \captionof{figure}{Compromise biplot scores with cluster overlays
+  and trajectory arrows ($k=3$).}
+\end{minipage}
+
+\vspace{10pt}
+
+% ── Cluster profile table ─────────────────────────────────────
+\section*{CLUSTER PROFILES (STATIS Compromise, $k=3$, 2022)}
+
 \noindent
-\begingroup
-\small % Set font to 9pt inside table for tight fit
-\begin{tabular}{@{} p{0.28\textwidth} @{} p{0.04\textwidth} @{} p{0.68\textwidth} @{}}
-\hline
-\rule{0pt}{2.5ex}% spacing
-\textbf{INFO ARTICLES} & & \\
-\cline{1-1}
-\textbf{Key Words:} \par \vspace{0.4em}
-Analisis Tiga-arah; Data Longitudinal; K-Means Clustering; PCA; Visualisasi Interaktif \par \vspace{2em}
-This article is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-& &
-\textbf{Abstract} \par \vspace{0.4em}
-This study analyzes the spatio-temporal socio-economic dynamics across 41 regencies and cities in Banten, DKI Jakarta, and West Java from 2020 to 2024. Addressing the limitations of traditional multivariate methods during pandemic contractions and recoveries, the STATIS method is applied to analyze 12 strategic socio-economic indicators. The method constructs a stable compromise structure ($\mathbf{W}_c$) from Spectral-Decomposition-weighted annual matrices to map dominant regional development patterns. Spatio-temporal trajectories and klaster shifts are visualized in a low-dimensional space using the Dynamic Biplot and K-Means clustering. The entire pipeline is implemented in an interactive Python web dashboard, integrating analytical modules from diagnostic tests to transition matrices. The results reveal strong longitudinal structural consistency (RV > 0.90), distinguishing metropolitan V-shaped recoveries from southern stagnant trajectories. This system provides policymakers with an advanced analytical tool to monitor regional resilience and design targeted development strategies. \par \vspace{1.5em}
-\textbf{Abstrak} \par \vspace{0.4em}
-Penelitian ini menganalisis dinamika sosio-ekonomi spasio-temporal di 41 kabupaten/kota Provinsi Banten, DKI Jakarta, dan Jawa Barat periode 2020--2024. Guna mengatasi keterbatasan metode multivariat tradisional, metode STATIS diterapkan untuk mengintegrasikan 12 indikator pembangunan strategis. Melalui dekomposisi spektral matriks tahunan, dibentuk struktur kompromi ($\mathbf{W}_c$) yang menggambarkan pola pembangunan bersama yang stabil. Visualisasi trajektori spasio-temporal dan pergeseran klaster K-Means dalam ruang berdimensi rendah dilakukan dengan pendekatan \textit{Dynamic Biplot}. Seluruh prosedur analisis diimplementasikan ke dalam aplikasi \textit{dashboard} web interaktif berbasis Python yang mengintegrasikan pengujian diagnostik hingga matriks transisi. Hasil analisis menunjukkan konsistensi struktural longitudinal yang tinggi ($RV > 0,90$), membedakan pemulihan berbentuk-V wilayah metropolitan dari trajektori stagnan di wilayah selatan. Sistem ini menjadi instrumen analitik canggih bagi pembuat kebijakan untuk memantau resiliensi dan merancang strategi pemerataan pembangunan regional. \\
-\cline{1-1}
-\multicolumn{3}{@{} p{\textwidth} @{}}{%
-\rule{0pt}{2.5ex}\textbf{Correspondence Address:} Program Studi Sarjana Statistika, Departemen Matematika, Fakultas Matematika dan Ilmu Pengetahuan Alam, Universitas Indonesia, Depok 16424, Indonesia. e-mail: \href{mailto:ammar.hanafi@ui.ac.id}{ammar.hanafi@ui.ac.id} \newline
-\textbf{How to Cite (APA 6th Style):} Hanafi, A. (2026). Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal Sosio-Ekonomi (Studi Kasus: Provinsi Banten, DKI Jakarta, dan Jawa Barat 2020--2024). \textit{Prosiding Diskusi Panel Nasional Pendidikan Matematika}, page-page. \newline
-\textbf{Copyright:} Author(s), (2026)
-} \\
-\hline
+Table~\ref{tab:cluster} summarises the mean indicator profiles per cluster
+under the STATIS Compromise (ACT-Classic, $k=3$, 2022).
+GRDP and mean years of schooling increase monotonically from Cluster~1 to
+Cluster~3, while poverty rates follow the inverse pattern.
+Unemployment (TPT) is notably higher in Clusters~2 and~3 than in
+Cluster~1, consistent with a structural labour-market paradox in
+service-led metropolitan economies.
+
+\vspace{6pt}
+
+\begin{center}
+{\small
+\begin{tabular}{lccc}
+\toprule
+\textbf{Indicator} & \textbf{Cluster 1} & \textbf{Cluster 2} & \textbf{Cluster 3} \\
+                   & \textit{Underdeveloped} & \textit{Developing} & \textit{Advanced} \\
+                   & ($n=12$) & ($n=16$) & ($n=13$) \\
+\midrule
+GRDP (billion IDR) & $27{,}370 \pm 18{,}004$ & $58{,}076 \pm 50{,}787$ & $215{,}387 \pm 158{,}352$ \\
+Poverty rate (\%)  & $9.79 \pm 2.45$  & $8.85 \pm 2.44$  & $4.68 \pm 1.39$  \\
+Mean yrs schooling & $7.70 \pm 0.69$  & $8.64 \pm 1.02$  & $11.14 \pm 0.59$ \\
+Unemployment (\%)  & $6.55 \pm 2.60$  & $8.44 \pm 1.06$  & $8.22 \pm 1.69$  \\
+\bottomrule
 \end{tabular}
-\endgroup
+\captionof{table}{Mean $\pm$ SD of key indicators per cluster (Kompromi
+STATIS, Scenario~1, $k=3$, reference year 2022).}
+\label{tab:cluster}
+}
+\end{center}
+
+\vspace{8pt}
+
+% ── Keywords ─────────────────────────────────────────────────
+\noindent
+\textbf{Keywords}\quad:\quad
+Interactive Visualization; K-Means Clustering; Longitudinal Data; PCA; Three-Way Data Analysis
+
+\vspace{10pt}
+
+% ── References ───────────────────────────────────────────────
+\noindent\textbf{References}
+\begin{enumerate}[label=\arabic*.]
+
+\item C. Lavit, Y. Escoufier, R. Sabatier, and P. Traissac,
+  ``The ACT (STATIS method),''
+  \textit{Computational Statistics \& Data Analysis},
+  vol.~18, no.~1, pp.~97--119, 1994.
+
+\item H. Abdi, L. J. Williams, D. Valentin, and M. Bennani-Dosse,
+  ``STATIS and DISTATIS: Optimum multitable principal component
+  analysis and three way metric multidimensional scaling,''
+  \textit{WIREs Computational Statistics}, vol.~4, no.~2,
+  pp.~124--167, 2012.
+
+\item Badan Pusat Statistik,
+  \textit{Indeks Pembangunan Manusia 2020--2024},
+  BPS-Statistics Indonesia, Jakarta, 2024.
+
+\item J. MacQueen, ``Some methods for classification and analysis of
+  multivariate observations,'' in \textit{Proc.\ 5th Berkeley Symp.\
+  Mathematical Statistics and Probability}, vol.~1,
+  University of California Press, 1967, pp.~281--297.
+
+\end{enumerate}
 
 \end{document}

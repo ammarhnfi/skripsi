@@ -34,7 +34,7 @@ Berdasarkan latar belakang yang telah diuraikan, permasalahan yang akan dikaji d
     \item Bagaimana karakteristik struktur kompromi (\textit{compromise structure}) yang merepresentasikan pola hubungan multivariat sebelas indikator pembangunan di seluruh kabupaten/kota Provinsi Banten, DKI Jakarta, dan Jawa Barat menggunakan metode STATIS untuk memahami pola umum lintas tahun?
     \item Bagaimana menguji struktur hubungan antar-indikator tersebut secara statistik selama periode 2020 hingga 2024 menggunakan uji permutasi matriks inter-struktur untuk membuktikan keberadaan dinamika temporal?
     \item Bagaimana pola lintasan (\textit{trajectory}) perubahan karakteristik ekonomi kabupaten/kota dari masa krisis pandemi (2020) hingga masa pemulihan (2024) berdasarkan visualisasi \textit{Dynamic Biplot}?
-    \item Bagaimana pola pengelompokan spasial tiap tahunnya serta dinamika transisi atau perubahan kabupaten/kota antar klaster dari tahun ke tahun?
+    \item Bagaimana pola pengelompokan spasial tiap tahunnya serta dinamika migrasi wilayah antar-klaster dari tahun ke tahun?
     \item Bagaimana merancang aplikasi berbasis web menggunakan \textit{framework} Dash dan Plotly sebagai alat bantu eksplorasi data yang memungkinkan pengguna melakukan pemantauan indikator pembangunan secara interaktif?
 \end{enumerate}
 
@@ -45,9 +45,9 @@ Sejalan dengan rumusan masalah di atas, tujuan dari penelitian ini adalah:
 
 \begin{enumerate}
     \item Menganalisis karakteristik struktur kompromi (\textit{compromise structure}) yang merepresentasikan pola hubungan multivariat sebelas indikator pembangunan di seluruh kabupaten/kota Provinsi Banten, DKI Jakarta, dan Jawa Barat menggunakan metode STATIS untuk memahami pola umum lintas tahun.
-    \item Menganalisis struktur hubungan antar-indikator tersebut secara statistik selama periode 2020 hingga 2024 menggunakan uji permutasi matriks inter-struktur untuk membuktikan keberadaan dinamika temporal.
-    \item Menganalisis pola lintasan (\textit{trajectory}) perubahan karakteristik ekonomi kabupaten/kota dari masa krisis pandemi (2020) hingga masa pemulihan (2024) berdasarkan hasil visualisasi \textit{Dynamic Biplot}.
-    \item Mengidentifikasi pola pengelompokan spasial tiap tahunnya serta dinamika transisi atau perubahan kabupaten/kota antar klaster dari tahun ke tahun.
+    \item Menganalisis stabilitas struktur hubungan antar-indikator secara statistik selama periode saat pandemi (2020--2021) dan pasca pandemi (2022--2024) menggunakan uji permutasi matriks inter-struktur untuk membuktikan keberadaan dinamika temporal. Rentang waktu 2020--2024 dipilih secara khusus untuk mencakup kedua fase tersebut sehingga dampak pandemi dan proses pemulihan dapat dikaji secara terpadu.
+    \item Menganalisis pola lintasan (\textit{trajectory}) perubahan karakteristik ekonomi kabupaten/kota dari masa krisis saat pandemi (2020--2021) hingga masa pemulihan pasca pandemi (2022--2024) berdasarkan hasil visualisasi \textit{Dynamic Biplot}.
+    \item Mengidentifikasi pola pengelompokan spasial tiap tahunnya serta dinamika migrasi wilayah antar-klaster dari tahun ke tahun.
     \item Merancang aplikasi berbasis web menggunakan \textit{framework} Dash dan Plotly sebagai alat bantu eksplorasi data yang memungkinkan pengguna melakukan pemantauan indikator pembangunan secara interaktif.
 \end{enumerate}
 
@@ -65,7 +65,7 @@ Penelitian ini bermanfaat untuk:
 Agar pembahasan penelitian ini lebih terarah dan fokus, penulis menetapkan batasan-batasan masalah sebagai berikut:
 
 \begin{enumerate}
-    \item \textbf{Indikator Penelitian:} Analisis menggunakan 11 indikator terpilih yang bersumber dari Badan Pusat Statistik (BPS), meliputi: Indeks Pembangunan Gender (IPG), Persentase Penduduk Miskin (PPM), PDRB ADHK, Rata-rata Lama Sekolah (RLS), Angka Harapan Hidup Laki-laki (AHH\_L) dan Perempuan (AHH\_P), Garis Kemiskinan (GK), Prevalensi Ketidakcukupan Konsumsi Pangan (PKKP), Tingkat Pengangguran Terbuka (TPT), Tingkat Partisipasi Angkatan Kerja (TPAK), dan Gini Ratio (GR) untuk periode 2020 hingga 2024.
+    \item \textbf{Indikator Penelitian:} Analisis menggunakan 11 indikator terpilih yang pemilihannya didasarkan pada relevansi teoretis dan kebijakan pembangunan, bukan semata-mata ketersediaan data. Indikator dipilih berdasarkan kerangka normatif berikut: (a)~kerangka \textit{Human Development Index} UNDP yang mencakup dimensi pendidikan (RLS), kesehatan (AHH Laki-laki dan Perempuan), serta pendapatan (PDRB ADHK); (b)~kerangka SDGs yang mencakup pengentasan kemiskinan dan ketahanan pangan (PPM, GK, PKKP); (c)~standar ILO untuk pengukuran pasar kerja (TPT, TPAK); dan (d)~dimensi inklusivitas gender dan ketimpangan sebagaimana dikembangkan oleh \citet{alfia2024} (IPG, GR). Indikator-indikator tersebut bersumber dari Badan Pusat Statistik (BPS) dan mencakup periode 2020 hingga 2024.
     \item \textbf{Aspek Spasial:} Istilah "spasial" dalam penelitian ini merujuk pada unit analisis berbasis wilayah (kabupaten/kota), bukan pada penggunaan matriks pembobot spasial (\textit{spatial weight matrix}) seperti pada Ekonometrika Spasial.
     \item \textbf{Fungsionalitas Aplikasi:} Aplikasi berbasis web yang dikembangkan berfungsi sebagai alat bantu eksplorasi visual (\textit{Visual Exploratory Tool}) bagi pengguna, bukan sebagai Sistem Pendukung Keputusan (\textit{Decision Support System}) yang menghasilkan rekomendasi kebijakan berbasis data secara otomatis.
 \end{enumerate}

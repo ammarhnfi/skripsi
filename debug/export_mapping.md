@@ -245,21 +245,7 @@ output_real/
 
 ---
 
-### Perbandingan 1 — Transisi Biplot Tahunan
-
-**App.jsx mode:** `comp_1_trans_biplot` | **Format:** `{pair}` = `{y1}x{y2}`
-
-| File | Lokasi | Keterangan |
-|------|--------|------------|
-| `output_table_biplot_transition_sum_{pair}.tex` | ROOT | Matriks transisi klaster Biplot PCA (jumlah) |
-| `output_table_biplot_transition_name_{pair}.tex` | ROOT | Nama daerah per sel transisi klaster Biplot |
-| `compare_map_trans_biplot_{pair}.png` | SCENARIO | Peta klaster Biplot tahun t₁ dan t₂ |
-| `compare_scatter_trans_biplot_{pair}.png` | SCENARIO | Scatter klaster Biplot tahun t₁ dan t₂ |
-| `compare_pie_trans_biplot_{pair}.png` | SCENARIO | Pie proporsi klaster Biplot tahun t₁ dan t₂ |
-
----
-
-### Perbandingan 2 — Transisi STATIS Tahunan
+### Perbandingan 1 — Transisi STATIS Tahunan
 
 **App.jsx mode:** `comp_2_trans_statis` | **Format:** `{pair}`
 
@@ -273,6 +259,20 @@ output_real/
 
 ---
 
+### Perbandingan 2 — Transisi Biplot Tahunan
+
+**App.jsx mode:** `comp_1_trans_biplot` | **Format:** `{pair}` = `{y1}x{y2}`
+
+| File | Lokasi | Keterangan |
+|------|--------|------------|
+| `output_table_biplot_transition_sum_{pair}.tex` | ROOT | Matriks transisi klaster Biplot PCA (jumlah) |
+| `output_table_biplot_transition_name_{pair}.tex` | ROOT | Nama daerah per sel transisi klaster Biplot |
+| `compare_map_trans_biplot_{pair}.png` | SCENARIO | Peta klaster Biplot tahun t₁ dan t₂ |
+| `compare_scatter_trans_biplot_{pair}.png` | SCENARIO | Scatter klaster Biplot tahun t₁ dan t₂ |
+| `compare_pie_trans_biplot_{pair}.png` | SCENARIO | Pie proporsi klaster Biplot tahun t₁ dan t₂ |
+
+---
+
 ### Perbandingan 3 — Klaster Biplot vs STATIS Tahunan
 
 **App.jsx mode:** `comp_3_biplot_vs_statis` | **Format:** `{yr}`
@@ -281,8 +281,7 @@ output_real/
 |------|--------|------------|
 | `output_table_biplot_vs_statis_compare_sum_{yr}.tex` | SCENARIO | Cross-tab Biplot vs STATIS (matriks utama) |
 | `output_table_biplot_vs_statis_compare_name_{yr}.tex` | SCENARIO | Nama daerah (matriks utama) |
-| `output_table_biplot_vs_statis_sum_{yr}.tex` | SCENARIO | Cross-tab pelengkap |
-| `output_table_biplot_vs_statis_name_{yr}.tex` | SCENARIO | Nama daerah pelengkap |
+| 
 | `compare_map_biplot_vs_statis_{yr}.png` | SCENARIO | Peta klaster Biplot (kiri) vs STATIS (kanan) |
 | `compare_scatter_biplot_vs_statis_{yr}.png` | SCENARIO | Scatter Biplot vs STATIS |
 | `compare_pie_biplot_vs_statis_{yr}.png` | SCENARIO | Pie proporsi Biplot vs STATIS |

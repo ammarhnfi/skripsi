@@ -1432,86 +1432,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_biplot_vs_statis_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2020",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2021",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2022",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2023.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2023",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_name_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2024.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2024",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_name_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2020",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2021",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2022",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2023.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2023",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_sum_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2024.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2024",
-    "type": "text",
-    "src": "/output_real/scenario1/output_table_biplot_vs_statis_sum_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "output_table_centroid_statis.tex",
     "caption": "Output Table Centroid Statis",
     "type": "text",
@@ -4056,86 +3976,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_biplot_vs_statis_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2020",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2021",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2022",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2023.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2023",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_name_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2024.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2024",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_name_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2020",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2021",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2022",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2023.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2023",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_sum_2023.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2024.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2024",
-    "type": "text",
-    "src": "/output_real/scenario2/output_table_biplot_vs_statis_sum_2024.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "output_table_centroid_statis.tex",
     "caption": "Output Table Centroid Statis",
     "type": "text",
@@ -5501,6 +5341,2646 @@
     "type": "image",
     "src": "/output_real/corr_heatmap_2024.png",
     "group": "Korelasi & Diagnostik",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_AHH_L.png",
+    "caption": "2020 Ipm Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_AHH_P.png",
+    "caption": "2020 Ipm Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_GK.png",
+    "caption": "2020 Ipm Gk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_GR.png",
+    "caption": "2020 Ipm Gr",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_IPG.png",
+    "caption": "2020 Ipm Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_PDRB_ADHK.png",
+    "caption": "2020 Ipm Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_PKKP.png",
+    "caption": "2020 Ipm Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_PPM.png",
+    "caption": "2020 Ipm Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_RLS.png",
+    "caption": "2020 Ipm Rls",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_TPAK.png",
+    "caption": "2020 Ipm Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_TPT.png",
+    "caption": "2020 Ipm Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2020_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_L.png",
+    "caption": "2020 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_L.png",
+    "caption": "2020 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_L.png",
+    "caption": "2020 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_L.png",
+    "caption": "2020 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_L.png",
+    "caption": "2020 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_P.png",
+    "caption": "2020 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_P.png",
+    "caption": "2020 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_P.png",
+    "caption": "2020 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_P.png",
+    "caption": "2020 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_AHH_P.png",
+    "caption": "2020 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GK.png",
+    "caption": "2020 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GK.png",
+    "caption": "2020 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GK.png",
+    "caption": "2020 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GK.png",
+    "caption": "2020 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GK.png",
+    "caption": "2020 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GR.png",
+    "caption": "2020 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GR.png",
+    "caption": "2020 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GR.png",
+    "caption": "2020 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GR.png",
+    "caption": "2020 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_GR.png",
+    "caption": "2020 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_IPG.png",
+    "caption": "2020 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_IPG.png",
+    "caption": "2020 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_IPG.png",
+    "caption": "2020 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_IPG.png",
+    "caption": "2020 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_IPG.png",
+    "caption": "2020 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PDRB_ADHK.png",
+    "caption": "2020 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PDRB_ADHK.png",
+    "caption": "2020 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PDRB_ADHK.png",
+    "caption": "2020 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PDRB_ADHK.png",
+    "caption": "2020 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PDRB_ADHK.png",
+    "caption": "2020 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PKKP.png",
+    "caption": "2020 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PKKP.png",
+    "caption": "2020 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PKKP.png",
+    "caption": "2020 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PKKP.png",
+    "caption": "2020 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PKKP.png",
+    "caption": "2020 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PPM.png",
+    "caption": "2020 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PPM.png",
+    "caption": "2020 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PPM.png",
+    "caption": "2020 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PPM.png",
+    "caption": "2020 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_PPM.png",
+    "caption": "2020 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_RLS.png",
+    "caption": "2020 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_RLS.png",
+    "caption": "2020 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_RLS.png",
+    "caption": "2020 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_RLS.png",
+    "caption": "2020 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_RLS.png",
+    "caption": "2020 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPAK.png",
+    "caption": "2020 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPAK.png",
+    "caption": "2020 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPAK.png",
+    "caption": "2020 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPAK.png",
+    "caption": "2020 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPAK.png",
+    "caption": "2020 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPT.png",
+    "caption": "2020 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2020_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPT.png",
+    "caption": "2020 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2020_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPT.png",
+    "caption": "2020 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2020_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPT.png",
+    "caption": "2020 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2020_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k3_TPT.png",
+    "caption": "2020 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2020_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_AHH_L.png",
+    "caption": "2021 Ipm Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_AHH_P.png",
+    "caption": "2021 Ipm Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_GK.png",
+    "caption": "2021 Ipm Gk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_GR.png",
+    "caption": "2021 Ipm Gr",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_IPG.png",
+    "caption": "2021 Ipm Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_PDRB_ADHK.png",
+    "caption": "2021 Ipm Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_PKKP.png",
+    "caption": "2021 Ipm Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_PPM.png",
+    "caption": "2021 Ipm Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_RLS.png",
+    "caption": "2021 Ipm Rls",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_TPAK.png",
+    "caption": "2021 Ipm Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_TPT.png",
+    "caption": "2021 Ipm Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2021_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_L.png",
+    "caption": "2021 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_L.png",
+    "caption": "2021 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_L.png",
+    "caption": "2021 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_L.png",
+    "caption": "2021 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_L.png",
+    "caption": "2021 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_P.png",
+    "caption": "2021 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_P.png",
+    "caption": "2021 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_P.png",
+    "caption": "2021 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_P.png",
+    "caption": "2021 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_AHH_P.png",
+    "caption": "2021 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GK.png",
+    "caption": "2021 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GK.png",
+    "caption": "2021 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GK.png",
+    "caption": "2021 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GK.png",
+    "caption": "2021 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GK.png",
+    "caption": "2021 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GR.png",
+    "caption": "2021 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GR.png",
+    "caption": "2021 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GR.png",
+    "caption": "2021 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GR.png",
+    "caption": "2021 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_GR.png",
+    "caption": "2021 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_IPG.png",
+    "caption": "2021 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_IPG.png",
+    "caption": "2021 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_IPG.png",
+    "caption": "2021 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_IPG.png",
+    "caption": "2021 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_IPG.png",
+    "caption": "2021 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PDRB_ADHK.png",
+    "caption": "2021 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PDRB_ADHK.png",
+    "caption": "2021 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PDRB_ADHK.png",
+    "caption": "2021 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PDRB_ADHK.png",
+    "caption": "2021 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PDRB_ADHK.png",
+    "caption": "2021 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PKKP.png",
+    "caption": "2021 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PKKP.png",
+    "caption": "2021 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PKKP.png",
+    "caption": "2021 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PKKP.png",
+    "caption": "2021 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PKKP.png",
+    "caption": "2021 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PPM.png",
+    "caption": "2021 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PPM.png",
+    "caption": "2021 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PPM.png",
+    "caption": "2021 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PPM.png",
+    "caption": "2021 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_PPM.png",
+    "caption": "2021 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_RLS.png",
+    "caption": "2021 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_RLS.png",
+    "caption": "2021 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_RLS.png",
+    "caption": "2021 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_RLS.png",
+    "caption": "2021 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_RLS.png",
+    "caption": "2021 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPAK.png",
+    "caption": "2021 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPAK.png",
+    "caption": "2021 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPAK.png",
+    "caption": "2021 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPAK.png",
+    "caption": "2021 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPAK.png",
+    "caption": "2021 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPT.png",
+    "caption": "2021 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2021_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPT.png",
+    "caption": "2021 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2021_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPT.png",
+    "caption": "2021 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2021_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPT.png",
+    "caption": "2021 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2021_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k3_TPT.png",
+    "caption": "2021 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2021_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_AHH_L.png",
+    "caption": "2022 Ipm Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_AHH_P.png",
+    "caption": "2022 Ipm Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_GK.png",
+    "caption": "2022 Ipm Gk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_GR.png",
+    "caption": "2022 Ipm Gr",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_IPG.png",
+    "caption": "2022 Ipm Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_PDRB_ADHK.png",
+    "caption": "2022 Ipm Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_PKKP.png",
+    "caption": "2022 Ipm Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_PPM.png",
+    "caption": "2022 Ipm Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_RLS.png",
+    "caption": "2022 Ipm Rls",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_TPAK.png",
+    "caption": "2022 Ipm Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_TPT.png",
+    "caption": "2022 Ipm Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2022_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_L.png",
+    "caption": "2022 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_L.png",
+    "caption": "2022 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_L.png",
+    "caption": "2022 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_L.png",
+    "caption": "2022 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_L.png",
+    "caption": "2022 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_P.png",
+    "caption": "2022 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_P.png",
+    "caption": "2022 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_P.png",
+    "caption": "2022 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_P.png",
+    "caption": "2022 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_AHH_P.png",
+    "caption": "2022 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GK.png",
+    "caption": "2022 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GK.png",
+    "caption": "2022 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GK.png",
+    "caption": "2022 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GK.png",
+    "caption": "2022 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GK.png",
+    "caption": "2022 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GR.png",
+    "caption": "2022 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GR.png",
+    "caption": "2022 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GR.png",
+    "caption": "2022 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GR.png",
+    "caption": "2022 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_GR.png",
+    "caption": "2022 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_IPG.png",
+    "caption": "2022 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_IPG.png",
+    "caption": "2022 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_IPG.png",
+    "caption": "2022 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_IPG.png",
+    "caption": "2022 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_IPG.png",
+    "caption": "2022 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PDRB_ADHK.png",
+    "caption": "2022 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PDRB_ADHK.png",
+    "caption": "2022 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PDRB_ADHK.png",
+    "caption": "2022 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PDRB_ADHK.png",
+    "caption": "2022 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PDRB_ADHK.png",
+    "caption": "2022 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PKKP.png",
+    "caption": "2022 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PKKP.png",
+    "caption": "2022 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PKKP.png",
+    "caption": "2022 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PKKP.png",
+    "caption": "2022 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PKKP.png",
+    "caption": "2022 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PPM.png",
+    "caption": "2022 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PPM.png",
+    "caption": "2022 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PPM.png",
+    "caption": "2022 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PPM.png",
+    "caption": "2022 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_PPM.png",
+    "caption": "2022 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_RLS.png",
+    "caption": "2022 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_RLS.png",
+    "caption": "2022 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_RLS.png",
+    "caption": "2022 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_RLS.png",
+    "caption": "2022 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_RLS.png",
+    "caption": "2022 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPAK.png",
+    "caption": "2022 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPAK.png",
+    "caption": "2022 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPAK.png",
+    "caption": "2022 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPAK.png",
+    "caption": "2022 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPAK.png",
+    "caption": "2022 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPT.png",
+    "caption": "2022 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2022_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPT.png",
+    "caption": "2022 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2022_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPT.png",
+    "caption": "2022 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2022_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPT.png",
+    "caption": "2022 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2022_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k3_TPT.png",
+    "caption": "2022 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2022_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_AHH_L.png",
+    "caption": "2023 Ipm Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_AHH_P.png",
+    "caption": "2023 Ipm Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_GK.png",
+    "caption": "2023 Ipm Gk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_GR.png",
+    "caption": "2023 Ipm Gr",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_IPG.png",
+    "caption": "2023 Ipm Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_PDRB_ADHK.png",
+    "caption": "2023 Ipm Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_PKKP.png",
+    "caption": "2023 Ipm Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_PPM.png",
+    "caption": "2023 Ipm Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_RLS.png",
+    "caption": "2023 Ipm Rls",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_TPAK.png",
+    "caption": "2023 Ipm Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_ipm_TPT.png",
+    "caption": "2023 Ipm Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2023_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_L.png",
+    "caption": "2023 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_L.png",
+    "caption": "2023 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_L.png",
+    "caption": "2023 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_L.png",
+    "caption": "2023 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_L.png",
+    "caption": "2023 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_P.png",
+    "caption": "2023 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_P.png",
+    "caption": "2023 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_P.png",
+    "caption": "2023 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_P.png",
+    "caption": "2023 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_AHH_P.png",
+    "caption": "2023 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GK.png",
+    "caption": "2023 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GK.png",
+    "caption": "2023 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GK.png",
+    "caption": "2023 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GK.png",
+    "caption": "2023 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GK.png",
+    "caption": "2023 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GR.png",
+    "caption": "2023 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GR.png",
+    "caption": "2023 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GR.png",
+    "caption": "2023 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GR.png",
+    "caption": "2023 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_GR.png",
+    "caption": "2023 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_IPG.png",
+    "caption": "2023 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_IPG.png",
+    "caption": "2023 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_IPG.png",
+    "caption": "2023 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_IPG.png",
+    "caption": "2023 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_IPG.png",
+    "caption": "2023 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PDRB_ADHK.png",
+    "caption": "2023 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PDRB_ADHK.png",
+    "caption": "2023 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PDRB_ADHK.png",
+    "caption": "2023 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PDRB_ADHK.png",
+    "caption": "2023 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PDRB_ADHK.png",
+    "caption": "2023 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PKKP.png",
+    "caption": "2023 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PKKP.png",
+    "caption": "2023 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PKKP.png",
+    "caption": "2023 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PKKP.png",
+    "caption": "2023 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PKKP.png",
+    "caption": "2023 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PPM.png",
+    "caption": "2023 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PPM.png",
+    "caption": "2023 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PPM.png",
+    "caption": "2023 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PPM.png",
+    "caption": "2023 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_PPM.png",
+    "caption": "2023 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_RLS.png",
+    "caption": "2023 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_RLS.png",
+    "caption": "2023 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_RLS.png",
+    "caption": "2023 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_RLS.png",
+    "caption": "2023 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_RLS.png",
+    "caption": "2023 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPAK.png",
+    "caption": "2023 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPAK.png",
+    "caption": "2023 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPAK.png",
+    "caption": "2023 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPAK.png",
+    "caption": "2023 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPAK.png",
+    "caption": "2023 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPT.png",
+    "caption": "2023 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2023_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPT.png",
+    "caption": "2023 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2023_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPT.png",
+    "caption": "2023 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2023_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPT.png",
+    "caption": "2023 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2023_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2023_k3_TPT.png",
+    "caption": "2023 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2023_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_AHH_L.png",
+    "caption": "2024 Ipm Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_AHH_P.png",
+    "caption": "2024 Ipm Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_GK.png",
+    "caption": "2024 Ipm Gk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_GR.png",
+    "caption": "2024 Ipm Gr",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_IPG.png",
+    "caption": "2024 Ipm Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_PDRB_ADHK.png",
+    "caption": "2024 Ipm Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_PKKP.png",
+    "caption": "2024 Ipm Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_PPM.png",
+    "caption": "2024 Ipm Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_RLS.png",
+    "caption": "2024 Ipm Rls",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_TPAK.png",
+    "caption": "2024 Ipm Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_ipm_TPT.png",
+    "caption": "2024 Ipm Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/ipm_cat/2024_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_L.png",
+    "caption": "2024 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_L.png",
+    "caption": "2024 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_L.png",
+    "caption": "2024 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_L.png",
+    "caption": "2024 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_L.png",
+    "caption": "2024 K3 Ahh L",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_AHH_L.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_P.png",
+    "caption": "2024 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_P.png",
+    "caption": "2024 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_P.png",
+    "caption": "2024 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_P.png",
+    "caption": "2024 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_AHH_P.png",
+    "caption": "2024 K3 Ahh P",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_AHH_P.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GK.png",
+    "caption": "2024 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GK.png",
+    "caption": "2024 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GK.png",
+    "caption": "2024 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GK.png",
+    "caption": "2024 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GK.png",
+    "caption": "2024 K3 Gk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_GK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GR.png",
+    "caption": "2024 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GR.png",
+    "caption": "2024 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GR.png",
+    "caption": "2024 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GR.png",
+    "caption": "2024 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_GR.png",
+    "caption": "2024 K3 Gr",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_GR.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_IPG.png",
+    "caption": "2024 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_IPG.png",
+    "caption": "2024 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_IPG.png",
+    "caption": "2024 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_IPG.png",
+    "caption": "2024 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_IPG.png",
+    "caption": "2024 K3 Ipg",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_IPG.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PDRB_ADHK.png",
+    "caption": "2024 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PDRB_ADHK.png",
+    "caption": "2024 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PDRB_ADHK.png",
+    "caption": "2024 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PDRB_ADHK.png",
+    "caption": "2024 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PDRB_ADHK.png",
+    "caption": "2024 K3 Pdrb Adhk",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_PDRB_ADHK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PKKP.png",
+    "caption": "2024 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PKKP.png",
+    "caption": "2024 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PKKP.png",
+    "caption": "2024 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PKKP.png",
+    "caption": "2024 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PKKP.png",
+    "caption": "2024 K3 Pkkp",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_PKKP.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PPM.png",
+    "caption": "2024 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PPM.png",
+    "caption": "2024 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PPM.png",
+    "caption": "2024 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PPM.png",
+    "caption": "2024 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_PPM.png",
+    "caption": "2024 K3 Ppm",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_RLS.png",
+    "caption": "2024 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_RLS.png",
+    "caption": "2024 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_RLS.png",
+    "caption": "2024 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_RLS.png",
+    "caption": "2024 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_RLS.png",
+    "caption": "2024 K3 Rls",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPAK.png",
+    "caption": "2024 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPAK.png",
+    "caption": "2024 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPAK.png",
+    "caption": "2024 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPAK.png",
+    "caption": "2024 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPAK.png",
+    "caption": "2024 K3 Tpak",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_TPAK.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPT.png",
+    "caption": "2024 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/biplot/2024_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPT.png",
+    "caption": "2024 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s1/2024_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPT.png",
+    "caption": "2024 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/kompromi_s2/2024_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPT.png",
+    "caption": "2024 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s1/2024_k3_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2024_k3_TPT.png",
+    "caption": "2024 K3 Tpt",
+    "type": "image",
+    "src": "/output_real/klaster/statis_yr_s2/2024_k3_TPT.png",
+    "group": "Lain-lain",
     "scenario": "Shared"
   },
   {

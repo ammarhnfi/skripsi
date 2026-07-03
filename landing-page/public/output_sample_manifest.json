@@ -896,54 +896,6 @@
     "scenario": "Scenario 1"
   },
   {
-    "name": "output_table_biplot_vs_statis_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2020",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2021",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2022",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2020",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2021",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2022",
-    "type": "text",
-    "src": "/output_sample/scenario1/output_table_biplot_vs_statis_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 1"
-  },
-  {
     "name": "output_table_centroid_statis.tex",
     "caption": "Output Table Centroid Statis",
     "type": "text",
@@ -2320,54 +2272,6 @@
     "scenario": "Scenario 2"
   },
   {
-    "name": "output_table_biplot_vs_statis_name_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2020",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_name_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2021",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_name_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_name_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Name 2022",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_name_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2020.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2020",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_sum_2020.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2021.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2021",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_sum_2021.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
-    "name": "output_table_biplot_vs_statis_sum_2022.tex",
-    "caption": "Output Table Biplot Vs Statis Sum 2022",
-    "type": "text",
-    "src": "/output_sample/scenario2/output_table_biplot_vs_statis_sum_2022.tex",
-    "group": "Tabel Hasil (.tex)",
-    "scenario": "Scenario 2"
-  },
-  {
     "name": "output_table_centroid_statis.tex",
     "caption": "Output Table Centroid Statis",
     "type": "text",
@@ -2973,6 +2877,438 @@
     "type": "image",
     "src": "/output_sample/corr_heatmap_2022.png",
     "group": "Korelasi & Diagnostik",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_PPM.png",
+    "caption": "2020 Ipm Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2020_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_RLS.png",
+    "caption": "2020 Ipm Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2020_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_ipm_TPT.png",
+    "caption": "2020 Ipm Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2020_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_PPM.png",
+    "caption": "2020 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2020_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_PPM.png",
+    "caption": "2020 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2020_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_PPM.png",
+    "caption": "2020 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2020_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_PPM.png",
+    "caption": "2020 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2020_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_PPM.png",
+    "caption": "2020 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2020_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_RLS.png",
+    "caption": "2020 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2020_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_RLS.png",
+    "caption": "2020 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2020_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_RLS.png",
+    "caption": "2020 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2020_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_RLS.png",
+    "caption": "2020 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2020_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_RLS.png",
+    "caption": "2020 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2020_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_TPT.png",
+    "caption": "2020 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2020_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_TPT.png",
+    "caption": "2020 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2020_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_TPT.png",
+    "caption": "2020 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2020_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_TPT.png",
+    "caption": "2020 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2020_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2020_k2_TPT.png",
+    "caption": "2020 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2020_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_PPM.png",
+    "caption": "2021 Ipm Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2021_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_RLS.png",
+    "caption": "2021 Ipm Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2021_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_ipm_TPT.png",
+    "caption": "2021 Ipm Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2021_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_PPM.png",
+    "caption": "2021 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2021_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_PPM.png",
+    "caption": "2021 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2021_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_PPM.png",
+    "caption": "2021 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2021_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_PPM.png",
+    "caption": "2021 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2021_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_PPM.png",
+    "caption": "2021 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2021_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_RLS.png",
+    "caption": "2021 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2021_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_RLS.png",
+    "caption": "2021 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2021_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_RLS.png",
+    "caption": "2021 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2021_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_RLS.png",
+    "caption": "2021 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2021_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_RLS.png",
+    "caption": "2021 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2021_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_TPT.png",
+    "caption": "2021 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2021_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_TPT.png",
+    "caption": "2021 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2021_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_TPT.png",
+    "caption": "2021 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2021_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_TPT.png",
+    "caption": "2021 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2021_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2021_k2_TPT.png",
+    "caption": "2021 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2021_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_PPM.png",
+    "caption": "2022 Ipm Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2022_ipm_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_RLS.png",
+    "caption": "2022 Ipm Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2022_ipm_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_ipm_TPT.png",
+    "caption": "2022 Ipm Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/ipm_cat/2022_ipm_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_PPM.png",
+    "caption": "2022 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2022_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_PPM.png",
+    "caption": "2022 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2022_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_PPM.png",
+    "caption": "2022 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2022_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_PPM.png",
+    "caption": "2022 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2022_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_PPM.png",
+    "caption": "2022 K2 Ppm",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2022_k2_PPM.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_RLS.png",
+    "caption": "2022 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2022_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_RLS.png",
+    "caption": "2022 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2022_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_RLS.png",
+    "caption": "2022 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2022_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_RLS.png",
+    "caption": "2022 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2022_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_RLS.png",
+    "caption": "2022 K2 Rls",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2022_k2_RLS.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_TPT.png",
+    "caption": "2022 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/biplot/2022_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_TPT.png",
+    "caption": "2022 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s1/2022_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_TPT.png",
+    "caption": "2022 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/kompromi_s2/2022_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_TPT.png",
+    "caption": "2022 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s1/2022_k2_TPT.png",
+    "group": "Lain-lain",
+    "scenario": "Shared"
+  },
+  {
+    "name": "2022_k2_TPT.png",
+    "caption": "2022 K2 Tpt",
+    "type": "image",
+    "src": "/output_sample/klaster/statis_yr_s2/2022_k2_TPT.png",
+    "group": "Lain-lain",
     "scenario": "Shared"
   },
   {
