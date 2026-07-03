@@ -773,6 +773,203 @@ function IntegratedDashboardView({ currentResults, folder, sc1Files, sc2Files, a
   );
 }
 
+function KlasterProfileGallery({ folder }) {
+  const METHODS = [
+    { id: 'biplot',       label: 'Dynamic Biplot',     icon: '📊', color: '#06B6D4' },
+    { id: 'statis_yr_s1', label: 'STATIS/Tahun S1',   icon: '📈', color: '#3B82F6' },
+    { id: 'statis_yr_s2', label: 'STATIS/Tahun S2',   icon: '📉', color: '#8B5CF6' },
+    { id: 'kompromi_s1',  label: 'Kompromi S1',        icon: '🎯', color: '#EC4899' },
+    { id: 'kompromi_s2',  label: 'Kompromi S2',        icon: '🔶', color: '#F97316' },
+    { id: 'ipm_cat',      label: 'Kategori IPM',       icon: '🌱', color: '#22C55E' },
+  ];
+  const YEARS = ['2020', '2021', '2022', '2023', '2024'];
+  const INDICATORS = ['AHH_L', 'AHH_P', 'GK', 'GR', 'IPG', 'PDRB_ADHK', 'PKKP', 'PPM', 'RLS', 'TPAK', 'TPT'];
+  const IND_LABELS = {
+    AHH_L: 'AHH Laki-laki', AHH_P: 'AHH Perempuan', GK: 'Garis Kemiskinan',
+    GR: 'Gini Ratio', IPG: 'Ind. Pemb. Gender', PDRB_ADHK: 'PDRB ADHK',
+    PKKP: 'Pengeluaran/Kapita', PPM: 'Penduduk Miskin', RLS: 'Rata-rata Lama Sekolah',
+    TPAK: 'Tk. Partisipasi AK', TPT: 'Tk. Pengangguran Terbuka'
+  };
+
+  const [viewMode, setViewMode] = useState('gallery');
+  const [selectedMethod, setSelectedMethod] = useState('biplot');
+  const [selectedYear, setSelectedYear] = useState('2024');
+  const [selectedIndicator, setSelectedIndicator] = useState('AHH_L');
+  const [lightbox, setLightbox] = useState(null);
+
+  const imgPath = (method, year, ind) =>
+    `/${folder}/klaster/${method}/${year}_${method === 'ipm_cat' ? 'ipm' : 'k3'}_${ind}.png`;
+
+  const activeMethod = METHODS.find(m => m.id === selectedMethod);
+  const acColor = activeMethod?.color ?? '#06B6D4';
+
+  return (
+    <div style={{ background: 'rgba(30, 41, 59, 0.25)', borderRadius: '24px', padding: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
+
+      {/* MODE SWITCHER */}
+      <div style={{ display: 'flex', gap: '10px', marginBottom: '22px', alignItems: 'center', flexWrap: 'wrap' }}>
+        <span style={{ fontWeight: '700', color: '#64748b', fontSize: '0.75rem', letterSpacing: '1px', textTransform: 'uppercase', marginRight: '4px' }}>Mode:</span>
+        {[
+          { id: 'gallery',     label: '📁 Galeri Profil',   desc: 'pilih metode + tahun → 11 indikator' },
+          { id: 'crossmethod', label: '⚔️ Lintas Metode', desc: 'pilih tahun + indikator → 6 metode' }
+        ].map(m => (
+          <button key={m.id} onClick={() => setViewMode(m.id)} style={{
+            padding: '7px 18px', borderRadius: '20px', cursor: 'pointer', fontWeight: '600', fontSize: '0.82rem', transition: 'all 0.15s',
+            border: viewMode === m.id ? '1px solid #06b6d4' : '1px solid rgba(255,255,255,0.1)',
+            background: viewMode === m.id ? 'rgba(6,182,212,0.12)' : 'rgba(15,23,42,0.4)',
+            color: viewMode === m.id ? '#06b6d4' : '#94a3b8'
+          }}>
+            {m.label}
+            <span style={{ fontSize: '0.68rem', color: '#475569', marginLeft: '6px' }}>{m.desc}</span>
+          </button>
+        ))}
+      </div>
+
+      {viewMode === 'gallery' ? (
+        <>
+          {/* METHOD TABS */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', marginBottom: '18px' }}>
+            {METHODS.map(m => (
+              <button key={m.id} onClick={() => setSelectedMethod(m.id)} style={{
+                padding: '10px 12px', borderRadius: '12px', cursor: 'pointer', fontWeight: '600', fontSize: '0.78rem',
+                border: selectedMethod === m.id ? `1px solid ${m.color}` : '1px solid rgba(255,255,255,0.07)',
+                background: selectedMethod === m.id ? `${m.color}1A` : 'rgba(15,23,42,0.4)',
+                color: selectedMethod === m.id ? m.color : '#94a3b8',
+                display: 'flex', alignItems: 'center', gap: '8px', transition: 'all 0.15s', textAlign: 'left'
+              }}>
+                <span style={{ fontSize: '1rem' }}>{m.icon}</span><span>{m.label}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* YEAR PILLS */}
+          <div style={{ display: 'flex', gap: '8px', marginBottom: '20px', alignItems: 'center' }}>
+            <span style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', minWidth: '52px' }}>Tahun:</span>
+            {YEARS.map(yr => (
+              <button key={yr} onClick={() => setSelectedYear(yr)} style={{
+                padding: '6px 16px', borderRadius: '20px', cursor: 'pointer', fontWeight: '600', fontSize: '0.8rem', transition: 'all 0.15s',
+                border: selectedYear === yr ? `1px solid ${acColor}` : '1px solid rgba(255,255,255,0.08)',
+                background: selectedYear === yr ? `${acColor}20` : 'rgba(15,23,42,0.4)',
+                color: selectedYear === yr ? acColor : '#94a3b8'
+              }}>{yr}</button>
+            ))}
+          </div>
+
+          {/* INDICATOR GRID */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '14px' }}>
+            {INDICATORS.map(ind => (
+              <div key={ind}
+                onClick={() => setLightbox(imgPath(selectedMethod, selectedYear, ind))}
+                onMouseOver={e => { e.currentTarget.style.border = `1px solid ${acColor}55`; e.currentTarget.style.background = 'rgba(15,23,42,0.65)'; }}
+                onMouseOut={e => { e.currentTarget.style.border = '1px solid rgba(255,255,255,0.06)'; e.currentTarget.style.background = 'rgba(15,23,42,0.45)'; }}
+                style={{
+                  background: 'rgba(15,23,42,0.45)', borderRadius: '14px', padding: '12px',
+                  border: '1px solid rgba(255,255,255,0.06)', cursor: 'zoom-in', transition: 'all 0.2s'
+                }}
+              >
+                <div style={{ fontSize: '0.68rem', color: acColor, fontWeight: '700', marginBottom: '8px', letterSpacing: '0.3px', textTransform: 'uppercase' }}>
+                  {ind} <span style={{ color: '#64748b', fontWeight: '500' }}>— {IND_LABELS[ind]}</span>
+                </div>
+                <img
+                  src={imgPath(selectedMethod, selectedYear, ind)}
+                  alt={`${ind} ${selectedYear}`}
+                  style={{ width: '100%', borderRadius: '8px', display: 'block', maxHeight: '200px', objectFit: 'contain', background: 'rgba(255,255,255,0.02)' }}
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          {/* YEAR + INDICATOR SELECTORS */}
+          <div style={{ display: 'flex', gap: '28px', marginBottom: '20px', flexWrap: 'wrap' }}>
+            <div>
+              <div style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Tahun</div>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                {YEARS.map(yr => (
+                  <button key={yr} onClick={() => setSelectedYear(yr)} style={{
+                    padding: '6px 14px', borderRadius: '16px', cursor: 'pointer', fontWeight: '600', fontSize: '0.8rem', transition: 'all 0.15s',
+                    border: selectedYear === yr ? '1px solid #06b6d4' : '1px solid rgba(255,255,255,0.08)',
+                    background: selectedYear === yr ? 'rgba(6,182,212,0.12)' : 'rgba(15,23,42,0.4)',
+                    color: selectedYear === yr ? '#06b6d4' : '#94a3b8'
+                  }}>{yr}</button>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div style={{ color: '#64748b', fontSize: '0.75rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '8px' }}>Indikator</div>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                {INDICATORS.map(ind => (
+                  <button key={ind} onClick={() => setSelectedIndicator(ind)} style={{
+                    padding: '5px 12px', borderRadius: '14px', cursor: 'pointer', fontSize: '0.75rem', transition: 'all 0.15s',
+                    border: selectedIndicator === ind ? '1px solid #3B82F6' : '1px solid rgba(255,255,255,0.07)',
+                    background: selectedIndicator === ind ? 'rgba(59,130,246,0.14)' : 'rgba(15,23,42,0.4)',
+                    color: selectedIndicator === ind ? '#3B82F6' : '#94a3b8',
+                    fontWeight: selectedIndicator === ind ? '700' : '500'
+                  }}>{ind}</button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* 2×3 CROSS-METHOD GRID */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px' }}>
+            {METHODS.map(m => (
+              <div key={m.id}
+                onClick={() => setLightbox(imgPath(m.id, selectedYear, selectedIndicator))}
+                onMouseOver={e => { e.currentTarget.style.border = `1px solid ${m.color}70`; e.currentTarget.style.background = 'rgba(15,23,42,0.7)'; }}
+                onMouseOut={e => { e.currentTarget.style.border = `1px solid ${m.color}25`; e.currentTarget.style.background = 'rgba(15,23,42,0.45)'; }}
+                style={{
+                  background: 'rgba(15,23,42,0.45)', borderRadius: '16px', padding: '14px',
+                  border: `1px solid ${m.color}25`, cursor: 'zoom-in', transition: 'all 0.2s'
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px' }}>
+                  <span style={{ fontSize: '1rem' }}>{m.icon}</span>
+                  <span style={{ color: m.color, fontWeight: '700', fontSize: '0.73rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>{m.label}</span>
+                </div>
+                <img
+                  src={imgPath(m.id, selectedYear, selectedIndicator)}
+                  alt={`${m.label} ${selectedYear} ${selectedIndicator}`}
+                  style={{ width: '100%', borderRadius: '10px', display: 'block', maxHeight: '210px', objectFit: 'contain', background: 'rgba(255,255,255,0.02)' }}
+                />
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* LIGHTBOX OVERLAY */}
+      {lightbox && (
+        <div
+          onClick={() => setLightbox(null)}
+          style={{
+            position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.88)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            zIndex: 9999, cursor: 'zoom-out', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)'
+          }}
+        >
+          <img
+            src={lightbox}
+            alt="detail"
+            onClick={e => e.stopPropagation()}
+            style={{ maxWidth: '90vw', maxHeight: '90vh', objectFit: 'contain', borderRadius: '16px', boxShadow: '0 32px 64px rgba(0,0,0,0.5)', cursor: 'default' }}
+          />
+          <button
+            onClick={() => setLightbox(null)}
+            style={{
+              position: 'absolute', top: '24px', right: '24px',
+              background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.2)',
+              color: '#fff', borderRadius: '50%', width: '40px', height: '40px',
+              fontSize: '18px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center'
+            }}
+          >✕</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
   const [selectedFolder, setSelectedFolder] = useState('output_real');
   const [activeTab, setActiveTab] = useState('core');
@@ -1073,6 +1270,15 @@ function CompareDashboard({ onBack, allResultsReal, allResultsSample }) {
             )}
           </div>
         </div>
+      </div>
+
+      {/* KLASTER PROFILE GALLERY */}
+      <div style={{ marginTop: '40px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+          <h2 className="section-title" style={{ fontSize: '18px', fontWeight: '600', color: '#F8FAFC', margin: '0', borderLeft: '4px solid #22C55E', paddingLeft: '12px' }}>🧩 Profil Klaster per Indikator</h2>
+          <span style={{ fontSize: '13px', color: '#94A3B8', marginLeft: '16px' }}>Distribusi spasial klaster untuk setiap indikator dan metode</span>
+        </div>
+        <KlasterProfileGallery folder={selectedFolder} />
       </div>
     </div>
   );

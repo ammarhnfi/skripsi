@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 JUL 2026 05:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.1.23)  4 JUL 2026 05:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2397,7 +2397,7 @@ d \OT1/ptm/b/n/12 (+20) In-ter-ak-tif: \OT1/ptm/m/n/12 (+20) Dash-board berba-s
 is web
  []
 
-) [148] (induk.bbl
+[148]) [149] (induk.bbl
 Underfull \hbox (badness 2293) in paragraph at lines 47--52
 []\OT1/ptm/m/n/12 (+20) Badan Pusat Statis-tik (2025a).  \OT1/ptm/m/it/12 (+20)
  In-dika-tor ke-se-jahter-aan rakyat 2025\OT1/ptm/m/n/12 (+20) .  Kat-a-
@@ -2415,7 +2415,7 @@ Underfull \hbox (badness 2012) in paragraph at lines 67--71
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[149
+[150
 
 
 
@@ -2437,30 +2437,30 @@ Underfull \hbox (badness 2012) in paragraph at lines 85--89
 tm/m/it/12 (+20) Provinsi ban-ten dalam angka
  []
 
-[150] [151] [152] [153]
+[151] [152] [153] [154]
 Underfull \hbox (badness 2096) in paragraph at lines 366--370
 []\OT1/ptm/m/n/12 (+20) Weisstein, Eric W. (2024).  \OT1/ptm/m/it/12 (+20) Kur-
 to-sis ex-cess\OT1/ptm/m/n/12 (+20) .  []$https : / / mathworld . wolfram . com
  /
  []
 
-) [154]
+) [155]
 \openout2 = `lampiran1.aux'.
 
- (lampiran1.tex [155
+ (lampiran1.tex [156
 
 
-] [156] [157] [158] [159] [160] [161] [162] [163]
-[164] [165] [166]) [167]
+] [157] [158] [159] [160] [161] [162] [163] [164]
+[165] [166] [167]) [168]
 \openout2 = `lampiran2.aux'.
 
  (lampiran2.tex
-<pics/screenshot_web.png, id=2917, 1444.64719pt x 548.80031pt>
+<pics/screenshot_web.png, id=2921, 1444.64719pt x 548.80031pt>
 File: pics/screenshot_web.png Graphic file (type png)
 <use pics/screenshot_web.png>
 Package pdftex.def Info: pics/screenshot_web.png  used on input line 16.
 (pdftex.def)             Requested size: 426.79135pt x 162.12915pt.
-) [168
+) [169
 
 
 
@@ -2473,10 +2473,14 @@ Package pdftex.def Info: pics/screenshot_web.png  used on input line 16.
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 35258 strings out of 467871
- 683169 string characters out of 5418376
+ 35259 strings out of 467871
+ 683177 string characters out of 5418376
  1190316 words of memory out of 5000000
  61729 multiletter control sequences out of 15000+600000
  688590 words of font info for 445 fonts, out of 8000000 for 9000
@@ -2509,9 +2513,9 @@ utmb8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmbi8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/ammar/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on induk.pdf (192 pages, 20710673 bytes).
+Output written on induk.pdf (193 pages, 20711960 bytes).
 PDF statistics:
- 3614 PDF objects out of 4296 (max. 8388607)
- 797 named destinations out of 1000 (max. 500000)
+ 3619 PDF objects out of 4296 (max. 8388607)
+ 798 named destinations out of 1000 (max. 500000)
  78908 words of extra memory for PDF output out of 89155 (max. 10000000)
 

@@ -145,4 +145,4 @@
 \contentsline {chapter}{\numberline {5}\normalsize KESIMPULAN DAN SARAN}{146}{chapter.5}%
 \contentsline {section}{\numberline {5.1}\normalsize Kesimpulan}{146}{section.5.1}%
 \contentsline {section}{\numberline {5.2}\normalsize Saran}{148}{section.5.2}%
-\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{149}{chapter*.193}%
+\contentsline {chapter}{\normalsize DAFTAR PUSTAKA}{150}{chapter*.193}%
