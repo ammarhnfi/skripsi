@@ -230,16 +230,95 @@ os.makedirs(OUT_DIR, exist_ok=True)
 
 
 # ============================================================
-# HELPER: simpan PNG
+# UKURAN FONT SERAGAM
+# Dipakai di SEMUA chart (matplotlib maupun plotly) lewat save_fig_mpl()
+# dan save_png() di bawah, supaya judul/label/legend semua gambar
+# "sejenis" (peta, pie, bar, scatter, dst) selalu konsisten ukurannya.
 # ============================================================
-def save_png(fig, filename, out_dir, width=900, height=600, scale=2):
+FONT_TITLE     = 20   # judul chart
+FONT_AXIS      = 16   # label sumbu x/y
+FONT_TICK      = 14   # angka/teks tick sumbu
+FONT_LEGEND    = 14   # teks & judul legend
+FONT_ANNOT     = 11   # anotasi umum dalam plot (value label, label titik biplot, dst)
+FONT_MAP_ANNOT = 6.5  # label nama wilayah di peta (padat, tetap perlu relatif kecil)
+
+
+# ============================================================
+# HELPER: simpan PNG (plotly)
+# ============================================================
+def _finalize_plotly_fonts(fig, tick_size=None, text_size=None):
+    """Paksa semua ukuran font plotly ke konstanta FONT_* di atas agar seragam
+    lintas chart, terlepas dari apakah chart itu sudah set font eksplisit atau
+    tidak (banyak chart di file ini sebelumnya memakai default plotly yang
+    berbeda-beda ukurannya)."""
+    tick_size = tick_size or FONT_TICK
+    fig.update_layout(font=dict(size=tick_size))
+    fig.update_layout(title_font_size=FONT_TITLE)
+    fig.update_layout(legend_font_size=FONT_LEGEND)
+    if fig.layout.legend and fig.layout.legend.title:
+        fig.update_layout(legend_title_font_size=FONT_LEGEND)
+    for ax_name in ("xaxis", "yaxis"):
+        ax = getattr(fig.layout, ax_name, None)
+        if ax is None:
+            continue
+        ax.update(tickfont=dict(size=tick_size))
+        if ax.title and ax.title.text:
+            ax.title.update(font=dict(size=FONT_AXIS))
+    text_size = text_size or FONT_ANNOT
+    if fig.layout.annotations:
+        for ann in fig.layout.annotations:
+            ann.update(font=dict(size=text_size))
+    for tr in fig.data:
+        if hasattr(tr, "textfont"):
+            tr.update(textfont=dict(size=text_size))
+
+
+def save_png(fig, filename, out_dir, width=900, height=600, scale=2, tick_size=None, text_size=None):
+    """tick_size: override untuk tick sumbu chart berlabel padat (mis.
+    dendrogram dengan puluhan daun). text_size: override untuk label
+    titik/anotasi dalam plot (mis. scatter/biplot dengan puluhan label
+    wilayah) -- keduanya perlu lebih kecil dari standar FONT_TICK/FONT_ANNOT
+    supaya tidak saling tumpang tindih."""
     path = os.path.join(out_dir, filename)
     try:
         fig.update_layout(title_x=0.5)
+        _finalize_plotly_fonts(fig, tick_size=tick_size, text_size=text_size)
         fig.write_image(path, width=width, height=height, scale=scale)
         print(f"  [PNG] {filename}")
     except Exception as e:
         print(f"  [WARN] Gagal simpan {filename}: {e}")
+
+
+# ============================================================
+# HELPER: simpan PNG (matplotlib)
+# ============================================================
+def _finalize_mpl_fonts(fig):
+    """Paksa title/axis-label/tick-label/legend semua Axes di figure ke
+    konstanta FONT_* di atas, supaya seragam lintas chart matplotlib
+    (peta klaster, peta IPM, pie, dst) tanpa perlu menyamakan satu-satu
+    nilai fontsize di tiap fungsi penggambar."""
+    for ax in fig.axes:
+        if ax.get_title():
+            ax.title.set_fontsize(FONT_TITLE)
+        if ax.xaxis.label.get_text():
+            ax.xaxis.label.set_fontsize(FONT_AXIS)
+        if ax.yaxis.label.get_text():
+            ax.yaxis.label.set_fontsize(FONT_AXIS)
+        for lbl in ax.get_xticklabels() + ax.get_yticklabels():
+            lbl.set_fontsize(FONT_TICK)
+        leg = ax.get_legend()
+        if leg is not None:
+            for txt in leg.get_texts():
+                txt.set_fontsize(FONT_LEGEND)
+            if leg.get_title() is not None and leg.get_title().get_text():
+                leg.get_title().set_fontsize(FONT_LEGEND)
+    if getattr(fig, "_suptitle", None) is not None:
+        fig._suptitle.set_fontsize(FONT_TITLE)
+
+
+def save_fig_mpl(fig, path, **savefig_kwargs):
+    _finalize_mpl_fonts(fig)
+    fig.savefig(path, **savefig_kwargs)
 
 
 # ============================================================
@@ -1025,8 +1104,8 @@ _CMAP_PROFIL = {
     "Klaster 4 (Sangat Tinggi)": "#42A5F5",
 }
 _IPM_CMAP_PROFIL = {
-    "Sangat Tinggi": "#1565C0", "Tinggi": "#4CAF50",
-    "Sedang": "#FFB300", "Rendah": "#EF5350",
+    "Sangat Tinggi": "#4CAF50", "Tinggi": "#FFB300",
+    "Sedang": "#EF5350", "Rendah": "#B71C1C",
 }
 _IPM_ORD_PROFIL = ["Rendah", "Sedang", "Tinggi", "Sangat Tinggi"]
 _sfx_k = {0: "Rendah", 1: "Sedang", 2: "Tinggi", 3: "Sangat Tinggi"}
@@ -1035,7 +1114,7 @@ _nm_k   = {i: f"Klaster {i+1} ({_sfx_k.get(i, str(i+1))})" for i in range(max(K_
 
 def _bar_profil(var, clusters, means, stds, colors, title, out_path):
     n_cl = len(clusters)
-    fig_b, ax_b = plt.subplots(figsize=(max(6, n_cl * 2.1), 6.5))
+    fig_b, ax_b = plt.subplots(figsize=(max(9, n_cl * 3.2), 7))
     x_b = np.arange(n_cl)
     ax_b.bar(x_b, means, width=0.55, color=colors, edgecolor="#37474F", linewidth=0.8, zorder=3)
     ax_b.errorbar(x_b, means, yerr=stds, fmt="none", ecolor="#37474F",
@@ -1046,11 +1125,11 @@ def _bar_profil(var, clusters, means, stds, colors, title, out_path):
     span_b = max(y_hi_b - y_lo_b, 1e-6)
     for i_b, (mean_b, std_b) in enumerate(zip(means, stds)):
         ax_b.text(x_b[i_b], mean_b + std_b + span_b * 0.04, f"{mean_b:.3f}",
-                  ha="center", va="bottom", fontsize=10, fontweight="bold", color="#1A237E")
+                  ha="center", va="bottom", fontsize=FONT_ANNOT, fontweight="bold", color="#1A237E")
         y_sd_b = mean_b * 0.5 if mean_b >= 0 else mean_b - std_b * 0.5
         inside_b = "white" if abs(mean_b) > span_b * 0.18 else "#37474F"
         ax_b.text(x_b[i_b], y_sd_b, f"±{std_b:.3f}",
-                  ha="center", va="center", fontsize=8.5, fontweight="bold", color=inside_b)
+                  ha="center", va="center", fontsize=FONT_ANNOT - 1.5, fontweight="bold", color=inside_b)
     xl_b = [f"{cl}\n[{m-s:.3f},\n {m+s:.3f}]" for cl, m, s in zip(clusters, means, stds)]
     ax_b.set_xticks(x_b); ax_b.set_xticklabels(xl_b, fontsize=8.5)
     ax_b.set_title(title, fontsize=11, fontweight="bold", pad=14)
@@ -1063,9 +1142,9 @@ def _bar_profil(var, clusters, means, stds, colors, title, out_path):
     pad_b = span_b * 0.20
     ax_b.set_ylim(y_lo_b - pad_b * 0.4, y_hi_b + pad_b * 1.9)
     patches_b = [mpatches.Patch(color=c, label=cl) for cl, c in zip(clusters, colors)]
-    ax_b.legend(handles=patches_b, fontsize=8.5, loc="upper right", framealpha=0.85)
+    ax_b.legend(handles=patches_b, fontsize=FONT_LEGEND, loc="upper right", framealpha=0.85)
     plt.tight_layout()
-    fig_b.savefig(out_path, dpi=150, bbox_inches="tight")
+    save_fig_mpl(fig_b, out_path, dpi=150, bbox_inches="tight")
     plt.close(fig_b)
 
 
@@ -1926,7 +2005,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 ax2.legend(fontsize=9); ax2.grid(True, ls='--', alpha=0.5)
                 ax2.spines['top'].set_visible(False); ax2.spines['right'].set_visible(False)
                 fig2.tight_layout()
-                fig2.savefig(os.path.join(output_dir, "beta_trajectory.png"), dpi=150, bbox_inches='tight')
+                save_fig_mpl(fig2, os.path.join(output_dir, "beta_trajectory.png"), dpi=150, bbox_inches='tight')
                 plt.close(fig2)
                 print("  [PNG] beta_trajectory.png")
             except Exception as _ep:
@@ -2031,7 +2110,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             ax.annotate(lbl, (plot_scores[i, 0], plot_scores[i, 1]),
                         xytext=(0, 6), textcoords='offset points',
                         ha='center', va='bottom',
-                        fontsize=9.5 if is_hl else 8,
+                        fontsize=FONT_ANNOT + 1.5 if is_hl else FONT_ANNOT,
                         color='#D32F2F' if is_hl else '#333333',
                         fontweight='bold' if is_hl else 'normal',
                         path_effects=[pe.withStroke(linewidth=2 if is_hl else 1.5, foreground='white')],
@@ -2054,21 +2133,21 @@ for current_scenario in ['scenario1', 'scenario2']:
             ax.annotate(var_lbl, (plot_loadings[i, 0], plot_loadings[i, 1]),
                         xytext=(0, 8), textcoords='offset points',
                         ha='center', va='bottom',
-                        fontsize=11 if is_hl_var else 9.5,
+                        fontsize=FONT_ANNOT + 2 if is_hl_var else FONT_ANNOT + 1,
                         color='#880E4F' if is_hl_var else '#C2185B',
                         fontweight='bold',
                         path_effects=[pe.withStroke(linewidth=3, foreground='white')],
                         zorder=5)
                         
-        ax.set_xlabel(ax_x_label, fontsize=12, labelpad=10)
-        ax.set_ylabel(ax_y_label, fontsize=12, labelpad=10)
-        ax.set_title('Compromise Biplot (Skor dan Loading)', fontsize=15, fontweight='bold', pad=15)
-        
+        ax.set_xlabel(ax_x_label, fontsize=FONT_AXIS, labelpad=10)
+        ax.set_ylabel(ax_y_label, fontsize=FONT_AXIS, labelpad=10)
+        ax.set_title('Compromise Biplot (Skor dan Loading)', fontsize=FONT_TITLE, fontweight='bold', pad=15)
+
         for spine in ax.spines.values():
             spine.set_edgecolor(GRID_COLOR)
-            
+
         plt.tight_layout(pad=2)
-        plt.savefig(out_path, dpi=250, bbox_inches='tight', facecolor=BG_COLOR)
+        save_fig_mpl(fig, out_path, dpi=250, bbox_inches='tight', facecolor=BG_COLOR)
         plt.close(fig)
         print(f"  [PNG] {os.path.basename(out_path)}")
     
@@ -2202,7 +2281,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         xaxis=dict(scaleanchor='y', scaleratio=1),
         xaxis_title=ax_x, yaxis_title=ax_y
     )
-    save_png(fig_traj, "trajectory_scores.png", OUT_DIR, width=900, height=800)
+    save_png(fig_traj, "trajectory_scores.png", OUT_DIR, width=900, height=800, text_size=9)
     
     
     # --- Static Trajectory Loadings Plot ---
@@ -2252,7 +2331,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             xaxis=dict(scaleanchor='y', scaleratio=1),
             xaxis_title='PC1', yaxis_title='PC2'
         )
-        save_png(fig_load, "trajectory_loadings.png", OUT_DIR, width=900, height=800)
+        save_png(fig_load, "trajectory_loadings.png", OUT_DIR, width=900, height=800, text_size=9)
 
     # --- Snapshot Biplot 2D per Tahun ---
     print("\n=== 4b. Snapshot Biplot per Tahun ===")
@@ -2300,7 +2379,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         fig_yr.update_layout(title=f"Biplot Tahunan — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
-        save_png(fig_yr, f"biplot_tahun_{yr}.png", OUT_DIR, width=800, height=800)
+        save_png(fig_yr, f"biplot_tahun_{yr}.png", OUT_DIR, width=800, height=800, text_size=9)
         
         # Generate unweighted yearly biplot in root (only when IS_FIRST)
         if IS_FIRST:
@@ -2344,7 +2423,7 @@ for current_scenario in ['scenario1', 'scenario2']:
             fig_yr_un.update_layout(title=f"Biplot Tahunan (PCA Unweighted) — Tahun {yr}",
                                     xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                                     xaxis=dict(scaleanchor='y', scaleratio=1))
-            save_png(fig_yr_un, f"biplot_tahun_{yr}.png", ROOT_OUT_DIR, width=800, height=800)
+            save_png(fig_yr_un, f"biplot_tahun_{yr}.png", ROOT_OUT_DIR, width=800, height=800, text_size=9)
     
     
     # ============================================================
@@ -2547,7 +2626,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         fig_sc.update_layout(title=f"Biplot Klaster K-Means (Diberi Peringkat) — Tahun {yr}",
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
-        save_png(fig_sc, f"cluster_scatter_statis_{yr}.png", OUT_DIR, width=800, height=800)
+        save_png(fig_sc, f"cluster_scatter_statis_{yr}.png", OUT_DIR, width=800, height=800, text_size=9)
     
         # Elbow (Gunakan Xc dari coords asli Z @ Vc)
         Xc = coords
@@ -2597,8 +2676,8 @@ for current_scenario in ['scenario1', 'scenario2']:
         try:
             fig_dendro = ff.create_dendrogram(Xc, labels=obs_labels, orientation='left')
             fig_dendro.update_layout(title=f"Dendrogram — Tahun {yr}",
-                                      template='plotly_white', margin=dict(l=150, r=20, t=40, b=20), height=550)
-            save_png(fig_dendro, f"dendrogram_{yr}.png", OUT_DIR, width=800, height=550)
+                                      template='plotly_white', margin=dict(l=190, r=20, t=50, b=20), height=900)
+            save_png(fig_dendro, f"dendrogram_{yr}.png", OUT_DIR, width=800, height=900, tick_size=10)
         except Exception as e:
             print(f"  [WARN] Dendrogram {yr} gagal: {e}")
             
@@ -2647,8 +2726,8 @@ for current_scenario in ['scenario1', 'scenario2']:
             try:
                 fig_dendro_bp = ff.create_dendrogram(Xc_bp, labels=obs_labels, orientation='left')
                 fig_dendro_bp.update_layout(title=f"Dendrogram (Unweighted) — Tahun {yr}",
-                                            template='plotly_white', margin=dict(l=150, r=20, t=40, b=20), height=550)
-                save_png(fig_dendro_bp, f"dendrogram_{yr}.png", ROOT_OUT_DIR, width=800, height=550)
+                                            template='plotly_white', margin=dict(l=190, r=20, t=50, b=20), height=900)
+                save_png(fig_dendro_bp, f"dendrogram_{yr}.png", ROOT_OUT_DIR, width=800, height=900, tick_size=10)
             except Exception as e:
                 print(f"  [WARN] Dendrogram unweighted {yr} gagal: {e}")
 
@@ -2708,7 +2787,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 for ip_l in ipm_cats:
                     names = [obs_labels[i] for i in range(len(obs_labels))
                              if lbl_statis_yr[i] == km_l and ipm_yr[i] == ip_l]
-                    rows_si_nm[f"{get_cluster_name(km_l, 'Cl.')} & {ip_l}"] = ", ".join(names) if names else "-"
+                    rows_si_nm[f"{get_cluster_name(km_l, 'Cl.')} & IPM UNDP ({ip_l})"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_si_nm, f"output_table_statis_vs_ipm_name_{yr}.tex", OUT_DIR,
                                 f"Nama Daerah Perbandingan Klaster STATIS Tahunan vs IPM (UNDP) ({yr})", f"statis_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
 
@@ -2767,7 +2846,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 for ip_l in ipm_cats:
                     names = [obs_labels[i] for i in range(len(obs_labels))
                              if cluster_traj[i] == km_l and ipm_yr[i] == ip_l]
-                    rows_ci_nm[f"{get_cluster_name(km_l, 'Kompromi')} & {ip_l}"] = ", ".join(names) if names else "-"
+                    rows_ci_nm[f"{get_cluster_name(km_l, 'Kompromi')} & IPM UNDP ({ip_l})"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_ci_nm, f"output_table_compromise_vs_ipm_name_{yr}.tex", OUT_DIR,
                                 f"Nama Daerah Perbandingan Klaster Kompromi STATIS vs IPM (UNDP) ({yr})", f"comp_ipm_name_{yr}", label_prefix=CUR_LABEL_PREFIX)
     
@@ -2882,7 +2961,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 for ip_l in ipm_cats:
                     names = [obs_labels[i] for i in range(len(obs_labels))
                              if lbl_km[i] == km_l and ipm_yr[i] == ip_l]
-                    rows_cross_nm[f"{get_cluster_name(km_l, 'Biplot')} & {ip_l}"] = ", ".join(names) if names else "-"
+                    rows_cross_nm[f"{get_cluster_name(km_l, 'Biplot')} & IPM UNDP ({ip_l})"] = ", ".join(names) if names else "-"
             save_tex_name_table(rows_cross_nm, f"output_table_cross_matrix_name_{yr}.tex", OUT_DIR,
                                 f"Nama Daerah Perbandingan Klaster Biplot vs Kategori IPM (UNDP) ({yr})", f"crossname{yr}", label_prefix=CUR_LABEL_PREFIX)
     
@@ -2928,7 +3007,7 @@ for current_scenario in ['scenario1', 'scenario2']:
     fig_traj_cl.update_layout(title="Scatter Plot Klaster Trajektori (Diberi Peringkat)",
                                xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                                xaxis=dict(scaleanchor='y', scaleratio=1))
-    save_png(fig_traj_cl, "compromise_scatter.png", OUT_DIR, width=800, height=800)
+    save_png(fig_traj_cl, "compromise_scatter.png", OUT_DIR, width=800, height=800, text_size=9)
     
     # Tabel ringkasan anggota klaster trajektori (grouped: Kelompok | Jumlah | Daftar)
     from collections import defaultdict as _dd_cl
@@ -2998,7 +3077,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                 ax.annotate(
                     name_short,
                     xy=(pt.x, pt.y),
-                    fontsize=4.8,
+                    fontsize=FONT_MAP_ANNOT,
                     ha='center', va='center',
                     color='#1A1A1A',
                     fontweight='bold',
@@ -3009,8 +3088,8 @@ for current_scenario in ['scenario1', 'scenario2']:
                 )
             except Exception:
                 pass
-    
-        ax.set_title(title, fontsize=13, fontweight='bold', pad=10)
+
+        ax.set_title(title, fontsize=FONT_TITLE, fontweight='bold', pad=10)
         ax.set_axis_off()
     
         # Paksa axes limit ke extent poligon yang cocok (berwarna) saja
@@ -3028,16 +3107,16 @@ for current_scenario in ['scenario1', 'scenario2']:
         legend = ax.legend(
             handles=patches,
             loc='lower left',
-            fontsize=11,
+            fontsize=FONT_LEGEND,
             framealpha=0.88,
             edgecolor='#AAAAAA',
             title='Cluster',
-            title_fontsize=11
+            title_fontsize=FONT_LEGEND
         )
         legend.get_frame().set_linewidth(1.0)
-    
+
         plt.tight_layout(pad=0.5)
-        plt.savefig(os.path.join(out_dir, out_filename), dpi=200, bbox_inches='tight')
+        save_fig_mpl(fig, os.path.join(out_dir, out_filename), dpi=200, bbox_inches='tight')
         plt.close(fig)
         print(f"  [PNG] {out_filename}")
     
@@ -3230,7 +3309,7 @@ for current_scenario in ['scenario1', 'scenario2']:
                              xaxis_title=ax_x, yaxis_title=ax_y, template='plotly_white',
                              xaxis=dict(scaleanchor='y', scaleratio=1))
         if IS_FIRST:
-            save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", ROOT_OUT_DIR, width=800, height=800)
+            save_png(fig_sc_bp, f"cluster_scatter_biplot_{yr}.png", ROOT_OUT_DIR, width=800, height=800, text_size=9)
 
     # ============================================================
     # 8.F STATISTIKA DESKRIPTIF (DENGAN BOBOT)
@@ -3341,18 +3420,17 @@ for current_scenario in ['scenario1', 'scenario2']:
             try:
                 img1 = Image.open(img_left_path)
                 img2 = Image.open(img_right_path)
-                
-                # Resize right image to match left image's height if needed
-                if img1.height != img2.height:
-                    new_width = int(img2.width * (img1.height / img2.height))
-                    img2 = img2.resize((new_width, img1.height), Image.Resampling.LANCZOS)
-                    
+
+                # Jangan rescale gambar (itu ikut membesar/mengecilkan teks di
+                # dalamnya secara tidak seragam) -- cukup pad vertikal-tengah
+                # ke tinggi yang sama, supaya font di kedua gambar tetap persis
+                # sama ukurannya seperti hasil render aslinya.
                 total_width = img1.width + img2.width
-                max_height = img1.height
-                
+                max_height = max(img1.height, img2.height)
+
                 new_im = Image.new('RGB', (total_width, max_height), (255, 255, 255))
-                new_im.paste(img1, (0, 0))
-                new_im.paste(img2, (img1.width, 0))
+                new_im.paste(img1, (0, (max_height - img1.height) // 2))
+                new_im.paste(img2, (img1.width, (max_height - img2.height) // 2))
                 new_im.save(out_path)
                 print(f"  [PNG Combined] {os.path.basename(out_path)}")
             except Exception as e:
@@ -3383,12 +3461,16 @@ for current_scenario in ['scenario1', 'scenario2']:
                 colors = [color_map.get(k, '#8E24AA') for k in keys]
                 
                 fig, ax = plt.subplots(figsize=(6, 5))
-                ax.pie(sizes, labels=keys, autopct='%1.1f%%', startangle=90, colors=colors,
-                       wedgeprops=dict(edgecolor='white', linewidth=1))
+                _, _texts, autotexts = ax.pie(
+                    sizes, labels=keys, autopct='%1.1f%%', startangle=90, colors=colors,
+                    wedgeprops=dict(edgecolor='white', linewidth=1),
+                    textprops=dict(fontsize=FONT_ANNOT))
+                for t in autotexts:
+                    t.set_fontsize(FONT_ANNOT)
                 ax.axis('equal')
-                plt.title(title, fontsize=12, fontweight='bold', pad=10)
+                plt.title(title, fontsize=FONT_TITLE, fontweight='bold', pad=10)
                 plt.tight_layout()
-                plt.savefig(os.path.join(out_dir, out_filename), dpi=150, bbox_inches='tight')
+                save_fig_mpl(fig, os.path.join(out_dir, out_filename), dpi=150, bbox_inches='tight')
                 plt.close(fig)
                 print(f"  [PNG Pie] {out_filename}")
             except Exception as e:
@@ -3400,19 +3482,23 @@ for current_scenario in ['scenario1', 'scenario2']:
                 from collections import Counter
                 counts = Counter(labels)
                 ipm_cats = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
-                ipm_colors = ['#0D47A1', '#1976D2', '#90CAF9', '#FFCDD2']
+                ipm_colors = ['#4CAF50', '#FFB300', '#EF5350', '#B71C1C']
                 
                 ordered_cats = [c for c in ipm_cats if c in counts]
                 sizes = [counts[c] for c in ordered_cats]
                 colors = [ipm_colors[ipm_cats.index(c)] for c in ordered_cats]
                 
                 fig, ax = plt.subplots(figsize=(6, 5))
-                ax.pie(sizes, labels=ordered_cats, autopct='%1.1f%%', startangle=90, colors=colors,
-                       wedgeprops=dict(edgecolor='white', linewidth=1))
+                _, _texts, autotexts = ax.pie(
+                    sizes, labels=ordered_cats, autopct='%1.1f%%', startangle=90, colors=colors,
+                    wedgeprops=dict(edgecolor='white', linewidth=1),
+                    textprops=dict(fontsize=FONT_ANNOT))
+                for t in autotexts:
+                    t.set_fontsize(FONT_ANNOT)
                 ax.axis('equal')
-                plt.title(title, fontsize=12, fontweight='bold', pad=10)
+                plt.title(title, fontsize=FONT_TITLE, fontweight='bold', pad=10)
                 plt.tight_layout()
-                plt.savefig(os.path.join(out_dir, out_filename), dpi=150, bbox_inches='tight')
+                save_fig_mpl(fig, os.path.join(out_dir, out_filename), dpi=150, bbox_inches='tight')
                 plt.close(fig)
                 print(f"  [PNG IPM Pie] {out_filename}")
             except Exception as e:
@@ -3422,7 +3508,7 @@ for current_scenario in ['scenario1', 'scenario2']:
         def draw_ipm_map(ipm_labels, obs_labels_list, gdf_map, title, out_filename, out_dir):
             try:
                 ipm_cats = ["Sangat Tinggi", "Tinggi", "Sedang", "Rendah"]
-                ipm_colors = ['#0D47A1', '#1976D2', '#90CAF9', '#FFCDD2']
+                ipm_colors = ['#4CAF50', '#FFB300', '#EF5350', '#B71C1C']
                 df_cl = pd.DataFrame({'name_raw': obs_labels_list, 'IPM_Cat': ipm_labels})
                 gdf_plot = gdf_map.copy()
                 gdf_plot = gdf_plot.merge(df_cl, left_on='id_cocok', right_on='name_raw', how='left')
@@ -3445,13 +3531,13 @@ for current_scenario in ['scenario1', 'scenario2']:
                         pt = row.geometry.centroid
                         name = str(row['id_cocok'])
                         name_short = name.replace('Kabupaten ', 'Kab. ').replace('Kota ', 'Kota\n')
-                        ax.annotate(name_short, xy=(pt.x, pt.y), fontsize=4.8, ha='center', va='center',
+                        ax.annotate(name_short, xy=(pt.x, pt.y), fontsize=FONT_MAP_ANNOT, ha='center', va='center',
                                     color='#1A1A1A', fontweight='bold', multialignment='center',
                                     bbox=dict(boxstyle='round,pad=0.15', facecolor='white', alpha=0.65, edgecolor='none'))
                     except Exception:
                         pass
-                        
-                ax.set_title(title, fontsize=13, fontweight='bold', pad=10)
+
+                ax.set_title(title, fontsize=FONT_TITLE, fontweight='bold', pad=10)
                 ax.set_axis_off()
                 matched = gdf_plot.dropna(subset=['IPM_Cat'])
                 if not matched.empty:
@@ -3460,11 +3546,11 @@ for current_scenario in ['scenario1', 'scenario2']:
                     pad_y = (maxy - miny) * 0.05
                     ax.set_xlim(min(minx - pad_x, 105.0), maxx + pad_x)
                     ax.set_ylim(miny - pad_y, min(maxy + pad_y, -5.2))
-                    
+
                 patches = [mpatches.Patch(color=ipm_colors[i], label=ipm_cats[i]) for i in range(4) if not gdf_plot[gdf_plot['IPM_Cat'] == ipm_cats[i]].empty]
-                ax.legend(handles=patches, loc='lower left', fontsize=11, framealpha=0.88, edgecolor='#AAAAAA', title='IPM')
+                ax.legend(handles=patches, loc='lower left', fontsize=FONT_LEGEND, framealpha=0.88, edgecolor='#AAAAAA', title='IPM', title_fontsize=FONT_LEGEND)
                 plt.tight_layout(pad=0.5)
-                plt.savefig(os.path.join(out_dir, out_filename), dpi=200, bbox_inches='tight')
+                save_fig_mpl(fig, os.path.join(out_dir, out_filename), dpi=200, bbox_inches='tight')
                 plt.close(fig)
                 print(f"  [PNG IPM Map] {out_filename}")
             except Exception as e:

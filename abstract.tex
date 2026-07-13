@@ -29,7 +29,7 @@
 
 The strategic regions of Banten, DKI Jakarta, and West Java constitute the core national economic activity in Indonesia, which underwent significant structural variations during the 2020--2024 period as a consequence of the global pandemic and the subsequent recovery phase. Traditional multivariate approaches often encounter limitations in capturing the simultaneous interactions between spatial units, social indicators, and temporal shifts within a unified framework. This research addresses this gap by applying the \f{STATIS} (\f{Structuration des Tableaux à Trois Indices de la Statistique}) method, a robust three-way data analysis framework, to synthesize a stable compromise structure that represents the common development patterns across 41 regencies and cities. The objective is to evaluate the longitudinal stability of 11 strategic development indicators and map the spatio-temporal trajectories to differentiate regional resilience. The methodology involves weighted $Z$-score standardization using demographic weights, inter-structure evaluation through $RV$ coefficients, and the construction of a compromise representation ($\mathbf{W}_c$) via optimal spectral weighting. A Monte Carlo permutation test ($B=1000$) is employed to validate the significance of the discovered structure, as illustrated in the schematic framework in Chapter 3.
 
-Analysis of the inter-structure reveals an exceptionally high degree of consistency in the spatial configurations across the five-year period, with all $RV$ coefficients exceeding $0.90$ ($p < 0.05$). This demonstrates that while the absolute magnitudes of development indicators fluctuated, the underlying relative hierarchy and structural relationships between regions, between indicators, and across years remained remarkably persistent, as summarized in Table~\ref{tab:rv_summary_ext}. The resulting compromise structure accounts for $71.88\%$ of the total variance through two principal dimensions (Figure~\ref{fig:biplot_ext}). Dimension~1 represents the primary axis of ``Human Development and Economic Advancement,'' showing strong positive correlations with GRDP, HDI, and Mean Years of Schooling, alongside strong negative correlations with Poverty Rate. Dimension~2 captures ``Labor Market Pressure,'' primarily driven by the Open Unemployment Rate (loading $+0.86$) and the Labor Force Participation Rate (loading $-0.49$).
+Analysis of the inter-structure reveals an exceptionally high degree of consistency in the spatial configurations across the five-year period, with all $RV$ coefficients exceeding $0.95$ ($p < 0.05$). This demonstrates that while the absolute magnitudes of development indicators fluctuated, the underlying relative hierarchy and structural relationships between regions, between indicators, and across years remained remarkably persistent, as summarized in Table~\ref{tab:rv_summary_ext}. The resulting compromise structure accounts for $71.88\%$ of the total variance through two principal dimensions (Figure~\ref{fig:biplot_ext}). Dimension~1 represents the primary axis of ``Human Development and Economic Advancement,'' showing strong positive correlations with GRDP, HDI, and Mean Years of Schooling, alongside strong negative correlations with Poverty Rate. Dimension~2 captures ``Labor Market Pressure,'' primarily driven by the Open Unemployment Rate (loading $+0.86$) and the Labor Force Participation Rate (loading $-0.49$).
 
 \begin{table}[H]
     \centering
@@ -41,11 +41,11 @@ Analysis of the inter-structure reveals an exceptionally high degree of consiste
     \hline
     \textbf{Year} & \textbf{2020} & \textbf{2021} & \textbf{2022} & \textbf{2023} & \textbf{2024} \\
     \hline
-    2020 & 1.0000 & 0.9555 & 0.9429 & 0.9533 & 0.9545 \\
-    2021 & 0.9555 & 1.0000 & 0.9534 & 0.9487 & 0.9396 \\
-    2022 & 0.9429 & 0.9534 & 1.0000 & 0.9608 & 0.9497 \\
-    2023 & 0.9533 & 0.9487 & 0.9608 & 1.0000 & 0.9827 \\
-    2024 & 0.9545 & 0.9396 & 0.9497 & 0.9827 & 1.0000 \\
+    2020 & 1.0000 & 0.9760 & 0.9636 & 0.9543 & 0.9550 \\
+    2021 & 0.9760 & 1.0000 & 0.9776 & 0.9664 & 0.9626 \\
+    2022 & 0.9636 & 0.9776 & 1.0000 & 0.9772 & 0.9734 \\
+    2023 & 0.9543 & 0.9664 & 0.9772 & 1.0000 & 0.9824 \\
+    2024 & 0.9550 & 0.9626 & 0.9734 & 0.9824 & 1.0000 \\
     \hline
     \end{tabular}
     \end{adjustbox}
@@ -56,17 +56,17 @@ The projection of yearly data into the compromise space through a \f{Dynamic Bip
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/compromise_biplot.png}
+    \includegraphics[width=0.75\textwidth]{output_real_en/scenario1/compromise_biplot.png}
     \caption{Compromise Biplot (Across Years): Structural Relationship between Regions, between Indicators, and between Regions and Indicators}
     \label{fig:biplot_ext}
 \end{figure}
 
-Advanced clustering using the K-Means algorithm ($k=3$) on the compromise coordinates successfully partitioned 41 regions into three groups: Cluster~1 ``Underdeveloped'' (12 regions, predominantly southern Banten and inland southern West Java), Cluster~2 ``Developing'' (16 regions, industrial corridors and buffer zones), and Cluster~3 ``Advanced'' (13 metropolitan regions). The temporal transition matrix confirmed perfect stability in 2020--2021, followed by the largest restructuring in 2023--2024, where 14 regions moved from Cluster~2 to Cluster~1 and 4 regions from Cluster~3 to Cluster~2, while ten core metropolitan regions remained in Cluster~3 throughout the entire period. External validation against normative UNDP HDI categories confirmed a high degree of structural alignment, with 11 of 13 Cluster~3 members carrying the ``Very High'' HDI classification. These findings indicate that regional disparities in the Banten--DKI Jakarta--West Java area are driven by deep-seated structural factors, necessitating targeted policy interventions for underdeveloped regions rather than uniform development strategies. Figure~\ref{fig:traj_ext} illustrates the movement of socio-economic conditions of regencies/cities from year to year (2020--2024), reflecting the divergent trajectory patterns across these three clusters.
+Advanced clustering using the K-Means algorithm ($k=3$) on the compromise coordinates successfully partitioned 41 regions into three groups: Cluster~1 ``Underdeveloped'' (12 regions, predominantly southern Banten and inland southern West Java), Cluster~2 ``Developing'' (16 regions, industrial corridors and buffer zones), and Cluster~3 ``Advanced'' (13 metropolitan regions). The temporal transition matrix confirmed perfect stability in 2020--2021, mixed flows in 2021--2022, and selective recovery in 2022--2023 (including Kota Sukabumi's advance from Cluster~2 to Cluster~3), followed by full upward mobility in 2023--2024, when four regions (Kepulauan Seribu, Garut, Kota Banjar, and Kota Serang) rose from Cluster~1 to Cluster~2 without a single downward move. All thirteen initial metropolitan members of Cluster~3 retained their position throughout 2020--2024, confirming robust structural resilience in the metropolitan core. External validation against normative UNDP HDI categories confirmed a high degree of structural alignment, with 11 of 13 Cluster~3 members carrying the ``Very High'' HDI classification. These findings indicate that regional disparities in the Banten--DKI Jakarta--West Java area are driven by deep-seated structural factors, necessitating targeted policy interventions for underdeveloped regions rather than uniform development strategies. Figure~\ref{fig:traj_ext} illustrates the movement of socio-economic conditions of regencies/cities from year to year (2020--2024), reflecting the divergent trajectory patterns across these three clusters.
 
 \begin{figure}[H]
     \centering
     \captionsetup{hypcap=false}
-    \includegraphics[width=0.75\textwidth]{output_real/scenario1/trajectory_scores.png}
+    \includegraphics[width=0.75\textwidth]{output_real_en/scenario1/trajectory_scores.png}
     \caption{Spatio-temporal Trajectories: Movement of Socio-economic Conditions of Regencies/Cities from Year to Year (2020--2024)}
     \label{fig:traj_ext}
 \end{figure}
