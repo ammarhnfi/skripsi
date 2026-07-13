@@ -3,6 +3,13 @@
 % Upgrade sesuai Format FMIPA UI 2025/2026
 %
 % !TeX root = induk.tex
+
+% Bagian ini berbahasa Inggris, jadi label Gambar/Tabel juga harus Inggris.
+% Dikembalikan ke Bahasa Indonesia di akhir file agar bab-bab selanjutnya
+% (yang berbahasa Indonesia) tidak ikut terpengaruh.
+\renewcommand{\figurename}{\normalsize Figure}
+\renewcommand{\tablename}{\normalsize Table}
+
 \chapter*{\fontsize{14pt}{16pt}\selectfont \textbf{EXTENDED ABSTRACT}}
 \begin{singlespace}
 \vspace{-0.5cm}
@@ -68,9 +75,13 @@ In conclusion, the STATIS method provides a comprehensive longitudinal perspecti
 
 \vspace*{0.4cm}
 
-\noindent \bo{Keywords}: 
+\noindent \bo{Keywords}:
     Interactive Visualization, K-Means Clustering, Longitudinal Data, PCA, Three-Way Data Analysis.
 \vfill
 \end{singlespace}
 
-\newpage 
+% Kembalikan label Gambar/Tabel ke Bahasa Indonesia untuk bab-bab selanjutnya.
+\renewcommand{\figurename}{\normalsize Gambar}
+\renewcommand{\tablename}{\normalsize Tabel}
+
+\newpage
