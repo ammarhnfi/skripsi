@@ -15,8 +15,8 @@ import io
 import subprocess
 import importlib
 
-INPUT_PDF  = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk_inti.pdf"))
-OUTPUT_PDF = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "induk_inti_compressed.pdf"))
+INPUT_PDF  = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "Matematika_Statistika_2206051582_Ammar Hanafi_Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal Sosio-Ekonomi (Studi Kasus Provinsi Banten, DKI Jakarta, dan Jawa Barat 2020-2024).pdf"))
+OUTPUT_PDF = os.path.normpath(os.path.join(os.path.dirname(__file__), "..", "Matematika_Statistika_2206051582_Ammar Hanafi_Pendekatan STATIS dan Dynamic Biplot untuk Analisis Spasio-Temporal Sosio-Ekonomi (Studi Kasus Provinsi Banten, DKI Jakarta, dan Jawa Barat 2020-2024)_compressed.pdf"))
 
 
 def ensure_pkg(pip_name, import_name=None):
